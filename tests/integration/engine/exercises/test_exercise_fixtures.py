@@ -1,13 +1,16 @@
 import pytest
 
+from engine.curriculum import load_curriculum
+
 from tests.integration.engine.exercises.exercise_fixtures import (
+    CURRICULUM_DIRECTORY,
     ExerciseFixture,
-    curriculum_with_fixture_only_patterns,
     load_fixtures,
     validate_fixture,
 )
 
 FIXTURES = load_fixtures()
+CURRICULUM = load_curriculum(CURRICULUM_DIRECTORY)
 
 
 class TestExerciseFixtures:
@@ -15,7 +18,7 @@ class TestExerciseFixtures:
     def test_validation_reports_exactly_the_expected_issues(
         self, fixture: ExerciseFixture
     ) -> None:
-        result = validate_fixture(fixture, curriculum_with_fixture_only_patterns())
+        result = validate_fixture(fixture, CURRICULUM)
 
         assert tuple(type(issue).__name__ for issue in result.issues) == fixture.expect
 
@@ -27,7 +30,7 @@ class TestExerciseFixtures:
     def test_mutated_items_are_recognised_with_their_mutation(
         self, fixture: ExerciseFixture
     ) -> None:
-        result = validate_fixture(fixture, curriculum_with_fixture_only_patterns())
+        result = validate_fixture(fixture, CURRICULUM)
 
         detected = {item.item_id: item.mutation for item in result.detected}
         assert {

@@ -122,10 +122,12 @@
   part_of_speech: noun
   gender: m
 
-- id: lex:yfory
-  welsh: yfory
+- id: lex:fory
+  welsh: fory
   english: tomorrow
   part_of_speech: adv
+  forms: [yfory]
+  notes: "Colloquial South Wales form. Standard 'yfory' is understood everywhere."
   prerequisites: [pat:dw-in]
 
 - id: lex:cofio
@@ -143,12 +145,14 @@
   english: book
   part_of_speech: noun
   gender: m
+  forms: [llyfrau]
 
 - id: lex:ty
   welsh: tŷ
   english: house
   part_of_speech: noun
   gender: m
+  forms: [tai]
 
 - id: lex:bore-da
   welsh: bore da
@@ -164,3 +168,40 @@
   welsh: diolch
   english: thank you
   part_of_speech: phrase
+
+- id: lex:y
+  welsh: "y"
+  english: the
+  part_of_speech: det
+  forms: [yr, "'r"]
+  notes: "Use 'yr' before a vowel or 'h', and the clitic 'r after a vowel. Feminine singular nouns soft-mutate after it (y Gymraeg)."
+  prerequisites: [pat:dw-in]
+
+- id: lex:i
+  welsh: i
+  english: to, for
+  part_of_speech: prep
+  notes: "Soft-mutates what follows (i Gaerdydd). Also the pronoun 'i' (I) in 'Dw i'n', which is part of its pattern."
+  prerequisites: [pat:dw-in]
+
+- id: lex:o
+  welsh: o
+  english: from, of
+  part_of_speech: prep
+  notes: "Soft-mutates what follows (o Gaerdydd)."
+  prerequisites: [pat:dw-in]
+
+- id: lex:gyda
+  welsh: gyda
+  english: with
+  part_of_speech: prep
+  notes: "Aspirate-mutates what follows (gyda chi). South Wales also uses 'da."
+  prerequisites: [pat:dw-in]
+
+- id: lex:gallu
+  welsh: gallu
+  english: to be able to
+  part_of_speech: verb
+  forms: [galla, gallwn]
+  notes: "Southern speakers conjugate it directly: galla i, gallwn ni."
+  prerequisites: [pat:dw-in-gallu]

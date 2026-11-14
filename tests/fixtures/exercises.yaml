@@ -37,8 +37,18 @@
 
 - id: working-tomorrow
   english: He's working tomorrow
+  welsh: Mae e'n gweithio fory
+  items: [pat:mae-e-yn, lex:gweithio, lex:fory]
+
+- id: standard-form-of-tomorrow
+  english: He's working tomorrow
   welsh: Mae e'n gweithio yfory
-  items: [pat:mae-e-yn, lex:gweithio, lex:yfory]
+  items: [pat:mae-e-yn, lex:gweithio, lex:fory]
+
+- id: plural-noun-form
+  english: I want books
+  welsh: Dw i'n moyn llyfrau
+  items: [pat:dw-in-moyn-noun, lex:llyfr]
 
 - id: want-to-go-question
   english: Do you want to go?
@@ -79,7 +89,8 @@
   english: I want to speak Welsh
   welsh: Dw i eisiau siarad Cymraeg
   items: [lex:siarad, lex:cymraeg]
-  expect: [UnknownToken, UnknownToken, UnknownToken]
+  # The pronoun "i" is read as the preposition lex:i until a pronoun lexeme exists
+  expect: [UnknownToken, UnknownToken, UndeclaredItem]
 
 - id: item-used-but-not-declared
   english: I want to speak Welsh

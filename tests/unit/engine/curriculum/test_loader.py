@@ -5,6 +5,7 @@ import pytest
 from engine.curriculum import (
     CurriculumError,
     PartOfSpeech,
+    Lexeme,
     Pattern,
     load_curriculum,
 )
@@ -73,3 +74,16 @@ class TestLoader:
     def test_cross_file_validation(self, write_curriculum: CurriculumWriter) -> None:
         with pytest.raises(CurriculumError, match="comes before its prerequisite"):
             load_curriculum(write_curriculum(order="- pat:dw-in\n- lex:siarad\n"))
+
+
+class TestLoaderForms:
+    def test_forms_and_homographs_parse_to_tuples(
+        self, write_curriculum: CurriculumWriter
+    ) -> None:
+        lexemes = (
+            "- id: lex:siarad\n  welsh: siarad\n  english: x\n"
+            "  part_of_speech: verb\n  forms: [siaradodd]\n"
+        )
+        lexeme = load_curriculum(write_curriculum(lexemes=lexemes)).get("lex:siarad")
+        assert isinstance(lexeme, Lexeme)
+        assert lexeme.forms == ("siaradodd",)

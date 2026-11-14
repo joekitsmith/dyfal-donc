@@ -30,13 +30,14 @@ class CurriculumIndex:
                     PatternShape(pattern=item, elements=_pattern_elements(item))
                 )
                 continue
-            lexeme_words = tuple(
-                token.text.casefold() for token in tokenise(item.welsh)
-            )
-            if len(lexeme_words) == 1:
-                words.setdefault(lexeme_words[0], []).append(item)
-            elif lexeme_words:
-                phrases.append(Phrase(lexeme=item, words=lexeme_words))
+            for surface in item.surface_forms:
+                lexeme_words = tuple(
+                    token.text.casefold() for token in tokenise(surface)
+                )
+                if len(lexeme_words) == 1:
+                    words.setdefault(lexeme_words[0], []).append(item)
+                elif lexeme_words:
+                    phrases.append(Phrase(lexeme=item, words=lexeme_words))
         shapes.sort(key=lambda shape: (-len(shape.elements), shape.pattern.id))
         phrases.sort(key=lambda phrase: (-len(phrase.words), phrase.lexeme.id))
         return cls(
@@ -49,11 +50,18 @@ class CurriculumIndex:
     def candidates(self, token_text: str) -> tuple[Candidate, ...]:
         """Every single-word lexeme the token could be, undoing mutations if needed.
 
+        Each candidate records the form that matched.
+
         Ordered by the position of the reading in ``demutate``, so an unmutated
         reading comes first.
         """
         return tuple(
-            Candidate(lexeme=lexeme, mutation=demutation.mutation, order=order)
+            Candidate(
+                lexeme=lexeme,
+                form=demutation.radical.casefold(),
+                mutation=demutation.mutation,
+                order=order,
+            )
             for order, demutation in enumerate(demutate(token_text))
             for lexeme in self.words.get(demutation.radical.casefold(), ())
         )
@@ -62,6 +70,7 @@ class CurriculumIndex:
 @dataclass(frozen=True, slots=True, kw_only=True)
 class Candidate:
     lexeme: Lexeme
+    form: str
     mutation: Mutation | None
     order: int
 
@@ -76,10 +85,14 @@ class PatternShape:
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class Phrase:
-    """A multi-word lexeme as its casefolded words."""
+    """One form of a multi-word lexeme as its casefolded words."""
 
     lexeme: Lexeme
     words: tuple[str, ...]
+
+    @property
+    def form(self) -> str:
+        return " ".join(self.words)
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
