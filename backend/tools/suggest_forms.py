@@ -14,7 +14,7 @@ from engine.authoring import FormSuggestion, suggest_forms
 from engine.curriculum import load_curriculum
 from engine.detection import CurriculumIndex
 
-REPOSITORY_ROOT = Path(__file__).parents[1]
+REPOSITORY_ROOT = Path(__file__).parents[2]
 CURRICULUM_DIRECTORY = REPOSITORY_ROOT / "curriculum"
 LEMMATISER_NAMES = ("simplemma", "stanza")
 
