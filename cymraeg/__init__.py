@@ -1,5 +1,5 @@
 from cymraeg.errors import CymraegError
-from cymraeg.mutation import Demutation, Mutation, demutate, mutate
+from cymraeg.mutation import Demutation, Mutation, demutate, find_demutation, mutate
 from cymraeg.tokenise import Token, tokenise
 
 __all__ = [
@@ -8,6 +8,7 @@ __all__ = [
     "Mutation",
     "Token",
     "demutate",
+    "find_demutation",
     "mutate",
     "tokenise",
 ]

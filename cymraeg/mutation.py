@@ -104,6 +104,14 @@ def demutate(token: str) -> tuple[Demutation, ...]:
     return tuple(demutations)
 
 
+def find_demutation(token: str, radical: str) -> Demutation | None:
+    """How ``token`` reads as ``radical`` (ignoring case), preferring no mutation."""
+    for demutation in demutate(token):
+        if demutation.radical.casefold() == radical.casefold():
+            return demutation
+    return None
+
+
 def _apply_forward(word: str, table: tuple[tuple[str, str], ...]) -> str:
     lowered = word.lower()
     for prefix, replacement in table:

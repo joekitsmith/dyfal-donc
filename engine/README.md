@@ -13,3 +13,20 @@ The curriculum is a prerequisite graph of **items**, plus the intended learning 
 - `topological_order()`: a deterministic ordering derived from the graph alone.
 
 The models are plain frozen dataclasses. Pydantic is used only in the loader, to parse YAML.
+
+## `engine.detection`
+
+Finds curriculum items in Welsh text. Independent of exercises, so it can be reused wherever text needs explaining in curriculum terms.
+
+- `CurriculumIndex.from_curriculum(curriculum)`: prepares a curriculum for lookup: patterns as fixed tokens and slots, multi-word lexemes as phrases, single words keyed by casefolded text. `candidates(token_text)` lists the lexemes a token could be, undoing mutations.
+- `detect_items(text, index, preferred)`: tokenises the text with [`cymraeg`](../cymraeg/README.md) and tries patterns (one single-token filler per slot), then multi-word lexemes, then single words. Ambiguity resolves to an unmutated reading, then `preferred` items, then `demutate` order.
+- `Detection`: the `DetectedItem`s (id, span, mutation undone) and `problems` in text order: `UnknownToken` and `SlotPartOfSpeechMismatch`.
+
+Known limitations: mutated fixed tokens in a pattern aren't matched, a slot filler is a single token, and a mutation is accepted without checking that its trigger is present.
+
+## `engine.exercises`
+
+Checks an `Exercise` (English, Welsh, declared item ids, optional `new_item`) against the curriculum.
+
+- `validate_exercise(exercise, curriculum, known_items)`: runs detection, then compares the detected items with the declared ones. `known_items` are the ids taught before this exercise, so any detected item outside it is new, and an exercise may introduce at most one.
+- `ValidationResult`: the detected items and a tuple of typed issues: the detection problems plus `UndeclaredItem`, `DeclaredItemNotFound`, `UnknownDeclaredItem`, `MissingNewItem`, `MultipleNewItems` and `WrongNewItem`. `is_valid` means no issues.

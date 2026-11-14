@@ -2,7 +2,7 @@ import pytest
 from hypothesis import given
 from hypothesis import strategies as st
 
-from cymraeg.mutation import Demutation, Mutation, demutate, mutate
+from cymraeg.mutation import Demutation, Mutation, demutate, find_demutation, mutate
 
 RADICAL_INITIALS = (
     "p t c b d g m ll rh f ff ch th ph dd ng n l r h s j gw gl gr bl br cl cr dr "
@@ -216,6 +216,26 @@ class TestDemutate:
         ]
         assert indices == sorted(indices)
         assert len(set(demutations)) == len(demutations)
+
+
+class TestFindDemutation:
+    @pytest.mark.parametrize(
+        ("token", "radical", "expected"),
+        [
+            ("mynd", "mynd", as_is("mynd")),
+            ("fynd", "mynd", soft("mynd")),
+            ("Gymraeg", "cymraeg", soft("Cymraeg")),
+            ("nghath", "cath", nasal("cath")),
+            ("hafal", "afal", h_prothesis("afal")),
+        ],
+    )
+    def test_finds_the_reading_that_matches_the_radical(
+        self, token: str, radical: str, expected: Demutation
+    ) -> None:
+        assert find_demutation(token, radical) == expected
+
+    def test_returns_none_when_the_token_cannot_read_as_the_radical(self) -> None:
+        assert find_demutation("fynd", "tŷ") is None
 
 
 class TestRoundTrip:
