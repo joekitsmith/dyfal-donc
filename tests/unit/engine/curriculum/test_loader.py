@@ -8,7 +8,7 @@ from engine.curriculum import (
     Pattern,
     load_curriculum,
 )
-from tests.engine.curriculum.conftest import CurriculumWriter
+from tests.unit.engine.curriculum.conftest import CurriculumWriter
 
 
 class TestLoader:
