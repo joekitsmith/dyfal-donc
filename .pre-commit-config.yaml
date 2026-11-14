@@ -3,17 +3,17 @@ repos:
     hooks:
       - id: ruff-format
         name: ruff-format
-        entry: bash -c 'poetry run ruff format dyfal_donc tests'
+        entry: bash -c 'poetry run ruff format engine tests'
         language: system
 
       - id: ruff-lint
         name: ruff-lint
-        entry: bash -c 'poetry run ruff check --fix dyfal_donc tests'
+        entry: bash -c 'poetry run ruff check --fix engine tests'
         language: system
 
       - id: mypy
         name: mypy
-        entry: bash -c 'poetry run mypy dyfal_donc tests'
+        entry: bash -c 'poetry run mypy engine tests'
         language: system
         pass_filenames: false
 
