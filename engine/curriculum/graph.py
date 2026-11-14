@@ -1,5 +1,3 @@
-"""Pure graph helpers over a prerequisite mapping ``item -> its prerequisites``."""
-
 import heapq
 from collections.abc import Mapping, Sequence
 

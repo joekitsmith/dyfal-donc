@@ -1,6 +1,3 @@
-"""Errors raised while loading or validating a curriculum."""
-
-
 class CurriculumError(Exception):
     """A curriculum is malformed. The message says exactly what and where."""
 

@@ -1,5 +1,3 @@
-"""Load a curriculum from a directory of YAML files."""
-
 from dataclasses import fields
 from pathlib import Path
 

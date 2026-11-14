@@ -1,5 +1,3 @@
-"""CLI: ``python -m engine.curriculum <dir>`` validates and prints the order."""
-
 import sys
 from collections.abc import Sequence
 

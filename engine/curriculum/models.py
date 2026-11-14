@@ -1,10 +1,3 @@
-"""Curriculum domain models: lexemes, patterns, and the curriculum graph.
-
-Plain frozen dataclasses with no parsing logic. Each validates its own invariants
-on construction and raises ``CurriculumError``; turning YAML into these types is
-the loader's job.
-"""
-
 import re
 from collections.abc import Mapping
 from dataclasses import dataclass, field

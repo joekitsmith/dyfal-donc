@@ -1,5 +1,3 @@
-"""Curriculum model: items, prerequisite graph, and learning order."""
-
 from engine.curriculum.errors import CurriculumError, CycleError
 from engine.curriculum.graph import find_cycle, topological_order
 from engine.curriculum.loader import load_curriculum
