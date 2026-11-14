@@ -15,7 +15,7 @@ A spaced-repetition Welsh speaking course (South Wales Welsh) with LLM-assisted,
 
 - [`engine/`](engine/README.md): pure Python core (no I/O beyond loading the curriculum)
 - [`cymraeg/`](cymraeg/README.md): rule-based Welsh handling (tokenising, mutations), independent of the engine
-- [`evals/`](evals/README.md): hand-annotated gold sentences for measuring quality
+- [`evals/`](evals/README.md): hand-annotated gold sentences and the lemmatiser benchmark
 - [`curriculum/`](curriculum/README.md): hand-authored YAML seed data
 - `tests/`: unit and integration tests, mirroring the code tree
 
@@ -32,4 +32,4 @@ poetry run poe tests-unit
 poetry run poe tests-integration
 ```
 
-The Simplemma and Stanza lemmatisers are optional: `poetry install --with lemmatisers`.
+The Simplemma and Stanza lemmatisers are optional: `poetry install --with lemmatisers`. With them installed, `poetry run poe benchmark` regenerates the [lemmatiser benchmark](evals/reports/lemmatiser-benchmark.md).

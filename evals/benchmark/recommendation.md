@@ -1,0 +1,9 @@
+Use a lemmatiser as an **authoring aid**, not as a fallback inside detection.
+
+- **Inflection is the gap.** Declared forms alone find 96.1% of the gold items. The misses are the five inflected or mutated verb forms the curriculum hasn't declared (`Gwelais`, `Siaradodd`, `Dysgais`, `Wela`, `Alli`). The rule lemmatiser cannot find any of them, because it only undoes mutations. Simplemma surfaces all five and Stanza four.
+- **A fallback would cost precision.** Feeding Simplemma into detection raises recall to 99.3% but lowers item precision from 93.6% to 92.7%, because it links some tokens to the wrong lexeme (`ei` to `mynd`, twice). Stanza keeps precision (93.8%) but still makes mistakes, and both tools link `fy` to `lex:i`, which is the pronoun/preposition homograph. Validation is meant to be exact, so these links should be approved by a person and written into `forms`.
+- **Simplemma is the better default for authoring.** It is as accurate as Stanza on this gold set (91.4% against 90.2% lemma accuracy), finds one more undeclared form, and costs nothing: no model, no torch, under a millisecond a sentence. Stanza adds a 200 MB model and about 6 ms a sentence, and its one extra mistake-free run is a difference of a single token.
+- **Agreement could improve precision.** Stanza did not make Simplemma's `ei` mistakes, so only suggesting forms both tools agree on looks promising. This is not measured yet.
+- **Skip the demutate wrapper.** It does not change Simplemma's lemma accuracy, adds 0.9 points for Stanza, raises the average candidates from 1.0 to about 1.6, and makes Stanza about five times slower. It also adds a wrong Simplemma suggestion (`Nos`), from `demutate` over-generating.
+
+Treat the numbers as indicative only. The gold set is small (only five undeclared forms), hand-written and not yet checked by a fluent speaker, so one token separates Simplemma from Stanza.
