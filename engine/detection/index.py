@@ -1,4 +1,4 @@
-from collections.abc import Mapping
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 
 from cymraeg import Mutation, demutate, tokenise
@@ -67,6 +67,19 @@ class CurriculumIndex:
             for order, demutation in enumerate(demutate(token_text))
             for lexeme in self.words.get(demutation.radical.casefold(), ())
         )
+
+    def lexemes_for(self, forms: Iterable[str]) -> tuple[Lexeme, ...]:
+        """The single-word lexemes with a declared form matching any of ``forms``.
+
+        Matches ignore case and do not undo mutations.
+        """
+        found = {
+            lexeme.id: lexeme
+            for form in forms
+            for lexeme in self.words.get(form.casefold(), ())
+        }
+
+        return tuple(found.values())
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)

@@ -1,13 +1,9 @@
-from collections.abc import Mapping, Sequence
+from collections.abc import Mapping
 
-from cymraeg import Token
-from engine.curriculum import Curriculum, Lexeme, PartOfSpeech
+from engine.curriculum import Curriculum
 from evals.gold import GoldSentence, GoldToken, Tag
-from tests.unit.engine.sample_curriculum import STANDARD_ITEMS, curriculum_of
+from tests.unit.engine.sample_curriculum import GWELD, STANDARD_ITEMS, curriculum_of
 
-GWELD = Lexeme(
-    id="lex:gweld", welsh="gweld", english="to see", part_of_speech=PartOfSpeech.VERB
-)
 CURRICULUM: Curriculum = curriculum_of((*STANDARD_ITEMS, GWELD))
 
 LEARNING_WELSH = GoldSentence(
@@ -44,13 +40,3 @@ PERFECT_LEMMAS: Mapping[str, tuple[str, ...]] = {
     "Cymraeg": ("Cymraeg",),
     "Gwelais": ("gweld",),
 }
-
-
-class FixedLemmatiser:
-    """A lemmatiser that looks each token up in a fixed dictionary."""
-
-    def __init__(self, lemmas: Mapping[str, tuple[str, ...]]) -> None:
-        self._lemmas = lemmas
-
-    def lemmatise(self, tokens: Sequence[Token]) -> tuple[tuple[str, ...], ...]:
-        return tuple(self._lemmas.get(token.text, ()) for token in tokens)

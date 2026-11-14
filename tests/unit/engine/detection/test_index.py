@@ -88,3 +88,35 @@ class TestCurriculumIndexForms:
         )
         index = CurriculumIndex.from_curriculum(curriculum_of((phrase,)))
         assert sorted(entry.form for entry in index.phrases) == ["fan 'ma", "fan hyn"]
+
+
+class TestCurriculumIndexLexemesFor:
+    LLYFR = Lexeme(
+        id="lex:llyfr",
+        welsh="llyfr",
+        english="book",
+        part_of_speech=PartOfSpeech.NOUN,
+        forms=("llyfrau",),
+    )
+
+    def test_finds_lexemes_by_base_form_or_declared_form(self) -> None:
+        index = CurriculumIndex.from_curriculum(curriculum_of((self.LLYFR,)))
+
+        assert index.lexemes_for(["llyfrau"]) == (self.LLYFR,)
+        assert index.lexemes_for(["LLYFR"]) == (self.LLYFR,)
+
+    def test_each_lexeme_is_returned_once(self) -> None:
+        index = CurriculumIndex.from_curriculum(curriculum_of((self.LLYFR,)))
+
+        assert index.lexemes_for(["llyfr", "llyfrau"]) == (self.LLYFR,)
+
+    def test_does_not_undo_mutations(self) -> None:
+        index = CurriculumIndex.from_curriculum(curriculum_of((self.LLYFR,)))
+
+        assert index.lexemes_for(["lyfr"]) == ()
+
+    def test_unknown_forms_and_no_forms_find_nothing(self) -> None:
+        index = CurriculumIndex.from_curriculum(curriculum_of((self.LLYFR,)))
+
+        assert index.lexemes_for(["nothing"]) == ()
+        assert index.lexemes_for([]) == ()

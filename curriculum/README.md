@@ -9,3 +9,7 @@ Hand-authored seed data, in South Wales Welsh (`Dw i'n moyn`, not `Dw i eisiau`)
 Items can list `prerequisites` (ids of other items). An item must come after all of its prerequisites in `order.yaml`.
 
 Check your edits with `poetry run poe tests-integration`. Errors name the file and item at fault.
+
+## Finding forms to declare
+
+`poetry run poe suggest-forms "Gwelais i e neithiwr"` (after `poetry install --with lemmatisers`) lists unknown words that look like a form of a curriculum word, with the `forms:` line to paste. It also takes `--file` (one sentence per line) and `--lemmatiser stanza`. The suggestions can be wrong, so check each one. A suggested form for a mutated word may be the mutated spelling rather than the radical: declare the radical (`gwela`, not `wela`).

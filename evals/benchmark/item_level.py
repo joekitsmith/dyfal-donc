@@ -3,7 +3,6 @@ from dataclasses import replace
 
 from engine.detection import CurriculumIndex, detect_items
 from evals.benchmark.errors import BenchmarkError
-from evals.benchmark.lexemes import lexemes_for_lemmas
 from evals.benchmark.models import ItemResult, ItemScore, SentenceCandidates
 from evals.gold import GoldSentence, Tag
 
@@ -52,9 +51,7 @@ def augment_index(
         key = text.casefold()
         known = {lexeme.id for lexeme in words.get(key, ())}
         extra = tuple(
-            lexeme
-            for lexeme in lexemes_for_lemmas(index, options)
-            if lexeme.id not in known
+            lexeme for lexeme in index.lexemes_for(options) if lexeme.id not in known
         )
         if extra:
             words[key] = (*words.get(key, ()), *extra)

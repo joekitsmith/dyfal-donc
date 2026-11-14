@@ -3,8 +3,8 @@ from tests.unit.evals.benchmark.sample_gold_sentences import (
     CURRICULUM,
     PERFECT_LEMMAS,
     SENTENCES,
-    FixedLemmatiser,
 )
+from tests.fake_lemmatisers import FixedLemmatiser
 
 
 class TestRunBenchmark:

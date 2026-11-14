@@ -2,7 +2,6 @@ from collections.abc import Sequence
 
 from engine.detection import CurriculumIndex
 from evals.benchmark.errors import BenchmarkError
-from evals.benchmark.lexemes import lexemes_for_lemmas
 from evals.benchmark.models import AuthoringResult, SentenceCandidates
 from evals.gold import GoldSentence
 
@@ -39,7 +38,7 @@ def score_authoring(
                 candidate.lexeme.id for candidate in index.candidates(token.text)
             }
             suggested = {
-                lexeme.id for lexeme in lexemes_for_lemmas(index, options)
+                lexeme.id for lexeme in index.lexemes_for(options)
             } - recognised
             suggestions += len(suggested)
             correct_suggestions += token.item in suggested

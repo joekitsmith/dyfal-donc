@@ -54,6 +54,9 @@ TY_MAWR = Lexeme(
     english="big house",
     part_of_speech=PartOfSpeech.PHRASE,
 )
+GWELD = Lexeme(
+    id="lex:gweld", welsh="gweld", english="to see", part_of_speech=PartOfSpeech.VERB
+)
 STANDARD_ITEMS = (
     DW_IN_MOYN,
     DW_IN_MOYN_NOUN,
