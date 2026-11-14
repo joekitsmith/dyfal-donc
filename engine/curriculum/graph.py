@@ -2,7 +2,7 @@ import heapq
 from collections.abc import Mapping, Sequence
 from enum import Enum, auto
 
-from engine.curriculum.errors import CycleError
+from engine.curriculum.errors import CurriculumError, CycleError
 
 type Prerequisites = Mapping[str, Sequence[str]]
 
@@ -71,6 +71,9 @@ def topological_order(prerequisites: Prerequisites) -> tuple[str, ...]:
 
     if len(result) != len(prerequisites):
         cycle = find_cycle(prerequisites)
-        assert cycle is not None
+        if cycle is None:
+            raise CurriculumError(
+                "could not order items, but no prerequisite cycle was found"
+            )
         raise CycleError(cycle)
     return tuple(result)
