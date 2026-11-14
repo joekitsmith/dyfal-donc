@@ -8,12 +8,13 @@ from tests.integration.engine.exercises.exercise_fixtures import CURRICULUM_DIRE
 SENTENCES = load_gold_sentences()
 CURRICULUM = load_curriculum(CURRICULUM_DIRECTORY)
 ITEM_IDS = frozenset(item.id for item in CURRICULUM.items)
+MINIMUM_SENTENCES = 100
 MINIMUM_SENTENCES_PER_TAG = 5
 
 
 class TestGoldSentences:
-    def test_set_has_about_sixty_sentences(self) -> None:
-        assert 55 <= len(SENTENCES) <= 70
+    def test_set_has_enough_sentences(self) -> None:
+        assert len(SENTENCES) >= MINIMUM_SENTENCES
 
     @pytest.mark.parametrize("sentence", SENTENCES, ids=lambda sentence: sentence.id)
     def test_every_item_and_pattern_exists_in_the_curriculum(

@@ -110,8 +110,8 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--lemmatiser",
         choices=LEMMATISER_NAMES,
-        default="simplemma",
-        help="which lemmatiser to ask (default: simplemma)",
+        default="stanza",
+        help="which lemmatiser to ask (default: stanza, the more accurate; simplemma is lighter)",
     )
 
     return parser
@@ -124,10 +124,10 @@ def _read_sentences(path: Path) -> tuple[str, ...]:
 
 
 def _build_lemmatiser(name: str) -> Lemmatiser:
-    if name == "stanza":
-        return StanzaLemmatiser()
+    if name == "simplemma":
+        return SimplemmaLemmatiser()
 
-    return SimplemmaLemmatiser()
+    return StanzaLemmatiser()
 
 
 if __name__ == "__main__":
