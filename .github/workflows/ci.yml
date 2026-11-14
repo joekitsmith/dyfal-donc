@@ -30,13 +30,13 @@ jobs:
         run: poetry install --no-interaction
 
       - name: Format
-        run: poetry run ruff format --check engine tests
+        run: poetry run poe format --check
 
       - name: Lint
-        run: poetry run ruff check engine tests
+        run: poetry run poe lint
 
-      - name: Type check
-        run: poetry run mypy engine tests
+      - name: Mypy
+        run: poetry run poe mypy
 
-      - name: Test
-        run: poetry run pytest
+      - name: Unit tests
+        run: poetry run poe tests-unit
