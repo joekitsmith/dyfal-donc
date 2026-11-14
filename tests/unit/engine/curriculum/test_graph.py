@@ -13,12 +13,14 @@ def dags(draw: st.DrawFn) -> dict[str, list[str]]:
     """Random DAGs: nodes are shuffled, edges only point from later to earlier."""
     n = draw(st.integers(min_value=0, max_value=12))
     names = draw(st.permutations([f"n{i}" for i in range(n)]))
+
     prerequisites: dict[str, list[str]] = {}
     for i, name in enumerate(names):
         earlier = names[:i]
         prerequisites[name] = (
             draw(st.lists(st.sampled_from(earlier), unique=True)) if earlier else []
         )
+
     return prerequisites
 
 
@@ -64,6 +66,7 @@ class TestFindCycle:
     ) -> None:
         if not prerequisites:
             return
+
         # A self-loop is the simplest back edge
         node = data.draw(st.sampled_from(sorted(prerequisites)))
         prerequisites[node] = [*prerequisites[node], node]

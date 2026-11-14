@@ -17,9 +17,11 @@ class Token:
 
 def tokenise(text: str) -> tuple[Token, ...]:
     normalised = text.translate(_CURLY_APOSTROPHES)
+
     tokens: list[Token] = []
     for match in _CHUNK.finditer(normalised):
         tokens.extend(_split_chunk(match.group(), match.start()))
+
     return tuple(tokens)
 
 
@@ -29,6 +31,7 @@ def _split_chunk(chunk: str, offset: int) -> tuple[Token, ...]:
     for piece in _BEFORE_APOSTROPHE.split(chunk):
         if not piece:
             continue
+
         piece_start = position
         position += len(piece)
         if piece.startswith("'") and piece.casefold() not in CLITICS:
@@ -39,5 +42,7 @@ def _split_chunk(chunk: str, offset: int) -> tuple[Token, ...]:
                 previous = tokens.pop()
                 piece = previous.text + piece
                 piece_start = previous.start
+
         tokens.append(Token(text=piece, start=piece_start, end=position))
+
     return tuple(tokens)

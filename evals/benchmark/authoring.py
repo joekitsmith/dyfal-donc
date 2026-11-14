@@ -23,6 +23,7 @@ def score_authoring(
         )
 
     phrase_ids = {phrase.lexeme.id for phrase in index.phrases}
+
     undeclared = surfaced = suggestions = correct_suggestions = 0
     missed: list[str] = []
     wrong: list[str] = []

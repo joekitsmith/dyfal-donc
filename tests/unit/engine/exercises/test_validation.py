@@ -25,6 +25,7 @@ def validate(
     curriculum = curriculum or curriculum_of()
     if known is None:
         known = frozenset(item.id for item in curriculum.items)
+
     exercise = Exercise(english="", welsh=welsh, items=items, new_item=new_item)
     return validate_exercise(exercise, curriculum, known)
 

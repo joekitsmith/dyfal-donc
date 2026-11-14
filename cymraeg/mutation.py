@@ -101,6 +101,7 @@ def demutate(token: str) -> tuple[Demutation, ...]:
     for mutation in Mutation:
         for radical in sorted(set(_radicals(token, mutation))):
             demutations.append(Demutation(radical=radical, mutation=mutation))
+
     return tuple(demutations)
 
 
@@ -109,6 +110,7 @@ def find_demutation(token: str, radical: str) -> Demutation | None:
     for demutation in demutate(token):
         if demutation.radical.casefold() == radical.casefold():
             return demutation
+
     return None
 
 
@@ -117,12 +119,14 @@ def _apply_forward(word: str, table: tuple[tuple[str, str], ...]) -> str:
     for prefix, replacement in table:
         if lowered.startswith(prefix):
             return _replace_prefix(word, len(prefix), replacement)
+
     return word
 
 
 def _prefix_h(word: str) -> str:
     if word[:1].lower() not in _VOWELS:
         return word
+
     return _replace_prefix(word, 1, "h" + word[0].lower())
 
 
@@ -148,6 +152,7 @@ def _apply_reverse(
                 _replace_prefix(token, len(prefix), radical_prefix)
                 for radical_prefix in radical_prefixes
             )
+
     return ()
 
 
@@ -155,8 +160,10 @@ def _restore_deleted_g(token: str) -> tuple[str, ...]:
     lowered = token.lower()
     if lowered[:2] in ("ll", "rh"):
         return ()
+
     if lowered[:1] in _VOWELS or lowered[:1] in ("l", "r"):
         return (_replace_prefix(token, 0, "g"),)
+
     return ()
 
 
@@ -164,6 +171,7 @@ def _remove_h(token: str) -> tuple[str, ...]:
     lowered = token.lower()
     if lowered[:1] == "h" and lowered[1:2] in _VOWELS:
         return (_replace_prefix(token, 1, ""),)
+
     return ()
 
 
@@ -171,9 +179,11 @@ def _replace_prefix(word: str, prefix_length: int, replacement: str) -> str:
     remainder = word[prefix_length:]
     if prefix_length == 0 and word[:1].isupper() and not _is_all_capitals(word):
         remainder = remainder[:1].lower() + remainder[1:]
+
     result = replacement + remainder
     if word[:1].isupper():
         return result[:1].upper() + result[1:]
+
     return result
 
 

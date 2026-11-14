@@ -42,6 +42,7 @@ class CurriculumIndex:
 
         shapes.sort(key=lambda shape: (-len(shape.elements), shape.pattern.id))
         phrases.sort(key=lambda phrase: (-len(phrase.words), phrase.lexeme.id))
+
         return cls(
             item_ids=frozenset(item.id for item in curriculum.items),
             shapes=tuple(shapes),
@@ -118,6 +119,7 @@ class Slot:
 
 def _pattern_elements(pattern: Pattern) -> tuple[Element, ...]:
     template = pattern.template
+
     elements: list[Element] = []
     for token in tokenise(template):
         is_slot = (
@@ -131,4 +133,5 @@ def _pattern_elements(pattern: Pattern) -> tuple[Element, ...]:
             )
         else:
             elements.append(token.text.casefold())
+
     return tuple(elements)
