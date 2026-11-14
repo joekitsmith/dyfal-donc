@@ -14,6 +14,22 @@ def build(items: list[Lexeme], order: list[str]) -> Curriculum:
     return Curriculum(items=tuple(items), order=tuple(order))
 
 
+def noun(
+    id_: str,
+    welsh: str,
+    forms: tuple[str, ...] = (),
+    homographs: tuple[str, ...] = (),
+) -> Lexeme:
+    return Lexeme(
+        id=f"lex:{id_}",
+        welsh=welsh,
+        english=id_,
+        part_of_speech=PartOfSpeech.NOUN,
+        forms=forms,
+        homographs=homographs,
+    )
+
+
 def L(id_: str, *prerequisites: str) -> Lexeme:
     return Lexeme(
         id=f"lex:{id_}",
@@ -115,3 +131,61 @@ class TestValidation:
     def test_order_repeated_item(self) -> None:
         with pytest.raises(CurriculumError, match="order\\[1\\] repeats lex:a"):
             build([L("a")], ["lex:a", "lex:a"])
+
+
+class TestLexemeForms:
+    def test_surface_forms_start_with_the_base_form(self) -> None:
+        assert noun("llyfr", "llyfr", ("llyfrau",)).surface_forms == (
+            "llyfr",
+            "llyfrau",
+        )
+
+    def test_blank_form_is_rejected(self) -> None:
+        with pytest.raises(CurriculumError, match="Form 0 must not be blank"):
+            noun("llyfr", "llyfr", (" ",))
+
+    def test_duplicate_form_is_rejected_ignoring_case(self) -> None:
+        with pytest.raises(CurriculumError, match="Duplicate form 'Llyfrau'"):
+            noun("llyfr", "llyfr", ("llyfrau", "Llyfrau"))
+
+    def test_form_repeating_the_base_form_is_rejected(self) -> None:
+        with pytest.raises(CurriculumError, match="Duplicate form 'llyfr'"):
+            noun("llyfr", "llyfr", ("llyfr",))
+
+    def test_lexeme_cannot_be_its_own_homograph(self) -> None:
+        with pytest.raises(CurriculumError, match="its own homograph"):
+            noun("llyfr", "llyfr", homographs=("lex:llyfr",))
+
+
+class TestSurfaceFormConflicts:
+    def test_form_shared_with_another_lexemes_base_is_rejected(self) -> None:
+        with pytest.raises(CurriculumError, match="'tai' is shared by lex:tai, lex:ty"):
+            build(
+                [noun("tai", "tai"), noun("ty", "tŷ", ("tai",))], ["lex:tai", "lex:ty"]
+            )
+
+    def test_two_lexemes_with_the_same_base_form_are_rejected(self) -> None:
+        with pytest.raises(CurriculumError, match="'cwrw' is shared"):
+            build([noun("a", "cwrw"), noun("b", "Cwrw")], ["lex:a", "lex:b"])
+
+    def test_mutual_homographs_are_allowed(self) -> None:
+        build(
+            [
+                noun("a", "cwrw", homographs=("lex:b",)),
+                noun("b", "cwrw", homographs=("lex:a",)),
+            ],
+            ["lex:a", "lex:b"],
+        )
+
+    def test_one_sided_homograph_is_rejected(self) -> None:
+        with pytest.raises(CurriculumError, match="'cwrw' is shared"):
+            build(
+                [noun("a", "cwrw", homographs=("lex:b",)), noun("b", "cwrw")],
+                ["lex:a", "lex:b"],
+            )
+
+    def test_unknown_homograph_is_rejected(self) -> None:
+        with pytest.raises(
+            CurriculumError, match="lex:a lists unknown homograph lex:zzz"
+        ):
+            build([noun("a", "cwrw", homographs=("lex:zzz",))], ["lex:a"])

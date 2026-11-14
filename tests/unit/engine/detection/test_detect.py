@@ -10,7 +10,7 @@ from engine.detection import (
     UnknownToken,
     detect_items,
 )
-from tests.unit.engine.sample_curriculum import DW_IN, curriculum_of
+from tests.unit.engine.sample_curriculum import DW_IN, DW_IN_MOYN_NOUN, curriculum_of
 
 
 def detect(
@@ -28,7 +28,7 @@ class TestDetectPatterns:
         detection = detect("Dw i'n moyn siarad")
         assert detection.items == (
             DetectedItem(item_id="pat:dw-in-moyn", start=0, end=18),
-            DetectedItem(item_id="lex:siarad", start=12, end=18),
+            DetectedItem(item_id="lex:siarad", start=12, end=18, form="siarad"),
         )
         assert detection.problems == ()
 
@@ -61,7 +61,8 @@ class TestDetectPatterns:
 class TestDetectLexemes:
     def test_multi_word_lexeme_is_detected_as_one_item(self) -> None:
         detection = detect("Dw i'n dysgu fan hyn")
-        assert DetectedItem(item_id="lex:fan-hyn", start=13, end=20) in detection.items
+        fan_hyn = DetectedItem(item_id="lex:fan-hyn", start=13, end=20, form="fan hyn")
+        assert fan_hyn in detection.items
         assert detection.problems == ()
 
     def test_text_with_no_curriculum_items_has_no_items(self) -> None:
@@ -72,7 +73,11 @@ class TestDetectMutations:
     def test_soft_mutated_filler_is_recognised(self) -> None:
         detection = detect("Galla i fynd")
         mutated = DetectedItem(
-            item_id="lex:mynd", start=8, end=12, mutation=Mutation.SOFT
+            item_id="lex:mynd",
+            start=8,
+            end=12,
+            form="mynd",
+            mutation=Mutation.SOFT,
         )
         assert mutated in detection.items
         assert detection.problems == ()
@@ -80,14 +85,24 @@ class TestDetectMutations:
     def test_mutated_lexeme_in_context(self) -> None:
         detection = detect("Dw i'n dysgu Gymraeg")
         mutated = DetectedItem(
-            item_id="lex:cymraeg", start=13, end=20, mutation=Mutation.SOFT
+            item_id="lex:cymraeg",
+            start=13,
+            end=20,
+            form="cymraeg",
+            mutation=Mutation.SOFT,
         )
         assert mutated in detection.items
         assert detection.problems == ()
 
     def test_mutation_on_the_first_word_of_a_phrase(self) -> None:
         assert detect("dŷ mawr").items == (
-            DetectedItem(item_id="lex:ty-mawr", start=0, end=7, mutation=Mutation.SOFT),
+            DetectedItem(
+                item_id="lex:ty-mawr",
+                start=0,
+                end=7,
+                form="tŷ mawr",
+                mutation=Mutation.SOFT,
+            ),
         )
 
     def test_unmutated_reading_is_preferred(self) -> None:
@@ -101,7 +116,9 @@ class TestDetectMutations:
             part_of_speech=PartOfSpeech.NOUN,
         )
         detection = detect("ben", curriculum=curriculum_of((pen, ben)))
-        assert detection.items == (DetectedItem(item_id="lex:ben", start=0, end=3),)
+        assert detection.items == (
+            DetectedItem(item_id="lex:ben", start=0, end=3, form="ben"),
+        )
 
     def test_preferred_items_break_a_tie_between_mutated_readings(self) -> None:
         glas = Lexeme(
@@ -163,14 +180,83 @@ class TestDetectSlots:
             id="lex:cwrw-verb",
             welsh="cwrw",
             english="to brew",
+            homographs=("lex:cwrw-noun",),
             part_of_speech=PartOfSpeech.VERB,
         )
         noun = Lexeme(
             id="lex:cwrw-noun",
             welsh="cwrw",
             english="beer",
+            homographs=("lex:cwrw-verb",),
             part_of_speech=PartOfSpeech.NOUN,
         )
         detection = detect("Dw i'n cwrw", curriculum=curriculum_of((DW_IN, verb, noun)))
         assert detection.item_ids == ("pat:dw-in", "lex:cwrw-verb")
         assert detection.problems == ()
+
+
+class TestDetectForms:
+    def test_declared_form_is_detected_and_recorded(self) -> None:
+        llyfr = Lexeme(
+            id="lex:llyfr",
+            welsh="llyfr",
+            english="book",
+            part_of_speech=PartOfSpeech.NOUN,
+            forms=("llyfrau",),
+        )
+        detection = detect(
+            "Dw i'n moyn llyfrau", curriculum=curriculum_of((DW_IN_MOYN_NOUN, llyfr))
+        )
+        assert detection.problems == ()
+        assert DetectedItem(item_id="lex:llyfr", start=12, end=19, form="llyfrau") in (
+            detection.items
+        )
+
+    def test_declared_form_can_be_mutated(self) -> None:
+        llyfr = Lexeme(
+            id="lex:llyfr",
+            welsh="llyfr",
+            english="book",
+            part_of_speech=PartOfSpeech.NOUN,
+            forms=("llyfrau",),
+        )
+        detection = detect("llyfrau", curriculum=curriculum_of((llyfr,)))
+        assert detection.items == (
+            DetectedItem(item_id="lex:llyfr", start=0, end=7, form="llyfrau"),
+        )
+        mutated = detect("lyfrau", curriculum=curriculum_of((llyfr,)))
+        assert mutated.items == (
+            DetectedItem(
+                item_id="lex:llyfr",
+                start=0,
+                end=6,
+                form="llyfrau",
+                mutation=Mutation.SOFT,
+            ),
+        )
+
+    def test_clitic_form_is_detected(self) -> None:
+        article = Lexeme(
+            id="lex:y",
+            welsh="y",
+            english="the",
+            part_of_speech=PartOfSpeech.DETERMINER,
+            forms=("yr", "'r"),
+        )
+        detection = detect("o'r", curriculum=curriculum_of((article,)))
+        assert detection.items == (
+            DetectedItem(item_id="lex:y", start=1, end=3, form="'r"),
+        )
+
+    def test_form_of_a_phrase_is_detected(self) -> None:
+        phrase = Lexeme(
+            id="lex:fan-hyn",
+            welsh="fan hyn",
+            english="here",
+            part_of_speech=PartOfSpeech.ADVERB,
+            forms=("fan 'ma",),
+        )
+        detection = detect("fan 'ma", curriculum=curriculum_of((phrase,)))
+        assert detection.items == (
+            DetectedItem(item_id="lex:fan-hyn", start=0, end=7, form="fan 'ma"),
+        )

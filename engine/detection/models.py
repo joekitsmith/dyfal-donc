@@ -26,13 +26,15 @@ class Detection:
 class DetectedItem:
     """An item found in the text, with the span it covers.
 
-    ``mutation`` is the mutation that had to be undone to recognise a lexeme,
-    or ``None`` if it appeared as written.
+    ``form`` is the casefolded form of a lexeme that matched (``None`` for a
+    pattern). ``mutation`` is the mutation that had to be undone to recognise
+    it, or ``None`` if it appeared as written.
     """
 
     item_id: str
     start: int
     end: int
+    form: str | None = None
     mutation: Mutation | None = None
 
 

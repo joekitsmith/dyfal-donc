@@ -158,6 +158,7 @@ def _match_phrase(
             item_id=phrase.lexeme.id,
             start=tokens[position].start,
             end=tokens[end - 1].end,
+            form=phrase.form,
             mutation=first.mutation,
         )
         return _Match(items=(item,), problems=(), length=len(phrase.words))
@@ -192,5 +193,6 @@ def _detect(candidate: Candidate, token: Token) -> DetectedItem:
         item_id=candidate.lexeme.id,
         start=token.start,
         end=token.end,
+        form=candidate.form,
         mutation=candidate.mutation,
     )

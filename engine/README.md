@@ -6,7 +6,7 @@ The pure core of the course: state in, decisions out. No database, network or LL
 
 The curriculum is a prerequisite graph of **items**, plus the intended learning order.
 
-- `Lexeme`: a word, e.g. `siarad`.
+- `Lexeme`: a word, e.g. `siarad`, with the other `forms` a learner is taught (`llyfr`: `llyfrau`). Forms are declared, not guessed, so validation stays exact. A form shared by two lexemes must be declared in `homographs` on both.
 - `Pattern`: a grammar pattern with typed slots, e.g. `Dw i'n [VERB]`.
 - `Curriculum`: the items and the order. Construction validates unique ids, existing prerequisites, no cycles (the error shows the cycle path) and that the order respects prerequisites.
 - `load_curriculum(path)`: reads a [curriculum directory](../curriculum/README.md).
@@ -18,9 +18,9 @@ The models are plain frozen dataclasses. Pydantic is used only in the loader, to
 
 Finds curriculum items in Welsh text. Independent of exercises, so it can be reused wherever text needs explaining in curriculum terms.
 
-- `CurriculumIndex.from_curriculum(curriculum)`: prepares a curriculum for lookup: patterns as fixed tokens and slots, multi-word lexemes as phrases, single words keyed by casefolded text. `candidates(token_text)` lists the lexemes a token could be, undoing mutations.
+- `CurriculumIndex.from_curriculum(curriculum)`: prepares a curriculum for lookup: patterns as fixed tokens and slots, multi-word lexemes as phrases, single words keyed by casefolded text, one entry per declared form. `candidates(token_text)` lists the lexemes a token could be, undoing mutations.
 - `detect_items(text, index, preferred)`: tokenises the text with [`cymraeg`](../cymraeg/README.md) and tries patterns (one single-token filler per slot), then multi-word lexemes, then single words. Ambiguity resolves to an unmutated reading, then `preferred` items, then `demutate` order.
-- `Detection`: the `DetectedItem`s (id, span, mutation undone) and `problems` in text order: `UnknownToken` and `SlotPartOfSpeechMismatch`.
+- `Detection`: the `DetectedItem`s (id, span, form matched, mutation undone) and `problems` in text order: `UnknownToken` and `SlotPartOfSpeechMismatch`.
 
 Known limitations: mutated fixed tokens in a pattern aren't matched, a slot filler is a single token, and a mutation is accepted without checking that its trigger is present.
 

@@ -2,7 +2,7 @@
 
 Hand-authored seed data, in South Wales Welsh (`Dw i'n moyn`, not `Dw i eisiau`). Loaded by `engine.curriculum.load_curriculum`.
 
-- `lexemes.yaml`: words, with `part_of_speech`, optional `gender` (nouns only) and `notes`.
+- `lexemes.yaml`: words, with `part_of_speech`, optional `gender` (nouns only), `forms` (other forms a learner is taught: plurals, inflections, variants, clitics such as `'r`) and `notes`. Every form must be unique across the curriculum, unless the lexemes sharing it list each other in `homographs`.
 - `patterns.yaml`: templates with `[SLOT]`s. Each slot is declared in `slots` with the part of speech that may fill it, e.g. `slots: {VERB: verb}`.
 - `order.yaml`: every item id exactly once, in teaching order.
 

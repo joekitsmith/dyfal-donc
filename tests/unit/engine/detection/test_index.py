@@ -1,5 +1,5 @@
 from cymraeg import Mutation
-from engine.curriculum import PartOfSpeech
+from engine.curriculum import Lexeme, PartOfSpeech
 from engine.detection import CurriculumIndex
 from engine.detection.index import Slot
 from tests.unit.engine.sample_curriculum import STANDARD_ITEMS, curriculum_of
@@ -58,3 +58,33 @@ class TestCurriculumIndexCandidates:
 
     def test_unknown_word_has_no_candidates(self) -> None:
         assert build_index().candidates("blah") == ()
+
+
+class TestCurriculumIndexForms:
+    LLYFR = Lexeme(
+        id="lex:llyfr",
+        welsh="llyfr",
+        english="book",
+        part_of_speech=PartOfSpeech.NOUN,
+        forms=("llyfrau",),
+    )
+
+    def test_every_form_is_a_word_key(self) -> None:
+        index = CurriculumIndex.from_curriculum(curriculum_of((self.LLYFR,)))
+        assert set(index.words) == {"llyfr", "llyfrau"}
+
+    def test_candidate_records_the_form_that_matched(self) -> None:
+        index = CurriculumIndex.from_curriculum(curriculum_of((self.LLYFR,)))
+        assert [c.form for c in index.candidates("llyfrau")] == ["llyfrau"]
+        assert [c.form for c in index.candidates("Llyfr")] == ["llyfr"]
+
+    def test_each_form_of_a_multi_word_lexeme_is_a_phrase(self) -> None:
+        phrase = Lexeme(
+            id="lex:fan-hyn",
+            welsh="fan hyn",
+            english="here",
+            part_of_speech=PartOfSpeech.ADVERB,
+            forms=("fan 'ma",),
+        )
+        index = CurriculumIndex.from_curriculum(curriculum_of((phrase,)))
+        assert sorted(entry.form for entry in index.phrases) == ["fan 'ma", "fan hyn"]

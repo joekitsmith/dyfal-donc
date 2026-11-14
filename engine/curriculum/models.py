@@ -24,6 +24,7 @@ class PartOfSpeech(StrEnum):
     PRONOUN = "pron"
     CONJUNCTION = "conj"
     PARTICLE = "particle"
+    DETERMINER = "det"
     NUMERAL = "num"
     PHRASE = "phrase"
 
@@ -37,19 +38,32 @@ class Gender(StrEnum):
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class Lexeme:
-    """A single vocabulary item, e.g. ``siarad``."""
+    """A single vocabulary item, e.g. ``siarad``.
+
+    ``forms`` are other surface forms a learner is taught for it (plurals,
+    inflections, variants). Every form is unique across the curriculum unless
+    the lexemes involved list each other in ``homographs``.
+    """
 
     id: str
     welsh: str
     english: str
     part_of_speech: PartOfSpeech
     gender: Gender | None = None
+    forms: tuple[str, ...] = ()
+    homographs: tuple[str, ...] = ()
     notes: str = ""
     prerequisites: tuple[str, ...] = ()
+
+    @property
+    def surface_forms(self) -> tuple[str, ...]:
+        """The base form followed by the other forms."""
+        return (self.welsh, *self.forms)
 
     def __post_init__(self) -> None:
         _check_id(self.id, _LEXEME_ID_PATTERN, "lex:")
         _check_not_blank(self.id, welsh=self.welsh, english=self.english)
+        _check_forms(self)
         if self.gender is not None and self.part_of_speech != PartOfSpeech.NOUN:
             raise CurriculumError(
                 f"{self.id}: Gender is only valid for nouns, "
@@ -93,6 +107,10 @@ class Curriculum:
         duplicates = sorted({item_id for item_id in ids if ids.count(item_id) > 1})
         if duplicates:
             raise CurriculumError(f"Duplicate item ids: {', '.join(duplicates)}")
+
+        _check_surface_forms(
+            tuple(item for item in self.items if isinstance(item, Lexeme))
+        )
 
         known = set(ids)
         missing = [
@@ -169,3 +187,51 @@ def _check_not_blank(item_id: str, **fields: str) -> None:
     for name, value in fields.items():
         if not value.strip():
             raise CurriculumError(f"{item_id}: {name.capitalize()} must not be blank")
+
+
+def _check_forms(lexeme: Lexeme) -> None:
+    _check_not_blank(lexeme.id, **{f"form {n}": f for n, f in enumerate(lexeme.forms)})
+    seen: set[str] = set()
+    for form in lexeme.surface_forms:
+        key = form.casefold()
+        if key in seen:
+            raise CurriculumError(f"{lexeme.id}: Duplicate form {form!r}")
+
+        seen.add(key)
+
+    if lexeme.id in lexeme.homographs:
+        raise CurriculumError(f"{lexeme.id}: A lexeme cannot be its own homograph")
+
+
+def _check_surface_forms(lexemes: tuple[Lexeme, ...]) -> None:
+    by_id = {lexeme.id: lexeme for lexeme in lexemes}
+    problems = [
+        f"{lexeme.id} lists unknown homograph {other}"
+        for lexeme in lexemes
+        for other in lexeme.homographs
+        if other not in by_id
+    ]
+    owners: dict[str, list[Lexeme]] = {}
+    for lexeme in lexemes:
+        for form in lexeme.surface_forms:
+            owners.setdefault(form.casefold(), []).append(lexeme)
+
+    for form, sharing in sorted(owners.items()):
+        if len(sharing) > 1 and not _are_homographs(sharing):
+            ids = ", ".join(lexeme.id for lexeme in sharing)
+            problems.append(f"{form!r} is shared by {ids}")
+
+    if problems:
+        raise CurriculumError(
+            "Invalid forms (lexemes sharing a form must list each other in homographs):\n  "
+            + "\n  ".join(problems)
+        )
+
+
+def _are_homographs(lexemes: list[Lexeme]) -> bool:
+    return all(
+        other.id in lexeme.homographs
+        for lexeme in lexemes
+        for other in lexemes
+        if other is not lexeme
+    )

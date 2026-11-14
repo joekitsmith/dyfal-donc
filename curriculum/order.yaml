@@ -27,7 +27,7 @@
 - lex:bwyd
 - lex:llaeth
 - pat:dw-in-hoffi
-- lex:yfory
+- lex:fory
 - pat:wyt-ti-yn-moyn
 - lex:cofio
 - lex:ysgrifennu
@@ -38,3 +38,10 @@
 - lex:bore-da
 - lex:nos-da
 - lex:diolch
+- lex:y
+- pat:dw-in-hoffi-r
+- lex:i
+- lex:o
+- lex:gyda
+- lex:gallu
+- pat:galla-i
