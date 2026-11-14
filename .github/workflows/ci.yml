@@ -40,3 +40,6 @@ jobs:
 
       - name: Unit tests
         run: poetry run poe tests-unit
+
+      - name: Integration tests
+        run: poetry run poe tests-integration

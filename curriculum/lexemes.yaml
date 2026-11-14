@@ -1,0 +1,166 @@
+- id: lex:siarad
+  welsh: siarad
+  english: to speak
+  part_of_speech: verb
+
+- id: lex:cymraeg
+  welsh: Cymraeg
+  english: Welsh (language)
+  part_of_speech: noun
+  gender: f
+
+- id: lex:dysgu
+  welsh: dysgu
+  english: to learn
+  part_of_speech: verb
+
+- id: lex:deall
+  welsh: deall
+  english: to understand
+  part_of_speech: verb
+
+- id: lex:mynd
+  welsh: mynd
+  english: to go
+  part_of_speech: verb
+
+- id: lex:dod
+  welsh: dod
+  english: to come
+  part_of_speech: verb
+
+- id: lex:saesneg
+  welsh: Saesneg
+  english: English (language)
+  part_of_speech: noun
+  gender: f
+
+- id: lex:heddi
+  welsh: heddi
+  english: today
+  part_of_speech: adv
+  notes: "Colloquial South Wales form. Standard 'heddiw' is understood everywhere."
+  prerequisites: [pat:dw-in]
+
+- id: lex:nawr
+  welsh: nawr
+  english: now
+  part_of_speech: adv
+  prerequisites: [pat:dw-in]
+
+- id: lex:fan-hyn
+  welsh: fan hyn
+  english: here
+  part_of_speech: adv
+  notes: "South Wales. 'yma' is the standard/neutral alternative."
+  prerequisites: [pat:dw-in]
+
+- id: lex:gweld
+  welsh: gweld
+  english: to see
+  part_of_speech: verb
+
+- id: lex:bwyta
+  welsh: bwyta
+  english: to eat
+  part_of_speech: verb
+
+- id: lex:yfed
+  welsh: yfed
+  english: to drink
+  part_of_speech: verb
+
+- id: lex:gweithio
+  welsh: gweithio
+  english: to work
+  part_of_speech: verb
+
+- id: lex:darllen
+  welsh: darllen
+  english: to read
+  part_of_speech: verb
+
+- id: lex:gyda-ti
+  welsh: gyda ti
+  english: with you
+  part_of_speech: phrase
+  prerequisites: [pat:dw-in]
+
+- id: lex:coffi
+  welsh: coffi
+  english: coffee
+  part_of_speech: noun
+  gender: m
+
+- id: lex:te
+  welsh: te
+  english: tea
+  part_of_speech: noun
+  gender: m
+
+- id: lex:bara
+  welsh: bara
+  english: bread
+  part_of_speech: noun
+  gender: m
+
+- id: lex:dwr
+  welsh: dŵr
+  english: water
+  part_of_speech: noun
+  gender: m
+
+- id: lex:bwyd
+  welsh: bwyd
+  english: food
+  part_of_speech: noun
+  gender: m
+
+- id: lex:llaeth
+  welsh: llaeth
+  english: milk
+  part_of_speech: noun
+  gender: m
+
+- id: lex:yfory
+  welsh: yfory
+  english: tomorrow
+  part_of_speech: adv
+  prerequisites: [pat:dw-in]
+
+- id: lex:cofio
+  welsh: cofio
+  english: to remember
+  part_of_speech: verb
+
+- id: lex:ysgrifennu
+  welsh: ysgrifennu
+  english: to write
+  part_of_speech: verb
+
+- id: lex:llyfr
+  welsh: llyfr
+  english: book
+  part_of_speech: noun
+  gender: m
+
+- id: lex:ty
+  welsh: tŷ
+  english: house
+  part_of_speech: noun
+  gender: m
+
+- id: lex:bore-da
+  welsh: bore da
+  english: good morning
+  part_of_speech: phrase
+
+- id: lex:nos-da
+  welsh: nos da
+  english: good night
+  part_of_speech: phrase
+
+- id: lex:diolch
+  welsh: diolch
+  english: thank you
+  part_of_speech: phrase

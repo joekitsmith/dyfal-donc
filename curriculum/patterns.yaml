@@ -1,0 +1,61 @@
+- id: pat:dw-in-moyn
+  template: "Dw i'n moyn [VERB]"
+  english: "I want to [VERB]"
+  slots: {VERB: verb}
+  notes: "South Wales. North Wales uses 'Dw i eisiau'."
+
+- id: pat:dw-in
+  template: "Dw i'n [VERB]"
+  english: "I'm [VERB]ing"
+  slots: {VERB: verb}
+  notes: "Informal. Formal register is 'Rydw i'n'."
+
+- id: pat:dw-i-ddim-yn
+  template: "Dw i ddim yn [VERB]"
+  english: "I'm not [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+
+- id: pat:wyt-ti-yn
+  template: "Wyt ti'n [VERB]?"
+  english: "Are you [VERB]ing?"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+
+- id: pat:dw-i-ddim-yn-moyn
+  template: "Dw i ddim yn moyn [VERB]"
+  english: "I don't want to [VERB]"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in-moyn, pat:dw-i-ddim-yn]
+
+- id: pat:dw-in-moyn-noun
+  template: "Dw i'n moyn [NOUN]"
+  english: "I want [NOUN]"
+  slots: {NOUN: noun}
+  prerequisites: [pat:dw-in-moyn]
+
+- id: pat:dw-in-hoffi
+  template: "Dw i'n hoffi [NOUN]"
+  english: "I like [NOUN]"
+  slots: {NOUN: noun}
+  prerequisites: [pat:dw-in]
+
+- id: pat:wyt-ti-yn-moyn
+  template: "Wyt ti'n moyn [VERB]?"
+  english: "Do you want to [VERB]?"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in-moyn, pat:wyt-ti-yn]
+
+- id: pat:dw-in-gallu
+  template: "Dw i'n gallu [VERB]"
+  english: "I can [VERB]"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+  notes: "Southern speakers also say 'Galla i [VERB]', which soft-mutates the verb-noun (galla i fynd). Not used here to avoid mutation."
+
+- id: pat:mae-e-yn
+  template: "Mae e'n [VERB]"
+  english: "He's [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+  notes: "South Wales 'e'. North Wales uses 'o'."
