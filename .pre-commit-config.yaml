@@ -3,17 +3,17 @@ repos:
     hooks:
       - id: ruff-format
         name: ruff-format
-        entry: bash -c 'poetry run ruff format engine tests'
+        entry: bash -c 'poetry run ruff format engine cymraeg tests'
         language: system
 
       - id: ruff-lint
         name: ruff-lint
-        entry: bash -c 'poetry run ruff check --fix engine tests'
+        entry: bash -c 'poetry run ruff check --fix engine cymraeg tests'
         language: system
 
       - id: mypy
         name: mypy
-        entry: bash -c 'poetry run mypy engine tests'
+        entry: bash -c 'poetry run mypy engine cymraeg tests'
         language: system
         pass_filenames: false
 

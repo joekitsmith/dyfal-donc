@@ -3,7 +3,7 @@ name = "dyfal-donc"
 version = "0.1.0"
 description = "Spaced-repetition Welsh speaking course with LLM-assisted, human-curated content"
 readme = "README.md"
-packages = [{ include = "engine" }]
+packages = [{ include = "engine" }, { include = "cymraeg" }]
 authors = [
     "Joseph Smith <joesmith29@hotmail.co.uk>"
 ]
@@ -28,9 +28,9 @@ types-pyyaml = "^6.0.12.20261113"
 poethepoet = "^0.49.0"
 
 [tool.poe.tasks]
-format = "ruff format engine tests"
-lint = "ruff check engine tests"
-lint-fix = "ruff check --fix engine tests"
-mypy = "mypy engine tests"
+format = "ruff format engine cymraeg tests"
+lint = "ruff check engine cymraeg tests"
+lint-fix = "ruff check --fix engine cymraeg tests"
+mypy = "mypy engine cymraeg tests"
 tests-unit = "pytest tests/unit"
 tests-integration = "pytest tests/integration"
