@@ -109,7 +109,7 @@ class TestMain:
     def test_missing_library_is_reported_as_a_clean_exit(
         self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        monkeypatch.setitem(sys.modules, "simplemma", None)
+        monkeypatch.setitem(sys.modules, "stanza", None)
 
         with pytest.raises(SystemExit, match="poetry install --with lemmatisers"):
             main(["Gwelais i"])

@@ -127,7 +127,7 @@
     - {text: Dw, lemma: bod}
     - {text: i, lemma: i}
     - {text: "'n", lemma: yn}
-    - {text: moyn, lemma: moyn}
+    - {text: moyn, lemma: ymofyn}
     - {text: siarad, lemma: siarad, item: lex:siarad}
     - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
 
@@ -140,7 +140,7 @@
     - {text: Dw, lemma: bod}
     - {text: i, lemma: i}
     - {text: "'n", lemma: yn}
-    - {text: moyn, lemma: moyn}
+    - {text: moyn, lemma: ymofyn}
     - {text: mynd, lemma: mynd, item: lex:mynd}
     - {text: heddi, lemma: heddiw, item: lex:heddi}
 
@@ -153,7 +153,7 @@
     - {text: Dw, lemma: bod}
     - {text: i, lemma: i}
     - {text: "'n", lemma: yn}
-    - {text: moyn, lemma: moyn}
+    - {text: moyn, lemma: ymofyn}
     - {text: coffi, lemma: coffi, item: lex:coffi}
     - {text: a, lemma: a}
     - {text: the, lemma: te, item: lex:te, mutation: aspirate}
@@ -167,7 +167,7 @@
     - {text: Dw, lemma: bod}
     - {text: i, lemma: i}
     - {text: "'n", lemma: yn}
-    - {text: moyn, lemma: moyn}
+    - {text: moyn, lemma: ymofyn}
     - {text: y, lemma: y, item: lex:y}
     - {text: llyfr, lemma: llyfr, item: lex:llyfr}
 
@@ -192,7 +192,7 @@
     - {text: Dw, lemma: bod}
     - {text: i, lemma: i}
     - {text: "'n", lemma: yn}
-    - {text: moyn, lemma: moyn}
+    - {text: moyn, lemma: ymofyn}
     - {text: llyfrau, lemma: llyfr, item: lex:llyfr}
 
 - id: like-welsh-books
@@ -339,7 +339,7 @@
     - {text: siarad, lemma: siarad, item: lex:siarad}
     - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
     - {text: gyda, lemma: gyda, item: lex:gyda}
-    - {text: fe, lemma: fe}
+    - {text: fe, lemma: ef}
 
 - id: bread-and-cheese
   welsh: "Dw i'n bwyta bara gyda chaws"
@@ -379,7 +379,7 @@
     - {text: i, lemma: i}
     - {text: ddim, lemma: dim, mutation: soft}
     - {text: yn, lemma: yn}
-    - {text: moyn, lemma: moyn}
+    - {text: moyn, lemma: ymofyn}
     - {text: dysgu, lemma: dysgu, item: lex:dysgu}
 
 - id: not-seeing-the-book
@@ -440,7 +440,7 @@
     - {text: Wyt, lemma: bod}
     - {text: ti, lemma: ti}
     - {text: "'n", lemma: yn}
-    - {text: moyn, lemma: moyn}
+    - {text: moyn, lemma: ymofyn}
     - {text: dod, lemma: dod, item: lex:dod}
     - {text: fory, lemma: yfory, item: lex:fory}
 
@@ -504,7 +504,7 @@
     - {text: "'n", lemma: yn}
     - {text: bwyta, lemma: bwyta, item: lex:bwyta}
     - {text: yn, lemma: yn}
-    - {text: ei, lemma: ei}
+    - {text: ei, lemma: ef}
     - {text: dŷ, lemma: tŷ, item: lex:ty, mutation: soft}
 
 - id: writing-a-book
@@ -544,7 +544,7 @@
     - {text: "'n", lemma: yn}
     - {text: gweithio, lemma: gweithio, item: lex:gweithio}
     - {text: yn, lemma: yn}
-    - {text: ei, lemma: ei}
+    - {text: ei, lemma: hi}
     - {text: hysgol, lemma: ysgol, mutation: h_prothesis}
 
 - id: cat-in-the-garden
@@ -603,7 +603,7 @@
   patterns: []
   tokens:
     - {text: Mae, lemma: bod}
-    - {text: fy, lemma: fy}
+    - {text: fy, lemma: i}
     - {text: nhŷ, lemma: tŷ, item: lex:ty, mutation: nasal}
     - {text: i, lemma: i}
     - {text: yng, lemma: yn}
@@ -763,7 +763,7 @@
     - {text: Dw, lemma: bod}
     - {text: i, lemma: i}
     - {text: "'n", lemma: yn}
-    - {text: moyn, lemma: moyn}
+    - {text: moyn, lemma: ymofyn}
     - {text: dŵr, lemma: dŵr, item: lex:dwr}
 
 - id: drinking-milk
@@ -777,3 +777,1371 @@
     - {text: "'n", lemma: yn}
     - {text: yfed, lemma: yfed, item: lex:yfed}
     - {text: llaeth, lemma: llaeth, item: lex:llaeth}
+
+# Past tense and imperative forms the curriculum does not declare, plus look-alike words (ei, wel, naw, Elen)
+
+- id: past-1sg-speak
+  welsh: 'Siarades i Gymraeg neithiwr'
+  english: 'I spoke Welsh last night'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Siarades, lemma: siarad, item: lex:siarad}
+    - {text: i, lemma: i}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: neithiwr, lemma: neithiwr}
+
+- id: past-1sg-learn
+  welsh: 'Dysges i Gymraeg yn yr ysgol'
+  english: 'I learned Welsh at school'
+  tags: [mutation, inflection, article]
+  patterns: []
+  tokens:
+    - {text: Dysges, lemma: dysgu, item: lex:dysgu}
+    - {text: i, lemma: i}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: yn, lemma: yn}
+    - {text: yr, lemma: y, item: lex:y}
+    - {text: ysgol, lemma: ysgol}
+
+- id: past-1sg-understand-negative
+  welsh: 'Ddeallais i ddim'
+  english: "I didn't understand"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ddeallais, lemma: deall, item: lex:deall, mutation: soft}
+    - {text: i, lemma: i}
+    - {text: ddim, lemma: dim, mutation: soft}
+
+- id: past-1sg-see
+  welsh: 'Gweles i fe neithiwr'
+  english: 'I saw him last night'
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Gweles, lemma: gweld, item: lex:gweld}
+    - {text: i, lemma: i}
+    - {text: fe, lemma: ef}
+    - {text: neithiwr, lemma: neithiwr}
+
+- id: past-1sg-see-the-book
+  welsh: "Gwelais i'r llyfr"
+  english: 'I saw the book'
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Gwelais, lemma: gweld, item: lex:gweld}
+    - {text: i, lemma: i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: past-1sg-drink
+  welsh: 'Yfes i goffi heddi'
+  english: 'I drank coffee today'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Yfes, lemma: yfed, item: lex:yfed}
+    - {text: i, lemma: i}
+    - {text: goffi, lemma: coffi, item: lex:coffi, mutation: soft}
+    - {text: heddi, lemma: heddiw, item: lex:heddi}
+
+- id: past-1sg-work
+  welsh: 'Gweithies i yng Nghaerdydd'
+  english: 'I worked in Cardiff'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Gweithies, lemma: gweithio, item: lex:gweithio}
+    - {text: i, lemma: i}
+    - {text: yng, lemma: yn}
+    - {text: Nghaerdydd, lemma: Caerdydd, mutation: nasal}
+
+- id: past-1sg-read
+  welsh: "Darllenais i'r llyfr"
+  english: 'I read the book'
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Darllenais, lemma: darllen, item: lex:darllen}
+    - {text: i, lemma: i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: past-1sg-remember-negative
+  welsh: 'Chofies i ddim'
+  english: "I didn't remember"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Chofies, lemma: cofio, item: lex:cofio, mutation: aspirate}
+    - {text: i, lemma: i}
+    - {text: ddim, lemma: dim, mutation: soft}
+
+- id: past-1sg-write
+  welsh: 'Ysgrifennes i lyfr'
+  english: 'I wrote a book'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ysgrifennes, lemma: ysgrifennu, item: lex:ysgrifennu}
+    - {text: i, lemma: i}
+    - {text: lyfr, lemma: llyfr, item: lex:llyfr, mutation: soft}
+
+- id: past-1sg-go-to-town
+  welsh: "Es i i'r dre"
+  english: 'I went to town'
+  tags: [mutation, inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Es, lemma: mynd, item: lex:mynd}
+    - {text: i, lemma: i}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: dre, lemma: tre, mutation: soft}
+
+- id: past-1sg-come-here
+  welsh: 'Des i fan hyn neithiwr'
+  english: 'I came here last night'
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Des, lemma: dod, item: lex:dod}
+    - {text: i, lemma: i}
+    - {text: fan, lemma: fan, item: lex:fan-hyn}
+    - {text: hyn, lemma: hyn, item: lex:fan-hyn}
+    - {text: neithiwr, lemma: neithiwr}
+
+- id: past-1sg-go-to-cardiff
+  welsh: 'Es i i Gaerdydd ddoe'
+  english: 'I went to Cardiff yesterday'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Es, lemma: mynd, item: lex:mynd}
+    - {text: i, lemma: i}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: Gaerdydd, lemma: Caerdydd, mutation: soft}
+    - {text: ddoe, lemma: doe, mutation: soft}
+
+- id: past-3sg-speak
+  welsh: 'Siaradodd e Gymraeg'
+  english: 'He spoke Welsh'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Siaradodd, lemma: siarad, item: lex:siarad}
+    - {text: e, lemma: e}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+
+- id: past-3sg-learn
+  welsh: 'Dysgodd hi Gymraeg yn Abertawe'
+  english: 'She learned Welsh in Swansea'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Dysgodd, lemma: dysgu, item: lex:dysgu}
+    - {text: hi, lemma: hi}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: yn, lemma: yn}
+    - {text: Abertawe, lemma: abertawe}
+
+- id: past-3sg-understand-negative
+  welsh: 'Ddeallodd e ddim'
+  english: "He didn't understand"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ddeallodd, lemma: deall, item: lex:deall, mutation: soft}
+    - {text: e, lemma: e}
+    - {text: ddim, lemma: dim, mutation: soft}
+
+- id: past-3sg-see
+  welsh: "Gwelodd hi'r llyfr"
+  english: 'She saw the book'
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Gwelodd, lemma: gweld, item: lex:gweld}
+    - {text: hi, lemma: hi}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: past-3sg-work
+  welsh: 'Gweithiodd hi yn y dre'
+  english: 'She worked in town'
+  tags: [mutation, inflection, article]
+  patterns: []
+  tokens:
+    - {text: Gweithiodd, lemma: gweithio, item: lex:gweithio}
+    - {text: hi, lemma: hi}
+    - {text: yn, lemma: yn}
+    - {text: y, lemma: y, item: lex:y}
+    - {text: dre, lemma: tre, mutation: soft}
+
+- id: past-3sg-read
+  welsh: "Darllenodd e'r llyfr"
+  english: 'He read the book'
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Darllenodd, lemma: darllen, item: lex:darllen}
+    - {text: e, lemma: e}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: past-3sg-remember-negative
+  welsh: 'Chofiodd hi ddim'
+  english: "She didn't remember"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Chofiodd, lemma: cofio, item: lex:cofio, mutation: aspirate}
+    - {text: hi, lemma: hi}
+    - {text: ddim, lemma: dim, mutation: soft}
+
+- id: past-3sg-write
+  welsh: 'Ysgrifennodd e lyfr'
+  english: 'He wrote a book'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ysgrifennodd, lemma: ysgrifennu, item: lex:ysgrifennu}
+    - {text: e, lemma: e}
+    - {text: lyfr, lemma: llyfr, item: lex:llyfr, mutation: soft}
+
+- id: past-3sg-go
+  welsh: 'Aeth e i Gaerdydd'
+  english: 'He went to Cardiff'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Aeth, lemma: mynd, item: lex:mynd}
+    - {text: e, lemma: e}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: Gaerdydd, lemma: Caerdydd, mutation: soft}
+
+- id: past-3sg-come-here
+  welsh: 'Daeth hi fan hyn neithiwr'
+  english: 'She came here last night'
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Daeth, lemma: dod, item: lex:dod}
+    - {text: hi, lemma: hi}
+    - {text: fan, lemma: fan, item: lex:fan-hyn}
+    - {text: hyn, lemma: hyn, item: lex:fan-hyn}
+    - {text: neithiwr, lemma: neithiwr}
+
+- id: past-3sg-come-negative
+  welsh: 'Ddaeth hi ddim'
+  english: "She didn't come"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ddaeth, lemma: dod, item: lex:dod, mutation: soft}
+    - {text: hi, lemma: hi}
+    - {text: ddim, lemma: dim, mutation: soft}
+
+- id: past-1pl-speak
+  welsh: 'Siaradon ni Gymraeg'
+  english: 'We spoke Welsh'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Siaradon, lemma: siarad, item: lex:siarad}
+    - {text: ni, lemma: ni}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+
+- id: past-1pl-learn
+  welsh: 'Dysgon ni Gymraeg'
+  english: 'We learned Welsh'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Dysgon, lemma: dysgu, item: lex:dysgu}
+    - {text: ni, lemma: ni}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+
+- id: past-1pl-go-to-town
+  welsh: "Aethon ni i'r dre"
+  english: 'We went to town'
+  tags: [mutation, inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Aethon, lemma: mynd, item: lex:mynd}
+    - {text: ni, lemma: ni}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: dre, lemma: tre, mutation: soft}
+
+- id: past-3pl-come-here
+  welsh: 'Daethon nhw fan hyn'
+  english: 'They came here'
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Daethon, lemma: dod, item: lex:dod}
+    - {text: nhw, lemma: hwy}
+    - {text: fan, lemma: fan, item: lex:fan-hyn}
+    - {text: hyn, lemma: hyn, item: lex:fan-hyn}
+
+- id: past-1pl-see-the-book
+  welsh: "Gwelon ni'r llyfr"
+  english: 'We saw the book'
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Gwelon, lemma: gweld, item: lex:gweld}
+    - {text: ni, lemma: ni}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: past-3pl-write
+  welsh: 'Ysgrifennon nhw lyfr'
+  english: 'They wrote a book'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ysgrifennon, lemma: ysgrifennu, item: lex:ysgrifennu}
+    - {text: nhw, lemma: hwy}
+    - {text: lyfr, lemma: llyfr, item: lex:llyfr, mutation: soft}
+
+- id: past-particle-learn
+  welsh: 'Fe ddysges i Gymraeg'
+  english: 'I did learn Welsh'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Fe, lemma: fe}
+    - {text: ddysges, lemma: dysgu, item: lex:dysgu, mutation: soft}
+    - {text: i, lemma: i}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+
+- id: past-particle-see
+  welsh: 'Mi weles i hi'
+  english: 'I did see her'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Mi, lemma: mi}
+    - {text: weles, lemma: gweld, item: lex:gweld, mutation: soft}
+    - {text: i, lemma: i}
+    - {text: hi, lemma: hi}
+
+- id: imperative-come-singular
+  welsh: 'Dere fan hyn'
+  english: 'Come here'
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Dere, lemma: dod, item: lex:dod}
+    - {text: fan, lemma: fan, item: lex:fan-hyn}
+    - {text: hyn, lemma: hyn, item: lex:fan-hyn}
+
+- id: imperative-come-plural
+  welsh: 'Dewch fan hyn'
+  english: 'Come here (to several people)'
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Dewch, lemma: dod, item: lex:dod}
+    - {text: fan, lemma: fan, item: lex:fan-hyn}
+    - {text: hyn, lemma: hyn, item: lex:fan-hyn}
+
+- id: imperative-go-plural
+  welsh: "Ewch i'r dre"
+  english: 'Go to town (to several people)'
+  tags: [mutation, inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Ewch, lemma: mynd, item: lex:mynd}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: dre, lemma: tre, mutation: soft}
+
+- id: imperative-go-singular
+  welsh: "Cer i'r dre"
+  english: 'Go to town'
+  tags: [mutation, inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Cer, lemma: mynd, item: lex:mynd}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: dre, lemma: tre, mutation: soft}
+
+- id: imperative-read
+  welsh: 'Darllenwch y llyfr'
+  english: 'Read the book'
+  tags: [inflection, article]
+  patterns: []
+  tokens:
+    - {text: Darllenwch, lemma: darllen, item: lex:darllen}
+    - {text: y, lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: imperative-remember
+  welsh: 'Cofiwch y llyfr'
+  english: 'Remember the book'
+  tags: [inflection, article]
+  patterns: []
+  tokens:
+    - {text: Cofiwch, lemma: cofio, item: lex:cofio}
+    - {text: y, lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: imperative-speak
+  welsh: 'Siaradwch Gymraeg gyda fi'
+  english: 'Speak Welsh with me'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Siaradwch, lemma: siarad, item: lex:siarad}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: gyda, lemma: gyda, item: lex:gyda}
+    - {text: fi, lemma: i}
+
+- id: trap-possessive-his-book
+  welsh: "Dw i'n darllen ei lyfr e"
+  english: "I'm reading his book"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: darllen, lemma: darllen, item: lex:darllen}
+    - {text: ei, lemma: ef}
+    - {text: lyfr, lemma: llyfr, item: lex:llyfr, mutation: soft}
+    - {text: e, lemma: e}
+
+- id: trap-possessive-her-house
+  welsh: "Dw i'n gweld ei thŷ hi"
+  english: 'I can see her house'
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: gweld, lemma: gweld, item: lex:gweld}
+    - {text: ei, lemma: hi}
+    - {text: thŷ, lemma: tŷ, item: lex:ty, mutation: aspirate}
+    - {text: hi, lemma: hi}
+
+- id: trap-name-elen
+  welsh: 'Mae Elen yn gweithio yn Abertawe'
+  english: 'Elen is working in Swansea'
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: Elen, lemma: elen}
+    - {text: yn, lemma: yn}
+    - {text: gweithio, lemma: gweithio, item: lex:gweithio}
+    - {text: yn, lemma: yn}
+    - {text: Abertawe, lemma: abertawe}
+
+- id: trap-well
+  welsh: "Wel, dw i'n moyn mynd"
+  english: 'Well, I want to go'
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: Wel, lemma: wel}
+    - {text: dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: mynd, lemma: mynd, item: lex:mynd}
+
+- id: trap-numeral-nine
+  welsh: "Dw i'n moyn naw llyfr"
+  english: 'I want nine books'
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: naw, lemma: naw}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+# Future, conditional, 'can', question, plural and inflected-preposition forms the curriculum does not declare
+
+- id: future-1sg-speak
+  welsh: 'Siarada i Gymraeg fory'
+  english: "I'll speak Welsh tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Siarada, lemma: siarad, item: lex:siarad}
+    - {text: i, lemma: i}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-1sg-learn
+  welsh: 'Dysga i Gymraeg fory'
+  english: "I'll learn Welsh tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Dysga, lemma: dysgu, item: lex:dysgu}
+    - {text: i, lemma: i}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-1sg-see
+  welsh: 'Wela i fe heno'
+  english: "I'll see him tonight"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Wela, lemma: gweld, item: lex:gweld, mutation: soft}
+    - {text: i, lemma: i}
+    - {text: fe, lemma: ef}
+    - {text: heno, lemma: heno}
+
+- id: future-1sg-read
+  welsh: "Darllena i'r llyfr fory"
+  english: "I'll read the book tomorrow"
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Darllena, lemma: darllen, item: lex:darllen}
+    - {text: i, lemma: i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-1sg-write
+  welsh: 'Ysgrifenna i lyfr fory'
+  english: "I'll write a book tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ysgrifenna, lemma: ysgrifennu, item: lex:ysgrifennu}
+    - {text: i, lemma: i}
+    - {text: lyfr, lemma: llyfr, item: lex:llyfr, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-1sg-work
+  welsh: 'Gweithia i fory'
+  english: "I'll work tomorrow"
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Gweithia, lemma: gweithio, item: lex:gweithio}
+    - {text: i, lemma: i}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-1sg-remember
+  welsh: "Cofia i'r llyfr fory"
+  english: "I'll remember the book tomorrow"
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Cofia, lemma: cofio, item: lex:cofio}
+    - {text: i, lemma: i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-1sg-come
+  welsh: 'Dof i fory'
+  english: "I'll come tomorrow"
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Dof, lemma: dod, item: lex:dod}
+    - {text: i, lemma: i}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-1sg-go
+  welsh: "A i i'r dre fory"
+  english: "I'll go to town tomorrow"
+  tags: [mutation, inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: A, lemma: mynd, item: lex:mynd}
+    - {text: i, lemma: i}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: dre, lemma: tre, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-3sg-speak
+  welsh: 'Siaradith e Gymraeg fory'
+  english: "He'll speak Welsh tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Siaradith, lemma: siarad, item: lex:siarad}
+    - {text: e, lemma: e}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-3sg-learn
+  welsh: 'Dysgith hi Gymraeg fory'
+  english: "She'll learn Welsh tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Dysgith, lemma: dysgu, item: lex:dysgu}
+    - {text: hi, lemma: hi}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-3sg-see-particle
+  welsh: "Fe welith e'r llyfr"
+  english: 'He will see the book'
+  tags: [mutation, inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Fe, lemma: fe}
+    - {text: welith, lemma: gweld, item: lex:gweld, mutation: soft}
+    - {text: e, lemma: e}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: future-3sg-read
+  welsh: "Darllenith hi'r llyfr fory"
+  english: "She'll read the book tomorrow"
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Darllenith, lemma: darllen, item: lex:darllen}
+    - {text: hi, lemma: hi}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-3sg-write
+  welsh: 'Ysgrifennith e lyfr fory'
+  english: "He'll write a book tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ysgrifennith, lemma: ysgrifennu, item: lex:ysgrifennu}
+    - {text: e, lemma: e}
+    - {text: lyfr, lemma: llyfr, item: lex:llyfr, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-3sg-work
+  welsh: 'Gweithith e fory'
+  english: "He'll work tomorrow"
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Gweithith, lemma: gweithio, item: lex:gweithio}
+    - {text: e, lemma: e}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-3sg-come
+  welsh: 'Daw e fory'
+  english: "He'll come tomorrow"
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Daw, lemma: dod, item: lex:dod}
+    - {text: e, lemma: e}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-3sg-come-negative
+  welsh: 'Ddaw e ddim fory'
+  english: "He won't come tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ddaw, lemma: dod, item: lex:dod, mutation: soft}
+    - {text: e, lemma: e}
+    - {text: ddim, lemma: dim, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-3sg-go
+  welsh: 'Eith hi i Gaerdydd fory'
+  english: "She'll go to Cardiff tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Eith, lemma: mynd, item: lex:mynd}
+    - {text: hi, lemma: hi}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: Gaerdydd, lemma: Caerdydd, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-1pl-see
+  welsh: 'Gwelwn ni fe fory'
+  english: "We'll see him tomorrow"
+  tags: [inflection]
+  patterns: []
+  tokens:
+    - {text: Gwelwn, lemma: gweld, item: lex:gweld}
+    - {text: ni, lemma: ni}
+    - {text: fe, lemma: ef}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-2pl-see
+  welsh: "Gwelwch chi'r llyfr"
+  english: "You'll see the book"
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Gwelwch, lemma: gweld, item: lex:gweld}
+    - {text: chi, lemma: chi}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: future-1pl-speak
+  welsh: 'Siaradwn ni Gymraeg fory'
+  english: "We'll speak Welsh tomorrow"
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Siaradwn, lemma: siarad, item: lex:siarad}
+    - {text: ni, lemma: ni}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: future-2pl-come-question
+  welsh: 'Ddewch chi fory?'
+  english: 'Will you come tomorrow?'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Ddewch, lemma: dod, item: lex:dod, mutation: soft}
+    - {text: chi, lemma: chi}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: conditional-1sg-go
+  welsh: 'Gallen i fynd nawr'
+  english: 'I could go now'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Gallen, lemma: gallu, item: lex:gallu}
+    - {text: i, lemma: i}
+    - {text: fynd, lemma: mynd, item: lex:mynd, mutation: soft}
+    - {text: nawr, lemma: nawr, item: lex:nawr}
+
+- id: conditional-1sg-go-question
+  welsh: 'Allen i fynd nawr?'
+  english: 'Could I go now?'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Allen, lemma: gallu, item: lex:gallu, mutation: soft}
+    - {text: i, lemma: i}
+    - {text: fynd, lemma: mynd, item: lex:mynd, mutation: soft}
+    - {text: nawr, lemma: nawr, item: lex:nawr}
+
+- id: conditional-3sg-go
+  welsh: 'Gallai e fynd nawr'
+  english: 'He could go now'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Gallai, lemma: gallu, item: lex:gallu}
+    - {text: e, lemma: e}
+    - {text: fynd, lemma: mynd, item: lex:mynd, mutation: soft}
+    - {text: nawr, lemma: nawr, item: lex:nawr}
+
+- id: conditional-3sg-come-question
+  welsh: 'Allai hi ddod fory?'
+  english: 'Could she come tomorrow?'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Allai, lemma: gallu, item: lex:gallu, mutation: soft}
+    - {text: hi, lemma: hi}
+    - {text: ddod, lemma: dod, item: lex:dod, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: can-2sg-come
+  welsh: 'Gelli di ddod fory'
+  english: 'You can come tomorrow'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Gelli, lemma: gallu, item: lex:gallu}
+    - {text: di, lemma: ti, mutation: soft}
+    - {text: ddod, lemma: dod, item: lex:dod, mutation: soft}
+    - {text: fory, lemma: yfory, item: lex:fory}
+
+- id: can-3sg-go
+  welsh: 'Gall e fynd nawr'
+  english: 'He can go now'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Gall, lemma: gallu, item: lex:gallu}
+    - {text: e, lemma: e}
+    - {text: fynd, lemma: mynd, item: lex:mynd, mutation: soft}
+    - {text: nawr, lemma: nawr, item: lex:nawr}
+
+- id: can-3sg-go-question
+  welsh: 'All e fynd nawr?'
+  english: 'Can he go now?'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: All, lemma: gallu, item: lex:gallu, mutation: soft}
+    - {text: e, lemma: e}
+    - {text: fynd, lemma: mynd, item: lex:mynd, mutation: soft}
+    - {text: nawr, lemma: nawr, item: lex:nawr}
+
+- id: can-2pl-see
+  welsh: 'Gallwch chi weld y llyfr'
+  english: 'You can see the book'
+  tags: [mutation, inflection, article]
+  patterns: []
+  tokens:
+    - {text: Gallwch, lemma: gallu, item: lex:gallu}
+    - {text: chi, lemma: chi}
+    - {text: weld, lemma: gweld, item: lex:gweld, mutation: soft}
+    - {text: y, lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: can-3pl-go
+  welsh: 'Gallan nhw fynd nawr'
+  english: 'They can go now'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Gallan, lemma: gallu, item: lex:gallu}
+    - {text: nhw, lemma: hwy}
+    - {text: fynd, lemma: mynd, item: lex:mynd, mutation: soft}
+    - {text: nawr, lemma: nawr, item: lex:nawr}
+
+- id: past-2sg-see-question
+  welsh: 'Weles ti fe neithiwr?'
+  english: 'Did you see him last night?'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Weles, lemma: gweld, item: lex:gweld, mutation: soft}
+    - {text: ti, lemma: ti}
+    - {text: fe, lemma: ef}
+    - {text: neithiwr, lemma: neithiwr}
+
+- id: past-2pl-see-question
+  welsh: 'Weloch chi fe neithiwr?'
+  english: 'Did you see him last night?'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Weloch, lemma: gweld, item: lex:gweld, mutation: soft}
+    - {text: chi, lemma: chi}
+    - {text: fe, lemma: ef}
+    - {text: neithiwr, lemma: neithiwr}
+
+- id: past-2pl-read-question
+  welsh: "Ddarllenoch chi'r llyfr?"
+  english: 'Did you read the book?'
+  tags: [mutation, inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Ddarllenoch, lemma: darllen, item: lex:darllen, mutation: soft}
+    - {text: chi, lemma: chi}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+- id: plural-like-foods
+  welsh: "Dw i'n hoffi bwydydd Cymreig"
+  english: 'I like Welsh foods'
+  tags: [inflection, clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: hoffi, lemma: hoffi}
+    - {text: bwydydd, lemma: bwyd, item: lex:bwyd}
+    - {text: Cymreig, lemma: cymreig}
+
+- id: plural-foods-are-good
+  welsh: "Mae'r bwydydd yn dda"
+  english: 'The foods are good'
+  tags: [mutation, inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: bwydydd, lemma: bwyd, item: lex:bwyd}
+    - {text: yn, lemma: yn}
+    - {text: dda, lemma: da, mutation: soft}
+
+- id: preposition-from-him
+  welsh: "Dw i'n dysgu Cymraeg ohono fe"
+  english: "I'm learning Welsh from him"
+  tags: [inflection, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: dysgu, lemma: dysgu, item: lex:dysgu}
+    - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
+    - {text: ohono, lemma: o, item: lex:o}
+    - {text: fe, lemma: ef}
+
+- id: preposition-from-her
+  welsh: "Dw i'n dysgu Cymraeg ohoni hi"
+  english: "I'm learning Welsh from her"
+  tags: [inflection, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: dysgu, lemma: dysgu, item: lex:dysgu}
+    - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
+    - {text: ohoni, lemma: o, item: lex:o}
+    - {text: hi, lemma: hi}
+
+- id: preposition-to-him
+  welsh: "Dw i'n siarad Cymraeg iddo fe"
+  english: "I'm speaking Welsh to him"
+  tags: [inflection, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: siarad, lemma: siarad, item: lex:siarad}
+    - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
+    - {text: iddo, lemma: i, item: lex:i}
+    - {text: fe, lemma: ef}
+
+- id: preposition-to-her
+  welsh: "Dw i'n siarad Cymraeg iddi hi"
+  english: "I'm speaking Welsh to her"
+  tags: [inflection, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: siarad, lemma: siarad, item: lex:siarad}
+    - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
+    - {text: iddi, lemma: i, item: lex:i}
+    - {text: hi, lemma: hi}
+
+- id: imperative-speak-singular
+  welsh: 'Siarada Gymraeg gyda fi'
+  english: 'Speak Welsh with me'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Siarada, lemma: siarad, item: lex:siarad}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: gyda, lemma: gyda, item: lex:gyda}
+    - {text: fi, lemma: i}
+
+- id: imperative-learn-singular
+  welsh: 'Dysga Gymraeg gyda fi'
+  english: 'Learn Welsh with me'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Dysga, lemma: dysgu, item: lex:dysgu}
+    - {text: Gymraeg, lemma: Cymraeg, item: lex:cymraeg, mutation: soft}
+    - {text: gyda, lemma: gyda, item: lex:gyda}
+    - {text: fi, lemma: i}
+
+- id: imperative-read-singular
+  welsh: "Darllena'r llyfr"
+  english: 'Read the book'
+  tags: [inflection, clitic, article]
+  patterns: []
+  tokens:
+    - {text: Darllena, lemma: darllen, item: lex:darllen}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+
+# Look-alike words that are not forms of curriculum words, and control sentences that use only declared forms
+
+- id: trap-restaurant
+  welsh: "Dw i'n gweithio mewn bwyty"
+  english: "I'm working in a restaurant"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: gweithio, lemma: gweithio, item: lex:gweithio}
+    - {text: mewn, lemma: mewn}
+    - {text: bwyty, lemma: bwyty}
+
+- id: trap-possessive-his-home
+  welsh: "Dw i'n hoffi ei gartref e"
+  english: 'I like his home'
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: hoffi, lemma: hoffi}
+    - {text: ei, lemma: ef}
+    - {text: gartref, lemma: cartref, mutation: soft}
+    - {text: e, lemma: e}
+
+- id: trap-possessive-her-book
+  welsh: "Dw i'n darllen ei llyfr hi"
+  english: "I'm reading her book"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: darllen, lemma: darllen, item: lex:darllen}
+    - {text: ei, lemma: hi}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+    - {text: hi, lemma: hi}
+
+- id: trap-possessive-her-coffee
+  welsh: "Dw i'n moyn ei choffi hi"
+  english: 'I want her coffee'
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: ei, lemma: hi}
+    - {text: choffi, lemma: coffi, item: lex:coffi, mutation: aspirate}
+    - {text: hi, lemma: hi}
+
+- id: trap-names
+  welsh: 'Mae Siôn a Gwen yn dysgu Cymraeg'
+  english: 'Siôn and Gwen are learning Welsh'
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: Siôn, lemma: siôn}
+    - {text: a, lemma: a}
+    - {text: Gwen, lemma: gwen}
+    - {text: yn, lemma: yn}
+    - {text: dysgu, lemma: dysgu, item: lex:dysgu}
+    - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
+
+- id: trap-well-can
+  welsh: 'Wel, galla i fynd nawr'
+  english: 'Well, I can go now'
+  tags: [mutation]
+  patterns: [pat:galla-i]
+  tokens:
+    - {text: Wel, lemma: wel}
+    - {text: galla, lemma: gallu}
+    - {text: i, lemma: i}
+    - {text: fynd, lemma: mynd, item: lex:mynd, mutation: soft}
+    - {text: nawr, lemma: nawr, item: lex:nawr}
+
+- id: trap-numeral-houses
+  welsh: 'Mae naw tŷ yn y dre'
+  english: 'There are nine houses in town'
+  tags: [mutation, article]
+  patterns: []
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: naw, lemma: naw}
+    - {text: tŷ, lemma: tŷ, item: lex:ty}
+    - {text: yn, lemma: yn}
+    - {text: y, lemma: y, item: lex:y}
+    - {text: dre, lemma: tre, mutation: soft}
+
+- id: trap-me-pronoun
+  welsh: "Mae e'n siarad Cymraeg gyda fi"
+  english: "He's speaking Welsh with me"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: e, lemma: e}
+    - {text: "'n", lemma: yn}
+    - {text: siarad, lemma: siarad, item: lex:siarad}
+    - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
+    - {text: gyda, lemma: gyda, item: lex:gyda}
+    - {text: fi, lemma: i}
+
+- id: trap-my-book
+  welsh: 'Mae fy llyfr i yma'
+  english: 'My book is here'
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: fy, lemma: i}
+    - {text: llyfr, lemma: llyfr, item: lex:llyfr}
+    - {text: i, lemma: i}
+    - {text: yma, lemma: yma}
+
+- id: control-tea-and-coffee
+  welsh: "Dw i'n moyn te a choffi"
+  english: 'I want tea and coffee'
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: te, lemma: te, item: lex:te}
+    - {text: a, lemma: a}
+    - {text: choffi, lemma: coffi, item: lex:coffi, mutation: aspirate}
+
+- id: control-like-the-tea
+  welsh: "Dw i'n hoffi'r te"
+  english: 'I like the tea'
+  tags: [clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: hoffi, lemma: hoffi}
+    - {text: "'r", lemma: y}
+    - {text: te, lemma: te, item: lex:te}
+
+- id: control-want-to-drink-water
+  welsh: "Wyt ti'n moyn yfed dŵr?"
+  english: 'Do you want to drink water?'
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn-moyn]
+  tokens:
+    - {text: Wyt, lemma: bod}
+    - {text: ti, lemma: ti}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: yfed, lemma: yfed, item: lex:yfed}
+    - {text: dŵr, lemma: dŵr, item: lex:dwr}
+
+- id: control-reading-books
+  welsh: "Mae e'n darllen llyfrau heddi"
+  english: "He's reading books today"
+  tags: [inflection, clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: e, lemma: e}
+    - {text: "'n", lemma: yn}
+    - {text: darllen, lemma: darllen, item: lex:darllen}
+    - {text: llyfrau, lemma: llyfr, item: lex:llyfr}
+    - {text: heddi, lemma: heddiw, item: lex:heddi}
+
+- id: control-big-houses
+  welsh: "Dw i'n gweld tai mawr yng Nghaerdydd"
+  english: 'I can see big houses in Cardiff'
+  tags: [mutation, inflection, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: gweld, lemma: gweld, item: lex:gweld}
+    - {text: tai, lemma: tŷ, item: lex:ty}
+    - {text: mawr, lemma: mawr}
+    - {text: yng, lemma: yn}
+    - {text: Nghaerdydd, lemma: Caerdydd, mutation: nasal}
+
+- id: control-can-drink
+  welsh: 'Galla i yfed coffi'
+  english: 'I can drink coffee'
+  tags: [inflection]
+  patterns: [pat:galla-i]
+  tokens:
+    - {text: Galla, lemma: gallu}
+    - {text: i, lemma: i}
+    - {text: yfed, lemma: yfed, item: lex:yfed}
+    - {text: coffi, lemma: coffi, item: lex:coffi}
+
+- id: control-we-can-go-tomorrow
+  welsh: 'Gallwn ni fynd yfory'
+  english: 'We can go tomorrow'
+  tags: [mutation, inflection]
+  patterns: []
+  tokens:
+    - {text: Gallwn, lemma: gallu, item: lex:gallu}
+    - {text: ni, lemma: ni}
+    - {text: fynd, lemma: mynd, item: lex:mynd, mutation: soft}
+    - {text: yfory, lemma: yfory, item: lex:fory}
+
+- id: control-can-speak-with-you
+  welsh: 'Galla i siarad Cymraeg gyda ti'
+  english: 'I can speak Welsh with you'
+  tags: [inflection]
+  patterns: [pat:galla-i]
+  tokens:
+    - {text: Galla, lemma: gallu}
+    - {text: i, lemma: i}
+    - {text: siarad, lemma: siarad, item: lex:siarad}
+    - {text: Cymraeg, lemma: cymraeg, item: lex:cymraeg}
+    - {text: gyda, lemma: gyda, item: lex:gyda-ti}
+    - {text: ti, lemma: ti, item: lex:gyda-ti}
+
+- id: control-want-to-go-to-town
+  welsh: "Dw i'n moyn mynd i'r dre"
+  english: 'I want to go to town'
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: mynd, lemma: mynd, item: lex:mynd}
+    - {text: i, lemma: i, item: lex:i}
+    - {text: "'r", lemma: y, item: lex:y}
+    - {text: dre, lemma: tre, mutation: soft}
+
+- id: control-not-want-to-eat
+  welsh: 'Dw i ddim yn moyn bwyta'
+  english: "I don't want to eat"
+  tags: [mutation]
+  patterns: [pat:dw-i-ddim-yn-moyn]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: ddim, lemma: dim, mutation: soft}
+    - {text: yn, lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: bwyta, lemma: bwyta, item: lex:bwyta}
+
+- id: control-want-to-drink-tea
+  welsh: "Wyt ti'n moyn yfed te?"
+  english: 'Do you want to drink tea?'
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn-moyn]
+  tokens:
+    - {text: Wyt, lemma: bod}
+    - {text: ti, lemma: ti}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: yfed, lemma: yfed, item: lex:yfed}
+    - {text: te, lemma: te, item: lex:te}
+
+- id: control-work-at-school
+  welsh: "Mae e'n gweithio yn yr ysgol heddi"
+  english: "He's working at school today"
+  tags: [clitic, article]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: e, lemma: e}
+    - {text: "'n", lemma: yn}
+    - {text: gweithio, lemma: gweithio, item: lex:gweithio}
+    - {text: yn, lemma: yn}
+    - {text: yr, lemma: y, item: lex:y}
+    - {text: ysgol, lemma: ysgol}
+    - {text: heddi, lemma: heddiw, item: lex:heddi}
+
+- id: control-milk-and-bread
+  welsh: "Dw i'n moyn llaeth a bara"
+  english: 'I want milk and bread'
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: llaeth, lemma: llaeth, item: lex:llaeth}
+    - {text: a, lemma: a}
+    - {text: bara, lemma: bara, item: lex:bara}
+
+- id: control-good-morning-coffee
+  welsh: "Bore da, dw i'n moyn coffi"
+  english: 'Good morning, I want coffee'
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: Bore, lemma: bore, item: lex:bore-da}
+    - {text: da, lemma: da, item: lex:bore-da}
+    - {text: dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: moyn, lemma: ymofyn}
+    - {text: coffi, lemma: coffi, item: lex:coffi}
+
+- id: control-good-night-thanks
+  welsh: 'Nos da a diolch'
+  english: 'Good night and thank you'
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: Nos, lemma: nos, item: lex:nos-da}
+    - {text: da, lemma: da, item: lex:nos-da}
+    - {text: a, lemma: a}
+    - {text: diolch, lemma: diolch, item: lex:diolch}
+
+- id: control-drinking-milk-here
+  welsh: "Mae e'n yfed llaeth fan hyn"
+  english: "He's drinking milk here"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: Mae, lemma: bod}
+    - {text: e, lemma: e}
+    - {text: "'n", lemma: yn}
+    - {text: yfed, lemma: yfed, item: lex:yfed}
+    - {text: llaeth, lemma: llaeth, item: lex:llaeth}
+    - {text: fan, lemma: fan, item: lex:fan-hyn}
+    - {text: hyn, lemma: hyn, item: lex:fan-hyn}
+
+- id: control-work-tomorrow-standard
+  welsh: "Dw i'n gweithio yfory"
+  english: "I'm working tomorrow"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: gweithio, lemma: gweithio, item: lex:gweithio}
+    - {text: yfory, lemma: yfory, item: lex:fory}
+
+- id: control-see-books
+  welsh: 'Galla i weld llyfrau'
+  english: 'I can see books'
+  tags: [mutation, inflection]
+  patterns: [pat:galla-i]
+  tokens:
+    - {text: Galla, lemma: gallu}
+    - {text: i, lemma: i}
+    - {text: weld, lemma: gweld, item: lex:gweld, mutation: soft}
+    - {text: llyfrau, lemma: llyfr, item: lex:llyfr}
+
+- id: control-like-the-houses
+  welsh: "Dw i'n hoffi'r tai"
+  english: 'I like the houses'
+  tags: [inflection, clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: hoffi, lemma: hoffi}
+    - {text: "'r", lemma: y}
+    - {text: tai, lemma: tŷ, item: lex:ty}
+
+- id: control-eat-bread-here
+  welsh: "Dw i'n bwyta bara fan hyn"
+  english: "I'm eating bread here"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: Dw, lemma: bod}
+    - {text: i, lemma: i}
+    - {text: "'n", lemma: yn}
+    - {text: bwyta, lemma: bwyta, item: lex:bwyta}
+    - {text: bara, lemma: bara, item: lex:bara}
+    - {text: fan, lemma: fan, item: lex:fan-hyn}
+    - {text: hyn, lemma: hyn, item: lex:fan-hyn}
