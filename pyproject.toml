@@ -27,6 +27,13 @@ hypothesis = "^6.170.15"
 types-pyyaml = "^6.0.12.20261113"
 poethepoet = "^0.49.0"
 
+[tool.poetry.group.lemmatisers]
+optional = true
+
+[tool.poetry.group.lemmatisers.dependencies]
+simplemma = "^2.0.0"
+stanza = "^1.15.1"
+
 [tool.poe.tasks]
 format = "ruff format engine cymraeg evals tests"
 lint = "ruff check engine cymraeg evals tests"
@@ -34,3 +41,4 @@ lint-fix = "ruff check --fix engine cymraeg evals tests"
 mypy = "mypy engine cymraeg evals tests"
 tests-unit = "pytest tests/unit"
 tests-integration = "pytest tests/integration"
+download-stanza-model = "python -c \"import stanza; stanza.download('cy', processors='tokenize,pos,lemma')\""

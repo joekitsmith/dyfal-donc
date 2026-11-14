@@ -31,3 +31,5 @@ poetry run poe mypy
 poetry run poe tests-unit
 poetry run poe tests-integration
 ```
+
+The Simplemma and Stanza lemmatisers are optional: `poetry install --with lemmatisers`.
