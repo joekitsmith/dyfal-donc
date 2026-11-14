@@ -18,7 +18,7 @@ class TestLoader:
         assert isinstance(c.get("pat:dw-in"), Pattern)
 
     def test_missing_file(self, tmp_path: Path) -> None:
-        with pytest.raises(CurriculumError, match="missing file"):
+        with pytest.raises(CurriculumError, match="Missing file"):
             load_curriculum(tmp_path)
 
     def test_bad_item_names_file_and_id(
@@ -36,7 +36,7 @@ class TestLoader:
             "  part_of_speech: verb\n  typo: 1\n"
         )
         with pytest.raises(
-            CurriculumError, match=r"lex:siarad\): unknown field\(s\): typo"
+            CurriculumError, match=r"lex:siarad\): Unknown field\(s\): typo"
         ):
             load_curriculum(write_curriculum(lexemes=typo))
 
@@ -49,7 +49,7 @@ class TestLoader:
         )
         with pytest.raises(
             CurriculumError,
-            match=r"lexemes\.yaml \(lex:siarad\).*gender is only valid for nouns",
+            match=r"lexemes\.yaml \(lex:siarad\).*Gender is only valid for nouns",
         ):
             load_curriculum(write_curriculum(lexemes=bad))
 
@@ -61,13 +61,13 @@ class TestLoader:
         assert pattern.slots == {"VERB": PartOfSpeech.VERB}
 
     def test_top_level_must_be_list(self, write_curriculum: CurriculumWriter) -> None:
-        with pytest.raises(CurriculumError, match="expected a YAML list"):
+        with pytest.raises(CurriculumError, match="Expected a YAML list"):
             load_curriculum(write_curriculum(order="a: b\n"))
 
     def test_order_entries_must_be_strings(
         self, write_curriculum: CurriculumWriter
     ) -> None:
-        with pytest.raises(CurriculumError, match="every entry must be an item id"):
+        with pytest.raises(CurriculumError, match="Every entry must be an item id"):
             load_curriculum(write_curriculum(order="- 1\n"))
 
     def test_cross_file_validation(self, write_curriculum: CurriculumWriter) -> None:

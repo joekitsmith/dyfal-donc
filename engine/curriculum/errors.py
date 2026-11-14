@@ -7,4 +7,4 @@ class CycleError(CurriculumError):
 
     def __init__(self, cycle: tuple[str, ...]) -> None:
         self.cycle = cycle
-        super().__init__("prerequisite cycle: " + " -> ".join(cycle))
+        super().__init__("Prerequisite cycle: " + " -> ".join(cycle))

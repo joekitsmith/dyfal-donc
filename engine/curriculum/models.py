@@ -52,7 +52,7 @@ class Lexeme:
         _check_not_blank(self.id, welsh=self.welsh, english=self.english)
         if self.gender is not None and self.part_of_speech != PartOfSpeech.NOUN:
             raise CurriculumError(
-                f"{self.id}: gender is only valid for nouns, "
+                f"{self.id}: Gender is only valid for nouns, "
                 f"not {self.part_of_speech.value!r}"
             )
 
@@ -75,7 +75,7 @@ class Pattern:
         declared = set(self.slots)
         if in_template != declared:
             raise CurriculumError(
-                f"{self.id}: template slots {sorted(in_template)} "
+                f"{self.id}: Template slots {sorted(in_template)} "
                 f"do not match declared slot constraints {sorted(declared)}"
             )
 
@@ -92,7 +92,7 @@ class Curriculum:
 
         duplicates = sorted({item_id for item_id in ids if ids.count(item_id) > 1})
         if duplicates:
-            raise CurriculumError(f"duplicate item ids: {', '.join(duplicates)}")
+            raise CurriculumError(f"Duplicate item ids: {', '.join(duplicates)}")
 
         known = set(ids)
         missing = [
@@ -102,10 +102,10 @@ class Curriculum:
             if dependency not in known
         ]
         if missing:
-            raise CurriculumError("unknown prerequisites:\n  " + "\n  ".join(missing))
+            raise CurriculumError("Unknown prerequisites:\n  " + "\n  ".join(missing))
 
         if (cycle := graph.find_cycle(self._prerequisite_map())) is not None:
-            raise CurriculumError("prerequisite cycle: " + " -> ".join(cycle))
+            raise CurriculumError("Prerequisite cycle: " + " -> ".join(cycle))
 
         self._validate_order(known)
 
@@ -135,7 +135,7 @@ class Curriculum:
             f"{item_id} is missing from order" for item_id in sorted(known - seen)
         )
         if problems:
-            raise CurriculumError("invalid order:\n  " + "\n  ".join(problems))
+            raise CurriculumError("Invalid order:\n  " + "\n  ".join(problems))
 
         prerequisites = self._prerequisite_map()
         placed: set[str] = set()
@@ -153,14 +153,14 @@ class Curriculum:
             placed.add(item_id)
         if violations:
             raise CurriculumError(
-                "order violates prerequisites:\n  " + "\n  ".join(violations)
+                "Order violates prerequisites:\n  " + "\n  ".join(violations)
             )
 
 
 def _check_id(item_id: str, pattern: re.Pattern[str], prefix: str) -> None:
     if not pattern.match(item_id):
         raise CurriculumError(
-            f"invalid id {item_id!r}: expected {prefix!r} followed by "
+            f"Invalid id {item_id!r}: expected {prefix!r} followed by "
             "lowercase letters, digits or hyphens"
         )
 
@@ -168,4 +168,4 @@ def _check_id(item_id: str, pattern: re.Pattern[str], prefix: str) -> None:
 def _check_not_blank(item_id: str, **fields: str) -> None:
     for name, value in fields.items():
         if not value.strip():
-            raise CurriculumError(f"{item_id}: {name} must not be blank")
+            raise CurriculumError(f"{item_id}: {name.capitalize()} must not be blank")

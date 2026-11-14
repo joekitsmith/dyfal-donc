@@ -26,7 +26,7 @@ def L(id_: str, *prerequisites: str) -> Lexeme:
 
 class TestModels:
     def test_gender_requires_noun(self) -> None:
-        with pytest.raises(CurriculumError, match="gender is only valid for nouns"):
+        with pytest.raises(CurriculumError, match="Gender is only valid for nouns"):
             Lexeme(
                 id="lex:x",
                 welsh="x",
@@ -48,7 +48,7 @@ class TestModels:
         )
 
     def test_id_prefix_enforced(self) -> None:
-        with pytest.raises(CurriculumError, match="invalid id 'pat:x'"):
+        with pytest.raises(CurriculumError, match="Invalid id 'pat:x'"):
             Lexeme(id="pat:x", welsh="x", english="x", part_of_speech=PartOfSpeech.NOUN)
 
     def test_pattern_slots_must_match_template(self) -> None:
@@ -67,7 +67,7 @@ class TestModels:
         assert p.slots == {"VERB": PartOfSpeech.VERB}
 
     def test_blank_fields_rejected(self) -> None:
-        with pytest.raises(CurriculumError, match="welsh must not be blank"):
+        with pytest.raises(CurriculumError, match="Welsh must not be blank"):
             Lexeme(id="lex:x", welsh=" ", english="x", part_of_speech=PartOfSpeech.NOUN)
 
 
@@ -78,7 +78,7 @@ class TestValidation:
         assert c.get("lex:b").id == "lex:b"
 
     def test_duplicate_ids(self) -> None:
-        with pytest.raises(CurriculumError, match="duplicate item ids: lex:a"):
+        with pytest.raises(CurriculumError, match="Duplicate item ids: lex:a"):
             build([L("a"), L("a")], ["lex:a"])
 
     def test_unknown_prerequisite(self) -> None:

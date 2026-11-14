@@ -22,19 +22,19 @@ def load_curriculum(path: str | Path) -> Curriculum:
     order_path = root / ORDER_FILE
     order = _read_list(order_path)
     if not all(isinstance(entry, str) for entry in order):
-        raise CurriculumError(f"{order_path}: every entry must be an item id string")
+        raise CurriculumError(f"{order_path}: Every entry must be an item id string")
     return Curriculum(items=items, order=tuple(str(entry) for entry in order))
 
 
 def _read_list(path: Path) -> tuple[object, ...]:
     if not path.is_file():
-        raise CurriculumError(f"missing file: {path}")
+        raise CurriculumError(f"Missing file: {path}")
     try:
         data: object = yaml.safe_load(path.read_text(encoding="utf-8"))
     except yaml.YAMLError as exc:
-        raise CurriculumError(f"{path}: invalid YAML: {exc}") from exc
+        raise CurriculumError(f"{path}: Invalid YAML: {exc}") from exc
     if not isinstance(data, list):
-        raise CurriculumError(f"{path}: expected a YAML list at top level")
+        raise CurriculumError(f"{path}: Expected a YAML list at top level")
     return tuple(data)
 
 
@@ -44,12 +44,12 @@ def _load_items[T: (Lexeme, Pattern)](path: Path, model: type[T]) -> tuple[T, ..
     items: list[T] = []
     for index, raw in enumerate(_read_list(path)):
         if not isinstance(raw, dict):
-            raise CurriculumError(f"{path}[{index}]: expected a mapping")
+            raise CurriculumError(f"{path}[{index}]: Expected a mapping")
         unknown = sorted(str(key) for key in raw if key not in known_fields)
         if unknown:
             raise CurriculumError(
                 f"{path} ({raw.get('id', f'#{index}')}): "
-                f"unknown field(s): {', '.join(unknown)}"
+                f"Unknown field(s): {', '.join(unknown)}"
             )
         try:
             items.append(adapter.validate_python(raw))

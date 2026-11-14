@@ -73,7 +73,7 @@ def topological_order(prerequisites: Prerequisites) -> tuple[str, ...]:
         cycle = find_cycle(prerequisites)
         if cycle is None:
             raise CurriculumError(
-                "could not order items, but no prerequisite cycle was found"
+                "Could not order items, but no prerequisite cycle was found"
             )
         raise CycleError(cycle)
     return tuple(result)
