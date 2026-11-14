@@ -1,0 +1,29 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: ruff-format
+        entry: bash -c 'poetry run ruff format dyfal_donc tests'
+        language: system
+
+      - id: ruff-lint
+        name: ruff-lint
+        entry: bash -c 'poetry run ruff check --fix dyfal_donc tests'
+        language: system
+
+      - id: mypy
+        name: mypy
+        entry: bash -c 'poetry run mypy dyfal_donc tests'
+        language: system
+        pass_filenames: false
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets

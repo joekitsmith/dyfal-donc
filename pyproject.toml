@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "dyfal-donc"
+version = "0.1.0"
+description = "Spaced-repetition Welsh speaking course with LLM-assisted, human-curated content"
+readme = "README.md"
+authors = [
+    "Joseph Smith <joesmith29@hotmail.co.uk>"
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = ">=3.14"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.18.2"
+pre-commit = "^4.3.0"
+pytest = "^9.0.2"
+pytest-mock = "^3.15.1"
+ruff = "^0.13.2"
