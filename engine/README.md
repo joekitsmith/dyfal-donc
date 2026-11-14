@@ -30,3 +30,12 @@ Checks an `Exercise` (English, Welsh, declared item ids, optional `new_item`) ag
 
 - `validate_exercise(exercise, curriculum, known_items)`: runs detection, then compares the detected items with the declared ones. `known_items` are the ids taught before this exercise, so any detected item outside it is new, and an exercise may introduce at most one.
 - `ValidationResult`: the detected items and a tuple of typed issues: the detection problems plus `UndeclaredItem`, `DeclaredItemNotFound`, `UnknownDeclaredItem`, `MissingNewItem`, `MultipleNewItems` and `WrongNewItem`. `is_valid` means no issues.
+
+## `engine.authoring`
+
+Helps an author extend the curriculum.
+
+- `suggest_forms(text, index, lemmatiser)`: for each token that detection reports as unknown, asks the [`Lemmatiser`](../cymraeg/README.md) (given the whole sentence) for its lemmas. A lemma that matches a single-word lexeme becomes a `FormSuggestion`: the form to declare, the lexeme and its English gloss, and the lemma behind it. A token is read as written first. Only if that suggests nothing is it read as a mutation of each radical it could be, so a mutated inflected word is suggested by its radical.
+- Suggestions are proposals. A lemmatiser can be wrong, so a person should approve each one before it is declared in `forms`.
+
+The lemmatiser is passed in, so the engine never imports Simplemma or Stanza. The command-line tool is `poe suggest-forms`, in [`tools/`](../tools/suggest_forms.py).

@@ -3,7 +3,12 @@ name = "dyfal-donc"
 version = "0.1.0"
 description = "Spaced-repetition Welsh speaking course with LLM-assisted, human-curated content"
 readme = "README.md"
-packages = [{ include = "engine" }, { include = "cymraeg" }, { include = "evals" }]
+packages = [
+    { include = "engine" },
+    { include = "cymraeg" },
+    { include = "evals" },
+    { include = "tools" },
+]
 authors = [
     "Joseph Smith <joesmith29@hotmail.co.uk>"
 ]
@@ -35,11 +40,12 @@ simplemma = "^2.0.0"
 stanza = "^1.15.1"
 
 [tool.poe.tasks]
-format = "ruff format engine cymraeg evals tests"
-lint = "ruff check engine cymraeg evals tests"
-lint-fix = "ruff check --fix engine cymraeg evals tests"
-mypy = "mypy engine cymraeg evals tests"
+format = "ruff format engine cymraeg evals tools tests"
+lint = "ruff check engine cymraeg evals tools tests"
+lint-fix = "ruff check --fix engine cymraeg evals tools tests"
+mypy = "mypy engine cymraeg evals tools tests"
 tests-unit = "pytest tests/unit"
 tests-integration = "pytest tests/integration"
 benchmark = "python -m evals.benchmark"
+suggest-forms = "python -m tools.suggest_forms"
 download-stanza-model = "python -c \"import stanza; stanza.download('cy', processors='tokenize,pos,lemma')\""
