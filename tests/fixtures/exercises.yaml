@@ -1,0 +1,129 @@
+# Hand-written exercises for testing exercise validation, in South Wales Welsh.
+#
+# Fields:
+#   id           unique name, shown in test output
+#   english, welsh, items, new_item   the exercise itself
+#   known_before items taught before this exercise are those earlier in the curriculum
+#                order than this id. Defaults to new_item, or to every item if neither is set.
+#   expect       issue type names in the order validation reports them. Empty means valid.
+#   mutations    detected item id -> mutation that had to be undone to recognise it
+#
+# pat:galla-i and pat:dw-in-hoffi-r are fixture-only patterns (see the integration test).
+
+- id: want-to-speak-welsh
+  english: I want to speak Welsh
+  welsh: Dw i'n moyn siarad Cymraeg
+  items: [pat:dw-in-moyn, lex:siarad, lex:cymraeg]
+
+- id: learning-welsh-today
+  english: I'm learning Welsh today
+  welsh: Dw i'n dysgu Cymraeg heddi
+  items: [pat:dw-in, lex:dysgu, lex:cymraeg, lex:heddi]
+
+- id: dont-understand-english
+  english: I don't understand English
+  welsh: Dw i ddim yn deall Saesneg
+  items: [pat:dw-i-ddim-yn, lex:deall, lex:saesneg]
+
+- id: want-coffee
+  english: I want coffee
+  welsh: Dw i'n moyn coffi
+  items: [pat:dw-in-moyn-noun, lex:coffi]
+
+- id: eating-here-question
+  english: Are you eating here?
+  welsh: Wyt ti'n bwyta fan hyn?
+  items: [pat:wyt-ti-yn, lex:bwyta, lex:fan-hyn]
+
+- id: working-tomorrow
+  english: He's working tomorrow
+  welsh: Mae e'n gweithio yfory
+  items: [pat:mae-e-yn, lex:gweithio, lex:yfory]
+
+- id: want-to-go-question
+  english: Do you want to go?
+  welsh: Wyt ti'n moyn mynd?
+  items: [pat:wyt-ti-yn-moyn, lex:mynd]
+
+- id: can-go-soft-mutated-filler
+  english: I can go
+  welsh: Galla i fynd
+  items: [pat:galla-i, lex:mynd]
+  mutations: {lex:mynd: soft}
+
+- id: like-the-welsh-language
+  english: I like the Welsh language
+  welsh: Dw i'n hoffi'r Gymraeg
+  items: [pat:dw-in-hoffi-r, lex:cymraeg]
+  mutations: {lex:cymraeg: soft}
+
+- id: new-lexeme
+  english: I want to learn
+  welsh: Dw i'n moyn dysgu
+  items: [pat:dw-in-moyn, lex:dysgu]
+  new_item: lex:dysgu
+
+- id: new-pattern
+  english: I want to speak
+  welsh: Dw i'n moyn siarad
+  items: [pat:dw-in-moyn, lex:siarad]
+  new_item: pat:dw-in-moyn
+
+- id: unknown-word
+  english: I want to speak German
+  welsh: Dw i'n moyn siarad Almaeneg
+  items: [pat:dw-in-moyn, lex:siarad]
+  expect: [UnknownToken]
+
+- id: north-wales-form
+  english: I want to speak Welsh
+  welsh: Dw i eisiau siarad Cymraeg
+  items: [lex:siarad, lex:cymraeg]
+  expect: [UnknownToken, UnknownToken, UnknownToken]
+
+- id: item-used-but-not-declared
+  english: I want to speak Welsh
+  welsh: Dw i'n moyn siarad Cymraeg
+  items: [pat:dw-in-moyn, lex:siarad]
+  expect: [UndeclaredItem]
+
+- id: item-declared-but-not-used
+  english: I want to speak Welsh
+  welsh: Dw i'n moyn siarad Cymraeg
+  items: [pat:dw-in-moyn, lex:siarad, lex:cymraeg, lex:coffi]
+  expect: [DeclaredItemNotFound]
+
+- id: declared-item-not-in-curriculum
+  english: I want to speak
+  welsh: Dw i'n moyn siarad
+  items: [pat:dw-in-moyn, lex:siarad, lex:almaeneg]
+  expect: [UnknownDeclaredItem]
+
+- id: slot-filled-by-the-wrong-part-of-speech
+  english: He's coffee
+  welsh: Mae e'n coffi
+  items: [pat:mae-e-yn, lex:coffi]
+  expect: [SlotPartOfSpeechMismatch]
+
+- id: two-new-items
+  english: I want to learn English
+  welsh: Dw i'n moyn dysgu Saesneg
+  items: [pat:dw-in-moyn, lex:dysgu, lex:saesneg]
+  new_item: lex:dysgu
+  known_before: lex:dysgu
+  expect: [MultipleNewItems]
+
+- id: new-item-not-declared
+  english: I want to learn
+  welsh: Dw i'n moyn dysgu
+  items: [pat:dw-in-moyn, lex:dysgu]
+  known_before: lex:dysgu
+  expect: [MissingNewItem]
+
+- id: wrong-new-item
+  english: I want to learn
+  welsh: Dw i'n moyn dysgu
+  items: [pat:dw-in-moyn, lex:dysgu]
+  new_item: lex:siarad
+  known_before: lex:dysgu
+  expect: [DeclaredItemNotFound, WrongNewItem]
