@@ -15,6 +15,7 @@ A spaced-repetition Welsh speaking course (South Wales Welsh) with LLM-assisted,
 
 - [`engine/`](engine/README.md): pure Python core (no I/O beyond loading the curriculum)
 - [`cymraeg/`](cymraeg/README.md): rule-based Welsh handling (tokenising, mutations), independent of the engine
+- [`evals/`](evals/README.md): hand-annotated gold sentences for measuring quality
 - [`curriculum/`](curriculum/README.md): hand-authored YAML seed data
 - `tests/`: unit and integration tests, mirroring the code tree
 
