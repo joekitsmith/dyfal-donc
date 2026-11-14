@@ -1,9 +1,16 @@
 import heapq
 from collections.abc import Mapping, Sequence
+from enum import Enum, auto
 
 from engine.curriculum.errors import CycleError
 
 type Prerequisites = Mapping[str, Sequence[str]]
+
+
+class _VisitState(Enum):
+    UNVISITED = auto()
+    IN_PROGRESS = auto()  # on the current depth-first path
+    DONE = auto()  # fully explored, no cycle through it
 
 
 def find_cycle(prerequisites: Prerequisites) -> tuple[str, ...] | None:
@@ -12,28 +19,27 @@ def find_cycle(prerequisites: Prerequisites) -> tuple[str, ...] | None:
     Edges pointing at nodes absent from ``prerequisites`` are ignored. Deterministic:
     nodes and edges are visited in sorted order.
     """
-    white, grey, black = 0, 1, 2
-    colour: dict[str, int] = dict.fromkeys(prerequisites, white)
+    state = dict.fromkeys(prerequisites, _VisitState.UNVISITED)
 
     for root in sorted(prerequisites):
-        if colour[root] != white:
+        if state[root] != _VisitState.UNVISITED:
             continue
         path: list[str] = [root]
         iterators = [iter(sorted(prerequisites[root]))]
-        colour[root] = grey
+        state[root] = _VisitState.IN_PROGRESS
         while iterators:
             for next_item in iterators[-1]:
-                if next_item not in colour:
+                if next_item not in state:
                     continue
-                if colour[next_item] == grey:
+                if state[next_item] == _VisitState.IN_PROGRESS:
                     return (*path[path.index(next_item) :], next_item)
-                if colour[next_item] == white:
-                    colour[next_item] = grey
+                if state[next_item] == _VisitState.UNVISITED:
+                    state[next_item] = _VisitState.IN_PROGRESS
                     path.append(next_item)
                     iterators.append(iter(sorted(prerequisites[next_item])))
                     break
             else:
-                colour[path.pop()] = black
+                state[path.pop()] = _VisitState.DONE
                 iterators.pop()
     return None
 
