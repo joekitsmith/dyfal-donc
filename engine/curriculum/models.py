@@ -196,7 +196,9 @@ def _check_forms(lexeme: Lexeme) -> None:
         key = form.casefold()
         if key in seen:
             raise CurriculumError(f"{lexeme.id}: Duplicate form {form!r}")
+
         seen.add(key)
+
     if lexeme.id in lexeme.homographs:
         raise CurriculumError(f"{lexeme.id}: A lexeme cannot be its own homograph")
 
@@ -213,10 +215,12 @@ def _check_surface_forms(lexemes: tuple[Lexeme, ...]) -> None:
     for lexeme in lexemes:
         for form in lexeme.surface_forms:
             owners.setdefault(form.casefold(), []).append(lexeme)
+
     for form, sharing in sorted(owners.items()):
         if len(sharing) > 1 and not _are_homographs(sharing):
             ids = ", ".join(lexeme.id for lexeme in sharing)
             problems.append(f"{form!r} is shared by {ids}")
+
     if problems:
         raise CurriculumError(
             "Invalid forms (lexemes sharing a form must list each other in homographs):\n  "

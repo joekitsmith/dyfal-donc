@@ -30,6 +30,7 @@ class CurriculumIndex:
                     PatternShape(pattern=item, elements=_pattern_elements(item))
                 )
                 continue
+
             for surface in item.surface_forms:
                 lexeme_words = tuple(
                     token.text.casefold() for token in tokenise(surface)
@@ -38,6 +39,7 @@ class CurriculumIndex:
                     words.setdefault(lexeme_words[0], []).append(item)
                 elif lexeme_words:
                     phrases.append(Phrase(lexeme=item, words=lexeme_words))
+
         shapes.sort(key=lambda shape: (-len(shape.elements), shape.pattern.id))
         phrases.sort(key=lambda phrase: (-len(phrase.words), phrase.lexeme.id))
         return cls(
