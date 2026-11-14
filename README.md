@@ -1,6 +1,13 @@
 # dyfal-donc
 
-A spaced-repetition Welsh speaking course (South Wales Welsh) with LLM-assisted, human-curated content. Lessons work in the style of Say Something In: hear the English, say it in Welsh, then hear the Welsh.
+```
+Dyfal donc a dyrr y garreg
+Persistent tapping breaks the stone
+```
+
+This course operates the same way: a little speaking each day, with each word coming back just before it fades.
+
+A spaced-repetition Welsh speaking course (South Wales Welsh) with LLM-assisted, human-curated content. Each exercise follows the same loop: hear the English, say it in Welsh, then hear the Welsh.
 
 **Work in progress.**
 
