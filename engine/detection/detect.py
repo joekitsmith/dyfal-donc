@@ -25,6 +25,7 @@ def detect_items(
     ``demutate``. Tokens matching nothing are reported as ``UnknownToken``.
     """
     tokens = tokenise(text)
+
     items: list[DetectedItem] = []
     problems: list[Problem] = []
     position = 0
@@ -37,6 +38,7 @@ def detect_items(
             items.extend(match.items)
             problems.extend(match.problems)
             position += match.length
+
     return Detection(items=tuple(items), problems=tuple(problems))
 
 
@@ -56,9 +58,11 @@ def _match_at(
     pattern_match = _match_pattern(tokens, position, index, preferred)
     if pattern_match is not None:
         return pattern_match
+
     phrase_match = _match_phrase(tokens, position, index)
     if phrase_match is not None:
         return phrase_match
+
     return _match_word(tokens[position], index, preferred)
 
 
@@ -77,6 +81,7 @@ def _match_pattern(
     )
     if not matches:
         return None
+
     return min(matches, key=lambda match: (bool(match.problems), -match.length))
 
 
@@ -89,20 +94,25 @@ def _try_pattern(
 ) -> _Match | None:
     if position + len(shape.elements) > len(tokens):
         return None
+
     first, last = tokens[position], tokens[position + len(shape.elements) - 1]
     items = [DetectedItem(item_id=shape.pattern.id, start=first.start, end=last.end)]
+
     problems: list[Problem] = []
     for offset, element in enumerate(shape.elements):
         token = tokens[position + offset]
         if isinstance(element, str):
             if token.text.casefold() != element:
                 return None
+
             continue
+
         slot_items, slot_problems = _fill_slot(
             shape.pattern, element, token, index, preferred
         )
         items.extend(slot_items)
         problems.extend(slot_problems)
+
     return _Match(
         items=tuple(items), problems=tuple(problems), length=len(shape.elements)
     )
@@ -118,6 +128,7 @@ def _fill_slot(
     candidates = index.candidates(token.text)
     if not candidates:
         return (), (UnknownToken(token=token),)
+
     right_part = tuple(
         candidate
         for candidate in candidates
@@ -125,6 +136,7 @@ def _fill_slot(
     )
     if right_part:
         return (_detect(_best(right_part, preferred), token),), ()
+
     best = _best(candidates, preferred)
     mismatch = SlotPartOfSpeechMismatch(
         pattern_id=pattern.id,
@@ -144,6 +156,7 @@ def _match_phrase(
         end = position + len(phrase.words)
         if end > len(tokens):
             continue
+
         rest_matches = all(
             tokens[position + offset].text.casefold() == word
             for offset, word in enumerate(phrase.words)
@@ -151,9 +164,11 @@ def _match_phrase(
         )
         if not rest_matches:
             continue
+
         first = find_demutation(tokens[position].text, phrase.words[0])
         if first is None:
             continue
+
         item = DetectedItem(
             item_id=phrase.lexeme.id,
             start=tokens[position].start,
@@ -162,6 +177,7 @@ def _match_phrase(
             mutation=first.mutation,
         )
         return _Match(items=(item,), problems=(), length=len(phrase.words))
+
     return None
 
 
@@ -171,6 +187,7 @@ def _match_word(
     candidates = index.candidates(token.text)
     if not candidates:
         return None
+
     return _Match(
         items=(_detect(_best(candidates, preferred), token),), problems=(), length=1
     )

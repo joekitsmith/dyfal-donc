@@ -131,6 +131,7 @@ class Curriculum:
         for item in self.items:
             if item.id == item_id:
                 return item
+
         raise KeyError(item_id)
 
     def topological_order(self) -> tuple[str, ...]:
@@ -148,7 +149,9 @@ class Curriculum:
                 problems.append(f"order[{position}] is unknown item {item_id}")
             elif item_id in seen:
                 problems.append(f"order[{position}] repeats {item_id}")
+
             seen.add(item_id)
+
         problems.extend(
             f"{item_id} is missing from order" for item_id in sorted(known - seen)
         )
@@ -156,6 +159,7 @@ class Curriculum:
             raise CurriculumError("Invalid order:\n  " + "\n  ".join(problems))
 
         prerequisites = self._prerequisite_map()
+
         placed: set[str] = set()
         violations: list[str] = []
         for item_id in self.order:
@@ -168,7 +172,9 @@ class Curriculum:
                 violations.append(
                     f"{item_id} comes before its prerequisite(s): {', '.join(late)}"
                 )
+
             placed.add(item_id)
+
         if violations:
             raise CurriculumError(
                 "Order violates prerequisites:\n  " + "\n  ".join(violations)
@@ -191,6 +197,7 @@ def _check_not_blank(item_id: str, **fields: str) -> None:
 
 def _check_forms(lexeme: Lexeme) -> None:
     _check_not_blank(lexeme.id, **{f"form {n}": f for n, f in enumerate(lexeme.forms)})
+
     seen: set[str] = set()
     for form in lexeme.surface_forms:
         key = form.casefold()
@@ -211,6 +218,7 @@ def _check_surface_forms(lexemes: tuple[Lexeme, ...]) -> None:
         for other in lexeme.homographs
         if other not in by_id
     ]
+
     owners: dict[str, list[Lexeme]] = {}
     for lexeme in lexemes:
         for form in lexeme.surface_forms:

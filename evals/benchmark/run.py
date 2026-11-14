@@ -96,11 +96,13 @@ def _score_lemmatiser(
     candidates: tuple[SentenceCandidates, ...] = tuple(
         lemmatiser.lemmatise(tokens) for tokens in token_lists
     )
+
     timings = []
     for _ in range(TIMING_REPEATS):
         start = perf_counter()
         for tokens in token_lists:
             lemmatiser.lemmatise(tokens)
+
         timings.append(perf_counter() - start)
 
     return LemmatiserResult(

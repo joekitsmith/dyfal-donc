@@ -35,6 +35,7 @@ def collect_suggestions(
     sentences: Sequence[str], index: CurriculumIndex, lemmatiser: Lemmatiser
 ) -> tuple[SuggestionGroup, ...]:
     """Suggest forms for each sentence, merging a form suggested more than once."""
+
     seen: dict[tuple[str, str], tuple[FormSuggestion, list[str]]] = {}
     for sentence in sentences:
         for suggestion in suggest_forms(sentence, index, lemmatiser):

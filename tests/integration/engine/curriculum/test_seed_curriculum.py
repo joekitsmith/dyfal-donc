@@ -18,6 +18,7 @@ def test_every_pattern_slot_can_be_filled_by_an_earlier_lexeme() -> None:
         item = curriculum.get(item_id)
         if not isinstance(item, Pattern):
             continue
+
         earlier = _lexemes(curriculum, curriculum.order[:position])
         for slot, part_of_speech in item.slots.items():
             assert any(lexeme.part_of_speech == part_of_speech for lexeme in earlier), (

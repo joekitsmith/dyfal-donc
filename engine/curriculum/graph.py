@@ -24,6 +24,7 @@ def find_cycle(prerequisites: Prerequisites) -> tuple[str, ...] | None:
     for root in sorted(prerequisites):
         if state[root] != _VisitState.UNVISITED:
             continue
+
         path: list[str] = [root]
         iterators = [iter(sorted(prerequisites[root]))]
         state[root] = _VisitState.IN_PROGRESS
@@ -31,8 +32,10 @@ def find_cycle(prerequisites: Prerequisites) -> tuple[str, ...] | None:
             for next_item in iterators[-1]:
                 if next_item not in state:
                     continue
+
                 if state[next_item] == _VisitState.IN_PROGRESS:
                     return (*path[path.index(next_item) :], next_item)
+
                 if state[next_item] == _VisitState.UNVISITED:
                     state[next_item] = _VisitState.IN_PROGRESS
                     path.append(next_item)
@@ -41,6 +44,7 @@ def find_cycle(prerequisites: Prerequisites) -> tuple[str, ...] | None:
             else:
                 state[path.pop()] = _VisitState.DONE
                 iterators.pop()
+
     return None
 
 
@@ -60,6 +64,7 @@ def topological_order(prerequisites: Prerequisites) -> tuple[str, ...]:
 
     ready = [item for item, count in remaining.items() if count == 0]
     heapq.heapify(ready)
+
     result: list[str] = []
     while ready:
         item = heapq.heappop(ready)
@@ -75,5 +80,7 @@ def topological_order(prerequisites: Prerequisites) -> tuple[str, ...]:
             raise CurriculumError(
                 "Could not order items, but no prerequisite cycle was found"
             )
+
         raise CycleError(cycle)
+
     return tuple(result)

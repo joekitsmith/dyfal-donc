@@ -25,6 +25,7 @@ def suggest_forms(
         for problem in detect_items(text, index).problems
         if isinstance(problem, UnknownToken)
     )
+
     suggestions: dict[tuple[str, str], FormSuggestion] = {}
     for token in unknown:
         for suggestion in _suggest_for_token(token, tokens, index, lemmatiser):

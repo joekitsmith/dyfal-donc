@@ -67,6 +67,7 @@ class TestRenderReport:
             "## Notes",
         ):
             assert heading in report
+
         assert "| Perfect |" in report
         assert "Declared forms only" in report
         assert "Use it." in report

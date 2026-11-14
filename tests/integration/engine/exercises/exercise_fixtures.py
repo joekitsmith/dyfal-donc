@@ -47,4 +47,5 @@ def known_items(fixture: ExerciseFixture, curriculum: Curriculum) -> frozenset[s
     boundary = fixture.known_before or fixture.new_item
     if boundary is None:
         return frozenset(curriculum.order)
+
     return frozenset(curriculum.order[: curriculum.order.index(boundary)])
