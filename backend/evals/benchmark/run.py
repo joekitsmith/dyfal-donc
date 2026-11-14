@@ -25,9 +25,9 @@ from evals.benchmark.models import (
 from evals.benchmark.report import render_report
 from evals.gold import GoldSentence, load_gold_sentences
 
-REPOSITORY_ROOT = Path(__file__).parents[2]
+REPOSITORY_ROOT = Path(__file__).parents[3]
 CURRICULUM_DIRECTORY = REPOSITORY_ROOT / "curriculum"
-REPORT_PATH = REPOSITORY_ROOT / "evals" / "reports" / "lemmatiser-benchmark.md"
+REPORT_PATH = Path(__file__).parents[1] / "reports" / "lemmatiser-benchmark.md"
 RECOMMENDATION_PATH = Path(__file__).parent / "recommendation.md"
 TIMING_REPEATS = 3
 

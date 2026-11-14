@@ -4,10 +4,10 @@ version = "0.1.0"
 description = "Spaced-repetition Welsh speaking course with LLM-assisted, human-curated content"
 readme = "README.md"
 packages = [
-    { include = "engine" },
-    { include = "cymraeg" },
-    { include = "evals" },
-    { include = "tools" },
+    { include = "engine", from = "core" },
+    { include = "cymraeg", from = "core" },
+    { include = "evals", from = "backend" },
+    { include = "tools", from = "backend" },
 ]
 authors = [
     "Joseph Smith <joesmith29@hotmail.co.uk>"
@@ -40,10 +40,10 @@ simplemma = "^2.0.0"
 stanza = "^1.15.1"
 
 [tool.poe.tasks]
-format = "ruff format engine cymraeg evals tools tests"
-lint = "ruff check engine cymraeg evals tools tests"
-lint-fix = "ruff check --fix engine cymraeg evals tools tests"
-mypy = "mypy engine cymraeg evals tools tests"
+format = "ruff format core backend tests"
+lint = "ruff check core backend tests"
+lint-fix = "ruff check --fix core backend tests"
+mypy = "mypy core backend tests"
 tests-unit = "pytest tests/unit"
 tests-integration = "pytest tests/integration"
 benchmark = "python -m evals.benchmark"

@@ -9,7 +9,7 @@ The curriculum is a prerequisite graph of **items**, plus the intended learning 
 - `Lexeme`: a word, e.g. `siarad`, with the other `forms` a learner is taught (`llyfr`: `llyfrau`). Forms are declared, not guessed, so validation stays exact. A form shared by two lexemes must be declared in `homographs` on both.
 - `Pattern`: a grammar pattern with typed slots, e.g. `Dw i'n [VERB]`.
 - `Curriculum`: the items and the order. Construction validates unique ids, existing prerequisites, no cycles (the error shows the cycle path) and that the order respects prerequisites.
-- `load_curriculum(path)`: reads a [curriculum directory](../curriculum/README.md).
+- `load_curriculum(path)`: reads a [curriculum directory](../../curriculum/README.md).
 - `topological_order()`: a deterministic ordering derived from the graph alone.
 
 The models are plain frozen dataclasses. Pydantic is used only in the loader, to parse YAML.
@@ -38,4 +38,4 @@ Helps an author extend the curriculum.
 - `suggest_forms(text, index, lemmatiser)`: for each token that detection reports as unknown, asks the [`Lemmatiser`](../cymraeg/README.md) (given the whole sentence) for its lemmas. A lemma that matches a single-word lexeme becomes a `FormSuggestion`: the form to declare, the lexeme and its English gloss, and the lemma behind it. A token is read as written first. Only if that suggests nothing is it read as a mutation of each radical it could be, so a mutated inflected word is suggested by its radical.
 - Suggestions are proposals. A lemmatiser can be wrong, so a person should approve each one before it is declared in `forms`.
 
-The lemmatiser is passed in, so the engine never imports Simplemma or Stanza. The command-line tool is `poe suggest-forms`, in [`tools/`](../tools/suggest_forms.py).
+The lemmatiser is passed in, so the engine never imports Simplemma or Stanza. The command-line tool is `poe suggest-forms`, in [`backend/tools/`](../../backend/tools/suggest_forms.py).
