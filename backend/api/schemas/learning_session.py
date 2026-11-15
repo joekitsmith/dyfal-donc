@@ -13,7 +13,9 @@ class ItemResponse(BaseModel):
     english: str
 
 
-class MissedExerciseResponse(BaseModel):
+class SentenceResponse(BaseModel):
+    """An exercise as a sentence in both languages, with its audio."""
+
     id: str
     english: str
     welsh: str
@@ -41,7 +43,7 @@ class SessionSummaryResponse(SessionRecapResponse):
 
     items_reviewed: int
     items_lapsed: tuple[ItemResponse, ...]
-    missed_exercises: tuple[MissedExerciseResponse, ...]
+    missed_exercises: tuple[SentenceResponse, ...]
 
 
 class OverviewResponse(BaseModel):

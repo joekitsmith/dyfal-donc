@@ -5,7 +5,7 @@ from api.controllers.account import (
     remove_passkey,
     replace_recovery_codes,
 )
-from api.controllers.audio import speak_exercise
+from api.controllers.audio import speak_exercise, speak_item
 from api.controllers.auth import (
     Authenticated,
     RegisteredPasskey,
@@ -20,6 +20,7 @@ from api.controllers.auth import (
     start_guest,
 )
 from api.controllers.course import describe_course
+from api.controllers.course_progress import describe_course_progress, describe_item
 from api.controllers.learning_sessions import (
     describe_overview,
     describe_session_summary,
@@ -41,6 +42,8 @@ __all__ = [
     "change_user_settings",
     "delete_account",
     "describe_course",
+    "describe_course_progress",
+    "describe_item",
     "describe_progress",
     "describe_overview",
     "describe_recovery_codes",
@@ -56,5 +59,6 @@ __all__ = [
     "sign_in_with_recovery_code",
     "sign_out",
     "speak_exercise",
+    "speak_item",
     "start_guest",
 ]

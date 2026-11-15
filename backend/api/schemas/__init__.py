@@ -11,6 +11,12 @@ from api.schemas.auth import (
     UserResponse,
 )
 from api.schemas.course import CourseResponse, TopicResponse
+from api.schemas.course_progress import (
+    CourseProgressResponse,
+    ItemDetailResponse,
+    ItemKind,
+    TopicProgressResponse,
+)
 from api.schemas.exercise import (
     ExercisePurpose,
     ExerciseResponse,
@@ -20,7 +26,7 @@ from api.schemas.exercise import (
 from api.schemas.health import HealthResponse
 from api.schemas.learning_session import (
     ItemResponse,
-    MissedExerciseResponse,
+    SentenceResponse,
     OverviewResponse,
     SessionRecapResponse,
     SessionSummaryResponse,
@@ -39,12 +45,15 @@ __all__ = [
     "AudioLinks",
     "AuthenticationVerifyRequest",
     "AudioTrack",
+    "CourseProgressResponse",
     "CourseResponse",
     "ExercisePurpose",
     "ExerciseResponse",
     "HealthResponse",
+    "ItemDetailResponse",
+    "ItemKind",
     "ItemResponse",
-    "MissedExerciseResponse",
+    "SentenceResponse",
     "NextExerciseResponse",
     "NothingEligibleResponse",
     "OutcomeRequest",
@@ -61,6 +70,7 @@ __all__ = [
     "ReportedOutcome",
     "SessionRecapResponse",
     "SessionSummaryResponse",
+    "TopicProgressResponse",
     "TopicResponse",
     "UserResponse",
     "UserSettingsPatch",

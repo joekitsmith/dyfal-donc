@@ -188,6 +188,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/items/{item_id}/audio": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Item Audio */
+        get: operations["get_item_audio_items__item_id__audio_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me": {
         parameters: {
             query?: never;
@@ -201,6 +218,40 @@ export interface paths {
         post?: never;
         /** Delete Me */
         delete: operations["delete_me_me_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/course": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Course Progress */
+        get: operations["get_course_progress_me_course_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/items/{item_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Item */
+        get: operations["get_item_me_items__item_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
         options?: never;
         head?: never;
         patch?: never;
@@ -387,6 +438,14 @@ export interface components {
         AuthenticationVerifyRequest: {
             credential: components["schemas"]["PasskeyJson"];
         };
+        /**
+         * CourseProgressResponse
+         * @description Every topic in the order it is taught.
+         */
+        CourseProgressResponse: {
+            /** Topics */
+            topics: components["schemas"]["TopicProgressResponse"][];
+        };
         /** CourseResponse */
         CourseResponse: {
             /** Item Count */
@@ -439,20 +498,47 @@ export interface components {
             status: string;
         };
         /**
+         * ItemDetailResponse
+         * @description An item the learner has met, with sentences they got right.
+         *
+         *     ``audio`` is where to hear a word, and is null for a phrase, whose sentences
+         *     carry the audio instead.
+         */
+        ItemDetailResponse: {
+            /** Audio */
+            audio: string | null;
+            /** English */
+            english: string;
+            /** Examples */
+            examples: components["schemas"]["SentenceResponse"][];
+            /**
+             * First Met At
+             * Format: date-time
+             */
+            first_met_at: string;
+            /** Forms */
+            forms: string[];
+            /** Id */
+            id: string;
+            kind: components["schemas"]["ItemKind"];
+            /** Notes */
+            notes: string;
+            /** Topic */
+            topic: string;
+            /** Welsh */
+            welsh: string;
+        };
+        /**
+         * ItemKind
+         * @description A single word, or a way of saying things with a slot to fill.
+         * @enum {string}
+         */
+        ItemKind: "word" | "phrase";
+        /**
          * ItemResponse
          * @description A word or pattern the learner met, in both languages.
          */
         ItemResponse: {
-            /** English */
-            english: string;
-            /** Id */
-            id: string;
-            /** Welsh */
-            welsh: string;
-        };
-        /** MissedExerciseResponse */
-        MissedExerciseResponse: {
-            audio: components["schemas"]["AudioLinks"];
             /** English */
             english: string;
             /** Id */
@@ -599,6 +685,19 @@ export interface components {
          */
         ReportedOutcome: "got_it" | "missed_it";
         /**
+         * SentenceResponse
+         * @description An exercise as a sentence in both languages, with its audio.
+         */
+        SentenceResponse: {
+            audio: components["schemas"]["AudioLinks"];
+            /** English */
+            english: string;
+            /** Id */
+            id: string;
+            /** Welsh */
+            welsh: string;
+        };
+        /**
          * SessionRecapResponse
          * @description A short account of one learning session.
          *
@@ -650,7 +749,7 @@ export interface components {
             /** Items Reviewed */
             items_reviewed: number;
             /** Missed Exercises */
-            missed_exercises: components["schemas"]["MissedExerciseResponse"][];
+            missed_exercises: components["schemas"]["SentenceResponse"][];
             /** Ongoing */
             ongoing: boolean;
             /**
@@ -658,6 +757,29 @@ export interface components {
              * Format: date-time
              */
             started_at: string;
+        };
+        /**
+         * TopicProgressResponse
+         * @description What the learner has met in one topic.
+         *
+         *     A topic that has not been started has no words, phrases or sentences. The
+         *     sentences are some the learner has got right.
+         */
+        TopicProgressResponse: {
+            /** Exercises Answered */
+            exercises_answered: number;
+            /** Is Current */
+            is_current: boolean;
+            /** Name */
+            name: string;
+            /** Phrases */
+            phrases: components["schemas"]["ItemResponse"][];
+            /** Sayable */
+            sayable: components["schemas"]["SentenceResponse"][];
+            /** Started */
+            started: boolean;
+            /** Words */
+            words: components["schemas"]["ItemResponse"][];
         };
         /** TopicResponse */
         TopicResponse: {
@@ -1026,6 +1148,37 @@ export interface operations {
             };
         };
     };
+    get_item_audio_items__item_id__audio_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "audio/wav": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     get_me_me_get: {
         parameters: {
             query?: never;
@@ -1061,6 +1214,57 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    get_course_progress_me_course_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CourseProgressResponse"];
+                };
+            };
+        };
+    };
+    get_item_me_items__item_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                item_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ItemDetailResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
             };
         };
     };

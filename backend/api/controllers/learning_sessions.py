@@ -20,7 +20,7 @@ from engine.learner import (
     split_sessions,
     summarise_session,
 )
-from engine.scheduler import frontier
+from engine.scheduler import frontier_topic
 from persistence.database import UnitOfWork
 from persistence.database.errors import LearnerNotFoundError
 
@@ -75,12 +75,12 @@ def describe_overview(
             curriculum=release.curriculum,
         )
 
-    next_item = frontier(release.curriculum, introduced_items(state))
+    topic = frontier_topic(release.curriculum, introduced_items(state))
     return to_overview_response(
         now=now,
         review_due=len(review_items_due(state, now, DEFAULT_SETTINGS)),
         learning_due=len(learning_items_due(state)),
-        topic=None if next_item is None else release.curriculum.get(next_item).topic,
+        topic=topic,
         introduced=len(state.memories),
         course_items=len(release.curriculum.items),
         latest_session=latest,
