@@ -1,20 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import {
-  installPasskeyDevice,
-  instrumentAudio,
-  openLesson,
-  requireStack,
-  saveProgressAndKeepFirstCode,
-  startAsGuest,
-} from "./helpers";
+import { installPasskeyDevice, openLesson, requireStack, saveProgressAndKeepFirstCode, startAsGuest } from "./helpers";
 
 let device: Awaited<ReturnType<typeof installPasskeyDevice>>;
 
 test.beforeEach(async ({ page, request }) => {
   await requireStack(request);
-  await instrumentAudio(page);
   device = await installPasskeyDevice(page);
 });
 

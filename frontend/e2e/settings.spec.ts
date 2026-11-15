@@ -1,13 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { instrumentAudio, requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
-test.beforeEach(async ({ page, request }) => {
+test.beforeEach(async ({ request }) => {
   await requireStack(request);
-  await instrumentAudio(page);
 });
 
 test("with slow Welsh only the lesson never fetches the standard Welsh", async ({ page }) => {

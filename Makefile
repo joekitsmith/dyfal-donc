@@ -1,6 +1,9 @@
-.PHONY: db-up db-down db-reset tts-build tts-up stack-up stack-up-debug stack-down stack-logs web-build web-build-multiarch web-dev web-check web-e2e web-types
+.PHONY: db-up db-down db-reset tts-build tts-up stack-up stack-up-debug stack-down stack-logs web-build web-build-multiarch web-dev web-check web-e2e web-types tunnel tunnel-down
 
 WEB_PORT ?= 8080
+TUNNEL_LOG = .tunnel.log
+TUNNEL_PID = .tunnel.pid
+LOCAL_ORIGINS = http://localhost:$(WEB_PORT),http://localhost:3000
 DEBUG_COMPOSE = docker compose --file compose.yaml --file compose.debug.yaml
 
 # Postgres on localhost:POSTGRES_PORT, for poe and psql
@@ -60,3 +63,25 @@ web-e2e:
 web-types:
 	poetry run poe openapi
 	cd frontend && pnpm types
+
+# Puts the running stack on a public https address (a Cloudflare quick tunnel), so a phone can reach it.
+# The address is random, so the API is recreated to accept it as an origin and as the passkeys' domain
+# (a passkey made through the tunnel stops working when the address changes). Needs: brew install cloudflared
+tunnel:
+	@command -v cloudflared >/dev/null || { echo "Install cloudflared first: brew install cloudflared"; exit 1; }
+	@test ! -f $(TUNNEL_PID) || { echo "A tunnel is already running: make tunnel-down first"; exit 1; }
+	@cloudflared tunnel --url http://localhost:$(WEB_PORT) > $(TUNNEL_LOG) 2>&1 & echo $$! > $(TUNNEL_PID)
+	@url=""; for attempt in $$(seq 1 30); do \
+		url=$$(grep -o 'https://[a-z0-9-]*\.trycloudflare\.com' $(TUNNEL_LOG) | head -1); \
+		test -z "$$url" || break; sleep 1; \
+	done; \
+	test -n "$$url" || { echo "No tunnel address in $(TUNNEL_LOG)"; $(MAKE) tunnel-down; exit 1; }; \
+	WEBAUTHN_RP_ID=$${url#https://} WEBAUTHN_ORIGINS="$(LOCAL_ORIGINS),$$url" docker compose up --detach --wait --no-deps api; \
+	caffeinate -i -w $$(cat $(TUNNEL_PID)) & \
+	echo "Open $$url/spike/hands-free.html on the phone (the Mac stays awake while the tunnel runs)"
+
+# Stops the tunnel and puts the API's allowed origins back
+tunnel-down:
+	@test ! -f $(TUNNEL_PID) || kill $$(cat $(TUNNEL_PID)) 2>/dev/null || true
+	@$(RM) $(TUNNEL_PID) $(TUNNEL_LOG)
+	docker compose up --detach --wait --no-deps api

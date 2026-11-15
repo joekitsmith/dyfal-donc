@@ -11,10 +11,32 @@ export const THINK_SECONDS_PER_WORD = 0.72;
 export const THINK_MAXIMUM_SECONDS = 21.6;
 
 /** The gap after the first Welsh. Its text shows, and the slow Welsh starts, when it ends. */
-export const BETWEEN_WELSH_MILLISECONDS = 1500;
+export const BETWEEN_WELSH_SECONDS = 1.5;
 
 /** How long the learner has to mark an exercise as missed after the slow Welsh ends. */
-export const OUTCOME_WINDOW_MILLISECONDS = 2000;
+export const OUTCOME_WINDOW_SECONDS = 2;
+
+/**
+ * Silence after the outcome window. The track keeps playing while the outcome is sent and the next
+ * exercise is fetched and built, which is what keeps the page alive with the screen locked.
+ */
+export const TAIL_SECONDS = 10;
+
+/** How often the audio position is read as well as on `timeupdate`, which is the only thing that runs reliably when locked. */
+export const POSITION_POLL_MILLISECONDS = 250;
+
+/** The waits before each retry of a request, so a brief failure while the screen is locked does not stop the lesson. */
+export const RETRY_DELAYS_MILLISECONDS = [1000, 2000] as const;
+
+/** The silent clip that unlocks audio on Start. */
+export const SILENT_SAMPLE_RATE = 8000;
+export const SILENT_SAMPLES = 400;
+
+export const MEDIA_SESSION_ARTIST = "dyfal-donc";
+export const MEDIA_SESSION_ARTWORK = [
+  { sizes: "192x192", src: "/icons/icon-192.png", type: "image/png" },
+  { sizes: "512x512", src: "/icons/icon-512.png", type: "image/png" },
+] as const;
 
 export const ERROR_MESSAGES = {
   clips: "The audio could not be loaded",
@@ -35,6 +57,7 @@ export const UNAUTHORIZED_STATUS = 401;
 /** Items introduced before a guest is asked to add a passkey: about ten exercises in. */
 export const SAVE_OFFER_MINIMUM_ITEMS = 5;
 export const SERVICE_UNAVAILABLE_STATUS = 503;
+export const SERVER_ERROR_STATUS = 500;
 
 export const ALREADY_ANSWERED_STATUS = 409;
 export const SELECTION_EXPIRED_STATUS = 410;

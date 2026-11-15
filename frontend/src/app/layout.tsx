@@ -5,7 +5,11 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v16-appRouter";
 
 import { Provider } from "./provider";
 
-export const metadata: Metadata = { title: "Dyfal donc" };
+// The placeholder mark, also shown on the lock screen. The design pass replaces it
+export const metadata: Metadata = {
+  icons: { apple: "/icons/icon-192.png", icon: [{ sizes: "192x192", type: "image/png", url: "/icons/icon-192.png" }] },
+  title: "Dyfal donc",
+};
 
 export default function RootLayout({ children }: { readonly children: ReactNode }) {
   return (

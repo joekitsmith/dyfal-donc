@@ -2,14 +2,11 @@ import type { CLIP_TRACKS } from "./constants";
 
 type ClipLinks = Readonly<Record<ClipTrack, string>>;
 
-type ClipStatus = "failed" | "loading" | "ready";
-
 export type ClipTrack = (typeof CLIP_TRACKS)[number];
 
 export type ExerciseFields = {
   /** Counts retries of the clips, so a retry fetches them again. */
   readonly attempt: number;
-  readonly clips: Readonly<Record<ClipTrack, ClipStatus>>;
   readonly exercise: LessonExercise;
   readonly missed: boolean;
   readonly paused: boolean;
@@ -25,26 +22,24 @@ export type FailureCause = "learner_missing" | "other" | "speech_unavailable";
 export type ExerciseState = Extract<LessonState, { readonly exercise: LessonExercise }>;
 
 export type LessonEvent =
-  | { readonly cause: FailureCause; readonly track: ClipTrack; readonly type: "clip_failed" }
-  | { readonly cause: FailureCause; readonly type: "next_failed" | "submit_failed" }
+  | { readonly cause: FailureCause; readonly type: "next_failed" | "submit_failed" | "track_failed" }
   | { readonly exercise: LessonExercise; readonly type: "next_loaded"; readonly welshPlayback: WelshPlayback }
-  | { readonly track: ClipTrack; readonly type: "clip_ready" }
+  | { readonly phase: PositionPhase; readonly type: "position_reached" }
   | {
       readonly type:
-        | "clip_ended"
-        | "gap_elapsed"
         | "missed"
         | "nothing_eligible"
+        | "pause"
         | "playback_failed"
         | "replay"
         | "reset"
+        | "resume"
         | "retry"
         | "skip_window"
         | "start"
         | "submitted"
-        | "think_elapsed"
         | "toggle_pause"
-        | "window_elapsed";
+        | "track_ready";
     };
 
 export type LessonExercise = {
@@ -71,7 +66,6 @@ export type LessonState =
   | (ExerciseFields & { readonly phase: "preparing" })
   | (ExerciseFields & { readonly phase: "submitting" })
   | (ExerciseFields & { readonly phase: "thinking" })
-  | (ExerciseFields & { readonly phase: "waiting_for_clip"; readonly track: WaitingTrack })
   | { readonly cause: FailureCause; readonly message: string; readonly phase: "error"; readonly retry: Retry }
   | { readonly phase: "idle" }
   | { readonly phase: "loading" }
@@ -92,4 +86,19 @@ type Retry =
 /** The woman's Welsh at a standard pace, the man's slowly, or hers and then his. */
 export type WelshPlayback = "both" | "slow" | "standard";
 
-export type WaitingTrack = "welsh_slow" | "welsh_standard";
+/** The phases the position in a track can put the lesson in, in the order a track plays them. */
+export type PositionPhase = Extract<
+  LessonState["phase"],
+  | "awaiting_outcome"
+  | "between_welsh"
+  | "playing_english"
+  | "playing_welsh_slow"
+  | "playing_welsh_standard"
+  | "submitting"
+  | "thinking"
+>;
+
+/** Where each phase starts in a track, in seconds. The last one, ``submitting``, starts where the tail does. */
+export type Timeline = readonly TimelineEntry[];
+
+type TimelineEntry = { readonly phase: PositionPhase; readonly startsAt: number };

@@ -1,11 +1,10 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { instrumentAudio, requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest } from "./helpers";
 
-test.beforeEach(async ({ page, request }) => {
+test.beforeEach(async ({ request }) => {
   await requireStack(request);
-  await instrumentAudio(page);
 });
 
 test("after a session the home screen recaps it and the summary lets a missed exercise be played again", async ({
