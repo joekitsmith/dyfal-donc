@@ -8,21 +8,29 @@ from pydantic import TypeAdapter, ValidationError
 from evals.gold.errors import GoldSetError
 from evals.gold.models import GoldSentence
 
-SENTENCES_PATH = Path(__file__).parent / "sentences.yaml"
+SENTENCES_DIRECTORY = Path(__file__).parent / "sentences"
 
 
-def load_gold_sentences(path: str | Path = SENTENCES_PATH) -> tuple[GoldSentence, ...]:
-    """Load and validate the gold sentences."""
-    sentences_path = Path(path)
+def load_gold_sentences(
+    path: str | Path = SENTENCES_DIRECTORY,
+) -> tuple[GoldSentence, ...]:
+    """Load and validate the gold sentences.
+
+    ``path`` is a directory of ``*.yaml`` files, read in file name order, or a
+    single file. Ids must be unique across all the files.
+    """
+    root = Path(path)
+    files = tuple(sorted(root.glob("*.yaml"))) if root.is_dir() else (root,)
     adapter = TypeAdapter(GoldSentence)
     known_fields = {field.name for field in fields(GoldSentence)}
 
     sentences = tuple(
-        _parse_sentence(adapter, known_fields, raw, index, sentences_path)
-        for index, raw in enumerate(_read_list(sentences_path))
+        _parse_sentence(adapter, known_fields, raw, index, file)
+        for file in files
+        for index, raw in enumerate(_read_list(file))
     )
 
-    _check_unique_ids(sentences, sentences_path)
+    _check_unique_ids(sentences, root)
 
     return sentences
 

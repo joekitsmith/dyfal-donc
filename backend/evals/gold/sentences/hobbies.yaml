@@ -1,0 +1,758 @@
+- id: sp-i-like-football
+  welsh: "Dw i'n hoffi pêl-droed"
+  english: "I like football"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "pêl-droed", lemma: "pêl-droed", item: lex:pel-droed}
+
+- id: sp-i-dont-like-football
+  welsh: "Dw i ddim yn hoffi pêl-droed"
+  english: "I don't like football"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "pêl-droed", lemma: "pêl-droed", item: lex:pel-droed}
+
+- id: sp-do-you-like-football
+  welsh: "Wyt ti'n hoffi pêl-droed?"
+  english: "Do you like football?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "pêl-droed", lemma: "pêl-droed", item: lex:pel-droed}
+
+- id: sp-i-like-films
+  welsh: "Dw i'n hoffi ffilm"
+  english: "I like films"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "ffilm", lemma: "ffilm", item: lex:ffilm}
+
+- id: sp-i-dont-like-films
+  welsh: "Dw i ddim yn hoffi ffilm"
+  english: "I don't like films"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "ffilm", lemma: "ffilm", item: lex:ffilm}
+
+- id: sp-do-you-like-films
+  welsh: "Wyt ti'n hoffi ffilm?"
+  english: "Do you like films?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "ffilm", lemma: "ffilm", item: lex:ffilm}
+
+- id: sp-i-like-music
+  welsh: "Dw i'n hoffi cerddoriaeth"
+  english: "I like music"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "cerddoriaeth", lemma: "cerddoriaeth", item: lex:cerddoriaeth}
+
+- id: sp-i-dont-like-music
+  welsh: "Dw i ddim yn hoffi cerddoriaeth"
+  english: "I don't like music"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "cerddoriaeth", lemma: "cerddoriaeth", item: lex:cerddoriaeth}
+
+- id: sp-do-you-like-music
+  welsh: "Wyt ti'n hoffi cerddoriaeth?"
+  english: "Do you like music?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "cerddoriaeth", lemma: "cerddoriaeth", item: lex:cerddoriaeth}
+
+- id: sp-i-like-tv
+  welsh: "Dw i'n hoffi teledu"
+  english: "I like TV"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "teledu", lemma: "teledu", item: lex:teledu}
+
+- id: sp-i-dont-like-tv
+  welsh: "Dw i ddim yn hoffi teledu"
+  english: "I don't like TV"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "teledu", lemma: "teledu", item: lex:teledu}
+
+- id: sp-do-you-like-tv
+  welsh: "Wyt ti'n hoffi teledu?"
+  english: "Do you like TV?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "teledu", lemma: "teledu", item: lex:teledu}
+
+- id: sp-i-like-radio
+  welsh: "Dw i'n hoffi radio"
+  english: "I like radio"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "radio", lemma: "radio", item: lex:radio}
+
+- id: sp-i-dont-like-radio
+  welsh: "Dw i ddim yn hoffi radio"
+  english: "I don't like radio"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "radio", lemma: "radio", item: lex:radio}
+
+- id: sp-do-you-like-radio
+  welsh: "Wyt ti'n hoffi radio?"
+  english: "Do you like radio?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "radio", lemma: "radio", item: lex:radio}
+
+- id: sp-i-like-songs
+  welsh: "Dw i'n hoffi cân"
+  english: "I like songs"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "cân", lemma: "cân", item: lex:can}
+
+- id: sp-i-dont-like-songs
+  welsh: "Dw i ddim yn hoffi cân"
+  english: "I don't like songs"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "cân", lemma: "cân", item: lex:can}
+
+- id: sp-do-you-like-songs
+  welsh: "Wyt ti'n hoffi cân?"
+  english: "Do you like songs?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "cân", lemma: "cân", item: lex:can}
+
+- id: sp-i-like-dance
+  welsh: "Dw i'n hoffi dawns"
+  english: "I like dance"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "dawns", lemma: "dawns", item: lex:dawns}
+
+- id: sp-i-dont-like-dance
+  welsh: "Dw i ddim yn hoffi dawns"
+  english: "I don't like dance"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "dawns", lemma: "dawns", item: lex:dawns}
+
+- id: sp-do-you-like-dance
+  welsh: "Wyt ti'n hoffi dawns?"
+  english: "Do you like dance?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "dawns", lemma: "dawns", item: lex:dawns}
+
+- id: sp-im-swimming
+  welsh: "Dw i'n nofio"
+  english: "I'm swimming"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "nofio", lemma: "nofio", item: lex:nofio}
+
+- id: sp-i-want-to-swim
+  welsh: "Dw i'n moyn nofio"
+  english: "I want to swim"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "nofio", lemma: "nofio", item: lex:nofio}
+
+- id: sp-i-swam
+  welsh: "Nes i nofio"
+  english: "I swam"
+  tags: [plain]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "nofio", lemma: "nofio", item: lex:nofio}
+
+- id: sp-ill-swim
+  welsh: "Wna i nofio"
+  english: "I'll swim"
+  tags: [plain]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "nofio", lemma: "nofio", item: lex:nofio}
+
+- id: sp-are-you-swimming
+  welsh: "Wyt ti'n nofio?"
+  english: "Are you swimming?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "nofio", lemma: "nofio", item: lex:nofio}
+
+- id: sp-im-running
+  welsh: "Dw i'n rhedeg"
+  english: "I'm running"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "rhedeg", lemma: "rhedeg", item: lex:rhedeg}
+
+- id: sp-i-want-to-run
+  welsh: "Dw i'n moyn rhedeg"
+  english: "I want to run"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "rhedeg", lemma: "rhedeg", item: lex:rhedeg}
+
+- id: sp-i-ran
+  welsh: "Nes i redeg"
+  english: "I ran"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "redeg", lemma: "rhedeg", item: lex:rhedeg, mutation: soft}
+
+- id: sp-ill-run
+  welsh: "Wna i redeg"
+  english: "I'll run"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "redeg", lemma: "rhedeg", item: lex:rhedeg, mutation: soft}
+
+- id: sp-are-you-running
+  welsh: "Wyt ti'n rhedeg?"
+  english: "Are you running?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "rhedeg", lemma: "rhedeg", item: lex:rhedeg}
+
+- id: sp-im-singing
+  welsh: "Dw i'n canu"
+  english: "I'm singing"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "canu", lemma: "canu", item: lex:canu}
+
+- id: sp-i-want-to-sing
+  welsh: "Dw i'n moyn canu"
+  english: "I want to sing"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "canu", lemma: "canu", item: lex:canu}
+
+- id: sp-i-sang
+  welsh: "Nes i ganu"
+  english: "I sang"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ganu", lemma: "canu", item: lex:canu, mutation: soft}
+
+- id: sp-ill-sing
+  welsh: "Wna i ganu"
+  english: "I'll sing"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ganu", lemma: "canu", item: lex:canu, mutation: soft}
+
+- id: sp-are-you-singing
+  welsh: "Wyt ti'n canu?"
+  english: "Are you singing?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "canu", lemma: "canu", item: lex:canu}
+
+- id: sp-im-dancing
+  welsh: "Dw i'n dawnsio"
+  english: "I'm dancing"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dawnsio", lemma: "dawnsio", item: lex:dawnsio}
+
+- id: sp-i-want-to-dance
+  welsh: "Dw i'n moyn dawnsio"
+  english: "I want to dance"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "dawnsio", lemma: "dawnsio", item: lex:dawnsio}
+
+- id: sp-i-danced
+  welsh: "Nes i ddawnsio"
+  english: "I danced"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddawnsio", lemma: "dawnsio", item: lex:dawnsio, mutation: soft}
+
+- id: sp-ill-dance
+  welsh: "Wna i ddawnsio"
+  english: "I'll dance"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddawnsio", lemma: "dawnsio", item: lex:dawnsio, mutation: soft}
+
+- id: sp-are-you-dancing
+  welsh: "Wyt ti'n dawnsio?"
+  english: "Are you dancing?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dawnsio", lemma: "dawnsio", item: lex:dawnsio}
+
+- id: sp-im-playing
+  welsh: "Dw i'n chwarae"
+  english: "I'm playing"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "chwarae", lemma: "chwarae", item: lex:chwarae}
+
+- id: sp-i-want-to-play
+  welsh: "Dw i'n moyn chwarae"
+  english: "I want to play"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "chwarae", lemma: "chwarae", item: lex:chwarae}
+
+- id: sp-i-played
+  welsh: "Nes i chwarae"
+  english: "I played"
+  tags: [plain]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "chwarae", lemma: "chwarae", item: lex:chwarae}
+
+- id: sp-ill-play
+  welsh: "Wna i chwarae"
+  english: "I'll play"
+  tags: [plain]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "chwarae", lemma: "chwarae", item: lex:chwarae}
+
+- id: sp-are-you-playing
+  welsh: "Wyt ti'n chwarae?"
+  english: "Are you playing?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "chwarae", lemma: "chwarae", item: lex:chwarae}
+
+- id: sp-im-walking
+  welsh: "Dw i'n cerdded"
+  english: "I'm walking"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cerdded", lemma: "cerdded", item: lex:cerdded}
+
+- id: sp-i-want-to-walk
+  welsh: "Dw i'n moyn cerdded"
+  english: "I want to walk"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cerdded", lemma: "cerdded", item: lex:cerdded}
+
+- id: sp-i-walked
+  welsh: "Nes i gerdded"
+  english: "I walked"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "gerdded", lemma: "cerdded", item: lex:cerdded, mutation: soft}
+
+- id: sp-ill-walk
+  welsh: "Wna i gerdded"
+  english: "I'll walk"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "gerdded", lemma: "cerdded", item: lex:cerdded, mutation: soft}
+
+- id: sp-are-you-walking
+  welsh: "Wyt ti'n cerdded?"
+  english: "Are you walking?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cerdded", lemma: "cerdded", item: lex:cerdded}
+
+- id: sp-im-watching
+  welsh: "Dw i'n gwylio"
+  english: "I'm watching"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwylio", lemma: "gwylio", item: lex:gwylio}
+
+- id: sp-i-want-to-watch
+  welsh: "Dw i'n moyn gwylio"
+  english: "I want to watch"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gwylio", lemma: "gwylio", item: lex:gwylio}
+
+- id: sp-i-watched
+  welsh: "Nes i wylio"
+  english: "I watched"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "wylio", lemma: "gwylio", item: lex:gwylio, mutation: soft}
+
+- id: sp-ill-watch
+  welsh: "Wna i wylio"
+  english: "I'll watch"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "wylio", lemma: "gwylio", item: lex:gwylio, mutation: soft}
+
+- id: sp-are-you-watching
+  welsh: "Wyt ti'n gwylio?"
+  english: "Are you watching?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwylio", lemma: "gwylio", item: lex:gwylio}
+
+- id: sp-im-playing-football
+  welsh: "Dw i'n chwarae pêl-droed"
+  english: "I'm playing football"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "chwarae", lemma: "chwarae", item: lex:chwarae}
+    - {text: "pêl-droed", lemma: "pêl-droed", item: lex:pel-droed}
+
+- id: sp-im-watching-the-tv
+  welsh: "Dw i'n gwylio'r teledu"
+  english: "I'm watching the TV"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwylio", lemma: "gwylio", item: lex:gwylio}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "teledu", lemma: "teledu", item: lex:teledu}
+
+- id: sp-im-watching-a-film
+  welsh: "Dw i'n gwylio ffilm"
+  english: "I'm watching a film"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwylio", lemma: "gwylio", item: lex:gwylio}
+    - {text: "ffilm", lemma: "ffilm", item: lex:ffilm}
+
+- id: sp-im-singing-a-song
+  welsh: "Dw i'n canu cân"
+  english: "I'm singing a song"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "canu", lemma: "canu", item: lex:canu}
+    - {text: "cân", lemma: "cân", item: lex:can}
+
+- id: sp-i-like-swimming
+  welsh: "Dw i'n hoffi nofio"
+  english: "I like swimming"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi-verb]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "nofio", lemma: "nofio", item: lex:nofio}
+
+- id: sp-i-like-running
+  welsh: "Dw i'n hoffi rhedeg"
+  english: "I like running"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi-verb]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "rhedeg", lemma: "rhedeg", item: lex:rhedeg}
+
+- id: sp-i-like-singing
+  welsh: "Dw i'n hoffi canu"
+  english: "I like singing"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi-verb]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "canu", lemma: "canu", item: lex:canu}
+
+- id: sp-i-like-dancing
+  welsh: "Dw i'n hoffi dawnsio"
+  english: "I like dancing"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi-verb]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "dawnsio", lemma: "dawnsio", item: lex:dawnsio}
+
+- id: sp-i-like-walking
+  welsh: "Dw i'n hoffi cerdded"
+  english: "I like walking"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi-verb]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "cerdded", lemma: "cerdded", item: lex:cerdded}
+
+- id: sp-i-like-watching-films
+  welsh: "Dw i'n hoffi gwylio ffilm"
+  english: "I like watching films"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi-verb]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "gwylio", lemma: "gwylio", item: lex:gwylio}
+    - {text: "ffilm", lemma: "ffilm", item: lex:ffilm}

@@ -1,0 +1,73 @@
+- id: lex:teulu
+  welsh: "teulu"
+  english: "family"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:mam
+  welsh: "mam"
+  english: "mum"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:tad
+  welsh: "tad"
+  english: "dad"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:brawd
+  welsh: "brawd"
+  english: "brother"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:chwaer
+  welsh: "chwaer"
+  english: "sister"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:mab
+  welsh: "mab"
+  english: "son"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:merch
+  welsh: "merch"
+  english: "daughter"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:plentyn
+  welsh: "plentyn"
+  english: "child"
+  part_of_speech: noun
+  gender: m
+  forms: ["plant"]
+
+- id: lex:nain
+  welsh: "nain"
+  english: "grandmother"
+  part_of_speech: noun
+  gender: f
+  notes: "South Wales. North Wales uses 'nain' too; 'mamgu' is also common in the South."
+
+- id: lex:taid
+  welsh: "taid"
+  english: "grandfather"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:gwr
+  welsh: "gŵr"
+  english: "husband"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:gwraig
+  welsh: "gwraig"
+  english: "wife"
+  part_of_speech: noun
+  gender: f

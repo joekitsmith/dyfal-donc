@@ -1,0 +1,5 @@
+- id: pat:dw-in-hoffi-verb
+  template: "Dw i'n hoffi [VERB]"
+  english: "I like [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in-hoffi, lex:hoffi]

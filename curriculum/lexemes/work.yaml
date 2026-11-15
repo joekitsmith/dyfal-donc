@@ -1,0 +1,62 @@
+- id: lex:swyddfa
+  welsh: "swyddfa"
+  english: "office"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:cyfarfod
+  welsh: "cyfarfod"
+  english: "meeting"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:cyfrifiadur
+  welsh: "cyfrifiadur"
+  english: "computer"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:e-bost
+  welsh: "e-bost"
+  english: "email"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:cwsmer
+  welsh: "cwsmer"
+  english: "customer"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:prosiect
+  welsh: "prosiect"
+  english: "project"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:swydd
+  welsh: "swydd"
+  english: "job"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:cwmni
+  welsh: "cwmni"
+  english: "company"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:anfon
+  welsh: "anfon"
+  english: "to send"
+  part_of_speech: verb
+
+- id: lex:trefnu
+  welsh: "trefnu"
+  english: "to arrange"
+  part_of_speech: verb
+
+- id: lex:defnyddio
+  welsh: "defnyddio"
+  english: "to use"
+  part_of_speech: verb

@@ -1,0 +1,995 @@
+- id: sp-i-like-good-weather
+  welsh: "Dw i'n hoffi tywydd da"
+  english: "I like good weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-do-you-like-good-weather
+  welsh: "Wyt ti'n hoffi tywydd da?"
+  english: "Do you like good weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-i-want-good-weather
+  welsh: "Dw i'n moyn tywydd da"
+  english: "I want good weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-i-want-a-good-day
+  welsh: "Dw i'n moyn diwrnod da"
+  english: "I want a good day"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-i-see-a-new-day
+  welsh: "Dw i'n gweld diwrnod newydd"
+  english: "I see a new day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-i-like-a-good-day
+  welsh: "Dw i'n hoffi diwrnod da"
+  english: "I like a good day"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-i-like-rain
+  welsh: "Dw i'n hoffi glaw"
+  english: "I like rain"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+
+- id: sp-i-dont-like-rain
+  welsh: "Dw i ddim yn hoffi glaw"
+  english: "I don't like rain"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+
+- id: sp-do-you-like-rain
+  welsh: "Wyt ti'n hoffi glaw?"
+  english: "Do you like rain?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+
+- id: sp-i-like-snow
+  welsh: "Dw i'n hoffi eira"
+  english: "I like snow"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+
+- id: sp-i-dont-like-snow
+  welsh: "Dw i ddim yn hoffi eira"
+  english: "I don't like snow"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+
+- id: sp-do-you-like-snow
+  welsh: "Wyt ti'n hoffi eira?"
+  english: "Do you like snow?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+
+- id: sp-i-like-sun
+  welsh: "Dw i'n hoffi haul"
+  english: "I like sun"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "haul", lemma: "haul", item: lex:haul}
+
+- id: sp-i-dont-like-sun
+  welsh: "Dw i ddim yn hoffi haul"
+  english: "I don't like sun"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "haul", lemma: "haul", item: lex:haul}
+
+- id: sp-do-you-like-sun
+  welsh: "Wyt ti'n hoffi haul?"
+  english: "Do you like sun?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "haul", lemma: "haul", item: lex:haul}
+
+- id: sp-i-like-wind
+  welsh: "Dw i'n hoffi gwynt"
+  english: "I like wind"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "gwynt", lemma: "gwynt", item: lex:gwynt}
+
+- id: sp-i-dont-like-wind
+  welsh: "Dw i ddim yn hoffi gwynt"
+  english: "I don't like wind"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "gwynt", lemma: "gwynt", item: lex:gwynt}
+
+- id: sp-do-you-like-wind
+  welsh: "Wyt ti'n hoffi gwynt?"
+  english: "Do you like wind?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "gwynt", lemma: "gwynt", item: lex:gwynt}
+
+- id: sp-its-raining
+  welsh: "Mae hi'n bwrw glaw"
+  english: "It's raining"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+
+- id: sp-its-snowing
+  welsh: "Mae hi'n bwrw eira"
+  english: "It's snowing"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+
+- id: sp-its-raining-today
+  welsh: "Mae hi'n bwrw glaw heddi"
+  english: "It's raining today"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-its-snowing-today
+  welsh: "Mae hi'n bwrw eira heddi"
+  english: "It's snowing today"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-i-like-cold-weather
+  welsh: "Dw i'n hoffi tywydd oer"
+  english: "I like cold weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "oer", lemma: "oer", item: lex:oer}
+
+- id: sp-i-dont-like-cold-weather
+  welsh: "Dw i ddim yn hoffi tywydd oer"
+  english: "I don't like cold weather"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "oer", lemma: "oer", item: lex:oer}
+
+- id: sp-do-you-like-cold-weather
+  welsh: "Wyt ti'n hoffi tywydd oer?"
+  english: "Do you like cold weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "oer", lemma: "oer", item: lex:oer}
+
+- id: sp-i-see-a-cold-day
+  welsh: "Dw i'n gweld diwrnod oer"
+  english: "I see a cold day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "oer", lemma: "oer", item: lex:oer}
+
+- id: sp-i-like-hot-weather
+  welsh: "Dw i'n hoffi tywydd poeth"
+  english: "I like hot weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "poeth", lemma: "poeth", item: lex:poeth}
+
+- id: sp-i-dont-like-hot-weather
+  welsh: "Dw i ddim yn hoffi tywydd poeth"
+  english: "I don't like hot weather"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "poeth", lemma: "poeth", item: lex:poeth}
+
+- id: sp-do-you-like-hot-weather
+  welsh: "Wyt ti'n hoffi tywydd poeth?"
+  english: "Do you like hot weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "poeth", lemma: "poeth", item: lex:poeth}
+
+- id: sp-i-see-a-hot-day
+  welsh: "Dw i'n gweld diwrnod poeth"
+  english: "I see a hot day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "poeth", lemma: "poeth", item: lex:poeth}
+
+- id: sp-i-like-warm-weather
+  welsh: "Dw i'n hoffi tywydd twym"
+  english: "I like warm weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "twym", lemma: "twym", item: lex:twym}
+
+- id: sp-i-dont-like-warm-weather
+  welsh: "Dw i ddim yn hoffi tywydd twym"
+  english: "I don't like warm weather"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "twym", lemma: "twym", item: lex:twym}
+
+- id: sp-do-you-like-warm-weather
+  welsh: "Wyt ti'n hoffi tywydd twym?"
+  english: "Do you like warm weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "twym", lemma: "twym", item: lex:twym}
+
+- id: sp-i-see-a-warm-day
+  welsh: "Dw i'n gweld diwrnod twym"
+  english: "I see a warm day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "twym", lemma: "twym", item: lex:twym}
+
+- id: sp-i-like-wet-weather
+  welsh: "Dw i'n hoffi tywydd gwlyb"
+  english: "I like wet weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "gwlyb", lemma: "gwlyb", item: lex:gwlyb}
+
+- id: sp-i-dont-like-wet-weather
+  welsh: "Dw i ddim yn hoffi tywydd gwlyb"
+  english: "I don't like wet weather"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "gwlyb", lemma: "gwlyb", item: lex:gwlyb}
+
+- id: sp-do-you-like-wet-weather
+  welsh: "Wyt ti'n hoffi tywydd gwlyb?"
+  english: "Do you like wet weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "gwlyb", lemma: "gwlyb", item: lex:gwlyb}
+
+- id: sp-i-see-a-wet-day
+  welsh: "Dw i'n gweld diwrnod gwlyb"
+  english: "I see a wet day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "gwlyb", lemma: "gwlyb", item: lex:gwlyb}
+
+- id: sp-i-like-dry-weather
+  welsh: "Dw i'n hoffi tywydd sych"
+  english: "I like dry weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "sych", lemma: "sych", item: lex:sych}
+
+- id: sp-i-dont-like-dry-weather
+  welsh: "Dw i ddim yn hoffi tywydd sych"
+  english: "I don't like dry weather"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "sych", lemma: "sych", item: lex:sych}
+
+- id: sp-do-you-like-dry-weather
+  welsh: "Wyt ti'n hoffi tywydd sych?"
+  english: "Do you like dry weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "sych", lemma: "sych", item: lex:sych}
+
+- id: sp-i-see-a-dry-day
+  welsh: "Dw i'n gweld diwrnod sych"
+  english: "I see a dry day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "sych", lemma: "sych", item: lex:sych}
+
+- id: sp-i-like-sunny-weather
+  welsh: "Dw i'n hoffi tywydd heulog"
+  english: "I like sunny weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "heulog", lemma: "heulog", item: lex:heulog}
+
+- id: sp-i-dont-like-sunny-weather
+  welsh: "Dw i ddim yn hoffi tywydd heulog"
+  english: "I don't like sunny weather"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "heulog", lemma: "heulog", item: lex:heulog}
+
+- id: sp-do-you-like-sunny-weather
+  welsh: "Wyt ti'n hoffi tywydd heulog?"
+  english: "Do you like sunny weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "heulog", lemma: "heulog", item: lex:heulog}
+
+- id: sp-i-see-a-sunny-day
+  welsh: "Dw i'n gweld diwrnod heulog"
+  english: "I see a sunny day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "heulog", lemma: "heulog", item: lex:heulog}
+
+- id: sp-i-like-windy-weather
+  welsh: "Dw i'n hoffi tywydd gwyntog"
+  english: "I like windy weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "gwyntog", lemma: "gwyntog", item: lex:gwyntog}
+
+- id: sp-i-dont-like-windy-weather
+  welsh: "Dw i ddim yn hoffi tywydd gwyntog"
+  english: "I don't like windy weather"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "gwyntog", lemma: "gwyntog", item: lex:gwyntog}
+
+- id: sp-do-you-like-windy-weather
+  welsh: "Wyt ti'n hoffi tywydd gwyntog?"
+  english: "Do you like windy weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "gwyntog", lemma: "gwyntog", item: lex:gwyntog}
+
+- id: sp-i-see-a-windy-day
+  welsh: "Dw i'n gweld diwrnod gwyntog"
+  english: "I see a windy day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "gwyntog", lemma: "gwyntog", item: lex:gwyntog}
+
+- id: sp-i-like-cloudy-weather
+  welsh: "Dw i'n hoffi tywydd cymylog"
+  english: "I like cloudy weather"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "cymylog", lemma: "cymylog", item: lex:cymylog}
+
+- id: sp-i-dont-like-cloudy-weather
+  welsh: "Dw i ddim yn hoffi tywydd cymylog"
+  english: "I don't like cloudy weather"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "cymylog", lemma: "cymylog", item: lex:cymylog}
+
+- id: sp-do-you-like-cloudy-weather
+  welsh: "Wyt ti'n hoffi tywydd cymylog?"
+  english: "Do you like cloudy weather?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "tywydd", lemma: "tywydd", item: lex:tywydd}
+    - {text: "cymylog", lemma: "cymylog", item: lex:cymylog}
+
+- id: sp-i-see-a-cloudy-day
+  welsh: "Dw i'n gweld diwrnod cymylog"
+  english: "I see a cloudy day"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "diwrnod", lemma: "diwrnod", item: lex:diwrnod}
+    - {text: "cymylog", lemma: "cymylog", item: lex:cymylog}
+
+- id: sp-its-cold-today
+  welsh: "Mae hi'n oer heddi"
+  english: "It's cold today"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "oer", lemma: "oer", item: lex:oer}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-its-hot-today
+  welsh: "Mae hi'n boeth heddi"
+  english: "It's hot today"
+  tags: [mutation, clitic]
+  patterns: [pat:mae-hi-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "boeth", lemma: "poeth", item: lex:poeth, mutation: soft}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-its-warm-today
+  welsh: "Mae hi'n dwym heddi"
+  english: "It's warm today"
+  tags: [mutation, clitic]
+  patterns: [pat:mae-hi-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dwym", lemma: "twym", item: lex:twym, mutation: soft}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-its-wet-today
+  welsh: "Mae hi'n wlyb heddi"
+  english: "It's wet today"
+  tags: [mutation, clitic]
+  patterns: [pat:mae-hi-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "wlyb", lemma: "gwlyb", item: lex:gwlyb, mutation: soft}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-its-dry-today
+  welsh: "Mae hi'n sych heddi"
+  english: "It's dry today"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "sych", lemma: "sych", item: lex:sych}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-its-sunny-today
+  welsh: "Mae hi'n heulog heddi"
+  english: "It's sunny today"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "heulog", lemma: "heulog", item: lex:heulog}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-its-windy-today
+  welsh: "Mae hi'n wyntog heddi"
+  english: "It's windy today"
+  tags: [mutation, clitic]
+  patterns: [pat:mae-hi-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "wyntog", lemma: "gwyntog", item: lex:gwyntog, mutation: soft}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-its-cloudy-today
+  welsh: "Mae hi'n gymylog heddi"
+  english: "It's cloudy today"
+  tags: [mutation, clitic]
+  patterns: [pat:mae-hi-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gymylog", lemma: "cymylog", item: lex:cymylog, mutation: soft}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-it-will-rain-tomorrow
+  welsh: "Bydd hi'n bwrw glaw fory"
+  english: "It will rain tomorrow"
+  tags: [clitic]
+  patterns: [pat:bydd-hi-yn]
+  tokens:
+    - {text: "Bydd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-it-will-snow-tomorrow
+  welsh: "Bydd hi'n bwrw eira fory"
+  english: "It will snow tomorrow"
+  tags: [clitic]
+  patterns: [pat:bydd-hi-yn]
+  tokens:
+    - {text: "Bydd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-it-will-rain-tonight
+  welsh: "Bydd hi'n bwrw glaw heno"
+  english: "It will rain tonight"
+  tags: [clitic]
+  patterns: [pat:bydd-hi-yn]
+  tokens:
+    - {text: "Bydd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+    - {text: "heno", lemma: "heno", item: lex:heno}
+
+- id: sp-it-will-snow-tonight
+  welsh: "Bydd hi'n bwrw eira heno"
+  english: "It will snow tonight"
+  tags: [clitic]
+  patterns: [pat:bydd-hi-yn]
+  tokens:
+    - {text: "Bydd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+    - {text: "heno", lemma: "heno", item: lex:heno}
+
+- id: sp-it-will-be-cold-tomorrow
+  welsh: "Bydd hi'n oer fory"
+  english: "It will be cold tomorrow"
+  tags: [clitic]
+  patterns: [pat:bydd-hi-yn-adj]
+  tokens:
+    - {text: "Bydd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "oer", lemma: "oer", item: lex:oer}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-it-will-be-hot-tomorrow
+  welsh: "Bydd hi'n boeth fory"
+  english: "It will be hot tomorrow"
+  tags: [mutation, clitic]
+  patterns: [pat:bydd-hi-yn-adj]
+  tokens:
+    - {text: "Bydd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "boeth", lemma: "poeth", item: lex:poeth, mutation: soft}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-it-will-be-wet-tomorrow
+  welsh: "Bydd hi'n wlyb fory"
+  english: "It will be wet tomorrow"
+  tags: [mutation, clitic]
+  patterns: [pat:bydd-hi-yn-adj]
+  tokens:
+    - {text: "Bydd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "wlyb", lemma: "gwlyb", item: lex:gwlyb, mutation: soft}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-it-will-be-sunny-tomorrow
+  welsh: "Bydd hi'n heulog fory"
+  english: "It will be sunny tomorrow"
+  tags: [clitic]
+  patterns: [pat:bydd-hi-yn-adj]
+  tokens:
+    - {text: "Bydd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "heulog", lemma: "heulog", item: lex:heulog}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-it-was-raining-yesterday
+  welsh: "Ro'dd hi'n bwrw glaw ddoe"
+  english: "It was raining yesterday"
+  tags: [clitic]
+  patterns: [pat:rodd-hi-yn]
+  tokens:
+    - {text: "Ro'dd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-it-was-snowing-yesterday
+  welsh: "Ro'dd hi'n bwrw eira ddoe"
+  english: "It was snowing yesterday"
+  tags: [clitic]
+  patterns: [pat:rodd-hi-yn]
+  tokens:
+    - {text: "Ro'dd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-it-was-raining-last-night
+  welsh: "Ro'dd hi'n bwrw glaw neithiwr"
+  english: "It was raining last night"
+  tags: [clitic]
+  patterns: [pat:rodd-hi-yn]
+  tokens:
+    - {text: "Ro'dd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "glaw", lemma: "glaw", item: lex:glaw}
+    - {text: "neithiwr", lemma: "neithiwr", item: lex:neithiwr}
+
+- id: sp-it-was-snowing-last-night
+  welsh: "Ro'dd hi'n bwrw eira neithiwr"
+  english: "It was snowing last night"
+  tags: [clitic]
+  patterns: [pat:rodd-hi-yn]
+  tokens:
+    - {text: "Ro'dd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwrw", lemma: "bwrw", item: lex:bwrw}
+    - {text: "eira", lemma: "eira", item: lex:eira}
+    - {text: "neithiwr", lemma: "neithiwr", item: lex:neithiwr}
+
+- id: sp-it-was-cold-yesterday
+  welsh: "Ro'dd hi'n oer ddoe"
+  english: "It was cold yesterday"
+  tags: [clitic]
+  patterns: [pat:rodd-hi-yn-adj]
+  tokens:
+    - {text: "Ro'dd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "oer", lemma: "oer", item: lex:oer}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-it-was-hot-yesterday
+  welsh: "Ro'dd hi'n boeth ddoe"
+  english: "It was hot yesterday"
+  tags: [mutation, clitic]
+  patterns: [pat:rodd-hi-yn-adj]
+  tokens:
+    - {text: "Ro'dd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "boeth", lemma: "poeth", item: lex:poeth, mutation: soft}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-it-was-windy-yesterday
+  welsh: "Ro'dd hi'n wyntog ddoe"
+  english: "It was windy yesterday"
+  tags: [mutation, clitic]
+  patterns: [pat:rodd-hi-yn-adj]
+  tokens:
+    - {text: "Ro'dd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "wyntog", lemma: "gwyntog", item: lex:gwyntog, mutation: soft}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-it-was-cloudy-yesterday
+  welsh: "Ro'dd hi'n gymylog ddoe"
+  english: "It was cloudy yesterday"
+  tags: [mutation, clitic]
+  patterns: [pat:rodd-hi-yn-adj]
+  tokens:
+    - {text: "Ro'dd", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gymylog", lemma: "cymylog", item: lex:cymylog, mutation: soft}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}

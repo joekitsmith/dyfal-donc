@@ -1,0 +1,94 @@
+- id: lex:dydd-llun
+  welsh: "dydd Llun"
+  english: "Monday"
+  part_of_speech: phrase
+  notes: "Soft-mutates after a verb or 'ar' (ddydd Llun, on Monday)."
+
+- id: lex:dydd-mawrth
+  welsh: "dydd Mawrth"
+  english: "Tuesday"
+  part_of_speech: phrase
+  notes: "Soft-mutates after a verb or 'ar' (ddydd Llun, on Monday)."
+
+- id: lex:dydd-mercher
+  welsh: "dydd Mercher"
+  english: "Wednesday"
+  part_of_speech: phrase
+  notes: "Soft-mutates after a verb or 'ar' (ddydd Llun, on Monday)."
+
+- id: lex:dydd-iau
+  welsh: "dydd Iau"
+  english: "Thursday"
+  part_of_speech: phrase
+  notes: "Soft-mutates after a verb or 'ar' (ddydd Llun, on Monday)."
+
+- id: lex:dydd-gwener
+  welsh: "dydd Gwener"
+  english: "Friday"
+  part_of_speech: phrase
+  notes: "Soft-mutates after a verb or 'ar' (ddydd Llun, on Monday)."
+
+- id: lex:dydd-sadwrn
+  welsh: "dydd Sadwrn"
+  english: "Saturday"
+  part_of_speech: phrase
+  notes: "Soft-mutates after a verb or 'ar' (ddydd Llun, on Monday)."
+
+- id: lex:dydd-sul
+  welsh: "dydd Sul"
+  english: "Sunday"
+  part_of_speech: phrase
+  notes: "Soft-mutates after a verb or 'ar' (ddydd Llun, on Monday)."
+
+- id: lex:bore
+  welsh: "bore"
+  english: "morning"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:prynhawn
+  welsh: "prynhawn"
+  english: "afternoon"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:nos
+  welsh: "nos"
+  english: "night"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:wythnos
+  welsh: "wythnos"
+  english: "week"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:mis
+  welsh: "mis"
+  english: "month"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:blwyddyn
+  welsh: "blwyddyn"
+  english: "year"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:awr
+  welsh: "awr"
+  english: "hour"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:nesaf
+  welsh: "nesaf"
+  english: "next"
+  part_of_speech: adj
+
+- id: lex:diwethaf
+  welsh: "diwethaf"
+  english: "last"
+  part_of_speech: adj
+  notes: "Soft-mutates after a feminine noun (wythnos ddiwethaf)."

@@ -1,0 +1,585 @@
+- id: sp-im-staying-in-the-house
+  welsh: "Dw i'n aros yn y tŷ"
+  english: "I'm staying in the house"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-im-working-in-the-house
+  welsh: "Dw i'n gweithio yn y tŷ"
+  english: "I'm working in the house"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-im-eating-in-the-house
+  welsh: "Dw i'n bwyta yn y tŷ"
+  english: "I'm eating in the house"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-im-learning-in-the-house
+  welsh: "Dw i'n dysgu yn y tŷ"
+  english: "I'm learning in the house"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-i-live-in-cardiff
+  welsh: "Dw i'n byw yng Nghaerdydd"
+  english: "I live in Cardiff"
+  tags: [mutation, clitic, inflection]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "yng", lemma: "yn", item: lex:yn}
+    - {text: "Nghaerdydd", lemma: "caerdydd", item: lex:caerdydd, mutation: nasal}
+
+- id: sp-im-going-to-cardiff
+  welsh: "Dw i'n mynd i Gaerdydd"
+  english: "I'm going to Cardiff"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "Gaerdydd", lemma: "caerdydd", item: lex:caerdydd, mutation: soft}
+
+- id: sp-i-live-in-wales
+  welsh: "Dw i'n byw yng Nghymru"
+  english: "I live in Wales"
+  tags: [mutation, clitic, inflection]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "yng", lemma: "yn", item: lex:yn}
+    - {text: "Nghymru", lemma: "cymru", item: lex:cymru, mutation: nasal}
+
+- id: sp-i-work-in-wales
+  welsh: "Dw i'n gweithio yng Nghymru"
+  english: "I work in Wales"
+  tags: [mutation, clitic, inflection]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yng", lemma: "yn", item: lex:yn}
+    - {text: "Nghymru", lemma: "cymru", item: lex:cymru, mutation: nasal}
+
+- id: sp-i-come-from-wales
+  welsh: "Dw i'n dod o Gymru"
+  english: "I come from Wales"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "Gymru", lemma: "cymru", item: lex:cymru, mutation: soft}
+
+- id: sp-im-going-to-wales
+  welsh: "Dw i'n mynd i Gymru"
+  english: "I'm going to Wales"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "Gymru", lemma: "cymru", item: lex:cymru, mutation: soft}
+
+- id: sp-i-live-in-swansea
+  welsh: "Dw i'n byw yn Abertawe"
+  english: "I live in Swansea"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "Abertawe", lemma: "abertawe", item: lex:abertawe}
+
+- id: sp-i-work-in-swansea
+  welsh: "Dw i'n gweithio yn Abertawe"
+  english: "I work in Swansea"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "Abertawe", lemma: "abertawe", item: lex:abertawe}
+
+- id: sp-i-come-from-swansea
+  welsh: "Dw i'n dod o Abertawe"
+  english: "I come from Swansea"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "Abertawe", lemma: "abertawe", item: lex:abertawe}
+
+- id: sp-im-going-to-swansea
+  welsh: "Dw i'n mynd i Abertawe"
+  english: "I'm going to Swansea"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "Abertawe", lemma: "abertawe", item: lex:abertawe}
+
+- id: sp-i-live-in-london
+  welsh: "Dw i'n byw yn Llundain"
+  english: "I live in London"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "Llundain", lemma: "llundain", item: lex:llundain}
+
+- id: sp-i-work-in-london
+  welsh: "Dw i'n gweithio yn Llundain"
+  english: "I work in London"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "Llundain", lemma: "llundain", item: lex:llundain}
+
+- id: sp-i-come-from-london
+  welsh: "Dw i'n dod o Lundain"
+  english: "I come from London"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "Lundain", lemma: "llundain", item: lex:llundain, mutation: soft}
+
+- id: sp-im-going-to-london
+  welsh: "Dw i'n mynd i Lundain"
+  english: "I'm going to London"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "Lundain", lemma: "llundain", item: lex:llundain, mutation: soft}
+
+- id: sp-im-going-to-the-town
+  welsh: "Dw i'n mynd i'r dref"
+  english: "I'm going to the town"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "dref", lemma: "tref", item: lex:tref, mutation: soft}
+
+- id: sp-im-coming-from-the-town
+  welsh: "Dw i'n dod o'r dref"
+  english: "I'm coming from the town"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "dref", lemma: "tref", item: lex:tref, mutation: soft}
+
+- id: sp-im-working-in-the-town
+  welsh: "Dw i'n gweithio yn y dref"
+  english: "I'm working in the town"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "dref", lemma: "tref", item: lex:tref, mutation: soft}
+
+- id: sp-im-going-to-the-village
+  welsh: "Dw i'n mynd i'r pentref"
+  english: "I'm going to the village"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "pentref", lemma: "pentref", item: lex:pentref}
+
+- id: sp-im-coming-from-the-village
+  welsh: "Dw i'n dod o'r pentref"
+  english: "I'm coming from the village"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "pentref", lemma: "pentref", item: lex:pentref}
+
+- id: sp-im-working-in-the-village
+  welsh: "Dw i'n gweithio yn y pentref"
+  english: "I'm working in the village"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "pentref", lemma: "pentref", item: lex:pentref}
+
+- id: sp-im-going-to-the-shop
+  welsh: "Dw i'n mynd i'r siop"
+  english: "I'm going to the shop"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "siop", lemma: "siop", item: lex:siop}
+
+- id: sp-im-coming-from-the-shop
+  welsh: "Dw i'n dod o'r siop"
+  english: "I'm coming from the shop"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "siop", lemma: "siop", item: lex:siop}
+
+- id: sp-im-working-in-the-shop
+  welsh: "Dw i'n gweithio yn y siop"
+  english: "I'm working in the shop"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "siop", lemma: "siop", item: lex:siop}
+
+- id: sp-im-going-to-the-school
+  welsh: "Dw i'n mynd i'r ysgol"
+  english: "I'm going to the school"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "ysgol", lemma: "ysgol", item: lex:ysgol}
+
+- id: sp-im-coming-from-the-school
+  welsh: "Dw i'n dod o'r ysgol"
+  english: "I'm coming from the school"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "ysgol", lemma: "ysgol", item: lex:ysgol}
+
+- id: sp-im-working-in-the-school
+  welsh: "Dw i'n gweithio yn yr ysgol"
+  english: "I'm working in the school"
+  tags: [clitic, inflection, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "yr", lemma: "y", item: lex:y}
+    - {text: "ysgol", lemma: "ysgol", item: lex:ysgol}
+
+- id: sp-im-going-to-the-station
+  welsh: "Dw i'n mynd i'r orsaf"
+  english: "I'm going to the station"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "orsaf", lemma: "gorsaf", item: lex:gorsaf, mutation: soft}
+
+- id: sp-im-coming-from-the-station
+  welsh: "Dw i'n dod o'r orsaf"
+  english: "I'm coming from the station"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "orsaf", lemma: "gorsaf", item: lex:gorsaf, mutation: soft}
+
+- id: sp-im-working-in-the-station
+  welsh: "Dw i'n gweithio yn yr orsaf"
+  english: "I'm working in the station"
+  tags: [mutation, clitic, inflection, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "yr", lemma: "y", item: lex:y}
+    - {text: "orsaf", lemma: "gorsaf", item: lex:gorsaf, mutation: soft}
+
+- id: sp-im-going-to-the-park
+  welsh: "Dw i'n mynd i'r parc"
+  english: "I'm going to the park"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "parc", lemma: "parc", item: lex:parc}
+
+- id: sp-im-coming-from-the-park
+  welsh: "Dw i'n dod o'r parc"
+  english: "I'm coming from the park"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "parc", lemma: "parc", item: lex:parc}
+
+- id: sp-im-working-in-the-park
+  welsh: "Dw i'n gweithio yn y parc"
+  english: "I'm working in the park"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "parc", lemma: "parc", item: lex:parc}
+
+- id: sp-im-going-to-the-restaurant
+  welsh: "Dw i'n mynd i'r bwyty"
+  english: "I'm going to the restaurant"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "bwyty", lemma: "bwyty", item: lex:bwyty}
+
+- id: sp-im-coming-from-the-restaurant
+  welsh: "Dw i'n dod o'r bwyty"
+  english: "I'm coming from the restaurant"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "bwyty", lemma: "bwyty", item: lex:bwyty}
+
+- id: sp-im-working-in-the-restaurant
+  welsh: "Dw i'n gweithio yn y bwyty"
+  english: "I'm working in the restaurant"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "bwyty", lemma: "bwyty", item: lex:bwyty}
+
+- id: sp-im-travelling
+  welsh: "Dw i'n teithio"
+  english: "I'm travelling"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "teithio", lemma: "teithio", item: lex:teithio}
+
+- id: sp-i-want-to-travel
+  welsh: "Dw i'n moyn teithio"
+  english: "I want to travel"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "teithio", lemma: "teithio", item: lex:teithio}
+
+- id: sp-i-travelled
+  welsh: "Nes i deithio"
+  english: "I travelled"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "deithio", lemma: "teithio", item: lex:teithio, mutation: soft}
+
+- id: sp-ill-travel
+  welsh: "Wna i deithio"
+  english: "I'll travel"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "deithio", lemma: "teithio", item: lex:teithio, mutation: soft}
+
+- id: sp-are-you-travelling
+  welsh: "Wyt ti'n teithio?"
+  english: "Are you travelling?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "teithio", lemma: "teithio", item: lex:teithio}

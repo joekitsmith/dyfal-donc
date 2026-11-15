@@ -1,0 +1,94 @@
+- id: lex:cig
+  welsh: "cig"
+  english: "meat"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:pysgod
+  welsh: "pysgod"
+  english: "fish"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:caws
+  welsh: "caws"
+  english: "cheese"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:wy
+  welsh: "wy"
+  english: "egg"
+  part_of_speech: noun
+  gender: m
+  forms: ["wyau"]
+
+- id: lex:afal
+  welsh: "afal"
+  english: "apple"
+  part_of_speech: noun
+  gender: m
+  forms: ["afalau"]
+
+- id: lex:cwrw
+  welsh: "cwrw"
+  english: "beer"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:gwin
+  welsh: "gwin"
+  english: "wine"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:siwgr
+  welsh: "siwgr"
+  english: "sugar"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:cawl
+  welsh: "cawl"
+  english: "soup, broth"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:brecwast
+  welsh: "brecwast"
+  english: "breakfast"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:cinio
+  welsh: "cinio"
+  english: "lunch, dinner"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:swper
+  welsh: "swper"
+  english: "supper, tea"
+  part_of_speech: noun
+  gender: m
+  notes: "South Wales for the evening meal."
+
+- id: lex:coginio
+  welsh: "coginio"
+  english: "to cook"
+  part_of_speech: verb
+
+- id: lex:archebu
+  welsh: "archebu"
+  english: "to order"
+  part_of_speech: verb
+
+- id: lex:talu
+  welsh: "talu"
+  english: "to pay"
+  part_of_speech: verb
+
+- id: lex:blasus
+  welsh: "blasus"
+  english: "tasty"
+  part_of_speech: adj

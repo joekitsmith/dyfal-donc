@@ -71,3 +71,41 @@ class TestLoadGoldSentences:
             GoldSetError, match="Duplicate sentence ids: like-the-welsh"
         ):
             load_gold_sentences(write(tmp_path, VALID + "\n" + VALID))
+
+
+class TestLoadGoldDirectory:
+    def test_reads_every_file_in_file_name_order(self, tmp_path: Path) -> None:
+        (tmp_path / "b.yaml").write_text(
+            VALID.replace("like-the-welsh", "second"), encoding="utf-8"
+        )
+        (tmp_path / "a.yaml").write_text(
+            VALID.replace("like-the-welsh", "first"), encoding="utf-8"
+        )
+
+        sentences = load_gold_sentences(tmp_path)
+
+        assert [sentence.id for sentence in sentences] == ["first", "second"]
+
+    def test_ignores_files_that_are_not_yaml(self, tmp_path: Path) -> None:
+        (tmp_path / "a.yaml").write_text(VALID, encoding="utf-8")
+        (tmp_path / "notes.md").write_text("Not sentences", encoding="utf-8")
+
+        assert len(load_gold_sentences(tmp_path)) == 1
+
+    def test_ids_must_be_unique_across_files(self, tmp_path: Path) -> None:
+        (tmp_path / "a.yaml").write_text(VALID, encoding="utf-8")
+        (tmp_path / "b.yaml").write_text(VALID, encoding="utf-8")
+
+        with pytest.raises(
+            GoldSetError, match="Duplicate sentence ids: like-the-welsh"
+        ):
+            load_gold_sentences(tmp_path)
+
+    def test_an_error_names_the_file_it_is_in(self, tmp_path: Path) -> None:
+        (tmp_path / "a.yaml").write_text(VALID, encoding="utf-8")
+        (tmp_path / "b.yaml").write_text(
+            VALID.replace("like-the-welsh", "x") + "  typo: 1\n", encoding="utf-8"
+        )
+
+        with pytest.raises(GoldSetError, match=r"b\.yaml \(x\): Unknown field"):
+            load_gold_sentences(tmp_path)

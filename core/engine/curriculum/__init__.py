@@ -9,6 +9,7 @@ from engine.curriculum.models import (
     Lexeme,
     PartOfSpeech,
     Pattern,
+    Topic,
 )
 
 __all__ = [
@@ -21,6 +22,7 @@ __all__ = [
     "Lexeme",
     "PartOfSpeech",
     "Pattern",
+    "Topic",
     "find_cycle",
     "load_curriculum",
     "topological_order",

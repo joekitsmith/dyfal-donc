@@ -1,0 +1,6 @@
+- id: pat:beth-wyt-ti-yn-moyn
+  template: "Beth wyt ti'n moyn?"
+  english: "What do you want?"
+  slots: {}
+  prerequisites: [pat:wyt-ti-yn, pat:dw-in-moyn, lex:beth]
+  notes: "Taught as a chunk with no slot."

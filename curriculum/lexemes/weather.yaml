@@ -1,0 +1,83 @@
+- id: lex:tywydd
+  welsh: "tywydd"
+  english: "weather"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:diwrnod
+  welsh: "diwrnod"
+  english: "day"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:glaw
+  welsh: "glaw"
+  english: "rain"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:eira
+  welsh: "eira"
+  english: "snow"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:haul
+  welsh: "haul"
+  english: "sun"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:gwynt
+  welsh: "gwynt"
+  english: "wind"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:bwrw
+  welsh: "bwrw"
+  english: "to hit, to rain"
+  part_of_speech: verb
+  notes: "Used for the weather: Mae hi'n bwrw glaw."
+
+- id: lex:oer
+  welsh: "oer"
+  english: "cold"
+  part_of_speech: adj
+
+- id: lex:poeth
+  welsh: "poeth"
+  english: "hot"
+  part_of_speech: adj
+  notes: "Soft-mutates after 'n (Mae hi'n boeth)."
+
+- id: lex:twym
+  welsh: "twym"
+  english: "warm"
+  part_of_speech: adj
+  notes: "South Wales. Soft-mutates after 'n (Mae hi'n dwym)."
+
+- id: lex:gwlyb
+  welsh: "gwlyb"
+  english: "wet"
+  part_of_speech: adj
+
+- id: lex:sych
+  welsh: "sych"
+  english: "dry"
+  part_of_speech: adj
+
+- id: lex:heulog
+  welsh: "heulog"
+  english: "sunny"
+  part_of_speech: adj
+
+- id: lex:gwyntog
+  welsh: "gwyntog"
+  english: "windy"
+  part_of_speech: adj
+
+- id: lex:cymylog
+  welsh: "cymylog"
+  english: "cloudy"
+  part_of_speech: adj

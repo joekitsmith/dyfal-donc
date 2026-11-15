@@ -58,7 +58,7 @@ def collect_suggestions(
 
 
 def render_suggestions(groups: Sequence[SuggestionGroup]) -> str:
-    """The suggestions as text an author can read and paste into ``lexemes.yaml``."""
+    """The suggestions as text an author can read and paste into a file in ``curriculum/lexemes/``."""
     if not groups:
         return "No suggestions"
 

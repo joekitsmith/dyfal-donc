@@ -1,0 +1,279 @@
+# The places pack: exercises for the 'places' topic, in South Wales Welsh. Each uses only items
+# earlier in the course order, plus its new_item.
+# Fields: id, english, welsh, items, new_item (optional).
+
+- id: im-staying-in-the-house
+  english: "I'm staying in the house"
+  welsh: "Dw i'n aros yn y tŷ"
+  items: [pat:dw-in, lex:ty, lex:y, lex:aros, lex:yn]
+  new_item: lex:yn
+
+- id: im-working-in-the-house
+  english: "I'm working in the house"
+  welsh: "Dw i'n gweithio yn y tŷ"
+  items: [pat:dw-in, lex:gweithio, lex:ty, lex:y, lex:yn]
+  new_item: lex:yn
+
+- id: im-eating-in-the-house
+  english: "I'm eating in the house"
+  welsh: "Dw i'n bwyta yn y tŷ"
+  items: [pat:dw-in, lex:bwyta, lex:ty, lex:y, lex:yn]
+  new_item: lex:yn
+
+- id: im-learning-in-the-house
+  english: "I'm learning in the house"
+  welsh: "Dw i'n dysgu yn y tŷ"
+  items: [lex:dysgu, pat:dw-in, lex:ty, lex:y, lex:yn]
+  new_item: lex:yn
+
+- id: i-live-in-cardiff
+  english: "I live in Cardiff"
+  welsh: "Dw i'n byw yng Nghaerdydd"
+  items: [pat:dw-in, lex:byw, lex:yn, lex:caerdydd]
+  new_item: lex:caerdydd
+
+- id: i-work-in-cardiff
+  english: "I work in Cardiff"
+  welsh: "Dw i'n gweithio yng Nghaerdydd"
+  items: [pat:dw-in, lex:gweithio, lex:yn, lex:caerdydd]
+  new_item: lex:caerdydd
+
+- id: i-come-from-cardiff
+  english: "I come from Cardiff"
+  welsh: "Dw i'n dod o Gaerdydd"
+  items: [lex:dod, pat:dw-in, lex:o, lex:caerdydd]
+  new_item: lex:caerdydd
+
+- id: im-going-to-cardiff
+  english: "I'm going to Cardiff"
+  welsh: "Dw i'n mynd i Gaerdydd"
+  items: [lex:mynd, pat:dw-in, lex:i, lex:caerdydd]
+  new_item: lex:caerdydd
+
+- id: i-live-in-wales
+  english: "I live in Wales"
+  welsh: "Dw i'n byw yng Nghymru"
+  items: [pat:dw-in, lex:byw, lex:yn, lex:cymru]
+  new_item: lex:cymru
+
+- id: i-work-in-wales
+  english: "I work in Wales"
+  welsh: "Dw i'n gweithio yng Nghymru"
+  items: [pat:dw-in, lex:gweithio, lex:yn, lex:cymru]
+  new_item: lex:cymru
+
+- id: i-come-from-wales
+  english: "I come from Wales"
+  welsh: "Dw i'n dod o Gymru"
+  items: [lex:dod, pat:dw-in, lex:o, lex:cymru]
+  new_item: lex:cymru
+
+- id: im-going-to-wales
+  english: "I'm going to Wales"
+  welsh: "Dw i'n mynd i Gymru"
+  items: [lex:mynd, pat:dw-in, lex:i, lex:cymru]
+  new_item: lex:cymru
+
+- id: i-live-in-swansea
+  english: "I live in Swansea"
+  welsh: "Dw i'n byw yn Abertawe"
+  items: [pat:dw-in, lex:byw, lex:yn, lex:abertawe]
+  new_item: lex:abertawe
+
+- id: i-work-in-swansea
+  english: "I work in Swansea"
+  welsh: "Dw i'n gweithio yn Abertawe"
+  items: [pat:dw-in, lex:gweithio, lex:yn, lex:abertawe]
+  new_item: lex:abertawe
+
+- id: i-come-from-swansea
+  english: "I come from Swansea"
+  welsh: "Dw i'n dod o Abertawe"
+  items: [lex:dod, pat:dw-in, lex:o, lex:abertawe]
+  new_item: lex:abertawe
+
+- id: im-going-to-swansea
+  english: "I'm going to Swansea"
+  welsh: "Dw i'n mynd i Abertawe"
+  items: [lex:mynd, pat:dw-in, lex:i, lex:abertawe]
+  new_item: lex:abertawe
+
+- id: i-live-in-london
+  english: "I live in London"
+  welsh: "Dw i'n byw yn Llundain"
+  items: [pat:dw-in, lex:byw, lex:yn, lex:llundain]
+  new_item: lex:llundain
+
+- id: i-work-in-london
+  english: "I work in London"
+  welsh: "Dw i'n gweithio yn Llundain"
+  items: [pat:dw-in, lex:gweithio, lex:yn, lex:llundain]
+  new_item: lex:llundain
+
+- id: i-come-from-london
+  english: "I come from London"
+  welsh: "Dw i'n dod o Lundain"
+  items: [lex:dod, pat:dw-in, lex:o, lex:llundain]
+  new_item: lex:llundain
+
+- id: im-going-to-london
+  english: "I'm going to London"
+  welsh: "Dw i'n mynd i Lundain"
+  items: [lex:mynd, pat:dw-in, lex:i, lex:llundain]
+  new_item: lex:llundain
+
+- id: im-going-to-the-town
+  english: "I'm going to the town"
+  welsh: "Dw i'n mynd i'r dref"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:tref]
+  new_item: lex:tref
+
+- id: im-coming-from-the-town
+  english: "I'm coming from the town"
+  welsh: "Dw i'n dod o'r dref"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:tref]
+  new_item: lex:tref
+
+- id: im-working-in-the-town
+  english: "I'm working in the town"
+  welsh: "Dw i'n gweithio yn y dref"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:tref]
+  new_item: lex:tref
+
+- id: im-going-to-the-village
+  english: "I'm going to the village"
+  welsh: "Dw i'n mynd i'r pentref"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:pentref]
+  new_item: lex:pentref
+
+- id: im-coming-from-the-village
+  english: "I'm coming from the village"
+  welsh: "Dw i'n dod o'r pentref"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:pentref]
+  new_item: lex:pentref
+
+- id: im-working-in-the-village
+  english: "I'm working in the village"
+  welsh: "Dw i'n gweithio yn y pentref"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:pentref]
+  new_item: lex:pentref
+
+- id: im-going-to-the-shop
+  english: "I'm going to the shop"
+  welsh: "Dw i'n mynd i'r siop"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:siop]
+  new_item: lex:siop
+
+- id: im-coming-from-the-shop
+  english: "I'm coming from the shop"
+  welsh: "Dw i'n dod o'r siop"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:siop]
+  new_item: lex:siop
+
+- id: im-working-in-the-shop
+  english: "I'm working in the shop"
+  welsh: "Dw i'n gweithio yn y siop"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:siop]
+  new_item: lex:siop
+
+- id: im-going-to-the-school
+  english: "I'm going to the school"
+  welsh: "Dw i'n mynd i'r ysgol"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:ysgol]
+  new_item: lex:ysgol
+
+- id: im-coming-from-the-school
+  english: "I'm coming from the school"
+  welsh: "Dw i'n dod o'r ysgol"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:ysgol]
+  new_item: lex:ysgol
+
+- id: im-working-in-the-school
+  english: "I'm working in the school"
+  welsh: "Dw i'n gweithio yn yr ysgol"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:ysgol]
+  new_item: lex:ysgol
+
+- id: im-going-to-the-station
+  english: "I'm going to the station"
+  welsh: "Dw i'n mynd i'r orsaf"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:gorsaf]
+  new_item: lex:gorsaf
+
+- id: im-coming-from-the-station
+  english: "I'm coming from the station"
+  welsh: "Dw i'n dod o'r orsaf"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:gorsaf]
+  new_item: lex:gorsaf
+
+- id: im-working-in-the-station
+  english: "I'm working in the station"
+  welsh: "Dw i'n gweithio yn yr orsaf"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:gorsaf]
+  new_item: lex:gorsaf
+
+- id: im-going-to-the-park
+  english: "I'm going to the park"
+  welsh: "Dw i'n mynd i'r parc"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:parc]
+  new_item: lex:parc
+
+- id: im-coming-from-the-park
+  english: "I'm coming from the park"
+  welsh: "Dw i'n dod o'r parc"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:parc]
+  new_item: lex:parc
+
+- id: im-working-in-the-park
+  english: "I'm working in the park"
+  welsh: "Dw i'n gweithio yn y parc"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:parc]
+  new_item: lex:parc
+
+- id: im-going-to-the-restaurant
+  english: "I'm going to the restaurant"
+  welsh: "Dw i'n mynd i'r bwyty"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:bwyty]
+  new_item: lex:bwyty
+
+- id: im-coming-from-the-restaurant
+  english: "I'm coming from the restaurant"
+  welsh: "Dw i'n dod o'r bwyty"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:bwyty]
+  new_item: lex:bwyty
+
+- id: im-working-in-the-restaurant
+  english: "I'm working in the restaurant"
+  welsh: "Dw i'n gweithio yn y bwyty"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:bwyty]
+  new_item: lex:bwyty
+
+- id: im-travelling
+  english: "I'm travelling"
+  welsh: "Dw i'n teithio"
+  items: [pat:dw-in, lex:teithio]
+  new_item: lex:teithio
+
+- id: i-want-to-travel
+  english: "I want to travel"
+  welsh: "Dw i'n moyn teithio"
+  items: [pat:dw-in-moyn, lex:teithio]
+  new_item: lex:teithio
+
+- id: i-travelled
+  english: "I travelled"
+  welsh: "Nes i deithio"
+  items: [pat:nes-i, lex:teithio]
+  new_item: lex:teithio
+
+- id: ill-travel
+  english: "I'll travel"
+  welsh: "Wna i deithio"
+  items: [pat:wna-i, lex:teithio]
+  new_item: lex:teithio
+
+- id: are-you-travelling
+  english: "Are you travelling?"
+  welsh: "Wyt ti'n teithio?"
+  items: [pat:wyt-ti-yn, lex:teithio]
+  new_item: lex:teithio

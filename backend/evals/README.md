@@ -4,7 +4,7 @@ Measurements of quality, kept apart from the tests. The tests check behaviour, w
 
 ## `evals.gold`
 
-`gold/sentences.yaml` holds hand-written South Wales sentences, annotated per token:
+`gold/sentences/` holds South Wales sentences, annotated per token, one file per topic. `hand.yaml` is the original hand-written set, which the lemmatiser benchmark was first scored on. The other files (`spine.yaml`, `food.yaml` and so on) are the sentences of the course's own exercises, one per exercise in the matching pack. Each token is annotated:
 
 - `lemma`: the dictionary form (`Dw` is `bod`, `'n` is `yn`).
 - `item`: the lexeme id the token should be detected as, or nothing. Nothing means the token is not a lexeme: it is outside the curriculum, or it is a fixed word of a pattern.

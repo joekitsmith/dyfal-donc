@@ -72,7 +72,7 @@ def _is_valid(
     if exercise.new_item is None:
         known = frozenset(curriculum.order)
     elif exercise.new_item in position:
-        known = frozenset(curriculum.order[: position[exercise.new_item]])
+        known = curriculum.known_before(exercise.new_item)
     else:
         return False
 

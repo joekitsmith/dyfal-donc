@@ -1,0 +1,255 @@
+# The work pack: exercises for the 'work' topic, in South Wales Welsh. Each uses only items
+# earlier in the course order, plus its new_item.
+# Fields: id, english, welsh, items, new_item (optional).
+
+- id: im-going-to-the-office
+  english: "I'm going to the office"
+  welsh: "Dw i'n mynd i'r swyddfa"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:swyddfa]
+  new_item: lex:swyddfa
+
+- id: im-coming-from-the-office
+  english: "I'm coming from the office"
+  welsh: "Dw i'n dod o'r swyddfa"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:swyddfa]
+  new_item: lex:swyddfa
+
+- id: i-want-an-office
+  english: "I want an office"
+  welsh: "Dw i'n moyn swyddfa"
+  items: [pat:dw-in-moyn-noun, lex:swyddfa]
+  new_item: lex:swyddfa
+
+- id: i-want-a-meeting
+  english: "I want a meeting"
+  welsh: "Dw i'n moyn cyfarfod"
+  items: [pat:dw-in-moyn-noun, lex:cyfarfod]
+  new_item: lex:cyfarfod
+
+- id: im-starting-a-meeting
+  english: "I'm starting a meeting"
+  welsh: "Dw i'n dechrau cyfarfod"
+  items: [pat:dw-in, lex:dechrau, lex:cyfarfod]
+  new_item: lex:cyfarfod
+
+- id: im-finishing-a-meeting
+  english: "I'm finishing a meeting"
+  welsh: "Dw i'n gorffen cyfarfod"
+  items: [pat:dw-in, lex:gorffen, lex:cyfarfod]
+  new_item: lex:cyfarfod
+
+- id: i-want-a-computer
+  english: "I want a computer"
+  welsh: "Dw i'n moyn cyfrifiadur"
+  items: [pat:dw-in-moyn-noun, lex:cyfrifiadur]
+  new_item: lex:cyfrifiadur
+
+- id: im-buying-a-computer
+  english: "I'm buying a computer"
+  welsh: "Dw i'n prynu cyfrifiadur"
+  items: [pat:dw-in, lex:prynu, lex:cyfrifiadur]
+  new_item: lex:cyfrifiadur
+
+- id: i-see-a-new-computer
+  english: "I see a new computer"
+  welsh: "Dw i'n gweld cyfrifiadur newydd"
+  items: [pat:dw-in, lex:gweld, lex:newydd, lex:cyfrifiadur]
+  new_item: lex:cyfrifiadur
+
+- id: im-writing-an-email
+  english: "I'm writing an email"
+  welsh: "Dw i'n ysgrifennu e-bost"
+  items: [pat:dw-in, lex:ysgrifennu, lex:e-bost]
+  new_item: lex:e-bost
+
+- id: im-reading-an-email
+  english: "I'm reading an email"
+  welsh: "Dw i'n darllen e-bost"
+  items: [pat:dw-in, lex:darllen, lex:e-bost]
+  new_item: lex:e-bost
+
+- id: im-getting-an-email
+  english: "I'm getting an email"
+  welsh: "Dw i'n cael e-bost"
+  items: [pat:dw-in, lex:cael, lex:e-bost]
+  new_item: lex:e-bost
+
+- id: i-see-a-customer
+  english: "I see a customer"
+  welsh: "Dw i'n gweld cwsmer"
+  items: [pat:dw-in, lex:gweld, lex:cwsmer]
+  new_item: lex:cwsmer
+
+- id: im-phoning-a-customer
+  english: "I'm phoning a customer"
+  welsh: "Dw i'n ffonio cwsmer"
+  items: [pat:dw-in, lex:ffonio, lex:cwsmer]
+  new_item: lex:cwsmer
+
+- id: im-helping-a-customer
+  english: "I'm helping a customer"
+  welsh: "Dw i'n helpu cwsmer"
+  items: [pat:dw-in, lex:helpu, lex:cwsmer]
+  new_item: lex:cwsmer
+
+- id: im-starting-a-project
+  english: "I'm starting a project"
+  welsh: "Dw i'n dechrau prosiect"
+  items: [pat:dw-in, lex:dechrau, lex:prosiect]
+  new_item: lex:prosiect
+
+- id: im-finishing-a-project
+  english: "I'm finishing a project"
+  welsh: "Dw i'n gorffen prosiect"
+  items: [pat:dw-in, lex:gorffen, lex:prosiect]
+  new_item: lex:prosiect
+
+- id: i-want-a-new-project
+  english: "I want a new project"
+  welsh: "Dw i'n moyn prosiect newydd"
+  items: [pat:dw-in-moyn-noun, lex:newydd, lex:prosiect]
+  new_item: lex:prosiect
+
+- id: i-want-a-job
+  english: "I want a job"
+  welsh: "Dw i'n moyn swydd"
+  items: [pat:dw-in-moyn-noun, lex:swydd]
+  new_item: lex:swydd
+
+- id: im-getting-a-job
+  english: "I'm getting a job"
+  welsh: "Dw i'n cael swydd"
+  items: [pat:dw-in, lex:cael, lex:swydd]
+  new_item: lex:swydd
+
+- id: i-want-a-new-job
+  english: "I want a new job"
+  welsh: "Dw i'n moyn swydd newydd"
+  items: [pat:dw-in-moyn-noun, lex:newydd, lex:swydd]
+  new_item: lex:swydd
+
+- id: i-work-with-a-company
+  english: "I work with a company"
+  welsh: "Dw i'n gweithio gyda chwmni"
+  items: [pat:dw-in, lex:gweithio, lex:gyda, lex:cwmni]
+  new_item: lex:cwmni
+
+- id: i-want-a-company
+  english: "I want a company"
+  welsh: "Dw i'n moyn cwmni"
+  items: [pat:dw-in-moyn-noun, lex:cwmni]
+  new_item: lex:cwmni
+
+- id: i-see-a-new-company
+  english: "I see a new company"
+  welsh: "Dw i'n gweld cwmni newydd"
+  items: [pat:dw-in, lex:gweld, lex:newydd, lex:cwmni]
+  new_item: lex:cwmni
+
+- id: im-sending
+  english: "I'm sending"
+  welsh: "Dw i'n anfon"
+  items: [pat:dw-in, lex:anfon]
+  new_item: lex:anfon
+
+- id: i-want-to-send
+  english: "I want to send"
+  welsh: "Dw i'n moyn anfon"
+  items: [pat:dw-in-moyn, lex:anfon]
+  new_item: lex:anfon
+
+- id: i-sent
+  english: "I sent"
+  welsh: "Nes i anfon"
+  items: [pat:nes-i, lex:anfon]
+  new_item: lex:anfon
+
+- id: ill-send
+  english: "I'll send"
+  welsh: "Wna i anfon"
+  items: [pat:wna-i, lex:anfon]
+  new_item: lex:anfon
+
+- id: are-you-sending
+  english: "Are you sending?"
+  welsh: "Wyt ti'n anfon?"
+  items: [pat:wyt-ti-yn, lex:anfon]
+  new_item: lex:anfon
+
+- id: im-arranging
+  english: "I'm arranging"
+  welsh: "Dw i'n trefnu"
+  items: [pat:dw-in, lex:trefnu]
+  new_item: lex:trefnu
+
+- id: i-want-to-arrange
+  english: "I want to arrange"
+  welsh: "Dw i'n moyn trefnu"
+  items: [pat:dw-in-moyn, lex:trefnu]
+  new_item: lex:trefnu
+
+- id: i-arranged
+  english: "I arranged"
+  welsh: "Nes i drefnu"
+  items: [pat:nes-i, lex:trefnu]
+  new_item: lex:trefnu
+
+- id: ill-arrange
+  english: "I'll arrange"
+  welsh: "Wna i drefnu"
+  items: [pat:wna-i, lex:trefnu]
+  new_item: lex:trefnu
+
+- id: are-you-arranging
+  english: "Are you arranging?"
+  welsh: "Wyt ti'n trefnu?"
+  items: [pat:wyt-ti-yn, lex:trefnu]
+  new_item: lex:trefnu
+
+- id: im-using
+  english: "I'm using"
+  welsh: "Dw i'n defnyddio"
+  items: [pat:dw-in, lex:defnyddio]
+  new_item: lex:defnyddio
+
+- id: i-want-to-use
+  english: "I want to use"
+  welsh: "Dw i'n moyn defnyddio"
+  items: [pat:dw-in-moyn, lex:defnyddio]
+  new_item: lex:defnyddio
+
+- id: i-used
+  english: "I used"
+  welsh: "Nes i ddefnyddio"
+  items: [pat:nes-i, lex:defnyddio]
+  new_item: lex:defnyddio
+
+- id: ill-use
+  english: "I'll use"
+  welsh: "Wna i ddefnyddio"
+  items: [pat:wna-i, lex:defnyddio]
+  new_item: lex:defnyddio
+
+- id: are-you-using
+  english: "Are you using?"
+  welsh: "Wyt ti'n defnyddio?"
+  items: [pat:wyt-ti-yn, lex:defnyddio]
+  new_item: lex:defnyddio
+
+- id: im-sending-an-email
+  english: "I'm sending an email"
+  welsh: "Dw i'n anfon e-bost"
+  items: [pat:dw-in, lex:e-bost, lex:anfon]
+  new_item: lex:anfon
+
+- id: im-arranging-a-meeting
+  english: "I'm arranging a meeting"
+  welsh: "Dw i'n trefnu cyfarfod"
+  items: [pat:dw-in, lex:cyfarfod, lex:trefnu]
+  new_item: lex:trefnu
+
+- id: im-using-a-computer
+  english: "I'm using a computer"
+  welsh: "Dw i'n defnyddio cyfrifiadur"
+  items: [pat:dw-in, lex:cyfrifiadur, lex:defnyddio]
+  new_item: lex:defnyddio

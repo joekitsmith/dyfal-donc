@@ -1,0 +1,83 @@
+- id: lex:gartref
+  welsh: "gartref"
+  english: "at home"
+  part_of_speech: adv
+
+- id: lex:ystafell
+  welsh: "ystafell"
+  english: "room"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:cegin
+  welsh: "cegin"
+  english: "kitchen"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:gardd
+  welsh: "gardd"
+  english: "garden"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:drws
+  welsh: "drws"
+  english: "door"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:ffenest
+  welsh: "ffenest"
+  english: "window"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:bwrdd
+  welsh: "bwrdd"
+  english: "table"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:cadair
+  welsh: "cadair"
+  english: "chair"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:gwely
+  welsh: "gwely"
+  english: "bed"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:stryd
+  welsh: "stryd"
+  english: "street"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:agor
+  welsh: "agor"
+  english: "to open"
+  part_of_speech: verb
+
+- id: lex:cau
+  welsh: "cau"
+  english: "to close"
+  part_of_speech: verb
+
+- id: lex:glanhau
+  welsh: "glanhau"
+  english: "to clean"
+  part_of_speech: verb
+
+- id: lex:golchi
+  welsh: "golchi"
+  english: "to wash"
+  part_of_speech: verb
+
+- id: lex:cysgu
+  welsh: "cysgu"
+  english: "to sleep"
+  part_of_speech: verb

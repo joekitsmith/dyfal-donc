@@ -1,0 +1,399 @@
+# The hobbies pack: exercises for the 'hobbies' topic, in South Wales Welsh. Each uses only items
+# earlier in the course order, plus its new_item.
+# Fields: id, english, welsh, items, new_item (optional).
+
+- id: i-like-football
+  english: "I like football"
+  welsh: "Dw i'n hoffi pêl-droed"
+  items: [pat:dw-in-hoffi, lex:pel-droed]
+  new_item: lex:pel-droed
+
+- id: i-dont-like-football
+  english: "I don't like football"
+  welsh: "Dw i ddim yn hoffi pêl-droed"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:pel-droed]
+  new_item: lex:pel-droed
+
+- id: do-you-like-football
+  english: "Do you like football?"
+  welsh: "Wyt ti'n hoffi pêl-droed?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:pel-droed]
+  new_item: lex:pel-droed
+
+- id: i-like-films
+  english: "I like films"
+  welsh: "Dw i'n hoffi ffilm"
+  items: [pat:dw-in-hoffi, lex:ffilm]
+  new_item: lex:ffilm
+
+- id: i-dont-like-films
+  english: "I don't like films"
+  welsh: "Dw i ddim yn hoffi ffilm"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:ffilm]
+  new_item: lex:ffilm
+
+- id: do-you-like-films
+  english: "Do you like films?"
+  welsh: "Wyt ti'n hoffi ffilm?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:ffilm]
+  new_item: lex:ffilm
+
+- id: i-like-music
+  english: "I like music"
+  welsh: "Dw i'n hoffi cerddoriaeth"
+  items: [pat:dw-in-hoffi, lex:cerddoriaeth]
+  new_item: lex:cerddoriaeth
+
+- id: i-dont-like-music
+  english: "I don't like music"
+  welsh: "Dw i ddim yn hoffi cerddoriaeth"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:cerddoriaeth]
+  new_item: lex:cerddoriaeth
+
+- id: do-you-like-music
+  english: "Do you like music?"
+  welsh: "Wyt ti'n hoffi cerddoriaeth?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:cerddoriaeth]
+  new_item: lex:cerddoriaeth
+
+- id: i-like-tv
+  english: "I like TV"
+  welsh: "Dw i'n hoffi teledu"
+  items: [pat:dw-in-hoffi, lex:teledu]
+  new_item: lex:teledu
+
+- id: i-dont-like-tv
+  english: "I don't like TV"
+  welsh: "Dw i ddim yn hoffi teledu"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:teledu]
+  new_item: lex:teledu
+
+- id: do-you-like-tv
+  english: "Do you like TV?"
+  welsh: "Wyt ti'n hoffi teledu?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:teledu]
+  new_item: lex:teledu
+
+- id: i-like-radio
+  english: "I like radio"
+  welsh: "Dw i'n hoffi radio"
+  items: [pat:dw-in-hoffi, lex:radio]
+  new_item: lex:radio
+
+- id: i-dont-like-radio
+  english: "I don't like radio"
+  welsh: "Dw i ddim yn hoffi radio"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:radio]
+  new_item: lex:radio
+
+- id: do-you-like-radio
+  english: "Do you like radio?"
+  welsh: "Wyt ti'n hoffi radio?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:radio]
+  new_item: lex:radio
+
+- id: i-like-songs
+  english: "I like songs"
+  welsh: "Dw i'n hoffi cân"
+  items: [pat:dw-in-hoffi, lex:can]
+  new_item: lex:can
+
+- id: i-dont-like-songs
+  english: "I don't like songs"
+  welsh: "Dw i ddim yn hoffi cân"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:can]
+  new_item: lex:can
+
+- id: do-you-like-songs
+  english: "Do you like songs?"
+  welsh: "Wyt ti'n hoffi cân?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:can]
+  new_item: lex:can
+
+- id: i-like-dance
+  english: "I like dance"
+  welsh: "Dw i'n hoffi dawns"
+  items: [pat:dw-in-hoffi, lex:dawns]
+  new_item: lex:dawns
+
+- id: i-dont-like-dance
+  english: "I don't like dance"
+  welsh: "Dw i ddim yn hoffi dawns"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:dawns]
+  new_item: lex:dawns
+
+- id: do-you-like-dance
+  english: "Do you like dance?"
+  welsh: "Wyt ti'n hoffi dawns?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:dawns]
+  new_item: lex:dawns
+
+- id: im-swimming
+  english: "I'm swimming"
+  welsh: "Dw i'n nofio"
+  items: [pat:dw-in, lex:nofio]
+  new_item: lex:nofio
+
+- id: i-want-to-swim
+  english: "I want to swim"
+  welsh: "Dw i'n moyn nofio"
+  items: [pat:dw-in-moyn, lex:nofio]
+  new_item: lex:nofio
+
+- id: i-swam
+  english: "I swam"
+  welsh: "Nes i nofio"
+  items: [pat:nes-i, lex:nofio]
+  new_item: lex:nofio
+
+- id: ill-swim
+  english: "I'll swim"
+  welsh: "Wna i nofio"
+  items: [pat:wna-i, lex:nofio]
+  new_item: lex:nofio
+
+- id: are-you-swimming
+  english: "Are you swimming?"
+  welsh: "Wyt ti'n nofio?"
+  items: [pat:wyt-ti-yn, lex:nofio]
+  new_item: lex:nofio
+
+- id: im-running
+  english: "I'm running"
+  welsh: "Dw i'n rhedeg"
+  items: [pat:dw-in, lex:rhedeg]
+  new_item: lex:rhedeg
+
+- id: i-want-to-run
+  english: "I want to run"
+  welsh: "Dw i'n moyn rhedeg"
+  items: [pat:dw-in-moyn, lex:rhedeg]
+  new_item: lex:rhedeg
+
+- id: i-ran
+  english: "I ran"
+  welsh: "Nes i redeg"
+  items: [pat:nes-i, lex:rhedeg]
+  new_item: lex:rhedeg
+
+- id: ill-run
+  english: "I'll run"
+  welsh: "Wna i redeg"
+  items: [pat:wna-i, lex:rhedeg]
+  new_item: lex:rhedeg
+
+- id: are-you-running
+  english: "Are you running?"
+  welsh: "Wyt ti'n rhedeg?"
+  items: [pat:wyt-ti-yn, lex:rhedeg]
+  new_item: lex:rhedeg
+
+- id: im-singing
+  english: "I'm singing"
+  welsh: "Dw i'n canu"
+  items: [pat:dw-in, lex:canu]
+  new_item: lex:canu
+
+- id: i-want-to-sing
+  english: "I want to sing"
+  welsh: "Dw i'n moyn canu"
+  items: [pat:dw-in-moyn, lex:canu]
+  new_item: lex:canu
+
+- id: i-sang
+  english: "I sang"
+  welsh: "Nes i ganu"
+  items: [pat:nes-i, lex:canu]
+  new_item: lex:canu
+
+- id: ill-sing
+  english: "I'll sing"
+  welsh: "Wna i ganu"
+  items: [pat:wna-i, lex:canu]
+  new_item: lex:canu
+
+- id: are-you-singing
+  english: "Are you singing?"
+  welsh: "Wyt ti'n canu?"
+  items: [pat:wyt-ti-yn, lex:canu]
+  new_item: lex:canu
+
+- id: im-dancing
+  english: "I'm dancing"
+  welsh: "Dw i'n dawnsio"
+  items: [pat:dw-in, lex:dawnsio]
+  new_item: lex:dawnsio
+
+- id: i-want-to-dance
+  english: "I want to dance"
+  welsh: "Dw i'n moyn dawnsio"
+  items: [pat:dw-in-moyn, lex:dawnsio]
+  new_item: lex:dawnsio
+
+- id: i-danced
+  english: "I danced"
+  welsh: "Nes i ddawnsio"
+  items: [pat:nes-i, lex:dawnsio]
+  new_item: lex:dawnsio
+
+- id: ill-dance
+  english: "I'll dance"
+  welsh: "Wna i ddawnsio"
+  items: [pat:wna-i, lex:dawnsio]
+  new_item: lex:dawnsio
+
+- id: are-you-dancing
+  english: "Are you dancing?"
+  welsh: "Wyt ti'n dawnsio?"
+  items: [pat:wyt-ti-yn, lex:dawnsio]
+  new_item: lex:dawnsio
+
+- id: im-playing
+  english: "I'm playing"
+  welsh: "Dw i'n chwarae"
+  items: [pat:dw-in, lex:chwarae]
+  new_item: lex:chwarae
+
+- id: i-want-to-play
+  english: "I want to play"
+  welsh: "Dw i'n moyn chwarae"
+  items: [pat:dw-in-moyn, lex:chwarae]
+  new_item: lex:chwarae
+
+- id: i-played
+  english: "I played"
+  welsh: "Nes i chwarae"
+  items: [pat:nes-i, lex:chwarae]
+  new_item: lex:chwarae
+
+- id: ill-play
+  english: "I'll play"
+  welsh: "Wna i chwarae"
+  items: [pat:wna-i, lex:chwarae]
+  new_item: lex:chwarae
+
+- id: are-you-playing
+  english: "Are you playing?"
+  welsh: "Wyt ti'n chwarae?"
+  items: [pat:wyt-ti-yn, lex:chwarae]
+  new_item: lex:chwarae
+
+- id: im-walking
+  english: "I'm walking"
+  welsh: "Dw i'n cerdded"
+  items: [pat:dw-in, lex:cerdded]
+  new_item: lex:cerdded
+
+- id: i-want-to-walk
+  english: "I want to walk"
+  welsh: "Dw i'n moyn cerdded"
+  items: [pat:dw-in-moyn, lex:cerdded]
+  new_item: lex:cerdded
+
+- id: i-walked
+  english: "I walked"
+  welsh: "Nes i gerdded"
+  items: [pat:nes-i, lex:cerdded]
+  new_item: lex:cerdded
+
+- id: ill-walk
+  english: "I'll walk"
+  welsh: "Wna i gerdded"
+  items: [pat:wna-i, lex:cerdded]
+  new_item: lex:cerdded
+
+- id: are-you-walking
+  english: "Are you walking?"
+  welsh: "Wyt ti'n cerdded?"
+  items: [pat:wyt-ti-yn, lex:cerdded]
+  new_item: lex:cerdded
+
+- id: im-watching
+  english: "I'm watching"
+  welsh: "Dw i'n gwylio"
+  items: [pat:dw-in, lex:gwylio]
+  new_item: lex:gwylio
+
+- id: i-want-to-watch
+  english: "I want to watch"
+  welsh: "Dw i'n moyn gwylio"
+  items: [pat:dw-in-moyn, lex:gwylio]
+  new_item: lex:gwylio
+
+- id: i-watched
+  english: "I watched"
+  welsh: "Nes i wylio"
+  items: [pat:nes-i, lex:gwylio]
+  new_item: lex:gwylio
+
+- id: ill-watch
+  english: "I'll watch"
+  welsh: "Wna i wylio"
+  items: [pat:wna-i, lex:gwylio]
+  new_item: lex:gwylio
+
+- id: are-you-watching
+  english: "Are you watching?"
+  welsh: "Wyt ti'n gwylio?"
+  items: [pat:wyt-ti-yn, lex:gwylio]
+  new_item: lex:gwylio
+
+- id: im-playing-football
+  english: "I'm playing football"
+  welsh: "Dw i'n chwarae pêl-droed"
+  items: [pat:dw-in, lex:pel-droed, lex:chwarae]
+  new_item: lex:chwarae
+
+- id: im-watching-the-tv
+  english: "I'm watching the TV"
+  welsh: "Dw i'n gwylio'r teledu"
+  items: [pat:dw-in, lex:y, lex:teledu, lex:gwylio]
+  new_item: lex:gwylio
+
+- id: im-watching-a-film
+  english: "I'm watching a film"
+  welsh: "Dw i'n gwylio ffilm"
+  items: [pat:dw-in, lex:ffilm, lex:gwylio]
+  new_item: lex:gwylio
+
+- id: im-singing-a-song
+  english: "I'm singing a song"
+  welsh: "Dw i'n canu cân"
+  items: [pat:dw-in, lex:can, lex:canu]
+  new_item: lex:canu
+
+- id: i-like-swimming
+  english: "I like swimming"
+  welsh: "Dw i'n hoffi nofio"
+  items: [lex:nofio, pat:dw-in-hoffi-verb]
+  new_item: pat:dw-in-hoffi-verb
+
+- id: i-like-running
+  english: "I like running"
+  welsh: "Dw i'n hoffi rhedeg"
+  items: [lex:rhedeg, pat:dw-in-hoffi-verb]
+  new_item: pat:dw-in-hoffi-verb
+
+- id: i-like-singing
+  english: "I like singing"
+  welsh: "Dw i'n hoffi canu"
+  items: [lex:canu, pat:dw-in-hoffi-verb]
+  new_item: pat:dw-in-hoffi-verb
+
+- id: i-like-dancing
+  english: "I like dancing"
+  welsh: "Dw i'n hoffi dawnsio"
+  items: [lex:dawnsio, pat:dw-in-hoffi-verb]
+  new_item: pat:dw-in-hoffi-verb
+
+- id: i-like-walking
+  english: "I like walking"
+  welsh: "Dw i'n hoffi cerdded"
+  items: [lex:cerdded, pat:dw-in-hoffi-verb]
+  new_item: pat:dw-in-hoffi-verb
+
+- id: i-like-watching-films
+  english: "I like watching films"
+  welsh: "Dw i'n hoffi gwylio ffilm"
+  items: [lex:ffilm, lex:gwylio, pat:dw-in-hoffi-verb]
+  new_item: pat:dw-in-hoffi-verb

@@ -1,0 +1,723 @@
+- id: sp-im-working-at-home
+  welsh: "Dw i'n gweithio gartref"
+  english: "I'm working at home"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "gartref", lemma: "gartref", item: lex:gartref}
+
+- id: sp-im-eating-at-home
+  welsh: "Dw i'n bwyta gartref"
+  english: "I'm eating at home"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "gartref", lemma: "gartref", item: lex:gartref}
+
+- id: sp-im-staying-at-home
+  welsh: "Dw i'n aros gartref"
+  english: "I'm staying at home"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "gartref", lemma: "gartref", item: lex:gartref}
+
+- id: sp-im-learning-at-home
+  welsh: "Dw i'n dysgu gartref"
+  english: "I'm learning at home"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "gartref", lemma: "gartref", item: lex:gartref}
+
+- id: sp-i-want-a-room
+  welsh: "Dw i'n moyn ystafell"
+  english: "I want a room"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "ystafell", lemma: "ystafell", item: lex:ystafell}
+
+- id: sp-i-see-the-room
+  welsh: "Dw i'n gweld yr ystafell"
+  english: "I see the room"
+  tags: [clitic, inflection, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "yr", lemma: "y", item: lex:y}
+    - {text: "ystafell", lemma: "ystafell", item: lex:ystafell}
+
+- id: sp-i-like-the-room
+  welsh: "Dw i'n hoffi'r ystafell"
+  english: "I like the room"
+  tags: [clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "ystafell", lemma: "ystafell", item: lex:ystafell}
+
+- id: sp-i-want-a-kitchen
+  welsh: "Dw i'n moyn cegin"
+  english: "I want a kitchen"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cegin", lemma: "cegin", item: lex:cegin}
+
+- id: sp-i-see-the-kitchen
+  welsh: "Dw i'n gweld y gegin"
+  english: "I see the kitchen"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "gegin", lemma: "cegin", item: lex:cegin, mutation: soft}
+
+- id: sp-i-like-the-kitchen
+  welsh: "Dw i'n hoffi'r gegin"
+  english: "I like the kitchen"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "gegin", lemma: "cegin", item: lex:cegin, mutation: soft}
+
+- id: sp-i-want-a-garden
+  welsh: "Dw i'n moyn gardd"
+  english: "I want a garden"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gardd", lemma: "gardd", item: lex:gardd}
+
+- id: sp-i-see-the-garden
+  welsh: "Dw i'n gweld yr ardd"
+  english: "I see the garden"
+  tags: [mutation, clitic, inflection, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "yr", lemma: "y", item: lex:y}
+    - {text: "ardd", lemma: "gardd", item: lex:gardd, mutation: soft}
+
+- id: sp-i-like-the-garden
+  welsh: "Dw i'n hoffi'r ardd"
+  english: "I like the garden"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "ardd", lemma: "gardd", item: lex:gardd, mutation: soft}
+
+- id: sp-i-want-a-door
+  welsh: "Dw i'n moyn drws"
+  english: "I want a door"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "drws", lemma: "drws", item: lex:drws}
+
+- id: sp-i-see-the-door
+  welsh: "Dw i'n gweld y drws"
+  english: "I see the door"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "drws", lemma: "drws", item: lex:drws}
+
+- id: sp-i-like-the-door
+  welsh: "Dw i'n hoffi'r drws"
+  english: "I like the door"
+  tags: [clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "drws", lemma: "drws", item: lex:drws}
+
+- id: sp-i-want-a-window
+  welsh: "Dw i'n moyn ffenest"
+  english: "I want a window"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "ffenest", lemma: "ffenest", item: lex:ffenest}
+
+- id: sp-i-see-the-window
+  welsh: "Dw i'n gweld y ffenest"
+  english: "I see the window"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "ffenest", lemma: "ffenest", item: lex:ffenest}
+
+- id: sp-i-like-the-window
+  welsh: "Dw i'n hoffi'r ffenest"
+  english: "I like the window"
+  tags: [clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "ffenest", lemma: "ffenest", item: lex:ffenest}
+
+- id: sp-i-want-a-table
+  welsh: "Dw i'n moyn bwrdd"
+  english: "I want a table"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "bwrdd", lemma: "bwrdd", item: lex:bwrdd}
+
+- id: sp-i-see-the-table
+  welsh: "Dw i'n gweld y bwrdd"
+  english: "I see the table"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "bwrdd", lemma: "bwrdd", item: lex:bwrdd}
+
+- id: sp-i-like-the-table
+  welsh: "Dw i'n hoffi'r bwrdd"
+  english: "I like the table"
+  tags: [clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "bwrdd", lemma: "bwrdd", item: lex:bwrdd}
+
+- id: sp-i-want-a-chair
+  welsh: "Dw i'n moyn cadair"
+  english: "I want a chair"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cadair", lemma: "cadair", item: lex:cadair}
+
+- id: sp-i-see-the-chair
+  welsh: "Dw i'n gweld y gadair"
+  english: "I see the chair"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "gadair", lemma: "cadair", item: lex:cadair, mutation: soft}
+
+- id: sp-i-like-the-chair
+  welsh: "Dw i'n hoffi'r gadair"
+  english: "I like the chair"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "gadair", lemma: "cadair", item: lex:cadair, mutation: soft}
+
+- id: sp-i-want-a-bed
+  welsh: "Dw i'n moyn gwely"
+  english: "I want a bed"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gwely", lemma: "gwely", item: lex:gwely}
+
+- id: sp-i-see-the-bed
+  welsh: "Dw i'n gweld y gwely"
+  english: "I see the bed"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "gwely", lemma: "gwely", item: lex:gwely}
+
+- id: sp-i-like-the-bed
+  welsh: "Dw i'n hoffi'r gwely"
+  english: "I like the bed"
+  tags: [clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "gwely", lemma: "gwely", item: lex:gwely}
+
+- id: sp-i-want-a-street
+  welsh: "Dw i'n moyn stryd"
+  english: "I want a street"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "stryd", lemma: "stryd", item: lex:stryd}
+
+- id: sp-i-see-the-street
+  welsh: "Dw i'n gweld y stryd"
+  english: "I see the street"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "stryd", lemma: "stryd", item: lex:stryd}
+
+- id: sp-i-like-the-street
+  welsh: "Dw i'n hoffi'r stryd"
+  english: "I like the street"
+  tags: [clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "stryd", lemma: "stryd", item: lex:stryd}
+
+- id: sp-im-opening
+  welsh: "Dw i'n agor"
+  english: "I'm opening"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "agor", lemma: "agor", item: lex:agor}
+
+- id: sp-i-want-to-open
+  welsh: "Dw i'n moyn agor"
+  english: "I want to open"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "agor", lemma: "agor", item: lex:agor}
+
+- id: sp-i-opened
+  welsh: "Nes i agor"
+  english: "I opened"
+  tags: [plain]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "agor", lemma: "agor", item: lex:agor}
+
+- id: sp-ill-open
+  welsh: "Wna i agor"
+  english: "I'll open"
+  tags: [plain]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "agor", lemma: "agor", item: lex:agor}
+
+- id: sp-are-you-opening
+  welsh: "Wyt ti'n agor?"
+  english: "Are you opening?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "agor", lemma: "agor", item: lex:agor}
+
+- id: sp-im-closing
+  welsh: "Dw i'n cau"
+  english: "I'm closing"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cau", lemma: "cau", item: lex:cau}
+
+- id: sp-i-want-to-close
+  welsh: "Dw i'n moyn cau"
+  english: "I want to close"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cau", lemma: "cau", item: lex:cau}
+
+- id: sp-i-closed
+  welsh: "Nes i gau"
+  english: "I closed"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "gau", lemma: "cau", item: lex:cau, mutation: soft}
+
+- id: sp-ill-close
+  welsh: "Wna i gau"
+  english: "I'll close"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "gau", lemma: "cau", item: lex:cau, mutation: soft}
+
+- id: sp-are-you-closing
+  welsh: "Wyt ti'n cau?"
+  english: "Are you closing?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cau", lemma: "cau", item: lex:cau}
+
+- id: sp-im-cleaning
+  welsh: "Dw i'n glanhau"
+  english: "I'm cleaning"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "glanhau", lemma: "glanhau", item: lex:glanhau}
+
+- id: sp-i-want-to-clean
+  welsh: "Dw i'n moyn glanhau"
+  english: "I want to clean"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "glanhau", lemma: "glanhau", item: lex:glanhau}
+
+- id: sp-i-cleaned
+  welsh: "Nes i lanhau"
+  english: "I cleaned"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "lanhau", lemma: "glanhau", item: lex:glanhau, mutation: soft}
+
+- id: sp-ill-clean
+  welsh: "Wna i lanhau"
+  english: "I'll clean"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "lanhau", lemma: "glanhau", item: lex:glanhau, mutation: soft}
+
+- id: sp-are-you-cleaning
+  welsh: "Wyt ti'n glanhau?"
+  english: "Are you cleaning?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "glanhau", lemma: "glanhau", item: lex:glanhau}
+
+- id: sp-im-washing
+  welsh: "Dw i'n golchi"
+  english: "I'm washing"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "golchi", lemma: "golchi", item: lex:golchi}
+
+- id: sp-i-want-to-wash
+  welsh: "Dw i'n moyn golchi"
+  english: "I want to wash"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "golchi", lemma: "golchi", item: lex:golchi}
+
+- id: sp-i-washed
+  welsh: "Nes i olchi"
+  english: "I washed"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "olchi", lemma: "golchi", item: lex:golchi, mutation: soft}
+
+- id: sp-ill-wash
+  welsh: "Wna i olchi"
+  english: "I'll wash"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "olchi", lemma: "golchi", item: lex:golchi, mutation: soft}
+
+- id: sp-are-you-washing
+  welsh: "Wyt ti'n golchi?"
+  english: "Are you washing?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "golchi", lemma: "golchi", item: lex:golchi}
+
+- id: sp-im-sleeping
+  welsh: "Dw i'n cysgu"
+  english: "I'm sleeping"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cysgu", lemma: "cysgu", item: lex:cysgu}
+
+- id: sp-i-want-to-sleep
+  welsh: "Dw i'n moyn cysgu"
+  english: "I want to sleep"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cysgu", lemma: "cysgu", item: lex:cysgu}
+
+- id: sp-i-slept
+  welsh: "Nes i gysgu"
+  english: "I slept"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "gysgu", lemma: "cysgu", item: lex:cysgu, mutation: soft}
+
+- id: sp-ill-sleep
+  welsh: "Wna i gysgu"
+  english: "I'll sleep"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "gysgu", lemma: "cysgu", item: lex:cysgu, mutation: soft}
+
+- id: sp-are-you-sleeping
+  welsh: "Wyt ti'n cysgu?"
+  english: "Are you sleeping?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cysgu", lemma: "cysgu", item: lex:cysgu}
+
+- id: sp-im-opening-the-door
+  welsh: "Dw i'n agor y drws"
+  english: "I'm opening the door"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "agor", lemma: "agor", item: lex:agor}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "drws", lemma: "drws", item: lex:drws}
+
+- id: sp-im-closing-the-window
+  welsh: "Dw i'n cau'r ffenest"
+  english: "I'm closing the window"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cau", lemma: "cau", item: lex:cau}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "ffenest", lemma: "ffenest", item: lex:ffenest}
+
+- id: sp-im-cleaning-the-kitchen
+  welsh: "Dw i'n glanhau'r gegin"
+  english: "I'm cleaning the kitchen"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "glanhau", lemma: "glanhau", item: lex:glanhau}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "gegin", lemma: "cegin", item: lex:cegin, mutation: soft}
+
+- id: sp-im-washing-the-table
+  welsh: "Dw i'n golchi'r bwrdd"
+  english: "I'm washing the table"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "golchi", lemma: "golchi", item: lex:golchi}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "bwrdd", lemma: "bwrdd", item: lex:bwrdd}
+
+- id: sp-im-sleeping-at-home
+  welsh: "Dw i'n cysgu gartref"
+  english: "I'm sleeping at home"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cysgu", lemma: "cysgu", item: lex:cysgu}
+    - {text: "gartref", lemma: "gartref", item: lex:gartref}

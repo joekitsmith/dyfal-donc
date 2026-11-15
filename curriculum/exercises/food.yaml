@@ -1,0 +1,567 @@
+# The food pack: exercises for the 'food' topic, in South Wales Welsh. Each uses only items
+# earlier in the course order, plus its new_item.
+# Fields: id, english, welsh, items, new_item (optional).
+
+- id: i-want-meat
+  english: "I want meat"
+  welsh: "Dw i'n moyn cig"
+  items: [pat:dw-in-moyn-noun, lex:cig]
+  new_item: lex:cig
+
+- id: im-eating-meat
+  english: "I'm eating meat"
+  welsh: "Dw i'n bwyta cig"
+  items: [pat:dw-in, lex:bwyta, lex:cig]
+  new_item: lex:cig
+
+- id: i-like-meat
+  english: "I like meat"
+  welsh: "Dw i'n hoffi cig"
+  items: [pat:dw-in-hoffi, lex:cig]
+  new_item: lex:cig
+
+- id: i-had-meat
+  english: "I had meat"
+  welsh: "Ces i gig"
+  items: [pat:ces-i, lex:cig]
+  new_item: lex:cig
+
+- id: did-you-have-meat
+  english: "Did you have meat?"
+  welsh: "Gest ti gig?"
+  items: [pat:gest-ti, lex:cig]
+  new_item: lex:cig
+
+- id: i-want-fish
+  english: "I want fish"
+  welsh: "Dw i'n moyn pysgod"
+  items: [pat:dw-in-moyn-noun, lex:pysgod]
+  new_item: lex:pysgod
+
+- id: im-eating-fish
+  english: "I'm eating fish"
+  welsh: "Dw i'n bwyta pysgod"
+  items: [pat:dw-in, lex:bwyta, lex:pysgod]
+  new_item: lex:pysgod
+
+- id: i-like-fish
+  english: "I like fish"
+  welsh: "Dw i'n hoffi pysgod"
+  items: [pat:dw-in-hoffi, lex:pysgod]
+  new_item: lex:pysgod
+
+- id: i-had-fish
+  english: "I had fish"
+  welsh: "Ces i bysgod"
+  items: [pat:ces-i, lex:pysgod]
+  new_item: lex:pysgod
+
+- id: did-you-have-fish
+  english: "Did you have fish?"
+  welsh: "Gest ti bysgod?"
+  items: [pat:gest-ti, lex:pysgod]
+  new_item: lex:pysgod
+
+- id: i-want-cheese
+  english: "I want cheese"
+  welsh: "Dw i'n moyn caws"
+  items: [pat:dw-in-moyn-noun, lex:caws]
+  new_item: lex:caws
+
+- id: im-eating-cheese
+  english: "I'm eating cheese"
+  welsh: "Dw i'n bwyta caws"
+  items: [pat:dw-in, lex:bwyta, lex:caws]
+  new_item: lex:caws
+
+- id: i-like-cheese
+  english: "I like cheese"
+  welsh: "Dw i'n hoffi caws"
+  items: [pat:dw-in-hoffi, lex:caws]
+  new_item: lex:caws
+
+- id: i-had-cheese
+  english: "I had cheese"
+  welsh: "Ces i gaws"
+  items: [pat:ces-i, lex:caws]
+  new_item: lex:caws
+
+- id: did-you-have-cheese
+  english: "Did you have cheese?"
+  welsh: "Gest ti gaws?"
+  items: [pat:gest-ti, lex:caws]
+  new_item: lex:caws
+
+- id: i-want-soup
+  english: "I want soup"
+  welsh: "Dw i'n moyn cawl"
+  items: [pat:dw-in-moyn-noun, lex:cawl]
+  new_item: lex:cawl
+
+- id: im-eating-soup
+  english: "I'm eating soup"
+  welsh: "Dw i'n bwyta cawl"
+  items: [pat:dw-in, lex:bwyta, lex:cawl]
+  new_item: lex:cawl
+
+- id: i-like-soup
+  english: "I like soup"
+  welsh: "Dw i'n hoffi cawl"
+  items: [pat:dw-in-hoffi, lex:cawl]
+  new_item: lex:cawl
+
+- id: i-had-soup
+  english: "I had soup"
+  welsh: "Ces i gawl"
+  items: [pat:ces-i, lex:cawl]
+  new_item: lex:cawl
+
+- id: did-you-have-soup
+  english: "Did you have soup?"
+  welsh: "Gest ti gawl?"
+  items: [pat:gest-ti, lex:cawl]
+  new_item: lex:cawl
+
+- id: i-want-sugar
+  english: "I want sugar"
+  welsh: "Dw i'n moyn siwgr"
+  items: [pat:dw-in-moyn-noun, lex:siwgr]
+  new_item: lex:siwgr
+
+- id: im-eating-sugar
+  english: "I'm eating sugar"
+  welsh: "Dw i'n bwyta siwgr"
+  items: [pat:dw-in, lex:bwyta, lex:siwgr]
+  new_item: lex:siwgr
+
+- id: i-like-sugar
+  english: "I like sugar"
+  welsh: "Dw i'n hoffi siwgr"
+  items: [pat:dw-in-hoffi, lex:siwgr]
+  new_item: lex:siwgr
+
+- id: i-had-sugar
+  english: "I had sugar"
+  welsh: "Ces i siwgr"
+  items: [pat:ces-i, lex:siwgr]
+  new_item: lex:siwgr
+
+- id: did-you-have-sugar
+  english: "Did you have sugar?"
+  welsh: "Gest ti siwgr?"
+  items: [pat:gest-ti, lex:siwgr]
+  new_item: lex:siwgr
+
+- id: i-want-beer
+  english: "I want beer"
+  welsh: "Dw i'n moyn cwrw"
+  items: [pat:dw-in-moyn-noun, lex:cwrw]
+  new_item: lex:cwrw
+
+- id: im-drinking-beer
+  english: "I'm drinking beer"
+  welsh: "Dw i'n yfed cwrw"
+  items: [pat:dw-in, lex:yfed, lex:cwrw]
+  new_item: lex:cwrw
+
+- id: i-like-beer
+  english: "I like beer"
+  welsh: "Dw i'n hoffi cwrw"
+  items: [pat:dw-in-hoffi, lex:cwrw]
+  new_item: lex:cwrw
+
+- id: i-had-beer
+  english: "I had beer"
+  welsh: "Ces i gwrw"
+  items: [pat:ces-i, lex:cwrw]
+  new_item: lex:cwrw
+
+- id: did-you-have-beer
+  english: "Did you have beer?"
+  welsh: "Gest ti gwrw?"
+  items: [pat:gest-ti, lex:cwrw]
+  new_item: lex:cwrw
+
+- id: i-want-wine
+  english: "I want wine"
+  welsh: "Dw i'n moyn gwin"
+  items: [pat:dw-in-moyn-noun, lex:gwin]
+  new_item: lex:gwin
+
+- id: im-drinking-wine
+  english: "I'm drinking wine"
+  welsh: "Dw i'n yfed gwin"
+  items: [pat:dw-in, lex:yfed, lex:gwin]
+  new_item: lex:gwin
+
+- id: i-like-wine
+  english: "I like wine"
+  welsh: "Dw i'n hoffi gwin"
+  items: [pat:dw-in-hoffi, lex:gwin]
+  new_item: lex:gwin
+
+- id: i-had-wine
+  english: "I had wine"
+  welsh: "Ces i win"
+  items: [pat:ces-i, lex:gwin]
+  new_item: lex:gwin
+
+- id: did-you-have-wine
+  english: "Did you have wine?"
+  welsh: "Gest ti win?"
+  items: [pat:gest-ti, lex:gwin]
+  new_item: lex:gwin
+
+- id: i-want-breakfast
+  english: "I want breakfast"
+  welsh: "Dw i'n moyn brecwast"
+  items: [pat:dw-in-moyn-noun, lex:brecwast]
+  new_item: lex:brecwast
+
+- id: i-like-breakfast
+  english: "I like breakfast"
+  welsh: "Dw i'n hoffi brecwast"
+  items: [pat:dw-in-hoffi, lex:brecwast]
+  new_item: lex:brecwast
+
+- id: i-had-breakfast
+  english: "I had breakfast"
+  welsh: "Ces i frecwast"
+  items: [pat:ces-i, lex:brecwast]
+  new_item: lex:brecwast
+
+- id: did-you-have-breakfast
+  english: "Did you have breakfast?"
+  welsh: "Gest ti frecwast?"
+  items: [pat:gest-ti, lex:brecwast]
+  new_item: lex:brecwast
+
+- id: i-want-lunch
+  english: "I want lunch"
+  welsh: "Dw i'n moyn cinio"
+  items: [pat:dw-in-moyn-noun, lex:cinio]
+  new_item: lex:cinio
+
+- id: i-like-lunch
+  english: "I like lunch"
+  welsh: "Dw i'n hoffi cinio"
+  items: [pat:dw-in-hoffi, lex:cinio]
+  new_item: lex:cinio
+
+- id: i-had-lunch
+  english: "I had lunch"
+  welsh: "Ces i ginio"
+  items: [pat:ces-i, lex:cinio]
+  new_item: lex:cinio
+
+- id: did-you-have-lunch
+  english: "Did you have lunch?"
+  welsh: "Gest ti ginio?"
+  items: [pat:gest-ti, lex:cinio]
+  new_item: lex:cinio
+
+- id: i-want-supper
+  english: "I want supper"
+  welsh: "Dw i'n moyn swper"
+  items: [pat:dw-in-moyn-noun, lex:swper]
+  new_item: lex:swper
+
+- id: i-like-supper
+  english: "I like supper"
+  welsh: "Dw i'n hoffi swper"
+  items: [pat:dw-in-hoffi, lex:swper]
+  new_item: lex:swper
+
+- id: i-had-supper
+  english: "I had supper"
+  welsh: "Ces i swper"
+  items: [pat:ces-i, lex:swper]
+  new_item: lex:swper
+
+- id: did-you-have-supper
+  english: "Did you have supper?"
+  welsh: "Gest ti swper?"
+  items: [pat:gest-ti, lex:swper]
+  new_item: lex:swper
+
+- id: i-want-an-egg
+  english: "I want an egg"
+  welsh: "Dw i'n moyn wy"
+  items: [pat:dw-in-moyn-noun, lex:wy]
+  new_item: lex:wy
+
+- id: im-eating-an-egg
+  english: "I'm eating an egg"
+  welsh: "Dw i'n bwyta wy"
+  items: [pat:dw-in, lex:bwyta, lex:wy]
+  new_item: lex:wy
+
+- id: i-had-an-egg
+  english: "I had an egg"
+  welsh: "Ces i wy"
+  items: [pat:ces-i, lex:wy]
+  new_item: lex:wy
+
+- id: did-you-have-an-egg
+  english: "Did you have an egg?"
+  welsh: "Gest ti wy?"
+  items: [pat:gest-ti, lex:wy]
+  new_item: lex:wy
+
+- id: i-like-eggs
+  english: "I like eggs"
+  welsh: "Dw i'n hoffi wyau"
+  items: [pat:dw-in-hoffi, lex:wy]
+  new_item: lex:wy
+
+- id: i-want-an-apple
+  english: "I want an apple"
+  welsh: "Dw i'n moyn afal"
+  items: [pat:dw-in-moyn-noun, lex:afal]
+  new_item: lex:afal
+
+- id: im-eating-an-apple
+  english: "I'm eating an apple"
+  welsh: "Dw i'n bwyta afal"
+  items: [pat:dw-in, lex:bwyta, lex:afal]
+  new_item: lex:afal
+
+- id: i-had-an-apple
+  english: "I had an apple"
+  welsh: "Ces i afal"
+  items: [pat:ces-i, lex:afal]
+  new_item: lex:afal
+
+- id: i-like-apples
+  english: "I like apples"
+  welsh: "Dw i'n hoffi afalau"
+  items: [pat:dw-in-hoffi, lex:afal]
+  new_item: lex:afal
+
+- id: i-dont-like-coffee
+  english: "I don't like coffee"
+  welsh: "Dw i ddim yn hoffi coffi"
+  items: [pat:dw-i-ddim-yn, lex:coffi, lex:hoffi]
+  new_item: lex:hoffi
+
+- id: i-dont-like-tea
+  english: "I don't like tea"
+  welsh: "Dw i ddim yn hoffi te"
+  items: [pat:dw-i-ddim-yn, lex:te, lex:hoffi]
+  new_item: lex:hoffi
+
+- id: do-you-like-coffee
+  english: "Do you like coffee?"
+  welsh: "Wyt ti'n hoffi coffi?"
+  items: [pat:wyt-ti-yn, lex:coffi, lex:hoffi]
+  new_item: lex:hoffi
+
+- id: do-you-like-tea
+  english: "Do you like tea?"
+  welsh: "Wyt ti'n hoffi te?"
+  items: [pat:wyt-ti-yn, lex:te, lex:hoffi]
+  new_item: lex:hoffi
+
+- id: coffee-please
+  english: "Coffee, please"
+  welsh: "Coffi, plîs"
+  items: [lex:coffi, lex:plis]
+  new_item: lex:plis
+
+- id: tea-please
+  english: "Tea, please"
+  welsh: "Te, plîs"
+  items: [lex:te, lex:plis]
+  new_item: lex:plis
+
+- id: i-want-coffee-please
+  english: "I want coffee, please"
+  welsh: "Dw i'n moyn coffi, plîs"
+  items: [lex:coffi, pat:dw-in-moyn-noun, lex:plis]
+  new_item: lex:plis
+
+- id: water-please
+  english: "Water, please"
+  welsh: "Dŵr, plîs"
+  items: [lex:dwr, lex:plis]
+  new_item: lex:plis
+
+- id: im-cooking
+  english: "I'm cooking"
+  welsh: "Dw i'n coginio"
+  items: [pat:dw-in, lex:coginio]
+  new_item: lex:coginio
+
+- id: i-want-to-cook
+  english: "I want to cook"
+  welsh: "Dw i'n moyn coginio"
+  items: [pat:dw-in-moyn, lex:coginio]
+  new_item: lex:coginio
+
+- id: i-cooked
+  english: "I cooked"
+  welsh: "Nes i goginio"
+  items: [pat:nes-i, lex:coginio]
+  new_item: lex:coginio
+
+- id: ill-cook
+  english: "I'll cook"
+  welsh: "Wna i goginio"
+  items: [pat:wna-i, lex:coginio]
+  new_item: lex:coginio
+
+- id: are-you-cooking
+  english: "Are you cooking?"
+  welsh: "Wyt ti'n coginio?"
+  items: [pat:wyt-ti-yn, lex:coginio]
+  new_item: lex:coginio
+
+- id: im-ordering
+  english: "I'm ordering"
+  welsh: "Dw i'n archebu"
+  items: [pat:dw-in, lex:archebu]
+  new_item: lex:archebu
+
+- id: i-want-to-order
+  english: "I want to order"
+  welsh: "Dw i'n moyn archebu"
+  items: [pat:dw-in-moyn, lex:archebu]
+  new_item: lex:archebu
+
+- id: i-ordered
+  english: "I ordered"
+  welsh: "Nes i archebu"
+  items: [pat:nes-i, lex:archebu]
+  new_item: lex:archebu
+
+- id: ill-order
+  english: "I'll order"
+  welsh: "Wna i archebu"
+  items: [pat:wna-i, lex:archebu]
+  new_item: lex:archebu
+
+- id: are-you-ordering
+  english: "Are you ordering?"
+  welsh: "Wyt ti'n archebu?"
+  items: [pat:wyt-ti-yn, lex:archebu]
+  new_item: lex:archebu
+
+- id: im-paying
+  english: "I'm paying"
+  welsh: "Dw i'n talu"
+  items: [pat:dw-in, lex:talu]
+  new_item: lex:talu
+
+- id: i-want-to-pay
+  english: "I want to pay"
+  welsh: "Dw i'n moyn talu"
+  items: [pat:dw-in-moyn, lex:talu]
+  new_item: lex:talu
+
+- id: i-paid
+  english: "I paid"
+  welsh: "Nes i dalu"
+  items: [pat:nes-i, lex:talu]
+  new_item: lex:talu
+
+- id: ill-pay
+  english: "I'll pay"
+  welsh: "Wna i dalu"
+  items: [pat:wna-i, lex:talu]
+  new_item: lex:talu
+
+- id: are-you-paying
+  english: "Are you paying?"
+  welsh: "Wyt ti'n talu?"
+  items: [pat:wyt-ti-yn, lex:talu]
+  new_item: lex:talu
+
+- id: im-cooking-supper
+  english: "I'm cooking supper"
+  welsh: "Dw i'n coginio swper"
+  items: [pat:dw-in, lex:swper, lex:coginio]
+  new_item: lex:coginio
+
+- id: im-cooking-soup
+  english: "I'm cooking soup"
+  welsh: "Dw i'n coginio cawl"
+  items: [pat:dw-in, lex:cawl, lex:coginio]
+  new_item: lex:coginio
+
+- id: im-ordering-food
+  english: "I'm ordering food"
+  welsh: "Dw i'n archebu bwyd"
+  items: [pat:dw-in, lex:bwyd, lex:archebu]
+  new_item: lex:archebu
+
+- id: im-ordering-wine
+  english: "I'm ordering wine"
+  welsh: "Dw i'n archebu gwin"
+  items: [pat:dw-in, lex:gwin, lex:archebu]
+  new_item: lex:archebu
+
+- id: im-paying-now
+  english: "I'm paying now"
+  welsh: "Dw i'n talu nawr"
+  items: [pat:dw-in, lex:nawr, lex:talu]
+  new_item: lex:talu
+
+- id: i-like-tasty-soup
+  english: "I like tasty soup"
+  welsh: "Dw i'n hoffi cawl blasus"
+  items: [pat:dw-in-hoffi, lex:cawl, lex:blasus]
+  new_item: lex:blasus
+
+- id: i-like-tasty-cheese
+  english: "I like tasty cheese"
+  welsh: "Dw i'n hoffi caws blasus"
+  items: [pat:dw-in-hoffi, lex:caws, lex:blasus]
+  new_item: lex:blasus
+
+- id: i-like-tasty-food
+  english: "I like tasty food"
+  welsh: "Dw i'n hoffi bwyd blasus"
+  items: [lex:bwyd, pat:dw-in-hoffi, lex:blasus]
+  new_item: lex:blasus
+
+- id: im-eating-tasty-soup
+  english: "I'm eating tasty soup"
+  welsh: "Dw i'n bwyta cawl blasus"
+  items: [pat:dw-in, lex:bwyta, lex:cawl, lex:blasus]
+  new_item: lex:blasus
+
+- id: im-cooking-tasty-supper
+  english: "I'm cooking tasty supper"
+  welsh: "Dw i'n coginio swper blasus"
+  items: [pat:dw-in, lex:swper, lex:coginio, lex:blasus]
+  new_item: lex:blasus
+
+- id: im-drinking-tasty-tea
+  english: "I'm drinking tasty tea"
+  welsh: "Dw i'n yfed te blasus"
+  items: [pat:dw-in, lex:yfed, lex:te, lex:blasus]
+  new_item: lex:blasus
+
+- id: what-do-you-want
+  english: "What do you want?"
+  welsh: "Beth wyt ti'n moyn?"
+  items: [pat:beth-wyt-ti-yn-moyn]
+  new_item: pat:beth-wyt-ti-yn-moyn
+
+- id: what-do-you-want-today
+  english: "What do you want today?"
+  welsh: "Beth wyt ti'n moyn heddi?"
+  items: [lex:heddi, pat:beth-wyt-ti-yn-moyn]
+  new_item: pat:beth-wyt-ti-yn-moyn
+
+- id: what-do-you-want-now
+  english: "What do you want now?"
+  welsh: "Beth wyt ti'n moyn nawr?"
+  items: [lex:nawr, pat:beth-wyt-ti-yn-moyn]
+  new_item: pat:beth-wyt-ti-yn-moyn
+
+- id: what-do-you-want-tomorrow
+  english: "What do you want tomorrow?"
+  welsh: "Beth wyt ti'n moyn fory?"
+  items: [lex:fory, pat:beth-wyt-ti-yn-moyn]
+  new_item: pat:beth-wyt-ti-yn-moyn

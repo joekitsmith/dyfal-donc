@@ -1,0 +1,363 @@
+# The family pack: exercises for the 'family' topic, in South Wales Welsh. Each uses only items
+# earlier in the course order, plus its new_item.
+# Fields: id, english, welsh, items, new_item (optional).
+
+- id: im-phoning-mum
+  english: "I'm phoning Mum"
+  welsh: "Dw i'n ffonio mam"
+  items: [pat:dw-in, lex:ffonio, lex:mam]
+  new_item: lex:mam
+
+- id: i-see-mum
+  english: "I see Mum"
+  welsh: "Dw i'n gweld mam"
+  items: [pat:dw-in, lex:gweld, lex:mam]
+  new_item: lex:mam
+
+- id: im-helping-mum
+  english: "I'm helping Mum"
+  welsh: "Dw i'n helpu mam"
+  items: [pat:dw-in, lex:helpu, lex:mam]
+  new_item: lex:mam
+
+- id: mum-is-with-me
+  english: "Mum is with me"
+  welsh: "Mae mam gyda fi"
+  items: [pat:mae-gyda-fi, lex:mam]
+  new_item: lex:mam
+
+- id: im-phoning-dad
+  english: "I'm phoning Dad"
+  welsh: "Dw i'n ffonio tad"
+  items: [pat:dw-in, lex:ffonio, lex:tad]
+  new_item: lex:tad
+
+- id: i-see-dad
+  english: "I see Dad"
+  welsh: "Dw i'n gweld tad"
+  items: [pat:dw-in, lex:gweld, lex:tad]
+  new_item: lex:tad
+
+- id: im-helping-dad
+  english: "I'm helping Dad"
+  welsh: "Dw i'n helpu tad"
+  items: [pat:dw-in, lex:helpu, lex:tad]
+  new_item: lex:tad
+
+- id: dad-is-with-me
+  english: "Dad is with me"
+  welsh: "Mae tad gyda fi"
+  items: [pat:mae-gyda-fi, lex:tad]
+  new_item: lex:tad
+
+- id: im-phoning-nan
+  english: "I'm phoning Nan"
+  welsh: "Dw i'n ffonio nain"
+  items: [pat:dw-in, lex:ffonio, lex:nain]
+  new_item: lex:nain
+
+- id: i-see-nan
+  english: "I see Nan"
+  welsh: "Dw i'n gweld nain"
+  items: [pat:dw-in, lex:gweld, lex:nain]
+  new_item: lex:nain
+
+- id: im-helping-nan
+  english: "I'm helping Nan"
+  welsh: "Dw i'n helpu nain"
+  items: [pat:dw-in, lex:helpu, lex:nain]
+  new_item: lex:nain
+
+- id: nan-is-with-me
+  english: "Nan is with me"
+  welsh: "Mae nain gyda fi"
+  items: [pat:mae-gyda-fi, lex:nain]
+  new_item: lex:nain
+
+- id: im-phoning-grandad
+  english: "I'm phoning Grandad"
+  welsh: "Dw i'n ffonio taid"
+  items: [pat:dw-in, lex:ffonio, lex:taid]
+  new_item: lex:taid
+
+- id: i-see-grandad
+  english: "I see Grandad"
+  welsh: "Dw i'n gweld taid"
+  items: [pat:dw-in, lex:gweld, lex:taid]
+  new_item: lex:taid
+
+- id: im-helping-grandad
+  english: "I'm helping Grandad"
+  welsh: "Dw i'n helpu taid"
+  items: [pat:dw-in, lex:helpu, lex:taid]
+  new_item: lex:taid
+
+- id: grandad-is-with-me
+  english: "Grandad is with me"
+  welsh: "Mae taid gyda fi"
+  items: [pat:mae-gyda-fi, lex:taid]
+  new_item: lex:taid
+
+- id: i-have-a-family
+  english: "I have a family"
+  welsh: "Mae teulu gyda fi"
+  items: [pat:mae-gyda-fi, lex:teulu]
+  new_item: lex:teulu
+
+- id: do-you-have-a-family
+  english: "Do you have a family?"
+  welsh: "Oes teulu gyda ti?"
+  items: [pat:oes-gyda-ti, lex:teulu]
+  new_item: lex:teulu
+
+- id: i-want-a-family
+  english: "I want a family"
+  welsh: "Dw i'n moyn teulu"
+  items: [pat:dw-in-moyn-noun, lex:teulu]
+  new_item: lex:teulu
+
+- id: im-helping-a-family
+  english: "I'm helping a family"
+  welsh: "Dw i'n helpu teulu"
+  items: [pat:dw-in, lex:helpu, lex:teulu]
+  new_item: lex:teulu
+
+- id: i-have-a-brother
+  english: "I have a brother"
+  welsh: "Mae brawd gyda fi"
+  items: [pat:mae-gyda-fi, lex:brawd]
+  new_item: lex:brawd
+
+- id: do-you-have-a-brother
+  english: "Do you have a brother?"
+  welsh: "Oes brawd gyda ti?"
+  items: [pat:oes-gyda-ti, lex:brawd]
+  new_item: lex:brawd
+
+- id: i-want-a-brother
+  english: "I want a brother"
+  welsh: "Dw i'n moyn brawd"
+  items: [pat:dw-in-moyn-noun, lex:brawd]
+  new_item: lex:brawd
+
+- id: im-helping-a-brother
+  english: "I'm helping a brother"
+  welsh: "Dw i'n helpu brawd"
+  items: [pat:dw-in, lex:helpu, lex:brawd]
+  new_item: lex:brawd
+
+- id: i-have-a-sister
+  english: "I have a sister"
+  welsh: "Mae chwaer gyda fi"
+  items: [pat:mae-gyda-fi, lex:chwaer]
+  new_item: lex:chwaer
+
+- id: do-you-have-a-sister
+  english: "Do you have a sister?"
+  welsh: "Oes chwaer gyda ti?"
+  items: [pat:oes-gyda-ti, lex:chwaer]
+  new_item: lex:chwaer
+
+- id: i-want-a-sister
+  english: "I want a sister"
+  welsh: "Dw i'n moyn chwaer"
+  items: [pat:dw-in-moyn-noun, lex:chwaer]
+  new_item: lex:chwaer
+
+- id: im-helping-a-sister
+  english: "I'm helping a sister"
+  welsh: "Dw i'n helpu chwaer"
+  items: [pat:dw-in, lex:helpu, lex:chwaer]
+  new_item: lex:chwaer
+
+- id: i-have-a-son
+  english: "I have a son"
+  welsh: "Mae mab gyda fi"
+  items: [pat:mae-gyda-fi, lex:mab]
+  new_item: lex:mab
+
+- id: do-you-have-a-son
+  english: "Do you have a son?"
+  welsh: "Oes mab gyda ti?"
+  items: [pat:oes-gyda-ti, lex:mab]
+  new_item: lex:mab
+
+- id: i-want-a-son
+  english: "I want a son"
+  welsh: "Dw i'n moyn mab"
+  items: [pat:dw-in-moyn-noun, lex:mab]
+  new_item: lex:mab
+
+- id: im-helping-a-son
+  english: "I'm helping a son"
+  welsh: "Dw i'n helpu mab"
+  items: [pat:dw-in, lex:helpu, lex:mab]
+  new_item: lex:mab
+
+- id: i-have-a-daughter
+  english: "I have a daughter"
+  welsh: "Mae merch gyda fi"
+  items: [pat:mae-gyda-fi, lex:merch]
+  new_item: lex:merch
+
+- id: do-you-have-a-daughter
+  english: "Do you have a daughter?"
+  welsh: "Oes merch gyda ti?"
+  items: [pat:oes-gyda-ti, lex:merch]
+  new_item: lex:merch
+
+- id: i-want-a-daughter
+  english: "I want a daughter"
+  welsh: "Dw i'n moyn merch"
+  items: [pat:dw-in-moyn-noun, lex:merch]
+  new_item: lex:merch
+
+- id: im-helping-a-daughter
+  english: "I'm helping a daughter"
+  welsh: "Dw i'n helpu merch"
+  items: [pat:dw-in, lex:helpu, lex:merch]
+  new_item: lex:merch
+
+- id: i-have-a-child
+  english: "I have a child"
+  welsh: "Mae plentyn gyda fi"
+  items: [pat:mae-gyda-fi, lex:plentyn]
+  new_item: lex:plentyn
+
+- id: do-you-have-a-child
+  english: "Do you have a child?"
+  welsh: "Oes plentyn gyda ti?"
+  items: [pat:oes-gyda-ti, lex:plentyn]
+  new_item: lex:plentyn
+
+- id: i-want-a-child
+  english: "I want a child"
+  welsh: "Dw i'n moyn plentyn"
+  items: [pat:dw-in-moyn-noun, lex:plentyn]
+  new_item: lex:plentyn
+
+- id: im-helping-a-child
+  english: "I'm helping a child"
+  welsh: "Dw i'n helpu plentyn"
+  items: [pat:dw-in, lex:helpu, lex:plentyn]
+  new_item: lex:plentyn
+
+- id: i-have-a-husband
+  english: "I have a husband"
+  welsh: "Mae gŵr gyda fi"
+  items: [pat:mae-gyda-fi, lex:gwr]
+  new_item: lex:gwr
+
+- id: do-you-have-a-husband
+  english: "Do you have a husband?"
+  welsh: "Oes gŵr gyda ti?"
+  items: [pat:oes-gyda-ti, lex:gwr]
+  new_item: lex:gwr
+
+- id: i-want-a-husband
+  english: "I want a husband"
+  welsh: "Dw i'n moyn gŵr"
+  items: [pat:dw-in-moyn-noun, lex:gwr]
+  new_item: lex:gwr
+
+- id: im-helping-a-husband
+  english: "I'm helping a husband"
+  welsh: "Dw i'n helpu gŵr"
+  items: [pat:dw-in, lex:helpu, lex:gwr]
+  new_item: lex:gwr
+
+- id: i-have-a-wife
+  english: "I have a wife"
+  welsh: "Mae gwraig gyda fi"
+  items: [pat:mae-gyda-fi, lex:gwraig]
+  new_item: lex:gwraig
+
+- id: do-you-have-a-wife
+  english: "Do you have a wife?"
+  welsh: "Oes gwraig gyda ti?"
+  items: [pat:oes-gyda-ti, lex:gwraig]
+  new_item: lex:gwraig
+
+- id: i-want-a-wife
+  english: "I want a wife"
+  welsh: "Dw i'n moyn gwraig"
+  items: [pat:dw-in-moyn-noun, lex:gwraig]
+  new_item: lex:gwraig
+
+- id: im-helping-a-wife
+  english: "I'm helping a wife"
+  welsh: "Dw i'n helpu gwraig"
+  items: [pat:dw-in, lex:helpu, lex:gwraig]
+  new_item: lex:gwraig
+
+- id: i-have-children
+  english: "I have children"
+  welsh: "Mae plant gyda fi"
+  items: [pat:mae-gyda-fi, lex:plentyn]
+  new_item: lex:plentyn
+
+- id: mum-is-working
+  english: "Mum is working"
+  welsh: "Mae mam yn gweithio"
+  items: [lex:gweithio, lex:mam, pat:mae-noun-yn]
+  new_item: pat:mae-noun-yn
+
+- id: dad-is-working
+  english: "Dad is working"
+  welsh: "Mae tad yn gweithio"
+  items: [lex:gweithio, lex:tad, pat:mae-noun-yn]
+  new_item: pat:mae-noun-yn
+
+- id: my-brother-is-learning
+  english: "My brother is learning"
+  welsh: "Mae brawd yn dysgu"
+  items: [lex:dysgu, lex:brawd, pat:mae-noun-yn]
+  new_item: pat:mae-noun-yn
+
+- id: my-sister-is-reading
+  english: "My sister is reading"
+  welsh: "Mae chwaer yn darllen"
+  items: [lex:darllen, lex:chwaer, pat:mae-noun-yn]
+  new_item: pat:mae-noun-yn
+
+- id: nan-lives-here
+  english: "Nan lives here"
+  welsh: "Mae nain yn byw fan hyn"
+  items: [lex:fan-hyn, lex:byw, lex:nain, pat:mae-noun-yn]
+  new_item: pat:mae-noun-yn
+
+- id: the-child-is-eating
+  english: "The child is eating"
+  welsh: "Mae plentyn yn bwyta"
+  items: [lex:bwyta, lex:plentyn, pat:mae-noun-yn]
+  new_item: pat:mae-noun-yn
+
+- id: mum-is-happy
+  english: "Mum is happy"
+  welsh: "Mae mam yn hapus"
+  items: [lex:hapus, lex:mam, pat:mae-noun-yn-adj]
+  new_item: pat:mae-noun-yn-adj
+
+- id: dad-is-tired
+  english: "Dad is tired"
+  welsh: "Mae tad yn flinedig"
+  items: [lex:blinedig, lex:tad, pat:mae-noun-yn-adj]
+  new_item: pat:mae-noun-yn-adj
+
+- id: my-brother-is-busy
+  english: "My brother is busy"
+  welsh: "Mae brawd yn brysur"
+  items: [lex:prysur, lex:brawd, pat:mae-noun-yn-adj]
+  new_item: pat:mae-noun-yn-adj
+
+- id: my-sister-is-good
+  english: "My sister is good"
+  welsh: "Mae chwaer yn dda"
+  items: [lex:da, lex:chwaer, pat:mae-noun-yn-adj]
+  new_item: pat:mae-noun-yn-adj
+
+- id: nan-is-happy
+  english: "Nan is happy"
+  welsh: "Mae nain yn hapus"
+  items: [lex:hapus, lex:nain, pat:mae-noun-yn-adj]
+  new_item: pat:mae-noun-yn-adj

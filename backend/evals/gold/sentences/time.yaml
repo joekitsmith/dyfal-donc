@@ -1,0 +1,737 @@
+- id: sp-im-working-on-monday
+  welsh: "Dw i'n gweithio ddydd Llun"
+  english: "I'm working on Monday"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-llun, mutation: soft}
+    - {text: "Llun", lemma: "llun", item: lex:dydd-llun}
+
+- id: sp-ill-be-working-on-monday
+  welsh: "Bydda i'n gweithio ddydd Llun"
+  english: "I'll be working on Monday"
+  tags: [mutation, clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-llun, mutation: soft}
+    - {text: "Llun", lemma: "llun", item: lex:dydd-llun}
+
+- id: sp-ill-go-on-monday
+  welsh: "Wna i fynd ddydd Llun"
+  english: "I'll go on Monday"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-llun, mutation: soft}
+    - {text: "Llun", lemma: "llun", item: lex:dydd-llun}
+
+- id: sp-i-worked-on-monday
+  welsh: "Nes i weithio ddydd Llun"
+  english: "I worked on Monday"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-llun, mutation: soft}
+    - {text: "Llun", lemma: "llun", item: lex:dydd-llun}
+
+- id: sp-im-working-on-tuesday
+  welsh: "Dw i'n gweithio ddydd Mawrth"
+  english: "I'm working on Tuesday"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-mawrth, mutation: soft}
+    - {text: "Mawrth", lemma: "mawrth", item: lex:dydd-mawrth}
+
+- id: sp-ill-be-working-on-tuesday
+  welsh: "Bydda i'n gweithio ddydd Mawrth"
+  english: "I'll be working on Tuesday"
+  tags: [mutation, clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-mawrth, mutation: soft}
+    - {text: "Mawrth", lemma: "mawrth", item: lex:dydd-mawrth}
+
+- id: sp-ill-go-on-tuesday
+  welsh: "Wna i fynd ddydd Mawrth"
+  english: "I'll go on Tuesday"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-mawrth, mutation: soft}
+    - {text: "Mawrth", lemma: "mawrth", item: lex:dydd-mawrth}
+
+- id: sp-i-worked-on-tuesday
+  welsh: "Nes i weithio ddydd Mawrth"
+  english: "I worked on Tuesday"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-mawrth, mutation: soft}
+    - {text: "Mawrth", lemma: "mawrth", item: lex:dydd-mawrth}
+
+- id: sp-im-working-on-wednesday
+  welsh: "Dw i'n gweithio ddydd Mercher"
+  english: "I'm working on Wednesday"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-mercher, mutation: soft}
+    - {text: "Mercher", lemma: "mercher", item: lex:dydd-mercher}
+
+- id: sp-ill-be-working-on-wednesday
+  welsh: "Bydda i'n gweithio ddydd Mercher"
+  english: "I'll be working on Wednesday"
+  tags: [mutation, clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-mercher, mutation: soft}
+    - {text: "Mercher", lemma: "mercher", item: lex:dydd-mercher}
+
+- id: sp-ill-go-on-wednesday
+  welsh: "Wna i fynd ddydd Mercher"
+  english: "I'll go on Wednesday"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-mercher, mutation: soft}
+    - {text: "Mercher", lemma: "mercher", item: lex:dydd-mercher}
+
+- id: sp-i-worked-on-wednesday
+  welsh: "Nes i weithio ddydd Mercher"
+  english: "I worked on Wednesday"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-mercher, mutation: soft}
+    - {text: "Mercher", lemma: "mercher", item: lex:dydd-mercher}
+
+- id: sp-im-working-on-thursday
+  welsh: "Dw i'n gweithio ddydd Iau"
+  english: "I'm working on Thursday"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-iau, mutation: soft}
+    - {text: "Iau", lemma: "iau", item: lex:dydd-iau}
+
+- id: sp-ill-be-working-on-thursday
+  welsh: "Bydda i'n gweithio ddydd Iau"
+  english: "I'll be working on Thursday"
+  tags: [mutation, clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-iau, mutation: soft}
+    - {text: "Iau", lemma: "iau", item: lex:dydd-iau}
+
+- id: sp-ill-go-on-thursday
+  welsh: "Wna i fynd ddydd Iau"
+  english: "I'll go on Thursday"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-iau, mutation: soft}
+    - {text: "Iau", lemma: "iau", item: lex:dydd-iau}
+
+- id: sp-i-worked-on-thursday
+  welsh: "Nes i weithio ddydd Iau"
+  english: "I worked on Thursday"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-iau, mutation: soft}
+    - {text: "Iau", lemma: "iau", item: lex:dydd-iau}
+
+- id: sp-im-working-on-friday
+  welsh: "Dw i'n gweithio ddydd Gwener"
+  english: "I'm working on Friday"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-gwener, mutation: soft}
+    - {text: "Gwener", lemma: "gwener", item: lex:dydd-gwener}
+
+- id: sp-ill-be-working-on-friday
+  welsh: "Bydda i'n gweithio ddydd Gwener"
+  english: "I'll be working on Friday"
+  tags: [mutation, clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-gwener, mutation: soft}
+    - {text: "Gwener", lemma: "gwener", item: lex:dydd-gwener}
+
+- id: sp-ill-go-on-friday
+  welsh: "Wna i fynd ddydd Gwener"
+  english: "I'll go on Friday"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-gwener, mutation: soft}
+    - {text: "Gwener", lemma: "gwener", item: lex:dydd-gwener}
+
+- id: sp-i-worked-on-friday
+  welsh: "Nes i weithio ddydd Gwener"
+  english: "I worked on Friday"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-gwener, mutation: soft}
+    - {text: "Gwener", lemma: "gwener", item: lex:dydd-gwener}
+
+- id: sp-im-working-on-saturday
+  welsh: "Dw i'n gweithio ddydd Sadwrn"
+  english: "I'm working on Saturday"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-sadwrn, mutation: soft}
+    - {text: "Sadwrn", lemma: "sadwrn", item: lex:dydd-sadwrn}
+
+- id: sp-ill-be-working-on-saturday
+  welsh: "Bydda i'n gweithio ddydd Sadwrn"
+  english: "I'll be working on Saturday"
+  tags: [mutation, clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-sadwrn, mutation: soft}
+    - {text: "Sadwrn", lemma: "sadwrn", item: lex:dydd-sadwrn}
+
+- id: sp-ill-go-on-saturday
+  welsh: "Wna i fynd ddydd Sadwrn"
+  english: "I'll go on Saturday"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-sadwrn, mutation: soft}
+    - {text: "Sadwrn", lemma: "sadwrn", item: lex:dydd-sadwrn}
+
+- id: sp-i-worked-on-saturday
+  welsh: "Nes i weithio ddydd Sadwrn"
+  english: "I worked on Saturday"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-sadwrn, mutation: soft}
+    - {text: "Sadwrn", lemma: "sadwrn", item: lex:dydd-sadwrn}
+
+- id: sp-im-working-on-sunday
+  welsh: "Dw i'n gweithio ddydd Sul"
+  english: "I'm working on Sunday"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-sul, mutation: soft}
+    - {text: "Sul", lemma: "sul", item: lex:dydd-sul}
+
+- id: sp-ill-be-working-on-sunday
+  welsh: "Bydda i'n gweithio ddydd Sul"
+  english: "I'll be working on Sunday"
+  tags: [mutation, clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-sul, mutation: soft}
+    - {text: "Sul", lemma: "sul", item: lex:dydd-sul}
+
+- id: sp-ill-go-on-sunday
+  welsh: "Wna i fynd ddydd Sul"
+  english: "I'll go on Sunday"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-sul, mutation: soft}
+    - {text: "Sul", lemma: "sul", item: lex:dydd-sul}
+
+- id: sp-i-worked-on-sunday
+  welsh: "Nes i weithio ddydd Sul"
+  english: "I worked on Sunday"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "ddydd", lemma: "dydd", item: lex:dydd-sul, mutation: soft}
+    - {text: "Sul", lemma: "sul", item: lex:dydd-sul}
+
+- id: sp-i-work-in-the-morning
+  welsh: "Dw i'n gweithio yn y bore"
+  english: "I work in the morning"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "bore", lemma: "bore", item: lex:bore}
+
+- id: sp-i-learn-in-the-morning
+  welsh: "Dw i'n dysgu yn y bore"
+  english: "I learn in the morning"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "bore", lemma: "bore", item: lex:bore}
+
+- id: sp-i-read-in-the-morning
+  welsh: "Dw i'n darllen yn y bore"
+  english: "I read in the morning"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "bore", lemma: "bore", item: lex:bore}
+
+- id: sp-i-work-in-the-afternoon
+  welsh: "Dw i'n gweithio yn y prynhawn"
+  english: "I work in the afternoon"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "prynhawn", lemma: "prynhawn", item: lex:prynhawn}
+
+- id: sp-i-learn-in-the-afternoon
+  welsh: "Dw i'n dysgu yn y prynhawn"
+  english: "I learn in the afternoon"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "prynhawn", lemma: "prynhawn", item: lex:prynhawn}
+
+- id: sp-i-read-in-the-afternoon
+  welsh: "Dw i'n darllen yn y prynhawn"
+  english: "I read in the afternoon"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "prynhawn", lemma: "prynhawn", item: lex:prynhawn}
+
+- id: sp-i-work-in-the-night
+  welsh: "Dw i'n gweithio yn y nos"
+  english: "I work in the night"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "nos", lemma: "nos", item: lex:nos}
+
+- id: sp-i-learn-in-the-night
+  welsh: "Dw i'n dysgu yn y nos"
+  english: "I learn in the night"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "nos", lemma: "nos", item: lex:nos}
+
+- id: sp-i-read-in-the-night
+  welsh: "Dw i'n darllen yn y nos"
+  english: "I read in the night"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "nos", lemma: "nos", item: lex:nos}
+
+- id: sp-i-work-in-the-week
+  welsh: "Dw i'n gweithio yn yr wythnos"
+  english: "I work in the week"
+  tags: [clitic, inflection, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "yr", lemma: "y", item: lex:y}
+    - {text: "wythnos", lemma: "wythnos", item: lex:wythnos}
+
+- id: sp-i-learn-in-the-week
+  welsh: "Dw i'n dysgu yn yr wythnos"
+  english: "I learn in the week"
+  tags: [clitic, inflection, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "yr", lemma: "y", item: lex:y}
+    - {text: "wythnos", lemma: "wythnos", item: lex:wythnos}
+
+- id: sp-i-read-in-the-week
+  welsh: "Dw i'n darllen yn yr wythnos"
+  english: "I read in the week"
+  tags: [clitic, inflection, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "yr", lemma: "y", item: lex:y}
+    - {text: "wythnos", lemma: "wythnos", item: lex:wythnos}
+
+- id: sp-i-work-in-the-month
+  welsh: "Dw i'n gweithio yn y mis"
+  english: "I work in the month"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "mis", lemma: "mis", item: lex:mis}
+
+- id: sp-i-learn-in-the-month
+  welsh: "Dw i'n dysgu yn y mis"
+  english: "I learn in the month"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "mis", lemma: "mis", item: lex:mis}
+
+- id: sp-i-read-in-the-month
+  welsh: "Dw i'n darllen yn y mis"
+  english: "I read in the month"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "mis", lemma: "mis", item: lex:mis}
+
+- id: sp-i-work-in-the-year
+  welsh: "Dw i'n gweithio yn y flwyddyn"
+  english: "I work in the year"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "flwyddyn", lemma: "blwyddyn", item: lex:blwyddyn, mutation: soft}
+
+- id: sp-i-learn-in-the-year
+  welsh: "Dw i'n dysgu yn y flwyddyn"
+  english: "I learn in the year"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "flwyddyn", lemma: "blwyddyn", item: lex:blwyddyn, mutation: soft}
+
+- id: sp-i-read-in-the-year
+  welsh: "Dw i'n darllen yn y flwyddyn"
+  english: "I read in the year"
+  tags: [mutation, clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "yn", lemma: "yn", item: lex:yn}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "flwyddyn", lemma: "blwyddyn", item: lex:blwyddyn, mutation: soft}
+
+- id: sp-im-waiting-an-hour
+  welsh: "Dw i'n aros awr"
+  english: "I'm waiting an hour"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "awr", lemma: "awr", item: lex:awr}
+
+- id: sp-im-working-for-an-hour
+  welsh: "Dw i'n gweithio awr"
+  english: "I'm working for an hour"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "awr", lemma: "awr", item: lex:awr}
+
+- id: sp-ill-wait-an-hour
+  welsh: "Wna i aros awr"
+  english: "I'll wait an hour"
+  tags: [plain]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "awr", lemma: "awr", item: lex:awr}
+
+- id: sp-ill-be-working-next-week
+  welsh: "Bydda i'n gweithio wythnos nesaf"
+  english: "I'll be working next week"
+  tags: [clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "wythnos", lemma: "wythnos", item: lex:wythnos}
+    - {text: "nesaf", lemma: "nesaf", item: lex:nesaf}
+
+- id: sp-ill-be-coming-next-month
+  welsh: "Bydda i'n dod mis nesaf"
+  english: "I'll be coming next month"
+  tags: [clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "mis", lemma: "mis", item: lex:mis}
+    - {text: "nesaf", lemma: "nesaf", item: lex:nesaf}
+
+- id: sp-ill-go-next-year
+  welsh: "Wna i fynd blwyddyn nesaf"
+  english: "I'll go next year"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "blwyddyn", lemma: "blwyddyn", item: lex:blwyddyn}
+    - {text: "nesaf", lemma: "nesaf", item: lex:nesaf}
+
+- id: sp-ill-be-learning-next-week
+  welsh: "Bydda i'n dysgu wythnos nesaf"
+  english: "I'll be learning next week"
+  tags: [clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "wythnos", lemma: "wythnos", item: lex:wythnos}
+    - {text: "nesaf", lemma: "nesaf", item: lex:nesaf}
+
+- id: sp-i-worked-last-week
+  welsh: "Nes i weithio wythnos ddiwethaf"
+  english: "I worked last week"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "wythnos", lemma: "wythnos", item: lex:wythnos}
+    - {text: "ddiwethaf", lemma: "diwethaf", item: lex:diwethaf, mutation: soft}
+
+- id: sp-i-went-last-month
+  welsh: "Nes i fynd mis diwethaf"
+  english: "I went last month"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "mis", lemma: "mis", item: lex:mis}
+    - {text: "diwethaf", lemma: "diwethaf", item: lex:diwethaf}
+
+- id: sp-i-was-working-last-year
+  welsh: "Ro'n i'n gweithio blwyddyn ddiwethaf"
+  english: "I was working last year"
+  tags: [mutation, clitic]
+  patterns: [pat:ro-ni-in]
+  tokens:
+    - {text: "Ro", lemma: "bod"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "blwyddyn", lemma: "blwyddyn", item: lex:blwyddyn}
+    - {text: "ddiwethaf", lemma: "diwethaf", item: lex:diwethaf, mutation: soft}
+
+- id: sp-i-had-coffee-last-week
+  welsh: "Ces i goffi wythnos ddiwethaf"
+  english: "I had coffee last week"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "goffi", lemma: "coffi", item: lex:coffi, mutation: soft}
+    - {text: "wythnos", lemma: "wythnos", item: lex:wythnos}
+    - {text: "ddiwethaf", lemma: "diwethaf", item: lex:diwethaf, mutation: soft}
