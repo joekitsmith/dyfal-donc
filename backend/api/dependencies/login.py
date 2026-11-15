@@ -44,9 +44,11 @@ def get_authenticated(
     settings: LoginSessionSettingsDependency,
 ) -> Authenticated:
     """Who is signed in. The cookie is sent again when the session's expiry moves."""
-    authenticated = authenticate(unit_of_work, token, clock(), settings.lifetime)
+    authenticated = authenticate(unit_of_work, token, clock(), settings)
     if authenticated.extended and token is not None:
-        set_session_cookie(response, token, settings)
+        set_session_cookie(
+            response, token, settings, is_guest=authenticated.user.is_guest
+        )
 
     return authenticated
 

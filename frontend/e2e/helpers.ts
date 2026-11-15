@@ -1,4 +1,4 @@
-import type { APIRequestContext, Page } from "@playwright/test";
+import { type APIRequestContext, expect, type Page } from "@playwright/test";
 
 const FAST_THINK_MULTIPLIER = "0.5";
 const LONG_CLIP_SECONDS = 0.2;
@@ -48,4 +48,11 @@ export async function speedUpThinking(page: Page): Promise<void> {
   await page.addInitScript((multiplier) => {
     window.localStorage.setItem("dyfal-donc.think-time-multiplier", multiplier);
   }, FAST_THINK_MULTIPLIER);
+}
+
+/** Starts as a guest from the front door, as a new visitor would. */
+export async function startAsGuest(page: Page): Promise<void> {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Try it now" }).click();
+  await expect(page).toHaveURL(/\/learn$/);
 }

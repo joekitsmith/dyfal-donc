@@ -39,9 +39,9 @@ def post_guest(
     clock: ClockDependency,
     login_session: LoginSessionSettingsDependency,
 ) -> UserResponse:
-    started = start_guest(unit_of_work, release, token, clock(), login_session.lifetime)
+    started = start_guest(unit_of_work, release, token, clock(), login_session)
     if started.token is not None:
-        set_session_cookie(response, started.token, login_session)
+        set_session_cookie(response, started.token, login_session, is_guest=True)
 
     return started.user
 
@@ -74,10 +74,10 @@ def post_registration_verify(
         authenticated,
         request,
         clock(),
-        login_session.lifetime,
+        login_session,
     )
     if registered.token is not None:
-        set_session_cookie(response, registered.token, login_session)
+        set_session_cookie(response, registered.token, login_session, is_guest=False)
 
     return registered.passkey
 
@@ -102,10 +102,10 @@ def post_authentication_verify(
     login_session: LoginSessionSettingsDependency,
 ) -> UserResponse:
     signed_in = finish_passkey_authentication(
-        unit_of_work, passkeys, request, token, clock(), login_session.lifetime
+        unit_of_work, passkeys, request, token, clock(), login_session
     )
     if signed_in.token is not None:
-        set_session_cookie(response, signed_in.token, login_session)
+        set_session_cookie(response, signed_in.token, login_session, is_guest=False)
 
     return signed_in.user
 

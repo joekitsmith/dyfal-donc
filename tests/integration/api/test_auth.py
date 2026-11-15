@@ -353,7 +353,7 @@ class TestChallenges:
 
 
 class TestLoginSessions:
-    def test_a_session_ends_after_its_lifetime(
+    def test_a_guests_session_ends_after_thirty_days(
         self, client: TestClient, clock: FakeClock
     ) -> None:
         start_guest(client)
@@ -362,7 +362,7 @@ class TestLoginSessions:
 
         assert client.get("/me").status_code == 401
 
-    def test_using_the_app_keeps_the_session_alive(
+    def test_using_the_app_keeps_a_guests_session_alive(
         self, client: TestClient, clock: FakeClock
     ) -> None:
         start_guest(client)
@@ -372,6 +372,63 @@ class TestLoginSessions:
         clock.advance(days=20)
 
         assert client.get("/me").status_code == 200
+
+    def test_an_accounts_session_ends_after_a_day(
+        self,
+        client: TestClient,
+        authenticator: SoftwareAuthenticator,
+        clock: FakeClock,
+    ) -> None:
+        start_guest(client)
+        register_passkey(client, authenticator)
+
+        clock.advance(days=1, seconds=1)
+
+        assert client.get("/me").status_code == 401
+
+    def test_using_the_app_keeps_an_accounts_session_alive(
+        self,
+        client: TestClient,
+        authenticator: SoftwareAuthenticator,
+        clock: FakeClock,
+    ) -> None:
+        start_guest(client)
+        register_passkey(client, authenticator)
+
+        clock.advance(hours=20)
+        assert client.get("/me").status_code == 200
+        clock.advance(hours=20)
+
+        assert client.get("/me").status_code == 200
+
+    def test_signing_in_with_a_passkey_gives_the_accounts_lifetime(
+        self,
+        make_client: Browsers,
+        authenticator: SoftwareAuthenticator,
+        clock: FakeClock,
+    ) -> None:
+        first, second = make_client(), make_client()
+        start_guest(first)
+        register_passkey(first, authenticator)
+        sign_in(second, authenticator)
+
+        clock.advance(days=1, seconds=1)
+
+        assert second.get("/me").status_code == 401
+
+    def test_adding_a_passkey_changes_the_cookie_to_the_accounts_lifetime(
+        self, client: TestClient, authenticator: SoftwareAuthenticator
+    ) -> None:
+        guest = client.post("/auth/guest")
+        options = client.post("/auth/passkeys/registration/options").json()
+
+        saved = client.post(
+            "/auth/passkeys/registration/verify",
+            json={"credential": authenticator.register(options, ORIGIN)},
+        )
+
+        assert "max-age=2592000" in guest.headers["set-cookie"].lower()
+        assert "max-age=86400" in saved.headers["set-cookie"].lower()
 
     def test_the_cookie_is_sent_again_when_the_expiry_moves(
         self, client: TestClient, clock: FakeClock

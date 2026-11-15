@@ -15,3 +15,10 @@ export function unwrap<Data>(result: { readonly data?: Data | undefined; readonl
 
   return result.data;
 }
+
+/** Throws an ApiError carrying the status unless the request succeeded, for responses with no body. */
+export function assertOk(result: { readonly response: Response }): void {
+  if (!result.response.ok) {
+    throw new ApiError(result.response.status);
+  }
+}

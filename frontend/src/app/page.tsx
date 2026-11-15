@@ -1,5 +1,5 @@
-import { LessonPage } from "@/features/lesson";
+import { HomePage } from "@/features/home";
 
 export default function Page() {
-  return <LessonPage />;
+  return <HomePage />;
 }

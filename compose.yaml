@@ -48,7 +48,8 @@ services:
       WEBAUTHN_ORIGINS: ${WEBAUTHN_ORIGINS:-http://localhost:${WEB_PORT:-8080},http://localhost:3000}
       # Off for plain HTTP on localhost, where some browsers refuse a Secure cookie
       SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
-      SESSION_LIFETIME_SECONDS: ${SESSION_LIFETIME_SECONDS:-2592000}
+      SESSION_LIFETIME_SECONDS: ${SESSION_LIFETIME_SECONDS:-86400}
+      SESSION_GUEST_LIFETIME_SECONDS: ${SESSION_GUEST_LIFETIME_SECONDS:-2592000}
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 5s

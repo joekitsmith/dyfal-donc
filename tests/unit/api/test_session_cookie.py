@@ -6,7 +6,10 @@ from api.settings import LoginSessionSettings
 
 def settings(*, secure: bool) -> LoginSessionSettings:
     return LoginSessionSettings(
-        cookie_secure=secure, lifetime_seconds=3600, _env_file=None
+        cookie_secure=secure,
+        lifetime_seconds=3600,
+        guest_lifetime_seconds=7200,
+        _env_file=None,
     )
 
 
@@ -14,7 +17,7 @@ class TestSetSessionCookie:
     def test_the_cookie_cannot_be_read_by_scripts_or_sent_cross_site(self) -> None:
         response = Response()
 
-        set_session_cookie(response, "token", settings(secure=True))
+        set_session_cookie(response, "token", settings(secure=True), is_guest=False)
 
         cookie = response.headers["set-cookie"].lower()
         assert cookie.startswith("session=token")
@@ -24,10 +27,17 @@ class TestSetSessionCookie:
         assert "path=/" in cookie
         assert "max-age=3600" in cookie
 
+    def test_a_guests_cookie_lasts_as_long_as_a_guests_session(self) -> None:
+        response = Response()
+
+        set_session_cookie(response, "token", settings(secure=True), is_guest=True)
+
+        assert "max-age=7200" in response.headers["set-cookie"].lower()
+
     def test_secure_can_be_turned_off_for_local_http(self) -> None:
         response = Response()
 
-        set_session_cookie(response, "token", settings(secure=False))
+        set_session_cookie(response, "token", settings(secure=False), is_guest=False)
 
         assert "secure" not in response.headers["set-cookie"].lower()
 

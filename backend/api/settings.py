@@ -14,7 +14,8 @@ DEFAULT_TTS_TIMEOUT_SECONDS = 30.0
 DEFAULT_RELYING_PARTY_ID = "localhost"
 DEFAULT_RELYING_PARTY_NAME = "dyfal-donc"
 DEFAULT_ORIGINS = ("http://localhost:8080", "http://localhost:3000")
-DEFAULT_LOGIN_SESSION_LIFETIME_SECONDS = 30 * 24 * 3600
+DEFAULT_LOGIN_SESSION_LIFETIME_SECONDS = 24 * 3600
+DEFAULT_GUEST_LOGIN_SESSION_LIFETIME_SECONDS = 30 * 24 * 3600
 
 
 class PasskeySettings(BaseSettings):
@@ -45,8 +46,11 @@ class PasskeySettings(BaseSettings):
 class LoginSessionSettings(BaseSettings):
     """How long a sign-in lasts and how its cookie is sent, read from ``SESSION_``.
 
-    Browsers only send a ``Secure`` cookie over HTTPS (and to localhost), so
-    ``cookie_secure`` is on unless it is turned off for plain HTTP.
+    A session lasts this long after it was last used. A guest's lasts longer,
+    because a guest has no passkey to get back in with: losing the session
+    loses the account. Browsers only send a ``Secure`` cookie over HTTPS (and
+    to localhost), so ``cookie_secure`` is on unless it is turned off for plain
+    HTTP.
     """
 
     model_config = SettingsConfigDict(
@@ -55,10 +59,13 @@ class LoginSessionSettings(BaseSettings):
 
     cookie_secure: bool = True
     lifetime_seconds: int = Field(default=DEFAULT_LOGIN_SESSION_LIFETIME_SECONDS, gt=0)
+    guest_lifetime_seconds: int = Field(
+        default=DEFAULT_GUEST_LOGIN_SESSION_LIFETIME_SECONDS, gt=0
+    )
 
-    @property
-    def lifetime(self) -> timedelta:
-        return timedelta(seconds=self.lifetime_seconds)
+    def lifetime_for(self, *, is_guest: bool) -> timedelta:
+        seconds = self.guest_lifetime_seconds if is_guest else self.lifetime_seconds
+        return timedelta(seconds=seconds)
 
 
 class Settings(BaseSettings):

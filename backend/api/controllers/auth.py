@@ -22,7 +22,7 @@ from api.schemas import (
     RegistrationVerifyRequest,
     UserResponse,
 )
-from api.settings import PasskeySettings
+from api.settings import LoginSessionSettings, PasskeySettings
 from api.tokens import hash_token, new_token
 from persistence.database import (
     AddChallenge,
@@ -67,7 +67,10 @@ class RegisteredPasskey:
 
 
 def authenticate(
-    unit_of_work: UnitOfWork, token: str | None, now: datetime, lifetime: timedelta
+    unit_of_work: UnitOfWork,
+    token: str | None,
+    now: datetime,
+    login: LoginSessionSettings,
 ) -> Authenticated:
     """Find who the token belongs to, moving the session's expiry if it is due."""
     if token is None:
@@ -87,7 +90,7 @@ def authenticate(
             ExtendLoginSession(
                 login_session_id=login_session.id,
                 seen_at=now,
-                expires_at=expiry(now, lifetime),
+                expires_at=expiry(now, login.lifetime_for(is_guest=user.is_guest)),
             )
         )
         unit_of_work.commit()
@@ -100,14 +103,14 @@ def start_guest(
     release: CourseRelease,
     token: str | None,
     now: datetime,
-    lifetime: timedelta,
+    login: LoginSessionSettings,
 ) -> SignIn:
     """Let someone start straight away, as a user with no passkeys.
 
     A browser that is already signed in gets its own user back.
     """
     try:
-        current = authenticate(unit_of_work, token, now, lifetime)
+        current = authenticate(unit_of_work, token, now, login)
     except NotAuthenticatedError:
         pass
     else:
@@ -115,7 +118,9 @@ def start_guest(
 
     user = unit_of_work.users.add(AddUser())
     unit_of_work.learners.add(to_add_learner(user.id, release))
-    new_session_token = _open_session(unit_of_work, user.id, now, lifetime)
+    new_session_token = _open_session(
+        unit_of_work, user.id, now, login.lifetime_for(is_guest=True)
+    )
     unit_of_work.commit()
     return SignIn(user=to_user_response(user), token=new_session_token)
 
@@ -155,7 +160,7 @@ def finish_passkey_registration(
     authenticated: Authenticated,
     request: RegistrationVerifyRequest,
     now: datetime,
-    lifetime: timedelta,
+    login: LoginSessionSettings,
 ) -> RegisteredPasskey:
     """Store the passkey the browser made for the signed-in user.
 
@@ -185,7 +190,9 @@ def finish_passkey_registration(
     token = None
     if user.is_guest:
         unit_of_work.login_sessions.delete(authenticated.login_session.id)
-        token = _open_session(unit_of_work, user.id, now, lifetime)
+        token = _open_session(
+            unit_of_work, user.id, now, login.lifetime_for(is_guest=False)
+        )
 
     unit_of_work.commit()
     return RegisteredPasskey(passkey=to_passkey_response(stored), token=token)
@@ -215,7 +222,7 @@ def finish_passkey_authentication(
     request: AuthenticationVerifyRequest,
     token: str | None,
     now: datetime,
-    lifetime: timedelta,
+    login: LoginSessionSettings,
 ) -> SignIn:
     """Sign in with a passkey, replacing whatever the browser was signed in as."""
     challenge = challenge_of(request.credential)
@@ -243,7 +250,9 @@ def finish_passkey_authentication(
         )
     )
     _end_session(unit_of_work, token)
-    new_session_token = _open_session(unit_of_work, stored.user_id, now, lifetime)
+    new_session_token = _open_session(
+        unit_of_work, stored.user_id, now, login.lifetime_for(is_guest=False)
+    )
     user = unit_of_work.users.get(stored.user_id)
     if user is None:
         raise InvalidPasskeyError("Passkey belongs to no one")
