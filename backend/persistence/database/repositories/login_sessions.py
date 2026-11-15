@@ -21,6 +21,7 @@ class LoginSessionRepository:
             user_id=command.user_id,
             token_hash=command.token_hash,
             created_at=command.created_at,
+            authenticated_at=command.authenticated_at,
             last_seen_at=command.created_at,
             expires_at=command.expires_at,
         )

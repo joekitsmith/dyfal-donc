@@ -22,6 +22,10 @@ class LastPasskeyError(Exception):
     """Removing the passkey would leave an account nobody can sign in to."""
 
 
+class RecentSignInRequiredError(Exception):
+    """Changing the account needs a sign-in just now, not only a session that is still alive."""
+
+
 class RecoveryCodesUnavailableError(Exception):
     """Recovery codes need a passkey first: a guest has none to recover."""
 

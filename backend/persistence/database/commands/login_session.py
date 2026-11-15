@@ -10,6 +10,7 @@ class AddLoginSession:
     user_id: uuid.UUID
     token_hash: bytes
     created_at: datetime
+    authenticated_at: datetime
     expires_at: datetime
 
 

@@ -7,7 +7,7 @@ poe api         # run locally with reload
 make stack-up   # the whole stack in Docker Compose, behind nginx (make stack-up-debug also publishes the API on localhost:8000)
 ```
 
-`CURRICULUM_DIRECTORY`, `SELECTION_LIFETIME_SECONDS`, `TTS_URL` and `DATABASE_URL` (required) configure it, as do `WEBAUTHN_RP_ID`, `WEBAUTHN_RP_NAME`, `WEBAUTHN_ORIGINS` (comma-separated), `SESSION_COOKIE_SECURE`, `SESSION_LIFETIME_SECONDS` and `SESSION_GUEST_LIFETIME_SECONDS`, from the environment or `.env`: see `settings.py`.
+`CURRICULUM_DIRECTORY`, `SELECTION_LIFETIME_SECONDS`, `TTS_URL` and `DATABASE_URL` (required) configure it, as do `WEBAUTHN_RP_ID`, `WEBAUTHN_RP_NAME`, `WEBAUTHN_ORIGINS` (comma-separated), `SESSION_COOKIE_SECURE`, `SESSION_LIFETIME_SECONDS`, `SESSION_GUEST_LIFETIME_SECONDS`, `SESSION_MAX_AGE_SECONDS` and `SESSION_RECENT_SIGN_IN_SECONDS`, from the environment or `.env`: see `settings.py`.
 
 A browser starts as a guest (`POST /auth/guest`) and can add a passkey later to keep its progress. The learner's routes are under `/me` and need the session cookie. Requests that change something must carry an `Origin` the app is served from.
 

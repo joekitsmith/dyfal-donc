@@ -10,8 +10,8 @@ from api.controllers import (
     start_guest,
 )
 from api.dependencies import (
-    AuthenticatedDependency,
     ClockDependency,
+    ConfirmedDependency,
     CourseReleaseDependency,
     LoginSessionSettingsDependency,
     PasskeySettingsDependency,
@@ -50,7 +50,7 @@ def post_guest(
 
 @router.post("/passkeys/registration/options")
 def post_registration_options(
-    authenticated: AuthenticatedDependency,
+    authenticated: ConfirmedDependency,
     unit_of_work: UnitOfWorkDependency,
     clock: ClockDependency,
     passkeys: PasskeySettingsDependency,
@@ -64,7 +64,7 @@ def post_registration_options(
 def post_registration_verify(
     request: RegistrationVerifyRequest,
     response: Response,
-    authenticated: AuthenticatedDependency,
+    authenticated: ConfirmedDependency,
     unit_of_work: UnitOfWorkDependency,
     clock: ClockDependency,
     passkeys: PasskeySettingsDependency,

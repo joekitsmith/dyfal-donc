@@ -5,7 +5,12 @@ from datetime import datetime, timedelta
 
 from api.course import CourseRelease
 from api.errors import InvalidPasskeyError, NotAuthenticatedError
-from api.login_sessions import expiry, is_expired, needs_extending
+from api.login_sessions import (
+    expiry,
+    is_expired,
+    is_past_maximum_age,
+    needs_extending,
+)
 from api.mappings import to_add_learner, to_passkey_response, to_user_response
 from api.passkeys import (
     CHALLENGE_LIFETIME,
@@ -92,6 +97,12 @@ def authenticate(
 
     user = unit_of_work.users.get(login_session.user_id)
     if user is None:
+        raise NotAuthenticatedError("Not signed in")
+
+    # A guest has no passkey to sign in again with, so only an account's session has a limit
+    if not user.is_guest and is_past_maximum_age(
+        login_session.created_at, now, login.max_age
+    ):
         raise NotAuthenticatedError("Not signed in")
 
     extended = needs_extending(login_session.last_seen_at, now)
@@ -249,7 +260,7 @@ def finish_passkey_authentication(
         credential_id_of(request.credential)
     )
     if stored is None:
-        raise InvalidPasskeyError("Passkey is not registered")
+        raise InvalidPasskeyError("Passkey did not verify")
 
     signed_in = finish_authentication(
         settings,
@@ -271,7 +282,7 @@ def finish_passkey_authentication(
     )
     user = unit_of_work.users.get(stored.user_id)
     if user is None:
-        raise InvalidPasskeyError("Passkey belongs to no one")
+        raise InvalidPasskeyError("Passkey did not verify")
 
     unit_of_work.commit()
     return SignIn(user=to_user_response(user), token=new_session_token)
@@ -329,6 +340,7 @@ def _open_session(
             user_id=user_id,
             token_hash=hash_token(token),
             created_at=now,
+            authenticated_at=now,
             expires_at=expiry(now, lifetime),
         )
     )

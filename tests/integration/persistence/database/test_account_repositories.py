@@ -59,6 +59,7 @@ def new_login_session(
         user_id=user_id,
         token_hash=token_hash,
         created_at=NOW,
+        authenticated_at=NOW,
         expires_at=NOW + timedelta(days=30),
     )
 
@@ -250,6 +251,7 @@ class TestLoginSessionRepository:
                 user_id=user.id,
                 token_hash=b"new",
                 created_at=NOW,
+                authenticated_at=NOW,
                 expires_at=NOW + timedelta(days=90),
             )
         )

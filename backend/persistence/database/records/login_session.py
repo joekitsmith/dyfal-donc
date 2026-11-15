@@ -10,5 +10,6 @@ class LoginSessionRecord:
     id: uuid.UUID
     user_id: uuid.UUID
     created_at: datetime
+    authenticated_at: datetime
     last_seen_at: datetime
     expires_at: datetime

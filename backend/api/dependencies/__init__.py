@@ -3,9 +3,11 @@ from api.dependencies.course import CourseReleaseDependency, get_course_release
 from api.dependencies.database import UnitOfWorkDependency, get_unit_of_work
 from api.dependencies.login import (
     AuthenticatedDependency,
+    ConfirmedDependency,
     LearnerIdDependency,
     SessionTokenDependency,
     get_authenticated,
+    get_confirmed,
     get_learner_id,
     get_session_token,
     require_known_origin,
@@ -23,6 +25,7 @@ from api.dependencies.speech import SpeechClientDependency, get_speech_client
 __all__ = [
     "AuthenticatedDependency",
     "ClockDependency",
+    "ConfirmedDependency",
     "CourseReleaseDependency",
     "LearnerIdDependency",
     "LoginSessionSettingsDependency",
@@ -33,6 +36,7 @@ __all__ = [
     "UnitOfWorkDependency",
     "get_authenticated",
     "get_clock",
+    "get_confirmed",
     "get_course_release",
     "get_learner_id",
     "get_login_session_settings",

@@ -16,6 +16,8 @@ DEFAULT_RELYING_PARTY_NAME = "dyfal-donc"
 DEFAULT_ORIGINS = ("http://localhost:8080", "http://localhost:3000")
 DEFAULT_LOGIN_SESSION_LIFETIME_SECONDS = 24 * 3600
 DEFAULT_GUEST_LOGIN_SESSION_LIFETIME_SECONDS = 30 * 24 * 3600
+DEFAULT_LOGIN_SESSION_MAXIMUM_AGE_SECONDS = 30 * 24 * 3600
+DEFAULT_RECENT_SIGN_IN_SECONDS = 600
 
 
 class PasskeySettings(BaseSettings):
@@ -51,6 +53,12 @@ class LoginSessionSettings(BaseSettings):
     loses the account. Browsers only send a ``Secure`` cookie over HTTPS (and
     to localhost), so ``cookie_secure`` is on unless it is turned off for plain
     HTTP.
+
+    A session that is being used still ends ``max_age_seconds`` after it began,
+    so a stolen cookie cannot be kept alive for ever. A guest has no passkey to
+    sign in again with, so only accounts are limited this way. Changing the
+    account (adding or removing a passkey, new recovery codes, deleting it)
+    needs a sign-in within ``recent_sign_in_seconds``.
     """
 
     model_config = SettingsConfigDict(
@@ -62,6 +70,19 @@ class LoginSessionSettings(BaseSettings):
     guest_lifetime_seconds: int = Field(
         default=DEFAULT_GUEST_LOGIN_SESSION_LIFETIME_SECONDS, gt=0
     )
+
+    max_age_seconds: int = Field(
+        default=DEFAULT_LOGIN_SESSION_MAXIMUM_AGE_SECONDS, gt=0
+    )
+    recent_sign_in_seconds: int = Field(default=DEFAULT_RECENT_SIGN_IN_SECONDS, gt=0)
+
+    @property
+    def max_age(self) -> timedelta:
+        return timedelta(seconds=self.max_age_seconds)
+
+    @property
+    def recent_sign_in(self) -> timedelta:
+        return timedelta(seconds=self.recent_sign_in_seconds)
 
     def lifetime_for(self, *, is_guest: bool) -> timedelta:
         seconds = self.guest_lifetime_seconds if is_guest else self.lifetime_seconds

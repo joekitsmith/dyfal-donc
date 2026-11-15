@@ -10,6 +10,7 @@ from api.errors import (
     LastPasskeyError,
     NotAuthenticatedError,
     PasskeyNotFoundError,
+    RecentSignInRequiredError,
     RecoveryCodesUnavailableError,
     SpeechUnavailableError,
 )
@@ -43,6 +44,7 @@ STATUS_FOR_ERROR: dict[type[Exception], int] = {
     LastPasskeyError: status.HTTP_409_CONFLICT,
     RecoveryCodeNotFoundError: status.HTTP_400_BAD_REQUEST,
     RecoveryCodesUnavailableError: status.HTTP_409_CONFLICT,
+    RecentSignInRequiredError: status.HTTP_403_FORBIDDEN,
 }
 
 

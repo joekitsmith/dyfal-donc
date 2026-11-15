@@ -12,6 +12,7 @@ from api.controllers import (
 from api.dependencies import (
     AuthenticatedDependency,
     ClockDependency,
+    ConfirmedDependency,
     LoginSessionSettingsDependency,
     UnitOfWorkDependency,
     require_known_origin,
@@ -36,7 +37,7 @@ def get_me(authenticated: AuthenticatedDependency) -> UserResponse:
 @router.delete("", status_code=status.HTTP_204_NO_CONTENT)
 def delete_me(
     response: Response,
-    authenticated: AuthenticatedDependency,
+    authenticated: ConfirmedDependency,
     unit_of_work: UnitOfWorkDependency,
     login_session: LoginSessionSettingsDependency,
 ) -> None:
@@ -54,7 +55,7 @@ def get_passkeys(
 @router.delete("/passkeys/{passkey_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_passkey(
     passkey_id: uuid.UUID,
-    authenticated: AuthenticatedDependency,
+    authenticated: ConfirmedDependency,
     unit_of_work: UnitOfWorkDependency,
 ) -> None:
     remove_passkey(unit_of_work, authenticated.user.id, passkey_id)
@@ -69,7 +70,7 @@ def get_recovery_codes(
 
 @router.post("/recovery-codes")
 def post_recovery_codes(
-    authenticated: AuthenticatedDependency,
+    authenticated: ConfirmedDependency,
     unit_of_work: UnitOfWorkDependency,
     clock: ClockDependency,
 ) -> RecoveryCodesResponse:
