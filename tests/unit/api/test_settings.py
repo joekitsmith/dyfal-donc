@@ -7,6 +7,7 @@ from pydantic import ValidationError
 from api.settings import DEFAULT_CURRICULUM_DIRECTORY, Settings
 
 
+@pytest.mark.usefixtures("database_url")
 class TestSettings:
     def test_defaults_to_the_repository_curriculum(self) -> None:
         assert (DEFAULT_CURRICULUM_DIRECTORY / "topics.yaml").is_file()

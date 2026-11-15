@@ -9,6 +9,13 @@ from api.settings import DEFAULT_CURRICULUM_DIRECTORY, Settings
 from persistence.database import DatabaseSettings
 
 
+@pytest.fixture
+def database_url(monkeypatch: pytest.MonkeyPatch) -> str:
+    url = "postgresql+psycopg://test@unreachable/db"
+    monkeypatch.setenv("DATABASE_URL", url)
+    return url
+
+
 @pytest.fixture(scope="session")
 def curriculum_directory() -> Path:
     return DEFAULT_CURRICULUM_DIRECTORY
