@@ -1,0 +1,13 @@
+# Adds the services' own ports for tools outside Docker: poe, make web-dev, psql
+services:
+  postgres:
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+
+  tts:
+    ports:
+      - "127.0.0.1:${TTS_PORT:-8001}:8001"
+
+  api:
+    ports:
+      - "${API_PORT:-8000}:8000"

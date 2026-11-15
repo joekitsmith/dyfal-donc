@@ -9,7 +9,7 @@ The voice files are downloaded when the image is built (`Dockerfile`), pinned to
 ```
 make tts-build   # build the image
 make tts-up      # run it on localhost:8001 (TTS_PORT), for `poe api`
-make stack-up    # or run it with the API and Postgres
+make stack-up-debug   # or run the whole stack with its ports published
 ```
 
 It is published to localhost only, for development. The API is what clients call: `GET /exercises/{exercise_id}/audio/{track}`.
