@@ -1,0 +1,1054 @@
+- id: sp-i-want-meat
+  welsh: "Dw i'n moyn cig"
+  english: "I want meat"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cig", lemma: "cig", item: lex:cig}
+
+- id: sp-im-eating-meat
+  welsh: "Dw i'n bwyta cig"
+  english: "I'm eating meat"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "cig", lemma: "cig", item: lex:cig}
+
+- id: sp-i-like-meat
+  welsh: "Dw i'n hoffi cig"
+  english: "I like meat"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "cig", lemma: "cig", item: lex:cig}
+
+- id: sp-i-had-meat
+  welsh: "Ces i gig"
+  english: "I had meat"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "gig", lemma: "cig", item: lex:cig, mutation: soft}
+
+- id: sp-did-you-have-meat
+  welsh: "Gest ti gig?"
+  english: "Did you have meat?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "gig", lemma: "cig", item: lex:cig, mutation: soft}
+
+- id: sp-i-want-fish
+  welsh: "Dw i'n moyn pysgod"
+  english: "I want fish"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "pysgod", lemma: "pysgod", item: lex:pysgod}
+
+- id: sp-im-eating-fish
+  welsh: "Dw i'n bwyta pysgod"
+  english: "I'm eating fish"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "pysgod", lemma: "pysgod", item: lex:pysgod}
+
+- id: sp-i-like-fish
+  welsh: "Dw i'n hoffi pysgod"
+  english: "I like fish"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "pysgod", lemma: "pysgod", item: lex:pysgod}
+
+- id: sp-i-had-fish
+  welsh: "Ces i bysgod"
+  english: "I had fish"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "bysgod", lemma: "pysgod", item: lex:pysgod, mutation: soft}
+
+- id: sp-did-you-have-fish
+  welsh: "Gest ti bysgod?"
+  english: "Did you have fish?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "bysgod", lemma: "pysgod", item: lex:pysgod, mutation: soft}
+
+- id: sp-i-want-cheese
+  welsh: "Dw i'n moyn caws"
+  english: "I want cheese"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "caws", lemma: "caws", item: lex:caws}
+
+- id: sp-im-eating-cheese
+  welsh: "Dw i'n bwyta caws"
+  english: "I'm eating cheese"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "caws", lemma: "caws", item: lex:caws}
+
+- id: sp-i-like-cheese
+  welsh: "Dw i'n hoffi caws"
+  english: "I like cheese"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "caws", lemma: "caws", item: lex:caws}
+
+- id: sp-i-had-cheese
+  welsh: "Ces i gaws"
+  english: "I had cheese"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "gaws", lemma: "caws", item: lex:caws, mutation: soft}
+
+- id: sp-did-you-have-cheese
+  welsh: "Gest ti gaws?"
+  english: "Did you have cheese?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "gaws", lemma: "caws", item: lex:caws, mutation: soft}
+
+- id: sp-i-want-soup
+  welsh: "Dw i'n moyn cawl"
+  english: "I want soup"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cawl", lemma: "cawl", item: lex:cawl}
+
+- id: sp-im-eating-soup
+  welsh: "Dw i'n bwyta cawl"
+  english: "I'm eating soup"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "cawl", lemma: "cawl", item: lex:cawl}
+
+- id: sp-i-like-soup
+  welsh: "Dw i'n hoffi cawl"
+  english: "I like soup"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "cawl", lemma: "cawl", item: lex:cawl}
+
+- id: sp-i-had-soup
+  welsh: "Ces i gawl"
+  english: "I had soup"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "gawl", lemma: "cawl", item: lex:cawl, mutation: soft}
+
+- id: sp-did-you-have-soup
+  welsh: "Gest ti gawl?"
+  english: "Did you have soup?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "gawl", lemma: "cawl", item: lex:cawl, mutation: soft}
+
+- id: sp-i-want-sugar
+  welsh: "Dw i'n moyn siwgr"
+  english: "I want sugar"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "siwgr", lemma: "siwgr", item: lex:siwgr}
+
+- id: sp-im-eating-sugar
+  welsh: "Dw i'n bwyta siwgr"
+  english: "I'm eating sugar"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "siwgr", lemma: "siwgr", item: lex:siwgr}
+
+- id: sp-i-like-sugar
+  welsh: "Dw i'n hoffi siwgr"
+  english: "I like sugar"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "siwgr", lemma: "siwgr", item: lex:siwgr}
+
+- id: sp-i-had-sugar
+  welsh: "Ces i siwgr"
+  english: "I had sugar"
+  tags: [plain]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "siwgr", lemma: "siwgr", item: lex:siwgr}
+
+- id: sp-did-you-have-sugar
+  welsh: "Gest ti siwgr?"
+  english: "Did you have sugar?"
+  tags: [plain]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "siwgr", lemma: "siwgr", item: lex:siwgr}
+
+- id: sp-i-want-beer
+  welsh: "Dw i'n moyn cwrw"
+  english: "I want beer"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cwrw", lemma: "cwrw", item: lex:cwrw}
+
+- id: sp-im-drinking-beer
+  welsh: "Dw i'n yfed cwrw"
+  english: "I'm drinking beer"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "cwrw", lemma: "cwrw", item: lex:cwrw}
+
+- id: sp-i-had-beer
+  welsh: "Ces i gwrw"
+  english: "I had beer"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "gwrw", lemma: "cwrw", item: lex:cwrw, mutation: soft}
+
+- id: sp-did-you-have-beer
+  welsh: "Gest ti gwrw?"
+  english: "Did you have beer?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "gwrw", lemma: "cwrw", item: lex:cwrw, mutation: soft}
+
+- id: sp-i-want-wine
+  welsh: "Dw i'n moyn gwin"
+  english: "I want wine"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gwin", lemma: "gwin", item: lex:gwin}
+
+- id: sp-im-drinking-wine
+  welsh: "Dw i'n yfed gwin"
+  english: "I'm drinking wine"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "gwin", lemma: "gwin", item: lex:gwin}
+
+- id: sp-i-like-wine
+  welsh: "Dw i'n hoffi gwin"
+  english: "I like wine"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "gwin", lemma: "gwin", item: lex:gwin}
+
+- id: sp-i-had-wine
+  welsh: "Ces i win"
+  english: "I had wine"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "win", lemma: "gwin", item: lex:gwin, mutation: soft}
+
+- id: sp-did-you-have-wine
+  welsh: "Gest ti win?"
+  english: "Did you have wine?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "win", lemma: "gwin", item: lex:gwin, mutation: soft}
+
+- id: sp-i-want-breakfast
+  welsh: "Dw i'n moyn brecwast"
+  english: "I want breakfast"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "brecwast", lemma: "brecwast", item: lex:brecwast}
+
+- id: sp-i-like-breakfast
+  welsh: "Dw i'n hoffi brecwast"
+  english: "I like breakfast"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "brecwast", lemma: "brecwast", item: lex:brecwast}
+
+- id: sp-i-had-breakfast
+  welsh: "Ces i frecwast"
+  english: "I had breakfast"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "frecwast", lemma: "brecwast", item: lex:brecwast, mutation: soft}
+
+- id: sp-did-you-have-breakfast
+  welsh: "Gest ti frecwast?"
+  english: "Did you have breakfast?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "frecwast", lemma: "brecwast", item: lex:brecwast, mutation: soft}
+
+- id: sp-i-want-lunch
+  welsh: "Dw i'n moyn cinio"
+  english: "I want lunch"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cinio", lemma: "cinio", item: lex:cinio}
+
+- id: sp-i-like-lunch
+  welsh: "Dw i'n hoffi cinio"
+  english: "I like lunch"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "cinio", lemma: "cinio", item: lex:cinio}
+
+- id: sp-i-had-lunch
+  welsh: "Ces i ginio"
+  english: "I had lunch"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "ginio", lemma: "cinio", item: lex:cinio, mutation: soft}
+
+- id: sp-did-you-have-lunch
+  welsh: "Gest ti ginio?"
+  english: "Did you have lunch?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "ginio", lemma: "cinio", item: lex:cinio, mutation: soft}
+
+- id: sp-i-want-supper
+  welsh: "Dw i'n moyn swper"
+  english: "I want supper"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "swper", lemma: "swper", item: lex:swper}
+
+- id: sp-i-like-supper
+  welsh: "Dw i'n hoffi swper"
+  english: "I like supper"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "swper", lemma: "swper", item: lex:swper}
+
+- id: sp-i-had-supper
+  welsh: "Ces i swper"
+  english: "I had supper"
+  tags: [plain]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "swper", lemma: "swper", item: lex:swper}
+
+- id: sp-did-you-have-supper
+  welsh: "Gest ti swper?"
+  english: "Did you have supper?"
+  tags: [plain]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "swper", lemma: "swper", item: lex:swper}
+
+- id: sp-i-want-an-egg
+  welsh: "Dw i'n moyn wy"
+  english: "I want an egg"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "wy", lemma: "wy", item: lex:wy}
+
+- id: sp-im-eating-an-egg
+  welsh: "Dw i'n bwyta wy"
+  english: "I'm eating an egg"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "wy", lemma: "wy", item: lex:wy}
+
+- id: sp-i-had-an-egg
+  welsh: "Ces i wy"
+  english: "I had an egg"
+  tags: [plain]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "wy", lemma: "wy", item: lex:wy}
+
+- id: sp-did-you-have-an-egg
+  welsh: "Gest ti wy?"
+  english: "Did you have an egg?"
+  tags: [plain]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "wy", lemma: "wy", item: lex:wy}
+
+- id: sp-i-like-eggs
+  welsh: "Dw i'n hoffi wyau"
+  english: "I like eggs"
+  tags: [clitic, inflection]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "wyau", lemma: "wy", item: lex:wy}
+
+- id: sp-i-want-an-apple
+  welsh: "Dw i'n moyn afal"
+  english: "I want an apple"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "afal", lemma: "afal", item: lex:afal}
+
+- id: sp-im-eating-an-apple
+  welsh: "Dw i'n bwyta afal"
+  english: "I'm eating an apple"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "afal", lemma: "afal", item: lex:afal}
+
+- id: sp-i-had-an-apple
+  welsh: "Ces i afal"
+  english: "I had an apple"
+  tags: [plain]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "afal", lemma: "afal", item: lex:afal}
+
+- id: sp-i-like-apples
+  welsh: "Dw i'n hoffi afalau"
+  english: "I like apples"
+  tags: [clitic, inflection]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "afalau", lemma: "afal", item: lex:afal}
+
+- id: sp-i-dont-like-coffee
+  welsh: "Dw i ddim yn hoffi coffi"
+  english: "I don't like coffee"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-i-dont-like-tea
+  welsh: "Dw i ddim yn hoffi te"
+  english: "I don't like tea"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-do-you-like-coffee
+  welsh: "Wyt ti'n hoffi coffi?"
+  english: "Do you like coffee?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-do-you-like-tea
+  welsh: "Wyt ti'n hoffi te?"
+  english: "Do you like tea?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi", item: lex:hoffi}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-coffee-please
+  welsh: "Coffi, plîs"
+  english: "Coffee, please"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "plîs", lemma: "plîs", item: lex:plis}
+
+- id: sp-tea-please
+  welsh: "Te, plîs"
+  english: "Tea, please"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Te", lemma: "te", item: lex:te}
+    - {text: "plîs", lemma: "plîs", item: lex:plis}
+
+- id: sp-i-want-coffee-please
+  welsh: "Dw i'n moyn coffi, plîs"
+  english: "I want coffee, please"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "plîs", lemma: "plîs", item: lex:plis}
+
+- id: sp-water-please
+  welsh: "Dŵr, plîs"
+  english: "Water, please"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Dŵr", lemma: "dŵr", item: lex:dwr}
+    - {text: "plîs", lemma: "plîs", item: lex:plis}
+
+- id: sp-im-cooking
+  welsh: "Dw i'n coginio"
+  english: "I'm cooking"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "coginio", lemma: "coginio", item: lex:coginio}
+
+- id: sp-i-want-to-cook
+  welsh: "Dw i'n moyn coginio"
+  english: "I want to cook"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "coginio", lemma: "coginio", item: lex:coginio}
+
+- id: sp-i-cooked
+  welsh: "Nes i goginio"
+  english: "I cooked"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "goginio", lemma: "coginio", item: lex:coginio, mutation: soft}
+
+- id: sp-ill-cook
+  welsh: "Wna i goginio"
+  english: "I'll cook"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "goginio", lemma: "coginio", item: lex:coginio, mutation: soft}
+
+- id: sp-are-you-cooking
+  welsh: "Wyt ti'n coginio?"
+  english: "Are you cooking?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "coginio", lemma: "coginio", item: lex:coginio}
+
+- id: sp-im-ordering
+  welsh: "Dw i'n archebu"
+  english: "I'm ordering"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "archebu", lemma: "archebu", item: lex:archebu}
+
+- id: sp-i-want-to-order
+  welsh: "Dw i'n moyn archebu"
+  english: "I want to order"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "archebu", lemma: "archebu", item: lex:archebu}
+
+- id: sp-i-ordered
+  welsh: "Nes i archebu"
+  english: "I ordered"
+  tags: [plain]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "archebu", lemma: "archebu", item: lex:archebu}
+
+- id: sp-ill-order
+  welsh: "Wna i archebu"
+  english: "I'll order"
+  tags: [plain]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "archebu", lemma: "archebu", item: lex:archebu}
+
+- id: sp-are-you-ordering
+  welsh: "Wyt ti'n archebu?"
+  english: "Are you ordering?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "archebu", lemma: "archebu", item: lex:archebu}
+
+- id: sp-im-paying
+  welsh: "Dw i'n talu"
+  english: "I'm paying"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "talu", lemma: "talu", item: lex:talu}
+
+- id: sp-i-want-to-pay
+  welsh: "Dw i'n moyn talu"
+  english: "I want to pay"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "talu", lemma: "talu", item: lex:talu}
+
+- id: sp-i-paid
+  welsh: "Nes i dalu"
+  english: "I paid"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "dalu", lemma: "talu", item: lex:talu, mutation: soft}
+
+- id: sp-ill-pay
+  welsh: "Wna i dalu"
+  english: "I'll pay"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "dalu", lemma: "talu", item: lex:talu, mutation: soft}
+
+- id: sp-are-you-paying
+  welsh: "Wyt ti'n talu?"
+  english: "Are you paying?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "talu", lemma: "talu", item: lex:talu}
+
+- id: sp-im-cooking-supper
+  welsh: "Dw i'n coginio swper"
+  english: "I'm cooking supper"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "coginio", lemma: "coginio", item: lex:coginio}
+    - {text: "swper", lemma: "swper", item: lex:swper}
+
+- id: sp-im-cooking-soup
+  welsh: "Dw i'n coginio cawl"
+  english: "I'm cooking soup"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "coginio", lemma: "coginio", item: lex:coginio}
+    - {text: "cawl", lemma: "cawl", item: lex:cawl}
+
+- id: sp-im-ordering-food
+  welsh: "Dw i'n archebu bwyd"
+  english: "I'm ordering food"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "archebu", lemma: "archebu", item: lex:archebu}
+    - {text: "bwyd", lemma: "bwyd", item: lex:bwyd}
+
+- id: sp-im-ordering-wine
+  welsh: "Dw i'n archebu gwin"
+  english: "I'm ordering wine"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "archebu", lemma: "archebu", item: lex:archebu}
+    - {text: "gwin", lemma: "gwin", item: lex:gwin}
+
+- id: sp-im-paying-now
+  welsh: "Dw i'n talu nawr"
+  english: "I'm paying now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "talu", lemma: "talu", item: lex:talu}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-like-tasty-soup
+  welsh: "Dw i'n hoffi cawl blasus"
+  english: "I like tasty soup"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "cawl", lemma: "cawl", item: lex:cawl}
+    - {text: "blasus", lemma: "blasus", item: lex:blasus}
+
+- id: sp-i-like-tasty-cheese
+  welsh: "Dw i'n hoffi caws blasus"
+  english: "I like tasty cheese"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "caws", lemma: "caws", item: lex:caws}
+    - {text: "blasus", lemma: "blasus", item: lex:blasus}
+
+- id: sp-i-like-tasty-food
+  welsh: "Dw i'n hoffi bwyd blasus"
+  english: "I like tasty food"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "bwyd", lemma: "bwyd", item: lex:bwyd}
+    - {text: "blasus", lemma: "blasus", item: lex:blasus}
+
+- id: sp-im-eating-tasty-soup
+  welsh: "Dw i'n bwyta cawl blasus"
+  english: "I'm eating tasty soup"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "cawl", lemma: "cawl", item: lex:cawl}
+    - {text: "blasus", lemma: "blasus", item: lex:blasus}
+
+- id: sp-im-cooking-tasty-supper
+  welsh: "Dw i'n coginio swper blasus"
+  english: "I'm cooking tasty supper"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "coginio", lemma: "coginio", item: lex:coginio}
+    - {text: "swper", lemma: "swper", item: lex:swper}
+    - {text: "blasus", lemma: "blasus", item: lex:blasus}
+
+- id: sp-im-drinking-tasty-tea
+  welsh: "Dw i'n yfed te blasus"
+  english: "I'm drinking tasty tea"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "te", lemma: "te", item: lex:te}
+    - {text: "blasus", lemma: "blasus", item: lex:blasus}
+
+- id: sp-what-do-you-want
+  welsh: "Beth wyt ti'n moyn?"
+  english: "What do you want?"
+  tags: [clitic]
+  patterns: [pat:beth-wyt-ti-yn-moyn]
+  tokens:
+    - {text: "Beth", lemma: "beth"}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+
+- id: sp-what-do-you-want-today
+  welsh: "Beth wyt ti'n moyn heddi?"
+  english: "What do you want today?"
+  tags: [clitic]
+  patterns: [pat:beth-wyt-ti-yn-moyn]
+  tokens:
+    - {text: "Beth", lemma: "beth"}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-what-do-you-want-now
+  welsh: "Beth wyt ti'n moyn nawr?"
+  english: "What do you want now?"
+  tags: [clitic]
+  patterns: [pat:beth-wyt-ti-yn-moyn]
+  tokens:
+    - {text: "Beth", lemma: "beth"}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-what-do-you-want-tomorrow
+  welsh: "Beth wyt ti'n moyn fory?"
+  english: "What do you want tomorrow?"
+  tags: [clitic]
+  patterns: [pat:beth-wyt-ti-yn-moyn]
+  tokens:
+    - {text: "Beth", lemma: "beth"}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "fory", lemma: "yfory", item: lex:fory}

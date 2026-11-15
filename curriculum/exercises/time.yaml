@@ -1,0 +1,345 @@
+# The time pack: exercises for the 'time' topic, in South Wales Welsh. Each uses only items
+# earlier in the course order, plus its new_item.
+# Fields: id, english, welsh, items, new_item (optional).
+
+- id: im-working-on-monday
+  english: "I'm working on Monday"
+  welsh: "Dw i'n gweithio ddydd Llun"
+  items: [pat:dw-in, lex:gweithio, lex:dydd-llun]
+  new_item: lex:dydd-llun
+
+- id: ill-be-working-on-monday
+  english: "I'll be working on Monday"
+  welsh: "Bydda i'n gweithio ddydd Llun"
+  items: [lex:gweithio, pat:bydda-in, lex:dydd-llun]
+  new_item: lex:dydd-llun
+
+- id: ill-go-on-monday
+  english: "I'll go on Monday"
+  welsh: "Wna i fynd ddydd Llun"
+  items: [lex:mynd, pat:wna-i, lex:dydd-llun]
+  new_item: lex:dydd-llun
+
+- id: i-worked-on-monday
+  english: "I worked on Monday"
+  welsh: "Nes i weithio ddydd Llun"
+  items: [lex:gweithio, pat:nes-i, lex:dydd-llun]
+  new_item: lex:dydd-llun
+
+- id: im-working-on-tuesday
+  english: "I'm working on Tuesday"
+  welsh: "Dw i'n gweithio ddydd Mawrth"
+  items: [pat:dw-in, lex:gweithio, lex:dydd-mawrth]
+  new_item: lex:dydd-mawrth
+
+- id: ill-be-working-on-tuesday
+  english: "I'll be working on Tuesday"
+  welsh: "Bydda i'n gweithio ddydd Mawrth"
+  items: [lex:gweithio, pat:bydda-in, lex:dydd-mawrth]
+  new_item: lex:dydd-mawrth
+
+- id: ill-go-on-tuesday
+  english: "I'll go on Tuesday"
+  welsh: "Wna i fynd ddydd Mawrth"
+  items: [lex:mynd, pat:wna-i, lex:dydd-mawrth]
+  new_item: lex:dydd-mawrth
+
+- id: i-worked-on-tuesday
+  english: "I worked on Tuesday"
+  welsh: "Nes i weithio ddydd Mawrth"
+  items: [lex:gweithio, pat:nes-i, lex:dydd-mawrth]
+  new_item: lex:dydd-mawrth
+
+- id: im-working-on-wednesday
+  english: "I'm working on Wednesday"
+  welsh: "Dw i'n gweithio ddydd Mercher"
+  items: [pat:dw-in, lex:gweithio, lex:dydd-mercher]
+  new_item: lex:dydd-mercher
+
+- id: ill-be-working-on-wednesday
+  english: "I'll be working on Wednesday"
+  welsh: "Bydda i'n gweithio ddydd Mercher"
+  items: [lex:gweithio, pat:bydda-in, lex:dydd-mercher]
+  new_item: lex:dydd-mercher
+
+- id: ill-go-on-wednesday
+  english: "I'll go on Wednesday"
+  welsh: "Wna i fynd ddydd Mercher"
+  items: [lex:mynd, pat:wna-i, lex:dydd-mercher]
+  new_item: lex:dydd-mercher
+
+- id: i-worked-on-wednesday
+  english: "I worked on Wednesday"
+  welsh: "Nes i weithio ddydd Mercher"
+  items: [lex:gweithio, pat:nes-i, lex:dydd-mercher]
+  new_item: lex:dydd-mercher
+
+- id: im-working-on-thursday
+  english: "I'm working on Thursday"
+  welsh: "Dw i'n gweithio ddydd Iau"
+  items: [pat:dw-in, lex:gweithio, lex:dydd-iau]
+  new_item: lex:dydd-iau
+
+- id: ill-be-working-on-thursday
+  english: "I'll be working on Thursday"
+  welsh: "Bydda i'n gweithio ddydd Iau"
+  items: [lex:gweithio, pat:bydda-in, lex:dydd-iau]
+  new_item: lex:dydd-iau
+
+- id: ill-go-on-thursday
+  english: "I'll go on Thursday"
+  welsh: "Wna i fynd ddydd Iau"
+  items: [lex:mynd, pat:wna-i, lex:dydd-iau]
+  new_item: lex:dydd-iau
+
+- id: i-worked-on-thursday
+  english: "I worked on Thursday"
+  welsh: "Nes i weithio ddydd Iau"
+  items: [lex:gweithio, pat:nes-i, lex:dydd-iau]
+  new_item: lex:dydd-iau
+
+- id: im-working-on-friday
+  english: "I'm working on Friday"
+  welsh: "Dw i'n gweithio ddydd Gwener"
+  items: [pat:dw-in, lex:gweithio, lex:dydd-gwener]
+  new_item: lex:dydd-gwener
+
+- id: ill-be-working-on-friday
+  english: "I'll be working on Friday"
+  welsh: "Bydda i'n gweithio ddydd Gwener"
+  items: [lex:gweithio, pat:bydda-in, lex:dydd-gwener]
+  new_item: lex:dydd-gwener
+
+- id: ill-go-on-friday
+  english: "I'll go on Friday"
+  welsh: "Wna i fynd ddydd Gwener"
+  items: [lex:mynd, pat:wna-i, lex:dydd-gwener]
+  new_item: lex:dydd-gwener
+
+- id: i-worked-on-friday
+  english: "I worked on Friday"
+  welsh: "Nes i weithio ddydd Gwener"
+  items: [lex:gweithio, pat:nes-i, lex:dydd-gwener]
+  new_item: lex:dydd-gwener
+
+- id: im-working-on-saturday
+  english: "I'm working on Saturday"
+  welsh: "Dw i'n gweithio ddydd Sadwrn"
+  items: [pat:dw-in, lex:gweithio, lex:dydd-sadwrn]
+  new_item: lex:dydd-sadwrn
+
+- id: ill-be-working-on-saturday
+  english: "I'll be working on Saturday"
+  welsh: "Bydda i'n gweithio ddydd Sadwrn"
+  items: [lex:gweithio, pat:bydda-in, lex:dydd-sadwrn]
+  new_item: lex:dydd-sadwrn
+
+- id: ill-go-on-saturday
+  english: "I'll go on Saturday"
+  welsh: "Wna i fynd ddydd Sadwrn"
+  items: [lex:mynd, pat:wna-i, lex:dydd-sadwrn]
+  new_item: lex:dydd-sadwrn
+
+- id: i-worked-on-saturday
+  english: "I worked on Saturday"
+  welsh: "Nes i weithio ddydd Sadwrn"
+  items: [lex:gweithio, pat:nes-i, lex:dydd-sadwrn]
+  new_item: lex:dydd-sadwrn
+
+- id: im-working-on-sunday
+  english: "I'm working on Sunday"
+  welsh: "Dw i'n gweithio ddydd Sul"
+  items: [pat:dw-in, lex:gweithio, lex:dydd-sul]
+  new_item: lex:dydd-sul
+
+- id: ill-be-working-on-sunday
+  english: "I'll be working on Sunday"
+  welsh: "Bydda i'n gweithio ddydd Sul"
+  items: [lex:gweithio, pat:bydda-in, lex:dydd-sul]
+  new_item: lex:dydd-sul
+
+- id: ill-go-on-sunday
+  english: "I'll go on Sunday"
+  welsh: "Wna i fynd ddydd Sul"
+  items: [lex:mynd, pat:wna-i, lex:dydd-sul]
+  new_item: lex:dydd-sul
+
+- id: i-worked-on-sunday
+  english: "I worked on Sunday"
+  welsh: "Nes i weithio ddydd Sul"
+  items: [lex:gweithio, pat:nes-i, lex:dydd-sul]
+  new_item: lex:dydd-sul
+
+- id: i-work-in-the-morning
+  english: "I work in the morning"
+  welsh: "Dw i'n gweithio yn y bore"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:bore]
+  new_item: lex:bore
+
+- id: i-learn-in-the-morning
+  english: "I learn in the morning"
+  welsh: "Dw i'n dysgu yn y bore"
+  items: [lex:dysgu, pat:dw-in, lex:y, lex:yn, lex:bore]
+  new_item: lex:bore
+
+- id: i-read-in-the-morning
+  english: "I read in the morning"
+  welsh: "Dw i'n darllen yn y bore"
+  items: [pat:dw-in, lex:darllen, lex:y, lex:yn, lex:bore]
+  new_item: lex:bore
+
+- id: i-work-in-the-afternoon
+  english: "I work in the afternoon"
+  welsh: "Dw i'n gweithio yn y prynhawn"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:prynhawn]
+  new_item: lex:prynhawn
+
+- id: i-learn-in-the-afternoon
+  english: "I learn in the afternoon"
+  welsh: "Dw i'n dysgu yn y prynhawn"
+  items: [lex:dysgu, pat:dw-in, lex:y, lex:yn, lex:prynhawn]
+  new_item: lex:prynhawn
+
+- id: i-read-in-the-afternoon
+  english: "I read in the afternoon"
+  welsh: "Dw i'n darllen yn y prynhawn"
+  items: [pat:dw-in, lex:darllen, lex:y, lex:yn, lex:prynhawn]
+  new_item: lex:prynhawn
+
+- id: i-work-in-the-night
+  english: "I work in the night"
+  welsh: "Dw i'n gweithio yn y nos"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:nos]
+  new_item: lex:nos
+
+- id: i-learn-in-the-night
+  english: "I learn in the night"
+  welsh: "Dw i'n dysgu yn y nos"
+  items: [lex:dysgu, pat:dw-in, lex:y, lex:yn, lex:nos]
+  new_item: lex:nos
+
+- id: i-read-in-the-night
+  english: "I read in the night"
+  welsh: "Dw i'n darllen yn y nos"
+  items: [pat:dw-in, lex:darllen, lex:y, lex:yn, lex:nos]
+  new_item: lex:nos
+
+- id: i-work-in-the-week
+  english: "I work in the week"
+  welsh: "Dw i'n gweithio yn yr wythnos"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:wythnos]
+  new_item: lex:wythnos
+
+- id: i-learn-in-the-week
+  english: "I learn in the week"
+  welsh: "Dw i'n dysgu yn yr wythnos"
+  items: [lex:dysgu, pat:dw-in, lex:y, lex:yn, lex:wythnos]
+  new_item: lex:wythnos
+
+- id: i-read-in-the-week
+  english: "I read in the week"
+  welsh: "Dw i'n darllen yn yr wythnos"
+  items: [pat:dw-in, lex:darllen, lex:y, lex:yn, lex:wythnos]
+  new_item: lex:wythnos
+
+- id: i-work-in-the-month
+  english: "I work in the month"
+  welsh: "Dw i'n gweithio yn y mis"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:mis]
+  new_item: lex:mis
+
+- id: i-learn-in-the-month
+  english: "I learn in the month"
+  welsh: "Dw i'n dysgu yn y mis"
+  items: [lex:dysgu, pat:dw-in, lex:y, lex:yn, lex:mis]
+  new_item: lex:mis
+
+- id: i-read-in-the-month
+  english: "I read in the month"
+  welsh: "Dw i'n darllen yn y mis"
+  items: [pat:dw-in, lex:darllen, lex:y, lex:yn, lex:mis]
+  new_item: lex:mis
+
+- id: i-work-in-the-year
+  english: "I work in the year"
+  welsh: "Dw i'n gweithio yn y flwyddyn"
+  items: [pat:dw-in, lex:gweithio, lex:y, lex:yn, lex:blwyddyn]
+  new_item: lex:blwyddyn
+
+- id: i-learn-in-the-year
+  english: "I learn in the year"
+  welsh: "Dw i'n dysgu yn y flwyddyn"
+  items: [lex:dysgu, pat:dw-in, lex:y, lex:yn, lex:blwyddyn]
+  new_item: lex:blwyddyn
+
+- id: i-read-in-the-year
+  english: "I read in the year"
+  welsh: "Dw i'n darllen yn y flwyddyn"
+  items: [pat:dw-in, lex:darllen, lex:y, lex:yn, lex:blwyddyn]
+  new_item: lex:blwyddyn
+
+- id: im-waiting-an-hour
+  english: "I'm waiting an hour"
+  welsh: "Dw i'n aros awr"
+  items: [pat:dw-in, lex:aros, lex:awr]
+  new_item: lex:awr
+
+- id: im-working-for-an-hour
+  english: "I'm working for an hour"
+  welsh: "Dw i'n gweithio awr"
+  items: [pat:dw-in, lex:gweithio, lex:awr]
+  new_item: lex:awr
+
+- id: ill-wait-an-hour
+  english: "I'll wait an hour"
+  welsh: "Wna i aros awr"
+  items: [lex:aros, pat:wna-i, lex:awr]
+  new_item: lex:awr
+
+- id: ill-be-working-next-week
+  english: "I'll be working next week"
+  welsh: "Bydda i'n gweithio wythnos nesaf"
+  items: [lex:gweithio, pat:bydda-in, lex:wythnos, lex:nesaf]
+  new_item: lex:nesaf
+
+- id: ill-be-coming-next-month
+  english: "I'll be coming next month"
+  welsh: "Bydda i'n dod mis nesaf"
+  items: [lex:dod, pat:bydda-in, lex:mis, lex:nesaf]
+  new_item: lex:nesaf
+
+- id: ill-go-next-year
+  english: "I'll go next year"
+  welsh: "Wna i fynd blwyddyn nesaf"
+  items: [lex:mynd, pat:wna-i, lex:blwyddyn, lex:nesaf]
+  new_item: lex:nesaf
+
+- id: ill-be-learning-next-week
+  english: "I'll be learning next week"
+  welsh: "Bydda i'n dysgu wythnos nesaf"
+  items: [lex:dysgu, pat:bydda-in, lex:wythnos, lex:nesaf]
+  new_item: lex:nesaf
+
+- id: i-worked-last-week
+  english: "I worked last week"
+  welsh: "Nes i weithio wythnos ddiwethaf"
+  items: [lex:gweithio, pat:nes-i, lex:wythnos, lex:diwethaf]
+  new_item: lex:diwethaf
+
+- id: i-went-last-month
+  english: "I went last month"
+  welsh: "Nes i fynd mis diwethaf"
+  items: [lex:mynd, pat:nes-i, lex:mis, lex:diwethaf]
+  new_item: lex:diwethaf
+
+- id: i-was-working-last-year
+  english: "I was working last year"
+  welsh: "Ro'n i'n gweithio blwyddyn ddiwethaf"
+  items: [lex:gweithio, pat:ro-ni-in, lex:blwyddyn, lex:diwethaf]
+  new_item: lex:diwethaf
+
+- id: i-had-coffee-last-week
+  english: "I had coffee last week"
+  welsh: "Ces i goffi wythnos ddiwethaf"
+  items: [lex:coffi, pat:ces-i, lex:wythnos, lex:diwethaf]
+  new_item: lex:diwethaf

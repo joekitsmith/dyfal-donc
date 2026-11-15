@@ -1,0 +1,73 @@
+- id: lex:yn
+  welsh: "yn"
+  english: "in"
+  part_of_speech: prep
+  forms: ["yng", "ym"]
+  notes: "Nasal-mutates what follows (yng Nghaerdydd, yng Nghymru)."
+
+- id: lex:caerdydd
+  welsh: "Caerdydd"
+  english: "Cardiff"
+  part_of_speech: noun
+
+- id: lex:cymru
+  welsh: "Cymru"
+  english: "Wales"
+  part_of_speech: noun
+
+- id: lex:abertawe
+  welsh: "Abertawe"
+  english: "Swansea"
+  part_of_speech: noun
+
+- id: lex:llundain
+  welsh: "Llundain"
+  english: "London"
+  part_of_speech: noun
+
+- id: lex:tref
+  welsh: "tref"
+  english: "town"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:pentref
+  welsh: "pentref"
+  english: "village"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:siop
+  welsh: "siop"
+  english: "shop"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:ysgol
+  welsh: "ysgol"
+  english: "school"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:gorsaf
+  welsh: "gorsaf"
+  english: "station"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:parc
+  welsh: "parc"
+  english: "park"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:bwyty
+  welsh: "bwyty"
+  english: "restaurant"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:teithio
+  welsh: "teithio"
+  english: "to travel"
+  part_of_speech: verb

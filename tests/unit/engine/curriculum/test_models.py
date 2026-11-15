@@ -8,6 +8,7 @@ from engine.curriculum import (
     Lexeme,
     PartOfSpeech,
     Pattern,
+    Topic,
 )
 
 
@@ -237,3 +238,158 @@ class TestTopic:
                 slots={"VERB": PartOfSpeech.VERB},
                 topic="Bad Topic",
             )
+
+
+def in_topic(id_: str, topic: str, *prerequisites: str) -> Lexeme:
+    return Lexeme(
+        id=f"lex:{id_}",
+        welsh=id_,
+        english=id_,
+        part_of_speech=PartOfSpeech.VERB,
+        prerequisites=tuple(f"lex:{name}" for name in prerequisites),
+        topic=topic,
+    )
+
+
+def with_topics(
+    items: list[Lexeme], order: list[str], topics: list[Topic]
+) -> Curriculum:
+    return Curriculum(items=tuple(items), order=tuple(order), topics=tuple(topics))
+
+
+SPINE = Topic(name="spine")
+FOOD = Topic(name="food", requires=("spine",))
+WEATHER = Topic(name="weather", requires=("spine",))
+
+
+class TestTopicModel:
+    def test_requires_nothing_by_default(self) -> None:
+        assert Topic(name="spine").requires == ()
+
+    def test_rejects_an_invalid_name(self) -> None:
+        with pytest.raises(CurriculumError, match="Invalid topic"):
+            Topic(name="Weather Pack")
+
+    def test_cannot_require_itself(self) -> None:
+        with pytest.raises(CurriculumError, match="cannot require itself"):
+            Topic(name="food", requires=("food",))
+
+
+class TestCurriculumTopics:
+    ITEMS = [in_topic("a", "spine"), in_topic("b", "food"), in_topic("c", "weather")]
+    ORDER = ["lex:a", "lex:b", "lex:c"]
+
+    def test_accepts_topics_that_follow_what_they_require(self) -> None:
+        curriculum = with_topics(self.ITEMS, self.ORDER, [SPINE, FOOD, WEATHER])
+
+        assert curriculum.topics == (SPINE, FOOD, WEATHER)
+
+    def test_rejects_duplicate_topics(self) -> None:
+        with pytest.raises(CurriculumError, match="Duplicate topics: spine"):
+            with_topics(self.ITEMS, self.ORDER, [SPINE, SPINE, FOOD, WEATHER])
+
+    def test_rejects_a_requirement_that_is_not_a_topic(self) -> None:
+        with pytest.raises(
+            CurriculumError, match="food requires unknown topic cooking"
+        ):
+            with_topics(
+                self.ITEMS,
+                self.ORDER,
+                [SPINE, Topic(name="food", requires=("cooking",)), WEATHER],
+            )
+
+    def test_rejects_a_topic_that_comes_before_what_it_requires(self) -> None:
+        with pytest.raises(
+            CurriculumError, match="food comes before the topic it requires"
+        ):
+            with_topics(self.ITEMS, self.ORDER, [FOOD, SPINE, WEATHER])
+
+    def test_rejects_an_item_in_an_unknown_topic(self) -> None:
+        with pytest.raises(CurriculumError, match="lex:c is in unknown topic weather"):
+            with_topics(self.ITEMS, self.ORDER, [SPINE, FOOD])
+
+    def test_rejects_a_prerequisite_in_a_topic_that_is_not_required(self) -> None:
+        items = [
+            in_topic("a", "spine"),
+            in_topic("b", "food"),
+            in_topic("c", "weather", "b"),
+        ]
+
+        with pytest.raises(CurriculumError, match="weather does not require food"):
+            with_topics(items, self.ORDER, [SPINE, FOOD, WEATHER])
+
+    def test_accepts_a_prerequisite_in_a_topic_required_through_another(self) -> None:
+        items = [
+            in_topic("a", "spine"),
+            in_topic("b", "food", "a"),
+            in_topic("c", "weather", "a"),
+        ]
+        deep = Topic(name="weather", requires=("food",))
+
+        curriculum = with_topics(items, self.ORDER, [SPINE, FOOD, deep])
+
+        assert curriculum.get("lex:c").prerequisites == ("lex:a",)
+
+
+class TestKnownBefore:
+    def test_without_topics_it_is_everything_earlier_in_the_order(self) -> None:
+        curriculum = build([L("a"), L("b"), L("c")], ["lex:a", "lex:b", "lex:c"])
+
+        assert curriculum.known_before("lex:c") == {"lex:a", "lex:b"}
+        assert curriculum.known_before("lex:a") == frozenset()
+
+    def test_with_topics_it_is_the_topics_earlier_items_and_every_required_item(
+        self,
+    ) -> None:
+        items = [
+            in_topic("a", "spine"),
+            in_topic("b", "spine"),
+            in_topic("c", "food"),
+            in_topic("d", "food"),
+        ]
+        curriculum = with_topics(
+            items, ["lex:a", "lex:b", "lex:c", "lex:d"], [SPINE, FOOD]
+        )
+
+        assert curriculum.known_before("lex:c") == {"lex:a", "lex:b"}
+        assert curriculum.known_before("lex:d") == {"lex:a", "lex:b", "lex:c"}
+        assert curriculum.known_before("lex:a") == frozenset()
+
+    def test_a_sibling_topic_is_not_known(self) -> None:
+        items = [
+            in_topic("a", "spine"),
+            in_topic("b", "food"),
+            in_topic("c", "weather"),
+        ]
+        curriculum = with_topics(
+            items, ["lex:a", "lex:b", "lex:c"], [SPINE, FOOD, WEATHER]
+        )
+
+        assert curriculum.known_before("lex:c") == {"lex:a"}
+
+    def test_required_topics_count_whatever_order_the_topics_are_taught_in(
+        self,
+    ) -> None:
+        items = [
+            in_topic("a", "spine"),
+            in_topic("b", "food"),
+            in_topic("c", "weather"),
+        ]
+        reordered = with_topics(
+            items, ["lex:a", "lex:c", "lex:b"], [SPINE, WEATHER, FOOD]
+        )
+
+        assert reordered.known_before("lex:b") == {"lex:a"}
+
+    def test_requirements_are_followed_through_other_topics(self) -> None:
+        items = [
+            in_topic("a", "spine"),
+            in_topic("b", "food"),
+            in_topic("c", "weather"),
+        ]
+        deep = Topic(name="weather", requires=("food",))
+        curriculum = with_topics(
+            items, ["lex:a", "lex:b", "lex:c"], [SPINE, FOOD, deep]
+        )
+
+        assert curriculum.known_before("lex:c") == {"lex:a", "lex:b"}

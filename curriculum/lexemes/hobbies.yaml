@@ -1,0 +1,79 @@
+- id: lex:pel-droed
+  welsh: "pêl-droed"
+  english: "football"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:ffilm
+  welsh: "ffilm"
+  english: "film"
+  part_of_speech: noun
+  gender: f
+  forms: ["ffilmiau"]
+
+- id: lex:cerddoriaeth
+  welsh: "cerddoriaeth"
+  english: "music"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:teledu
+  welsh: "teledu"
+  english: "television"
+  part_of_speech: noun
+  gender: m
+
+- id: lex:radio
+  welsh: "radio"
+  english: "radio"
+  part_of_speech: noun
+  gender: f
+
+- id: lex:can
+  welsh: "cân"
+  english: "song"
+  part_of_speech: noun
+  gender: f
+  forms: ["caneuon"]
+
+- id: lex:dawns
+  welsh: "dawns"
+  english: "dance"
+  part_of_speech: noun
+  gender: f
+  forms: ["dawnsiau"]
+
+- id: lex:nofio
+  welsh: "nofio"
+  english: "to swim"
+  part_of_speech: verb
+
+- id: lex:rhedeg
+  welsh: "rhedeg"
+  english: "to run"
+  part_of_speech: verb
+
+- id: lex:canu
+  welsh: "canu"
+  english: "to sing"
+  part_of_speech: verb
+
+- id: lex:dawnsio
+  welsh: "dawnsio"
+  english: "to dance"
+  part_of_speech: verb
+
+- id: lex:chwarae
+  welsh: "chwarae"
+  english: "to play"
+  part_of_speech: verb
+
+- id: lex:cerdded
+  welsh: "cerdded"
+  english: "to walk"
+  part_of_speech: verb
+
+- id: lex:gwylio
+  welsh: "gwylio"
+  english: "to watch"
+  part_of_speech: verb

@@ -1,0 +1,471 @@
+# The weather pack: exercises for the 'weather' topic, in South Wales Welsh. Each uses only items
+# earlier in the course order, plus its new_item.
+# Fields: id, english, welsh, items, new_item (optional).
+
+- id: i-like-good-weather
+  english: "I like good weather"
+  welsh: "Dw i'n hoffi tywydd da"
+  items: [pat:dw-in-hoffi, lex:da, lex:tywydd]
+  new_item: lex:tywydd
+
+- id: do-you-like-good-weather
+  english: "Do you like good weather?"
+  welsh: "Wyt ti'n hoffi tywydd da?"
+  items: [pat:wyt-ti-yn, lex:da, lex:hoffi, lex:tywydd]
+  new_item: lex:tywydd
+
+- id: i-want-good-weather
+  english: "I want good weather"
+  welsh: "Dw i'n moyn tywydd da"
+  items: [pat:dw-in-moyn-noun, lex:da, lex:tywydd]
+  new_item: lex:tywydd
+
+- id: i-want-a-good-day
+  english: "I want a good day"
+  welsh: "Dw i'n moyn diwrnod da"
+  items: [pat:dw-in-moyn-noun, lex:da, lex:diwrnod]
+  new_item: lex:diwrnod
+
+- id: i-see-a-new-day
+  english: "I see a new day"
+  welsh: "Dw i'n gweld diwrnod newydd"
+  items: [pat:dw-in, lex:gweld, lex:newydd, lex:diwrnod]
+  new_item: lex:diwrnod
+
+- id: i-like-a-good-day
+  english: "I like a good day"
+  welsh: "Dw i'n hoffi diwrnod da"
+  items: [pat:dw-in-hoffi, lex:da, lex:diwrnod]
+  new_item: lex:diwrnod
+
+- id: i-like-rain
+  english: "I like rain"
+  welsh: "Dw i'n hoffi glaw"
+  items: [pat:dw-in-hoffi, lex:glaw]
+  new_item: lex:glaw
+
+- id: i-dont-like-rain
+  english: "I don't like rain"
+  welsh: "Dw i ddim yn hoffi glaw"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:glaw]
+  new_item: lex:glaw
+
+- id: do-you-like-rain
+  english: "Do you like rain?"
+  welsh: "Wyt ti'n hoffi glaw?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:glaw]
+  new_item: lex:glaw
+
+- id: i-like-snow
+  english: "I like snow"
+  welsh: "Dw i'n hoffi eira"
+  items: [pat:dw-in-hoffi, lex:eira]
+  new_item: lex:eira
+
+- id: i-dont-like-snow
+  english: "I don't like snow"
+  welsh: "Dw i ddim yn hoffi eira"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:eira]
+  new_item: lex:eira
+
+- id: do-you-like-snow
+  english: "Do you like snow?"
+  welsh: "Wyt ti'n hoffi eira?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:eira]
+  new_item: lex:eira
+
+- id: i-like-sun
+  english: "I like sun"
+  welsh: "Dw i'n hoffi haul"
+  items: [pat:dw-in-hoffi, lex:haul]
+  new_item: lex:haul
+
+- id: i-dont-like-sun
+  english: "I don't like sun"
+  welsh: "Dw i ddim yn hoffi haul"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:haul]
+  new_item: lex:haul
+
+- id: do-you-like-sun
+  english: "Do you like sun?"
+  welsh: "Wyt ti'n hoffi haul?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:haul]
+  new_item: lex:haul
+
+- id: i-like-wind
+  english: "I like wind"
+  welsh: "Dw i'n hoffi gwynt"
+  items: [pat:dw-in-hoffi, lex:gwynt]
+  new_item: lex:gwynt
+
+- id: i-dont-like-wind
+  english: "I don't like wind"
+  welsh: "Dw i ddim yn hoffi gwynt"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:gwynt]
+  new_item: lex:gwynt
+
+- id: do-you-like-wind
+  english: "Do you like wind?"
+  welsh: "Wyt ti'n hoffi gwynt?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:gwynt]
+  new_item: lex:gwynt
+
+- id: its-raining
+  english: "It's raining"
+  welsh: "Mae hi'n bwrw glaw"
+  items: [pat:mae-hi-yn, lex:glaw, lex:bwrw]
+  new_item: lex:bwrw
+
+- id: its-snowing
+  english: "It's snowing"
+  welsh: "Mae hi'n bwrw eira"
+  items: [pat:mae-hi-yn, lex:eira, lex:bwrw]
+  new_item: lex:bwrw
+
+- id: its-raining-today
+  english: "It's raining today"
+  welsh: "Mae hi'n bwrw glaw heddi"
+  items: [lex:heddi, pat:mae-hi-yn, lex:glaw, lex:bwrw]
+  new_item: lex:bwrw
+
+- id: its-snowing-today
+  english: "It's snowing today"
+  welsh: "Mae hi'n bwrw eira heddi"
+  items: [lex:heddi, pat:mae-hi-yn, lex:eira, lex:bwrw]
+  new_item: lex:bwrw
+
+- id: i-like-cold-weather
+  english: "I like cold weather"
+  welsh: "Dw i'n hoffi tywydd oer"
+  items: [pat:dw-in-hoffi, lex:tywydd, lex:oer]
+  new_item: lex:oer
+
+- id: i-dont-like-cold-weather
+  english: "I don't like cold weather"
+  welsh: "Dw i ddim yn hoffi tywydd oer"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:tywydd, lex:oer]
+  new_item: lex:oer
+
+- id: do-you-like-cold-weather
+  english: "Do you like cold weather?"
+  welsh: "Wyt ti'n hoffi tywydd oer?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:tywydd, lex:oer]
+  new_item: lex:oer
+
+- id: i-see-a-cold-day
+  english: "I see a cold day"
+  welsh: "Dw i'n gweld diwrnod oer"
+  items: [pat:dw-in, lex:gweld, lex:diwrnod, lex:oer]
+  new_item: lex:oer
+
+- id: i-like-hot-weather
+  english: "I like hot weather"
+  welsh: "Dw i'n hoffi tywydd poeth"
+  items: [pat:dw-in-hoffi, lex:tywydd, lex:poeth]
+  new_item: lex:poeth
+
+- id: i-dont-like-hot-weather
+  english: "I don't like hot weather"
+  welsh: "Dw i ddim yn hoffi tywydd poeth"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:tywydd, lex:poeth]
+  new_item: lex:poeth
+
+- id: do-you-like-hot-weather
+  english: "Do you like hot weather?"
+  welsh: "Wyt ti'n hoffi tywydd poeth?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:tywydd, lex:poeth]
+  new_item: lex:poeth
+
+- id: i-see-a-hot-day
+  english: "I see a hot day"
+  welsh: "Dw i'n gweld diwrnod poeth"
+  items: [pat:dw-in, lex:gweld, lex:diwrnod, lex:poeth]
+  new_item: lex:poeth
+
+- id: i-like-warm-weather
+  english: "I like warm weather"
+  welsh: "Dw i'n hoffi tywydd twym"
+  items: [pat:dw-in-hoffi, lex:tywydd, lex:twym]
+  new_item: lex:twym
+
+- id: i-dont-like-warm-weather
+  english: "I don't like warm weather"
+  welsh: "Dw i ddim yn hoffi tywydd twym"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:tywydd, lex:twym]
+  new_item: lex:twym
+
+- id: do-you-like-warm-weather
+  english: "Do you like warm weather?"
+  welsh: "Wyt ti'n hoffi tywydd twym?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:tywydd, lex:twym]
+  new_item: lex:twym
+
+- id: i-see-a-warm-day
+  english: "I see a warm day"
+  welsh: "Dw i'n gweld diwrnod twym"
+  items: [pat:dw-in, lex:gweld, lex:diwrnod, lex:twym]
+  new_item: lex:twym
+
+- id: i-like-wet-weather
+  english: "I like wet weather"
+  welsh: "Dw i'n hoffi tywydd gwlyb"
+  items: [pat:dw-in-hoffi, lex:tywydd, lex:gwlyb]
+  new_item: lex:gwlyb
+
+- id: i-dont-like-wet-weather
+  english: "I don't like wet weather"
+  welsh: "Dw i ddim yn hoffi tywydd gwlyb"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:tywydd, lex:gwlyb]
+  new_item: lex:gwlyb
+
+- id: do-you-like-wet-weather
+  english: "Do you like wet weather?"
+  welsh: "Wyt ti'n hoffi tywydd gwlyb?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:tywydd, lex:gwlyb]
+  new_item: lex:gwlyb
+
+- id: i-see-a-wet-day
+  english: "I see a wet day"
+  welsh: "Dw i'n gweld diwrnod gwlyb"
+  items: [pat:dw-in, lex:gweld, lex:diwrnod, lex:gwlyb]
+  new_item: lex:gwlyb
+
+- id: i-like-dry-weather
+  english: "I like dry weather"
+  welsh: "Dw i'n hoffi tywydd sych"
+  items: [pat:dw-in-hoffi, lex:tywydd, lex:sych]
+  new_item: lex:sych
+
+- id: i-dont-like-dry-weather
+  english: "I don't like dry weather"
+  welsh: "Dw i ddim yn hoffi tywydd sych"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:tywydd, lex:sych]
+  new_item: lex:sych
+
+- id: do-you-like-dry-weather
+  english: "Do you like dry weather?"
+  welsh: "Wyt ti'n hoffi tywydd sych?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:tywydd, lex:sych]
+  new_item: lex:sych
+
+- id: i-see-a-dry-day
+  english: "I see a dry day"
+  welsh: "Dw i'n gweld diwrnod sych"
+  items: [pat:dw-in, lex:gweld, lex:diwrnod, lex:sych]
+  new_item: lex:sych
+
+- id: i-like-sunny-weather
+  english: "I like sunny weather"
+  welsh: "Dw i'n hoffi tywydd heulog"
+  items: [pat:dw-in-hoffi, lex:tywydd, lex:heulog]
+  new_item: lex:heulog
+
+- id: i-dont-like-sunny-weather
+  english: "I don't like sunny weather"
+  welsh: "Dw i ddim yn hoffi tywydd heulog"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:tywydd, lex:heulog]
+  new_item: lex:heulog
+
+- id: do-you-like-sunny-weather
+  english: "Do you like sunny weather?"
+  welsh: "Wyt ti'n hoffi tywydd heulog?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:tywydd, lex:heulog]
+  new_item: lex:heulog
+
+- id: i-see-a-sunny-day
+  english: "I see a sunny day"
+  welsh: "Dw i'n gweld diwrnod heulog"
+  items: [pat:dw-in, lex:gweld, lex:diwrnod, lex:heulog]
+  new_item: lex:heulog
+
+- id: i-like-windy-weather
+  english: "I like windy weather"
+  welsh: "Dw i'n hoffi tywydd gwyntog"
+  items: [pat:dw-in-hoffi, lex:tywydd, lex:gwyntog]
+  new_item: lex:gwyntog
+
+- id: i-dont-like-windy-weather
+  english: "I don't like windy weather"
+  welsh: "Dw i ddim yn hoffi tywydd gwyntog"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:tywydd, lex:gwyntog]
+  new_item: lex:gwyntog
+
+- id: do-you-like-windy-weather
+  english: "Do you like windy weather?"
+  welsh: "Wyt ti'n hoffi tywydd gwyntog?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:tywydd, lex:gwyntog]
+  new_item: lex:gwyntog
+
+- id: i-see-a-windy-day
+  english: "I see a windy day"
+  welsh: "Dw i'n gweld diwrnod gwyntog"
+  items: [pat:dw-in, lex:gweld, lex:diwrnod, lex:gwyntog]
+  new_item: lex:gwyntog
+
+- id: i-like-cloudy-weather
+  english: "I like cloudy weather"
+  welsh: "Dw i'n hoffi tywydd cymylog"
+  items: [pat:dw-in-hoffi, lex:tywydd, lex:cymylog]
+  new_item: lex:cymylog
+
+- id: i-dont-like-cloudy-weather
+  english: "I don't like cloudy weather"
+  welsh: "Dw i ddim yn hoffi tywydd cymylog"
+  items: [pat:dw-i-ddim-yn, lex:hoffi, lex:tywydd, lex:cymylog]
+  new_item: lex:cymylog
+
+- id: do-you-like-cloudy-weather
+  english: "Do you like cloudy weather?"
+  welsh: "Wyt ti'n hoffi tywydd cymylog?"
+  items: [pat:wyt-ti-yn, lex:hoffi, lex:tywydd, lex:cymylog]
+  new_item: lex:cymylog
+
+- id: i-see-a-cloudy-day
+  english: "I see a cloudy day"
+  welsh: "Dw i'n gweld diwrnod cymylog"
+  items: [pat:dw-in, lex:gweld, lex:diwrnod, lex:cymylog]
+  new_item: lex:cymylog
+
+- id: its-cold-today
+  english: "It's cold today"
+  welsh: "Mae hi'n oer heddi"
+  items: [lex:heddi, lex:oer, pat:mae-hi-yn-adj]
+  new_item: pat:mae-hi-yn-adj
+
+- id: its-hot-today
+  english: "It's hot today"
+  welsh: "Mae hi'n boeth heddi"
+  items: [lex:heddi, lex:poeth, pat:mae-hi-yn-adj]
+  new_item: pat:mae-hi-yn-adj
+
+- id: its-warm-today
+  english: "It's warm today"
+  welsh: "Mae hi'n dwym heddi"
+  items: [lex:heddi, lex:twym, pat:mae-hi-yn-adj]
+  new_item: pat:mae-hi-yn-adj
+
+- id: its-wet-today
+  english: "It's wet today"
+  welsh: "Mae hi'n wlyb heddi"
+  items: [lex:heddi, lex:gwlyb, pat:mae-hi-yn-adj]
+  new_item: pat:mae-hi-yn-adj
+
+- id: its-dry-today
+  english: "It's dry today"
+  welsh: "Mae hi'n sych heddi"
+  items: [lex:heddi, lex:sych, pat:mae-hi-yn-adj]
+  new_item: pat:mae-hi-yn-adj
+
+- id: its-sunny-today
+  english: "It's sunny today"
+  welsh: "Mae hi'n heulog heddi"
+  items: [lex:heddi, lex:heulog, pat:mae-hi-yn-adj]
+  new_item: pat:mae-hi-yn-adj
+
+- id: its-windy-today
+  english: "It's windy today"
+  welsh: "Mae hi'n wyntog heddi"
+  items: [lex:heddi, lex:gwyntog, pat:mae-hi-yn-adj]
+  new_item: pat:mae-hi-yn-adj
+
+- id: its-cloudy-today
+  english: "It's cloudy today"
+  welsh: "Mae hi'n gymylog heddi"
+  items: [lex:heddi, lex:cymylog, pat:mae-hi-yn-adj]
+  new_item: pat:mae-hi-yn-adj
+
+- id: it-will-rain-tomorrow
+  english: "It will rain tomorrow"
+  welsh: "Bydd hi'n bwrw glaw fory"
+  items: [lex:fory, lex:glaw, lex:bwrw, pat:bydd-hi-yn]
+  new_item: pat:bydd-hi-yn
+
+- id: it-will-snow-tomorrow
+  english: "It will snow tomorrow"
+  welsh: "Bydd hi'n bwrw eira fory"
+  items: [lex:fory, lex:eira, lex:bwrw, pat:bydd-hi-yn]
+  new_item: pat:bydd-hi-yn
+
+- id: it-will-rain-tonight
+  english: "It will rain tonight"
+  welsh: "Bydd hi'n bwrw glaw heno"
+  items: [lex:heno, lex:glaw, lex:bwrw, pat:bydd-hi-yn]
+  new_item: pat:bydd-hi-yn
+
+- id: it-will-snow-tonight
+  english: "It will snow tonight"
+  welsh: "Bydd hi'n bwrw eira heno"
+  items: [lex:heno, lex:eira, lex:bwrw, pat:bydd-hi-yn]
+  new_item: pat:bydd-hi-yn
+
+- id: it-will-be-cold-tomorrow
+  english: "It will be cold tomorrow"
+  welsh: "Bydd hi'n oer fory"
+  items: [lex:fory, lex:oer, pat:bydd-hi-yn-adj]
+  new_item: pat:bydd-hi-yn-adj
+
+- id: it-will-be-hot-tomorrow
+  english: "It will be hot tomorrow"
+  welsh: "Bydd hi'n boeth fory"
+  items: [lex:fory, lex:poeth, pat:bydd-hi-yn-adj]
+  new_item: pat:bydd-hi-yn-adj
+
+- id: it-will-be-wet-tomorrow
+  english: "It will be wet tomorrow"
+  welsh: "Bydd hi'n wlyb fory"
+  items: [lex:fory, lex:gwlyb, pat:bydd-hi-yn-adj]
+  new_item: pat:bydd-hi-yn-adj
+
+- id: it-will-be-sunny-tomorrow
+  english: "It will be sunny tomorrow"
+  welsh: "Bydd hi'n heulog fory"
+  items: [lex:fory, lex:heulog, pat:bydd-hi-yn-adj]
+  new_item: pat:bydd-hi-yn-adj
+
+- id: it-was-raining-yesterday
+  english: "It was raining yesterday"
+  welsh: "Ro'dd hi'n bwrw glaw ddoe"
+  items: [lex:ddoe, lex:glaw, lex:bwrw, pat:rodd-hi-yn]
+  new_item: pat:rodd-hi-yn
+
+- id: it-was-snowing-yesterday
+  english: "It was snowing yesterday"
+  welsh: "Ro'dd hi'n bwrw eira ddoe"
+  items: [lex:ddoe, lex:eira, lex:bwrw, pat:rodd-hi-yn]
+  new_item: pat:rodd-hi-yn
+
+- id: it-was-raining-last-night
+  english: "It was raining last night"
+  welsh: "Ro'dd hi'n bwrw glaw neithiwr"
+  items: [lex:neithiwr, lex:glaw, lex:bwrw, pat:rodd-hi-yn]
+  new_item: pat:rodd-hi-yn
+
+- id: it-was-snowing-last-night
+  english: "It was snowing last night"
+  welsh: "Ro'dd hi'n bwrw eira neithiwr"
+  items: [lex:neithiwr, lex:eira, lex:bwrw, pat:rodd-hi-yn]
+  new_item: pat:rodd-hi-yn
+
+- id: it-was-cold-yesterday
+  english: "It was cold yesterday"
+  welsh: "Ro'dd hi'n oer ddoe"
+  items: [lex:ddoe, lex:oer, pat:rodd-hi-yn-adj]
+  new_item: pat:rodd-hi-yn-adj
+
+- id: it-was-hot-yesterday
+  english: "It was hot yesterday"
+  welsh: "Ro'dd hi'n boeth ddoe"
+  items: [lex:ddoe, lex:poeth, pat:rodd-hi-yn-adj]
+  new_item: pat:rodd-hi-yn-adj
+
+- id: it-was-windy-yesterday
+  english: "It was windy yesterday"
+  welsh: "Ro'dd hi'n wyntog ddoe"
+  items: [lex:ddoe, lex:gwyntog, pat:rodd-hi-yn-adj]
+  new_item: pat:rodd-hi-yn-adj
+
+- id: it-was-cloudy-yesterday
+  english: "It was cloudy yesterday"
+  welsh: "Ro'dd hi'n gymylog ddoe"
+  items: [lex:ddoe, lex:cymylog, pat:rodd-hi-yn-adj]
+  new_item: pat:rodd-hi-yn-adj

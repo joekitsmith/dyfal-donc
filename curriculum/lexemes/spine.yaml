@@ -441,3 +441,14 @@
   welsh: neithiwr
   english: last night
   part_of_speech: adv
+
+- id: lex:hoffi
+  welsh: "hoffi"
+  english: "to like"
+  part_of_speech: verb
+
+- id: lex:plis
+  welsh: "plîs"
+  english: "please"
+  part_of_speech: adv
+  notes: "Colloquial. Formal Welsh uses 'os gwelwch yn dda'."

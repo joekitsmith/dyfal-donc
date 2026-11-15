@@ -1,0 +1,689 @@
+- id: sp-im-phoning-mum
+  welsh: "Dw i'n ffonio mam"
+  english: "I'm phoning Mum"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+    - {text: "mam", lemma: "mam", item: lex:mam}
+
+- id: sp-i-see-mum
+  welsh: "Dw i'n gweld mam"
+  english: "I see Mum"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "mam", lemma: "mam", item: lex:mam}
+
+- id: sp-im-helping-mum
+  welsh: "Dw i'n helpu mam"
+  english: "I'm helping Mum"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "mam", lemma: "mam", item: lex:mam}
+
+- id: sp-mum-is-with-me
+  welsh: "Mae mam gyda fi"
+  english: "Mum is with me"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "mam", lemma: "mam", item: lex:mam}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-im-phoning-dad
+  welsh: "Dw i'n ffonio tad"
+  english: "I'm phoning Dad"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+    - {text: "tad", lemma: "tad", item: lex:tad}
+
+- id: sp-i-see-dad
+  welsh: "Dw i'n gweld tad"
+  english: "I see Dad"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "tad", lemma: "tad", item: lex:tad}
+
+- id: sp-im-helping-dad
+  welsh: "Dw i'n helpu tad"
+  english: "I'm helping Dad"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "tad", lemma: "tad", item: lex:tad}
+
+- id: sp-dad-is-with-me
+  welsh: "Mae tad gyda fi"
+  english: "Dad is with me"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "tad", lemma: "tad", item: lex:tad}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-im-phoning-nan
+  welsh: "Dw i'n ffonio nain"
+  english: "I'm phoning Nan"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+    - {text: "nain", lemma: "nain", item: lex:nain}
+
+- id: sp-i-see-nan
+  welsh: "Dw i'n gweld nain"
+  english: "I see Nan"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "nain", lemma: "nain", item: lex:nain}
+
+- id: sp-im-helping-nan
+  welsh: "Dw i'n helpu nain"
+  english: "I'm helping Nan"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "nain", lemma: "nain", item: lex:nain}
+
+- id: sp-nan-is-with-me
+  welsh: "Mae nain gyda fi"
+  english: "Nan is with me"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-im-phoning-grandad
+  welsh: "Dw i'n ffonio taid"
+  english: "I'm phoning Grandad"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+    - {text: "taid", lemma: "taid", item: lex:taid}
+
+- id: sp-i-see-grandad
+  welsh: "Dw i'n gweld taid"
+  english: "I see Grandad"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "taid", lemma: "taid", item: lex:taid}
+
+- id: sp-im-helping-grandad
+  welsh: "Dw i'n helpu taid"
+  english: "I'm helping Grandad"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "taid", lemma: "taid", item: lex:taid}
+
+- id: sp-grandad-is-with-me
+  welsh: "Mae taid gyda fi"
+  english: "Grandad is with me"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "taid", lemma: "taid", item: lex:taid}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-i-have-a-family
+  welsh: "Mae teulu gyda fi"
+  english: "I have a family"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "teulu", lemma: "teulu", item: lex:teulu}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-a-family
+  welsh: "Oes teulu gyda ti?"
+  english: "Do you have a family?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "teulu", lemma: "teulu", item: lex:teulu}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-i-want-a-family
+  welsh: "Dw i'n moyn teulu"
+  english: "I want a family"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "teulu", lemma: "teulu", item: lex:teulu}
+
+- id: sp-im-helping-a-family
+  welsh: "Dw i'n helpu teulu"
+  english: "I'm helping a family"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "teulu", lemma: "teulu", item: lex:teulu}
+
+- id: sp-i-have-a-brother
+  welsh: "Mae brawd gyda fi"
+  english: "I have a brother"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "brawd", lemma: "brawd", item: lex:brawd}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-a-brother
+  welsh: "Oes brawd gyda ti?"
+  english: "Do you have a brother?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "brawd", lemma: "brawd", item: lex:brawd}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-i-want-a-brother
+  welsh: "Dw i'n moyn brawd"
+  english: "I want a brother"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "brawd", lemma: "brawd", item: lex:brawd}
+
+- id: sp-im-helping-a-brother
+  welsh: "Dw i'n helpu brawd"
+  english: "I'm helping a brother"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "brawd", lemma: "brawd", item: lex:brawd}
+
+- id: sp-i-have-a-sister
+  welsh: "Mae chwaer gyda fi"
+  english: "I have a sister"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "chwaer", lemma: "chwaer", item: lex:chwaer}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-a-sister
+  welsh: "Oes chwaer gyda ti?"
+  english: "Do you have a sister?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "chwaer", lemma: "chwaer", item: lex:chwaer}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-i-want-a-sister
+  welsh: "Dw i'n moyn chwaer"
+  english: "I want a sister"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "chwaer", lemma: "chwaer", item: lex:chwaer}
+
+- id: sp-im-helping-a-sister
+  welsh: "Dw i'n helpu chwaer"
+  english: "I'm helping a sister"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "chwaer", lemma: "chwaer", item: lex:chwaer}
+
+- id: sp-i-have-a-son
+  welsh: "Mae mab gyda fi"
+  english: "I have a son"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "mab", lemma: "mab", item: lex:mab}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-a-son
+  welsh: "Oes mab gyda ti?"
+  english: "Do you have a son?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "mab", lemma: "mab", item: lex:mab}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-i-want-a-son
+  welsh: "Dw i'n moyn mab"
+  english: "I want a son"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "mab", lemma: "mab", item: lex:mab}
+
+- id: sp-im-helping-a-son
+  welsh: "Dw i'n helpu mab"
+  english: "I'm helping a son"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "mab", lemma: "mab", item: lex:mab}
+
+- id: sp-i-have-a-daughter
+  welsh: "Mae merch gyda fi"
+  english: "I have a daughter"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "merch", lemma: "merch", item: lex:merch}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-a-daughter
+  welsh: "Oes merch gyda ti?"
+  english: "Do you have a daughter?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "merch", lemma: "merch", item: lex:merch}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-i-want-a-daughter
+  welsh: "Dw i'n moyn merch"
+  english: "I want a daughter"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "merch", lemma: "merch", item: lex:merch}
+
+- id: sp-im-helping-a-daughter
+  welsh: "Dw i'n helpu merch"
+  english: "I'm helping a daughter"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "merch", lemma: "merch", item: lex:merch}
+
+- id: sp-i-have-a-child
+  welsh: "Mae plentyn gyda fi"
+  english: "I have a child"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "plentyn", lemma: "plentyn", item: lex:plentyn}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-a-child
+  welsh: "Oes plentyn gyda ti?"
+  english: "Do you have a child?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "plentyn", lemma: "plentyn", item: lex:plentyn}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-i-want-a-child
+  welsh: "Dw i'n moyn plentyn"
+  english: "I want a child"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "plentyn", lemma: "plentyn", item: lex:plentyn}
+
+- id: sp-im-helping-a-child
+  welsh: "Dw i'n helpu plentyn"
+  english: "I'm helping a child"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "plentyn", lemma: "plentyn", item: lex:plentyn}
+
+- id: sp-i-have-a-husband
+  welsh: "Mae gŵr gyda fi"
+  english: "I have a husband"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "gŵr", lemma: "gŵr", item: lex:gwr}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-a-husband
+  welsh: "Oes gŵr gyda ti?"
+  english: "Do you have a husband?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "gŵr", lemma: "gŵr", item: lex:gwr}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-i-want-a-husband
+  welsh: "Dw i'n moyn gŵr"
+  english: "I want a husband"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gŵr", lemma: "gŵr", item: lex:gwr}
+
+- id: sp-im-helping-a-husband
+  welsh: "Dw i'n helpu gŵr"
+  english: "I'm helping a husband"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "gŵr", lemma: "gŵr", item: lex:gwr}
+
+- id: sp-i-have-a-wife
+  welsh: "Mae gwraig gyda fi"
+  english: "I have a wife"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "gwraig", lemma: "gwraig", item: lex:gwraig}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-a-wife
+  welsh: "Oes gwraig gyda ti?"
+  english: "Do you have a wife?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "gwraig", lemma: "gwraig", item: lex:gwraig}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-i-want-a-wife
+  welsh: "Dw i'n moyn gwraig"
+  english: "I want a wife"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gwraig", lemma: "gwraig", item: lex:gwraig}
+
+- id: sp-im-helping-a-wife
+  welsh: "Dw i'n helpu gwraig"
+  english: "I'm helping a wife"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "gwraig", lemma: "gwraig", item: lex:gwraig}
+
+- id: sp-i-have-children
+  welsh: "Mae plant gyda fi"
+  english: "I have children"
+  tags: [inflection]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "plant", lemma: "plentyn", item: lex:plentyn}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-mum-is-working
+  welsh: "Mae mam yn gweithio"
+  english: "Mum is working"
+  tags: [plain]
+  patterns: [pat:mae-noun-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "mam", lemma: "mam", item: lex:mam}
+    - {text: "yn", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-dad-is-working
+  welsh: "Mae tad yn gweithio"
+  english: "Dad is working"
+  tags: [plain]
+  patterns: [pat:mae-noun-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "tad", lemma: "tad", item: lex:tad}
+    - {text: "yn", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-my-brother-is-learning
+  welsh: "Mae brawd yn dysgu"
+  english: "My brother is learning"
+  tags: [plain]
+  patterns: [pat:mae-noun-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "brawd", lemma: "brawd", item: lex:brawd}
+    - {text: "yn", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-my-sister-is-reading
+  welsh: "Mae chwaer yn darllen"
+  english: "My sister is reading"
+  tags: [plain]
+  patterns: [pat:mae-noun-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "chwaer", lemma: "chwaer", item: lex:chwaer}
+    - {text: "yn", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+
+- id: sp-nan-lives-here
+  welsh: "Mae nain yn byw fan hyn"
+  english: "Nan lives here"
+  tags: [plain]
+  patterns: [pat:mae-noun-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "yn", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-the-child-is-eating
+  welsh: "Mae plentyn yn bwyta"
+  english: "The child is eating"
+  tags: [plain]
+  patterns: [pat:mae-noun-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "plentyn", lemma: "plentyn", item: lex:plentyn}
+    - {text: "yn", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-mum-is-happy
+  welsh: "Mae mam yn hapus"
+  english: "Mum is happy"
+  tags: [plain]
+  patterns: [pat:mae-noun-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "mam", lemma: "mam", item: lex:mam}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hapus", lemma: "hapus", item: lex:hapus}
+
+- id: sp-dad-is-tired
+  welsh: "Mae tad yn flinedig"
+  english: "Dad is tired"
+  tags: [mutation]
+  patterns: [pat:mae-noun-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "tad", lemma: "tad", item: lex:tad}
+    - {text: "yn", lemma: "yn"}
+    - {text: "flinedig", lemma: "blinedig", item: lex:blinedig, mutation: soft}
+
+- id: sp-my-brother-is-busy
+  welsh: "Mae brawd yn brysur"
+  english: "My brother is busy"
+  tags: [mutation]
+  patterns: [pat:mae-noun-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "brawd", lemma: "brawd", item: lex:brawd}
+    - {text: "yn", lemma: "yn"}
+    - {text: "brysur", lemma: "prysur", item: lex:prysur, mutation: soft}
+
+- id: sp-my-sister-is-good
+  welsh: "Mae chwaer yn dda"
+  english: "My sister is good"
+  tags: [mutation]
+  patterns: [pat:mae-noun-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "chwaer", lemma: "chwaer", item: lex:chwaer}
+    - {text: "yn", lemma: "yn"}
+    - {text: "dda", lemma: "da", item: lex:da, mutation: soft}
+
+- id: sp-nan-is-happy
+  welsh: "Mae nain yn hapus"
+  english: "Nan is happy"
+  tags: [plain]
+  patterns: [pat:mae-noun-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "yn", lemma: "yn"}
+    - {text: "hapus", lemma: "hapus", item: lex:hapus}

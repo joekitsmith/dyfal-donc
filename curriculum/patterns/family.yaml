@@ -1,0 +1,12 @@
+- id: pat:mae-noun-yn
+  template: "Mae [NOUN] yn [VERB]"
+  english: "[NOUN] is [VERB]ing"
+  slots: {NOUN: noun, VERB: verb}
+  prerequisites: [pat:mae-e-yn]
+
+- id: pat:mae-noun-yn-adj
+  template: "Mae [NOUN] yn [ADJECTIVE]"
+  english: "[NOUN] is [ADJECTIVE]"
+  slots: {NOUN: noun, ADJECTIVE: adj}
+  prerequisites: [pat:mae-noun-yn, pat:dw-in-adj]
+  notes: "The adjective soft-mutates after 'yn'."

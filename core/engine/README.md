@@ -8,9 +8,10 @@ The curriculum is a prerequisite graph of **items**, plus the intended learning 
 
 - `Lexeme`: a word, e.g. `siarad`, with the other `forms` a learner is taught (`llyfr`: `llyfrau`). Forms are declared, not guessed, so validation stays exact. A form shared by two lexemes must be declared in `homographs` on both.
 - `Pattern`: a grammar pattern with typed slots, e.g. `Dw i'n [VERB]`.
-- `topic`: a lowercase tag on every `Lexeme` and `Pattern`, `spine` by default, that groups items for authors. It does not affect order or scheduling.
-- `Curriculum`: the items and the order. Construction validates unique ids, existing prerequisites, no cycles (the error shows the cycle path) and that the order respects prerequisites.
-- `load_curriculum(path)`: reads a [curriculum directory](../../curriculum/README.md).
+- `topic`: a lowercase tag on every `Lexeme` and `Pattern` that groups items for authors. The loader sets it from the name of the file the item is in (`lexemes/food.yaml` gives `food`), and `spine` is read first. It does not affect scheduling.
+- `Topic`: a name and the names of the topics it `requires`. A `Curriculum` can carry its topics, in the order they are taught. Construction then checks that each topic follows what it requires, that every item is in a known topic, and that an item only has prerequisites in its own topic or in a topic it requires.
+- `Curriculum`: the items and the order. Construction validates unique ids, existing prerequisites, no cycles (the error shows the cycle path) and that the order respects prerequisites. `known_before(item_id)` is what a learner can be assumed to know on meeting the item: the earlier items of its topic plus every item of the topics it requires, however the topics are sequenced.
+- `load_curriculum(path)`: reads a [curriculum directory](../../curriculum/README.md): `topics.yaml` and the `lexemes/`, `patterns/` and `order/` directories (one file per topic). The order of the course is each topic's order, one topic after another.
 - `topological_order()`: a deterministic ordering derived from the graph alone.
 
 The models are plain frozen dataclasses. Pydantic is used only in the loader, to parse YAML.

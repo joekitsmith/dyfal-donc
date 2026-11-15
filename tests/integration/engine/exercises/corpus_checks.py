@@ -1,18 +1,37 @@
 from collections.abc import Mapping
+from dataclasses import dataclass
 
 from cymraeg import Mutation, mutate
-from engine.curriculum import Curriculum, Lexeme
+from engine.curriculum import Curriculum, Lexeme, PartOfSpeech
 from engine.exercises import ExerciseEntry, ValidationResult
 
-SLOT_MUTATIONS: Mapping[str, Mutation] = {
-    "pat:galla-i": Mutation.SOFT,
-    "pat:dw-in-adj": Mutation.SOFT,
-    "pat:mae-e-yn-adj": Mutation.SOFT,
-    "pat:nes-i": Mutation.SOFT,
-    "pat:ces-i": Mutation.SOFT,
-    "pat:nest-ti": Mutation.SOFT,
-    "pat:gest-ti": Mutation.SOFT,
-    "pat:wna-i": Mutation.SOFT,
+
+SOFT = Mutation.SOFT
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class SlotMutation:
+    """A mutation a pattern requires, of the words of ``part_of_speech`` (any word if ``None``)."""
+
+    mutation: Mutation
+    part_of_speech: PartOfSpeech | None = None
+
+
+SLOT_MUTATIONS: Mapping[str, SlotMutation] = {
+    "pat:galla-i": SlotMutation(mutation=SOFT),
+    "pat:dw-in-adj": SlotMutation(mutation=SOFT),
+    "pat:mae-e-yn-adj": SlotMutation(mutation=SOFT),
+    "pat:nes-i": SlotMutation(mutation=SOFT),
+    "pat:ces-i": SlotMutation(mutation=SOFT),
+    "pat:nest-ti": SlotMutation(mutation=SOFT),
+    "pat:gest-ti": SlotMutation(mutation=SOFT),
+    "pat:wna-i": SlotMutation(mutation=SOFT),
+    "pat:mae-hi-yn-adj": SlotMutation(mutation=SOFT),
+    "pat:bydd-hi-yn-adj": SlotMutation(mutation=SOFT),
+    "pat:rodd-hi-yn-adj": SlotMutation(mutation=SOFT),
+    "pat:mae-noun-yn-adj": SlotMutation(
+        mutation=SOFT, part_of_speech=PartOfSpeech.ADJECTIVE
+    ),
 }
 """The mutation each pattern's slot words must show, if their first letter can mutate."""
 
@@ -29,12 +48,12 @@ FEWER_INTRODUCING_EXERCISES: Mapping[str, int] = {
 
 
 def known_before(entry: ExerciseEntry, curriculum: Curriculum) -> frozenset[str]:
-    """The items taught before an exercise: those before its new item, or all of them."""
+    """The items known before an exercise: those its new item can rely on, or all of them."""
     new_item = entry.exercise.new_item
     if new_item is None:
         return frozenset(curriculum.order)
 
-    return frozenset(curriculum.order[: curriculum.order.index(new_item)])
+    return curriculum.known_before(new_item)
 
 
 def slot_mutation_problems(
@@ -47,9 +66,11 @@ def slot_mutation_problems(
     """
     problems: list[str] = []
     for pattern in result.detected:
-        required = SLOT_MUTATIONS.get(pattern.item_id)
-        if required is None:
+        requirement = SLOT_MUTATIONS.get(pattern.item_id)
+        if requirement is None:
             continue
+
+        required = requirement.mutation
 
         for item in result.detected:
             if item.item_id == pattern.item_id:
@@ -60,6 +81,12 @@ def slot_mutation_problems(
 
             lexeme = curriculum.get(item.item_id)
             if not isinstance(lexeme, Lexeme):
+                continue
+
+            if (
+                requirement.part_of_speech is not None
+                and lexeme.part_of_speech is not requirement.part_of_speech
+            ):
                 continue
 
             mutates = mutate(lexeme.welsh, required) != lexeme.welsh

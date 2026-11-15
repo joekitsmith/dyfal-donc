@@ -1,0 +1,33 @@
+- id: pat:mae-hi-yn-adj
+  template: "Mae hi'n [ADJECTIVE]"
+  english: "It's [ADJECTIVE]"
+  slots: {ADJECTIVE: adj}
+  prerequisites: [pat:mae-hi-yn]
+  notes: "The adjective soft-mutates after 'n (Mae hi'n boeth)."
+
+- id: pat:bydd-hi-yn
+  template: "Bydd hi'n [VERB]"
+  english: "It will be [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:mae-hi-yn]
+
+- id: pat:bydd-hi-yn-adj
+  template: "Bydd hi'n [ADJECTIVE]"
+  english: "It will be [ADJECTIVE]"
+  slots: {ADJECTIVE: adj}
+  prerequisites: [pat:bydd-hi-yn, pat:mae-hi-yn-adj]
+  notes: "The adjective soft-mutates after 'n."
+
+- id: pat:rodd-hi-yn
+  template: "Ro'dd hi'n [VERB]"
+  english: "It was [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:mae-hi-yn]
+  notes: "South Wales. Standard Welsh uses 'Roedd hi'n'."
+
+- id: pat:rodd-hi-yn-adj
+  template: "Ro'dd hi'n [ADJECTIVE]"
+  english: "It was [ADJECTIVE]"
+  slots: {ADJECTIVE: adj}
+  prerequisites: [pat:rodd-hi-yn, pat:mae-hi-yn-adj]
+  notes: "The adjective soft-mutates after 'n."

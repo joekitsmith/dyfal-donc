@@ -1,0 +1,369 @@
+# The home pack: exercises for the 'home' topic, in South Wales Welsh. Each uses only items
+# earlier in the course order, plus its new_item.
+# Fields: id, english, welsh, items, new_item (optional).
+
+- id: im-working-at-home
+  english: "I'm working at home"
+  welsh: "Dw i'n gweithio gartref"
+  items: [pat:dw-in, lex:gweithio, lex:gartref]
+  new_item: lex:gartref
+
+- id: im-eating-at-home
+  english: "I'm eating at home"
+  welsh: "Dw i'n bwyta gartref"
+  items: [pat:dw-in, lex:bwyta, lex:gartref]
+  new_item: lex:gartref
+
+- id: im-staying-at-home
+  english: "I'm staying at home"
+  welsh: "Dw i'n aros gartref"
+  items: [pat:dw-in, lex:aros, lex:gartref]
+  new_item: lex:gartref
+
+- id: im-learning-at-home
+  english: "I'm learning at home"
+  welsh: "Dw i'n dysgu gartref"
+  items: [lex:dysgu, pat:dw-in, lex:gartref]
+  new_item: lex:gartref
+
+- id: i-want-a-room
+  english: "I want a room"
+  welsh: "Dw i'n moyn ystafell"
+  items: [pat:dw-in-moyn-noun, lex:ystafell]
+  new_item: lex:ystafell
+
+- id: i-see-the-room
+  english: "I see the room"
+  welsh: "Dw i'n gweld yr ystafell"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:ystafell]
+  new_item: lex:ystafell
+
+- id: i-like-the-room
+  english: "I like the room"
+  welsh: "Dw i'n hoffi'r ystafell"
+  items: [pat:dw-in-hoffi-r, lex:ystafell]
+  new_item: lex:ystafell
+
+- id: i-want-a-kitchen
+  english: "I want a kitchen"
+  welsh: "Dw i'n moyn cegin"
+  items: [pat:dw-in-moyn-noun, lex:cegin]
+  new_item: lex:cegin
+
+- id: i-see-the-kitchen
+  english: "I see the kitchen"
+  welsh: "Dw i'n gweld y gegin"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:cegin]
+  new_item: lex:cegin
+
+- id: i-like-the-kitchen
+  english: "I like the kitchen"
+  welsh: "Dw i'n hoffi'r gegin"
+  items: [pat:dw-in-hoffi-r, lex:cegin]
+  new_item: lex:cegin
+
+- id: i-want-a-garden
+  english: "I want a garden"
+  welsh: "Dw i'n moyn gardd"
+  items: [pat:dw-in-moyn-noun, lex:gardd]
+  new_item: lex:gardd
+
+- id: i-see-the-garden
+  english: "I see the garden"
+  welsh: "Dw i'n gweld yr ardd"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:gardd]
+  new_item: lex:gardd
+
+- id: i-like-the-garden
+  english: "I like the garden"
+  welsh: "Dw i'n hoffi'r ardd"
+  items: [pat:dw-in-hoffi-r, lex:gardd]
+  new_item: lex:gardd
+
+- id: i-want-a-door
+  english: "I want a door"
+  welsh: "Dw i'n moyn drws"
+  items: [pat:dw-in-moyn-noun, lex:drws]
+  new_item: lex:drws
+
+- id: i-see-the-door
+  english: "I see the door"
+  welsh: "Dw i'n gweld y drws"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:drws]
+  new_item: lex:drws
+
+- id: i-like-the-door
+  english: "I like the door"
+  welsh: "Dw i'n hoffi'r drws"
+  items: [pat:dw-in-hoffi-r, lex:drws]
+  new_item: lex:drws
+
+- id: i-want-a-window
+  english: "I want a window"
+  welsh: "Dw i'n moyn ffenest"
+  items: [pat:dw-in-moyn-noun, lex:ffenest]
+  new_item: lex:ffenest
+
+- id: i-see-the-window
+  english: "I see the window"
+  welsh: "Dw i'n gweld y ffenest"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:ffenest]
+  new_item: lex:ffenest
+
+- id: i-like-the-window
+  english: "I like the window"
+  welsh: "Dw i'n hoffi'r ffenest"
+  items: [pat:dw-in-hoffi-r, lex:ffenest]
+  new_item: lex:ffenest
+
+- id: i-want-a-table
+  english: "I want a table"
+  welsh: "Dw i'n moyn bwrdd"
+  items: [pat:dw-in-moyn-noun, lex:bwrdd]
+  new_item: lex:bwrdd
+
+- id: i-see-the-table
+  english: "I see the table"
+  welsh: "Dw i'n gweld y bwrdd"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:bwrdd]
+  new_item: lex:bwrdd
+
+- id: i-like-the-table
+  english: "I like the table"
+  welsh: "Dw i'n hoffi'r bwrdd"
+  items: [pat:dw-in-hoffi-r, lex:bwrdd]
+  new_item: lex:bwrdd
+
+- id: i-want-a-chair
+  english: "I want a chair"
+  welsh: "Dw i'n moyn cadair"
+  items: [pat:dw-in-moyn-noun, lex:cadair]
+  new_item: lex:cadair
+
+- id: i-see-the-chair
+  english: "I see the chair"
+  welsh: "Dw i'n gweld y gadair"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:cadair]
+  new_item: lex:cadair
+
+- id: i-like-the-chair
+  english: "I like the chair"
+  welsh: "Dw i'n hoffi'r gadair"
+  items: [pat:dw-in-hoffi-r, lex:cadair]
+  new_item: lex:cadair
+
+- id: i-want-a-bed
+  english: "I want a bed"
+  welsh: "Dw i'n moyn gwely"
+  items: [pat:dw-in-moyn-noun, lex:gwely]
+  new_item: lex:gwely
+
+- id: i-see-the-bed
+  english: "I see the bed"
+  welsh: "Dw i'n gweld y gwely"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:gwely]
+  new_item: lex:gwely
+
+- id: i-like-the-bed
+  english: "I like the bed"
+  welsh: "Dw i'n hoffi'r gwely"
+  items: [pat:dw-in-hoffi-r, lex:gwely]
+  new_item: lex:gwely
+
+- id: i-want-a-street
+  english: "I want a street"
+  welsh: "Dw i'n moyn stryd"
+  items: [pat:dw-in-moyn-noun, lex:stryd]
+  new_item: lex:stryd
+
+- id: i-see-the-street
+  english: "I see the street"
+  welsh: "Dw i'n gweld y stryd"
+  items: [pat:dw-in, lex:gweld, lex:y, lex:stryd]
+  new_item: lex:stryd
+
+- id: i-like-the-street
+  english: "I like the street"
+  welsh: "Dw i'n hoffi'r stryd"
+  items: [pat:dw-in-hoffi-r, lex:stryd]
+  new_item: lex:stryd
+
+- id: im-opening
+  english: "I'm opening"
+  welsh: "Dw i'n agor"
+  items: [pat:dw-in, lex:agor]
+  new_item: lex:agor
+
+- id: i-want-to-open
+  english: "I want to open"
+  welsh: "Dw i'n moyn agor"
+  items: [pat:dw-in-moyn, lex:agor]
+  new_item: lex:agor
+
+- id: i-opened
+  english: "I opened"
+  welsh: "Nes i agor"
+  items: [pat:nes-i, lex:agor]
+  new_item: lex:agor
+
+- id: ill-open
+  english: "I'll open"
+  welsh: "Wna i agor"
+  items: [pat:wna-i, lex:agor]
+  new_item: lex:agor
+
+- id: are-you-opening
+  english: "Are you opening?"
+  welsh: "Wyt ti'n agor?"
+  items: [pat:wyt-ti-yn, lex:agor]
+  new_item: lex:agor
+
+- id: im-closing
+  english: "I'm closing"
+  welsh: "Dw i'n cau"
+  items: [pat:dw-in, lex:cau]
+  new_item: lex:cau
+
+- id: i-want-to-close
+  english: "I want to close"
+  welsh: "Dw i'n moyn cau"
+  items: [pat:dw-in-moyn, lex:cau]
+  new_item: lex:cau
+
+- id: i-closed
+  english: "I closed"
+  welsh: "Nes i gau"
+  items: [pat:nes-i, lex:cau]
+  new_item: lex:cau
+
+- id: ill-close
+  english: "I'll close"
+  welsh: "Wna i gau"
+  items: [pat:wna-i, lex:cau]
+  new_item: lex:cau
+
+- id: are-you-closing
+  english: "Are you closing?"
+  welsh: "Wyt ti'n cau?"
+  items: [pat:wyt-ti-yn, lex:cau]
+  new_item: lex:cau
+
+- id: im-cleaning
+  english: "I'm cleaning"
+  welsh: "Dw i'n glanhau"
+  items: [pat:dw-in, lex:glanhau]
+  new_item: lex:glanhau
+
+- id: i-want-to-clean
+  english: "I want to clean"
+  welsh: "Dw i'n moyn glanhau"
+  items: [pat:dw-in-moyn, lex:glanhau]
+  new_item: lex:glanhau
+
+- id: i-cleaned
+  english: "I cleaned"
+  welsh: "Nes i lanhau"
+  items: [pat:nes-i, lex:glanhau]
+  new_item: lex:glanhau
+
+- id: ill-clean
+  english: "I'll clean"
+  welsh: "Wna i lanhau"
+  items: [pat:wna-i, lex:glanhau]
+  new_item: lex:glanhau
+
+- id: are-you-cleaning
+  english: "Are you cleaning?"
+  welsh: "Wyt ti'n glanhau?"
+  items: [pat:wyt-ti-yn, lex:glanhau]
+  new_item: lex:glanhau
+
+- id: im-washing
+  english: "I'm washing"
+  welsh: "Dw i'n golchi"
+  items: [pat:dw-in, lex:golchi]
+  new_item: lex:golchi
+
+- id: i-want-to-wash
+  english: "I want to wash"
+  welsh: "Dw i'n moyn golchi"
+  items: [pat:dw-in-moyn, lex:golchi]
+  new_item: lex:golchi
+
+- id: i-washed
+  english: "I washed"
+  welsh: "Nes i olchi"
+  items: [pat:nes-i, lex:golchi]
+  new_item: lex:golchi
+
+- id: ill-wash
+  english: "I'll wash"
+  welsh: "Wna i olchi"
+  items: [pat:wna-i, lex:golchi]
+  new_item: lex:golchi
+
+- id: are-you-washing
+  english: "Are you washing?"
+  welsh: "Wyt ti'n golchi?"
+  items: [pat:wyt-ti-yn, lex:golchi]
+  new_item: lex:golchi
+
+- id: im-sleeping
+  english: "I'm sleeping"
+  welsh: "Dw i'n cysgu"
+  items: [pat:dw-in, lex:cysgu]
+  new_item: lex:cysgu
+
+- id: i-want-to-sleep
+  english: "I want to sleep"
+  welsh: "Dw i'n moyn cysgu"
+  items: [pat:dw-in-moyn, lex:cysgu]
+  new_item: lex:cysgu
+
+- id: i-slept
+  english: "I slept"
+  welsh: "Nes i gysgu"
+  items: [pat:nes-i, lex:cysgu]
+  new_item: lex:cysgu
+
+- id: ill-sleep
+  english: "I'll sleep"
+  welsh: "Wna i gysgu"
+  items: [pat:wna-i, lex:cysgu]
+  new_item: lex:cysgu
+
+- id: are-you-sleeping
+  english: "Are you sleeping?"
+  welsh: "Wyt ti'n cysgu?"
+  items: [pat:wyt-ti-yn, lex:cysgu]
+  new_item: lex:cysgu
+
+- id: im-opening-the-door
+  english: "I'm opening the door"
+  welsh: "Dw i'n agor y drws"
+  items: [pat:dw-in, lex:y, lex:drws, lex:agor]
+  new_item: lex:agor
+
+- id: im-closing-the-window
+  english: "I'm closing the window"
+  welsh: "Dw i'n cau'r ffenest"
+  items: [pat:dw-in, lex:y, lex:ffenest, lex:cau]
+  new_item: lex:cau
+
+- id: im-cleaning-the-kitchen
+  english: "I'm cleaning the kitchen"
+  welsh: "Dw i'n glanhau'r gegin"
+  items: [pat:dw-in, lex:y, lex:cegin, lex:glanhau]
+  new_item: lex:glanhau
+
+- id: im-washing-the-table
+  english: "I'm washing the table"
+  welsh: "Dw i'n golchi'r bwrdd"
+  items: [pat:dw-in, lex:y, lex:bwrdd, lex:golchi]
+  new_item: lex:golchi
+
+- id: im-sleeping-at-home
+  english: "I'm sleeping at home"
+  welsh: "Dw i'n cysgu gartref"
+  items: [pat:dw-in, lex:gartref, lex:cysgu]
+  new_item: lex:cysgu

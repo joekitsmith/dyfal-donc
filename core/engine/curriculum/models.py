@@ -101,11 +101,33 @@ class Pattern:
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
+class Topic:
+    """A group of items taught together, and the topics it needs to have been taught first.
+
+    ``requires`` lists topics by name. Items in a topic may have prerequisites
+    in the topic itself or in a required topic (or one that topic requires).
+    """
+
+    name: str
+    requires: tuple[str, ...] = ()
+
+    def __post_init__(self) -> None:
+        _check_topic(self.name, self.name)
+        if self.name in self.requires:
+            raise CurriculumError(f"{self.name}: A topic cannot require itself")
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
 class Curriculum:
-    """A validated prerequisite graph of items plus the intended learning order."""
+    """A validated prerequisite graph of items plus the intended learning order.
+
+    ``topics`` is the sequence topics are taught in, each with what it
+    requires. It is optional: without it, every item is in one flat course.
+    """
 
     items: tuple[Item, ...]
     order: tuple[str, ...]
+    topics: tuple[Topic, ...] = ()
 
     def __post_init__(self) -> None:
         ids = [item.id for item in self.items]
@@ -131,6 +153,7 @@ class Curriculum:
         if (cycle := graph.find_cycle(self._prerequisite_map())) is not None:
             raise CurriculumError("Prerequisite cycle: " + " -> ".join(cycle))
 
+        self._validate_topics()
         self._validate_order(known)
 
     def get(self, item_id: str) -> Item:
@@ -140,9 +163,90 @@ class Curriculum:
 
         raise KeyError(item_id)
 
+    def known_before(self, item_id: str) -> frozenset[str]:
+        """The items a learner can be assumed to know when they meet ``item_id``.
+
+        Without topics, those earlier in the order. With topics, those earlier in
+        the item's own topic, plus every item of the topics it requires (and the
+        topics those require), whatever order the topics are taught in.
+        """
+        position = self.order.index(item_id)
+        if not self.topics:
+            return frozenset(self.order[:position])
+
+        topic = self.get(item_id).topic
+        needed = {topic} | self._required_topics(topic)
+        return frozenset(
+            earlier
+            for earlier in self.order[:position]
+            if self.get(earlier).topic == topic
+        ) | frozenset(
+            item.id
+            for item in self.items
+            if item.topic in needed and item.topic != topic
+        )
+
     def topological_order(self) -> tuple[str, ...]:
         """A valid ordering derived from the graph alone (ignores ``order``)."""
         return graph.topological_order(self._prerequisite_map())
+
+    def _required_topics(self, name: str) -> set[str]:
+        requires = {topic.name: topic.requires for topic in self.topics}
+        needed: set[str] = set()
+        pending = list(requires[name])
+        while pending:
+            required = pending.pop()
+            if required not in needed:
+                needed.add(required)
+                pending.extend(requires[required])
+
+        return needed
+
+    def _validate_topics(self) -> None:
+        if not self.topics:
+            return
+
+        names = [topic.name for topic in self.topics]
+        duplicates = sorted({name for name in names if names.count(name) > 1})
+        if duplicates:
+            raise CurriculumError(f"Duplicate topics: {', '.join(duplicates)}")
+
+        problems: list[str] = []
+        taught: set[str] = set()
+        for topic in self.topics:
+            problems.extend(
+                f"{topic.name} requires unknown topic {required}"
+                for required in topic.requires
+                if required not in names
+            )
+            problems.extend(
+                f"{topic.name} comes before the topic it requires, {required}"
+                for required in topic.requires
+                if required in names and required not in taught
+            )
+            taught.add(topic.name)
+
+        problems.extend(
+            f"{item.id} is in unknown topic {item.topic}"
+            for item in self.items
+            if item.topic not in names
+        )
+        if problems:
+            raise CurriculumError("Invalid topics:\n  " + "\n  ".join(problems))
+
+        topic_of = {item.id: item.topic for item in self.items}
+        undeclared = [
+            f"{item.id} ({item.topic}) needs {dependency} ({topic_of[dependency]}), "
+            f"but {item.topic} does not require {topic_of[dependency]}"
+            for item in self.items
+            for dependency in item.prerequisites
+            if topic_of[dependency] != item.topic
+            and topic_of[dependency] not in self._required_topics(item.topic)
+        ]
+        if undeclared:
+            raise CurriculumError(
+                "Prerequisites across undeclared topics:\n  " + "\n  ".join(undeclared)
+            )
 
     def _prerequisite_map(self) -> dict[str, tuple[str, ...]]:
         return {item.id: item.prerequisites for item in self.items}

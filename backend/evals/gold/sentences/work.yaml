@@ -1,0 +1,494 @@
+- id: sp-im-going-to-the-office
+  welsh: "Dw i'n mynd i'r swyddfa"
+  english: "I'm going to the office"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "swyddfa", lemma: "swyddfa", item: lex:swyddfa}
+
+- id: sp-im-coming-from-the-office
+  welsh: "Dw i'n dod o'r swyddfa"
+  english: "I'm coming from the office"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "swyddfa", lemma: "swyddfa", item: lex:swyddfa}
+
+- id: sp-i-want-an-office
+  welsh: "Dw i'n moyn swyddfa"
+  english: "I want an office"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "swyddfa", lemma: "swyddfa", item: lex:swyddfa}
+
+- id: sp-i-want-a-meeting
+  welsh: "Dw i'n moyn cyfarfod"
+  english: "I want a meeting"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cyfarfod", lemma: "cyfarfod", item: lex:cyfarfod}
+
+- id: sp-im-starting-a-meeting
+  welsh: "Dw i'n dechrau cyfarfod"
+  english: "I'm starting a meeting"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dechrau", lemma: "dechrau", item: lex:dechrau}
+    - {text: "cyfarfod", lemma: "cyfarfod", item: lex:cyfarfod}
+
+- id: sp-im-finishing-a-meeting
+  welsh: "Dw i'n gorffen cyfarfod"
+  english: "I'm finishing a meeting"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gorffen", lemma: "gorffen", item: lex:gorffen}
+    - {text: "cyfarfod", lemma: "cyfarfod", item: lex:cyfarfod}
+
+- id: sp-i-want-a-computer
+  welsh: "Dw i'n moyn cyfrifiadur"
+  english: "I want a computer"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cyfrifiadur", lemma: "cyfrifiadur", item: lex:cyfrifiadur}
+
+- id: sp-im-buying-a-computer
+  welsh: "Dw i'n prynu cyfrifiadur"
+  english: "I'm buying a computer"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "cyfrifiadur", lemma: "cyfrifiadur", item: lex:cyfrifiadur}
+
+- id: sp-i-see-a-new-computer
+  welsh: "Dw i'n gweld cyfrifiadur newydd"
+  english: "I see a new computer"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "cyfrifiadur", lemma: "cyfrifiadur", item: lex:cyfrifiadur}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-im-writing-an-email
+  welsh: "Dw i'n ysgrifennu e-bost"
+  english: "I'm writing an email"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ysgrifennu", lemma: "ysgrifennu", item: lex:ysgrifennu}
+    - {text: "e-bost", lemma: "e-bost", item: lex:e-bost}
+
+- id: sp-im-reading-an-email
+  welsh: "Dw i'n darllen e-bost"
+  english: "I'm reading an email"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "e-bost", lemma: "e-bost", item: lex:e-bost}
+
+- id: sp-im-getting-an-email
+  welsh: "Dw i'n cael e-bost"
+  english: "I'm getting an email"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "e-bost", lemma: "e-bost", item: lex:e-bost}
+
+- id: sp-i-see-a-customer
+  welsh: "Dw i'n gweld cwsmer"
+  english: "I see a customer"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "cwsmer", lemma: "cwsmer", item: lex:cwsmer}
+
+- id: sp-im-phoning-a-customer
+  welsh: "Dw i'n ffonio cwsmer"
+  english: "I'm phoning a customer"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+    - {text: "cwsmer", lemma: "cwsmer", item: lex:cwsmer}
+
+- id: sp-im-helping-a-customer
+  welsh: "Dw i'n helpu cwsmer"
+  english: "I'm helping a customer"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "cwsmer", lemma: "cwsmer", item: lex:cwsmer}
+
+- id: sp-im-starting-a-project
+  welsh: "Dw i'n dechrau prosiect"
+  english: "I'm starting a project"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dechrau", lemma: "dechrau", item: lex:dechrau}
+    - {text: "prosiect", lemma: "prosiect", item: lex:prosiect}
+
+- id: sp-im-finishing-a-project
+  welsh: "Dw i'n gorffen prosiect"
+  english: "I'm finishing a project"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gorffen", lemma: "gorffen", item: lex:gorffen}
+    - {text: "prosiect", lemma: "prosiect", item: lex:prosiect}
+
+- id: sp-i-want-a-new-project
+  welsh: "Dw i'n moyn prosiect newydd"
+  english: "I want a new project"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "prosiect", lemma: "prosiect", item: lex:prosiect}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-i-want-a-job
+  welsh: "Dw i'n moyn swydd"
+  english: "I want a job"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "swydd", lemma: "swydd", item: lex:swydd}
+
+- id: sp-im-getting-a-job
+  welsh: "Dw i'n cael swydd"
+  english: "I'm getting a job"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "swydd", lemma: "swydd", item: lex:swydd}
+
+- id: sp-i-want-a-new-job
+  welsh: "Dw i'n moyn swydd newydd"
+  english: "I want a new job"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "swydd", lemma: "swydd", item: lex:swydd}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-i-work-with-a-company
+  welsh: "Dw i'n gweithio gyda chwmni"
+  english: "I work with a company"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "chwmni", lemma: "cwmni", item: lex:cwmni, mutation: aspirate}
+
+- id: sp-i-want-a-company
+  welsh: "Dw i'n moyn cwmni"
+  english: "I want a company"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cwmni", lemma: "cwmni", item: lex:cwmni}
+
+- id: sp-i-see-a-new-company
+  welsh: "Dw i'n gweld cwmni newydd"
+  english: "I see a new company"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "cwmni", lemma: "cwmni", item: lex:cwmni}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-im-sending
+  welsh: "Dw i'n anfon"
+  english: "I'm sending"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "anfon", lemma: "anfon", item: lex:anfon}
+
+- id: sp-i-want-to-send
+  welsh: "Dw i'n moyn anfon"
+  english: "I want to send"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "anfon", lemma: "anfon", item: lex:anfon}
+
+- id: sp-i-sent
+  welsh: "Nes i anfon"
+  english: "I sent"
+  tags: [plain]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "anfon", lemma: "anfon", item: lex:anfon}
+
+- id: sp-ill-send
+  welsh: "Wna i anfon"
+  english: "I'll send"
+  tags: [plain]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "anfon", lemma: "anfon", item: lex:anfon}
+
+- id: sp-are-you-sending
+  welsh: "Wyt ti'n anfon?"
+  english: "Are you sending?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "anfon", lemma: "anfon", item: lex:anfon}
+
+- id: sp-im-arranging
+  welsh: "Dw i'n trefnu"
+  english: "I'm arranging"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "trefnu", lemma: "trefnu", item: lex:trefnu}
+
+- id: sp-i-want-to-arrange
+  welsh: "Dw i'n moyn trefnu"
+  english: "I want to arrange"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "trefnu", lemma: "trefnu", item: lex:trefnu}
+
+- id: sp-i-arranged
+  welsh: "Nes i drefnu"
+  english: "I arranged"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "drefnu", lemma: "trefnu", item: lex:trefnu, mutation: soft}
+
+- id: sp-ill-arrange
+  welsh: "Wna i drefnu"
+  english: "I'll arrange"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "drefnu", lemma: "trefnu", item: lex:trefnu, mutation: soft}
+
+- id: sp-are-you-arranging
+  welsh: "Wyt ti'n trefnu?"
+  english: "Are you arranging?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "trefnu", lemma: "trefnu", item: lex:trefnu}
+
+- id: sp-im-using
+  welsh: "Dw i'n defnyddio"
+  english: "I'm using"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "defnyddio", lemma: "defnyddio", item: lex:defnyddio}
+
+- id: sp-i-want-to-use
+  welsh: "Dw i'n moyn defnyddio"
+  english: "I want to use"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "defnyddio", lemma: "defnyddio", item: lex:defnyddio}
+
+- id: sp-i-used
+  welsh: "Nes i ddefnyddio"
+  english: "I used"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddefnyddio", lemma: "defnyddio", item: lex:defnyddio, mutation: soft}
+
+- id: sp-ill-use
+  welsh: "Wna i ddefnyddio"
+  english: "I'll use"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddefnyddio", lemma: "defnyddio", item: lex:defnyddio, mutation: soft}
+
+- id: sp-are-you-using
+  welsh: "Wyt ti'n defnyddio?"
+  english: "Are you using?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "defnyddio", lemma: "defnyddio", item: lex:defnyddio}
+
+- id: sp-im-sending-an-email
+  welsh: "Dw i'n anfon e-bost"
+  english: "I'm sending an email"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "anfon", lemma: "anfon", item: lex:anfon}
+    - {text: "e-bost", lemma: "e-bost", item: lex:e-bost}
+
+- id: sp-im-arranging-a-meeting
+  welsh: "Dw i'n trefnu cyfarfod"
+  english: "I'm arranging a meeting"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "trefnu", lemma: "trefnu", item: lex:trefnu}
+    - {text: "cyfarfod", lemma: "cyfarfod", item: lex:cyfarfod}
+
+- id: sp-im-using-a-computer
+  welsh: "Dw i'n defnyddio cyfrifiadur"
+  english: "I'm using a computer"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "defnyddio", lemma: "defnyddio", item: lex:defnyddio}
+    - {text: "cyfrifiadur", lemma: "cyfrifiadur", item: lex:cyfrifiadur}

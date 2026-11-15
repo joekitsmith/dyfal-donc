@@ -1,0 +1,17 @@
+- name: spine
+- name: food
+  requires: [spine]
+- name: hobbies
+  requires: [spine]
+- name: weather
+  requires: [spine]
+- name: family
+  requires: [spine]
+- name: home
+  requires: [spine]
+- name: work
+  requires: [spine]
+- name: places
+  requires: [spine]
+- name: time
+  requires: [spine, places]
