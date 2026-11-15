@@ -1,0 +1,22 @@
+class DatabaseError(Exception):
+    """Base class for the errors the repositories raise."""
+
+
+class LearnerNotFoundError(DatabaseError):
+    pass
+
+
+class SelectionNotFoundError(DatabaseError):
+    """The selection does not exist, or was not issued to this learner."""
+
+
+class SelectionExpiredError(DatabaseError):
+    pass
+
+
+class SelectionAlreadyAnsweredError(DatabaseError):
+    pass
+
+
+class EventOutOfOrderError(DatabaseError):
+    """The event is earlier than one already recorded for the learner."""

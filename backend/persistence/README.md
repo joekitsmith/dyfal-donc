@@ -10,7 +10,16 @@ Postgres, through SQLAlchemy 2 (sync, psycopg 3). There are no migrations yet: n
 - `issued_selections`: every exercise the server gave a learner, with when it was issued, when it expires and when it was answered. Outcomes are only accepted for selections issued here.
 - `review_events`: the append-only log the learner's state is replayed from. `(learner_id, sequence)` is unique, and so is `selection_id`, so an outcome is recorded at most once and events keep their order.
 
-This is a skeleton: the tables and constraints exist, and there are no repositories yet. `create_schema` never alters a table that already exists, so after changing a model, run `make db-reset`.
+Layout:
+
+- `models/`: the tables (`Learner`, `IssuedSelection`, `ReviewEvent`). Private to this package: only the repositories, the mappings and `create_schema` use them.
+- `records/`: frozen dataclasses (`LearnerRecord`, `IssuedSelectionRecord`) that the repositories return, so callers never hold a table object.
+- `mappings/`: table row to record or to the engine's `ReviewEvent`, with times converted to UTC.
+- `repositories/`: what the API calls. They never commit, so the caller decides what happens in one transaction. Appending an event locks the learner's row, so sequence numbers have no gaps, and answering a selection locks it, so an outcome is recorded once.
+
+The API never imports `models` or `mappings` (a boundary test checks this).
+
+There are no endpoints using the repositories yet. `create_schema` never alters a table that already exists, so after changing a model, run `make db-reset`.
 
 Copy `.env.example` to `.env` first. Docker Compose and the app both read it, so the database user, password and URL are written once.
 

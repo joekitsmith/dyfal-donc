@@ -5,9 +5,14 @@ import pytest
 from docker.errors import DockerException
 from sqlalchemy import Engine, text
 from sqlalchemy.engine import make_url
+from sqlalchemy.orm import Session, sessionmaker
 from testcontainers.community.postgres import PostgresContainer
 
-from persistence.database import create_database_engine, create_schema
+from persistence.database import (
+    create_database_engine,
+    create_schema,
+    create_session_factory,
+)
 
 
 @pytest.fixture(scope="session")
@@ -44,3 +49,16 @@ def engine(empty_engine: Engine) -> Engine:
     """An engine for a database with the tables created."""
     create_schema(empty_engine)
     return empty_engine
+
+
+@pytest.fixture
+def session_factory(engine: Engine) -> sessionmaker[Session]:
+    return create_session_factory(engine)
+
+
+@pytest.fixture
+def session(session_factory: sessionmaker[Session]) -> Iterator[Session]:
+    """A session that is rolled back after the test."""
+    with session_factory() as test_session:
+        yield test_session
+        test_session.rollback()

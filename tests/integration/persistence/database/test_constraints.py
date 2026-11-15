@@ -6,12 +6,8 @@ from sqlalchemy import Engine
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
-from persistence.database import (
-    IssuedSelection,
-    Learner,
-    ReviewEventRecord,
-    create_session_factory,
-)
+from persistence.database import create_session_factory
+from persistence.database.models import IssuedSelection, Learner, ReviewEvent
 
 NOW = datetime(2026, 1, 1, 9, tzinfo=UTC)
 
@@ -43,8 +39,8 @@ def event(
     *,
     sequence: int = 1,
     outcome: str = "got_it",
-) -> ReviewEventRecord:
-    return ReviewEventRecord(
+) -> ReviewEvent:
+    return ReviewEvent(
         learner_id=learner.id,
         sequence=sequence,
         selection_id=selection.id,
