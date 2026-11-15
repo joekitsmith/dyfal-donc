@@ -2,13 +2,12 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { countClipsEnded, instrumentAudio, requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
-test.beforeEach(async ({ page, request }) => {
+test.beforeEach(async ({ request }) => {
   await requireStack(request);
-  await instrumentAudio(page);
 });
 
 test("a learner hears an exercise, marks it missed and moves on", async ({ page }) => {
@@ -60,7 +59,9 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
     expect.arrayContaining(["english", "welsh/standard", "welsh/slow"]),
   );
   expect(clips.every((clip) => clip.status === 200)).toBe(true);
-  expect(await countClipsEnded(page)).toBeGreaterThanOrEqual(3);
+
+  // The next exercise's clips are fetched, and its track plays, with nobody tapping anything
+  await expect.poll(() => clips.length, { timeout: 30_000 }).toBeGreaterThanOrEqual(6);
 
   await expect(progress).toContainText("Introduced: 1 of");
   await expect(welsh).toHaveText("");

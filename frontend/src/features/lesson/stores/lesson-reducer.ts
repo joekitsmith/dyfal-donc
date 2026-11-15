@@ -1,12 +1,11 @@
 import type {
-  ClipTrack,
   ExerciseFields,
   ExerciseState,
   FailureCause,
   LessonEvent,
   LessonExercise,
   LessonState,
-  WaitingTrack,
+  PositionPhase,
   WelshPlayback,
 } from "../types";
 
@@ -14,7 +13,16 @@ import { errorMessage } from "../utils/error-message";
 
 export const INITIAL_LESSON_STATE: LessonState = { phase: "idle" };
 
-const ALL_LOADING: ExerciseFields["clips"] = { english: "loading", welsh_slow: "loading", welsh_standard: "loading" };
+/** The order a track plays its phases in. The position only ever moves the lesson forward through it. */
+const TRACK_PHASES: readonly PositionPhase[] = [
+  "playing_english",
+  "thinking",
+  "playing_welsh_standard",
+  "between_welsh",
+  "playing_welsh_slow",
+  "awaiting_outcome",
+  "submitting",
+];
 
 const PAUSABLE_PHASES: ReadonlySet<LessonState["phase"]> = new Set([
   "awaiting_outcome",
@@ -23,26 +31,11 @@ const PAUSABLE_PHASES: ReadonlySet<LessonState["phase"]> = new Set([
   "playing_welsh_slow",
   "playing_welsh_standard",
   "thinking",
-  "waiting_for_clip",
 ]);
 
-const PLAYING_PHASES: ReadonlySet<LessonState["phase"]> = new Set([
-  "playing_english",
-  "playing_welsh_slow",
-  "playing_welsh_standard",
-]);
-
-/** The lesson loop as a pure state machine. Audio, timers and requests live outside it. */
+/** The lesson loop as a pure state machine. Audio, requests and the clock of the track live outside it. */
 export function lessonReducer(state: LessonState, event: LessonEvent): LessonState {
   switch (event.type) {
-    case "clip_ended":
-      return clipEnded(state);
-    case "clip_failed":
-      return clipFailed(state, event.track, event.cause);
-    case "clip_ready":
-      return clipReady(state, event.track);
-    case "gap_elapsed":
-      return gapElapsed(state);
     case "missed":
       return canMarkMissed(state) && isExerciseState(state) ? { ...state, missed: true } : state;
     case "next_failed":
@@ -53,16 +46,21 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
       return state.phase === "loading" ? prepare(event.exercise, 0, false, event.welshPlayback) : state;
     case "nothing_eligible":
       return state.phase === "loading" ? { phase: "nothing_eligible" } : state;
+    case "pause":
+      return setPaused(state, true);
     case "playback_failed":
-      return isExerciseState(state) && PLAYING_PHASES.has(state.phase) ? toClipError(state, "other") : state;
+      return isExerciseState(state) && PAUSABLE_PHASES.has(state.phase) ? toClipError(state, "other") : state;
+    case "position_reached":
+      return positionReached(state, event.phase);
     case "replay":
       return replay(state);
     case "reset":
       return INITIAL_LESSON_STATE;
+    case "resume":
+      return setPaused(state, false);
     case "retry":
       return retry(state);
     case "skip_window":
-    case "window_elapsed":
       return state.phase === "awaiting_outcome" && !state.paused ? { ...fieldsOf(state), phase: "submitting" } : state;
     case "start":
       return state.phase === "idle" ? { phase: "loading" } : state;
@@ -83,10 +81,12 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
         : state;
     case "submitted":
       return state.phase === "submitting" ? { phase: "loading" } : state;
-    case "think_elapsed":
-      return state.phase === "thinking" && !state.paused ? startFirstWelsh(state) : state;
     case "toggle_pause":
-      return togglePause(state);
+      return isExerciseState(state) ? setPaused(state, !state.paused) : state;
+    case "track_failed":
+      return state.phase === "preparing" ? toClipError(state, event.cause) : state;
+    case "track_ready":
+      return state.phase === "preparing" ? { ...fieldsOf(state), phase: "playing_english" } : state;
   }
 }
 
@@ -98,8 +98,6 @@ export function canMarkMissed(state: LessonState): boolean {
     case "playing_welsh_slow":
     case "playing_welsh_standard":
       return true;
-    case "waiting_for_clip":
-      return state.track === "welsh_slow";
     default:
       return false;
   }
@@ -113,69 +111,10 @@ export function isPausable(state: LessonState): boolean {
   return PAUSABLE_PHASES.has(state.phase);
 }
 
-function clipEnded(state: LessonState): LessonState {
-  if (!isExerciseState(state) || state.paused) {
-    return state;
-  }
-
-  switch (state.phase) {
-    case "playing_english":
-      return { ...fieldsOf(state), phase: "thinking" };
-    case "playing_welsh_slow":
-      return { ...fieldsOf(state), phase: "awaiting_outcome" };
-    case "playing_welsh_standard":
-      return state.welshPlayback === "both"
-        ? { ...fieldsOf(state), phase: "between_welsh" }
-        : { ...fieldsOf(state), phase: "awaiting_outcome" };
-    default:
-      return state;
-  }
-}
-
-/** The gap after the first Welsh ends by showing its text and playing the slow Welsh. */
-function gapElapsed(state: LessonState): LessonState {
-  if (!isExerciseState(state) || state.paused) {
-    return state;
-  }
-
-  return state.phase === "between_welsh" ? startClip({ ...state, revealed: true }, "welsh_slow") : state;
-}
-
-function clipFailed(state: LessonState, track: ClipTrack, cause: FailureCause): LessonState {
-  if (!isExerciseState(state)) {
-    return state;
-  }
-
-  const failed: ExerciseState = { ...state, clips: { ...state.clips, [track]: "failed" } };
-  const neededNow =
-    (state.phase === "preparing" && track === "english") ||
-    (state.phase === "waiting_for_clip" && !state.paused && state.track === track);
-
-  return neededNow ? toClipError(failed, cause) : failed;
-}
-
-function clipReady(state: LessonState, track: ClipTrack): LessonState {
-  if (!isExerciseState(state)) {
-    return state;
-  }
-
-  const ready: ExerciseState = { ...state, clips: { ...state.clips, [track]: "ready" } };
-
-  if (ready.phase === "preparing" && track === "english") {
-    return { ...fieldsOf(ready), phase: "playing_english" };
-  }
-
-  if (ready.phase === "waiting_for_clip" && !ready.paused && ready.track === track) {
-    return startClip(ready, ready.track);
-  }
-
-  return ready;
-}
-
 function fieldsOf(state: ExerciseState): ExerciseFields {
-  const { attempt, clips, exercise, missed, paused, replayCount, revealed, welshPlayback } = state;
+  const { attempt, exercise, missed, paused, replayCount, revealed, welshPlayback } = state;
 
-  return { attempt, clips, exercise, missed, paused, replayCount, revealed, welshPlayback };
+  return { attempt, exercise, missed, paused, replayCount, revealed, welshPlayback };
 }
 
 function prepare(
@@ -186,7 +125,6 @@ function prepare(
 ): ExerciseState {
   return {
     attempt,
-    clips: ALL_LOADING,
     exercise,
     missed,
     paused: false,
@@ -195,6 +133,38 @@ function prepare(
     revealed: false,
     welshPlayback,
   };
+}
+
+/**
+ * Moves forward to the phase the track has reached, which may skip some when the page was not
+ * running for a while. It is ignored while paused, and when it would move back: a replay is
+ * what moves back.
+ */
+function positionReached(state: LessonState, phase: PositionPhase): LessonState {
+  if (!isExerciseState(state) || state.paused) {
+    return state;
+  }
+
+  const current = TRACK_PHASES.indexOf(state.phase as PositionPhase);
+  const reached = TRACK_PHASES.indexOf(phase);
+
+  if (current === -1 || reached <= current) {
+    return state;
+  }
+
+  return {
+    ...fieldsOf(state),
+    phase,
+    revealed: state.revealed || reached >= TRACK_PHASES.indexOf(firstWelshShown(state.welshPlayback)),
+  };
+}
+
+/**
+ * The text shows when a recording starts that nothing else follows, so with both voices it waits
+ * for the man.
+ */
+function firstWelshShown(welshPlayback: WelshPlayback): PositionPhase {
+  return welshPlayback === "standard" ? "playing_welsh_standard" : "playing_welsh_slow";
 }
 
 function replay(state: LessonState): LessonState {
@@ -231,40 +201,18 @@ function retry(state: LessonState): LessonState {
   };
 }
 
-/**
- * Starts the Welsh after the think time: the woman's, or the man's alone when that is the setting.
- * The text shows when a recording starts that nothing else follows, so with both voices it waits
- * for the man.
- */
-function startFirstWelsh(state: ExerciseState): LessonState {
-  return startClip(
-    { ...state, revealed: state.welshPlayback !== "both" },
-    state.welshPlayback === "slow" ? "welsh_slow" : "welsh_standard",
-  );
-}
-
-/** Plays the clip if it is ready, waits if it is still loading, and stops if it failed. */
-function startClip(state: ExerciseState, track: WaitingTrack): LessonState {
-  const fields = fieldsOf(state);
-
-  switch (state.clips[track]) {
-    case "failed":
-      return toClipError(state, "other");
-    case "loading":
-      return { ...fields, phase: "waiting_for_clip", track };
-    case "ready":
-      return track === "welsh_standard"
-        ? { ...fields, phase: "playing_welsh_standard" }
-        : { ...fields, phase: "playing_welsh_slow" };
+function setPaused(state: LessonState, paused: boolean): LessonState {
+  if (!isExerciseState(state) || !PAUSABLE_PHASES.has(state.phase) || state.paused === paused) {
+    return state;
   }
+
+  return { ...state, paused };
 }
 
 function toClipError(state: ExerciseState, cause: FailureCause): LessonState {
-  const loading = state.phase === "preparing" || state.phase === "waiting_for_clip";
-
   return {
     cause,
-    message: errorMessage(loading ? "clips" : "playback", cause),
+    message: errorMessage(state.phase === "preparing" ? "clips" : "playback", cause),
     phase: "error",
     retry: {
       attempt: state.attempt,
@@ -274,18 +222,4 @@ function toClipError(state: ExerciseState, cause: FailureCause): LessonState {
       welshPlayback: state.welshPlayback,
     },
   };
-}
-
-function togglePause(state: LessonState): LessonState {
-  if (!isExerciseState(state) || !PAUSABLE_PHASES.has(state.phase)) {
-    return state;
-  }
-
-  if (!state.paused) {
-    return { ...state, paused: true };
-  }
-
-  const resumed: ExerciseState = { ...state, paused: false };
-
-  return resumed.phase === "waiting_for_clip" ? startClip(resumed, resumed.track) : resumed;
 }

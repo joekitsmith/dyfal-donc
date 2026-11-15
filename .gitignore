@@ -232,3 +232,7 @@ next-env.d.ts
 *.tsbuildinfo
 test-results/
 playwright-report/
+
+# Cloudflare quick tunnel (make tunnel)
+.tunnel.log
+.tunnel.pid

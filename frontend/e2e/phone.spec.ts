@@ -1,13 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { instrumentAudio, requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest } from "./helpers";
 
 const MINIMUM_TOUCH_TARGET = 48;
 
-test.beforeEach(async ({ page, request }) => {
+test.beforeEach(async ({ request }) => {
   await requireStack(request);
-  await instrumentAudio(page);
 });
 
 test("the lesson fits a phone and its buttons are easy to tap", async ({ page }) => {

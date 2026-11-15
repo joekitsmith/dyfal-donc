@@ -1,11 +1,10 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { instrumentAudio, requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest } from "./helpers";
 
-test.beforeEach(async ({ page, request }) => {
+test.beforeEach(async ({ request }) => {
   await requireStack(request);
-  await instrumentAudio(page);
 });
 
 test("the course lists what was met, can be searched, and opens a word with the sentences it was in", async ({

@@ -1,37 +1,6 @@
 import { type APIRequestContext, expect, type Page } from "@playwright/test";
 
 const FAST_THINK_MULTIPLIER = 0.5;
-const LONG_CLIP_SECONDS = 0.2;
-
-/** Counts the clips that play to the end. The silent clip that unlocks audio is too short to count. */
-export async function countClipsEnded(page: Page): Promise<number> {
-  return page.evaluate(() => (window as unknown as Record<string, number>).__clipsEnded ?? 0);
-}
-
-export async function instrumentAudio(page: Page): Promise<void> {
-  await page.addInitScript((longClipSeconds) => {
-    const counter = window as unknown as Record<string, number>;
-    const watched = new WeakSet<HTMLMediaElement>();
-    // Patching the prototype is the point, and `play.call` below supplies `this`
-    // eslint-disable-next-line @typescript-eslint/unbound-method
-    const play = HTMLMediaElement.prototype.play;
-
-    counter.__clipsEnded = 0;
-
-    HTMLMediaElement.prototype.play = function (this: HTMLMediaElement) {
-      if (!watched.has(this)) {
-        watched.add(this);
-        this.addEventListener("ended", () => {
-          if (this.duration > longClipSeconds) {
-            counter.__clipsEnded = (counter.__clipsEnded ?? 0) + 1;
-          }
-        });
-      }
-
-      return play.call(this);
-    };
-  }, LONG_CLIP_SECONDS);
-}
 
 export async function requireStack(request: APIRequestContext): Promise<void> {
   const response = await request.get("/api/health").catch(() => undefined);
