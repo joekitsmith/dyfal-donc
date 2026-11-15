@@ -210,14 +210,8 @@ export interface components {
         };
         NextExerciseResponse: components["schemas"]["ExerciseResponse"] | components["schemas"]["NothingEligibleResponse"];
         /**
-         * NothingEligibleReason
-         * @description Why there is nothing to give the learner.
-         * @enum {string}
-         */
-        NothingEligibleReason: "error_rate_too_high" | "new_item_limit_reached" | "no_exercise_introduces_frontier" | "nothing_eligible";
-        /**
          * NothingEligibleResponse
-         * @description There is no exercise to give right now, and why.
+         * @description There is no exercise to give: the course has a gap or is empty.
          */
         NothingEligibleResponse: {
             /**
@@ -225,7 +219,6 @@ export interface components {
              * @enum {string}
              */
             kind: "nothing_eligible";
-            reason: components["schemas"]["NothingEligibleReason"];
         };
         /** OutcomeRequest */
         OutcomeRequest: {

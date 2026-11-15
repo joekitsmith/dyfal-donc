@@ -1,6 +1,8 @@
+import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useEffectEvent, useReducer, useRef, useState } from "react";
 
 import { ApiError } from "@/api/api-error";
+import { progressQueryKey } from "@/features/progress";
 
 import type { ClipTrack, LessonState } from "../types";
 import type { KeyAction } from "../utils/key-map";
@@ -21,6 +23,7 @@ import {
   lessonReducer,
 } from "../stores/lesson-reducer";
 import { ClipPlayer } from "../utils/clip-player";
+import { failureCause } from "../utils/failure-cause";
 import { type PausableTimer, startPausableTimer } from "../utils/pausable-timer";
 import { thinkSeconds } from "../utils/think-time";
 import { useExerciseClips } from "./use-exercise-clips";
@@ -66,6 +69,7 @@ export function useLessonPlayer({
   const [player] = useState(() => new ClipPlayer());
   const { mutate: fetchNext } = useNextExercise(learnerId);
   const { mutate: submitOutcome } = useSubmitOutcome(learnerId);
+  const queryClient = useQueryClient();
   const timer = useRef<null | PausableTimer>(null);
   const marks = useRef({ loadingStartedAt: 0, thinkEndedAt: 0 });
 
@@ -77,6 +81,10 @@ export function useLessonPlayer({
   const submission = state.phase === "submitting" ? state : null;
 
   const urlFor = useExerciseClips(state.phase === "submitting" ? null : exercise, attempt, dispatch);
+
+  const refreshProgress = useEffectEvent(() => {
+    void queryClient.invalidateQueries({ queryKey: progressQueryKey(learnerId) });
+  });
 
   const thinkMilliseconds = useEffectEvent(() =>
     exercise === null ? 0 : thinkSeconds(exercise.welsh, thinkMultiplier) * MILLISECONDS_PER_SECOND,
@@ -90,14 +98,12 @@ export function useLessonPlayer({
 
     marks.current.loadingStartedAt = performance.now();
     fetchNext(undefined, {
-      onError: () => {
-        dispatch({ type: "next_failed" });
+      onError: (error) => {
+        dispatch({ cause: failureCause(error), type: "next_failed" });
       },
       onSuccess: (next) => {
         dispatch(
-          next.kind === "exercise"
-            ? { exercise: next.exercise, type: "next_loaded" }
-            : { reason: next.reason, type: "nothing_eligible" },
+          next.kind === "exercise" ? { exercise: next.exercise, type: "next_loaded" } : { type: "nothing_eligible" },
         );
       },
     });
@@ -117,9 +123,15 @@ export function useLessonPlayer({
             error instanceof ApiError &&
             (error.status === ALREADY_ANSWERED_STATUS || error.status === SELECTION_EXPIRED_STATUS);
 
-          dispatch({ type: finished ? "submitted" : "submit_failed" });
+          if (finished) {
+            refreshProgress();
+            dispatch({ type: "submitted" });
+          } else {
+            dispatch({ cause: failureCause(error), type: "submit_failed" });
+          }
         },
         onSuccess: () => {
+          refreshProgress();
           dispatch({ type: "submitted" });
         },
       },
@@ -214,7 +226,7 @@ export function useLessonPlayer({
   };
 
   useLessonKeyboard((action: KeyAction) => {
-    if (action === "toggle_pause" && (state.phase === "idle" || state.phase === "nothing_eligible")) {
+    if (action === "toggle_pause" && state.phase === "idle") {
       actions.start();
     } else {
       dispatch({ type: action });

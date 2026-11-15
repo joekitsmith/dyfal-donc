@@ -199,33 +199,16 @@
           }
         ]
       },
-      "NothingEligibleReason": {
-        "description": "Why there is nothing to give the learner.",
-        "enum": [
-          "error_rate_too_high",
-          "new_item_limit_reached",
-          "no_exercise_introduces_frontier",
-          "nothing_eligible"
-        ],
-        "title": "NothingEligibleReason",
-        "type": "string"
-      },
       "NothingEligibleResponse": {
-        "description": "There is no exercise to give right now, and why.",
+        "description": "There is no exercise to give: the course has a gap or is empty.",
         "properties": {
           "kind": {
             "const": "nothing_eligible",
             "default": "nothing_eligible",
             "title": "Kind",
             "type": "string"
-          },
-          "reason": {
-            "$ref": "#/components/schemas/NothingEligibleReason"
           }
         },
-        "required": [
-          "reason"
-        ],
         "title": "NothingEligibleResponse",
         "type": "object"
       },

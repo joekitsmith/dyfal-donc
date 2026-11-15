@@ -84,6 +84,27 @@ def review_not_due(memory_model: FsrsMemoryModel) -> Review:
     return Review(memory=memory_model.initial(START))
 
 
+def exercises_done(count: int) -> tuple[ReviewEvent, ...]:
+    return tuple(
+        event(f"ex:{number}", SIARAD_ID, minutes=number) for number in range(count)
+    )
+
+
+def going_badly(*, since_introduction: int) -> tuple[ReviewEvent, ...]:
+    """Twenty exercises, 6 of them missed, the last introduction ``since_introduction`` ago."""
+    introduced_at = 20 - 1 - since_introduction
+    return tuple(
+        ReviewEvent(
+            exercise_id=f"ex:{number}",
+            item_ids=(SIARAD_ID,),
+            new_item=SIARAD_ID if number == introduced_at else None,
+            outcome=Outcome.MISSED_IT if number < 6 else Outcome.GOT_IT,
+            reviewed_at=START + timedelta(minutes=number),
+        )
+        for number in range(20)
+    )
+
+
 class TestPriority:
     def test_a_new_learner_is_given_the_exercise_that_introduces_the_first_item(
         self, curriculum: Curriculum
@@ -98,18 +119,14 @@ class TestPriority:
             SIARAD_ID,
         )
 
-    def test_a_due_learning_item_comes_before_a_due_review_and_an_introduction(
-        self, curriculum: Curriculum, memory_model: FsrsMemoryModel
+    def test_a_due_learning_item_comes_before_an_introduction(
+        self, curriculum: Curriculum
     ) -> None:
         pool = {
             "ex:introduce": exercise(DYSGU_ID, SIARAD_ID, new_item=DYSGU_ID),
-            "ex:review": exercise(COFFI_ID),
             "ex:learning": exercise(SIARAD_ID),
         }
-        memories: dict[str, ItemMemory] = {
-            SIARAD_ID: learning_due(),
-            COFFI_ID: review_due(memory_model),
-        }
+        memories: dict[str, ItemMemory] = {SIARAD_ID: learning_due()}
 
         result = selected(choose(pool, curriculum, memories))
 
@@ -118,7 +135,7 @@ class TestPriority:
             Purpose.LEARNING_DUE,
         )
 
-    def test_a_due_review_comes_before_an_introduction(
+    def test_a_due_review_does_not_hold_back_an_introduction(
         self, curriculum: Curriculum, memory_model: FsrsMemoryModel
     ) -> None:
         pool = {
@@ -129,7 +146,10 @@ class TestPriority:
 
         result = selected(choose(pool, curriculum, memories))
 
-        assert (result.exercise_id, result.purpose) == ("ex:review", Purpose.REVIEW_DUE)
+        assert (result.exercise_id, result.purpose) == (
+            "ex:introduce",
+            Purpose.INTRODUCTION,
+        )
 
     def test_nothing_due_means_the_next_item_is_introduced(
         self, curriculum: Curriculum, memory_model: FsrsMemoryModel
@@ -173,14 +193,14 @@ class TestPriority:
         assert result.purpose is Purpose.INTRODUCTION
 
     def test_an_introducing_exercise_never_counts_as_due_practice(
-        self, curriculum: Curriculum, memory_model: FsrsMemoryModel
+        self, curriculum: Curriculum
     ) -> None:
         pool = {"ex:introduce": exercise(SIARAD_ID, DYSGU_ID, new_item=DYSGU_ID)}
         memories: dict[str, ItemMemory] = {SIARAD_ID: learning_due()}
 
-        result = choose(pool, curriculum, memories, misses(10, of=10))
+        result = selected(choose(pool, curriculum, memories))
 
-        assert result == NothingEligible(reason=NoExerciseReason.ERROR_RATE_TOO_HIGH)
+        assert (result.purpose, result.introduces) == (Purpose.INTRODUCTION, DYSGU_ID)
 
     def test_an_exercise_that_once_introduced_an_item_is_practice_afterwards(
         self, curriculum: Curriculum
@@ -191,6 +211,76 @@ class TestPriority:
         result = selected(choose(pool, curriculum, memories))
 
         assert (result.purpose, result.introduces) == (Purpose.LEARNING_DUE, None)
+
+
+class TestRefreshers:
+    POOL = {
+        "ex:introduce": exercise(SIARAD_ID, DYSGU_ID, new_item=DYSGU_ID),
+        "ex:review": exercise(SIARAD_ID),
+    }
+
+    def memories(self, memory_model: FsrsMemoryModel) -> dict[str, ItemMemory]:
+        return {SIARAD_ID: review_due(memory_model)}
+
+    def test_every_fourth_exercise_is_a_refresher_when_a_review_is_due(
+        self, curriculum: Curriculum, memory_model: FsrsMemoryModel
+    ) -> None:
+        result = selected(
+            choose(
+                self.POOL, curriculum, self.memories(memory_model), exercises_done(3)
+            )
+        )
+
+        assert (result.exercise_id, result.purpose) == ("ex:review", Purpose.REVIEW_DUE)
+
+    @pytest.mark.parametrize("done", [0, 1, 2, 4, 5])
+    def test_the_other_exercises_carry_on_with_new_material(
+        self, curriculum: Curriculum, memory_model: FsrsMemoryModel, done: int
+    ) -> None:
+        result = selected(
+            choose(
+                self.POOL, curriculum, self.memories(memory_model), exercises_done(done)
+            )
+        )
+
+        assert result.purpose is Purpose.INTRODUCTION
+
+    def test_a_refresher_comes_before_a_due_learning_item(
+        self, curriculum: Curriculum, memory_model: FsrsMemoryModel
+    ) -> None:
+        pool = {**self.POOL, "ex:learning": exercise(DYSGU_ID)}
+        memories: dict[str, ItemMemory] = {
+            SIARAD_ID: review_due(memory_model),
+            DYSGU_ID: learning_due(),
+        }
+
+        result = selected(choose(pool, curriculum, memories, exercises_done(3)))
+
+        assert result.purpose is Purpose.REVIEW_DUE
+
+    def test_nothing_due_means_no_refresher_on_its_turn(
+        self, curriculum: Curriculum, memory_model: FsrsMemoryModel
+    ) -> None:
+        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
+
+        result = selected(choose(self.POOL, curriculum, memories, exercises_done(3)))
+
+        assert result.purpose is Purpose.INTRODUCTION
+
+    def test_the_period_is_configurable(
+        self, curriculum: Curriculum, memory_model: FsrsMemoryModel
+    ) -> None:
+        result = selected(
+            choose(
+                self.POOL,
+                curriculum,
+                self.memories(memory_model),
+                exercises_done(1),
+                settings=SchedulerSettings(refresher_period=2),
+            )
+        )
+
+        assert result.purpose is Purpose.REVIEW_DUE
 
 
 class TestPacing:
@@ -211,20 +301,62 @@ class TestPacing:
 
         assert result.purpose is Purpose.INTRODUCTION
 
-    def test_a_high_error_rate_holds_introductions_back_in_favour_of_practice(
+    def test_a_high_error_rate_spaces_introductions_out_with_practice(
         self, curriculum: Curriculum, memory_model: FsrsMemoryModel
     ) -> None:
         result = selected(
-            choose(self.POOL, curriculum, self.memories(memory_model), misses(6, of=20))
+            choose(
+                self.POOL,
+                curriculum,
+                self.memories(memory_model),
+                going_badly(since_introduction=2),
+            )
         )
 
         assert (result.exercise_id, result.purpose) == ("ex:practice", Purpose.PRACTICE)
 
-    def test_an_error_rate_exactly_at_the_threshold_holds_introductions_back(
+    def test_a_high_error_rate_still_lets_an_introduction_through_after_the_gap(
         self, curriculum: Curriculum, memory_model: FsrsMemoryModel
     ) -> None:
         result = selected(
-            choose(self.POOL, curriculum, self.memories(memory_model), misses(3, of=20))
+            choose(
+                self.POOL,
+                curriculum,
+                self.memories(memory_model),
+                going_badly(since_introduction=4),
+            )
+        )
+
+        assert result.purpose is Purpose.INTRODUCTION
+
+    def test_with_nothing_to_practise_it_introduces_anyway(
+        self, curriculum: Curriculum
+    ) -> None:
+        pool = {"ex:introduce": exercise(DYSGU_ID, SIARAD_ID, new_item=DYSGU_ID)}
+        memories: dict[str, ItemMemory] = {SIARAD_ID: learning_due()}
+
+        result = selected(
+            choose(pool, curriculum, memories, going_badly(since_introduction=1))
+        )
+
+        assert result.purpose is Purpose.INTRODUCTION
+
+    def test_an_error_rate_exactly_at_the_threshold_slows_introductions(
+        self, curriculum: Curriculum, memory_model: FsrsMemoryModel
+    ) -> None:
+        events = tuple(
+            ReviewEvent(
+                exercise_id=f"ex:{number}",
+                item_ids=(SIARAD_ID,),
+                new_item=SIARAD_ID if number == 18 else None,
+                outcome=Outcome.MISSED_IT if number < 3 else Outcome.GOT_IT,
+                reviewed_at=START + timedelta(minutes=number),
+            )
+            for number in range(20)
+        )
+
+        result = selected(
+            choose(self.POOL, curriculum, self.memories(memory_model), events)
         )
 
         assert result.purpose is Purpose.PRACTICE
@@ -251,7 +383,7 @@ class TestPacing:
 
         assert result.purpose is Purpose.INTRODUCTION
 
-    def test_a_few_early_misses_do_not_hold_the_course_back(
+    def test_a_few_early_misses_do_not_slow_the_course(
         self, curriculum: Curriculum, memory_model: FsrsMemoryModel
     ) -> None:
         result = selected(
@@ -263,161 +395,32 @@ class TestPacing:
     def test_the_threshold_is_configurable(
         self, curriculum: Curriculum, memory_model: FsrsMemoryModel
     ) -> None:
-        lenient = SchedulerSettings(error_rate_threshold=0.5)
-
         result = selected(
             choose(
                 self.POOL,
                 curriculum,
                 self.memories(memory_model),
-                misses(6, of=20),
-                settings=lenient,
+                going_badly(since_introduction=1),
+                settings=SchedulerSettings(error_rate_threshold=0.5),
             )
         )
 
         assert result.purpose is Purpose.INTRODUCTION
 
-
-class TestDailyLimit:
-    @staticmethod
-    def introduced(minutes: int) -> ReviewEvent:
-        return ReviewEvent(
-            exercise_id="ex:1",
-            item_ids=(SIARAD_ID,),
-            new_item=SIARAD_ID,
-            outcome=Outcome.GOT_IT,
-            reviewed_at=START + timedelta(minutes=minutes),
-        )
-
-    @pytest.fixture
-    def pool(self) -> dict[str, Exercise]:
-        return {
-            "ex:practice": exercise(SIARAD_ID),
-            "ex:introduce": exercise(DYSGU_ID, SIARAD_ID, new_item=DYSGU_ID),
-        }
-
-    def test_the_limit_stops_a_further_introduction_today(
-        self,
-        pool: dict[str, Exercise],
-        curriculum: Curriculum,
-        memory_model: FsrsMemoryModel,
-    ) -> None:
-        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
-
-        result = selected(
-            choose(
-                pool,
-                curriculum,
-                memories,
-                (self.introduced(0),),
-                now=START + timedelta(hours=1),
-                settings=SchedulerSettings(new_items_per_day=1),
-            )
-        )
-
-        assert (result.exercise_id, result.purpose) == (
-            "ex:practice",
-            Purpose.PRACTICE,
-        )
-
-    def test_without_a_limit_the_next_item_is_introduced(
-        self,
-        pool: dict[str, Exercise],
-        curriculum: Curriculum,
-        memory_model: FsrsMemoryModel,
-    ) -> None:
-        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
-
-        result = selected(
-            choose(
-                pool,
-                curriculum,
-                memories,
-                (self.introduced(0),),
-                now=START + timedelta(hours=1),
-            )
-        )
-
-        assert result.purpose is Purpose.INTRODUCTION
-
-    def test_the_limit_counts_each_introduction(
-        self,
-        pool: dict[str, Exercise],
-        curriculum: Curriculum,
-        memory_model: FsrsMemoryModel,
-    ) -> None:
-        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
-
-        result = selected(
-            choose(
-                pool,
-                curriculum,
-                memories,
-                (self.introduced(0),),
-                now=START + timedelta(hours=1),
-                settings=SchedulerSettings(new_items_per_day=2),
-            )
-        )
-
-        assert result.purpose is Purpose.INTRODUCTION
-
-    def test_the_limit_starts_again_the_next_day(
-        self,
-        pool: dict[str, Exercise],
-        curriculum: Curriculum,
-        memory_model: FsrsMemoryModel,
-    ) -> None:
-        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
-
-        result = selected(
-            choose(
-                pool,
-                curriculum,
-                memories,
-                (self.introduced(0),),
-                now=START + DAY,
-                settings=SchedulerSettings(new_items_per_day=1),
-            )
-        )
-
-        assert result.purpose is Purpose.INTRODUCTION
-
-    def test_introductions_from_yesterday_do_not_count(
-        self,
-        pool: dict[str, Exercise],
-        curriculum: Curriculum,
-        memory_model: FsrsMemoryModel,
-    ) -> None:
-        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
-
-        result = selected(
-            choose(
-                pool,
-                curriculum,
-                memories,
-                (self.introduced(-24 * 60),),
-                settings=SchedulerSettings(new_items_per_day=1),
-            )
-        )
-
-        assert result.purpose is Purpose.INTRODUCTION
-
-    def test_nothing_to_practise_says_the_limit_was_reached(
+    def test_the_gap_is_configurable(
         self, curriculum: Curriculum, memory_model: FsrsMemoryModel
     ) -> None:
-        pool = {"ex:introduce": exercise(DYSGU_ID, SIARAD_ID, new_item=DYSGU_ID)}
-        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
-
-        result = choose(
-            pool,
-            curriculum,
-            memories,
-            (self.introduced(0),),
-            now=START + timedelta(hours=1),
-            settings=SchedulerSettings(new_items_per_day=1),
+        result = selected(
+            choose(
+                self.POOL,
+                curriculum,
+                self.memories(memory_model),
+                going_badly(since_introduction=2),
+                settings=SchedulerSettings(slowed_introduction_gap=2),
+            )
         )
 
-        assert result == NothingEligible(reason=NoExerciseReason.NEW_ITEM_LIMIT_REACHED)
+        assert result.purpose is Purpose.INTRODUCTION
 
 
 class TestNothingEligible:
@@ -442,15 +445,6 @@ class TestNothingEligible:
         assert result == NothingEligible(
             reason=NoExerciseReason.NO_EXERCISE_INTRODUCES_FRONTIER
         )
-
-    def test_held_back_with_nothing_else_to_do_says_the_error_rate_is_too_high(
-        self, curriculum: Curriculum
-    ) -> None:
-        pool = {"ex:1": exercise(SIARAD_ID, new_item=SIARAD_ID)}
-
-        result = choose(pool, curriculum, events=misses(10, of=10))
-
-        assert result == NothingEligible(reason=NoExerciseReason.ERROR_RATE_TOO_HIGH)
 
     def test_an_introducing_exercise_that_needs_a_later_item_is_not_eligible(
         self, curriculum: Curriculum

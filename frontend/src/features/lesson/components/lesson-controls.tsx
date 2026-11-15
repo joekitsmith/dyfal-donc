@@ -17,16 +17,16 @@ export function LessonControls({
   readonly canPause: boolean;
   readonly state: LessonState;
 }) {
-  if (state.phase === "idle" || state.phase === "nothing_eligible") {
+  if (state.phase === "idle") {
     return (
       <Button onClick={actions.start} size="large" variant="contained">
-        {state.phase === "idle" ? "Start" : "Check again"}
+        Start
       </Button>
     );
   }
 
   if (state.phase === "error") {
-    return (
+    return state.cause === "learner_missing" ? null : (
       <Button onClick={actions.retry} size="large" variant="contained">
         Retry
       </Button>

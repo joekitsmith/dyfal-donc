@@ -6,8 +6,7 @@ import { apiClient } from "@/api/client";
 import type { LessonExercise } from "../types";
 
 export type NextExercise =
-  | { readonly exercise: LessonExercise; readonly kind: "exercise" }
-  | { readonly kind: "nothing_eligible"; readonly reason: string };
+  { readonly exercise: LessonExercise; readonly kind: "exercise" } | { readonly kind: "nothing_eligible" };
 
 export function useNextExercise(learnerId: string) {
   return useMutation({
@@ -17,7 +16,7 @@ export function useNextExercise(learnerId: string) {
       );
 
       if (offered.kind === "nothing_eligible") {
-        return { kind: "nothing_eligible", reason: offered.reason };
+        return { kind: "nothing_eligible" };
       }
 
       return {

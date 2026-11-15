@@ -4,7 +4,6 @@ from api.mappings.exercise import (
     to_exercise_purpose,
     to_exercise_response,
     to_issue_selection,
-    to_nothing_eligible_reason,
     to_nothing_eligible_response,
 )
 from api.mappings.learner import to_learner_response, to_add_learner
@@ -28,7 +27,6 @@ __all__ = [
     "to_exercise_response",
     "to_learner_response",
     "to_issue_selection",
-    "to_nothing_eligible_reason",
     "to_nothing_eligible_response",
     "to_outcome",
     "to_outcome_response",

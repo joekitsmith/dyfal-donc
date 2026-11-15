@@ -41,15 +41,15 @@ class TestSchedulerSettings:
         with pytest.raises(SchedulerError, match="cannot be negative"):
             SchedulerSettings(**{field: -1})
 
-    def test_the_daily_limit_is_off_by_default(self) -> None:
-        assert DEFAULT_SCHEDULER_SETTINGS.new_items_per_day is None
+    @pytest.mark.parametrize("gap", [0, -1])
+    def test_rejects_a_slowed_introduction_gap_under_one(self, gap: int) -> None:
+        with pytest.raises(SchedulerError, match="Slowed introduction gap"):
+            SchedulerSettings(slowed_introduction_gap=gap)
 
-    @pytest.mark.parametrize("limit", [0, -1])
-    def test_rejects_a_daily_limit_under_one(self, limit: int) -> None:
-        with pytest.raises(
-            SchedulerError, match="New items per day must be at least 1"
-        ):
-            SchedulerSettings(new_items_per_day=limit)
+    @pytest.mark.parametrize("period", [1, 0])
+    def test_rejects_a_refresher_period_under_two(self, period: int) -> None:
+        with pytest.raises(SchedulerError, match="Refresher period"):
+            SchedulerSettings(refresher_period=period)
 
 
 class TestSelection:

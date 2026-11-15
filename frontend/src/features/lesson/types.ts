@@ -18,26 +18,27 @@ export type ExerciseFields = {
   readonly revealed: boolean;
 };
 
+export type FailureCause = "learner_missing" | "other" | "speech_unavailable";
+
 export type ExerciseState = Extract<LessonState, { readonly exercise: LessonExercise }>;
 
 export type LessonEvent =
+  | { readonly cause: FailureCause; readonly track: ClipTrack; readonly type: "clip_failed" }
+  | { readonly cause: FailureCause; readonly type: "next_failed" | "submit_failed" }
   | { readonly exercise: LessonExercise; readonly type: "next_loaded" }
-  | { readonly reason: string; readonly type: "nothing_eligible" }
-  | { readonly track: ClipTrack; readonly type: "clip_failed" }
   | { readonly track: ClipTrack; readonly type: "clip_ready" }
   | {
       readonly type:
         | "clip_ended"
         | "gap_elapsed"
         | "missed"
-        | "next_failed"
+        | "nothing_eligible"
         | "playback_failed"
         | "replay"
         | "reset"
         | "retry"
         | "skip_window"
         | "start"
-        | "submit_failed"
         | "submitted"
         | "think_elapsed"
         | "toggle_pause"
@@ -61,10 +62,10 @@ export type LessonState =
   | (ExerciseFields & { readonly phase: "submitting" })
   | (ExerciseFields & { readonly phase: "thinking" })
   | (ExerciseFields & { readonly phase: "waiting_for_clip"; readonly track: WaitingTrack })
-  | { readonly message: string; readonly phase: "error"; readonly retry: Retry }
+  | { readonly cause: FailureCause; readonly message: string; readonly phase: "error"; readonly retry: Retry }
   | { readonly phase: "idle" }
   | { readonly phase: "loading" }
-  | { readonly phase: "nothing_eligible"; readonly reason: string };
+  | { readonly phase: "nothing_eligible" };
 
 export type ReportedOutcome = "got_it" | "missed_it";
 

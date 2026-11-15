@@ -9,7 +9,14 @@ import tseslint from "typescript-eslint";
 const SHARED_FOLDERS = ["api", "components", "config", "hooks", "theme", "types", "utils"];
 
 export default defineConfig([
-  globalIgnores([".next/**", "node_modules/**", "src/api/schema.d.ts", "next-env.d.ts"]),
+  globalIgnores([
+    ".next/**",
+    "playwright-report/**",
+    "test-results/**",
+    "node_modules/**",
+    "src/api/schema.d.ts",
+    "next-env.d.ts",
+  ]),
   ...nextVitals,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,

@@ -7,12 +7,11 @@ from api.mappings import (
     to_exercise_purpose,
     to_exercise_response,
     to_issue_selection,
-    to_nothing_eligible_reason,
     to_nothing_eligible_response,
 )
-from api.schemas import ExercisePurpose, NothingEligibleReason
+from api.schemas import ExercisePurpose
 from engine.exercises import Exercise
-from engine.scheduler import NoExerciseReason, NothingEligible, Purpose, Selection
+from engine.scheduler import Purpose, Selection
 from persistence.database import IssuedSelectionRecord
 
 NOW = datetime(2026, 1, 1, 9, tzinfo=UTC)
@@ -77,12 +76,8 @@ class TestToExerciseResponse:
 
 
 class TestToNothingEligibleResponse:
-    def test_says_why(self) -> None:
-        response = to_nothing_eligible_response(
-            NothingEligible(reason=NoExerciseReason.ERROR_RATE_TOO_HIGH)
-        )
-
-        assert response.reason is NothingEligibleReason.ERROR_RATE_TOO_HIGH
+    def test_says_there_is_nothing_to_give(self) -> None:
+        assert to_nothing_eligible_response().kind == "nothing_eligible"
 
 
 class TestEnumsStayInStep:
@@ -92,16 +87,5 @@ class TestEnumsStayInStep:
     def test_every_engine_purpose_has_an_api_purpose(self, purpose: Purpose) -> None:
         assert to_exercise_purpose(purpose).value == purpose.value
 
-    @pytest.mark.parametrize("reason", NoExerciseReason)
-    def test_every_engine_reason_has_an_api_reason(
-        self, reason: NoExerciseReason
-    ) -> None:
-        assert to_nothing_eligible_reason(reason).value == reason.value
-
     def test_the_api_has_no_purpose_the_engine_lacks(self) -> None:
         assert {p.value for p in ExercisePurpose} == {p.value for p in Purpose}
-
-    def test_the_api_has_no_reason_the_engine_lacks(self) -> None:
-        assert {r.value for r in NothingEligibleReason} == {
-            r.value for r in NoExerciseReason
-        }
