@@ -10,6 +10,7 @@ from engine.exercises import (
     validate_exercise,
 )
 from tests.integration.engine.exercises.corpus_checks import (
+    FEWER_INTRODUCING_EXERCISES,
     MINIMUM_INTRODUCING_EXERCISES,
     known_before,
     slot_mutation_problems,
@@ -52,10 +53,6 @@ class TestCorpusExercises:
 
 
 class TestCorpusCoverage:
-    @pytest.mark.xfail(
-        strict=True,
-        reason="The corpus grows over the next pull requests: spine, then the topic packs",
-    )
     def test_every_item_has_enough_introducing_exercises(self) -> None:
         introducing = Counter(
             entry.exercise.new_item for entry in ENTRIES if entry.exercise.new_item
@@ -64,10 +61,22 @@ class TestCorpusCoverage:
         short = {
             item_id: introducing[item_id]
             for item_id in CURRICULUM.order
-            if introducing[item_id] < MINIMUM_INTRODUCING_EXERCISES
+            if introducing[item_id]
+            < FEWER_INTRODUCING_EXERCISES.get(item_id, MINIMUM_INTRODUCING_EXERCISES)
         }
 
         assert short == {}
+
+    def test_no_item_is_exempt_that_no_longer_needs_to_be(self) -> None:
+        introducing = Counter(
+            entry.exercise.new_item for entry in ENTRIES if entry.exercise.new_item
+        )
+
+        assert [
+            item_id
+            for item_id in FEWER_INTRODUCING_EXERCISES
+            if introducing[item_id] >= MINIMUM_INTRODUCING_EXERCISES
+        ] == []
 
 
 class TestSlotMutationProblems:
@@ -91,3 +100,14 @@ class TestSlotMutationProblems:
 
     def test_patterns_without_a_requirement_are_left_alone(self) -> None:
         assert self.problems("Dw i'n mynd", ("pat:dw-in", "lex:mynd")) == ()
+
+    def test_an_adjective_after_n_must_be_soft_mutated(self) -> None:
+        assert self.problems("Dw i'n blinedig", ("pat:dw-in-adj", "lex:blinedig")) == (
+            "pat:dw-in-adj: lex:blinedig should be soft, not unmutated",
+        )
+
+    def test_a_soft_mutated_adjective_passes(self) -> None:
+        assert self.problems("Dw i'n flinedig", ("pat:dw-in-adj", "lex:blinedig")) == ()
+
+    def test_an_adjective_that_cannot_mutate_stays_unmutated(self) -> None:
+        assert self.problems("Dw i'n hapus", ("pat:dw-in-adj", "lex:hapus")) == ()

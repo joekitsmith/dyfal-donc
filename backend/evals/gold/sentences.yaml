@@ -2145,3 +2145,3331 @@
     - {text: bara, lemma: bara, item: lex:bara}
     - {text: fan, lemma: fan, item: lex:fan-hyn}
     - {text: hyn, lemma: hyn, item: lex:fan-hyn}
+
+- id: sp-welsh
+  welsh: "Cymraeg"
+  english: "Welsh"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-want-to-speak
+  welsh: "Dw i'n moyn siarad"
+  english: "I want to speak"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+
+- id: sp-to-learn
+  welsh: "Dysgu"
+  english: "To learn"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-to-learn-welsh
+  welsh: "Dysgu Cymraeg"
+  english: "To learn Welsh"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-want-to-learn-welsh
+  welsh: "Dw i'n moyn dysgu Cymraeg"
+  english: "I want to learn Welsh"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-to-understand
+  welsh: "Deall"
+  english: "To understand"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Deall", lemma: "deall", item: lex:deall}
+
+- id: sp-to-understand-welsh
+  welsh: "Deall Cymraeg"
+  english: "To understand Welsh"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Deall", lemma: "deall", item: lex:deall}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-want-to-understand-welsh
+  welsh: "Dw i'n moyn deall Cymraeg"
+  english: "I want to understand Welsh"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-to-go
+  welsh: "Mynd"
+  english: "To go"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-to-come
+  welsh: "Dod"
+  english: "To come"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Dod", lemma: "dod", item: lex:dod}
+
+- id: sp-english
+  welsh: "Saesneg"
+  english: "English"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Saesneg", lemma: "saesneg", item: lex:saesneg}
+
+- id: sp-i-want-to-speak-english
+  welsh: "Dw i'n moyn siarad Saesneg"
+  english: "I want to speak English"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Saesneg", lemma: "saesneg", item: lex:saesneg}
+
+- id: sp-i-want-to-learn-english
+  welsh: "Dw i'n moyn dysgu Saesneg"
+  english: "I want to learn English"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Saesneg", lemma: "saesneg", item: lex:saesneg}
+
+- id: sp-im-speaking
+  welsh: "Dw i'n siarad"
+  english: "I'm speaking"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+
+- id: sp-im-learning
+  welsh: "Dw i'n dysgu"
+  english: "I'm learning"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-im-learning-welsh
+  welsh: "Dw i'n dysgu Cymraeg"
+  english: "I'm learning Welsh"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-understand-english
+  welsh: "Dw i'n deall Saesneg"
+  english: "I understand English"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "Saesneg", lemma: "saesneg", item: lex:saesneg}
+
+- id: sp-im-learning-today
+  welsh: "Dw i'n dysgu heddi"
+  english: "I'm learning today"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-im-speaking-welsh-today
+  welsh: "Dw i'n siarad Cymraeg heddi"
+  english: "I'm speaking Welsh today"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-im-going-today
+  welsh: "Dw i'n mynd heddi"
+  english: "I'm going today"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-im-coming-today
+  welsh: "Dw i'n dod heddi"
+  english: "I'm coming today"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-im-speaking-now
+  welsh: "Dw i'n siarad nawr"
+  english: "I'm speaking now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-want-to-go-now
+  welsh: "Dw i'n moyn mynd nawr"
+  english: "I want to go now"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-understand-now
+  welsh: "Dw i'n deall nawr"
+  english: "I understand now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-speak-welsh-here
+  welsh: "Dw i'n siarad Cymraeg fan hyn"
+  english: "I speak Welsh here"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-i-want-to-come-here
+  welsh: "Dw i'n moyn dod fan hyn"
+  english: "I want to come here"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-im-coming-here
+  welsh: "Dw i'n dod fan hyn"
+  english: "I'm coming here"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-i-see
+  welsh: "Dw i'n gweld"
+  english: "I see"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+
+- id: sp-i-see-now
+  welsh: "Dw i'n gweld nawr"
+  english: "I see now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-want-to-see-now
+  welsh: "Dw i'n moyn gweld nawr"
+  english: "I want to see now"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-im-eating
+  welsh: "Dw i'n bwyta"
+  english: "I'm eating"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-i-want-to-eat
+  welsh: "Dw i'n moyn bwyta"
+  english: "I want to eat"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-im-eating-now
+  welsh: "Dw i'n bwyta nawr"
+  english: "I'm eating now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-want-to-drink
+  welsh: "Dw i'n moyn yfed"
+  english: "I want to drink"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+
+- id: sp-im-drinking-now
+  welsh: "Dw i'n yfed nawr"
+  english: "I'm drinking now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-im-drinking-here
+  welsh: "Dw i'n yfed fan hyn"
+  english: "I'm drinking here"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-im-not-speaking
+  welsh: "Dw i ddim yn siarad"
+  english: "I'm not speaking"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+
+- id: sp-i-dont-understand
+  welsh: "Dw i ddim yn deall"
+  english: "I don't understand"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+
+- id: sp-i-dont-see
+  welsh: "Dw i ddim yn gweld"
+  english: "I don't see"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+
+- id: sp-im-not-eating-today
+  welsh: "Dw i ddim yn bwyta heddi"
+  english: "I'm not eating today"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-im-working
+  welsh: "Dw i'n gweithio"
+  english: "I'm working"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-i-want-to-work
+  welsh: "Dw i'n moyn gweithio"
+  english: "I want to work"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-im-not-working-today
+  welsh: "Dw i ddim yn gweithio heddi"
+  english: "I'm not working today"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-im-working-now
+  welsh: "Dw i'n gweithio nawr"
+  english: "I'm working now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-im-reading
+  welsh: "Dw i'n darllen"
+  english: "I'm reading"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+
+- id: sp-i-want-to-read
+  welsh: "Dw i'n moyn darllen"
+  english: "I want to read"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+
+- id: sp-im-reading-here
+  welsh: "Dw i'n darllen fan hyn"
+  english: "I'm reading here"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-do-you-speak-welsh
+  welsh: "Wyt ti'n siarad Cymraeg?"
+  english: "Do you speak Welsh?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-are-you-learning
+  welsh: "Wyt ti'n dysgu?"
+  english: "Are you learning?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-im-coming-with-you
+  welsh: "Dw i'n dod gyda ti"
+  english: "I'm coming with you"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda-ti}
+    - {text: "ti", lemma: "ti", item: lex:gyda-ti}
+
+- id: sp-i-want-to-go-with-you
+  welsh: "Dw i'n moyn mynd gyda ti"
+  english: "I want to go with you"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda-ti}
+    - {text: "ti", lemma: "ti", item: lex:gyda-ti}
+
+- id: sp-i-work-with-you
+  welsh: "Dw i'n gweithio gyda ti"
+  english: "I work with you"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda-ti}
+    - {text: "ti", lemma: "ti", item: lex:gyda-ti}
+
+- id: sp-i-dont-want-to-speak
+  welsh: "Dw i ddim yn moyn siarad"
+  english: "I don't want to speak"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+
+- id: sp-i-dont-want-to-go
+  welsh: "Dw i ddim yn moyn mynd"
+  english: "I don't want to go"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-i-dont-want-to-read
+  welsh: "Dw i ddim yn moyn darllen"
+  english: "I don't want to read"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+
+- id: sp-i-dont-want-to-work
+  welsh: "Dw i ddim yn moyn gweithio"
+  english: "I don't want to work"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-im-drinking-coffee
+  welsh: "Dw i'n yfed coffi"
+  english: "I'm drinking coffee"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-i-want-to-drink-coffee
+  welsh: "Dw i'n moyn yfed coffi"
+  english: "I want to drink coffee"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-im-drinking-coffee-now
+  welsh: "Dw i'n yfed coffi nawr"
+  english: "I'm drinking coffee now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-im-drinking-tea
+  welsh: "Dw i'n yfed te"
+  english: "I'm drinking tea"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-i-want-to-drink-tea
+  welsh: "Dw i'n moyn yfed te"
+  english: "I want to drink tea"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-im-drinking-tea-now
+  welsh: "Dw i'n yfed te nawr"
+  english: "I'm drinking tea now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "te", lemma: "te", item: lex:te}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-im-eating-bread
+  welsh: "Dw i'n bwyta bara"
+  english: "I'm eating bread"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-i-want-to-eat-bread
+  welsh: "Dw i'n moyn bwyta bara"
+  english: "I want to eat bread"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-im-eating-bread-now
+  welsh: "Dw i'n bwyta bara nawr"
+  english: "I'm eating bread now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-im-drinking-water
+  welsh: "Dw i'n yfed dŵr"
+  english: "I'm drinking water"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "dŵr", lemma: "dŵr", item: lex:dwr}
+
+- id: sp-i-want-to-drink-water
+  welsh: "Dw i'n moyn yfed dŵr"
+  english: "I want to drink water"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "dŵr", lemma: "dŵr", item: lex:dwr}
+
+- id: sp-im-drinking-water-now
+  welsh: "Dw i'n yfed dŵr nawr"
+  english: "I'm drinking water now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "dŵr", lemma: "dŵr", item: lex:dwr}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-want-coffee
+  welsh: "Dw i'n moyn coffi"
+  english: "I want coffee"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-i-want-tea
+  welsh: "Dw i'n moyn te"
+  english: "I want tea"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-i-want-bread
+  welsh: "Dw i'n moyn bara"
+  english: "I want bread"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-im-eating-food
+  welsh: "Dw i'n bwyta bwyd"
+  english: "I'm eating food"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "bwyd", lemma: "bwyd", item: lex:bwyd}
+
+- id: sp-i-want-food-now
+  welsh: "Dw i'n moyn bwyd nawr"
+  english: "I want food now"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "bwyd", lemma: "bwyd", item: lex:bwyd}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-im-eating-food-here
+  welsh: "Dw i'n bwyta bwyd fan hyn"
+  english: "I'm eating food here"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "bwyd", lemma: "bwyd", item: lex:bwyd}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-i-want-milk
+  welsh: "Dw i'n moyn llaeth"
+  english: "I want milk"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "llaeth", lemma: "llaeth", item: lex:llaeth}
+
+- id: sp-im-drinking-milk-now
+  welsh: "Dw i'n yfed llaeth nawr"
+  english: "I'm drinking milk now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "llaeth", lemma: "llaeth", item: lex:llaeth}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-like-tea
+  welsh: "Dw i'n hoffi te"
+  english: "I like tea"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-i-like-bread
+  welsh: "Dw i'n hoffi bara"
+  english: "I like bread"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-i-like-water
+  welsh: "Dw i'n hoffi dŵr"
+  english: "I like water"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "dŵr", lemma: "dŵr", item: lex:dwr}
+
+- id: sp-i-like-welsh
+  welsh: "Dw i'n hoffi Cymraeg"
+  english: "I like Welsh"
+  tags: [clitic]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-im-working-tomorrow
+  welsh: "Dw i'n gweithio fory"
+  english: "I'm working tomorrow"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-im-coming-tomorrow
+  welsh: "Dw i'n dod fory"
+  english: "I'm coming tomorrow"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-im-going-tomorrow
+  welsh: "Dw i'n mynd fory"
+  english: "I'm going tomorrow"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-do-you-want-to-speak
+  welsh: "Wyt ti'n moyn siarad?"
+  english: "Do you want to speak?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn-moyn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+
+- id: sp-do-you-want-to-eat
+  welsh: "Wyt ti'n moyn bwyta?"
+  english: "Do you want to eat?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn-moyn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-do-you-want-to-go
+  welsh: "Wyt ti'n moyn mynd?"
+  english: "Do you want to go?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn-moyn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-i-want-to-remember
+  welsh: "Dw i'n moyn cofio"
+  english: "I want to remember"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cofio", lemma: "cofio", item: lex:cofio}
+
+- id: sp-i-dont-remember
+  welsh: "Dw i ddim yn cofio"
+  english: "I don't remember"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "cofio", lemma: "cofio", item: lex:cofio}
+
+- id: sp-do-you-remember
+  welsh: "Wyt ti'n cofio?"
+  english: "Do you remember?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cofio", lemma: "cofio", item: lex:cofio}
+
+- id: sp-im-writing
+  welsh: "Dw i'n ysgrifennu"
+  english: "I'm writing"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ysgrifennu", lemma: "ysgrifennu", item: lex:ysgrifennu}
+
+- id: sp-im-writing-tomorrow
+  welsh: "Dw i'n ysgrifennu fory"
+  english: "I'm writing tomorrow"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ysgrifennu", lemma: "ysgrifennu", item: lex:ysgrifennu}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-are-you-writing
+  welsh: "Wyt ti'n ysgrifennu?"
+  english: "Are you writing?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ysgrifennu", lemma: "ysgrifennu", item: lex:ysgrifennu}
+
+- id: sp-i-can-speak-welsh
+  welsh: "Dw i'n gallu siarad Cymraeg"
+  english: "I can speak Welsh"
+  tags: [clitic]
+  patterns: [pat:dw-in-gallu]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gallu", lemma: "gallu"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-can-understand
+  welsh: "Dw i'n gallu deall"
+  english: "I can understand"
+  tags: [clitic]
+  patterns: [pat:dw-in-gallu]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gallu", lemma: "gallu"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+
+- id: sp-i-can-come-tomorrow
+  welsh: "Dw i'n gallu dod fory"
+  english: "I can come tomorrow"
+  tags: [clitic]
+  patterns: [pat:dw-in-gallu]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gallu", lemma: "gallu"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-he-speaks-welsh
+  welsh: "Mae e'n siarad Cymraeg"
+  english: "He speaks Welsh"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-hes-learning
+  welsh: "Mae e'n dysgu"
+  english: "He's learning"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-hes-working
+  welsh: "Mae e'n gweithio"
+  english: "He's working"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-hes-eating
+  welsh: "Mae e'n bwyta"
+  english: "He's eating"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-im-reading-a-book
+  welsh: "Dw i'n darllen llyfr"
+  english: "I'm reading a book"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-i-want-a-book
+  welsh: "Dw i'n moyn llyfr"
+  english: "I want a book"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-i-like-books
+  welsh: "Dw i'n hoffi llyfrau"
+  english: "I like books"
+  tags: [clitic, inflection]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "llyfrau", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-hes-reading-a-book
+  welsh: "Mae e'n darllen llyfr"
+  english: "He's reading a book"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-i-want-a-house
+  welsh: "Dw i'n moyn tŷ"
+  english: "I want a house"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-i-see-a-house
+  welsh: "Dw i'n gweld tŷ"
+  english: "I see a house"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-he-sees-a-house
+  welsh: "Mae e'n gweld tŷ"
+  english: "He sees a house"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-good-morning-im-learning-welsh
+  welsh: "Bore da, dw i'n dysgu Cymraeg"
+  english: "Good morning, I'm learning Welsh"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Bore", lemma: "bore", item: lex:bore-da}
+    - {text: "da", lemma: "da", item: lex:bore-da}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-good-morning-do-you-speak-welsh
+  welsh: "Bore da, wyt ti'n siarad Cymraeg?"
+  english: "Good morning, do you speak Welsh?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Bore", lemma: "bore", item: lex:bore-da}
+    - {text: "da", lemma: "da", item: lex:bore-da}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-good-morning-im-working
+  welsh: "Bore da, dw i'n gweithio"
+  english: "Good morning, I'm working"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Bore", lemma: "bore", item: lex:bore-da}
+    - {text: "da", lemma: "da", item: lex:bore-da}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-good-night-im-going
+  welsh: "Nos da, dw i'n mynd"
+  english: "Good night, I'm going"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Nos", lemma: "nos", item: lex:nos-da}
+    - {text: "da", lemma: "da", item: lex:nos-da}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-good-night-are-you-going
+  welsh: "Nos da, wyt ti'n mynd?"
+  english: "Good night, are you going?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Nos", lemma: "nos", item: lex:nos-da}
+    - {text: "da", lemma: "da", item: lex:nos-da}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-good-night-im-reading
+  welsh: "Nos da, dw i'n darllen"
+  english: "Good night, I'm reading"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Nos", lemma: "nos", item: lex:nos-da}
+    - {text: "da", lemma: "da", item: lex:nos-da}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+
+- id: sp-thank-you-i-understand
+  welsh: "Diolch, dw i'n deall"
+  english: "Thank you, I understand"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Diolch", lemma: "diolch", item: lex:diolch}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+
+- id: sp-thank-you-i-want-coffee
+  welsh: "Diolch, dw i'n moyn coffi"
+  english: "Thank you, I want coffee"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Diolch", lemma: "diolch", item: lex:diolch}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-thank-you-i-want-tea
+  welsh: "Diolch, dw i'n moyn te"
+  english: "Thank you, I want tea"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Diolch", lemma: "diolch", item: lex:diolch}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-im-reading-the-book
+  welsh: "Dw i'n darllen y llyfr"
+  english: "I'm reading the book"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-i-see-the-house
+  welsh: "Dw i'n gweld y tŷ"
+  english: "I see the house"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-im-eating-the-bread
+  welsh: "Dw i'n bwyta'r bara"
+  english: "I'm eating the bread"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-im-drinking-the-coffee
+  welsh: "Dw i'n yfed y coffi"
+  english: "I'm drinking the coffee"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-i-like-the-book
+  welsh: "Dw i'n hoffi'r llyfr"
+  english: "I like the book"
+  tags: [clitic, article]
+  patterns: [pat:dw-in-hoffi-r]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "'r", lemma: "y"}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-im-going-to-work
+  welsh: "Dw i'n mynd i weithio"
+  english: "I'm going to work"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+
+- id: sp-i-want-to-go-and-eat
+  welsh: "Dw i'n moyn mynd i fwyta"
+  english: "I want to go and eat"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "fwyta", lemma: "bwyta", item: lex:bwyta, mutation: soft}
+
+- id: sp-im-going-to-the-house
+  welsh: "Dw i'n mynd i'r tŷ"
+  english: "I'm going to the house"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-he-comes-from-here
+  welsh: "Mae e'n dod o fan hyn"
+  english: "He comes from here"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-do-you-come-from-here
+  welsh: "Wyt ti'n dod o fan hyn?"
+  english: "Do you come from here?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-im-coming-from-the-house
+  welsh: "Dw i'n dod o'r tŷ"
+  english: "I'm coming from the house"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-i-drink-coffee-with-milk
+  welsh: "Dw i'n yfed coffi gyda llaeth"
+  english: "I drink coffee with milk"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "llaeth", lemma: "llaeth", item: lex:llaeth}
+
+- id: sp-i-want-tea-with-milk
+  welsh: "Dw i'n moyn te gyda llaeth"
+  english: "I want tea with milk"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "te", lemma: "te", item: lex:te}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "llaeth", lemma: "llaeth", item: lex:llaeth}
+
+- id: sp-to-be-able-to
+  welsh: "Gallu"
+  english: "To be able to"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Gallu", lemma: "gallu", item: lex:gallu}
+
+- id: sp-to-be-able-to-speak-welsh
+  welsh: "Gallu siarad Cymraeg"
+  english: "To be able to speak Welsh"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Gallu", lemma: "gallu", item: lex:gallu}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-can-go
+  welsh: "Galla i fynd"
+  english: "I can go"
+  tags: [mutation]
+  patterns: [pat:galla-i]
+  tokens:
+    - {text: "Galla", lemma: "gallu"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+
+- id: sp-i-can-come
+  welsh: "Galla i ddod"
+  english: "I can come"
+  tags: [mutation]
+  patterns: [pat:galla-i]
+  tokens:
+    - {text: "Galla", lemma: "gallu"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddod", lemma: "dod", item: lex:dod, mutation: soft}
+
+- id: sp-i-can-see
+  welsh: "Galla i weld"
+  english: "I can see"
+  tags: [mutation]
+  patterns: [pat:galla-i]
+  tokens:
+    - {text: "Galla", lemma: "gallu"}
+    - {text: "i", lemma: "i"}
+    - {text: "weld", lemma: "gweld", item: lex:gweld, mutation: soft}
+
+- id: sp-i-see-him
+  welsh: "Dw i'n gweld e"
+  english: "I see him"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-i-understand-him
+  welsh: "Dw i'n deall e"
+  english: "I understand him"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-i-remember-him
+  welsh: "Dw i'n cofio e"
+  english: "I remember him"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cofio", lemma: "cofio", item: lex:cofio}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-i-want-to-see-him
+  welsh: "Dw i'n moyn gweld e"
+  english: "I want to see him"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-i-see-her
+  welsh: "Dw i'n gweld hi"
+  english: "I see her"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "hi", lemma: "hi", item: lex:hi}
+
+- id: sp-i-remember-her
+  welsh: "Dw i'n cofio hi"
+  english: "I remember her"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cofio", lemma: "cofio", item: lex:cofio}
+    - {text: "hi", lemma: "hi", item: lex:hi}
+
+- id: sp-i-understand-her
+  welsh: "Dw i'n deall hi"
+  english: "I understand her"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "hi", lemma: "hi", item: lex:hi}
+
+- id: sp-do-you-see-her
+  welsh: "Wyt ti'n gweld hi?"
+  english: "Do you see her?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "hi", lemma: "hi", item: lex:hi}
+
+- id: sp-i-see-them
+  welsh: "Dw i'n gweld nhw"
+  english: "I see them"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "nhw", lemma: "hwy", item: lex:nhw}
+
+- id: sp-i-understand-them
+  welsh: "Dw i'n deall nhw"
+  english: "I understand them"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "nhw", lemma: "hwy", item: lex:nhw}
+
+- id: sp-i-remember-them
+  welsh: "Dw i'n cofio nhw"
+  english: "I remember them"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cofio", lemma: "cofio", item: lex:cofio}
+    - {text: "nhw", lemma: "hwy", item: lex:nhw}
+
+- id: sp-do-you-understand-them
+  welsh: "Wyt ti'n deall nhw?"
+  english: "Do you understand them?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "nhw", lemma: "hwy", item: lex:nhw}
+
+- id: sp-she-speaks-welsh
+  welsh: "Mae hi'n siarad Cymraeg"
+  english: "She speaks Welsh"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-shes-learning
+  welsh: "Mae hi'n dysgu"
+  english: "She's learning"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-shes-working-tomorrow
+  welsh: "Mae hi'n gweithio fory"
+  english: "She's working tomorrow"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-shes-reading-the-book
+  welsh: "Mae hi'n darllen y llyfr"
+  english: "She's reading the book"
+  tags: [clitic, article]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-were-learning-welsh
+  welsh: "Dyn ni'n dysgu Cymraeg"
+  english: "We're learning Welsh"
+  tags: [clitic]
+  patterns: [pat:dyn-ni-yn]
+  tokens:
+    - {text: "Dyn", lemma: "bod"}
+    - {text: "ni", lemma: "ni"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-were-working
+  welsh: "Dyn ni'n gweithio"
+  english: "We're working"
+  tags: [clitic]
+  patterns: [pat:dyn-ni-yn]
+  tokens:
+    - {text: "Dyn", lemma: "bod"}
+    - {text: "ni", lemma: "ni"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-were-eating-now
+  welsh: "Dyn ni'n bwyta nawr"
+  english: "We're eating now"
+  tags: [clitic]
+  patterns: [pat:dyn-ni-yn]
+  tokens:
+    - {text: "Dyn", lemma: "bod"}
+    - {text: "ni", lemma: "ni"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-we-speak-welsh
+  welsh: "Dyn ni'n siarad Cymraeg"
+  english: "We speak Welsh"
+  tags: [clitic]
+  patterns: [pat:dyn-ni-yn]
+  tokens:
+    - {text: "Dyn", lemma: "bod"}
+    - {text: "ni", lemma: "ni"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-do-you-speak-welsh-2
+  welsh: "Dych chi'n siarad Cymraeg?"
+  english: "Do you speak Welsh?"
+  tags: [clitic]
+  patterns: [pat:dych-chi-yn]
+  tokens:
+    - {text: "Dych", lemma: "bod"}
+    - {text: "chi", lemma: "chi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-are-you-learning-2
+  welsh: "Dych chi'n dysgu?"
+  english: "Are you learning?"
+  tags: [clitic]
+  patterns: [pat:dych-chi-yn]
+  tokens:
+    - {text: "Dych", lemma: "bod"}
+    - {text: "chi", lemma: "chi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-do-you-understand-2
+  welsh: "Dych chi'n deall?"
+  english: "Do you understand?"
+  tags: [clitic]
+  patterns: [pat:dych-chi-yn]
+  tokens:
+    - {text: "Dych", lemma: "bod"}
+    - {text: "chi", lemma: "chi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+
+- id: sp-do-you-work-here
+  welsh: "Dych chi'n gweithio fan hyn?"
+  english: "Do you work here?"
+  tags: [clitic]
+  patterns: [pat:dych-chi-yn]
+  tokens:
+    - {text: "Dych", lemma: "bod"}
+    - {text: "chi", lemma: "chi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-they-speak-welsh
+  welsh: "Maen nhw'n siarad Cymraeg"
+  english: "They speak Welsh"
+  tags: [clitic]
+  patterns: [pat:maen-nhw-yn]
+  tokens:
+    - {text: "Maen", lemma: "bod"}
+    - {text: "nhw", lemma: "hwy"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-theyre-learning
+  welsh: "Maen nhw'n dysgu"
+  english: "They're learning"
+  tags: [clitic]
+  patterns: [pat:maen-nhw-yn]
+  tokens:
+    - {text: "Maen", lemma: "bod"}
+    - {text: "nhw", lemma: "hwy"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-theyre-working-tomorrow
+  welsh: "Maen nhw'n gweithio fory"
+  english: "They're working tomorrow"
+  tags: [clitic]
+  patterns: [pat:maen-nhw-yn]
+  tokens:
+    - {text: "Maen", lemma: "bod"}
+    - {text: "nhw", lemma: "hwy"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-theyre-eating-now
+  welsh: "Maen nhw'n bwyta nawr"
+  english: "They're eating now"
+  tags: [clitic]
+  patterns: [pat:maen-nhw-yn]
+  tokens:
+    - {text: "Maen", lemma: "bod"}
+    - {text: "nhw", lemma: "hwy"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-im-making-coffee
+  welsh: "Dw i'n gwneud coffi"
+  english: "I'm making coffee"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwneud", lemma: "gwneud", item: lex:gwneud}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-i-want-to-make-tea
+  welsh: "Dw i'n moyn gwneud te"
+  english: "I want to make tea"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gwneud", lemma: "gwneud", item: lex:gwneud}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-im-making-food
+  welsh: "Dw i'n neud bwyd"
+  english: "I'm making food"
+  tags: [clitic, inflection]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "neud", lemma: "gwneud", item: lex:gwneud}
+    - {text: "bwyd", lemma: "bwyd", item: lex:bwyd}
+
+- id: sp-shes-making-tea
+  welsh: "Mae hi'n gwneud te"
+  english: "She's making tea"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwneud", lemma: "gwneud", item: lex:gwneud}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-im-having-coffee
+  welsh: "Dw i'n cael coffi"
+  english: "I'm having coffee"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-i-want-to-have-tea
+  welsh: "Dw i'n moyn cael te"
+  english: "I want to have tea"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-hes-having-food
+  welsh: "Mae e'n cael bwyd"
+  english: "He's having food"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "bwyd", lemma: "bwyd", item: lex:bwyd}
+
+- id: sp-were-having-bread
+  welsh: "Dyn ni'n cael bara"
+  english: "We're having bread"
+  tags: [clitic]
+  patterns: [pat:dyn-ni-yn]
+  tokens:
+    - {text: "Dyn", lemma: "bod"}
+    - {text: "ni", lemma: "ni"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-i-dont-know
+  welsh: "Dw i ddim yn gwybod"
+  english: "I don't know"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "gwybod", lemma: "gwybod", item: lex:gwybod}
+
+- id: sp-do-you-know
+  welsh: "Wyt ti'n gwybod?"
+  english: "Do you know?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwybod", lemma: "gwybod", item: lex:gwybod}
+
+- id: sp-he-knows
+  welsh: "Mae e'n gwybod"
+  english: "He knows"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwybod", lemma: "gwybod", item: lex:gwybod}
+
+- id: sp-i-dont-know-2
+  welsh: "Dw i ddim yn gwbod"
+  english: "I don't know"
+  tags: [inflection]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "gwbod", lemma: "gwybod", item: lex:gwybod}
+
+- id: sp-i-think
+  welsh: "Dw i'n meddwl"
+  english: "I think"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "meddwl", lemma: "meddwl", item: lex:meddwl}
+
+- id: sp-im-thinking-now
+  welsh: "Dw i'n meddwl nawr"
+  english: "I'm thinking now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "meddwl", lemma: "meddwl", item: lex:meddwl}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-do-you-think
+  welsh: "Wyt ti'n meddwl?"
+  english: "Do you think?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "meddwl", lemma: "meddwl", item: lex:meddwl}
+
+- id: sp-she-thinks
+  welsh: "Mae hi'n meddwl"
+  english: "She thinks"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "meddwl", lemma: "meddwl", item: lex:meddwl}
+
+- id: sp-im-buying-coffee
+  welsh: "Dw i'n prynu coffi"
+  english: "I'm buying coffee"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-i-want-to-buy-a-book
+  welsh: "Dw i'n moyn prynu llyfr"
+  english: "I want to buy a book"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-hes-buying-bread
+  welsh: "Mae e'n prynu bara"
+  english: "He's buying bread"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-were-buying-food
+  welsh: "Dyn ni'n prynu bwyd"
+  english: "We're buying food"
+  tags: [clitic]
+  patterns: [pat:dyn-ni-yn]
+  tokens:
+    - {text: "Dyn", lemma: "bod"}
+    - {text: "ni", lemma: "ni"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "bwyd", lemma: "bwyd", item: lex:bwyd}
+
+- id: sp-im-waiting
+  welsh: "Dw i'n aros"
+  english: "I'm waiting"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+
+- id: sp-im-waiting-here
+  welsh: "Dw i'n aros fan hyn"
+  english: "I'm waiting here"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-theyre-waiting-now
+  welsh: "Maen nhw'n aros nawr"
+  english: "They're waiting now"
+  tags: [clitic]
+  patterns: [pat:maen-nhw-yn]
+  tokens:
+    - {text: "Maen", lemma: "bod"}
+    - {text: "nhw", lemma: "hwy"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-i-want-to-stay-here
+  welsh: "Dw i'n moyn aros fan hyn"
+  english: "I want to stay here"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-i-say-good-morning
+  welsh: "Dw i'n dweud bore da"
+  english: "I say good morning"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dweud", lemma: "dweud", item: lex:dweud}
+    - {text: "bore", lemma: "bore", item: lex:bore-da}
+    - {text: "da", lemma: "da", item: lex:bore-da}
+
+- id: sp-i-say-good-night
+  welsh: "Dw i'n dweud nos da"
+  english: "I say good night"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dweud", lemma: "dweud", item: lex:dweud}
+    - {text: "nos", lemma: "nos", item: lex:nos-da}
+    - {text: "da", lemma: "da", item: lex:nos-da}
+
+- id: sp-he-says-thank-you
+  welsh: "Mae e'n dweud diolch"
+  english: "He says thank you"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dweud", lemma: "dweud", item: lex:dweud}
+    - {text: "diolch", lemma: "diolch", item: lex:diolch}
+
+- id: sp-i-say-thank-you
+  welsh: "Dw i'n gweud diolch"
+  english: "I say thank you"
+  tags: [clitic, inflection]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweud", lemma: "dweud", item: lex:dweud}
+    - {text: "diolch", lemma: "diolch", item: lex:diolch}
+
+- id: sp-i-live-here
+  welsh: "Dw i'n byw fan hyn"
+  english: "I live here"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-he-lives-here
+  welsh: "Mae e'n byw fan hyn"
+  english: "He lives here"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-they-live-here
+  welsh: "Maen nhw'n byw fan hyn"
+  english: "They live here"
+  tags: [clitic]
+  patterns: [pat:maen-nhw-yn]
+  tokens:
+    - {text: "Maen", lemma: "bod"}
+    - {text: "nhw", lemma: "hwy"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-do-you-live-here
+  welsh: "Wyt ti'n byw fan hyn?"
+  english: "Do you live here?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-hello
+  welsh: "Shwmae"
+  english: "Hello"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Shwmae", lemma: "shwmae", item: lex:shwmae}
+
+- id: sp-hello-im-learning-welsh
+  welsh: "Shwmae, dw i'n dysgu Cymraeg"
+  english: "Hello, I'm learning Welsh"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Shwmae", lemma: "shwmae", item: lex:shwmae}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-hello-do-you-speak-welsh
+  welsh: "Shwmae, wyt ti'n siarad Cymraeg?"
+  english: "Hello, do you speak Welsh?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Shwmae", lemma: "shwmae", item: lex:shwmae}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-bye
+  welsh: "Hwyl"
+  english: "Bye"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Hwyl", lemma: "hwyl", item: lex:hwyl}
+
+- id: sp-bye-im-going
+  welsh: "Hwyl, dw i'n mynd"
+  english: "Bye, I'm going"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Hwyl", lemma: "hwyl", item: lex:hwyl}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-bye-thank-you
+  welsh: "Hwyl, diolch"
+  english: "Bye, thank you"
+  tags: [plain]
+  patterns: []
+  tokens:
+    - {text: "Hwyl", lemma: "hwyl", item: lex:hwyl}
+    - {text: "diolch", lemma: "diolch", item: lex:diolch}
+
+- id: sp-i-speak-welsh-and-english
+  welsh: "Dw i'n siarad Cymraeg a Saesneg"
+  english: "I speak Welsh and English"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+    - {text: "a", lemma: "a", item: lex:a}
+    - {text: "Saesneg", lemma: "saesneg", item: lex:saesneg}
+
+- id: sp-im-learning-and-im-working
+  welsh: "Dw i'n dysgu a dw i'n gweithio"
+  english: "I'm learning and I'm working"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "a", lemma: "a", item: lex:a}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-im-drinking-coffee-and-tea
+  welsh: "Dw i'n yfed coffi a the"
+  english: "I'm drinking coffee and tea"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "a", lemma: "a", item: lex:a}
+    - {text: "the", lemma: "te", item: lex:te, mutation: aspirate}
+
+- id: sp-im-learning-but-i-dont-understand
+  welsh: "Dw i'n dysgu ond dw i ddim yn deall"
+  english: "I'm learning but I don't understand"
+  tags: [clitic]
+  patterns: [pat:dw-in, pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "ond", lemma: "ond", item: lex:ond}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+
+- id: sp-i-want-to-go-but-im-working
+  welsh: "Dw i'n moyn mynd ond dw i'n gweithio"
+  english: "I want to go but I'm working"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn, pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "ond", lemma: "ond", item: lex:ond}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-i-understand-but-i-dont-speak
+  welsh: "Dw i'n deall ond dw i ddim yn siarad"
+  english: "I understand but I don't speak"
+  tags: [clitic]
+  patterns: [pat:dw-in, pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "ond", lemma: "ond", item: lex:ond}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+
+- id: sp-im-learning-welsh-because-i-want-to-speak
+  welsh: "Dw i'n dysgu Cymraeg achos dw i'n moyn siarad"
+  english: "I'm learning Welsh because I want to speak"
+  tags: [clitic]
+  patterns: [pat:dw-in, pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+    - {text: "achos", lemma: "achos", item: lex:achos}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+
+- id: sp-im-waiting-because-im-working
+  welsh: "Dw i'n aros achos dw i'n gweithio"
+  english: "I'm waiting because I'm working"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "achos", lemma: "achos", item: lex:achos}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-im-drinking-coffee-because-im-working
+  welsh: "Dw i'n yfed coffi achos dw i'n gweithio"
+  english: "I'm drinking coffee because I'm working"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "achos", lemma: "achos", item: lex:achos}
+    - {text: "dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-i-drink-coffee-sometimes
+  welsh: "Dw i'n yfed coffi weithiau"
+  english: "I drink coffee sometimes"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "weithiau", lemma: "weithiau", item: lex:weithiau}
+
+- id: sp-i-work-here-sometimes
+  welsh: "Dw i'n gweithio fan hyn weithiau"
+  english: "I work here sometimes"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+    - {text: "weithiau", lemma: "weithiau", item: lex:weithiau}
+
+- id: sp-he-comes-sometimes
+  welsh: "Mae e'n dod weithiau"
+  english: "He comes sometimes"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "weithiau", lemma: "weithiau", item: lex:weithiau}
+
+- id: sp-i-read-sometimes
+  welsh: "Dw i'n darllen weithiau"
+  english: "I read sometimes"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "weithiau", lemma: "weithiau", item: lex:weithiau}
+
+- id: sp-i-see-a-friend
+  welsh: "Dw i'n gweld ffrind"
+  english: "I see a friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-i-want-to-see-a-friend
+  welsh: "Dw i'n moyn gweld ffrind"
+  english: "I want to see a friend"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-i-work-with-a-friend
+  welsh: "Dw i'n gweithio gyda ffrind"
+  english: "I work with a friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-i-see-friends
+  welsh: "Dw i'n gweld ffrindiau"
+  english: "I see friends"
+  tags: [clitic, inflection]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrindiau", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-im-going-to-work-2
+  welsh: "Dw i'n mynd i'r gwaith"
+  english: "I'm going to work"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "gwaith", lemma: "gwaith", item: lex:gwaith}
+
+- id: sp-im-coming-from-work
+  welsh: "Dw i'n dod o'r gwaith"
+  english: "I'm coming from work"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "gwaith", lemma: "gwaith", item: lex:gwaith}
+
+- id: sp-i-want-work
+  welsh: "Dw i'n moyn gwaith"
+  english: "I want work"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gwaith", lemma: "gwaith", item: lex:gwaith}
+
+- id: sp-hes-going-to-work
+  welsh: "Mae e'n mynd i'r gwaith"
+  english: "He's going to work"
+  tags: [clitic, article]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "gwaith", lemma: "gwaith", item: lex:gwaith}
+
+- id: sp-i-want-time
+  welsh: "Dw i'n moyn amser"
+  english: "I want time"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+
+- id: sp-i-dont-have-time
+  welsh: "Dw i ddim yn cael amser"
+  english: "I don't have time"
+  tags: [plain]
+  patterns: [pat:dw-i-ddim-yn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+
+- id: sp-i-have-time
+  welsh: "Dw i'n cael amser"
+  english: "I have time"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+
+- id: sp-im-buying-a-car
+  welsh: "Dw i'n prynu car"
+  english: "I'm buying a car"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "car", lemma: "car", item: lex:car}
+
+- id: sp-i-want-a-car
+  welsh: "Dw i'n moyn car"
+  english: "I want a car"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "car", lemma: "car", item: lex:car}
+
+- id: sp-hes-buying-a-car
+  welsh: "Mae e'n prynu car"
+  english: "He's buying a car"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "car", lemma: "car", item: lex:car}
+
+- id: sp-i-like-cars
+  welsh: "Dw i'n hoffi ceir"
+  english: "I like cars"
+  tags: [clitic, inflection]
+  patterns: [pat:dw-in-hoffi]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hoffi", lemma: "hoffi"}
+    - {text: "ceir", lemma: "car", item: lex:car}
+
+- id: sp-i-want-good-coffee
+  welsh: "Dw i'n moyn coffi da"
+  english: "I want good coffee"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-im-drinking-good-tea
+  welsh: "Dw i'n yfed te da"
+  english: "I'm drinking good tea"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "te", lemma: "te", item: lex:te}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-im-reading-a-good-book
+  welsh: "Dw i'n darllen llyfr da"
+  english: "I'm reading a good book"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-im-eating-good-bread
+  welsh: "Dw i'n bwyta bara da"
+  english: "I'm eating good bread"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+    - {text: "da", lemma: "da", item: lex:da}
+
+- id: sp-im-buying-a-new-car
+  welsh: "Dw i'n prynu car newydd"
+  english: "I'm buying a new car"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "car", lemma: "car", item: lex:car}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-im-reading-a-new-book
+  welsh: "Dw i'n darllen llyfr newydd"
+  english: "I'm reading a new book"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-i-see-a-new-house
+  welsh: "Dw i'n gweld tŷ newydd"
+  english: "I see a new house"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-i-see-a-new-friend
+  welsh: "Dw i'n gweld ffrind newydd"
+  english: "I see a new friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-i-see-a-happy-friend
+  welsh: "Dw i'n gweld ffrind hapus"
+  english: "I see a happy friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "hapus", lemma: "hapus", item: lex:hapus}
+
+- id: sp-he-sees-a-happy-friend
+  welsh: "Mae e'n gweld ffrind hapus"
+  english: "He sees a happy friend"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "hapus", lemma: "hapus", item: lex:hapus}
+
+- id: sp-i-want-to-see-a-happy-friend
+  welsh: "Dw i'n moyn gweld ffrind hapus"
+  english: "I want to see a happy friend"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "hapus", lemma: "hapus", item: lex:hapus}
+
+- id: sp-i-see-a-tired-friend
+  welsh: "Dw i'n gweld ffrind blinedig"
+  english: "I see a tired friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "blinedig", lemma: "blinedig", item: lex:blinedig}
+
+- id: sp-he-sees-a-tired-friend
+  welsh: "Mae e'n gweld ffrind blinedig"
+  english: "He sees a tired friend"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "blinedig", lemma: "blinedig", item: lex:blinedig}
+
+- id: sp-i-want-to-see-a-tired-friend
+  welsh: "Dw i'n moyn gweld ffrind blinedig"
+  english: "I want to see a tired friend"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "blinedig", lemma: "blinedig", item: lex:blinedig}
+
+- id: sp-i-see-a-busy-friend
+  welsh: "Dw i'n gweld ffrind prysur"
+  english: "I see a busy friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "prysur", lemma: "prysur", item: lex:prysur}
+
+- id: sp-he-sees-a-busy-friend
+  welsh: "Mae e'n gweld ffrind prysur"
+  english: "He sees a busy friend"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "prysur", lemma: "prysur", item: lex:prysur}
+
+- id: sp-i-work-with-a-busy-friend
+  welsh: "Dw i'n gweithio gyda ffrind prysur"
+  english: "I work with a busy friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "prysur", lemma: "prysur", item: lex:prysur}
+
+- id: sp-im-happy
+  welsh: "Dw i'n hapus"
+  english: "I'm happy"
+  tags: [clitic]
+  patterns: [pat:dw-in-adj]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hapus", lemma: "hapus", item: lex:hapus}
+
+- id: sp-im-tired
+  welsh: "Dw i'n flinedig"
+  english: "I'm tired"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in-adj]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "flinedig", lemma: "blinedig", item: lex:blinedig, mutation: soft}
+
+- id: sp-im-busy
+  welsh: "Dw i'n brysur"
+  english: "I'm busy"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in-adj]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "brysur", lemma: "prysur", item: lex:prysur, mutation: soft}
+
+- id: sp-im-good
+  welsh: "Dw i'n dda"
+  english: "I'm good"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in-adj]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dda", lemma: "da", item: lex:da, mutation: soft}
+
+- id: sp-im-happy-today
+  welsh: "Dw i'n hapus heddi"
+  english: "I'm happy today"
+  tags: [clitic]
+  patterns: [pat:dw-in-adj]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hapus", lemma: "hapus", item: lex:hapus}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-im-tired-now
+  welsh: "Dw i'n flinedig nawr"
+  english: "I'm tired now"
+  tags: [mutation, clitic]
+  patterns: [pat:dw-in-adj]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "flinedig", lemma: "blinedig", item: lex:blinedig, mutation: soft}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-hes-happy
+  welsh: "Mae e'n hapus"
+  english: "He's happy"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "hapus", lemma: "hapus", item: lex:hapus}
+
+- id: sp-hes-tired
+  welsh: "Mae e'n flinedig"
+  english: "He's tired"
+  tags: [mutation, clitic]
+  patterns: [pat:mae-e-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "flinedig", lemma: "blinedig", item: lex:blinedig, mutation: soft}
+
+- id: sp-hes-busy-today
+  welsh: "Mae e'n brysur heddi"
+  english: "He's busy today"
+  tags: [mutation, clitic]
+  patterns: [pat:mae-e-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "brysur", lemma: "prysur", item: lex:prysur, mutation: soft}
+    - {text: "heddi", lemma: "heddiw", item: lex:heddi}
+
+- id: sp-hes-new
+  welsh: "Mae e'n newydd"
+  english: "He's new"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn-adj]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-he-doesnt-speak-welsh
+  welsh: "Dyw e ddim yn siarad Cymraeg"
+  english: "He doesn't speak Welsh"
+  tags: [plain]
+  patterns: [pat:dyw-e-ddim-yn]
+  tokens:
+    - {text: "Dyw", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-hes-not-learning
+  welsh: "Dyw e ddim yn dysgu"
+  english: "He's not learning"
+  tags: [plain]
+  patterns: [pat:dyw-e-ddim-yn]
+  tokens:
+    - {text: "Dyw", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-hes-not-working-tomorrow
+  welsh: "Dyw e ddim yn gweithio fory"
+  english: "He's not working tomorrow"
+  tags: [plain]
+  patterns: [pat:dyw-e-ddim-yn]
+  tokens:
+    - {text: "Dyw", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-he-doesnt-understand
+  welsh: "Dyw e ddim yn deall"
+  english: "He doesn't understand"
+  tags: [plain]
+  patterns: [pat:dyw-e-ddim-yn]
+  tokens:
+    - {text: "Dyw", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "yn", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+
+- id: sp-what-are-you-learning
+  welsh: "Beth wyt ti'n dysgu?"
+  english: "What are you learning?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Beth", lemma: "beth", item: lex:beth}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-what-are-you-eating
+  welsh: "Beth wyt ti'n bwyta?"
+  english: "What are you eating?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Beth", lemma: "beth", item: lex:beth}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-what-are-you-drinking
+  welsh: "Beth wyt ti'n yfed?"
+  english: "What are you drinking?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Beth", lemma: "beth", item: lex:beth}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+
+- id: sp-what-are-you-doing
+  welsh: "Beth wyt ti'n gwneud?"
+  english: "What are you doing?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Beth", lemma: "beth", item: lex:beth}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwneud", lemma: "gwneud", item: lex:gwneud}
+
+- id: sp-where-do-you-work
+  welsh: "Ble wyt ti'n gweithio?"
+  english: "Where do you work?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Ble", lemma: "ble", item: lex:ble}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-where-do-you-live
+  welsh: "Ble wyt ti'n byw?"
+  english: "Where do you live?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Ble", lemma: "ble", item: lex:ble}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "byw", lemma: "byw", item: lex:byw}
+
+- id: sp-where-are-you-learning
+  welsh: "Ble wyt ti'n dysgu?"
+  english: "Where are you learning?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Ble", lemma: "ble", item: lex:ble}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-when-are-you-working
+  welsh: "Pryd wyt ti'n gweithio?"
+  english: "When are you working?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Pryd", lemma: "pryd", item: lex:pryd}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-when-are-you-coming
+  welsh: "Pryd wyt ti'n dod?"
+  english: "When are you coming?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Pryd", lemma: "pryd", item: lex:pryd}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+
+- id: sp-when-are-you-going
+  welsh: "Pryd dych chi'n mynd?"
+  english: "When are you going?"
+  tags: [clitic]
+  patterns: [pat:dych-chi-yn]
+  tokens:
+    - {text: "Pryd", lemma: "pryd", item: lex:pryd}
+    - {text: "dych", lemma: "bod"}
+    - {text: "chi", lemma: "chi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-why-are-you-learning-welsh
+  welsh: "Pam wyt ti'n dysgu Cymraeg?"
+  english: "Why are you learning Welsh?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Pam", lemma: "pam", item: lex:pam}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-why-do-you-work-here
+  welsh: "Pam dych chi'n gweithio fan hyn?"
+  english: "Why do you work here?"
+  tags: [clitic]
+  patterns: [pat:dych-chi-yn]
+  tokens:
+    - {text: "Pam", lemma: "pam", item: lex:pam}
+    - {text: "dych", lemma: "bod"}
+    - {text: "chi", lemma: "chi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-why-are-you-waiting
+  welsh: "Pam wyt ti'n aros?"
+  english: "Why are you waiting?"
+  tags: [clitic]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Pam", lemma: "pam", item: lex:pam}
+    - {text: "wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}

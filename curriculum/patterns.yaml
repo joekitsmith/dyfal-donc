@@ -73,3 +73,50 @@
   slots: {NOUN: noun}
   prerequisites: [pat:dw-in-hoffi, lex:y]
   notes: "The noun after 'r' soft-mutates if it is feminine singular (hoffi'r Gymraeg)."
+
+- id: pat:mae-hi-yn
+  template: "Mae hi'n [VERB]"
+  english: "She's [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:mae-e-yn]
+
+- id: pat:dyn-ni-yn
+  template: "Dyn ni'n [VERB]"
+  english: "We're [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+  notes: "South Wales. North Wales uses 'Rydyn ni'n'."
+
+- id: pat:dych-chi-yn
+  template: "Dych chi'n [VERB]"
+  english: "You're [VERB]ing (plural or polite)"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+  notes: "Also a question with a rising voice: Dych chi'n siarad Cymraeg?"
+
+- id: pat:maen-nhw-yn
+  template: "Maen nhw'n [VERB]"
+  english: "They're [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+
+- id: pat:dw-in-adj
+  template: "Dw i'n [ADJECTIVE]"
+  english: "I'm [ADJECTIVE]"
+  slots: {ADJECTIVE: adj}
+  prerequisites: [pat:dw-in]
+  notes: "The adjective soft-mutates after 'n (Dw i'n flinedig, Dw i'n dda)."
+
+- id: pat:mae-e-yn-adj
+  template: "Mae e'n [ADJECTIVE]"
+  english: "He's [ADJECTIVE]"
+  slots: {ADJECTIVE: adj}
+  prerequisites: [pat:mae-e-yn]
+  notes: "The adjective soft-mutates after 'n (Mae e'n flinedig)."
+
+- id: pat:dyw-e-ddim-yn
+  template: "Dyw e ddim yn [VERB]"
+  english: "He's not [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:mae-e-yn, pat:dw-i-ddim-yn]
+  notes: "South Wales. Standard Welsh uses 'Dydy o ddim yn'."

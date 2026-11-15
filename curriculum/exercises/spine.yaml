@@ -146,3 +146,1719 @@
   welsh: Gallwn siarad
   items: [lex:gallu, lex:siarad]
   new_item: lex:gallu
+
+- id: welsh
+  english: "Welsh"
+  welsh: "Cymraeg"
+  items: [lex:cymraeg]
+  new_item: lex:cymraeg
+
+- id: i-want-to-speak
+  english: "I want to speak"
+  welsh: "Dw i'n moyn siarad"
+  items: [lex:siarad, pat:dw-in-moyn]
+  new_item: pat:dw-in-moyn
+
+- id: i-want-to-speak-welsh
+  english: "I want to speak Welsh"
+  welsh: "Dw i'n moyn siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, pat:dw-in-moyn]
+  new_item: pat:dw-in-moyn
+
+- id: to-learn
+  english: "To learn"
+  welsh: "Dysgu"
+  items: [lex:dysgu]
+  new_item: lex:dysgu
+
+- id: to-learn-welsh
+  english: "To learn Welsh"
+  welsh: "Dysgu Cymraeg"
+  items: [lex:cymraeg, lex:dysgu]
+  new_item: lex:dysgu
+
+- id: i-want-to-learn-welsh
+  english: "I want to learn Welsh"
+  welsh: "Dw i'n moyn dysgu Cymraeg"
+  items: [lex:cymraeg, pat:dw-in-moyn, lex:dysgu]
+  new_item: lex:dysgu
+
+- id: to-understand
+  english: "To understand"
+  welsh: "Deall"
+  items: [lex:deall]
+  new_item: lex:deall
+
+- id: to-understand-welsh
+  english: "To understand Welsh"
+  welsh: "Deall Cymraeg"
+  items: [lex:cymraeg, lex:deall]
+  new_item: lex:deall
+
+- id: i-want-to-understand-welsh
+  english: "I want to understand Welsh"
+  welsh: "Dw i'n moyn deall Cymraeg"
+  items: [lex:cymraeg, pat:dw-in-moyn, lex:deall]
+  new_item: lex:deall
+
+- id: to-go
+  english: "To go"
+  welsh: "Mynd"
+  items: [lex:mynd]
+  new_item: lex:mynd
+
+- id: to-come
+  english: "To come"
+  welsh: "Dod"
+  items: [lex:dod]
+  new_item: lex:dod
+
+- id: english
+  english: "English"
+  welsh: "Saesneg"
+  items: [lex:saesneg]
+  new_item: lex:saesneg
+
+- id: i-want-to-speak-english
+  english: "I want to speak English"
+  welsh: "Dw i'n moyn siarad Saesneg"
+  items: [lex:siarad, pat:dw-in-moyn, lex:saesneg]
+  new_item: lex:saesneg
+
+- id: i-want-to-learn-english
+  english: "I want to learn English"
+  welsh: "Dw i'n moyn dysgu Saesneg"
+  items: [pat:dw-in-moyn, lex:dysgu, lex:saesneg]
+  new_item: lex:saesneg
+
+- id: im-speaking
+  english: "I'm speaking"
+  welsh: "Dw i'n siarad"
+  items: [lex:siarad, pat:dw-in]
+  new_item: pat:dw-in
+
+- id: im-learning
+  english: "I'm learning"
+  welsh: "Dw i'n dysgu"
+  items: [lex:dysgu, pat:dw-in]
+  new_item: pat:dw-in
+
+- id: im-learning-welsh
+  english: "I'm learning Welsh"
+  welsh: "Dw i'n dysgu Cymraeg"
+  items: [lex:cymraeg, lex:dysgu, pat:dw-in]
+  new_item: pat:dw-in
+
+- id: i-understand-english
+  english: "I understand English"
+  welsh: "Dw i'n deall Saesneg"
+  items: [lex:deall, lex:saesneg, pat:dw-in]
+  new_item: pat:dw-in
+
+- id: im-learning-today
+  english: "I'm learning today"
+  welsh: "Dw i'n dysgu heddi"
+  items: [lex:dysgu, pat:dw-in, lex:heddi]
+  new_item: lex:heddi
+
+- id: im-speaking-welsh-today
+  english: "I'm speaking Welsh today"
+  welsh: "Dw i'n siarad Cymraeg heddi"
+  items: [lex:siarad, lex:cymraeg, pat:dw-in, lex:heddi]
+  new_item: lex:heddi
+
+- id: im-going-today
+  english: "I'm going today"
+  welsh: "Dw i'n mynd heddi"
+  items: [lex:mynd, pat:dw-in, lex:heddi]
+  new_item: lex:heddi
+
+- id: im-coming-today
+  english: "I'm coming today"
+  welsh: "Dw i'n dod heddi"
+  items: [lex:dod, pat:dw-in, lex:heddi]
+  new_item: lex:heddi
+
+- id: im-speaking-now
+  english: "I'm speaking now"
+  welsh: "Dw i'n siarad nawr"
+  items: [lex:siarad, pat:dw-in, lex:nawr]
+  new_item: lex:nawr
+
+- id: i-want-to-go-now
+  english: "I want to go now"
+  welsh: "Dw i'n moyn mynd nawr"
+  items: [pat:dw-in-moyn, lex:mynd, lex:nawr]
+  new_item: lex:nawr
+
+- id: i-understand-now
+  english: "I understand now"
+  welsh: "Dw i'n deall nawr"
+  items: [lex:deall, pat:dw-in, lex:nawr]
+  new_item: lex:nawr
+
+- id: i-speak-welsh-here
+  english: "I speak Welsh here"
+  welsh: "Dw i'n siarad Cymraeg fan hyn"
+  items: [lex:siarad, lex:cymraeg, pat:dw-in, lex:fan-hyn]
+  new_item: lex:fan-hyn
+
+- id: i-want-to-come-here
+  english: "I want to come here"
+  welsh: "Dw i'n moyn dod fan hyn"
+  items: [pat:dw-in-moyn, lex:dod, lex:fan-hyn]
+  new_item: lex:fan-hyn
+
+- id: im-coming-here
+  english: "I'm coming here"
+  welsh: "Dw i'n dod fan hyn"
+  items: [lex:dod, pat:dw-in, lex:fan-hyn]
+  new_item: lex:fan-hyn
+
+- id: i-see
+  english: "I see"
+  welsh: "Dw i'n gweld"
+  items: [pat:dw-in, lex:gweld]
+  new_item: lex:gweld
+
+- id: i-see-now
+  english: "I see now"
+  welsh: "Dw i'n gweld nawr"
+  items: [pat:dw-in, lex:nawr, lex:gweld]
+  new_item: lex:gweld
+
+- id: i-want-to-see-now
+  english: "I want to see now"
+  welsh: "Dw i'n moyn gweld nawr"
+  items: [pat:dw-in-moyn, lex:nawr, lex:gweld]
+  new_item: lex:gweld
+
+- id: im-eating
+  english: "I'm eating"
+  welsh: "Dw i'n bwyta"
+  items: [pat:dw-in, lex:bwyta]
+  new_item: lex:bwyta
+
+- id: i-want-to-eat
+  english: "I want to eat"
+  welsh: "Dw i'n moyn bwyta"
+  items: [pat:dw-in-moyn, lex:bwyta]
+  new_item: lex:bwyta
+
+- id: im-eating-now
+  english: "I'm eating now"
+  welsh: "Dw i'n bwyta nawr"
+  items: [pat:dw-in, lex:nawr, lex:bwyta]
+  new_item: lex:bwyta
+
+- id: im-eating-here
+  english: "I'm eating here"
+  welsh: "Dw i'n bwyta fan hyn"
+  items: [pat:dw-in, lex:fan-hyn, lex:bwyta]
+  new_item: lex:bwyta
+
+- id: i-want-to-drink
+  english: "I want to drink"
+  welsh: "Dw i'n moyn yfed"
+  items: [pat:dw-in-moyn, lex:yfed]
+  new_item: lex:yfed
+
+- id: im-drinking-now
+  english: "I'm drinking now"
+  welsh: "Dw i'n yfed nawr"
+  items: [pat:dw-in, lex:nawr, lex:yfed]
+  new_item: lex:yfed
+
+- id: im-drinking-here
+  english: "I'm drinking here"
+  welsh: "Dw i'n yfed fan hyn"
+  items: [pat:dw-in, lex:fan-hyn, lex:yfed]
+  new_item: lex:yfed
+
+- id: im-not-speaking
+  english: "I'm not speaking"
+  welsh: "Dw i ddim yn siarad"
+  items: [lex:siarad, pat:dw-i-ddim-yn]
+  new_item: pat:dw-i-ddim-yn
+
+- id: i-dont-understand
+  english: "I don't understand"
+  welsh: "Dw i ddim yn deall"
+  items: [lex:deall, pat:dw-i-ddim-yn]
+  new_item: pat:dw-i-ddim-yn
+
+- id: i-dont-see
+  english: "I don't see"
+  welsh: "Dw i ddim yn gweld"
+  items: [lex:gweld, pat:dw-i-ddim-yn]
+  new_item: pat:dw-i-ddim-yn
+
+- id: im-not-eating-today
+  english: "I'm not eating today"
+  welsh: "Dw i ddim yn bwyta heddi"
+  items: [lex:heddi, lex:bwyta, pat:dw-i-ddim-yn]
+  new_item: pat:dw-i-ddim-yn
+
+- id: im-working
+  english: "I'm working"
+  welsh: "Dw i'n gweithio"
+  items: [pat:dw-in, lex:gweithio]
+  new_item: lex:gweithio
+
+- id: i-want-to-work
+  english: "I want to work"
+  welsh: "Dw i'n moyn gweithio"
+  items: [pat:dw-in-moyn, lex:gweithio]
+  new_item: lex:gweithio
+
+- id: im-not-working-today
+  english: "I'm not working today"
+  welsh: "Dw i ddim yn gweithio heddi"
+  items: [lex:heddi, pat:dw-i-ddim-yn, lex:gweithio]
+  new_item: lex:gweithio
+
+- id: im-working-now
+  english: "I'm working now"
+  welsh: "Dw i'n gweithio nawr"
+  items: [pat:dw-in, lex:nawr, lex:gweithio]
+  new_item: lex:gweithio
+
+- id: im-reading
+  english: "I'm reading"
+  welsh: "Dw i'n darllen"
+  items: [pat:dw-in, lex:darllen]
+  new_item: lex:darllen
+
+- id: i-want-to-read
+  english: "I want to read"
+  welsh: "Dw i'n moyn darllen"
+  items: [pat:dw-in-moyn, lex:darllen]
+  new_item: lex:darllen
+
+- id: im-reading-here
+  english: "I'm reading here"
+  welsh: "Dw i'n darllen fan hyn"
+  items: [pat:dw-in, lex:fan-hyn, lex:darllen]
+  new_item: lex:darllen
+
+- id: do-you-speak-welsh
+  english: "Do you speak Welsh?"
+  welsh: "Wyt ti'n siarad Cymraeg?"
+  items: [lex:siarad, lex:cymraeg, pat:wyt-ti-yn]
+  new_item: pat:wyt-ti-yn
+
+- id: are-you-learning
+  english: "Are you learning?"
+  welsh: "Wyt ti'n dysgu?"
+  items: [lex:dysgu, pat:wyt-ti-yn]
+  new_item: pat:wyt-ti-yn
+
+- id: do-you-understand
+  english: "Do you understand?"
+  welsh: "Wyt ti'n deall?"
+  items: [lex:deall, pat:wyt-ti-yn]
+  new_item: pat:wyt-ti-yn
+
+- id: are-you-working-today
+  english: "Are you working today?"
+  welsh: "Wyt ti'n gweithio heddi?"
+  items: [lex:heddi, lex:gweithio, pat:wyt-ti-yn]
+  new_item: pat:wyt-ti-yn
+
+- id: im-coming-with-you
+  english: "I'm coming with you"
+  welsh: "Dw i'n dod gyda ti"
+  items: [lex:dod, pat:dw-in, lex:gyda-ti]
+  new_item: lex:gyda-ti
+
+- id: i-want-to-go-with-you
+  english: "I want to go with you"
+  welsh: "Dw i'n moyn mynd gyda ti"
+  items: [pat:dw-in-moyn, lex:mynd, lex:gyda-ti]
+  new_item: lex:gyda-ti
+
+- id: i-work-with-you
+  english: "I work with you"
+  welsh: "Dw i'n gweithio gyda ti"
+  items: [pat:dw-in, lex:gweithio, lex:gyda-ti]
+  new_item: lex:gyda-ti
+
+- id: i-dont-want-to-speak
+  english: "I don't want to speak"
+  welsh: "Dw i ddim yn moyn siarad"
+  items: [lex:siarad, pat:dw-i-ddim-yn-moyn]
+  new_item: pat:dw-i-ddim-yn-moyn
+
+- id: i-dont-want-to-go
+  english: "I don't want to go"
+  welsh: "Dw i ddim yn moyn mynd"
+  items: [lex:mynd, pat:dw-i-ddim-yn-moyn]
+  new_item: pat:dw-i-ddim-yn-moyn
+
+- id: i-dont-want-to-read
+  english: "I don't want to read"
+  welsh: "Dw i ddim yn moyn darllen"
+  items: [lex:darllen, pat:dw-i-ddim-yn-moyn]
+  new_item: pat:dw-i-ddim-yn-moyn
+
+- id: i-dont-want-to-work
+  english: "I don't want to work"
+  welsh: "Dw i ddim yn moyn gweithio"
+  items: [lex:gweithio, pat:dw-i-ddim-yn-moyn]
+  new_item: pat:dw-i-ddim-yn-moyn
+
+- id: im-drinking-coffee
+  english: "I'm drinking coffee"
+  welsh: "Dw i'n yfed coffi"
+  items: [pat:dw-in, lex:yfed, lex:coffi]
+  new_item: lex:coffi
+
+- id: i-want-to-drink-coffee
+  english: "I want to drink coffee"
+  welsh: "Dw i'n moyn yfed coffi"
+  items: [pat:dw-in-moyn, lex:yfed, lex:coffi]
+  new_item: lex:coffi
+
+- id: im-drinking-coffee-now
+  english: "I'm drinking coffee now"
+  welsh: "Dw i'n yfed coffi nawr"
+  items: [pat:dw-in, lex:nawr, lex:yfed, lex:coffi]
+  new_item: lex:coffi
+
+- id: im-drinking-tea
+  english: "I'm drinking tea"
+  welsh: "Dw i'n yfed te"
+  items: [pat:dw-in, lex:yfed, lex:te]
+  new_item: lex:te
+
+- id: i-want-to-drink-tea
+  english: "I want to drink tea"
+  welsh: "Dw i'n moyn yfed te"
+  items: [pat:dw-in-moyn, lex:yfed, lex:te]
+  new_item: lex:te
+
+- id: im-drinking-tea-now
+  english: "I'm drinking tea now"
+  welsh: "Dw i'n yfed te nawr"
+  items: [pat:dw-in, lex:nawr, lex:yfed, lex:te]
+  new_item: lex:te
+
+- id: im-eating-bread
+  english: "I'm eating bread"
+  welsh: "Dw i'n bwyta bara"
+  items: [pat:dw-in, lex:bwyta, lex:bara]
+  new_item: lex:bara
+
+- id: i-want-to-eat-bread
+  english: "I want to eat bread"
+  welsh: "Dw i'n moyn bwyta bara"
+  items: [pat:dw-in-moyn, lex:bwyta, lex:bara]
+  new_item: lex:bara
+
+- id: im-eating-bread-now
+  english: "I'm eating bread now"
+  welsh: "Dw i'n bwyta bara nawr"
+  items: [pat:dw-in, lex:nawr, lex:bwyta, lex:bara]
+  new_item: lex:bara
+
+- id: im-drinking-water
+  english: "I'm drinking water"
+  welsh: "Dw i'n yfed dŵr"
+  items: [pat:dw-in, lex:yfed, lex:dwr]
+  new_item: lex:dwr
+
+- id: i-want-to-drink-water
+  english: "I want to drink water"
+  welsh: "Dw i'n moyn yfed dŵr"
+  items: [pat:dw-in-moyn, lex:yfed, lex:dwr]
+  new_item: lex:dwr
+
+- id: im-drinking-water-now
+  english: "I'm drinking water now"
+  welsh: "Dw i'n yfed dŵr nawr"
+  items: [pat:dw-in, lex:nawr, lex:yfed, lex:dwr]
+  new_item: lex:dwr
+
+- id: i-want-coffee
+  english: "I want coffee"
+  welsh: "Dw i'n moyn coffi"
+  items: [lex:coffi, pat:dw-in-moyn-noun]
+  new_item: pat:dw-in-moyn-noun
+
+- id: i-want-tea
+  english: "I want tea"
+  welsh: "Dw i'n moyn te"
+  items: [lex:te, pat:dw-in-moyn-noun]
+  new_item: pat:dw-in-moyn-noun
+
+- id: i-want-bread
+  english: "I want bread"
+  welsh: "Dw i'n moyn bara"
+  items: [lex:bara, pat:dw-in-moyn-noun]
+  new_item: pat:dw-in-moyn-noun
+
+- id: i-want-water
+  english: "I want water"
+  welsh: "Dw i'n moyn dŵr"
+  items: [lex:dwr, pat:dw-in-moyn-noun]
+  new_item: pat:dw-in-moyn-noun
+
+- id: im-eating-food
+  english: "I'm eating food"
+  welsh: "Dw i'n bwyta bwyd"
+  items: [pat:dw-in, lex:bwyta, lex:bwyd]
+  new_item: lex:bwyd
+
+- id: i-want-food-now
+  english: "I want food now"
+  welsh: "Dw i'n moyn bwyd nawr"
+  items: [lex:nawr, pat:dw-in-moyn-noun, lex:bwyd]
+  new_item: lex:bwyd
+
+- id: im-eating-food-here
+  english: "I'm eating food here"
+  welsh: "Dw i'n bwyta bwyd fan hyn"
+  items: [pat:dw-in, lex:fan-hyn, lex:bwyta, lex:bwyd]
+  new_item: lex:bwyd
+
+- id: im-drinking-milk
+  english: "I'm drinking milk"
+  welsh: "Dw i'n yfed llaeth"
+  items: [pat:dw-in, lex:yfed, lex:llaeth]
+  new_item: lex:llaeth
+
+- id: i-want-milk
+  english: "I want milk"
+  welsh: "Dw i'n moyn llaeth"
+  items: [pat:dw-in-moyn-noun, lex:llaeth]
+  new_item: lex:llaeth
+
+- id: im-drinking-milk-now
+  english: "I'm drinking milk now"
+  welsh: "Dw i'n yfed llaeth nawr"
+  items: [pat:dw-in, lex:nawr, lex:yfed, lex:llaeth]
+  new_item: lex:llaeth
+
+- id: i-like-tea
+  english: "I like tea"
+  welsh: "Dw i'n hoffi te"
+  items: [lex:te, pat:dw-in-hoffi]
+  new_item: pat:dw-in-hoffi
+
+- id: i-like-bread
+  english: "I like bread"
+  welsh: "Dw i'n hoffi bara"
+  items: [lex:bara, pat:dw-in-hoffi]
+  new_item: pat:dw-in-hoffi
+
+- id: i-like-water
+  english: "I like water"
+  welsh: "Dw i'n hoffi dŵr"
+  items: [lex:dwr, pat:dw-in-hoffi]
+  new_item: pat:dw-in-hoffi
+
+- id: i-like-welsh
+  english: "I like Welsh"
+  welsh: "Dw i'n hoffi Cymraeg"
+  items: [lex:cymraeg, pat:dw-in-hoffi]
+  new_item: pat:dw-in-hoffi
+
+- id: im-working-tomorrow
+  english: "I'm working tomorrow"
+  welsh: "Dw i'n gweithio fory"
+  items: [pat:dw-in, lex:gweithio, lex:fory]
+  new_item: lex:fory
+
+- id: im-coming-tomorrow
+  english: "I'm coming tomorrow"
+  welsh: "Dw i'n dod fory"
+  items: [lex:dod, pat:dw-in, lex:fory]
+  new_item: lex:fory
+
+- id: im-going-tomorrow
+  english: "I'm going tomorrow"
+  welsh: "Dw i'n mynd fory"
+  items: [lex:mynd, pat:dw-in, lex:fory]
+  new_item: lex:fory
+
+- id: do-you-want-to-speak
+  english: "Do you want to speak?"
+  welsh: "Wyt ti'n moyn siarad?"
+  items: [lex:siarad, pat:wyt-ti-yn-moyn]
+  new_item: pat:wyt-ti-yn-moyn
+
+- id: do-you-want-to-eat
+  english: "Do you want to eat?"
+  welsh: "Wyt ti'n moyn bwyta?"
+  items: [lex:bwyta, pat:wyt-ti-yn-moyn]
+  new_item: pat:wyt-ti-yn-moyn
+
+- id: do-you-want-to-go
+  english: "Do you want to go?"
+  welsh: "Wyt ti'n moyn mynd?"
+  items: [lex:mynd, pat:wyt-ti-yn-moyn]
+  new_item: pat:wyt-ti-yn-moyn
+
+- id: do-you-want-to-drink-tea
+  english: "Do you want to drink tea?"
+  welsh: "Wyt ti'n moyn yfed te?"
+  items: [lex:yfed, lex:te, pat:wyt-ti-yn-moyn]
+  new_item: pat:wyt-ti-yn-moyn
+
+- id: i-want-to-remember
+  english: "I want to remember"
+  welsh: "Dw i'n moyn cofio"
+  items: [pat:dw-in-moyn, lex:cofio]
+  new_item: lex:cofio
+
+- id: i-dont-remember
+  english: "I don't remember"
+  welsh: "Dw i ddim yn cofio"
+  items: [pat:dw-i-ddim-yn, lex:cofio]
+  new_item: lex:cofio
+
+- id: do-you-remember
+  english: "Do you remember?"
+  welsh: "Wyt ti'n cofio?"
+  items: [pat:wyt-ti-yn, lex:cofio]
+  new_item: lex:cofio
+
+- id: im-writing
+  english: "I'm writing"
+  welsh: "Dw i'n ysgrifennu"
+  items: [pat:dw-in, lex:ysgrifennu]
+  new_item: lex:ysgrifennu
+
+- id: im-writing-tomorrow
+  english: "I'm writing tomorrow"
+  welsh: "Dw i'n ysgrifennu fory"
+  items: [pat:dw-in, lex:fory, lex:ysgrifennu]
+  new_item: lex:ysgrifennu
+
+- id: are-you-writing
+  english: "Are you writing?"
+  welsh: "Wyt ti'n ysgrifennu?"
+  items: [pat:wyt-ti-yn, lex:ysgrifennu]
+  new_item: lex:ysgrifennu
+
+- id: i-can-speak-welsh
+  english: "I can speak Welsh"
+  welsh: "Dw i'n gallu siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, pat:dw-in-gallu]
+  new_item: pat:dw-in-gallu
+
+- id: i-can-understand
+  english: "I can understand"
+  welsh: "Dw i'n gallu deall"
+  items: [lex:deall, pat:dw-in-gallu]
+  new_item: pat:dw-in-gallu
+
+- id: i-can-come-tomorrow
+  english: "I can come tomorrow"
+  welsh: "Dw i'n gallu dod fory"
+  items: [lex:dod, lex:fory, pat:dw-in-gallu]
+  new_item: pat:dw-in-gallu
+
+- id: he-speaks-welsh
+  english: "He speaks Welsh"
+  welsh: "Mae e'n siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, pat:mae-e-yn]
+  new_item: pat:mae-e-yn
+
+- id: hes-learning
+  english: "He's learning"
+  welsh: "Mae e'n dysgu"
+  items: [lex:dysgu, pat:mae-e-yn]
+  new_item: pat:mae-e-yn
+
+- id: hes-working
+  english: "He's working"
+  welsh: "Mae e'n gweithio"
+  items: [lex:gweithio, pat:mae-e-yn]
+  new_item: pat:mae-e-yn
+
+- id: hes-eating
+  english: "He's eating"
+  welsh: "Mae e'n bwyta"
+  items: [lex:bwyta, pat:mae-e-yn]
+  new_item: pat:mae-e-yn
+
+- id: im-reading-a-book
+  english: "I'm reading a book"
+  welsh: "Dw i'n darllen llyfr"
+  items: [pat:dw-in, lex:darllen, lex:llyfr]
+  new_item: lex:llyfr
+
+- id: i-want-a-book
+  english: "I want a book"
+  welsh: "Dw i'n moyn llyfr"
+  items: [pat:dw-in-moyn-noun, lex:llyfr]
+  new_item: lex:llyfr
+
+- id: i-like-books
+  english: "I like books"
+  welsh: "Dw i'n hoffi llyfrau"
+  items: [pat:dw-in-hoffi, lex:llyfr]
+  new_item: lex:llyfr
+
+- id: hes-reading-a-book
+  english: "He's reading a book"
+  welsh: "Mae e'n darllen llyfr"
+  items: [lex:darllen, pat:mae-e-yn, lex:llyfr]
+  new_item: lex:llyfr
+
+- id: i-want-a-house
+  english: "I want a house"
+  welsh: "Dw i'n moyn tŷ"
+  items: [pat:dw-in-moyn-noun, lex:ty]
+  new_item: lex:ty
+
+- id: i-see-a-house
+  english: "I see a house"
+  welsh: "Dw i'n gweld tŷ"
+  items: [pat:dw-in, lex:gweld, lex:ty]
+  new_item: lex:ty
+
+- id: he-sees-a-house
+  english: "He sees a house"
+  welsh: "Mae e'n gweld tŷ"
+  items: [lex:gweld, pat:mae-e-yn, lex:ty]
+  new_item: lex:ty
+
+- id: good-morning
+  english: "Good morning"
+  welsh: "Bore da"
+  items: [lex:bore-da]
+  new_item: lex:bore-da
+
+- id: good-morning-im-learning-welsh
+  english: "Good morning, I'm learning Welsh"
+  welsh: "Bore da, dw i'n dysgu Cymraeg"
+  items: [lex:cymraeg, lex:dysgu, pat:dw-in, lex:bore-da]
+  new_item: lex:bore-da
+
+- id: good-morning-do-you-speak-welsh
+  english: "Good morning, do you speak Welsh?"
+  welsh: "Bore da, wyt ti'n siarad Cymraeg?"
+  items: [lex:siarad, lex:cymraeg, pat:wyt-ti-yn, lex:bore-da]
+  new_item: lex:bore-da
+
+- id: good-morning-im-working
+  english: "Good morning, I'm working"
+  welsh: "Bore da, dw i'n gweithio"
+  items: [pat:dw-in, lex:gweithio, lex:bore-da]
+  new_item: lex:bore-da
+
+- id: good-night
+  english: "Good night"
+  welsh: "Nos da"
+  items: [lex:nos-da]
+  new_item: lex:nos-da
+
+- id: good-night-im-going
+  english: "Good night, I'm going"
+  welsh: "Nos da, dw i'n mynd"
+  items: [lex:mynd, pat:dw-in, lex:nos-da]
+  new_item: lex:nos-da
+
+- id: good-night-are-you-going
+  english: "Good night, are you going?"
+  welsh: "Nos da, wyt ti'n mynd?"
+  items: [lex:mynd, pat:wyt-ti-yn, lex:nos-da]
+  new_item: lex:nos-da
+
+- id: good-night-im-reading
+  english: "Good night, I'm reading"
+  welsh: "Nos da, dw i'n darllen"
+  items: [pat:dw-in, lex:darllen, lex:nos-da]
+  new_item: lex:nos-da
+
+- id: thank-you
+  english: "Thank you"
+  welsh: "Diolch"
+  items: [lex:diolch]
+  new_item: lex:diolch
+
+- id: thank-you-i-understand
+  english: "Thank you, I understand"
+  welsh: "Diolch, dw i'n deall"
+  items: [lex:deall, pat:dw-in, lex:diolch]
+  new_item: lex:diolch
+
+- id: thank-you-i-want-coffee
+  english: "Thank you, I want coffee"
+  welsh: "Diolch, dw i'n moyn coffi"
+  items: [lex:coffi, pat:dw-in-moyn-noun, lex:diolch]
+  new_item: lex:diolch
+
+- id: thank-you-i-want-tea
+  english: "Thank you, I want tea"
+  welsh: "Diolch, dw i'n moyn te"
+  items: [lex:te, pat:dw-in-moyn-noun, lex:diolch]
+  new_item: lex:diolch
+
+- id: im-reading-the-book
+  english: "I'm reading the book"
+  welsh: "Dw i'n darllen y llyfr"
+  items: [pat:dw-in, lex:darllen, lex:llyfr, lex:y]
+  new_item: lex:y
+
+- id: i-see-the-house
+  english: "I see the house"
+  welsh: "Dw i'n gweld y tŷ"
+  items: [pat:dw-in, lex:gweld, lex:ty, lex:y]
+  new_item: lex:y
+
+- id: im-eating-the-bread
+  english: "I'm eating the bread"
+  welsh: "Dw i'n bwyta'r bara"
+  items: [pat:dw-in, lex:bwyta, lex:bara, lex:y]
+  new_item: lex:y
+
+- id: im-drinking-the-coffee
+  english: "I'm drinking the coffee"
+  welsh: "Dw i'n yfed y coffi"
+  items: [pat:dw-in, lex:yfed, lex:coffi, lex:y]
+  new_item: lex:y
+
+- id: i-like-the-coffee
+  english: "I like the coffee"
+  welsh: "Dw i'n hoffi'r coffi"
+  items: [lex:coffi, pat:dw-in-hoffi-r]
+  new_item: pat:dw-in-hoffi-r
+
+- id: i-like-the-tea
+  english: "I like the tea"
+  welsh: "Dw i'n hoffi'r te"
+  items: [lex:te, pat:dw-in-hoffi-r]
+  new_item: pat:dw-in-hoffi-r
+
+- id: i-like-the-book
+  english: "I like the book"
+  welsh: "Dw i'n hoffi'r llyfr"
+  items: [lex:llyfr, pat:dw-in-hoffi-r]
+  new_item: pat:dw-in-hoffi-r
+
+- id: i-like-welsh-2
+  english: "I like Welsh"
+  welsh: "Dw i'n hoffi'r Gymraeg"
+  items: [lex:cymraeg, pat:dw-in-hoffi-r]
+  new_item: pat:dw-in-hoffi-r
+
+- id: im-going-to-work
+  english: "I'm going to work"
+  welsh: "Dw i'n mynd i weithio"
+  items: [lex:mynd, pat:dw-in, lex:gweithio, lex:i]
+  new_item: lex:i
+
+- id: i-want-to-go-and-eat
+  english: "I want to go and eat"
+  welsh: "Dw i'n moyn mynd i fwyta"
+  items: [pat:dw-in-moyn, lex:mynd, lex:bwyta, lex:i]
+  new_item: lex:i
+
+- id: im-going-to-the-house
+  english: "I'm going to the house"
+  welsh: "Dw i'n mynd i'r tŷ"
+  items: [lex:mynd, pat:dw-in, lex:ty, lex:y, lex:i]
+  new_item: lex:i
+
+- id: he-comes-from-here
+  english: "He comes from here"
+  welsh: "Mae e'n dod o fan hyn"
+  items: [lex:dod, lex:fan-hyn, pat:mae-e-yn, lex:o]
+  new_item: lex:o
+
+- id: do-you-come-from-here
+  english: "Do you come from here?"
+  welsh: "Wyt ti'n dod o fan hyn?"
+  items: [lex:dod, lex:fan-hyn, pat:wyt-ti-yn, lex:o]
+  new_item: lex:o
+
+- id: im-coming-from-the-house
+  english: "I'm coming from the house"
+  welsh: "Dw i'n dod o'r tŷ"
+  items: [lex:dod, pat:dw-in, lex:ty, lex:y, lex:o]
+  new_item: lex:o
+
+- id: i-drink-coffee-with-milk
+  english: "I drink coffee with milk"
+  welsh: "Dw i'n yfed coffi gyda llaeth"
+  items: [pat:dw-in, lex:yfed, lex:coffi, lex:llaeth, lex:gyda]
+  new_item: lex:gyda
+
+- id: i-want-tea-with-milk
+  english: "I want tea with milk"
+  welsh: "Dw i'n moyn te gyda llaeth"
+  items: [lex:te, pat:dw-in-moyn-noun, lex:llaeth, lex:gyda]
+  new_item: lex:gyda
+
+- id: to-be-able-to
+  english: "To be able to"
+  welsh: "Gallu"
+  items: [lex:gallu]
+  new_item: lex:gallu
+
+- id: to-be-able-to-speak-welsh
+  english: "To be able to speak Welsh"
+  welsh: "Gallu siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, lex:gallu]
+  new_item: lex:gallu
+
+- id: i-can-speak-welsh-2
+  english: "I can speak Welsh"
+  welsh: "Galla i siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, pat:galla-i]
+  new_item: pat:galla-i
+
+- id: i-can-go
+  english: "I can go"
+  welsh: "Galla i fynd"
+  items: [lex:mynd, pat:galla-i]
+  new_item: pat:galla-i
+
+- id: i-can-come
+  english: "I can come"
+  welsh: "Galla i ddod"
+  items: [lex:dod, pat:galla-i]
+  new_item: pat:galla-i
+
+- id: i-can-see
+  english: "I can see"
+  welsh: "Galla i weld"
+  items: [lex:gweld, pat:galla-i]
+  new_item: pat:galla-i
+
+- id: i-see-him
+  english: "I see him"
+  welsh: "Dw i'n gweld e"
+  items: [pat:dw-in, lex:gweld, lex:e]
+  new_item: lex:e
+
+- id: i-understand-him
+  english: "I understand him"
+  welsh: "Dw i'n deall e"
+  items: [lex:deall, pat:dw-in, lex:e]
+  new_item: lex:e
+
+- id: i-remember-him
+  english: "I remember him"
+  welsh: "Dw i'n cofio e"
+  items: [pat:dw-in, lex:cofio, lex:e]
+  new_item: lex:e
+
+- id: i-want-to-see-him
+  english: "I want to see him"
+  welsh: "Dw i'n moyn gweld e"
+  items: [pat:dw-in-moyn, lex:gweld, lex:e]
+  new_item: lex:e
+
+- id: i-see-her
+  english: "I see her"
+  welsh: "Dw i'n gweld hi"
+  items: [pat:dw-in, lex:gweld, lex:hi]
+  new_item: lex:hi
+
+- id: i-remember-her
+  english: "I remember her"
+  welsh: "Dw i'n cofio hi"
+  items: [pat:dw-in, lex:cofio, lex:hi]
+  new_item: lex:hi
+
+- id: i-understand-her
+  english: "I understand her"
+  welsh: "Dw i'n deall hi"
+  items: [lex:deall, pat:dw-in, lex:hi]
+  new_item: lex:hi
+
+- id: do-you-see-her
+  english: "Do you see her?"
+  welsh: "Wyt ti'n gweld hi?"
+  items: [lex:gweld, pat:wyt-ti-yn, lex:hi]
+  new_item: lex:hi
+
+- id: i-see-them
+  english: "I see them"
+  welsh: "Dw i'n gweld nhw"
+  items: [pat:dw-in, lex:gweld, lex:nhw]
+  new_item: lex:nhw
+
+- id: i-understand-them
+  english: "I understand them"
+  welsh: "Dw i'n deall nhw"
+  items: [lex:deall, pat:dw-in, lex:nhw]
+  new_item: lex:nhw
+
+- id: i-remember-them
+  english: "I remember them"
+  welsh: "Dw i'n cofio nhw"
+  items: [pat:dw-in, lex:cofio, lex:nhw]
+  new_item: lex:nhw
+
+- id: do-you-understand-them
+  english: "Do you understand them?"
+  welsh: "Wyt ti'n deall nhw?"
+  items: [lex:deall, pat:wyt-ti-yn, lex:nhw]
+  new_item: lex:nhw
+
+- id: she-speaks-welsh
+  english: "She speaks Welsh"
+  welsh: "Mae hi'n siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, pat:mae-hi-yn]
+  new_item: pat:mae-hi-yn
+
+- id: shes-learning
+  english: "She's learning"
+  welsh: "Mae hi'n dysgu"
+  items: [lex:dysgu, pat:mae-hi-yn]
+  new_item: pat:mae-hi-yn
+
+- id: shes-working-tomorrow
+  english: "She's working tomorrow"
+  welsh: "Mae hi'n gweithio fory"
+  items: [lex:gweithio, lex:fory, pat:mae-hi-yn]
+  new_item: pat:mae-hi-yn
+
+- id: shes-reading-the-book
+  english: "She's reading the book"
+  welsh: "Mae hi'n darllen y llyfr"
+  items: [lex:darllen, lex:llyfr, lex:y, pat:mae-hi-yn]
+  new_item: pat:mae-hi-yn
+
+- id: were-learning-welsh
+  english: "We're learning Welsh"
+  welsh: "Dyn ni'n dysgu Cymraeg"
+  items: [lex:cymraeg, lex:dysgu, pat:dyn-ni-yn]
+  new_item: pat:dyn-ni-yn
+
+- id: were-working
+  english: "We're working"
+  welsh: "Dyn ni'n gweithio"
+  items: [lex:gweithio, pat:dyn-ni-yn]
+  new_item: pat:dyn-ni-yn
+
+- id: were-eating-now
+  english: "We're eating now"
+  welsh: "Dyn ni'n bwyta nawr"
+  items: [lex:nawr, lex:bwyta, pat:dyn-ni-yn]
+  new_item: pat:dyn-ni-yn
+
+- id: we-speak-welsh
+  english: "We speak Welsh"
+  welsh: "Dyn ni'n siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, pat:dyn-ni-yn]
+  new_item: pat:dyn-ni-yn
+
+- id: do-you-speak-welsh-2
+  english: "Do you speak Welsh?"
+  welsh: "Dych chi'n siarad Cymraeg?"
+  items: [lex:siarad, lex:cymraeg, pat:dych-chi-yn]
+  new_item: pat:dych-chi-yn
+
+- id: are-you-learning-2
+  english: "Are you learning?"
+  welsh: "Dych chi'n dysgu?"
+  items: [lex:dysgu, pat:dych-chi-yn]
+  new_item: pat:dych-chi-yn
+
+- id: do-you-understand-2
+  english: "Do you understand?"
+  welsh: "Dych chi'n deall?"
+  items: [lex:deall, pat:dych-chi-yn]
+  new_item: pat:dych-chi-yn
+
+- id: do-you-work-here
+  english: "Do you work here?"
+  welsh: "Dych chi'n gweithio fan hyn?"
+  items: [lex:fan-hyn, lex:gweithio, pat:dych-chi-yn]
+  new_item: pat:dych-chi-yn
+
+- id: they-speak-welsh
+  english: "They speak Welsh"
+  welsh: "Maen nhw'n siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, pat:maen-nhw-yn]
+  new_item: pat:maen-nhw-yn
+
+- id: theyre-learning
+  english: "They're learning"
+  welsh: "Maen nhw'n dysgu"
+  items: [lex:dysgu, pat:maen-nhw-yn]
+  new_item: pat:maen-nhw-yn
+
+- id: theyre-working-tomorrow
+  english: "They're working tomorrow"
+  welsh: "Maen nhw'n gweithio fory"
+  items: [lex:gweithio, lex:fory, pat:maen-nhw-yn]
+  new_item: pat:maen-nhw-yn
+
+- id: theyre-eating-now
+  english: "They're eating now"
+  welsh: "Maen nhw'n bwyta nawr"
+  items: [lex:nawr, lex:bwyta, pat:maen-nhw-yn]
+  new_item: pat:maen-nhw-yn
+
+- id: im-making-coffee
+  english: "I'm making coffee"
+  welsh: "Dw i'n gwneud coffi"
+  items: [pat:dw-in, lex:coffi, lex:gwneud]
+  new_item: lex:gwneud
+
+- id: i-want-to-make-tea
+  english: "I want to make tea"
+  welsh: "Dw i'n moyn gwneud te"
+  items: [pat:dw-in-moyn, lex:te, lex:gwneud]
+  new_item: lex:gwneud
+
+- id: im-making-food
+  english: "I'm making food"
+  welsh: "Dw i'n neud bwyd"
+  items: [pat:dw-in, lex:bwyd, lex:gwneud]
+  new_item: lex:gwneud
+
+- id: shes-making-tea
+  english: "She's making tea"
+  welsh: "Mae hi'n gwneud te"
+  items: [lex:te, pat:mae-hi-yn, lex:gwneud]
+  new_item: lex:gwneud
+
+- id: im-having-coffee
+  english: "I'm having coffee"
+  welsh: "Dw i'n cael coffi"
+  items: [pat:dw-in, lex:coffi, lex:cael]
+  new_item: lex:cael
+
+- id: i-want-to-have-tea
+  english: "I want to have tea"
+  welsh: "Dw i'n moyn cael te"
+  items: [pat:dw-in-moyn, lex:te, lex:cael]
+  new_item: lex:cael
+
+- id: hes-having-food
+  english: "He's having food"
+  welsh: "Mae e'n cael bwyd"
+  items: [lex:bwyd, pat:mae-e-yn, lex:cael]
+  new_item: lex:cael
+
+- id: were-having-bread
+  english: "We're having bread"
+  welsh: "Dyn ni'n cael bara"
+  items: [lex:bara, pat:dyn-ni-yn, lex:cael]
+  new_item: lex:cael
+
+- id: i-dont-know
+  english: "I don't know"
+  welsh: "Dw i ddim yn gwybod"
+  items: [pat:dw-i-ddim-yn, lex:gwybod]
+  new_item: lex:gwybod
+
+- id: do-you-know
+  english: "Do you know?"
+  welsh: "Wyt ti'n gwybod?"
+  items: [pat:wyt-ti-yn, lex:gwybod]
+  new_item: lex:gwybod
+
+- id: he-knows
+  english: "He knows"
+  welsh: "Mae e'n gwybod"
+  items: [pat:mae-e-yn, lex:gwybod]
+  new_item: lex:gwybod
+
+- id: i-dont-know-2
+  english: "I don't know"
+  welsh: "Dw i ddim yn gwbod"
+  items: [pat:dw-i-ddim-yn, lex:gwybod]
+  new_item: lex:gwybod
+
+- id: i-think
+  english: "I think"
+  welsh: "Dw i'n meddwl"
+  items: [pat:dw-in, lex:meddwl]
+  new_item: lex:meddwl
+
+- id: im-thinking-now
+  english: "I'm thinking now"
+  welsh: "Dw i'n meddwl nawr"
+  items: [pat:dw-in, lex:nawr, lex:meddwl]
+  new_item: lex:meddwl
+
+- id: do-you-think
+  english: "Do you think?"
+  welsh: "Wyt ti'n meddwl?"
+  items: [pat:wyt-ti-yn, lex:meddwl]
+  new_item: lex:meddwl
+
+- id: she-thinks
+  english: "She thinks"
+  welsh: "Mae hi'n meddwl"
+  items: [pat:mae-hi-yn, lex:meddwl]
+  new_item: lex:meddwl
+
+- id: im-buying-coffee
+  english: "I'm buying coffee"
+  welsh: "Dw i'n prynu coffi"
+  items: [pat:dw-in, lex:coffi, lex:prynu]
+  new_item: lex:prynu
+
+- id: i-want-to-buy-a-book
+  english: "I want to buy a book"
+  welsh: "Dw i'n moyn prynu llyfr"
+  items: [pat:dw-in-moyn, lex:llyfr, lex:prynu]
+  new_item: lex:prynu
+
+- id: hes-buying-bread
+  english: "He's buying bread"
+  welsh: "Mae e'n prynu bara"
+  items: [lex:bara, pat:mae-e-yn, lex:prynu]
+  new_item: lex:prynu
+
+- id: were-buying-food
+  english: "We're buying food"
+  welsh: "Dyn ni'n prynu bwyd"
+  items: [lex:bwyd, pat:dyn-ni-yn, lex:prynu]
+  new_item: lex:prynu
+
+- id: im-waiting
+  english: "I'm waiting"
+  welsh: "Dw i'n aros"
+  items: [pat:dw-in, lex:aros]
+  new_item: lex:aros
+
+- id: im-waiting-here
+  english: "I'm waiting here"
+  welsh: "Dw i'n aros fan hyn"
+  items: [pat:dw-in, lex:fan-hyn, lex:aros]
+  new_item: lex:aros
+
+- id: theyre-waiting-now
+  english: "They're waiting now"
+  welsh: "Maen nhw'n aros nawr"
+  items: [lex:nawr, pat:maen-nhw-yn, lex:aros]
+  new_item: lex:aros
+
+- id: i-want-to-stay-here
+  english: "I want to stay here"
+  welsh: "Dw i'n moyn aros fan hyn"
+  items: [pat:dw-in-moyn, lex:fan-hyn, lex:aros]
+  new_item: lex:aros
+
+- id: i-say-good-morning
+  english: "I say good morning"
+  welsh: "Dw i'n dweud bore da"
+  items: [pat:dw-in, lex:bore-da, lex:dweud]
+  new_item: lex:dweud
+
+- id: i-say-good-night
+  english: "I say good night"
+  welsh: "Dw i'n dweud nos da"
+  items: [pat:dw-in, lex:nos-da, lex:dweud]
+  new_item: lex:dweud
+
+- id: he-says-thank-you
+  english: "He says thank you"
+  welsh: "Mae e'n dweud diolch"
+  items: [pat:mae-e-yn, lex:diolch, lex:dweud]
+  new_item: lex:dweud
+
+- id: i-say-thank-you
+  english: "I say thank you"
+  welsh: "Dw i'n gweud diolch"
+  items: [pat:dw-in, lex:diolch, lex:dweud]
+  new_item: lex:dweud
+
+- id: i-live-here
+  english: "I live here"
+  welsh: "Dw i'n byw fan hyn"
+  items: [pat:dw-in, lex:fan-hyn, lex:byw]
+  new_item: lex:byw
+
+- id: he-lives-here
+  english: "He lives here"
+  welsh: "Mae e'n byw fan hyn"
+  items: [lex:fan-hyn, pat:mae-e-yn, lex:byw]
+  new_item: lex:byw
+
+- id: they-live-here
+  english: "They live here"
+  welsh: "Maen nhw'n byw fan hyn"
+  items: [lex:fan-hyn, pat:maen-nhw-yn, lex:byw]
+  new_item: lex:byw
+
+- id: do-you-live-here
+  english: "Do you live here?"
+  welsh: "Wyt ti'n byw fan hyn?"
+  items: [lex:fan-hyn, pat:wyt-ti-yn, lex:byw]
+  new_item: lex:byw
+
+- id: hello
+  english: "Hello"
+  welsh: "Shwmae"
+  items: [lex:shwmae]
+  new_item: lex:shwmae
+
+- id: hello-im-learning-welsh
+  english: "Hello, I'm learning Welsh"
+  welsh: "Shwmae, dw i'n dysgu Cymraeg"
+  items: [lex:cymraeg, lex:dysgu, pat:dw-in, lex:shwmae]
+  new_item: lex:shwmae
+
+- id: hello-do-you-speak-welsh
+  english: "Hello, do you speak Welsh?"
+  welsh: "Shwmae, wyt ti'n siarad Cymraeg?"
+  items: [lex:siarad, lex:cymraeg, pat:wyt-ti-yn, lex:shwmae]
+  new_item: lex:shwmae
+
+- id: bye
+  english: "Bye"
+  welsh: "Hwyl"
+  items: [lex:hwyl]
+  new_item: lex:hwyl
+
+- id: bye-im-going
+  english: "Bye, I'm going"
+  welsh: "Hwyl, dw i'n mynd"
+  items: [lex:mynd, pat:dw-in, lex:hwyl]
+  new_item: lex:hwyl
+
+- id: bye-thank-you
+  english: "Bye, thank you"
+  welsh: "Hwyl, diolch"
+  items: [lex:diolch, lex:hwyl]
+  new_item: lex:hwyl
+
+- id: i-want-coffee-and-tea
+  english: "I want coffee and tea"
+  welsh: "Dw i'n moyn coffi a the"
+  items: [lex:coffi, lex:te, pat:dw-in-moyn-noun, lex:a]
+  new_item: lex:a
+
+- id: i-speak-welsh-and-english
+  english: "I speak Welsh and English"
+  welsh: "Dw i'n siarad Cymraeg a Saesneg"
+  items: [lex:siarad, lex:cymraeg, lex:saesneg, pat:dw-in, lex:a]
+  new_item: lex:a
+
+- id: im-learning-and-im-working
+  english: "I'm learning and I'm working"
+  welsh: "Dw i'n dysgu a dw i'n gweithio"
+  items: [lex:dysgu, pat:dw-in, lex:gweithio, lex:a]
+  new_item: lex:a
+
+- id: im-drinking-coffee-and-tea
+  english: "I'm drinking coffee and tea"
+  welsh: "Dw i'n yfed coffi a the"
+  items: [pat:dw-in, lex:yfed, lex:coffi, lex:te, lex:a]
+  new_item: lex:a
+
+- id: im-learning-but-i-dont-understand
+  english: "I'm learning but I don't understand"
+  welsh: "Dw i'n dysgu ond dw i ddim yn deall"
+  items: [lex:dysgu, lex:deall, pat:dw-in, pat:dw-i-ddim-yn, lex:ond]
+  new_item: lex:ond
+
+- id: i-want-to-go-but-im-working
+  english: "I want to go but I'm working"
+  welsh: "Dw i'n moyn mynd ond dw i'n gweithio"
+  items: [pat:dw-in-moyn, lex:mynd, pat:dw-in, lex:gweithio, lex:ond]
+  new_item: lex:ond
+
+- id: i-understand-but-i-dont-speak
+  english: "I understand but I don't speak"
+  welsh: "Dw i'n deall ond dw i ddim yn siarad"
+  items: [lex:siarad, lex:deall, pat:dw-in, pat:dw-i-ddim-yn, lex:ond]
+  new_item: lex:ond
+
+- id: im-learning-welsh-because-i-want-to-speak
+  english: "I'm learning Welsh because I want to speak"
+  welsh: "Dw i'n dysgu Cymraeg achos dw i'n moyn siarad"
+  items: [lex:siarad, lex:cymraeg, pat:dw-in-moyn, lex:dysgu, pat:dw-in, lex:achos]
+  new_item: lex:achos
+
+- id: im-waiting-because-im-working
+  english: "I'm waiting because I'm working"
+  welsh: "Dw i'n aros achos dw i'n gweithio"
+  items: [pat:dw-in, lex:gweithio, lex:aros, lex:achos]
+  new_item: lex:achos
+
+- id: im-drinking-coffee-because-im-working
+  english: "I'm drinking coffee because I'm working"
+  welsh: "Dw i'n yfed coffi achos dw i'n gweithio"
+  items: [pat:dw-in, lex:yfed, lex:gweithio, lex:coffi, lex:achos]
+  new_item: lex:achos
+
+- id: i-drink-coffee-sometimes
+  english: "I drink coffee sometimes"
+  welsh: "Dw i'n yfed coffi weithiau"
+  items: [pat:dw-in, lex:yfed, lex:coffi, lex:weithiau]
+  new_item: lex:weithiau
+
+- id: i-work-here-sometimes
+  english: "I work here sometimes"
+  welsh: "Dw i'n gweithio fan hyn weithiau"
+  items: [pat:dw-in, lex:fan-hyn, lex:gweithio, lex:weithiau]
+  new_item: lex:weithiau
+
+- id: he-comes-sometimes
+  english: "He comes sometimes"
+  welsh: "Mae e'n dod weithiau"
+  items: [lex:dod, pat:mae-e-yn, lex:weithiau]
+  new_item: lex:weithiau
+
+- id: i-read-sometimes
+  english: "I read sometimes"
+  welsh: "Dw i'n darllen weithiau"
+  items: [pat:dw-in, lex:darllen, lex:weithiau]
+  new_item: lex:weithiau
+
+- id: i-see-a-friend
+  english: "I see a friend"
+  welsh: "Dw i'n gweld ffrind"
+  items: [pat:dw-in, lex:gweld, lex:ffrind]
+  new_item: lex:ffrind
+
+- id: i-want-to-see-a-friend
+  english: "I want to see a friend"
+  welsh: "Dw i'n moyn gweld ffrind"
+  items: [pat:dw-in-moyn, lex:gweld, lex:ffrind]
+  new_item: lex:ffrind
+
+- id: i-work-with-a-friend
+  english: "I work with a friend"
+  welsh: "Dw i'n gweithio gyda ffrind"
+  items: [pat:dw-in, lex:gweithio, lex:gyda, lex:ffrind]
+  new_item: lex:ffrind
+
+- id: i-see-friends
+  english: "I see friends"
+  welsh: "Dw i'n gweld ffrindiau"
+  items: [pat:dw-in, lex:gweld, lex:ffrind]
+  new_item: lex:ffrind
+
+- id: im-going-to-work-2
+  english: "I'm going to work"
+  welsh: "Dw i'n mynd i'r gwaith"
+  items: [lex:mynd, pat:dw-in, lex:y, lex:i, lex:gwaith]
+  new_item: lex:gwaith
+
+- id: im-coming-from-work
+  english: "I'm coming from work"
+  welsh: "Dw i'n dod o'r gwaith"
+  items: [lex:dod, pat:dw-in, lex:y, lex:o, lex:gwaith]
+  new_item: lex:gwaith
+
+- id: i-want-work
+  english: "I want work"
+  welsh: "Dw i'n moyn gwaith"
+  items: [pat:dw-in-moyn-noun, lex:gwaith]
+  new_item: lex:gwaith
+
+- id: hes-going-to-work
+  english: "He's going to work"
+  welsh: "Mae e'n mynd i'r gwaith"
+  items: [lex:mynd, pat:mae-e-yn, lex:y, lex:i, lex:gwaith]
+  new_item: lex:gwaith
+
+- id: i-want-time
+  english: "I want time"
+  welsh: "Dw i'n moyn amser"
+  items: [pat:dw-in-moyn-noun, lex:amser]
+  new_item: lex:amser
+
+- id: i-dont-have-time
+  english: "I don't have time"
+  welsh: "Dw i ddim yn cael amser"
+  items: [pat:dw-i-ddim-yn, lex:cael, lex:amser]
+  new_item: lex:amser
+
+- id: i-have-time
+  english: "I have time"
+  welsh: "Dw i'n cael amser"
+  items: [pat:dw-in, lex:cael, lex:amser]
+  new_item: lex:amser
+
+- id: im-buying-a-car
+  english: "I'm buying a car"
+  welsh: "Dw i'n prynu car"
+  items: [pat:dw-in, lex:prynu, lex:car]
+  new_item: lex:car
+
+- id: i-want-a-car
+  english: "I want a car"
+  welsh: "Dw i'n moyn car"
+  items: [pat:dw-in-moyn-noun, lex:car]
+  new_item: lex:car
+
+- id: hes-buying-a-car
+  english: "He's buying a car"
+  welsh: "Mae e'n prynu car"
+  items: [pat:mae-e-yn, lex:prynu, lex:car]
+  new_item: lex:car
+
+- id: i-like-cars
+  english: "I like cars"
+  welsh: "Dw i'n hoffi ceir"
+  items: [pat:dw-in-hoffi, lex:car]
+  new_item: lex:car
+
+- id: i-want-good-coffee
+  english: "I want good coffee"
+  welsh: "Dw i'n moyn coffi da"
+  items: [lex:coffi, pat:dw-in-moyn-noun, lex:da]
+  new_item: lex:da
+
+- id: im-drinking-good-tea
+  english: "I'm drinking good tea"
+  welsh: "Dw i'n yfed te da"
+  items: [pat:dw-in, lex:yfed, lex:te, lex:da]
+  new_item: lex:da
+
+- id: im-reading-a-good-book
+  english: "I'm reading a good book"
+  welsh: "Dw i'n darllen llyfr da"
+  items: [pat:dw-in, lex:darllen, lex:llyfr, lex:da]
+  new_item: lex:da
+
+- id: im-eating-good-bread
+  english: "I'm eating good bread"
+  welsh: "Dw i'n bwyta bara da"
+  items: [pat:dw-in, lex:bwyta, lex:bara, lex:da]
+  new_item: lex:da
+
+- id: im-buying-a-new-car
+  english: "I'm buying a new car"
+  welsh: "Dw i'n prynu car newydd"
+  items: [pat:dw-in, lex:prynu, lex:car, lex:newydd]
+  new_item: lex:newydd
+
+- id: im-reading-a-new-book
+  english: "I'm reading a new book"
+  welsh: "Dw i'n darllen llyfr newydd"
+  items: [pat:dw-in, lex:darllen, lex:llyfr, lex:newydd]
+  new_item: lex:newydd
+
+- id: i-see-a-new-house
+  english: "I see a new house"
+  welsh: "Dw i'n gweld tŷ newydd"
+  items: [pat:dw-in, lex:gweld, lex:ty, lex:newydd]
+  new_item: lex:newydd
+
+- id: i-see-a-new-friend
+  english: "I see a new friend"
+  welsh: "Dw i'n gweld ffrind newydd"
+  items: [pat:dw-in, lex:gweld, lex:ffrind, lex:newydd]
+  new_item: lex:newydd
+
+- id: i-see-a-happy-friend
+  english: "I see a happy friend"
+  welsh: "Dw i'n gweld ffrind hapus"
+  items: [pat:dw-in, lex:gweld, lex:ffrind, lex:hapus]
+  new_item: lex:hapus
+
+- id: he-sees-a-happy-friend
+  english: "He sees a happy friend"
+  welsh: "Mae e'n gweld ffrind hapus"
+  items: [lex:gweld, pat:mae-e-yn, lex:ffrind, lex:hapus]
+  new_item: lex:hapus
+
+- id: i-want-to-see-a-happy-friend
+  english: "I want to see a happy friend"
+  welsh: "Dw i'n moyn gweld ffrind hapus"
+  items: [pat:dw-in-moyn, lex:gweld, lex:ffrind, lex:hapus]
+  new_item: lex:hapus
+
+- id: i-see-a-tired-friend
+  english: "I see a tired friend"
+  welsh: "Dw i'n gweld ffrind blinedig"
+  items: [pat:dw-in, lex:gweld, lex:ffrind, lex:blinedig]
+  new_item: lex:blinedig
+
+- id: he-sees-a-tired-friend
+  english: "He sees a tired friend"
+  welsh: "Mae e'n gweld ffrind blinedig"
+  items: [lex:gweld, pat:mae-e-yn, lex:ffrind, lex:blinedig]
+  new_item: lex:blinedig
+
+- id: i-want-to-see-a-tired-friend
+  english: "I want to see a tired friend"
+  welsh: "Dw i'n moyn gweld ffrind blinedig"
+  items: [pat:dw-in-moyn, lex:gweld, lex:ffrind, lex:blinedig]
+  new_item: lex:blinedig
+
+- id: i-see-a-busy-friend
+  english: "I see a busy friend"
+  welsh: "Dw i'n gweld ffrind prysur"
+  items: [pat:dw-in, lex:gweld, lex:ffrind, lex:prysur]
+  new_item: lex:prysur
+
+- id: he-sees-a-busy-friend
+  english: "He sees a busy friend"
+  welsh: "Mae e'n gweld ffrind prysur"
+  items: [lex:gweld, pat:mae-e-yn, lex:ffrind, lex:prysur]
+  new_item: lex:prysur
+
+- id: i-work-with-a-busy-friend
+  english: "I work with a busy friend"
+  welsh: "Dw i'n gweithio gyda ffrind prysur"
+  items: [pat:dw-in, lex:gweithio, lex:gyda, lex:ffrind, lex:prysur]
+  new_item: lex:prysur
+
+- id: im-happy
+  english: "I'm happy"
+  welsh: "Dw i'n hapus"
+  items: [lex:hapus, pat:dw-in-adj]
+  new_item: pat:dw-in-adj
+
+- id: im-tired
+  english: "I'm tired"
+  welsh: "Dw i'n flinedig"
+  items: [lex:blinedig, pat:dw-in-adj]
+  new_item: pat:dw-in-adj
+
+- id: im-busy
+  english: "I'm busy"
+  welsh: "Dw i'n brysur"
+  items: [lex:prysur, pat:dw-in-adj]
+  new_item: pat:dw-in-adj
+
+- id: im-good
+  english: "I'm good"
+  welsh: "Dw i'n dda"
+  items: [lex:da, pat:dw-in-adj]
+  new_item: pat:dw-in-adj
+
+- id: im-happy-today
+  english: "I'm happy today"
+  welsh: "Dw i'n hapus heddi"
+  items: [lex:heddi, lex:hapus, pat:dw-in-adj]
+  new_item: pat:dw-in-adj
+
+- id: im-tired-now
+  english: "I'm tired now"
+  welsh: "Dw i'n flinedig nawr"
+  items: [lex:nawr, lex:blinedig, pat:dw-in-adj]
+  new_item: pat:dw-in-adj
+
+- id: hes-happy
+  english: "He's happy"
+  welsh: "Mae e'n hapus"
+  items: [lex:hapus, pat:mae-e-yn-adj]
+  new_item: pat:mae-e-yn-adj
+
+- id: hes-tired
+  english: "He's tired"
+  welsh: "Mae e'n flinedig"
+  items: [lex:blinedig, pat:mae-e-yn-adj]
+  new_item: pat:mae-e-yn-adj
+
+- id: hes-busy-today
+  english: "He's busy today"
+  welsh: "Mae e'n brysur heddi"
+  items: [lex:heddi, lex:prysur, pat:mae-e-yn-adj]
+  new_item: pat:mae-e-yn-adj
+
+- id: hes-new
+  english: "He's new"
+  welsh: "Mae e'n newydd"
+  items: [lex:newydd, pat:mae-e-yn-adj]
+  new_item: pat:mae-e-yn-adj
+
+- id: he-doesnt-speak-welsh
+  english: "He doesn't speak Welsh"
+  welsh: "Dyw e ddim yn siarad Cymraeg"
+  items: [lex:siarad, lex:cymraeg, pat:dyw-e-ddim-yn]
+  new_item: pat:dyw-e-ddim-yn
+
+- id: hes-not-learning
+  english: "He's not learning"
+  welsh: "Dyw e ddim yn dysgu"
+  items: [lex:dysgu, pat:dyw-e-ddim-yn]
+  new_item: pat:dyw-e-ddim-yn
+
+- id: hes-not-working-tomorrow
+  english: "He's not working tomorrow"
+  welsh: "Dyw e ddim yn gweithio fory"
+  items: [lex:gweithio, lex:fory, pat:dyw-e-ddim-yn]
+  new_item: pat:dyw-e-ddim-yn
+
+- id: he-doesnt-understand
+  english: "He doesn't understand"
+  welsh: "Dyw e ddim yn deall"
+  items: [lex:deall, pat:dyw-e-ddim-yn]
+  new_item: pat:dyw-e-ddim-yn
+
+- id: what-are-you-learning
+  english: "What are you learning?"
+  welsh: "Beth wyt ti'n dysgu?"
+  items: [lex:dysgu, pat:wyt-ti-yn, lex:beth]
+  new_item: lex:beth
+
+- id: what-are-you-eating
+  english: "What are you eating?"
+  welsh: "Beth wyt ti'n bwyta?"
+  items: [lex:bwyta, pat:wyt-ti-yn, lex:beth]
+  new_item: lex:beth
+
+- id: what-are-you-drinking
+  english: "What are you drinking?"
+  welsh: "Beth wyt ti'n yfed?"
+  items: [lex:yfed, pat:wyt-ti-yn, lex:beth]
+  new_item: lex:beth
+
+- id: what-are-you-doing
+  english: "What are you doing?"
+  welsh: "Beth wyt ti'n gwneud?"
+  items: [pat:wyt-ti-yn, lex:gwneud, lex:beth]
+  new_item: lex:beth
+
+- id: where-do-you-work
+  english: "Where do you work?"
+  welsh: "Ble wyt ti'n gweithio?"
+  items: [lex:gweithio, pat:wyt-ti-yn, lex:ble]
+  new_item: lex:ble
+
+- id: where-do-you-live
+  english: "Where do you live?"
+  welsh: "Ble wyt ti'n byw?"
+  items: [pat:wyt-ti-yn, lex:byw, lex:ble]
+  new_item: lex:ble
+
+- id: where-are-you-learning
+  english: "Where are you learning?"
+  welsh: "Ble wyt ti'n dysgu?"
+  items: [lex:dysgu, pat:wyt-ti-yn, lex:ble]
+  new_item: lex:ble
+
+- id: when-are-you-working
+  english: "When are you working?"
+  welsh: "Pryd wyt ti'n gweithio?"
+  items: [lex:gweithio, pat:wyt-ti-yn, lex:pryd]
+  new_item: lex:pryd
+
+- id: when-are-you-coming
+  english: "When are you coming?"
+  welsh: "Pryd wyt ti'n dod?"
+  items: [lex:dod, pat:wyt-ti-yn, lex:pryd]
+  new_item: lex:pryd
+
+- id: when-are-you-going
+  english: "When are you going?"
+  welsh: "Pryd dych chi'n mynd?"
+  items: [lex:mynd, pat:dych-chi-yn, lex:pryd]
+  new_item: lex:pryd
+
+- id: why-are-you-learning-welsh
+  english: "Why are you learning Welsh?"
+  welsh: "Pam wyt ti'n dysgu Cymraeg?"
+  items: [lex:cymraeg, lex:dysgu, pat:wyt-ti-yn, lex:pam]
+  new_item: lex:pam
+
+- id: why-do-you-work-here
+  english: "Why do you work here?"
+  welsh: "Pam dych chi'n gweithio fan hyn?"
+  items: [lex:fan-hyn, lex:gweithio, pat:dych-chi-yn, lex:pam]
+  new_item: lex:pam
+
+- id: why-are-you-waiting
+  english: "Why are you waiting?"
+  welsh: "Pam wyt ti'n aros?"
+  items: [pat:wyt-ti-yn, lex:aros, lex:pam]
+  new_item: lex:pam
