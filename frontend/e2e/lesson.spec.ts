@@ -57,7 +57,7 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   expect(outcome.request().postDataJSON()).toMatchObject({ outcome: "missed_it" });
   expect(await outcome.json()).toMatchObject({ recorded: true });
   expect(clips.slice(0, 3).map((clip) => clip.track)).toEqual(
-    expect.arrayContaining(["english", "welsh", "welsh-slow"]),
+    expect.arrayContaining(["english", "welsh/standard", "welsh/slow"]),
   );
   expect(clips.every((clip) => clip.status === 200)).toBe(true);
   expect(await countClipsEnded(page)).toBeGreaterThanOrEqual(3);

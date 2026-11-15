@@ -2,7 +2,7 @@
 
 The speech service. It speaks the course's English and Welsh with [Piper](https://github.com/OHF-Voice/piper1-gpl) (GPL-3.0, which is why it runs as its own service and the API only talks to it over HTTP). Nothing else in the repository imports it, and a boundary test checks that.
 
-`POST /synthesise` takes `{text, track}` and returns a WAV file. A track is `english`, `welsh` (a woman) or `welsh-slow` (a man). `voices.py` says how each is spoken, and `pace.py` how a Welsh phrase is stretched so every phrase has the same pace.
+`POST /synthesise` takes `{text, track}` and returns a WAV file. A track is `english`, `welsh-standard` (a woman) or `welsh-slow` (a man). `voices.py` says how each is spoken, and `pace.py` how a Welsh phrase is stretched so every phrase has the same pace.
 
 The voice files are downloaded when the image is built (`Dockerfile`), pinned to a revision and a checksum.
 

@@ -21,7 +21,9 @@ class TestSpeakExercise:
 
         assert speech_client.calls == [("I can go", AudioTrack.ENGLISH)]
 
-    @pytest.mark.parametrize("track", (AudioTrack.WELSH, AudioTrack.WELSH_SLOW))
+    @pytest.mark.parametrize(
+        "track", (AudioTrack.WELSH_STANDARD, AudioTrack.WELSH_SLOW)
+    )
     def test_speaks_the_courses_own_welsh(
         self, release: CourseRelease, speech_client: FakeSpeechClient, track: AudioTrack
     ) -> None:
@@ -32,9 +34,11 @@ class TestSpeakExercise:
     def test_returns_the_audio(
         self, release: CourseRelease, speech_client: FakeSpeechClient
     ) -> None:
-        audio = speak_exercise(release, speech_client, "i-can-go", AudioTrack.WELSH)
+        audio = speak_exercise(
+            release, speech_client, "i-can-go", AudioTrack.WELSH_STANDARD
+        )
 
-        assert audio == b"RIFFwelsh:Galla i fynd"
+        assert audio == b"RIFFwelsh-standard:Galla i fynd"
 
     def test_an_unknown_exercise_is_not_spoken(
         self, release: CourseRelease, speech_client: FakeSpeechClient

@@ -9,6 +9,5 @@ class SaveUserSettings:
 
     user_id: uuid.UUID
     think_time_multiplier: float
-    slow_welsh_enabled: bool
-    learning_session_minutes: int | None
+    welsh_playback: str
     updated_at: datetime

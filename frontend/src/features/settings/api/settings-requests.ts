@@ -14,10 +14,7 @@ export async function saveSettings(client: ApiClient, changes: Partial<UserSetti
   const saved = unwrap(
     await client.PATCH("/me/settings", {
       body: {
-        ...(changes.learningSessionMinutes === undefined
-          ? {}
-          : { learning_session_minutes: changes.learningSessionMinutes }),
-        ...(changes.slowWelshEnabled === undefined ? {} : { slow_welsh_enabled: changes.slowWelshEnabled }),
+        ...(changes.welshPlayback === undefined ? {} : { welsh_playback: changes.welshPlayback }),
         ...(changes.thinkTimeMultiplier === undefined ? {} : { think_time_multiplier: changes.thinkTimeMultiplier }),
       },
     }),
@@ -28,8 +25,7 @@ export async function saveSettings(client: ApiClient, changes: Partial<UserSetti
 
 function toUserSettings(response: components["schemas"]["UserSettingsResponse"]): UserSettings {
   return {
-    learningSessionMinutes: response.learning_session_minutes,
-    slowWelshEnabled: response.slow_welsh_enabled,
     thinkTimeMultiplier: response.think_time_multiplier,
+    welshPlayback: response.welsh_playback,
   };
 }

@@ -1,4 +1,4 @@
-from api.mappings.audio import to_audio_links, to_speech_text
+from api.mappings.audio import to_audio_links, to_speech_text, to_welsh_track
 from api.mappings.auth import to_passkey_response, to_user_response
 from api.mappings.course import to_course_response
 from api.mappings.exercise import (
@@ -44,4 +44,5 @@ __all__ = [
     "to_speech_text",
     "to_user_response",
     "to_user_settings_response",
+    "to_welsh_track",
 ]

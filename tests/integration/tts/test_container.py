@@ -6,7 +6,7 @@ import pytest
 
 TRACK_TEXT = {
     "english": "I can go",
-    "welsh": "Galla i fynd",
+    "welsh-standard": "Galla i fynd",
     "welsh-slow": "Galla i fynd",
 }
 
@@ -35,9 +35,9 @@ class TestSpeechContainer:
         assert audio.startswith(b"RIFF")
         assert seconds(audio) > 0.3
 
-    def test_the_slow_welsh_track_takes_longer_than_the_welsh_track(
+    def test_the_slow_welsh_track_takes_longer_than_the_standard_welsh_track(
         self, tts_url: str
     ) -> None:
         assert seconds(synthesise(tts_url, "welsh-slow")) > seconds(
-            synthesise(tts_url, "welsh")
+            synthesise(tts_url, "welsh-standard")
         )

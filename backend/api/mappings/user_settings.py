@@ -1,7 +1,11 @@
 import uuid
 from datetime import datetime
 
-from api.schemas import DEFAULT_USER_SETTINGS, UserSettingsPatch, UserSettingsResponse
+from api.schemas import (
+    DEFAULT_USER_SETTINGS,
+    UserSettingsPatch,
+    UserSettingsResponse,
+)
 from persistence.database import SaveUserSettings, UserSettingsRecord
 
 
@@ -15,8 +19,7 @@ def to_user_settings_response(
     return UserSettingsResponse.model_validate(
         {
             "think_time_multiplier": record.think_time_multiplier,
-            "slow_welsh_enabled": record.slow_welsh_enabled,
-            "learning_session_minutes": record.learning_session_minutes,
+            "welsh_playback": record.welsh_playback,
         }
     )
 
@@ -34,7 +37,6 @@ def to_save_user_settings(
     return SaveUserSettings(
         user_id=user_id,
         think_time_multiplier=settings.think_time_multiplier,
-        slow_welsh_enabled=settings.slow_welsh_enabled,
-        learning_session_minutes=settings.learning_session_minutes,
+        welsh_playback=settings.welsh_playback.value,
         updated_at=now,
     )

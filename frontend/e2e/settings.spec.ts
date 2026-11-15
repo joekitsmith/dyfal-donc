@@ -10,7 +10,7 @@ test.beforeEach(async ({ page, request }) => {
   await instrumentAudio(page);
 });
 
-test("with the slow Welsh turned off the lesson skips it and never fetches it", async ({ page }) => {
+test("with slow Welsh only the lesson never fetches the standard Welsh", async ({ page }) => {
   const tracks: (string | undefined)[] = [];
 
   page.on("request", (request) => {
@@ -19,7 +19,8 @@ test("with the slow Welsh turned off the lesson skips it and never fetches it", 
 
   await startAsGuest(page);
   await page.getByRole("link", { name: "Settings" }).click();
-  await page.getByLabel("Play the slow Welsh after the Welsh").uncheck();
+  await page.getByLabel("Welsh audio").click();
+  await page.getByRole("option", { name: "Slow only" }).click();
   await page.getByRole("button", { name: "Save" }).click();
   await expect(page.getByText("Saved", { exact: true })).toBeVisible();
 
@@ -29,19 +30,19 @@ test("with the slow Welsh turned off the lesson skips it and never fetches it", 
   await page.keyboard.press("m");
   await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });
 
-  expect(tracks).toContain("welsh");
-  expect(tracks).not.toContain("welsh-slow");
+  expect(tracks).toContain("welsh/slow");
+  expect(tracks).not.toContain("welsh/standard");
 });
 
 test("the settings are still there after a reload", async ({ page }) => {
   await startAsGuest(page);
   await page.goto("/settings");
-  await page.getByLabel("Learning session length").click();
-  await page.getByRole("option", { name: "No limit" }).click();
+  await page.getByLabel("Welsh audio").click();
+  await page.getByRole("option", { name: "Standard only" }).click();
   await page.getByRole("button", { name: "Save" }).click();
   await expect(page.getByText("Saved", { exact: true })).toBeVisible();
 
   await page.reload();
 
-  await expect(page.getByLabel("Learning session length")).toHaveText("No limit");
+  await expect(page.getByLabel("Welsh audio")).toHaveText("Standard only");
 });

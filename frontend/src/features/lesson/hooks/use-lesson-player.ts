@@ -13,6 +13,7 @@ import { useSubmitOutcome } from "../api/use-submit-outcome";
 import {
   ALREADY_ANSWERED_STATUS,
   BETWEEN_WELSH_MILLISECONDS,
+  DEFAULT_WELSH_PLAYBACK,
   OUTCOME_WINDOW_MILLISECONDS,
   SELECTION_EXPIRED_STATUS,
 } from "../constants";
@@ -33,8 +34,8 @@ import { useLessonKeyboard } from "./use-lesson-keyboard";
 
 const TRACK_FOR_PHASE: Readonly<Partial<Record<LessonState["phase"], ClipTrack>>> = {
   playing_english: "english",
-  playing_welsh: "welsh",
   playing_welsh_slow: "welsh_slow",
+  playing_welsh_standard: "welsh_standard",
 };
 
 const WAIT_FOR_PHASE: Readonly<
@@ -79,11 +80,11 @@ export function useLessonPlayer({
   const attempt = isExerciseState(state) ? state.attempt : 0;
   const replayCount = isExerciseState(state) ? state.replayCount : 0;
   const paused = isExerciseState(state) && state.paused;
-  const slowWelshEnabled = !isExerciseState(state) || state.slowWelshEnabled;
+  const welshPlayback = isExerciseState(state) ? state.welshPlayback : DEFAULT_WELSH_PLAYBACK;
   const loadingRequest = state.phase === "loading" ? state : null;
   const submission = state.phase === "submitting" ? state : null;
 
-  const urlFor = useExerciseClips(state.phase === "submitting" ? null : exercise, attempt, slowWelshEnabled, dispatch);
+  const urlFor = useExerciseClips(state.phase === "submitting" ? null : exercise, attempt, welshPlayback, dispatch);
 
   const refreshProgress = useEffectEvent(() => {
     void queryClient.invalidateQueries({ queryKey: progressQueryKey(learnerId) });
@@ -94,7 +95,7 @@ export function useLessonPlayer({
     replaceSession(queryClient, null);
   });
 
-  const slowWelshSetting = useEffectEvent(() => settings.slowWelshEnabled);
+  const welshPlaybackSetting = useEffectEvent(() => settings.welshPlayback);
 
   const thinkMilliseconds = useEffectEvent(() =>
     exercise === null ? 0 : thinkSeconds(exercise.welsh, settings.thinkTimeMultiplier) * MILLISECONDS_PER_SECOND,
@@ -118,7 +119,7 @@ export function useLessonPlayer({
       onSuccess: (next) => {
         dispatch(
           next.kind === "exercise"
-            ? { exercise: next.exercise, slowWelshEnabled: slowWelshSetting(), type: "next_loaded" }
+            ? { exercise: next.exercise, type: "next_loaded", welshPlayback: welshPlaybackSetting() }
             : { type: "nothing_eligible" },
         );
       },
@@ -270,7 +271,7 @@ function logLatency(
     marks.loadingStartedAt = 0;
   }
 
-  if (phase === "playing_welsh" && replayCount === 0 && marks.thinkEndedAt > 0) {
+  if (phase === "playing_welsh_standard" && replayCount === 0 && marks.thinkEndedAt > 0) {
     console.info(`Welsh wait after think time: ${(now - marks.thinkEndedAt).toFixed(0)} ms`);
     marks.thinkEndedAt = 0;
   }

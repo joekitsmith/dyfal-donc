@@ -7,11 +7,7 @@ from tests.integration.api.helpers import start_guest
 
 Browsers = Callable[[], TestClient]
 
-DEFAULTS = {
-    "think_time_multiplier": 1.0,
-    "slow_welsh_enabled": True,
-    "learning_session_minutes": 20,
-}
+DEFAULTS = {"think_time_multiplier": 1.0, "welsh_playback": "both"}
 
 
 class TestDefaults:
@@ -39,33 +35,16 @@ class TestChanging:
 
     def test_later_patches_keep_earlier_changes(self, client: TestClient) -> None:
         start_guest(client)
-        client.patch("/me/settings", json={"slow_welsh_enabled": False})
+        client.patch("/me/settings", json={"welsh_playback": "slow"})
 
         response = client.patch("/me/settings", json={"think_time_multiplier": 2})
 
-        assert response.json() == {
-            **DEFAULTS,
-            "slow_welsh_enabled": False,
-            "think_time_multiplier": 2,
-        }
+        assert response.json() == {"welsh_playback": "slow", "think_time_multiplier": 2}
 
     def test_an_empty_patch_changes_nothing(self, client: TestClient) -> None:
         start_guest(client)
 
         assert client.patch("/me/settings", json={}).json() == DEFAULTS
-
-    def test_null_minutes_means_no_limit_and_leaving_them_out_means_unchanged(
-        self, client: TestClient
-    ) -> None:
-        start_guest(client)
-
-        unlimited = client.patch(
-            "/me/settings", json={"learning_session_minutes": None}
-        )
-        untouched = client.patch("/me/settings", json={"slow_welsh_enabled": False})
-
-        assert unlimited.json()["learning_session_minutes"] is None
-        assert untouched.json()["learning_session_minutes"] is None
 
     def test_settings_belong_to_one_user(self, make_client: Browsers) -> None:
         first, second = make_client(), make_client()
@@ -84,9 +63,9 @@ class TestValidation:
             {"think_time_multiplier": 0.4},
             {"think_time_multiplier": 3.1},
             {"think_time_multiplier": None},
-            {"slow_welsh_enabled": None},
-            {"learning_session_minutes": 15},
-            {"learning_session_minutes": 0},
+            {"welsh_playback": "never"},
+            {"welsh_playback": 2},
+            {"welsh_playback": None},
         ],
     )
     def test_a_bad_value_is_refused_and_nothing_is_saved(
@@ -104,8 +83,9 @@ class TestValidation:
 
         low = client.patch("/me/settings", json={"think_time_multiplier": 0.5})
         high = client.patch("/me/settings", json={"think_time_multiplier": 3})
+        fast = client.patch("/me/settings", json={"welsh_playback": "standard"})
 
-        assert (low.status_code, high.status_code) == (200, 200)
+        assert (low.status_code, high.status_code, fast.status_code) == (200, 200, 200)
 
 
 class TestWhoMayChangeThem:
@@ -118,7 +98,7 @@ class TestWhoMayChangeThem:
 
         response = client.patch(
             "/me/settings",
-            json={"slow_welsh_enabled": False},
+            json={"welsh_playback": "standard"},
             headers={"Origin": "https://evil.example"},
         )
 

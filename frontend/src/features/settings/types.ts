@@ -1,10 +1,8 @@
-import type { LEARNING_SESSION_MINUTES } from "./constants";
-
-export type LearningSessionMinutes = (typeof LEARNING_SESSION_MINUTES)[number];
+import type { WELSH_PLAYBACK_OPTIONS } from "./constants";
 
 export type UserSettings = {
-  /** Null is no limit. */
-  readonly learningSessionMinutes: LearningSessionMinutes | null;
-  readonly slowWelshEnabled: boolean;
   readonly thinkTimeMultiplier: number;
+  readonly welshPlayback: WelshPlayback;
 };
+
+type WelshPlayback = (typeof WELSH_PLAYBACK_OPTIONS)[number]["value"];

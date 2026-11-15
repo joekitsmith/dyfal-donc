@@ -1,10 +1,8 @@
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
-import Switch from "@mui/material/Switch";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { Controller } from "react-hook-form";
@@ -12,11 +10,10 @@ import { Controller } from "react-hook-form";
 import type { UserSettings } from "../types";
 
 import {
-  LEARNING_SESSION_MINUTES,
-  NO_LIMIT,
   THINK_MULTIPLIER_MAXIMUM,
   THINK_MULTIPLIER_MINIMUM,
   THINK_MULTIPLIER_STEP,
+  WELSH_PLAYBACK_OPTIONS,
 } from "../constants";
 import { useSettingsForm } from "../hooks/use-settings-form";
 
@@ -55,32 +52,14 @@ export function SettingsForm({ settings }: SettingsFormProps) {
       />
       <Controller
         control={control}
-        name="slowWelshEnabled"
+        name="welshPlayback"
         render={({ field }) => (
-          <FormControlLabel
-            control={
-              <Switch
-                checked={field.value}
-                onChange={(event) => {
-                  field.onChange(event.target.checked);
-                }}
-              />
-            }
-            label="Play the slow Welsh after the Welsh"
-          />
-        )}
-      />
-      <Controller
-        control={control}
-        name="learningSessionMinutes"
-        render={({ field }) => (
-          <TextField label="Learning session length" select {...field}>
-            {LEARNING_SESSION_MINUTES.map((minutes) => (
-              <MenuItem key={minutes} value={String(minutes)}>
-                {minutes} minutes
+          <TextField label="Welsh audio" select {...field}>
+            {WELSH_PLAYBACK_OPTIONS.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
               </MenuItem>
             ))}
-            <MenuItem value={NO_LIMIT}>No limit</MenuItem>
           </TextField>
         )}
       />

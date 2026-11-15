@@ -1,5 +1,6 @@
 import uuid
 from datetime import UTC, datetime
+
 import pytest
 from pydantic import ValidationError
 
@@ -8,8 +9,9 @@ from api.mappings import (
     to_save_user_settings,
     to_user_settings_response,
 )
-from api.schemas import DEFAULT_USER_SETTINGS, UserSettingsPatch
+from api.schemas import DEFAULT_USER_SETTINGS, UserSettingsPatch, WelshPlayback
 from persistence.database import UserSettingsRecord
+from persistence.database.models import WELSH_PLAYBACKS
 
 MOMENT = datetime(2026, 1, 1, tzinfo=UTC)
 
@@ -22,8 +24,7 @@ class TestToUserSettingsResponse:
         record = UserSettingsRecord(
             user_id=uuid.uuid4(),
             think_time_multiplier=2.0,
-            slow_welsh_enabled=False,
-            learning_session_minutes=None,
+            welsh_playback="slow",
             updated_at=MOMENT,
         )
 
@@ -31,33 +32,26 @@ class TestToUserSettingsResponse:
 
         assert response.model_dump() == {
             "think_time_multiplier": 2.0,
-            "slow_welsh_enabled": False,
-            "learning_session_minutes": None,
+            "welsh_playback": WelshPlayback.SLOW,
         }
 
 
 class TestApplyUserSettingsPatch:
     def test_only_the_fields_that_were_sent_change(self) -> None:
-        current = DEFAULT_USER_SETTINGS.model_copy(update={"slow_welsh_enabled": False})
+        current = DEFAULT_USER_SETTINGS.model_copy(
+            update={"welsh_playback": WelshPlayback.SLOW}
+        )
 
         changed = apply_user_settings_patch(
             current, UserSettingsPatch.model_validate({"think_time_multiplier": 2})
         )
 
         assert changed.think_time_multiplier == 2
-        assert changed.slow_welsh_enabled is False
+        assert changed.welsh_playback == WelshPlayback.SLOW
 
-    def test_a_sent_null_for_minutes_is_a_change(self) -> None:
-        changed = apply_user_settings_patch(
-            DEFAULT_USER_SETTINGS,
-            UserSettingsPatch.model_validate({"learning_session_minutes": None}),
-        )
-
-        assert changed.learning_session_minutes is None
-
-    def test_a_null_for_a_setting_that_cannot_be_null_is_refused(self) -> None:
+    def test_a_null_is_refused(self) -> None:
         with pytest.raises(ValidationError):
-            UserSettingsPatch.model_validate({"slow_welsh_enabled": None})
+            UserSettingsPatch.model_validate({"welsh_playback": None})
 
 
 class TestToSaveUserSettings:
@@ -67,4 +61,8 @@ class TestToSaveUserSettings:
         command = to_save_user_settings(user_id, DEFAULT_USER_SETTINGS, MOMENT)
 
         assert (command.user_id, command.updated_at) == (user_id, MOMENT)
-        assert command.learning_session_minutes == 20
+        assert command.welsh_playback == DEFAULT_USER_SETTINGS.welsh_playback
+
+
+def test_the_api_and_the_database_agree_on_the_playbacks() -> None:
+    assert {playback.value for playback in WelshPlayback} == set(WELSH_PLAYBACKS)

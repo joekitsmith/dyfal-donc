@@ -26,8 +26,7 @@ class UserSettingsRepository:
             self._session.add(row)
 
         row.think_time_multiplier = command.think_time_multiplier
-        row.slow_welsh_enabled = command.slow_welsh_enabled
-        row.learning_session_minutes = command.learning_session_minutes
+        row.welsh_playback = command.welsh_playback
         row.updated_at = command.updated_at
         self._session.flush()
         return to_user_settings_record(row)

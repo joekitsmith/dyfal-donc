@@ -38,8 +38,11 @@ class TestAudioOfTheLearnLoop:
         links = body["audio"]
         assert isinstance(links, dict)
 
-        for track in ("english", "welsh", "welsh_slow"):
-            response = client_with_speech.get(str(links[track]))
+        welsh = links["welsh"]
+        assert isinstance(welsh, dict)
+
+        for link in (links["english"], welsh["standard"], welsh["slow"]):
+            response = client_with_speech.get(str(link))
 
             assert response.status_code == 200
             assert response.headers["content-type"] == "audio/wav"

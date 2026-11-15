@@ -69,7 +69,7 @@ class TestToExerciseResponse:
 
         assert response.selection_id == issued.id
         assert (response.english, response.welsh) == ("To speak", "Siarad")
-        assert response.audio.welsh == "/exercises/ex%3A1/audio/welsh"
+        assert response.audio.welsh.standard == "/exercises/ex%3A1/audio/welsh/standard"
         assert response.item_ids == ("lex:a", "lex:b")
         assert response.introduces == "lex:b"
         assert response.purpose is ExercisePurpose.INTRODUCTION

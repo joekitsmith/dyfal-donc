@@ -1,4 +1,7 @@
-export const CLIP_TRACKS = ["english", "welsh", "welsh_slow"] as const;
+/** What clip fetching assumes when no exercise is showing. */
+export const DEFAULT_WELSH_PLAYBACK = "both";
+
+export const CLIP_TRACKS = ["english", "welsh_standard", "welsh_slow"] as const;
 
 export const THINK_BASE_SECONDS = 2.16;
 export const THINK_SECONDS_PER_WORD = 0.72;

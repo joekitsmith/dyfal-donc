@@ -137,15 +137,32 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/exercises/{exercise_id}/audio/{track}": {
+    "/exercises/{exercise_id}/audio/english": {
         parameters: {
             query?: never;
             header?: never;
             path?: never;
             cookie?: never;
         };
-        /** Get Audio */
-        get: operations["get_audio_exercises__exercise_id__audio__track__get"];
+        /** Get English Audio */
+        get: operations["get_english_audio_exercises__exercise_id__audio_english_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/exercises/{exercise_id}/audio/welsh/{pace}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Welsh Audio */
+        get: operations["get_welsh_audio_exercises__exercise_id__audio_welsh__pace__get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -327,17 +344,8 @@ export interface components {
         AudioLinks: {
             /** English */
             english: string;
-            /** Welsh */
-            welsh: string;
-            /** Welsh Slow */
-            welsh_slow: string;
+            welsh: components["schemas"]["WelshAudioLinks"];
         };
-        /**
-         * AudioTrack
-         * @description What can be heard for an exercise: the English prompt, then the Welsh twice.
-         * @enum {string}
-         */
-        AudioTrack: "english" | "welsh" | "welsh-slow";
         /**
          * AuthenticationVerifyRequest
          * @description The browser's signed answer, as its WebAuthn API produced it.
@@ -396,8 +404,6 @@ export interface components {
             /** Status */
             status: string;
         };
-        /** @enum {integer} */
-        LearningSessionMinutes: 10 | 20 | 30;
         NextExerciseResponse: components["schemas"]["ExerciseResponse"] | components["schemas"]["NothingEligibleResponse"];
         /**
          * NothingEligibleResponse
@@ -533,33 +539,27 @@ export interface components {
         /**
          * UserSettingsPatch
          * @description Settings to change. A field that is left out stays as it is.
-         *
-         *     ``learning_session_minutes`` of null is a change, to no limit.
          */
         UserSettingsPatch: {
-            /** @default 20 */
-            learning_session_minutes?: components["schemas"]["LearningSessionMinutes"] | null;
-            /**
-             * Slow Welsh Enabled
-             * @default true
-             */
-            slow_welsh_enabled?: boolean;
             /**
              * Think Time Multiplier
              * @default 1
              */
             think_time_multiplier?: number;
+            /** @default both */
+            welsh_playback?: components["schemas"]["WelshPlayback"];
         };
         /**
          * UserSettingsResponse
          * @description The settings in force. A user has ``DEFAULT_USER_SETTINGS`` until they save some.
+         *
+         *     ``welsh_playback`` is which Welsh recordings play: the woman's at a standard pace,
+         *     the man's slowly, or hers and then his.
          */
         UserSettingsResponse: {
-            learning_session_minutes: components["schemas"]["LearningSessionMinutes"] | null;
-            /** Slow Welsh Enabled */
-            slow_welsh_enabled: boolean;
             /** Think Time Multiplier */
             think_time_multiplier: number;
+            welsh_playback: components["schemas"]["WelshPlayback"];
         };
         /** ValidationError */
         ValidationError: {
@@ -574,6 +574,24 @@ export interface components {
             /** Error Type */
             type: string;
         };
+        /** WelshAudioLinks */
+        WelshAudioLinks: {
+            /** Slow */
+            slow: string;
+            /** Standard */
+            standard: string;
+        };
+        /**
+         * WelshPace
+         * @description How fast the Welsh is spoken: by a woman at a standard pace, or by a man slowly.
+         * @enum {string}
+         */
+        WelshPace: "standard" | "slow";
+        /**
+         * WelshPlayback
+         * @enum {string}
+         */
+        WelshPlayback: "standard" | "slow" | "both";
     };
     responses: never;
     parameters: never;
@@ -780,13 +798,44 @@ export interface operations {
             };
         };
     };
-    get_audio_exercises__exercise_id__audio__track__get: {
+    get_english_audio_exercises__exercise_id__audio_english_get: {
         parameters: {
             query?: never;
             header?: never;
             path: {
                 exercise_id: string;
-                track: components["schemas"]["AudioTrack"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "audio/wav": unknown;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_welsh_audio_exercises__exercise_id__audio_welsh__pace__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                exercise_id: string;
+                pace: components["schemas"]["WelshPace"];
             };
             cookie?: never;
         };

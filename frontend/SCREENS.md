@@ -35,25 +35,25 @@ The learning loop for the signed-in learner. Signed-out visitors are sent to the
 
 Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Replay** (R), skip the outcome window (N), open **Account** or **Settings**. Guests also get **Add a passkey** and **Not now** on the save prompt.
 
-| State                                              | Shown                                                                                                         |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| Checking who is signed in, or loading the settings | Loading                                                                                                       |
-| Idle                                               | Start                                                                                                         |
-| Loading the next exercise                          | The English line empty, Start gone                                                                            |
-| Preparing the clips                                | The same, while the audio is fetched                                                                          |
-| Playing the English                                | The English text                                                                                              |
-| Thinking                                           | A bar fills over the think time, with Missed it available                                                     |
-| Waiting for the Welsh clip                         | The bar is full, and the Welsh is still coming                                                                |
-| Playing the Welsh                                  | The Welsh text appears when the pause between the two Welsh clips ends and stays for the rest of the exercise |
-| Playing the slow Welsh                             | The slow clip plays (skipped when the setting is off: the Welsh text then shows as soon as the Welsh ends)    |
-| Awaiting the outcome                               | A short window to mark the exercise missed                                                                    |
-| Submitting                                         | The outcome is being sent                                                                                     |
-| Paused                                             | Any playing or waiting state, held                                                                            |
-| Nothing to give                                    | A message that there is a gap in the course                                                                   |
-| Error                                              | A message that says why when it is known (speech down, progress missing), and Retry when retrying can help    |
-| Signed out partway                                 | The learner is sent to the welcome screen                                                                     |
-| Guest with 5 or more items introduced              | The save prompt above the exercise, until dismissed or saved                                                  |
-| Just saved                                         | A short confirmation that the passkey works from any device                                                   |
+| State                                              | Shown                                                                                                                                            |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Checking who is signed in, or loading the settings | Loading                                                                                                                                          |
+| Idle                                               | Start                                                                                                                                            |
+| Loading the next exercise                          | The English line empty, Start gone                                                                                                               |
+| Preparing the clips                                | The same, while the audio is fetched                                                                                                             |
+| Playing the English                                | The English text                                                                                                                                 |
+| Thinking                                           | A bar fills over the think time, with Missed it available                                                                                        |
+| Waiting for the Welsh clip                         | The bar is full, and the Welsh is still coming                                                                                                   |
+| Playing the Welsh                                  | The woman's clip plays. The text appears when the pause between the two Welsh clips ends and the man starts, or straight away with standard only |
+| Playing the slow Welsh                             | The man's clip plays. With slow only, this is the only Welsh, and the text appears as it starts                                                  |
+| Awaiting the outcome                               | A short window to mark the exercise missed                                                                                                       |
+| Submitting                                         | The outcome is being sent                                                                                                                        |
+| Paused                                             | Any playing or waiting state, held                                                                                                               |
+| Nothing to give                                    | A message that there is a gap in the course                                                                                                      |
+| Error                                              | A message that says why when it is known (speech down, progress missing), and Retry when retrying can help                                       |
+| Signed out partway                                 | The learner is sent to the welcome screen                                                                                                        |
+| Guest with 5 or more items introduced              | The save prompt above the exercise, until dismissed or saved                                                                                     |
+| Just saved                                         | A short confirmation that the passkey works from any device                                                                                      |
 
 The progress counts (introduced, learning, in review, due) show once they have loaded.
 
@@ -125,11 +125,10 @@ How the lesson behaves for this person. Signed-out visitors are sent to the welc
 
 Actions: change a setting, **Save**, **Back to the lesson**.
 
-| Setting                 | Control                                     | Effect                                                               |
-| ----------------------- | ------------------------------------------- | -------------------------------------------------------------------- |
-| Think time              | Slider from 0.5× to 3×                      | Scales how long there is to say the Welsh                            |
-| Slow Welsh              | Switch, on by default                       | Plays the slow Welsh after the Welsh. Off skips it                   |
-| Learning session length | Choice of 10, 20 or 30 minutes, or No limit | Stored for learning sessions, which come later. Nothing reads it yet |
+| Setting     | Control                                                               | Effect                                                                                            |
+| ----------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Think time  | Slider from 0.5× to 3×                                                | Scales how long there is to say the Welsh                                                         |
+| Welsh audio | Choice: standard then slow (the default), standard only, or slow only | Which Welsh recordings play after the think time. The Welsh text appears when the last one starts |
 
 | State                         | Shown                                                    |
 | ----------------------------- | -------------------------------------------------------- |

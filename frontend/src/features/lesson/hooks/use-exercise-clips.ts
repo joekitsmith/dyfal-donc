@@ -2,19 +2,19 @@ import { type Dispatch, useCallback, useEffect, useRef } from "react";
 
 import { fetchClip } from "@/api/clips";
 
-import type { ClipTrack, LessonEvent, LessonExercise } from "../types";
+import type { ClipTrack, LessonEvent, LessonExercise, WelshPlayback } from "../types";
 
 import { CLIP_TRACKS } from "../constants";
 import { failureCause } from "../utils/failure-cause";
 
 /**
- * Fetches the exercise's clips (the slow Welsh only if it will play) in parallel as soon as it is known and keeps them as object URLs,
+ * Fetches the exercise's clips (the Welsh ones only if they will play) in parallel as soon as it is known and keeps them as object URLs,
  * so replays never ask the server again. Passing null (the exercise is over) revokes them.
  */
 export function useExerciseClips(
   exercise: LessonExercise | null,
   attempt: number,
-  includeSlowWelsh: boolean,
+  welshPlayback: WelshPlayback,
   dispatch: Dispatch<LessonEvent>,
 ) {
   const urls = useRef(new Map<ClipTrack, string>());
@@ -30,7 +30,7 @@ export function useExerciseClips(
     urls.current = loaded;
 
     for (const track of CLIP_TRACKS) {
-      if (track === "welsh_slow" && !includeSlowWelsh) {
+      if (!isPlayed(track, welshPlayback)) {
         continue;
       }
 
@@ -60,7 +60,15 @@ export function useExerciseClips(
 
       loaded.clear();
     };
-  }, [attempt, dispatch, exercise, includeSlowWelsh]);
+  }, [attempt, dispatch, exercise, welshPlayback]);
 
   return useCallback((track: ClipTrack) => urls.current.get(track), []);
+}
+
+function isPlayed(track: ClipTrack, welshPlayback: WelshPlayback): boolean {
+  if (track === "welsh_standard") {
+    return welshPlayback !== "slow";
+  }
+
+  return track === "welsh_slow" ? welshPlayback !== "standard" : true;
 }

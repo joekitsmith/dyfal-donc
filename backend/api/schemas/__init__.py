@@ -1,4 +1,4 @@
-from api.schemas.audio import AudioLinks, AudioTrack
+from api.schemas.audio import AudioLinks, AudioTrack, WelshAudioLinks, WelshPace
 from api.schemas.auth import (
     AuthenticationVerifyRequest,
     PasskeyJson,
@@ -22,9 +22,9 @@ from api.schemas.outcome import OutcomeRequest, OutcomeResponse, ReportedOutcome
 from api.schemas.progress import ProgressResponse
 from api.schemas.user_settings import (
     DEFAULT_USER_SETTINGS,
-    LearningSessionMinutes,
     UserSettingsPatch,
     UserSettingsResponse,
+    WelshPlayback,
 )
 
 __all__ = [
@@ -36,7 +36,6 @@ __all__ = [
     "ExercisePurpose",
     "ExerciseResponse",
     "HealthResponse",
-    "LearningSessionMinutes",
     "NextExerciseResponse",
     "NothingEligibleResponse",
     "OutcomeRequest",
@@ -54,4 +53,7 @@ __all__ = [
     "UserResponse",
     "UserSettingsPatch",
     "UserSettingsResponse",
+    "WelshAudioLinks",
+    "WelshPace",
+    "WelshPlayback",
 ]
