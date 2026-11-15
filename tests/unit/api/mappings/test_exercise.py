@@ -68,6 +68,7 @@ class TestToExerciseResponse:
         response = to_exercise_response(selection(), issued)
 
         assert response.selection_id == issued.id
+        assert response.exercise_id == "ex:1"
         assert (response.english, response.welsh) == ("To speak", "Siarad")
         assert response.audio.welsh.standard == "/exercises/ex%3A1/audio/welsh/standard"
         assert response.item_ids == ("lex:a", "lex:b")

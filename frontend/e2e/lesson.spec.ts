@@ -65,4 +65,42 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   await expect(progress).toContainText("Introduced: 1 of");
   await expect(welsh).toHaveText("");
   await expect(english).not.toHaveText("");
+
+  // The first exercise has moved on, so it is the sentence to report
+  await page.getByRole("button", { name: "Report a problem" }).click();
+  // A dialog hides the page behind it from the accessibility tree, but the lesson is paused behind it
+  await expect(page.getByRole("button", { includeHidden: true, name: /^Resume/ })).toBeVisible();
+
+  const dialog = page.getByRole("dialog", { name: "Report a problem" });
+
+  await expect(dialog.getByRole("radio")).toHaveCount(2);
+  await dialog.getByLabel("What kind of problem is it?").click();
+  await page.getByRole("option", { name: "Sounds wrong when spoken" }).click();
+  await dialog.getByLabel("What is wrong?").fill("The voice says it oddly");
+
+  const reportRequest = page.waitForRequest(
+    (request) => request.url().endsWith("/me/problem-reports") && request.method() === "POST",
+  );
+  const reportResponse = page.waitForResponse(
+    (response) => response.url().endsWith("/me/problem-reports") && response.request().method() === "POST",
+  );
+
+  await dialog.getByRole("button", { name: "Send" }).click();
+
+  expect((await reportRequest).postDataJSON()).toEqual({
+    category: "sounds_wrong",
+    description: "The voice says it oddly",
+    exercise_id: expect.any(String),
+    item_id: null,
+    source: "lesson",
+  });
+  expect((await reportResponse).status()).toBe(204);
+  await expect(dialog.getByText("Thanks, it's been sent")).toBeVisible();
+
+  await dialog.getByRole("button", { name: "Close" }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole("button", { name: /^Resume/ })).toBeVisible();
+
+  await page.getByRole("button", { name: /^Resume/ }).click();
+  await expect(page.getByRole("button", { name: /^Pause/ })).toBeVisible();
 });

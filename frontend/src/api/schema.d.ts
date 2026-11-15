@@ -481,11 +481,15 @@ export interface components {
         /**
          * ExerciseResponse
          * @description An exercise to do. Quote ``selection_id`` back when reporting the outcome.
+         *
+         *     ``exercise_id`` is the exercise itself, which a problem report names.
          */
         ExerciseResponse: {
             audio: components["schemas"]["AudioLinks"];
             /** English */
             english: string;
+            /** Exercise Id */
+            exercise_id: string;
             /** Introduces */
             introduces: string | null;
             /** Item Ids */

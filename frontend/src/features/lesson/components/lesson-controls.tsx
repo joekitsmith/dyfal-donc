@@ -12,10 +12,11 @@ type LessonControlsProps = {
   readonly actions: LessonActions;
   readonly canMiss: boolean;
   readonly canPause: boolean;
+  readonly report: { readonly disabled: boolean; readonly onClick: () => void };
   readonly state: LessonState;
 };
 
-export function LessonControls({ actions, canMiss, canPause, state }: LessonControlsProps) {
+export function LessonControls({ actions, canMiss, canPause, report, state }: LessonControlsProps) {
   if (state.phase === "idle") {
     return (
       <Button onClick={actions.start} size="large" variant="contained">
@@ -57,6 +58,9 @@ export function LessonControls({ actions, canMiss, canPause, state }: LessonCont
           Replay (R)
         </Button>
       </Stack>
+      <Button disabled={report.disabled} onClick={report.onClick} size="small" sx={{ alignSelf: "flex-start" }}>
+        Report a problem
+      </Button>
     </Stack>
   );
 }

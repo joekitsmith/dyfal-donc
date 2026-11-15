@@ -25,6 +25,7 @@ export function useNextExercise() {
             welsh_standard: offered.audio.welsh.standard,
           },
           english: offered.english,
+          exerciseId: offered.exercise_id,
           selectionId: offered.selection_id,
           welsh: offered.welsh,
         },

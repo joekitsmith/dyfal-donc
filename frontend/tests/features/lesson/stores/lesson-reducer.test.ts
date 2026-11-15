@@ -13,6 +13,7 @@ import {
 const EXERCISE: LessonExercise = {
   audio: { english: "/e", welsh_slow: "/s", welsh_standard: "/w" },
   english: "I can go",
+  exerciseId: "galla-fynd",
   selectionId: "selection-1",
   welsh: "Galla i fynd",
 };

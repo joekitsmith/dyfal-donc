@@ -50,6 +50,8 @@ export type LessonEvent =
 export type LessonExercise = {
   readonly audio: ClipLinks;
   readonly english: string;
+  /** The exercise itself, which a problem report names. ``selectionId`` is this one time it was given. */
+  readonly exerciseId: string;
   readonly selectionId: string;
   readonly welsh: string;
 };

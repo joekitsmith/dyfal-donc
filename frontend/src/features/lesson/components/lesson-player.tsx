@@ -6,11 +6,13 @@ import Link from "next/link";
 import { ROUTES } from "@/config/paths";
 import { SaveProgressPrompt } from "@/features/auth";
 import { SessionClock } from "@/features/learning-session";
+import { ReportDialog } from "@/features/problem-report";
 import { ProgressPanel } from "@/features/progress";
 
 import type { LessonSettings } from "../types";
 
 import { useLessonPlayer } from "../hooks/use-lesson-player";
+import { useLessonReport } from "../hooks/use-lesson-report";
 import { useSaveOffer } from "../hooks/use-save-offer";
 import { ExerciseDisplay } from "./exercise-display";
 import { LessonControls } from "./lesson-controls";
@@ -23,7 +25,8 @@ type LessonPlayerProps = {
 };
 
 export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps) {
-  const { actions, canMiss, canPause, state } = useLessonPlayer({ learnerId, settings });
+  const { actions, canMiss, canPause, recent, state } = useLessonPlayer({ learnerId, settings });
+  const report = useLessonReport({ canPause, pause: actions.pause, recent, state });
   const offer = useSaveOffer({ isGuest, learnerId });
 
   return (
@@ -34,7 +37,7 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
       <SessionClock />
       <ExerciseDisplay state={state} />
       <ThinkProgress multiplier={settings.thinkTimeMultiplier} state={state} />
-      <LessonControls actions={actions} canMiss={canMiss} canPause={canPause} state={state} />
+      <LessonControls actions={actions} canMiss={canMiss} canPause={canPause} report={report.button} state={state} />
       <ProgressPanel learnerId={learnerId} />
       <Stack direction="row" spacing={1}>
         <Button component={Link} href={ROUTES.home}>
@@ -47,6 +50,7 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
           Settings
         </Button>
       </Stack>
+      <ReportDialog {...report.dialog} />
       <Snackbar
         autoHideDuration={6000}
         message="Saved. You can now sign in from any device with your passkey."

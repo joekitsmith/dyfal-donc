@@ -87,13 +87,17 @@
         "type": "string"
       },
       "ExerciseResponse": {
-        "description": "An exercise to do. Quote ``selection_id`` back when reporting the outcome.",
+        "description": "An exercise to do. Quote ``selection_id`` back when reporting the outcome.\n\n``exercise_id`` is the exercise itself, which a problem report names.",
         "properties": {
           "audio": {
             "$ref": "#/components/schemas/AudioLinks"
           },
           "english": {
             "title": "English",
+            "type": "string"
+          },
+          "exercise_id": {
+            "title": "Exercise Id",
             "type": "string"
           },
           "introduces": {
@@ -135,6 +139,7 @@
         },
         "required": [
           "selection_id",
+          "exercise_id",
           "english",
           "welsh",
           "audio",

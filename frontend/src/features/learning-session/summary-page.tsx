@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import { SentenceList } from "@/components/sentence-list";
 import { ROUTES } from "@/config/paths";
+import { ReportDialog } from "@/features/problem-report";
 
 import { ItemList } from "./components/item-list";
 import { useSummaryPage } from "./hooks/use-summary-page";
@@ -16,7 +17,7 @@ import { formatDuration } from "./utils/format-time";
 type SummaryPageProps = { readonly sessionId: number };
 
 export function SummaryPage({ sessionId }: SummaryPageProps) {
-  const { error, isLoading, notFound, summary } = useSummaryPage(sessionId);
+  const { error, isLoading, notFound, report, summary } = useSummaryPage(sessionId);
 
   if (notFound) {
     return (
@@ -58,10 +59,16 @@ export function SummaryPage({ sessionId }: SummaryPageProps) {
       ) : null}
       <ItemList items={summary.items_introduced} title="New words" />
       <ItemList items={summary.items_lapsed} title="Words that slipped" />
-      <SentenceList headingLevel="h2" sentences={summary.missed_exercises} title="Missed exercises" />
+      <SentenceList
+        headingLevel="h2"
+        onReport={report.reportSentence}
+        sentences={summary.missed_exercises}
+        title="Missed exercises"
+      />
       <Button component={Link} href={ROUTES.learn} sx={{ alignSelf: "flex-start" }} variant="contained">
         {summary.ongoing ? "Keep going" : "Start another"}
       </Button>
+      <ReportDialog {...report.dialog} />
     </Stack>
   );
 }

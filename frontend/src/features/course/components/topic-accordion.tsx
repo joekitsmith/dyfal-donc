@@ -5,6 +5,8 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
+import type { components } from "@/api/schema";
+
 import { SentenceList } from "@/components/sentence-list";
 
 import type { TopicProgress } from "../types";
@@ -12,10 +14,13 @@ import type { TopicProgress } from "../types";
 import { describeTopic } from "../utils/describe-topic";
 import { ItemLinks } from "./item-links";
 
-type TopicAccordionProps = { readonly topic: TopicProgress };
+type TopicAccordionProps = {
+  readonly onReport: (sentence: components["schemas"]["SentenceResponse"]) => void;
+  readonly topic: TopicProgress;
+};
 
 /** A topic the learner has started: what they can say, and the words and phrases they have met. The current topic opens first. */
-export function TopicAccordion({ topic }: TopicAccordionProps) {
+export function TopicAccordion({ onReport, topic }: TopicAccordionProps) {
   return (
     <Accordion
       defaultExpanded={topic.is_current}
@@ -34,7 +39,7 @@ export function TopicAccordion({ topic }: TopicAccordionProps) {
       </AccordionSummary>
       <AccordionDetails>
         <Stack spacing={2}>
-          <SentenceList headingLevel="h3" sentences={topic.sayable} title="Things you can say" />
+          <SentenceList headingLevel="h3" onReport={onReport} sentences={topic.sayable} title="Things you can say" />
           <ItemLinks items={topic.words} title="Words" />
           <ItemLinks items={topic.phrases} title="Ways of saying things" />
         </Stack>
