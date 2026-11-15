@@ -4,6 +4,7 @@
 export { AccountPage } from "./account-page";
 export { RecoveryCodesDialog } from "./components/recovery-codes-dialog";
 export { SaveProgressPrompt } from "./components/save-progress-prompt";
+export { StepUpDialog } from "./components/step-up-dialog";
 export { useHomeRedirect } from "./hooks/use-home-redirect";
 export { useRequireSession } from "./hooks/use-require-session";
 export { RecoverPage } from "./recover-page";

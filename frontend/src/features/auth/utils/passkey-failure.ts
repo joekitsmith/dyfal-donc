@@ -5,9 +5,14 @@ import { ApiError } from "@/api/api-error";
 import type { PasskeyFailure } from "../types";
 
 import { BAD_REQUEST_STATUS, CONFLICT_STATUS } from "../constants";
+import { StepUpCancelledError } from "./step-up";
 
 /** Why a passkey ceremony failed, from what the browser or the server said. */
 export function passkeyFailure(error: unknown): PasskeyFailure {
+  if (error instanceof StepUpCancelledError) {
+    return "cancelled";
+  }
+
   if (error instanceof WebAuthnError) {
     return webAuthnFailure(error);
   }

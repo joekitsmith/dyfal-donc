@@ -244,6 +244,29 @@ class TestSigningIn:
         assert replay.status_code == 400
 
 
+class TestWhatASignInFailureReveals:
+    def test_an_unknown_passkey_and_a_bad_signature_look_the_same(
+        self, make_client: Browsers, authenticator: SoftwareAuthenticator
+    ) -> None:
+        member, browser = make_client(), make_client()
+        start_guest(member)
+        register_passkey(member, authenticator)
+
+        def failure(device: SoftwareAuthenticator, origin: str) -> object:
+            options = browser.post("/auth/passkeys/authentication/options").json()
+            credential = device.sign_in(options, origin)
+            response = browser.post(
+                "/auth/passkeys/authentication/verify", json={"credential": credential}
+            )
+            assert response.status_code == 400
+            return response.json()
+
+        unknown = failure(SoftwareAuthenticator(), ORIGIN)
+        bad_origin = failure(authenticator, "https://evil.example")
+
+        assert unknown == bad_origin
+
+
 class TestChallenges:
     def test_a_challenge_works_once(
         self, client: TestClient, authenticator: SoftwareAuthenticator

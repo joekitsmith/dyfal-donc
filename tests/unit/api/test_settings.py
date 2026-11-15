@@ -118,6 +118,14 @@ class TestLoginSessionSettings:
         assert settings.lifetime_for(is_guest=False) == timedelta(days=1)
         assert settings.lifetime_for(is_guest=True) == timedelta(days=30)
 
+    def test_an_account_session_ends_after_thirty_days_and_changes_need_a_recent_sign_in(
+        self,
+    ) -> None:
+        settings = LoginSessionSettings(_env_file=None)
+
+        assert settings.max_age == timedelta(days=30)
+        assert settings.recent_sign_in == timedelta(minutes=10)
+
     def test_reads_the_environment(self, monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.setenv("SESSION_COOKIE_SECURE", "false")
         monkeypatch.setenv("SESSION_LIFETIME_SECONDS", "60")
@@ -130,7 +138,13 @@ class TestLoginSessionSettings:
         assert settings.lifetime_for(is_guest=True) == timedelta(minutes=2)
 
     @pytest.mark.parametrize(
-        "name", ("SESSION_LIFETIME_SECONDS", "SESSION_GUEST_LIFETIME_SECONDS")
+        "name",
+        (
+            "SESSION_LIFETIME_SECONDS",
+            "SESSION_GUEST_LIFETIME_SECONDS",
+            "SESSION_MAX_AGE_SECONDS",
+            "SESSION_RECENT_SIGN_IN_SECONDS",
+        ),
     )
     def test_the_lifetimes_must_be_positive(
         self, monkeypatch: pytest.MonkeyPatch, name: str

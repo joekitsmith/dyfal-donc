@@ -87,20 +87,34 @@ Actions: **Copy**, **Download**, tick **I have saved these codes**, then **Done*
 | Copied            | The copy button says so                                                 |
 | Not yet confirmed | Done is disabled                                                        |
 
+## Confirm it is you dialog
+
+Shown over any screen when the server wants a sign-in just now before it changes an account: adding a passkey, making new recovery codes, removing a passkey or deleting the account. A guest is never asked, because a guest has nothing to confirm with. The change goes ahead once the person confirms.
+
+Actions: **Confirm with passkey**, **Cancel**.
+
+| State                                                   | Shown                                                                   |
+| ------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Hidden                                                  | Nothing                                                                 |
+| Asking                                                  | The explanation and both actions                                        |
+| Confirming                                              | Confirm is disabled while the browser's passkey prompt is open          |
+| Prompt dismissed, passkey not recognised, other failure | The same messages as the welcome screen                                 |
+| Confirmed with another account's passkey                | The person is now signed in as that account, and the change is not made |
+
 ## Account `/account`
 
 Who is signed in and how they get back in.
 
 Actions: **Back to the lesson**, **Add a passkey** (for a guest), **Add another passkey** with an optional name, **Remove** a passkey, **Make new codes** (with a confirmation that the old ones stop working), **Sign out**, **Delete account**.
 
-| State                                                                       | Shown                                                             |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| Loading                                                                     | Loading                                                           |
-| Guest                                                                       | "You are using a guest account", the save prompt, and no passkeys |
-| Account with passkeys                                                       | The passkey list, with when each was added and last used          |
-| Only one passkey                                                            | No Remove on it, because it is the only way back in               |
-| Several passkeys                                                            | Remove on each                                                    |
-| Signing out as a guest                                                      | A confirmation first: there is no way back in                     |
-| Deleting                                                                    | A confirmation first: everything is deleted                       |
-| Prompt dismissed, passkey already saved, browser unsupported, other failure | The same messages as the welcome screen                           |
-| Signed out                                                                  | Moves to the welcome screen                                       |
+| State                                                                       | Shown                                                                                                        |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| Loading                                                                     | Loading                                                                                                      |
+| Guest                                                                       | "You are using a guest account", the save prompt, and no passkeys                                            |
+| Account with passkeys                                                       | The passkey list, with when each was added and last used                                                     |
+| Only one passkey                                                            | No Remove on it, because it is the only way back in                                                          |
+| Several passkeys                                                            | Remove on each                                                                                               |
+| Signing out as a guest                                                      | A confirmation first: there is no way back in                                                                |
+| Deleting                                                                    | A confirmation first: everything is deleted                                                                  |
+| Prompt dismissed, passkey already saved, browser unsupported, other failure | The same messages as the welcome screen                                                                      |
+| Signed out                                                                  | Moves to the welcome screen. An account's session also ends 30 days after it began, however much it was used |

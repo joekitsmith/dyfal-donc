@@ -6,9 +6,12 @@ import { ApiError, assertOk, unwrap } from "@/api/api-error";
 import type { Passkey, SessionUser } from "../types";
 
 import { UNAUTHORIZED_STATUS } from "../constants";
+import { withStepUp } from "./with-step-up";
 
 export async function deleteAccount(client: ApiClient): Promise<void> {
-  assertOk(await client.DELETE("/me"));
+  await withStepUp(async () => {
+    assertOk(await client.DELETE("/me"));
+  });
 }
 
 export async function listPasskeys(client: ApiClient): Promise<readonly Passkey[]> {
@@ -20,12 +23,14 @@ export async function getRecoveryCodeStatus(client: ApiClient): Promise<number> 
 }
 
 export async function removePasskey(client: ApiClient, passkeyId: string): Promise<void> {
-  assertOk(await client.DELETE("/me/passkeys/{passkey_id}", { params: { path: { passkey_id: passkeyId } } }));
+  await withStepUp(async () => {
+    assertOk(await client.DELETE("/me/passkeys/{passkey_id}", { params: { path: { passkey_id: passkeyId } } }));
+  });
 }
 
 /** A new set of recovery codes, which replaces the old one and is shown only now. */
 export async function replaceRecoveryCodes(client: ApiClient): Promise<readonly string[]> {
-  return unwrap(await client.POST("/me/recovery-codes")).codes;
+  return withStepUp(async () => unwrap(await client.POST("/me/recovery-codes")).codes);
 }
 
 /** Whoever the session cookie says is signed in, or null when nobody is. */
