@@ -25,6 +25,7 @@ def to_item_responses(
             id=item.id,
             welsh=item.welsh if isinstance(item, Lexeme) else item.template,
             english=item.english,
+            forms=item.forms if isinstance(item, Lexeme) else (),
         )
         for item_id in item_ids
         if (item := known.get(item_id)) is not None

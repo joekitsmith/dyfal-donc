@@ -165,6 +165,7 @@ class TestItemDetail:
         assert (detail["welsh"], detail["english"]) == (word["welsh"], word["english"])
         assert detail["topic"] == "spine"
         assert detail["audio"] == f"/items/{quote(word['id'], safe='')}/audio"
+        assert detail["forms"] == word["forms"]
         assert isinstance(detail["first_met_at"], str)
         assert isinstance(detail["examples"], list)
         assert len(detail["examples"]) <= 5

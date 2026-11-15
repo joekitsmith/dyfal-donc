@@ -259,6 +259,13 @@
             "title": "English",
             "type": "string"
           },
+          "forms": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Forms",
+            "type": "array"
+          },
           "id": {
             "title": "Id",
             "type": "string"
@@ -271,7 +278,8 @@
         "required": [
           "id",
           "welsh",
-          "english"
+          "english",
+          "forms"
         ],
         "title": "ItemResponse",
         "type": "object"

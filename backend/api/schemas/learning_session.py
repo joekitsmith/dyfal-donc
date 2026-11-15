@@ -11,6 +11,7 @@ class ItemResponse(BaseModel):
     id: str
     welsh: str
     english: str
+    forms: tuple[str, ...]
 
 
 class SentenceResponse(BaseModel):

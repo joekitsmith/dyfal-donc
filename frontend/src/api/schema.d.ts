@@ -541,6 +541,8 @@ export interface components {
         ItemResponse: {
             /** English */
             english: string;
+            /** Forms */
+            forms: string[];
             /** Id */
             id: string;
             /** Welsh */

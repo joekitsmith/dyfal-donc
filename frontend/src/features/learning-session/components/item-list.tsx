@@ -1,4 +1,7 @@
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
+
+import { courseItemPath } from "@/config/paths";
 
 import type { Item } from "../types";
 
@@ -7,7 +10,7 @@ type ItemListProps = {
   readonly title: string;
 };
 
-/** Words and patterns in both languages. It shows nothing for an empty list. */
+/** Words and patterns in both languages, each linking to its page. It shows nothing for an empty list. */
 export function ItemList({ items, title }: ItemListProps) {
   if (items.length === 0) {
     return null;
@@ -21,9 +24,9 @@ export function ItemList({ items, title }: ItemListProps) {
       <ul>
         {items.map((item) => (
           <li key={item.id}>
-            <Typography>
+            <Link href={courseItemPath(item.id)}>
               {item.welsh} – {item.english}
-            </Typography>
+            </Link>
           </li>
         ))}
       </ul>

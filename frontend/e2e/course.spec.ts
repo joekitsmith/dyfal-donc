@@ -1,0 +1,46 @@
+import { expect, test } from "@playwright/test";
+
+import { TEST_IDS } from "../src/config/test-ids";
+import { instrumentAudio, requireStack, startAsGuest } from "./helpers";
+
+test.beforeEach(async ({ page, request }) => {
+  await requireStack(request);
+  await instrumentAudio(page);
+});
+
+test("the course lists what was met, can be searched, and opens a word with the sentences it was in", async ({
+  page,
+}) => {
+  await startAsGuest(page);
+  await page.getByRole("button", { exact: true, name: "Start" }).click();
+  await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
+  await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });
+
+  await page.getByRole("link", { name: "Home" }).click();
+  await page.getByRole("link", { name: "Course" }).click();
+
+  await expect(page.getByRole("heading", { exact: true, name: "Course" })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Later in the course" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Things you can say" }).getByRole("button", { name: / slowly$/ }),
+  ).toBeVisible();
+
+  const word = page.getByRole("region", { name: "Words" }).getByRole("link").first();
+  const [welsh = ""] = ((await word.textContent()) ?? "").split(" – ");
+
+  await page.getByLabel("Search words and phrases").fill(welsh);
+  await page.getByRole("list", { name: "Search results" }).getByRole("link").first().click();
+
+  await expect(page).toHaveURL(/\/course\/items\/.+/);
+  await expect(page.getByRole("heading", { level: 1, name: welsh })).toBeVisible();
+  await expect(page.getByRole("button", { exact: true, name: `Play ${welsh}` })).toBeVisible();
+  await expect(page.getByRole("region", { name: "Sentences you have got right" })).toBeVisible();
+});
+
+test("an item that has not been met is not found", async ({ page }) => {
+  await startAsGuest(page);
+
+  await page.goto("/course/items/lex%3Acig");
+
+  await expect(page.getByText("We could not find that word.")).toBeVisible();
+});
