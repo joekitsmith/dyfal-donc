@@ -11,12 +11,14 @@ type Sentence = components["schemas"]["SentenceResponse"];
 
 type SentenceListProps = {
   readonly headingLevel: "h2" | "h3";
+  /** Gives each sentence a Report button, which calls this with the sentence. */
+  readonly onReport?: (sentence: Sentence) => void;
   readonly sentences: readonly Sentence[];
   readonly title: string;
 };
 
 /** Sentences in both languages, each with the Welsh to play at either pace. It shows nothing for an empty list. */
-export function SentenceList({ headingLevel, sentences, title }: SentenceListProps) {
+export function SentenceList({ headingLevel, onReport, sentences, title }: SentenceListProps) {
   const { failed, play } = useReplayClip();
 
   if (sentences.length === 0) {
@@ -51,6 +53,17 @@ export function SentenceList({ headingLevel, sentences, title }: SentenceListPro
             >
               Play slowly
             </Button>
+            {onReport === undefined ? null : (
+              <Button
+                aria-label={`Report ${sentence.welsh}`}
+                onClick={() => {
+                  onReport(sentence);
+                }}
+                size="small"
+              >
+                Report
+              </Button>
+            )}
           </Stack>
         </Stack>
       ))}

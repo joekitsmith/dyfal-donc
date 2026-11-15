@@ -1,5 +1,6 @@
 import { ApiError } from "@/api/api-error";
 import { useRequireSession } from "@/features/auth";
+import { useReportDialog } from "@/features/problem-report";
 import { useReplayClip } from "@/hooks/use-replay-clip";
 
 import { useItem } from "../api/use-item";
@@ -10,6 +11,7 @@ export function useItemPage(itemId: string) {
   const { error: sessionError, user } = useRequireSession();
   const item = useItem(itemId);
   const { failed, play } = useReplayClip();
+  const report = useReportDialog("item");
   const notFound = item.error instanceof ApiError && item.error.status === NOT_FOUND_STATUS;
   const audio = item.data?.audio;
 
@@ -27,5 +29,6 @@ export function useItemPage(itemId: string) {
               play(audio);
             },
     },
+    report,
   };
 }

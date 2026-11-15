@@ -1,0 +1,17 @@
+import uuid
+from dataclasses import dataclass
+from datetime import datetime
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class AddProblemReport:
+    """Store a learner's problem report."""
+
+    user_id: uuid.UUID
+    exercise_id: str | None
+    item_id: str | None
+    release_hash: str
+    source: str
+    category: str
+    description: str
+    created_at: datetime

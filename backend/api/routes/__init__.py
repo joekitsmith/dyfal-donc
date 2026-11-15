@@ -7,6 +7,7 @@ from api.routes.health import router as health_router
 from api.routes.learners import router as learners_router
 from api.routes.learning_sessions import router as learning_sessions_router
 from api.routes.overview import router as overview_router
+from api.routes.problem_reports import router as problem_reports_router
 from api.routes.user_settings import router as user_settings_router
 
 __all__ = [
@@ -19,5 +20,6 @@ __all__ = [
     "learners_router",
     "learning_sessions_router",
     "overview_router",
+    "problem_reports_router",
     "user_settings_router",
 ]

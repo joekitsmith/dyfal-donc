@@ -9,6 +9,7 @@ class TestModels:
             "issued_selections",
             "learners",
             "login_sessions",
+            "problem_reports",
             "recovery_codes",
             "review_events",
             "user_settings",

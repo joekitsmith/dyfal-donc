@@ -17,10 +17,14 @@ class ExercisePurpose(StrEnum):
 
 
 class ExerciseResponse(BaseModel):
-    """An exercise to do. Quote ``selection_id`` back when reporting the outcome."""
+    """An exercise to do. Quote ``selection_id`` back when reporting the outcome.
+
+    ``exercise_id`` is the exercise itself, which a problem report names.
+    """
 
     kind: Literal["exercise"] = "exercise"
     selection_id: uuid.UUID
+    exercise_id: str
     english: str
     welsh: str
     audio: AudioLinks

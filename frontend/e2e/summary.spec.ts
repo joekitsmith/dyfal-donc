@@ -36,6 +36,29 @@ test("after a session the home screen recaps it and the summary lets a missed ex
   await missed.getByRole("button", { name: /^Play (?!.*slowly)/ }).click();
   expect((await clip).status()).toBe(200);
 
+  await missed.getByRole("button", { name: /^Report / }).click();
+
+  const dialog = page.getByRole("dialog", { name: "Report a problem" });
+  const reportRequest = page.waitForRequest(
+    (request) => request.url().endsWith("/me/problem-reports") && request.method() === "POST",
+  );
+
+  // One sentence is offered, so there is nothing to choose between
+  await expect(dialog.getByRole("radio")).toHaveCount(0);
+  await dialog.getByLabel("What kind of problem is it?").click();
+  await page.getByRole("option", { name: "Other" }).click();
+  await dialog.getByLabel("What is wrong?").fill("Something is off");
+  await dialog.getByRole("button", { name: "Send" }).click();
+
+  expect((await reportRequest).postDataJSON()).toMatchObject({
+    category: "other",
+    exercise_id: expect.any(String),
+    source: "summary",
+  });
+  await expect(dialog.getByText("Thanks, it's been sent")).toBeVisible();
+  await dialog.getByRole("button", { name: "Close" }).click();
+  await expect(dialog).toBeHidden();
+
   await page.getByRole("link", { name: "Keep going" }).click();
   await expect(page).toHaveURL(/\/learn$/);
 });

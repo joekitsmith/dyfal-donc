@@ -32,6 +32,7 @@ def to_exercise_response(
 ) -> ExerciseResponse:
     return ExerciseResponse(
         selection_id=issued.id,
+        exercise_id=selection.exercise_id,
         english=selection.exercise.english,
         welsh=selection.exercise.welsh,
         audio=to_audio_links(selection.exercise_id),

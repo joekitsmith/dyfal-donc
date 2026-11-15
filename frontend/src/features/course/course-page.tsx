@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
 import { ROUTES } from "@/config/paths";
+import { ReportDialog } from "@/features/problem-report";
 
 import { CourseSearchBox } from "./components/course-search-box";
 import { LaterTopics } from "./components/later-topics";
@@ -15,7 +16,7 @@ import { TopicAccordion } from "./components/topic-accordion";
 import { useCoursePage } from "./hooks/use-course-page";
 
 export function CoursePage() {
-  const { error, isLoading, search, topics } = useCoursePage();
+  const { error, isLoading, report, search, topics } = useCoursePage();
 
   if (error) {
     return <Alert severity="error">{error.message}</Alert>;
@@ -43,12 +44,13 @@ export function CoursePage() {
           ) : null}
           <Stack>
             {topics.started.map((topic) => (
-              <TopicAccordion key={topic.name} topic={topic} />
+              <TopicAccordion key={topic.name} onReport={report.reportSentence} topic={topic} />
             ))}
           </Stack>
           <LaterTopics topics={topics.later} />
         </>
       )}
+      <ReportDialog {...report.dialog} />
     </Stack>
   );
 }

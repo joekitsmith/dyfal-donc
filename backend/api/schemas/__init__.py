@@ -32,6 +32,11 @@ from api.schemas.learning_session import (
     SessionSummaryResponse,
 )
 from api.schemas.outcome import OutcomeRequest, OutcomeResponse, ReportedOutcome
+from api.schemas.problem_report import (
+    ProblemCategory,
+    ProblemReportRequest,
+    ProblemSource,
+)
 from api.schemas.progress import ProgressResponse
 from api.schemas.user_settings import (
     DEFAULT_USER_SETTINGS,
@@ -61,6 +66,9 @@ __all__ = [
     "OverviewResponse",
     "PasskeyJson",
     "PasskeyResponse",
+    "ProblemCategory",
+    "ProblemReportRequest",
+    "ProblemSource",
     "ProgressResponse",
     "RecoveryCodeSignInRequest",
     "RecoveryCodeStatusResponse",

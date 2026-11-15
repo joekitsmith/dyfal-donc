@@ -6,7 +6,7 @@ Every screen the app has: its route, what it is for, the states it can be in and
 
 Where a signed-in person lands. Signed-out visitors are sent to the welcome screen.
 
-Actions: **Start learning** or **Continue learning** (opens the lesson), **See details** on the recap, open **Course**, **Settings** or **Account**. Guests also get **Add a passkey** and **Not now** on the save prompt once they have a recap.
+Actions: **Start learning** or **Continue learning** (opens the lesson), **See details** on the recap, open **Course**, **Settings** or **Account**, **Report a problem** (opens the [report dialog](#report-a-problem-dialog) about nothing in particular). Guests also get **Add a passkey** and **Not now** on the save prompt once they have a recap.
 
 | State                                           | Shown                                                                                                                             |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,7 +28,7 @@ A learning session is a run of answers with no pause longer than 10 minutes. The
 
 What a person did in one learning session. The id is the number of the session's first answer, so it never changes once the session has begun.
 
-Actions: **Back to home**, open any new word or word that slipped, **Play** and **Play slowly** on each missed exercise, **Keep going** (while the session is still going) or **Start another**.
+Actions: **Back to home**, open any new word or word that slipped, **Play**, **Play slowly** and **Report** on each missed exercise (**Report** opens the [report dialog](#report-a-problem-dialog) about that sentence), **Keep going** (while the session is still going) or **Start another**.
 
 | State                     | Shown                                                                                                           |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -46,7 +46,7 @@ Actions: **Back to home**, open any new word or word that slipped, **Play** and 
 
 Where the learner has got to, and a way to look up anything they have met. Nothing here is a score: there are no percentages, strengths or targets, and nothing about words not yet met.
 
-Actions: **Back to home**, **search** the box, open a started topic, **Play** and **Play slowly** on a sentence, open a word or phrase.
+Actions: **Back to home**, **search** the box, open a started topic, **Play**, **Play slowly** and **Report** on a sentence (**Report** opens the [report dialog](#report-a-problem-dialog) about it), open a word or phrase.
 
 | State                     | Shown                                                                                                                                                                   |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -65,7 +65,7 @@ Actions: **Back to home**, **search** the box, open a started topic, **Play** an
 
 One word or phrase the learner has met.
 
-Actions: **Back to the course**, **Play** (words only), **Play** and **Play slowly** on each sentence.
+Actions: **Back to the course**, **Play** (words only), **Report a problem with this word** (or phrase), which opens the [report dialog](#report-a-problem-dialog) about the item, and **Play**, **Play slowly** and **Report** on each sentence.
 
 | State                     | Shown                                                                                                                                                                                      |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -98,7 +98,7 @@ Actions: **Try it now** (starts a guest account and opens the home screen), **Si
 
 The learning loop for the signed-in learner. Signed-out visitors are sent to the welcome screen.
 
-Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Replay** (R), skip the outcome window (N), open **Home**, **Account** or **Settings**. Guests also get **Add a passkey** and **Not now** on the save prompt.
+Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Replay** (R), **Report a problem**, skip the outcome window (N), open **Home**, **Account** or **Settings**. Guests also get **Add a passkey** and **Not now** on the save prompt.
 
 | State                                              | Shown                                                                                                                                            |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -114,11 +114,14 @@ Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Repla
 | Awaiting the outcome                               | A short window to mark the exercise missed                                                                                                       |
 | Submitting                                         | The outcome is being sent                                                                                                                        |
 | Paused                                             | Any playing or waiting state, held                                                                                                               |
+| Reporting a problem                                | The lesson is paused behind the [report dialog](#report-a-problem-dialog). It stays paused after the report is sent or cancelled                 |
 | Nothing to give                                    | A message that there is a gap in the course                                                                                                      |
 | Error                                              | A message that says why when it is known (speech down, progress missing), and Retry when retrying can help                                       |
 | Signed out partway                                 | The learner is sent to the welcome screen                                                                                                        |
 | Guest with 5 or more items introduced              | The save prompt above the exercise, until dismissed or saved                                                                                     |
 | Just saved                                         | A short confirmation that the passkey works from any device                                                                                      |
+
+**Report a problem** is available whenever Pause is. It pauses the lesson and offers the sentences just heard (the one on screen and the two before it), and "Not about one of these sentences". The one on screen is only offered once its Welsh shows, so reporting never gives it away. The lesson's keyboard shortcuts are switched off while any dialog is open. The recent sentences are kept in memory only, so a reload forgets them.
 
 The progress counts (introduced, learning, in review, due) show once they have loaded. A clock shows how long the learning session has been going, from the first answer after a pause, and stays out of the way (it is not a limit and nothing happens when it passes any time).
 
@@ -204,3 +207,34 @@ Actions: change a setting, **Save**, **Back to the lesson**.
 | Saved                         | A confirmation, until the next change                    |
 | Could not save                | An error, with the edits kept so Save can be tried again |
 | Could not load, or signed out | An error, or a move to the welcome screen                |
+
+## Report a problem dialog
+
+Tells the developer that something in the course is wrong: the Welsh, the English or the voice. It opens from wherever the learner noticed the problem, and is the same dialog everywhere. There is no history, no status and no reply: the learner is only told it was sent. The developer reads the reports with `poe problem-reports`.
+
+Entry points, with the source each records:
+
+| Where                                        | What it is about                                      | Source    |
+| -------------------------------------------- | ----------------------------------------------------- | --------- |
+| Lesson: Report a problem                     | A choice of the last sentences heard, or none of them | `lesson`  |
+| Session summary: Report on a missed exercise | That sentence                                         | `summary` |
+| Course: Report on a sentence                 | That sentence                                         | `course`  |
+| Word or phrase: Report a problem with this…  | That word or phrase                                   | `item`    |
+| Word or phrase: Report on a sentence         | That sentence                                         | `item`    |
+| Home: Report a problem                       | Nothing in particular                                 | `general` |
+
+Actions: choose which sentence (when there is a choice), **Play** its Welsh, choose **what kind of problem it is**, say **what is wrong**, **Send** or **Cancel**, then **Close**.
+
+| State                     | Shown                                                                                                                                                                                                                                                       |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| One sentence or word      | Its English and Welsh with Play, as fixed text. No choice                                                                                                                                                                                                   |
+| A choice                  | A list of radio buttons, each with the English, the Welsh and Play, and the first selected. In the lesson it ends with "Not about one of these sentences"                                                                                                   |
+| Nothing in particular     | No sentence shown (from Home, or in the lesson before any sentence has been heard)                                                                                                                                                                          |
+| Writing                   | A required list of kinds of problem (English not matching the Welsh, unnatural, grammar, mutation, spelling or punctuation, not South Wales Welsh, sounds wrong, audio broken, English wording, other) and a required description of up to 1,000 characters |
+| Not valid                 | A message under the field: choose a kind of problem, say what is wrong, or the description is too long                                                                                                                                                      |
+| Sending                   | Send is disabled                                                                                                                                                                                                                                            |
+| Sent                      | "Thanks, it's been sent" and Close. Nothing else: no reference number and no follow-up                                                                                                                                                                      |
+| Could not be sent         | "The report could not be sent", and the button reads Try again. What was written is kept                                                                                                                                                                    |
+| Too many reports          | "Too many reports, try again in a minute", and the button reads Try again                                                                                                                                                                                   |
+| Audio could not be played | An error under the sentence                                                                                                                                                                                                                                 |
+| Signed out                | The report fails with the same "could not be sent" message. The dialog does not move the learner itself                                                                                                                                                     |

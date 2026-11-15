@@ -87,13 +87,17 @@
         "type": "string"
       },
       "ExerciseResponse": {
-        "description": "An exercise to do. Quote ``selection_id`` back when reporting the outcome.",
+        "description": "An exercise to do. Quote ``selection_id`` back when reporting the outcome.\n\n``exercise_id`` is the exercise itself, which a problem report names.",
         "properties": {
           "audio": {
             "$ref": "#/components/schemas/AudioLinks"
           },
           "english": {
             "title": "English",
+            "type": "string"
+          },
+          "exercise_id": {
+            "title": "Exercise Id",
             "type": "string"
           },
           "introduces": {
@@ -135,6 +139,7 @@
         },
         "required": [
           "selection_id",
+          "exercise_id",
           "english",
           "welsh",
           "audio",
@@ -455,6 +460,81 @@
         ],
         "title": "PasskeyResponse",
         "type": "object"
+      },
+      "ProblemCategory": {
+        "description": "What kind of problem it is, in the learner's words rather than a linguist's.",
+        "enum": [
+          "wrong_translation",
+          "unnatural",
+          "grammar",
+          "mutation",
+          "spelling_or_punctuation",
+          "not_south_wales",
+          "sounds_wrong",
+          "audio_broken",
+          "english_wording",
+          "other"
+        ],
+        "title": "ProblemCategory",
+        "type": "string"
+      },
+      "ProblemReportRequest": {
+        "description": "A learner's report. ``exercise_id`` and ``item_id`` are both left out for a problem that is not about one sentence or word.",
+        "properties": {
+          "category": {
+            "$ref": "#/components/schemas/ProblemCategory"
+          },
+          "description": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "title": "Description",
+            "type": "string"
+          },
+          "exercise_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Exercise Id"
+          },
+          "item_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Item Id"
+          },
+          "source": {
+            "$ref": "#/components/schemas/ProblemSource"
+          }
+        },
+        "required": [
+          "source",
+          "category",
+          "description"
+        ],
+        "title": "ProblemReportRequest",
+        "type": "object"
+      },
+      "ProblemSource": {
+        "description": "Where in the app the learner was when they reported.",
+        "enum": [
+          "lesson",
+          "summary",
+          "course",
+          "item",
+          "general"
+        ],
+        "title": "ProblemSource",
+        "type": "string"
       },
       "ProgressResponse": {
         "description": "Where the learner is, as of the server's clock.",
@@ -1554,6 +1634,37 @@
           }
         },
         "summary": "Delete Passkey"
+      }
+    },
+    "/me/problem-reports": {
+      "post": {
+        "operationId": "post_problem_report_me_problem_reports_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProblemReportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Post Problem Report"
       }
     },
     "/me/progress": {

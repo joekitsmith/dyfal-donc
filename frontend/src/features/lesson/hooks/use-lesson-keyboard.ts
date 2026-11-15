@@ -2,9 +2,13 @@ import { useEffect } from "react";
 
 import { actionForKey, type KeyAction } from "../utils/key-map";
 
+const DIALOG_SELECTOR = "[role='dialog']";
 const EDITABLE_SELECTOR = "input, textarea, select, [role='slider'], [contenteditable='true']";
 
-/** Reports the lesson's shortcuts. Combinations with Ctrl, Cmd or Alt are left to the browser. */
+/**
+ * Reports the lesson's shortcuts. Combinations with Ctrl, Cmd or Alt are left to the browser, and
+ * so is everything while a dialog is open: its menus and fields would press them by accident.
+ */
 export function useLessonKeyboard(onAction: (action: KeyAction) => void) {
   useEffect(() => {
     function handle(event: KeyboardEvent) {
@@ -13,6 +17,7 @@ export function useLessonKeyboard(onAction: (action: KeyAction) => void) {
 
       if (
         action === undefined ||
+        document.querySelector(DIALOG_SELECTOR) !== null ||
         event.ctrlKey ||
         event.metaKey ||
         event.altKey ||

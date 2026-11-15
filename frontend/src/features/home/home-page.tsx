@@ -9,12 +9,13 @@ import Link from "next/link";
 import { ROUTES } from "@/config/paths";
 import { SaveProgressPrompt } from "@/features/auth";
 import { SessionRecap } from "@/features/learning-session";
+import { ReportDialog } from "@/features/problem-report";
 
 import { HomeStatus } from "./components/home-status";
 import { useHome } from "./hooks/use-home";
 
 export function HomePage() {
-  const { error, isLoading, overview, user } = useHome();
+  const { error, isLoading, overview, report, user } = useHome();
 
   if (error) {
     return <Alert severity="error">{error.message}</Alert>;
@@ -48,6 +49,10 @@ export function HomePage() {
           Account
         </Button>
       </Stack>
+      <Button onClick={report.reportNothingInParticular} size="small" sx={{ alignSelf: "flex-start" }}>
+        Report a problem
+      </Button>
+      <ReportDialog {...report.dialog} />
     </Stack>
   );
 }

@@ -1,6 +1,9 @@
 /** What clip fetching assumes when no exercise is showing. */
 export const DEFAULT_WELSH_PLAYBACK = "both";
 
+/** How many exercises the lesson remembers for a problem report: the current one and two before it. */
+export const MAX_RECENT_EXERCISES = 3;
+
 export const CLIP_TRACKS = ["english", "welsh_standard", "welsh_slow"] as const;
 
 export const THINK_BASE_SECONDS = 2.16;

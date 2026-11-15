@@ -9,6 +9,7 @@ import { formatFirstMet } from "../utils/format-first-met";
 
 type ItemDetailsProps = {
   readonly item: ItemDetail;
+  readonly onReport: () => void;
   readonly playback: {
     readonly failed: boolean;
     readonly play: (() => void) | undefined;
@@ -16,7 +17,7 @@ type ItemDetailsProps = {
 };
 
 /** An item in both languages, how to hear it if it is a word, and what else is known about it. */
-export function ItemDetails({ item, playback }: ItemDetailsProps) {
+export function ItemDetails({ item, onReport, playback }: ItemDetailsProps) {
   return (
     <Stack spacing={1}>
       <Typography component="h1" variant="h4">
@@ -39,6 +40,9 @@ export function ItemDetails({ item, playback }: ItemDetailsProps) {
       {item.forms.length > 0 ? <Typography>Other forms: {item.forms.join(", ")}</Typography> : null}
       {item.notes === "" ? null : <Typography>Notes: {item.notes}</Typography>}
       <Typography color="text.secondary">First met {formatFirstMet(item.first_met_at)}</Typography>
+      <Button onClick={onReport} size="small" sx={{ alignSelf: "flex-start" }}>
+        Report a problem with this {item.kind === "word" ? "word" : "phrase"}
+      </Button>
     </Stack>
   );
 }

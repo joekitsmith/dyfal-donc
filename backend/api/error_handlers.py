@@ -15,6 +15,7 @@ from api.errors import (
     RecentSignInRequiredError,
     RecoveryCodesUnavailableError,
     SpeechUnavailableError,
+    UnknownReportSubjectError,
 )
 from persistence.database.errors import (
     ChallengeNotFoundError,
@@ -33,6 +34,7 @@ STATUS_FOR_ERROR: dict[type[Exception], int] = {
     ExerciseNotFoundError: status.HTTP_404_NOT_FOUND,
     ItemNotFoundError: status.HTTP_404_NOT_FOUND,
     LearningSessionNotFoundError: status.HTTP_404_NOT_FOUND,
+    UnknownReportSubjectError: status.HTTP_422_UNPROCESSABLE_CONTENT,
     SpeechUnavailableError: status.HTTP_503_SERVICE_UNAVAILABLE,
     LearnerNotFoundError: status.HTTP_404_NOT_FOUND,
     SelectionNotFoundError: status.HTTP_404_NOT_FOUND,

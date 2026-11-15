@@ -32,3 +32,7 @@ class ChallengeNotFoundError(DatabaseError):
 
 class RecoveryCodeNotFoundError(DatabaseError):
     """The recovery code was never issued or has been used."""
+
+
+class ProblemReportNotFoundError(DatabaseError):
+    pass

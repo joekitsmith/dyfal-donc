@@ -6,7 +6,7 @@ import { replaceSession } from "@/features/auth";
 import { OVERVIEW_QUERY_KEY } from "@/features/learning-session";
 import { progressQueryKey } from "@/features/progress";
 
-import type { ClipTrack, LessonSettings, LessonState } from "../types";
+import type { ClipTrack, LessonExercise, LessonSettings, LessonState } from "../types";
 import type { KeyAction } from "../utils/key-map";
 
 import { useNextExercise } from "../api/use-next-exercise";
@@ -29,6 +29,7 @@ import { ClipPlayer } from "../utils/clip-player";
 import { failureCause } from "../utils/failure-cause";
 import { isSignedOut } from "../utils/is-signed-out";
 import { type PausableTimer, startPausableTimer } from "../utils/pausable-timer";
+import { rememberExercise } from "../utils/remember-exercise";
 import { thinkSeconds } from "../utils/think-time";
 import { useExerciseClips } from "./use-exercise-clips";
 import { useLessonKeyboard } from "./use-lesson-keyboard";
@@ -52,6 +53,8 @@ const MILLISECONDS_PER_SECOND = 1000;
 
 export type LessonActions = {
   readonly missed: () => void;
+  /** Pauses the lesson if it is not paused already, unlike ``togglePause``. */
+  readonly pause: () => void;
   readonly replay: () => void;
   readonly retry: () => void;
   readonly start: () => void;
@@ -71,6 +74,7 @@ export function useLessonPlayer({
 }) {
   const [state, dispatch] = useReducer(lessonReducer, INITIAL_LESSON_STATE);
   const [player] = useState(() => new ClipPlayer());
+  const [recent, setRecent] = useState<readonly LessonExercise[]>([]);
   const { mutate: fetchNext } = useNextExercise();
   const { mutate: submitOutcome } = useSubmitOutcome();
   const queryClient = useQueryClient();
@@ -120,6 +124,10 @@ export function useLessonPlayer({
         }
       },
       onSuccess: (next) => {
+        if (next.kind === "exercise") {
+          setRecent((previous) => rememberExercise(previous, next.exercise));
+        }
+
         dispatch(
           next.kind === "exercise"
             ? { exercise: next.exercise, type: "next_loaded", welshPlayback: welshPlaybackSetting() }
@@ -236,6 +244,11 @@ export function useLessonPlayer({
     missed: () => {
       dispatch({ type: "missed" });
     },
+    pause: () => {
+      if (!paused) {
+        dispatch({ type: "toggle_pause" });
+      }
+    },
     replay: () => {
       dispatch({ type: "replay" });
     },
@@ -259,7 +272,7 @@ export function useLessonPlayer({
     }
   });
 
-  return { actions, canMiss: canMarkMissed(state), canPause: isPausable(state), state };
+  return { actions, canMiss: canMarkMissed(state), canPause: isPausable(state), recent, state };
 }
 
 function logLatency(

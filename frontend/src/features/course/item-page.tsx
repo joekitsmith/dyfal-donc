@@ -8,6 +8,7 @@ import Link from "next/link";
 
 import { SentenceList } from "@/components/sentence-list";
 import { ROUTES } from "@/config/paths";
+import { ReportDialog } from "@/features/problem-report";
 
 import { ItemDetails } from "./components/item-details";
 import { useItemPage } from "./hooks/use-item-page";
@@ -15,7 +16,7 @@ import { useItemPage } from "./hooks/use-item-page";
 type ItemPageProps = { readonly itemId: string };
 
 export function ItemPage({ itemId }: ItemPageProps) {
-  const { error, isLoading, item, notFound, playback } = useItemPage(itemId);
+  const { error, isLoading, item, notFound, playback, report } = useItemPage(itemId);
 
   if (notFound) {
     return (
@@ -41,8 +42,20 @@ export function ItemPage({ itemId }: ItemPageProps) {
       <Button component={Link} href={ROUTES.course} sx={{ alignSelf: "flex-start" }}>
         Back to the course
       </Button>
-      <ItemDetails item={item} playback={playback} />
-      <SentenceList headingLevel="h2" sentences={item.examples} title="Sentences you have got right" />
+      <ItemDetails
+        item={item}
+        onReport={() => {
+          report.reportItem(item);
+        }}
+        playback={playback}
+      />
+      <SentenceList
+        headingLevel="h2"
+        onReport={report.reportSentence}
+        sentences={item.examples}
+        title="Sentences you have got right"
+      />
+      <ReportDialog {...report.dialog} />
     </Stack>
   );
 }
