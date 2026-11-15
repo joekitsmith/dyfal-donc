@@ -7,28 +7,29 @@ import type {
   LessonExercise,
   LessonState,
   WaitingTrack,
+  WelshPlayback,
 } from "../types";
 
 import { errorMessage } from "../utils/error-message";
 
 export const INITIAL_LESSON_STATE: LessonState = { phase: "idle" };
 
-const ALL_LOADING: ExerciseFields["clips"] = { english: "loading", welsh: "loading", welsh_slow: "loading" };
+const ALL_LOADING: ExerciseFields["clips"] = { english: "loading", welsh_slow: "loading", welsh_standard: "loading" };
 
 const PAUSABLE_PHASES: ReadonlySet<LessonState["phase"]> = new Set([
   "awaiting_outcome",
   "between_welsh",
   "playing_english",
-  "playing_welsh",
   "playing_welsh_slow",
+  "playing_welsh_standard",
   "thinking",
   "waiting_for_clip",
 ]);
 
 const PLAYING_PHASES: ReadonlySet<LessonState["phase"]> = new Set([
   "playing_english",
-  "playing_welsh",
   "playing_welsh_slow",
+  "playing_welsh_standard",
 ]);
 
 /** The lesson loop as a pure state machine. Audio, timers and requests live outside it. */
@@ -49,7 +50,7 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
         ? { cause: event.cause, message: errorMessage("next", event.cause), phase: "error", retry: { kind: "next" } }
         : state;
     case "next_loaded":
-      return state.phase === "loading" ? prepare(event.exercise, 0, false) : state;
+      return state.phase === "loading" ? prepare(event.exercise, 0, false, event.welshPlayback) : state;
     case "nothing_eligible":
       return state.phase === "loading" ? { phase: "nothing_eligible" } : state;
     case "playback_failed":
@@ -71,13 +72,19 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
             cause: event.cause,
             message: errorMessage("submit", event.cause),
             phase: "error",
-            retry: { attempt: state.attempt, exercise: state.exercise, kind: "submit", missed: state.missed },
+            retry: {
+              attempt: state.attempt,
+              exercise: state.exercise,
+              kind: "submit",
+              missed: state.missed,
+              welshPlayback: state.welshPlayback,
+            },
           }
         : state;
     case "submitted":
       return state.phase === "submitting" ? { phase: "loading" } : state;
     case "think_elapsed":
-      return state.phase === "thinking" && !state.paused ? startClip(state, "welsh") : state;
+      return state.phase === "thinking" && !state.paused ? startFirstWelsh(state) : state;
     case "toggle_pause":
       return togglePause(state);
   }
@@ -88,8 +95,8 @@ export function canMarkMissed(state: LessonState): boolean {
   switch (state.phase) {
     case "awaiting_outcome":
     case "between_welsh":
-    case "playing_welsh":
     case "playing_welsh_slow":
+    case "playing_welsh_standard":
       return true;
     case "waiting_for_clip":
       return state.track === "welsh_slow";
@@ -114,10 +121,12 @@ function clipEnded(state: LessonState): LessonState {
   switch (state.phase) {
     case "playing_english":
       return { ...fieldsOf(state), phase: "thinking" };
-    case "playing_welsh":
-      return { ...fieldsOf(state), phase: "between_welsh" };
     case "playing_welsh_slow":
       return { ...fieldsOf(state), phase: "awaiting_outcome" };
+    case "playing_welsh_standard":
+      return state.welshPlayback === "both"
+        ? { ...fieldsOf(state), phase: "between_welsh" }
+        : { ...fieldsOf(state), phase: "awaiting_outcome" };
     default:
       return state;
   }
@@ -164,12 +173,17 @@ function clipReady(state: LessonState, track: ClipTrack): LessonState {
 }
 
 function fieldsOf(state: ExerciseState): ExerciseFields {
-  const { attempt, clips, exercise, missed, paused, replayCount, revealed } = state;
+  const { attempt, clips, exercise, missed, paused, replayCount, revealed, welshPlayback } = state;
 
-  return { attempt, clips, exercise, missed, paused, replayCount, revealed };
+  return { attempt, clips, exercise, missed, paused, replayCount, revealed, welshPlayback };
 }
 
-function prepare(exercise: LessonExercise, attempt: number, missed: boolean): ExerciseState {
+function prepare(
+  exercise: LessonExercise,
+  attempt: number,
+  missed: boolean,
+  welshPlayback: WelshPlayback,
+): ExerciseState {
   return {
     attempt,
     clips: ALL_LOADING,
@@ -179,6 +193,7 @@ function prepare(exercise: LessonExercise, attempt: number, missed: boolean): Ex
     phase: "preparing",
     replayCount: 0,
     revealed: false,
+    welshPlayback,
   };
 }
 
@@ -207,10 +222,25 @@ function retry(state: LessonState): LessonState {
   }
 
   if (target.kind === "clips") {
-    return prepare(target.exercise, target.attempt + 1, target.missed);
+    return prepare(target.exercise, target.attempt + 1, target.missed, target.welshPlayback);
   }
 
-  return { ...fieldsOf(prepare(target.exercise, target.attempt, target.missed)), phase: "submitting" };
+  return {
+    ...fieldsOf(prepare(target.exercise, target.attempt, target.missed, target.welshPlayback)),
+    phase: "submitting",
+  };
+}
+
+/**
+ * Starts the Welsh after the think time: the woman's, or the man's alone when that is the setting.
+ * The text shows when a recording starts that nothing else follows, so with both voices it waits
+ * for the man.
+ */
+function startFirstWelsh(state: ExerciseState): LessonState {
+  return startClip(
+    { ...state, revealed: state.welshPlayback !== "both" },
+    state.welshPlayback === "slow" ? "welsh_slow" : "welsh_standard",
+  );
 }
 
 /** Plays the clip if it is ready, waits if it is still loading, and stops if it failed. */
@@ -223,7 +253,9 @@ function startClip(state: ExerciseState, track: WaitingTrack): LessonState {
     case "loading":
       return { ...fields, phase: "waiting_for_clip", track };
     case "ready":
-      return track === "welsh" ? { ...fields, phase: "playing_welsh" } : { ...fields, phase: "playing_welsh_slow" };
+      return track === "welsh_standard"
+        ? { ...fields, phase: "playing_welsh_standard" }
+        : { ...fields, phase: "playing_welsh_slow" };
   }
 }
 
@@ -234,7 +266,13 @@ function toClipError(state: ExerciseState, cause: FailureCause): LessonState {
     cause,
     message: errorMessage(loading ? "clips" : "playback", cause),
     phase: "error",
-    retry: { attempt: state.attempt, exercise: state.exercise, kind: "clips", missed: state.missed },
+    retry: {
+      attempt: state.attempt,
+      exercise: state.exercise,
+      kind: "clips",
+      missed: state.missed,
+      welshPlayback: state.welshPlayback,
+    },
   };
 }
 

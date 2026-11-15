@@ -33,6 +33,9 @@ export function AccountPage() {
       <Button component={Link} href={ROUTES.learn} sx={{ alignSelf: "flex-start" }}>
         Back to the lesson
       </Button>
+      <Button component={Link} href={ROUTES.settings} sx={{ alignSelf: "flex-start" }}>
+        Settings
+      </Button>
       <Typography component="h1" variant="h4">
         Account
       </Typography>

@@ -11,13 +11,13 @@ import {
 } from "@/features/lesson/stores/lesson-reducer";
 
 const EXERCISE: LessonExercise = {
-  audio: { english: "/e", welsh: "/w", welsh_slow: "/s" },
+  audio: { english: "/e", welsh_slow: "/s", welsh_standard: "/w" },
   english: "I can go",
   selectionId: "selection-1",
   welsh: "Galla i fynd",
 };
 
-const READY = { english: "ready", welsh: "ready", welsh_slow: "ready" } as const;
+const READY = { english: "ready", welsh_slow: "ready", welsh_standard: "ready" } as const;
 
 function exerciseState(phase: ExerciseState["phase"], overrides: Partial<ExerciseState> = {}): ExerciseState {
   return {
@@ -29,7 +29,8 @@ function exerciseState(phase: ExerciseState["phase"], overrides: Partial<Exercis
     phase,
     replayCount: 0,
     revealed: false,
-    ...(phase === "waiting_for_clip" ? { track: "welsh" } : {}),
+    welshPlayback: "both",
+    ...(phase === "waiting_for_clip" ? { track: "welsh_standard" } : {}),
     ...overrides,
   } as ExerciseState;
 }
@@ -44,8 +45,8 @@ describe("the happy path", () => {
     let state: LessonState = INITIAL_LESSON_STATE;
     const events: readonly LessonEvent[] = [
       { type: "start" },
-      { exercise: EXERCISE, type: "next_loaded" },
-      { track: "welsh", type: "clip_ready" },
+      { exercise: EXERCISE, type: "next_loaded", welshPlayback: "both" },
+      { track: "welsh_standard", type: "clip_ready" },
       { track: "welsh_slow", type: "clip_ready" },
       { track: "english", type: "clip_ready" },
       { type: "clip_ended" },
@@ -69,7 +70,7 @@ describe("the happy path", () => {
       "preparing",
       "playing_english",
       "thinking",
-      "playing_welsh",
+      "playing_welsh_standard",
       "between_welsh",
       "playing_welsh_slow",
       "awaiting_outcome",
@@ -82,8 +83,8 @@ describe("the happy path", () => {
     const state = run(
       INITIAL_LESSON_STATE,
       { type: "start" },
-      { exercise: EXERCISE, type: "next_loaded" },
-      { track: "welsh", type: "clip_ready" },
+      { exercise: EXERCISE, type: "next_loaded", welshPlayback: "both" },
+      { track: "welsh_standard", type: "clip_ready" },
     );
 
     expect(state.phase).toBe("preparing");
@@ -93,7 +94,7 @@ describe("the happy path", () => {
     const state = run(
       exerciseState("submitting", { missed: true }),
       { type: "submitted" },
-      { exercise: EXERCISE, type: "next_loaded" },
+      { exercise: EXERCISE, type: "next_loaded", welshPlayback: "both" },
     );
 
     expect(state).toMatchObject({ missed: false, phase: "preparing", revealed: false });
@@ -102,34 +103,36 @@ describe("the happy path", () => {
 
 describe("a clip that is not ready when it is needed", () => {
   it("waits for the Welsh when think time ends first, then plays it", () => {
-    const loading = exerciseState("thinking", { clips: { ...READY, welsh: "loading" } });
+    const loading = exerciseState("thinking", { clips: { ...READY, welsh_standard: "loading" } });
 
     const waiting = lessonReducer(loading, { type: "think_elapsed" });
 
-    expect(waiting).toMatchObject({ phase: "waiting_for_clip", track: "welsh" });
-    expect(lessonReducer(waiting, { track: "welsh", type: "clip_ready" }).phase).toBe("playing_welsh");
+    expect(waiting).toMatchObject({ phase: "waiting_for_clip", track: "welsh_standard" });
+    expect(lessonReducer(waiting, { track: "welsh_standard", type: "clip_ready" }).phase).toBe(
+      "playing_welsh_standard",
+    );
   });
 
   it("does not play a clip that arrives while paused until resumed", () => {
     const waiting = exerciseState("waiting_for_clip", {
-      clips: { ...READY, welsh: "loading" },
+      clips: { ...READY, welsh_standard: "loading" },
       paused: true,
-      track: "welsh",
+      track: "welsh_standard",
     });
 
-    const arrived = lessonReducer(waiting, { track: "welsh", type: "clip_ready" });
+    const arrived = lessonReducer(waiting, { track: "welsh_standard", type: "clip_ready" });
 
     expect(arrived.phase).toBe("waiting_for_clip");
-    expect(lessonReducer(arrived, { type: "toggle_pause" }).phase).toBe("playing_welsh");
+    expect(lessonReducer(arrived, { type: "toggle_pause" }).phase).toBe("playing_welsh_standard");
   });
 
   it("stops with an error when the clip needed failed to load", () => {
     const waiting = exerciseState("waiting_for_clip", {
-      clips: { ...READY, welsh: "loading" },
-      track: "welsh",
+      clips: { ...READY, welsh_standard: "loading" },
+      track: "welsh_standard",
     });
 
-    expect(lessonReducer(waiting, { cause: "other", track: "welsh", type: "clip_failed" })).toMatchObject({
+    expect(lessonReducer(waiting, { cause: "other", track: "welsh_standard", type: "clip_failed" })).toMatchObject({
       phase: "error",
       retry: { kind: "clips" },
     });
@@ -137,19 +140,21 @@ describe("a clip that is not ready when it is needed", () => {
 
   it("stops at once when the English fails, but notes a Welsh failure until it is needed", () => {
     const preparing = exerciseState("preparing", {
-      clips: { english: "loading", welsh: "loading", welsh_slow: "loading" },
+      clips: { english: "loading", welsh_slow: "loading", welsh_standard: "loading" },
     });
 
     expect(lessonReducer(preparing, { cause: "other", track: "english", type: "clip_failed" }).phase).toBe("error");
 
-    const noted = lessonReducer(preparing, { cause: "other", track: "welsh", type: "clip_failed" });
+    const noted = lessonReducer(preparing, { cause: "other", track: "welsh_standard", type: "clip_failed" });
 
     expect(noted.phase).toBe("preparing");
     expect(
-      lessonReducer({ ...exerciseState("thinking"), clips: { ...READY, welsh: "failed" } }, { type: "think_elapsed" })
-        .phase,
+      lessonReducer(
+        { ...exerciseState("thinking"), clips: { ...READY, welsh_standard: "failed" } },
+        { type: "think_elapsed" },
+      ).phase,
     ).toBe("error");
-    expect(noted).toMatchObject({ clips: { welsh: "failed" } });
+    expect(noted).toMatchObject({ clips: { welsh_standard: "failed" } });
   });
 
   it("retries the clips with a new attempt, keeping the missed mark", () => {
@@ -167,7 +172,7 @@ describe("pausing", () => {
   it.each([
     "playing_english",
     "thinking",
-    "playing_welsh",
+    "playing_welsh_standard",
     "between_welsh",
     "playing_welsh_slow",
     "awaiting_outcome",
@@ -200,7 +205,7 @@ describe("pausing", () => {
 });
 
 describe("marking missed", () => {
-  it.each(["playing_welsh", "between_welsh", "playing_welsh_slow", "awaiting_outcome"] as const)(
+  it.each(["playing_welsh_standard", "between_welsh", "playing_welsh_slow", "awaiting_outcome"] as const)(
     "is accepted in %s and kept to the end",
     (phase) => {
       const marked = lessonReducer(exerciseState(phase), { type: "missed" });
@@ -218,7 +223,7 @@ describe("marking missed", () => {
 
   it("is accepted between the two Welsh clips but not before the first", () => {
     expect(canMarkMissed(exerciseState("waiting_for_clip", { track: "welsh_slow" }))).toBe(true);
-    expect(canMarkMissed(exerciseState("waiting_for_clip", { track: "welsh" }))).toBe(false);
+    expect(canMarkMissed(exerciseState("waiting_for_clip", { track: "welsh_standard" }))).toBe(false);
   });
 
   it("survives a replay", () => {
@@ -262,7 +267,7 @@ describe("the outcome window", () => {
 
 describe("the gap between the Welsh clips", () => {
   it("shows the Welsh text and plays the slow Welsh when the gap ends", () => {
-    const gap = lessonReducer(exerciseState("playing_welsh"), { type: "clip_ended" });
+    const gap = lessonReducer(exerciseState("playing_welsh_standard"), { type: "clip_ended" });
 
     expect(gap).toMatchObject({ phase: "between_welsh", revealed: false });
     expect(lessonReducer(gap, { type: "gap_elapsed" })).toMatchObject({ phase: "playing_welsh_slow", revealed: true });
@@ -286,7 +291,7 @@ describe("the gap between the Welsh clips", () => {
       run(
         exerciseState("submitting", { revealed: true }),
         { type: "submitted" },
-        { exercise: EXERCISE, type: "next_loaded" },
+        { exercise: EXERCISE, type: "next_loaded", welshPlayback: "both" },
       ),
     ).toMatchObject({ revealed: false });
   });
@@ -311,7 +316,7 @@ describe("errors", () => {
   });
 
   it("fails when playback is refused during a clip", () => {
-    expect(lessonReducer(exerciseState("playing_welsh"), { type: "playback_failed" })).toMatchObject({
+    expect(lessonReducer(exerciseState("playing_welsh_standard"), { type: "playback_failed" })).toMatchObject({
       phase: "error",
     });
   });
@@ -348,5 +353,69 @@ describe("other states", () => {
     expect(lessonReducer(INITIAL_LESSON_STATE, { type: "clip_ended" })).toBe(INITIAL_LESSON_STATE);
     expect(lessonReducer(INITIAL_LESSON_STATE, { type: "submitted" })).toBe(INITIAL_LESSON_STATE);
     expect(isExerciseState(INITIAL_LESSON_STATE)).toBe(false);
+  });
+});
+
+describe("which Welsh plays", () => {
+  it("plays the woman, the pause and then the man by default, showing the text only for the man", () => {
+    const thinking = exerciseState("thinking");
+
+    const woman = lessonReducer(thinking, { type: "think_elapsed" });
+    const gap = lessonReducer(woman, { type: "clip_ended" });
+    const man = lessonReducer(gap, { type: "gap_elapsed" });
+
+    expect([woman, gap, man].map((state) => state.phase)).toEqual([
+      "playing_welsh_standard",
+      "between_welsh",
+      "playing_welsh_slow",
+    ]);
+    expect([woman, gap, man].map((state) => isExerciseState(state) && state.revealed)).toEqual([false, false, true]);
+  });
+
+  it("with standard only, plays the woman, shows the text and goes to the outcome window", () => {
+    const woman = lessonReducer(exerciseState("thinking", { welshPlayback: "standard" }), { type: "think_elapsed" });
+
+    expect(woman).toMatchObject({ phase: "playing_welsh_standard", revealed: true });
+    expect(lessonReducer(woman, { type: "clip_ended" }).phase).toBe("awaiting_outcome");
+  });
+
+  it("with slow only, plays just the man, shows the text and goes to the outcome window", () => {
+    const man = lessonReducer(exerciseState("thinking", { welshPlayback: "slow" }), { type: "think_elapsed" });
+
+    expect(man).toMatchObject({ phase: "playing_welsh_slow", revealed: true });
+    expect(lessonReducer(man, { type: "clip_ended" }).phase).toBe("awaiting_outcome");
+  });
+
+  it("with slow only, waits for the man's clip when it is late, and lets the learner mark it missed", () => {
+    const late = exerciseState("thinking", {
+      clips: { ...READY, welsh_slow: "loading" },
+      welshPlayback: "slow",
+    });
+
+    const waiting = lessonReducer(late, { type: "think_elapsed" });
+
+    expect(waiting).toMatchObject({ phase: "waiting_for_clip", track: "welsh_slow" });
+    expect(canMarkMissed(waiting)).toBe(true);
+    expect(lessonReducer(waiting, { track: "welsh_slow", type: "clip_ready" }).phase).toBe("playing_welsh_slow");
+  });
+
+  it("keeps the setting the exercise was loaded with, through a retry", () => {
+    const retried = run(
+      exerciseState("preparing", { welshPlayback: "slow" }),
+      { cause: "other", track: "english", type: "clip_failed" },
+      { type: "retry" },
+    );
+
+    expect(retried).toMatchObject({ phase: "preparing", welshPlayback: "slow" });
+  });
+
+  it("takes the setting from the event that loads the exercise", () => {
+    const state = run(
+      INITIAL_LESSON_STATE,
+      { type: "start" },
+      { exercise: EXERCISE, type: "next_loaded", welshPlayback: "standard" },
+    );
+
+    expect(state).toMatchObject({ phase: "preparing", welshPlayback: "standard" });
   });
 });

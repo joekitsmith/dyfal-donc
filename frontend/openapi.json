@@ -9,31 +9,15 @@
             "type": "string"
           },
           "welsh": {
-            "title": "Welsh",
-            "type": "string"
-          },
-          "welsh_slow": {
-            "title": "Welsh Slow",
-            "type": "string"
+            "$ref": "#/components/schemas/WelshAudioLinks"
           }
         },
         "required": [
           "english",
-          "welsh",
-          "welsh_slow"
+          "welsh"
         ],
         "title": "AudioLinks",
         "type": "object"
-      },
-      "AudioTrack": {
-        "description": "What can be heard for an exercise: the English prompt, then the Welsh twice.",
-        "enum": [
-          "english",
-          "welsh",
-          "welsh-slow"
-        ],
-        "title": "AudioTrack",
-        "type": "string"
       },
       "AuthenticationVerifyRequest": {
         "description": "The browser's signed answer, as its WebAuthn API produced it.",
@@ -476,6 +460,44 @@
         "title": "UserResponse",
         "type": "object"
       },
+      "UserSettingsPatch": {
+        "description": "Settings to change. A field that is left out stays as it is.",
+        "properties": {
+          "think_time_multiplier": {
+            "default": 1.0,
+            "maximum": 3.0,
+            "minimum": 0.5,
+            "title": "Think Time Multiplier",
+            "type": "number"
+          },
+          "welsh_playback": {
+            "$ref": "#/components/schemas/WelshPlayback",
+            "default": "both"
+          }
+        },
+        "title": "UserSettingsPatch",
+        "type": "object"
+      },
+      "UserSettingsResponse": {
+        "description": "The settings in force. A user has ``DEFAULT_USER_SETTINGS`` until they save some.\n\n``welsh_playback`` is which Welsh recordings play: the woman's at a standard pace,\nthe man's slowly, or hers and then his.",
+        "properties": {
+          "think_time_multiplier": {
+            "maximum": 3.0,
+            "minimum": 0.5,
+            "title": "Think Time Multiplier",
+            "type": "number"
+          },
+          "welsh_playback": {
+            "$ref": "#/components/schemas/WelshPlayback"
+          }
+        },
+        "required": [
+          "think_time_multiplier",
+          "welsh_playback"
+        ],
+        "title": "UserSettingsResponse",
+        "type": "object"
+      },
       "ValidationError": {
         "properties": {
           "ctx": {
@@ -515,6 +537,42 @@
         ],
         "title": "ValidationError",
         "type": "object"
+      },
+      "WelshAudioLinks": {
+        "properties": {
+          "slow": {
+            "title": "Slow",
+            "type": "string"
+          },
+          "standard": {
+            "title": "Standard",
+            "type": "string"
+          }
+        },
+        "required": [
+          "standard",
+          "slow"
+        ],
+        "title": "WelshAudioLinks",
+        "type": "object"
+      },
+      "WelshPace": {
+        "description": "How fast the Welsh is spoken: by a woman at a standard pace, or by a man slowly.",
+        "enum": [
+          "standard",
+          "slow"
+        ],
+        "title": "WelshPace",
+        "type": "string"
+      },
+      "WelshPlayback": {
+        "enum": [
+          "standard",
+          "slow",
+          "both"
+        ],
+        "title": "WelshPlayback",
+        "type": "string"
       }
     }
   },
@@ -721,9 +779,9 @@
         "summary": "Course"
       }
     },
-    "/exercises/{exercise_id}/audio/{track}": {
+    "/exercises/{exercise_id}/audio/english": {
       "get": {
-        "operationId": "get_audio_exercises__exercise_id__audio__track__get",
+        "operationId": "get_english_audio_exercises__exercise_id__audio_english_get",
         "parameters": [
           {
             "in": "path",
@@ -732,14 +790,6 @@
             "schema": {
               "title": "Exercise Id",
               "type": "string"
-            }
-          },
-          {
-            "in": "path",
-            "name": "track",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/AudioTrack"
             }
           }
         ],
@@ -761,7 +811,50 @@
             "description": "Validation Error"
           }
         },
-        "summary": "Get Audio"
+        "summary": "Get English Audio"
+      }
+    },
+    "/exercises/{exercise_id}/audio/welsh/{pace}": {
+      "get": {
+        "operationId": "get_welsh_audio_exercises__exercise_id__audio_welsh__pace__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "exercise_id",
+            "required": true,
+            "schema": {
+              "title": "Exercise Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "pace",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/WelshPace"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "audio/wav": {}
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Welsh Audio"
       }
     },
     "/health": {
@@ -972,6 +1065,60 @@
           }
         },
         "summary": "Post Recovery Codes"
+      }
+    },
+    "/me/settings": {
+      "get": {
+        "operationId": "get_settings_me_settings_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSettingsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Settings"
+      },
+      "patch": {
+        "operationId": "patch_settings_me_settings_patch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSettingsPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSettingsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Settings"
       }
     }
   }

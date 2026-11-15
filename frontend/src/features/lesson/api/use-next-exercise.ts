@@ -21,8 +21,8 @@ export function useNextExercise() {
         exercise: {
           audio: {
             english: offered.audio.english,
-            welsh: offered.audio.welsh,
-            welsh_slow: offered.audio.welsh_slow,
+            welsh_slow: offered.audio.welsh.slow,
+            welsh_standard: offered.audio.welsh.standard,
           },
           english: offered.english,
           selectionId: offered.selection_id,

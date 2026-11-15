@@ -33,27 +33,27 @@ Actions: **Try it now** (starts a guest account and opens the lesson), **Sign in
 
 The learning loop for the signed-in learner. Signed-out visitors are sent to the welcome screen.
 
-Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Replay** (R), skip the outcome window (N), change the think-time slider, open **Account**. Guests also get **Add a passkey** and **Not now** on the save prompt.
+Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Replay** (R), skip the outcome window (N), open **Account** or **Settings**. Guests also get **Add a passkey** and **Not now** on the save prompt.
 
-| State                                 | Shown                                                                                                         |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| Checking who is signed in             | Loading                                                                                                       |
-| Idle                                  | Start                                                                                                         |
-| Loading the next exercise             | The English line empty, Start gone                                                                            |
-| Preparing the clips                   | The same, while the audio is fetched                                                                          |
-| Playing the English                   | The English text                                                                                              |
-| Thinking                              | A bar fills over the think time, with Missed it available                                                     |
-| Waiting for the Welsh clip            | The bar is full, and the Welsh is still coming                                                                |
-| Playing the Welsh                     | The Welsh text appears when the pause between the two Welsh clips ends and stays for the rest of the exercise |
-| Playing the slow Welsh                | The slow clip plays                                                                                           |
-| Awaiting the outcome                  | A short window to mark the exercise missed                                                                    |
-| Submitting                            | The outcome is being sent                                                                                     |
-| Paused                                | Any playing or waiting state, held                                                                            |
-| Nothing to give                       | A message that there is a gap in the course                                                                   |
-| Error                                 | A message that says why when it is known (speech down, progress missing), and Retry when retrying can help    |
-| Signed out partway                    | The learner is sent to the welcome screen                                                                     |
-| Guest with 5 or more items introduced | The save prompt above the exercise, until dismissed or saved                                                  |
-| Just saved                            | A short confirmation that the passkey works from any device                                                   |
+| State                                              | Shown                                                                                                                                            |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Checking who is signed in, or loading the settings | Loading                                                                                                                                          |
+| Idle                                               | Start                                                                                                                                            |
+| Loading the next exercise                          | The English line empty, Start gone                                                                                                               |
+| Preparing the clips                                | The same, while the audio is fetched                                                                                                             |
+| Playing the English                                | The English text                                                                                                                                 |
+| Thinking                                           | A bar fills over the think time, with Missed it available                                                                                        |
+| Waiting for the Welsh clip                         | The bar is full, and the Welsh is still coming                                                                                                   |
+| Playing the Welsh                                  | The woman's clip plays. The text appears when the pause between the two Welsh clips ends and the man starts, or straight away with standard only |
+| Playing the slow Welsh                             | The man's clip plays. With slow only, this is the only Welsh, and the text appears as it starts                                                  |
+| Awaiting the outcome                               | A short window to mark the exercise missed                                                                                                       |
+| Submitting                                         | The outcome is being sent                                                                                                                        |
+| Paused                                             | Any playing or waiting state, held                                                                                                               |
+| Nothing to give                                    | A message that there is a gap in the course                                                                                                      |
+| Error                                              | A message that says why when it is known (speech down, progress missing), and Retry when retrying can help                                       |
+| Signed out partway                                 | The learner is sent to the welcome screen                                                                                                        |
+| Guest with 5 or more items introduced              | The save prompt above the exercise, until dismissed or saved                                                                                     |
+| Just saved                                         | A short confirmation that the passkey works from any device                                                                                      |
 
 The progress counts (introduced, learning, in review, due) show once they have loaded.
 
@@ -105,7 +105,7 @@ Actions: **Confirm with passkey**, **Cancel**.
 
 Who is signed in and how they get back in.
 
-Actions: **Back to the lesson**, **Add a passkey** (for a guest), **Add another passkey** with an optional name, **Remove** a passkey, **Make new codes** (with a confirmation that the old ones stop working), **Sign out**, **Delete account**.
+Actions: **Back to the lesson**, open **Settings**, **Add a passkey** (for a guest), **Add another passkey** with an optional name, **Remove** a passkey, **Make new codes** (with a confirmation that the old ones stop working), **Sign out**, **Delete account**.
 
 | State                                                                       | Shown                                                                                                        |
 | --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
@@ -118,3 +118,24 @@ Actions: **Back to the lesson**, **Add a passkey** (for a guest), **Add another 
 | Deleting                                                                    | A confirmation first: everything is deleted                                                                  |
 | Prompt dismissed, passkey already saved, browser unsupported, other failure | The same messages as the welcome screen                                                                      |
 | Signed out                                                                  | Moves to the welcome screen. An account's session also ends 30 days after it began, however much it was used |
+
+## Settings `/settings`
+
+How the lesson behaves for this person. Signed-out visitors are sent to the welcome screen. The settings belong to the account, so they follow a person to any device.
+
+Actions: change a setting, **Save**, **Back to the lesson**.
+
+| Setting     | Control                                                               | Effect                                                                                            |
+| ----------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Think time  | Slider from 0.5× to 3×                                                | Scales how long there is to say the Welsh                                                         |
+| Welsh audio | Choice: standard then slow (the default), standard only, or slow only | Which Welsh recordings play after the think time. The Welsh text appears when the last one starts |
+
+| State                         | Shown                                                    |
+| ----------------------------- | -------------------------------------------------------- |
+| Loading                       | Loading                                                  |
+| Idle                          | The saved settings                                       |
+| Changed, not saved            | The form is edited, and nothing is saved until Save      |
+| Saving                        | Save is disabled                                         |
+| Saved                         | A confirmation, until the next change                    |
+| Could not save                | An error, with the edits kept so Save can be tried again |
+| Could not load, or signed out | An error, or a move to the welcome screen                |

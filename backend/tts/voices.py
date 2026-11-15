@@ -54,7 +54,7 @@ VOICES: Mapping[Track, Voice] = {
         noise_scale=None,
         rhythm_noise=None,
     ),
-    Track.WELSH: Voice(
+    Track.WELSH_STANDARD: Voice(
         model_file=WELSH_MODEL_FILE,
         speaker_id=WELSH_WOMAN_SPEAKER,
         speed=EvenPace(seconds_per_sound=WELSH_WOMAN_SECONDS_PER_SOUND),

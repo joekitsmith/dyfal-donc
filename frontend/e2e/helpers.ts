@@ -1,6 +1,6 @@
 import { type APIRequestContext, expect, type Page } from "@playwright/test";
 
-const FAST_THINK_MULTIPLIER = "0.5";
+const FAST_THINK_MULTIPLIER = 0.5;
 const LONG_CLIP_SECONDS = 0.2;
 
 /** Counts the clips that play to the end. The silent clip that unlocks audio is too short to count. */
@@ -43,18 +43,25 @@ export async function requireStack(request: APIRequestContext): Promise<void> {
   }
 }
 
-/** A shorter think time keeps a whole lesson under half a minute. */
-export async function speedUpThinking(page: Page): Promise<void> {
-  await page.addInitScript((multiplier) => {
-    window.localStorage.setItem("dyfal-donc.think-time-multiplier", multiplier);
-  }, FAST_THINK_MULTIPLIER);
+/** A shorter think time keeps a whole lesson under half a minute. The learner has to be signed in already. */
+async function speedUpThinking(page: Page, settings: Record<string, unknown> = {}): Promise<void> {
+  const origin = new URL(page.url()).origin;
+  const response = await page.request.patch("/api/me/settings", {
+    data: { think_time_multiplier: FAST_THINK_MULTIPLIER, ...settings },
+    headers: { Origin: origin },
+  });
+
+  expect(response.ok()).toBe(true);
+  // The lesson read the settings when it loaded
+  await page.reload();
 }
 
-/** Starts as a guest from the front door, as a new visitor would. */
-export async function startAsGuest(page: Page): Promise<void> {
+/** Starts as a guest from the front door, as a new visitor would, with the quick think time. */
+export async function startAsGuest(page: Page, settings: Record<string, unknown> = {}): Promise<void> {
   await page.goto("/");
   await page.getByRole("button", { name: "Try it now" }).click();
   await expect(page).toHaveURL(/\/learn$/);
+  await speedUpThinking(page, settings);
 }
 
 /**

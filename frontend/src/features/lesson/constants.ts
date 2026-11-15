@@ -1,14 +1,11 @@
-export const CLIP_TRACKS = ["english", "welsh", "welsh_slow"] as const;
+/** What clip fetching assumes when no exercise is showing. */
+export const DEFAULT_WELSH_PLAYBACK = "both";
+
+export const CLIP_TRACKS = ["english", "welsh_standard", "welsh_slow"] as const;
 
 export const THINK_BASE_SECONDS = 2.16;
 export const THINK_SECONDS_PER_WORD = 0.72;
 export const THINK_MAXIMUM_SECONDS = 21.6;
-
-export const THINK_MULTIPLIER_DEFAULT = 1;
-export const THINK_MULTIPLIER_MINIMUM = 0.5;
-export const THINK_MULTIPLIER_MAXIMUM = 3;
-export const THINK_MULTIPLIER_STEP = 0.25;
-export const THINK_MULTIPLIER_STORAGE_KEY = "dyfal-donc.think-time-multiplier";
 
 /** The gap after the first Welsh. Its text shows, and the slow Welsh starts, when it ends. */
 export const BETWEEN_WELSH_MILLISECONDS = 1500;

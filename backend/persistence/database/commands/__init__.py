@@ -12,6 +12,7 @@ from persistence.database.commands.recovery_code import (
 )
 from persistence.database.commands.selection import ConsumeSelection, IssueSelection
 from persistence.database.commands.user import AddUser
+from persistence.database.commands.user_settings import SaveUserSettings
 
 __all__ = [
     "AddChallenge",
@@ -25,5 +26,6 @@ __all__ = [
     "IssueSelection",
     "RecordCredentialUse",
     "ReplaceRecoveryCodes",
+    "SaveUserSettings",
     "UseRecoveryCode",
 ]

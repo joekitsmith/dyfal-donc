@@ -10,7 +10,8 @@ class TestRenderOpenapiSchema:
     def test_describes_the_audio_account_and_learner_paths(self) -> None:
         paths = json.loads(render_openapi_schema())["paths"]
 
-        assert "/exercises/{exercise_id}/audio/{track}" in paths
+        assert "/exercises/{exercise_id}/audio/english" in paths
+        assert "/exercises/{exercise_id}/audio/welsh/{pace}" in paths
         assert "/auth/guest" in paths
         assert "/me/next" in paths
         assert not any(path.startswith("/learners") for path in paths)

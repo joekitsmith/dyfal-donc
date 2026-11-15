@@ -7,19 +7,22 @@ import { ROUTES } from "@/config/paths";
 import { SaveProgressPrompt } from "@/features/auth";
 import { ProgressPanel } from "@/features/progress";
 
+import type { LessonSettings } from "../types";
+
 import { useLessonPlayer } from "../hooks/use-lesson-player";
 import { useSaveOffer } from "../hooks/use-save-offer";
-import { useThinkTimeMultiplier } from "../hooks/use-think-time-multiplier";
 import { ExerciseDisplay } from "./exercise-display";
 import { LessonControls } from "./lesson-controls";
 import { ThinkProgress } from "./think-progress";
-import { ThinkTimeSlider } from "./think-time-slider";
 
-type LessonPlayerProps = { readonly isGuest: boolean; readonly learnerId: string };
+type LessonPlayerProps = {
+  readonly isGuest: boolean;
+  readonly learnerId: string;
+  readonly settings: LessonSettings;
+};
 
-export function LessonPlayer({ isGuest, learnerId }: LessonPlayerProps) {
-  const [thinkMultiplier, setThinkMultiplier] = useThinkTimeMultiplier();
-  const { actions, canMiss, canPause, state } = useLessonPlayer({ learnerId, thinkMultiplier });
+export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps) {
+  const { actions, canMiss, canPause, state } = useLessonPlayer({ learnerId, settings });
   const offer = useSaveOffer({ isGuest, learnerId });
 
   return (
@@ -28,13 +31,17 @@ export function LessonPlayer({ isGuest, learnerId }: LessonPlayerProps) {
         <SaveProgressPrompt onDismiss={offer.prompt.onDismiss} onSaved={offer.prompt.onSaved} />
       ) : null}
       <ExerciseDisplay state={state} />
-      <ThinkProgress multiplier={thinkMultiplier} state={state} />
+      <ThinkProgress multiplier={settings.thinkTimeMultiplier} state={state} />
       <LessonControls actions={actions} canMiss={canMiss} canPause={canPause} state={state} />
-      <ThinkTimeSlider onChange={setThinkMultiplier} value={thinkMultiplier} />
       <ProgressPanel learnerId={learnerId} />
-      <Button component={Link} href={ROUTES.account} sx={{ alignSelf: "flex-start" }}>
-        Account
-      </Button>
+      <Stack direction="row" spacing={1}>
+        <Button component={Link} href={ROUTES.account}>
+          Account
+        </Button>
+        <Button component={Link} href={ROUTES.settings}>
+          Settings
+        </Button>
+      </Stack>
       <Snackbar
         autoHideDuration={6000}
         message="Saved. You can now sign in from any device with your passkey."

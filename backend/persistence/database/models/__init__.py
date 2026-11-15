@@ -10,10 +10,15 @@ from persistence.database.models.login_session import LoginSession
 from persistence.database.models.recovery_code import RecoveryCode
 from persistence.database.models.selection import IssuedSelection
 from persistence.database.models.user import User
+from persistence.database.models.user_settings import (
+    WELSH_PLAYBACKS,
+    UserSettings,
+)
 
 __all__ = [
     "CHALLENGE_PURPOSES",
     "OUTCOMES",
+    "WELSH_PLAYBACKS",
     "Base",
     "IssuedSelection",
     "Learner",
@@ -21,6 +26,7 @@ __all__ = [
     "RecoveryCode",
     "ReviewEvent",
     "User",
+    "UserSettings",
     "WebauthnChallenge",
     "WebauthnCredential",
 ]

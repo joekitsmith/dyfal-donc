@@ -16,6 +16,8 @@ export type ExerciseFields = {
   /** Counts replays, so a replay starts the English again even when it is already playing. */
   readonly replayCount: number;
   readonly revealed: boolean;
+  /** Which Welsh recordings this exercise plays. Fixed when it is loaded. */
+  readonly welshPlayback: WelshPlayback;
 };
 
 export type FailureCause = "learner_missing" | "other" | "speech_unavailable";
@@ -25,7 +27,7 @@ export type ExerciseState = Extract<LessonState, { readonly exercise: LessonExer
 export type LessonEvent =
   | { readonly cause: FailureCause; readonly track: ClipTrack; readonly type: "clip_failed" }
   | { readonly cause: FailureCause; readonly type: "next_failed" | "submit_failed" }
-  | { readonly exercise: LessonExercise; readonly type: "next_loaded" }
+  | { readonly exercise: LessonExercise; readonly type: "next_loaded"; readonly welshPlayback: WelshPlayback }
   | { readonly track: ClipTrack; readonly type: "clip_ready" }
   | {
       readonly type:
@@ -52,12 +54,18 @@ export type LessonExercise = {
   readonly welsh: string;
 };
 
+/** The settings the lesson uses. They are read when each exercise is loaded. */
+export type LessonSettings = {
+  readonly thinkTimeMultiplier: number;
+  readonly welshPlayback: WelshPlayback;
+};
+
 export type LessonState =
   | (ExerciseFields & { readonly phase: "awaiting_outcome" })
   | (ExerciseFields & { readonly phase: "between_welsh" })
   | (ExerciseFields & { readonly phase: "playing_english" })
-  | (ExerciseFields & { readonly phase: "playing_welsh" })
   | (ExerciseFields & { readonly phase: "playing_welsh_slow" })
+  | (ExerciseFields & { readonly phase: "playing_welsh_standard" })
   | (ExerciseFields & { readonly phase: "preparing" })
   | (ExerciseFields & { readonly phase: "submitting" })
   | (ExerciseFields & { readonly phase: "thinking" })
@@ -75,7 +83,11 @@ type Retry =
       readonly exercise: LessonExercise;
       readonly kind: "clips" | "submit";
       readonly missed: boolean;
+      readonly welshPlayback: WelshPlayback;
     }
   | { readonly kind: "next" };
 
-export type WaitingTrack = "welsh" | "welsh_slow";
+/** The woman's Welsh at a standard pace, the man's slowly, or hers and then his. */
+export type WelshPlayback = "both" | "slow" | "standard";
+
+export type WaitingTrack = "welsh_slow" | "welsh_standard";

@@ -598,6 +598,7 @@ class TestDeleteAccount:
         start_guest(client)
         answer(client, offer(client)["selection_id"])
         offer(client)
+        client.patch("/me/settings", json={"welsh_playback": "slow"})
         register_passkey(client, authenticator)
         client.post("/auth/passkeys/registration/options")
 

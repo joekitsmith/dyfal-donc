@@ -5,6 +5,7 @@ from persistence.database.repositories.learners import LearnerRepository
 from persistence.database.repositories.login_sessions import LoginSessionRepository
 from persistence.database.repositories.recovery_codes import RecoveryCodeRepository
 from persistence.database.repositories.selections import SelectionRepository
+from persistence.database.repositories.user_settings import UserSettingsRepository
 from persistence.database.repositories.users import UserRepository
 
 __all__ = [
@@ -16,4 +17,5 @@ __all__ = [
     "RecoveryCodeRepository",
     "SelectionRepository",
     "UserRepository",
+    "UserSettingsRepository",
 ]

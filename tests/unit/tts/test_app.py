@@ -22,12 +22,12 @@ class TestHealth:
 class TestSynthesise:
     def test_returns_the_audio_as_wav(self, client: TestClient) -> None:
         response = client.post(
-            "/synthesise", json={"text": "Galla i fynd", "track": "welsh"}
+            "/synthesise", json={"text": "Galla i fynd", "track": "welsh-standard"}
         )
 
         assert response.status_code == 200
         assert response.headers["content-type"] == "audio/wav"
-        assert response.content == b"RIFFwelsh:Galla i fynd"
+        assert response.content == b"RIFFwelsh-standard:Galla i fynd"
 
     @pytest.mark.parametrize("track", Track)
     def test_speaks_the_text_on_the_requested_track(

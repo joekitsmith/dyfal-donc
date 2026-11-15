@@ -9,6 +9,7 @@ from persistence.database.repositories import (
     RecoveryCodeRepository,
     SelectionRepository,
     UserRepository,
+    UserSettingsRepository,
 )
 
 
@@ -26,6 +27,7 @@ class UnitOfWork:
         self.login_sessions = LoginSessionRepository(session)
         self.challenges = ChallengeRepository(session)
         self.recovery_codes = RecoveryCodeRepository(session)
+        self.user_settings = UserSettingsRepository(session)
         self.learners = LearnerRepository(session)
         self.selections = SelectionRepository(session)
         self.events = EventRepository(session)
