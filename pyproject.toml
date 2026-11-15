@@ -8,6 +8,7 @@ packages = [
     { include = "cymraeg", from = "core" },
     { include = "evals", from = "backend" },
     { include = "tools", from = "backend" },
+    { include = "simulation", from = "backend" },
 ]
 authors = [
     "Joseph Smith <joesmith29@hotmail.co.uk>"
@@ -49,4 +50,5 @@ tests-unit = "pytest tests/unit"
 tests-integration = "pytest tests/integration"
 benchmark = "python -m evals.benchmark"
 suggest-forms = "python -m tools.suggest_forms"
+simulate = "python -m simulation"
 download-stanza-model = "python -c \"import stanza; stanza.download('cy', processors='tokenize,pos,lemma')\""

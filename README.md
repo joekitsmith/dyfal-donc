@@ -19,6 +19,7 @@ A spaced-repetition Welsh speaking course (South Wales Welsh) with LLM-assisted,
 - `backend/`: everything that uses `core`: evaluation and authoring tools now, the API later
   - [`evals/`](backend/evals/README.md): hand-annotated gold sentences and the lemmatiser benchmark
   - [`tools/`](backend/tools/suggest_forms.py): command-line helpers for authors, such as `suggest-forms`
+  - [`simulation/`](backend/simulation/README.md): a seeded fake learner for tuning the scheduler and learner model (`poe simulate`)
 - [`curriculum/`](curriculum/README.md): hand-authored YAML seed data
 - `tests/`: unit and integration tests, mirroring the package names
 
