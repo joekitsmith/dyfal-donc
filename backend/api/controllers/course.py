@@ -1,13 +1,7 @@
 from api.course import CourseRelease
-from api.schemas import CourseResponse, TopicResponse
+from api.mappings import to_course_response
+from api.schemas import CourseResponse
 
 
 def describe_course(release: CourseRelease) -> CourseResponse:
-    return CourseResponse(
-        release=release.hash,
-        item_count=len(release.curriculum.items),
-        topics=tuple(
-            TopicResponse(name=topic.name, requires=topic.requires)
-            for topic in release.curriculum.topics
-        ),
-    )
+    return to_course_response(release)

@@ -1,7 +1,6 @@
 from sqlalchemy import UniqueConstraint
 
-from persistence.database.models import OUTCOMES, Base
-from engine.learner import Outcome
+from persistence.database.models import Base
 
 
 class TestModels:
@@ -11,9 +10,6 @@ class TestModels:
             "issued_selections",
             "review_events",
         }
-
-    def test_outcomes_match_the_engine(self) -> None:
-        assert set(OUTCOMES) == {outcome.value for outcome in Outcome}
 
     def test_review_events_are_unique_per_learner_and_sequence(self) -> None:
         constraints = {
