@@ -3,6 +3,7 @@ import pytest
 from cymraeg import DemutatingLemmatiser, Lemmatiser, RuleLemmatiser
 from engine.curriculum import load_curriculum
 from evals.benchmark import render_report, run_benchmark
+from evals.benchmark.combinations import AgreeingLemmatiser, EitherLemmatiser
 from evals.benchmark.run import CURRICULUM_DIRECTORY, RECOMMENDATION_PATH
 from evals.gold import load_gold_sentences
 
@@ -64,3 +65,26 @@ class TestBenchmarkWithSimplemma:
             demutating.lemmas.overall.average_candidates
             >= simplemma.lemmas.overall.average_candidates
         )
+
+
+class TestBenchmarkWithAgreement:
+    def test_agreement_surfaces_no_more_forms_and_either_no_fewer(self) -> None:
+        pytest.importorskip("simplemma")
+        from cymraeg import SimplemmaLemmatiser
+
+        simplemma = SimplemmaLemmatiser()
+        first = DemutatingLemmatiser(RuleLemmatiser())
+        lemmatisers: dict[str, Lemmatiser] = {
+            "Simplemma": simplemma,
+            "Rule": first,
+            "Agree": AgreeingLemmatiser(simplemma, first),
+            "Either": EitherLemmatiser(simplemma, first),
+        }
+
+        simplemma_row, rule_row, agree, either = run_benchmark(
+            lemmatisers, SENTENCES, CURRICULUM
+        ).lemmatisers
+
+        for row in (simplemma_row, rule_row):
+            assert agree.authoring.surfaced <= row.authoring.surfaced
+            assert either.authoring.surfaced >= row.authoring.surfaced

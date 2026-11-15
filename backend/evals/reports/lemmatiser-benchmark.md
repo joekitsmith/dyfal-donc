@@ -10,8 +10,10 @@ Scored on the 181 gold sentences (875 tokens) in `backend/evals/gold/sentences.y
 | Rule (demutate) | 58.6% | 1.85 | 88.1% | 80.4% | 84.1% | 0/87 | 0.0% | 0.02 |
 | Simplemma | 88.6% | 1.00 | 86.4% | 92.9% | 89.6% | 58/87 | 75.3% | 0.00 |
 | Simplemma + demutate | 88.7% | 1.66 | 86.5% | 93.2% | 89.7% | 59/87 | 72.8% | 0.04 |
-| Stanza | 90.3% | 1.00 | 88.9% | 94.0% | 91.4% | 62/87 | 91.2% | 5.74 |
-| Stanza + demutate | 91.0% | 1.65 | 88.2% | 94.0% | 91.0% | 62/87 | 86.1% | 29.63 |
+| Stanza | 90.3% | 1.00 | 88.9% | 94.0% | 91.4% | 62/87 | 91.2% | 5.72 |
+| Stanza + demutate | 91.0% | 1.65 | 88.2% | 94.0% | 91.0% | 62/87 | 86.1% | 28.47 |
+| Stanza and Simplemma agree | 83.3% | 0.85 | 88.6% | 91.2% | 89.9% | 49/87 | 89.1% | 5.49 |
+| Stanza or Simplemma | 95.5% | 1.15 | 86.8% | 95.8% | 91.1% | 71/87 | 78.9% | 5.51 |
 
 ## Lemma level
 
@@ -24,6 +26,8 @@ Accuracy is how often the gold lemma is among a token's candidates. The second n
 | Simplemma + demutate | 88.7% (1.7) | 95.3% (1.9) | 90.6% (1.6) | 93.1% (1.6) | 88.3% (1.7) | 85.9% (1.7) |
 | Stanza | 90.3% (1.0) | 97.7% (1.0) | 94.1% (1.0) | 95.0% (1.0) | 89.1% (1.0) | 85.0% (1.0) |
 | Stanza + demutate | 91.0% (1.7) | 97.7% (1.9) | 94.7% (1.5) | 95.0% (1.5) | 90.4% (1.7) | 85.7% (1.7) |
+| Stanza and Simplemma agree | 83.3% (0.8) | 95.3% (1.0) | 88.4% (0.9) | 90.6% (0.9) | 81.5% (0.8) | 76.4% (0.8) |
+| Stanza or Simplemma | 95.5% (1.2) | 97.7% (1.0) | 96.3% (1.1) | 97.5% (1.1) | 95.7% (1.2) | 94.3% (1.2) |
 
 ## Item level
 
@@ -37,6 +41,8 @@ Precision / recall of `detect_items` against the gold patterns and lexemes. For 
 | Simplemma + demutate | 86.5% / 93.2% | 76.5% / 100.0% | 90.4% / 95.5% | 91.7% / 93.2% | 83.9% / 91.1% | 85.3% / 89.4% |
 | Stanza | 88.9% / 94.0% | 81.2% / 100.0% | 94.1% / 96.4% | 92.6% / 95.8% | 86.8% / 92.3% | 85.5% / 90.9% |
 | Stanza + demutate | 88.2% / 94.0% | 81.2% / 100.0% | 93.3% / 96.4% | 91.9% / 95.8% | 86.1% / 92.3% | 85.5% / 90.9% |
+| Stanza and Simplemma agree | 88.6% / 91.2% | 81.2% / 100.0% | 94.0% / 95.1% | 92.4% / 93.2% | 86.3% / 88.5% | 84.8% / 86.0% |
+| Stanza or Simplemma | 86.8% / 95.8% | 76.5% / 100.0% | 90.5% / 96.8% | 91.9% / 95.8% | 84.4% / 94.5% | 85.9% / 94.0% |
 
 ## Authoring aid
 
@@ -49,6 +55,8 @@ Gold tokens that are a form of a single-word lexeme the curriculum doesn't recog
 | Simplemma + demutate | 87 | 59 (67.8%) | 81 | 59 (72.8%) |
 | Stanza | 87 | 62 (71.3%) | 68 | 62 (91.2%) |
 | Stanza + demutate | 87 | 62 (71.3%) | 72 | 62 (86.1%) |
+| Stanza and Simplemma agree | 87 | 49 (56.3%) | 55 | 49 (89.1%) |
+| Stanza or Simplemma | 87 | 71 (81.6%) | 90 | 71 (78.9%) |
 
 Missed forms:
 
@@ -57,6 +65,8 @@ Missed forms:
 - Simplemma + demutate: Siarades (lex:siarad), Dysges (lex:dysgu), Yfes (lex:yfed), Gweithies (lex:gweithio), Chofies (lex:cofio), Ysgrifennes (lex:ysgrifennu), Es (lex:mynd), Des (lex:dod), Es (lex:mynd), Siaradon (lex:siarad), Dysgon (lex:dysgu), Ysgrifennon (lex:ysgrifennu), ddysges (lex:dysgu), Cer (lex:mynd), A (lex:mynd), Siaradith (lex:siarad), Dysgith (lex:dysgu), welith (lex:gweld), Darllenith (lex:darllen), Ysgrifennith (lex:ysgrifennu), Gweithith (lex:gweithio), Daw (lex:dod), Ddaw (lex:dod), Gwelwn (lex:gweld), Gwelwch (lex:gweld), Gelli (lex:gallu), ohono (lex:o), ohoni (lex:o)
 - Stanza: Dysgais (lex:dysgu), Dysges (lex:dysgu), Yfes (lex:yfed), Gweithies (lex:gweithio), Es (lex:mynd), Des (lex:dod), Es (lex:mynd), Dysgon (lex:dysgu), Ysgrifennon (lex:ysgrifennu), Cer (lex:mynd), Siaradwch (lex:siarad), Gweithia (lex:gweithio), Dof (lex:dod), A (lex:mynd), Siaradith (lex:siarad), Dysgith (lex:dysgu), Ysgrifennith (lex:ysgrifennu), Gweithith (lex:gweithio), Eith (lex:mynd), ohono (lex:o), ohoni (lex:o), iddo (lex:i), iddi (lex:i), Siarada (lex:siarad), Dysga (lex:dysgu)
 - Stanza + demutate: Dysgais (lex:dysgu), Dysges (lex:dysgu), Yfes (lex:yfed), Gweithies (lex:gweithio), Es (lex:mynd), Des (lex:dod), Es (lex:mynd), Dysgon (lex:dysgu), Ysgrifennon (lex:ysgrifennu), Cer (lex:mynd), Siaradwch (lex:siarad), Gweithia (lex:gweithio), Dof (lex:dod), A (lex:mynd), Siaradith (lex:siarad), Dysgith (lex:dysgu), Ysgrifennith (lex:ysgrifennu), Gweithith (lex:gweithio), Eith (lex:mynd), ohono (lex:o), ohoni (lex:o), iddo (lex:i), iddi (lex:i), Siarada (lex:siarad), Dysga (lex:dysgu)
+- Stanza and Simplemma agree: Dysgais (lex:dysgu), Siarades (lex:siarad), Dysges (lex:dysgu), Yfes (lex:yfed), Gweithies (lex:gweithio), Chofies (lex:cofio), Ysgrifennes (lex:ysgrifennu), Es (lex:mynd), Des (lex:dod), Es (lex:mynd), Siaradon (lex:siarad), Dysgon (lex:dysgu), Ysgrifennon (lex:ysgrifennu), ddysges (lex:dysgu), Cer (lex:mynd), Siaradwch (lex:siarad), Gweithia (lex:gweithio), Dof (lex:dod), A (lex:mynd), Siaradith (lex:siarad), Dysgith (lex:dysgu), welith (lex:gweld), Darllenith (lex:darllen), Ysgrifennith (lex:ysgrifennu), Gweithith (lex:gweithio), Daw (lex:dod), Ddaw (lex:dod), Eith (lex:mynd), Gwelwn (lex:gweld), Gwelwch (lex:gweld), Gelli (lex:gallu), All (lex:gallu), ohono (lex:o), ohoni (lex:o), iddo (lex:i), iddi (lex:i), Siarada (lex:siarad), Dysga (lex:dysgu)
+- Stanza or Simplemma: Dysges (lex:dysgu), Yfes (lex:yfed), Gweithies (lex:gweithio), Es (lex:mynd), Des (lex:dod), Es (lex:mynd), Dysgon (lex:dysgu), Ysgrifennon (lex:ysgrifennu), Cer (lex:mynd), A (lex:mynd), Siaradith (lex:siarad), Dysgith (lex:dysgu), Ysgrifennith (lex:ysgrifennu), Gweithith (lex:gweithio), ohono (lex:o), ohoni (lex:o)
 
 Wrong suggestions:
 
@@ -65,6 +75,8 @@ Wrong suggestions:
 - Simplemma + demutate: Nos (lex:mynd), Nos (lex:mynd), ei (lex:mynd), ei (lex:mynd), fy (lex:i), fi (lex:i), ei (lex:mynd), ei (lex:mynd), Elen (lex:mynd), Wel (lex:gweld), naw (lex:dod), fi (lex:i), fi (lex:i), bwyty (lex:bwyta), ei (lex:mynd), ei (lex:mynd), ei (lex:mynd), Wel (lex:gweld), naw (lex:dod), fi (lex:i), fy (lex:i), Nos (lex:mynd)
 - Stanza: fy (lex:i), fi (lex:i), fi (lex:i), fi (lex:i), fi (lex:i), fy (lex:i)
 - Stanza + demutate: fy (lex:i), fi (lex:i), Wel (lex:gweld), naw (lex:dod), fi (lex:i), fi (lex:i), Wel (lex:gweld), naw (lex:dod), fi (lex:i), fy (lex:i)
+- Stanza and Simplemma agree: fy (lex:i), fi (lex:i), fi (lex:i), fi (lex:i), fi (lex:i), fy (lex:i)
+- Stanza or Simplemma: ei (lex:mynd), ei (lex:mynd), fy (lex:i), fi (lex:i), ei (lex:mynd), ei (lex:mynd), Elen (lex:mynd), Wel (lex:gweld), naw (lex:dod), fi (lex:i), fi (lex:i), bwyty (lex:bwyta), ei (lex:mynd), ei (lex:mynd), ei (lex:mynd), Wel (lex:gweld), naw (lex:dod), fi (lex:i), fy (lex:i)
 
 ## Runtime
 
@@ -75,8 +87,10 @@ Best of several passes over all sentences, after a warm-up pass. Model loading i
 | Rule (demutate) | 0.02 |
 | Simplemma | 0.00 |
 | Simplemma + demutate | 0.04 |
-| Stanza | 5.74 |
-| Stanza + demutate | 29.63 |
+| Stanza | 5.72 |
+| Stanza + demutate | 28.47 |
+| Stanza and Simplemma agree | 5.49 |
+| Stanza or Simplemma | 5.51 |
 
 ## Recommendation
 
@@ -87,6 +101,8 @@ Use a lemmatiser as an **authoring aid**, not as a fallback inside detection, an
 - **Both miss the colloquial and irregular forms.** Neither reliably handles the southern endings (`-es` in `Siarades` and `Yfes`, `-on` in `Siaradon`, `-ith` in `Siaradith`), the irregular `Es`, `Des` and `Cer`, or the short imperatives (`Siarada`). Stanza also misses inflected prepositions that Simplemma finds (`iddo`, `iddi`), and Simplemma misses some forms that Stanza finds (`Gwelwn`, `Gelli`, `Daw`).
 - **Simplemma's wrong suggestions are the danger.** It links `ei` ("his/her") to `mynd` six times, and also the name `Elen`, `wel` to `gweld`, `naw` to `dod` and `bwyty` ("restaurant") to `bwyta`. Stanza's only wrong suggestions are the pronouns `fi` and `fy` linked to the preposition `i`, which is a pronoun/preposition homograph that Simplemma also gets wrong. A fallback inside detection would turn these into silent false items on every check, so each suggestion needs a person to approve it.
 - **A fallback would cost precision.** Item recall rises from 80.4% to 92.9% with Simplemma and 94.0% with Stanza, but Simplemma lowers item precision (86.4%, against 88.1% for declared forms only), while Stanza raises it slightly (88.9%).
+- **Requiring both tools to agree does not help.** Suggestions that Stanza and Simplemma both make are 89% correct but cover only 49 of the 87 forms, against 91% and 62 forms for Stanza alone. The mistakes it removes are Simplemma's, which Stanza did not make anyway, and the two tools share their one real mistake (`fi` and `fy`). Taking either tool's suggestions finds 71 forms, but only 79% are correct. Stanza adds 13 correct suggestions Simplemma lacks, with none wrong, while Simplemma adds 9 that Stanza lacks and 22 of its own suggestions are only 41% correct.
+- **16 forms are missed by both tools.** They are the southern colloquial endings (`Dysges`, `Yfes`, `Gweithies`, `Dysgon`, `Ysgrifennon`, `Siaradith`, `Dysgith`, `Ysgrifennith`, `Gweithith`), the irregular `Es`, `Des`, `Cer` and `A`, and the inflected `ohono` and `ohoni`. No combination of these two tools reaches them, so they have to be declared by hand or generated by rule.
 - **Stanza costs more to run.** It needs a 200 MB model and torch, and takes about 6 ms a sentence, against under a millisecond for Simplemma. For an authoring aid run on a few sentences that is acceptable, so `suggest-forms` uses Stanza by default and Simplemma is the lighter option.
 - **Skip the demutate wrapper.** It adds about 0.65 candidates per token and, for Stanza, five times the runtime, with no gain in surfaced forms. It lowers suggestion precision for both tools.
 - **The set has controls.** 30 sentences use only declared forms, so a tool that suggests things when nothing is missing is penalised. Neither tool did so beyond the homograph cases above.
