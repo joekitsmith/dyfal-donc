@@ -39,3 +39,21 @@ Helps an author extend the curriculum.
 - Suggestions are proposals. A lemmatiser can be wrong, so a person should approve each one before it is declared in `forms`.
 
 The lemmatiser is passed in, so the engine never imports Simplemma or Stanza. The command-line tool is `poe suggest-forms`, in [`backend/tools/`](../../backend/tools/suggest_forms.py).
+
+## `engine.learner`
+
+What the learner knows, derived purely from a log of review events. No clock, randomness or I/O: every time-dependent call takes a timezone-aware UTC `now`, and naive or non-UTC datetimes raise `LearnerError`.
+
+- `ReviewEvent`: one exercise given (`exercise_id`, `item_ids`, `new_item`, `outcome`, `reviewed_at`). `Outcome` is `GOT_IT` or `MISSED_IT`. A learner who says nothing is assumed to have got it, so the caller records only reported misses as `MISSED_IT`.
+- `replay(events)` and `apply_event(state, event)`: the same fold, so replaying everything equals applying events one at a time. Events must be chronological, may only practise introduced items, and may introduce an item only once.
+- `LearnerState`: an item id mapped to its memory. No entry means never introduced.
+  - `Learning`: short-term steps counted in **exercises**, not time (default `(1, 3, 8)`: one other exercise, then three, then eight). A miss returns to the first step, and passing the last one graduates the item.
+  - `Review`: long-term memory, scheduled by a `MemoryModel`.
+- `FsrsMemoryModel`: the `MemoryModel` backed by [py-fsrs](https://github.com/open-spaced-repetition/py-fsrs), with its learning steps and fuzzing off. It is the only module that imports `fsrs`. Intervals are whole days, so even a lapse is due the next day.
+- `assign_credit(state, event, memory_model)`: the weakest link.
+  - A success counts only for items that are due, so practising an item early cannot inflate its stability.
+  - A miss goes to the newest material: every `Learning` item if there is one or the exercise introduces an item, and otherwise the single `Review` item least likely to be recalled (lowest id on a tie).
+  - Every exercise counts all `Learning` items down by one.
+- Queries: `introduced_items`, `learning_items_due`, `review_items_due(state, now)` (longest overdue first) and `recent_error_rate(events, window)`, the share of the last `window` events that were misses.
+
+Known limitations: a lapsed `Review` item is not relearned within the session, only two of FSRS's four ratings are used, and a long break does not expire `Learning` items.
