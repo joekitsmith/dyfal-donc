@@ -5,16 +5,55 @@ repos:
         name: ruff-format
         entry: bash -c 'poetry run ruff format core backend tests'
         language: system
+        types: [python]
 
       - id: ruff-lint
         name: ruff-lint
         entry: bash -c 'poetry run ruff check --fix core backend tests'
         language: system
+        types: [python]
 
       - id: mypy
         name: mypy
         entry: bash -c 'poetry run mypy core backend tests'
         language: system
+        types: [python]
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: openapi-schema
+        name: openapi-schema
+        entry: bash -c 'poetry run poe openapi && cd frontend && pnpm types'
+        language: system
+        files: ^(backend/api/|frontend/openapi\.json$)
+        pass_filenames: false
+
+      - id: frontend-prettier
+        name: frontend-prettier
+        entry: bash -c 'cd frontend && pnpm exec prettier --write --ignore-unknown "${@#frontend/}"' --
+        language: system
+        files: ^frontend/
+
+      - id: frontend-eslint
+        name: frontend-eslint
+        entry: bash -c 'cd frontend && pnpm exec eslint --fix "${@#frontend/}"' --
+        language: system
+        files: ^frontend/.*\.(ts|tsx|mts|mjs)$
+        exclude: ^frontend/src/api/schema\.d\.ts$
+
+      - id: frontend-typecheck
+        name: frontend-typecheck
+        entry: bash -c 'cd frontend && pnpm typecheck'
+        language: system
+        files: ^frontend/
+        pass_filenames: false
+
+      - id: frontend-knip
+        name: frontend-knip
+        entry: bash -c 'cd frontend && pnpm knip'
+        language: system
+        files: ^frontend/
         pass_filenames: false
 
   - repo: https://github.com/pre-commit/pre-commit-hooks

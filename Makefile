@@ -1,4 +1,4 @@
-.PHONY: db-up db-down db-reset tts-build tts-up stack-up stack-down
+.PHONY: db-up db-down db-reset tts-build tts-up stack-up stack-down web-dev web-check web-types
 
 db-up:
 	docker compose up --detach --wait postgres
@@ -24,3 +24,15 @@ stack-up:
 
 stack-down:
 	docker compose down
+
+# The lesson player on localhost:3000, proxying /api to API_URL (default localhost:8000)
+web-dev:
+	cd frontend && pnpm dev
+
+web-check:
+	cd frontend && pnpm check
+
+# Regenerates the API's OpenAPI schema and the frontend's types from it
+web-types:
+	poetry run poe openapi
+	cd frontend && pnpm types
