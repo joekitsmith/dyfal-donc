@@ -33,13 +33,13 @@ def main(arguments: Sequence[str] | None = None) -> None:
 
     curriculum = load_curriculum(CURRICULUM_DIRECTORY)
     pool = build_pool(curriculum)
-    print(render_coverage(coverage(pool.exercises, curriculum), len(pool.rejected)))
+    print(render_coverage(coverage(pool, curriculum)))
 
     profile = next(
         profile for profile in PROFILES if profile.name == options.profile
     ).with_memory(MEMORY_MODELS[options.memory])
     trace = simulate(
-        pool.exercises,
+        pool,
         curriculum,
         profile,
         seed=options.seed,

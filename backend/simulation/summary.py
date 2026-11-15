@@ -48,7 +48,7 @@ class RunSummary:
         )
 
 
-def render_coverage(coverage: PoolCoverage, rejected: int) -> str:
+def render_coverage(coverage: PoolCoverage) -> str:
     gaps = ", ".join(coverage.without_introduction) or "none"
     blocking = coverage.blocking or "none"
     thinnest = min(coverage.introducing.values(), default=0)
@@ -56,8 +56,7 @@ def render_coverage(coverage: PoolCoverage, rejected: int) -> str:
         (
             f"Pool: {sum(coverage.introducing.values())} exercises introduce "
             f"{len(coverage.introducing) - len(coverage.without_introduction)} "
-            f"of {len(coverage.introducing)} items "
-            f"({rejected} gold sentences rejected)",
+            f"of {len(coverage.introducing)} items",
             f"Items with no introducing exercise: {gaps}",
             f"First item blocking the course: {blocking}",
             f"Fewest introducing exercises for one item: {thinnest}",

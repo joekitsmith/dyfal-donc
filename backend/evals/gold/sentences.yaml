@@ -5473,3 +5473,1643 @@
     - {text: "ti", lemma: "ti"}
     - {text: "'n", lemma: "yn"}
     - {text: "aros", lemma: "aros", item: lex:aros}
+
+- id: sp-im-phoning
+  welsh: "Dw i'n ffonio"
+  english: "I'm phoning"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+
+- id: sp-i-want-to-phone
+  welsh: "Dw i'n moyn ffonio"
+  english: "I want to phone"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+
+- id: sp-im-phoning-a-friend
+  welsh: "Dw i'n ffonio ffrind"
+  english: "I'm phoning a friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-hes-phoning
+  welsh: "Mae e'n ffonio"
+  english: "He's phoning"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+
+- id: sp-im-helping
+  welsh: "Dw i'n helpu"
+  english: "I'm helping"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+
+- id: sp-i-want-to-help
+  welsh: "Dw i'n moyn helpu"
+  english: "I want to help"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+
+- id: sp-im-helping-a-friend
+  welsh: "Dw i'n helpu ffrind"
+  english: "I'm helping a friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-shes-helping
+  welsh: "Mae hi'n helpu"
+  english: "She's helping"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "helpu", lemma: "helpu", item: lex:helpu}
+
+- id: sp-im-starting
+  welsh: "Dw i'n dechrau"
+  english: "I'm starting"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dechrau", lemma: "dechrau", item: lex:dechrau}
+
+- id: sp-im-starting-work
+  welsh: "Dw i'n dechrau gweithio"
+  english: "I'm starting work"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dechrau", lemma: "dechrau", item: lex:dechrau}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-i-want-to-start
+  welsh: "Dw i'n moyn dechrau"
+  english: "I want to start"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "dechrau", lemma: "dechrau", item: lex:dechrau}
+
+- id: sp-hes-starting-to-learn
+  welsh: "Mae e'n dechrau dysgu"
+  english: "He's starting to learn"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dechrau", lemma: "dechrau", item: lex:dechrau}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-im-finishing
+  welsh: "Dw i'n gorffen"
+  english: "I'm finishing"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gorffen", lemma: "gorffen", item: lex:gorffen}
+
+- id: sp-im-finishing-work
+  welsh: "Dw i'n gorffen gweithio"
+  english: "I'm finishing work"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gorffen", lemma: "gorffen", item: lex:gorffen}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-i-want-to-finish
+  welsh: "Dw i'n moyn gorffen"
+  english: "I want to finish"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gorffen", lemma: "gorffen", item: lex:gorffen}
+
+- id: sp-shes-finishing-reading
+  welsh: "Mae hi'n gorffen darllen"
+  english: "She's finishing reading"
+  tags: [clitic]
+  patterns: [pat:mae-hi-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "hi", lemma: "hi"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gorffen", lemma: "gorffen", item: lex:gorffen}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+
+- id: sp-im-meeting-a-friend
+  welsh: "Dw i'n cwrdd gyda ffrind"
+  english: "I'm meeting a friend"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cwrdd", lemma: "cwrdd", item: lex:cwrdd}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-i-want-to-meet-you
+  welsh: "Dw i'n moyn cwrdd gyda ti"
+  english: "I want to meet you"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "cwrdd", lemma: "cwrdd", item: lex:cwrdd}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda-ti}
+    - {text: "ti", lemma: "ti", item: lex:gyda-ti}
+
+- id: sp-theyre-meeting-a-friend
+  welsh: "Maen nhw'n cwrdd gyda ffrind"
+  english: "They're meeting a friend"
+  tags: [clitic]
+  patterns: [pat:maen-nhw-yn]
+  tokens:
+    - {text: "Maen", lemma: "bod"}
+    - {text: "nhw", lemma: "hwy"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cwrdd", lemma: "cwrdd", item: lex:cwrdd}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-im-meeting-a-friend-tomorrow
+  welsh: "Dw i'n cwrdd gyda ffrind fory"
+  english: "I'm meeting a friend tomorrow"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cwrdd", lemma: "cwrdd", item: lex:cwrdd}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-im-listening
+  welsh: "Dw i'n gwrando"
+  english: "I'm listening"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwrando", lemma: "gwrando", item: lex:gwrando}
+
+- id: sp-i-want-to-listen
+  welsh: "Dw i'n moyn gwrando"
+  english: "I want to listen"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "gwrando", lemma: "gwrando", item: lex:gwrando}
+
+- id: sp-im-listening-now
+  welsh: "Dw i'n gwrando nawr"
+  english: "I'm listening now"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwrando", lemma: "gwrando", item: lex:gwrando}
+    - {text: "nawr", lemma: "nawr", item: lex:nawr}
+
+- id: sp-hes-listening
+  welsh: "Mae e'n gwrando"
+  english: "He's listening"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gwrando", lemma: "gwrando", item: lex:gwrando}
+
+- id: sp-i-want-a-phone
+  welsh: "Dw i'n moyn ffôn"
+  english: "I want a phone"
+  tags: [clitic]
+  patterns: [pat:dw-in-moyn-noun]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "moyn", lemma: "ymofyn"}
+    - {text: "ffôn", lemma: "ffôn", item: lex:ffon}
+
+- id: sp-im-buying-a-phone
+  welsh: "Dw i'n prynu ffôn"
+  english: "I'm buying a phone"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "ffôn", lemma: "ffôn", item: lex:ffon}
+
+- id: sp-i-see-a-new-phone
+  welsh: "Dw i'n gweld ffôn newydd"
+  english: "I see a new phone"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "ffôn", lemma: "ffôn", item: lex:ffon}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-hes-buying-a-phone
+  welsh: "Mae e'n prynu ffôn"
+  english: "He's buying a phone"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "prynu", lemma: "prynu", item: lex:prynu}
+    - {text: "ffôn", lemma: "ffôn", item: lex:ffon}
+
+- id: sp-im-writing-a-message
+  welsh: "Dw i'n ysgrifennu neges"
+  english: "I'm writing a message"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ysgrifennu", lemma: "ysgrifennu", item: lex:ysgrifennu}
+    - {text: "neges", lemma: "neges", item: lex:neges}
+
+- id: sp-im-reading-a-message
+  welsh: "Dw i'n darllen neges"
+  english: "I'm reading a message"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "neges", lemma: "neges", item: lex:neges}
+
+- id: sp-hes-writing-a-message
+  welsh: "Mae e'n ysgrifennu neges"
+  english: "He's writing a message"
+  tags: [clitic]
+  patterns: [pat:mae-e-yn]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ysgrifennu", lemma: "ysgrifennu", item: lex:ysgrifennu}
+    - {text: "neges", lemma: "neges", item: lex:neges}
+
+- id: sp-im-getting-a-message
+  welsh: "Dw i'n cael neges"
+  english: "I'm getting a message"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "cael", lemma: "cael", item: lex:cael}
+    - {text: "neges", lemma: "neges", item: lex:neges}
+
+- id: sp-i-understand-the-question
+  welsh: "Dw i'n deall y cwestiwn"
+  english: "I understand the question"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "cwestiwn", lemma: "cwestiwn", item: lex:cwestiwn}
+
+- id: sp-im-writing-a-question
+  welsh: "Dw i'n ysgrifennu cwestiwn"
+  english: "I'm writing a question"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "ysgrifennu", lemma: "ysgrifennu", item: lex:ysgrifennu}
+    - {text: "cwestiwn", lemma: "cwestiwn", item: lex:cwestiwn}
+
+- id: sp-do-you-understand-the-question
+  welsh: "Wyt ti'n deall y cwestiwn?"
+  english: "Do you understand the question?"
+  tags: [clitic, article]
+  patterns: [pat:wyt-ti-yn]
+  tokens:
+    - {text: "Wyt", lemma: "bod"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "cwestiwn", lemma: "cwestiwn", item: lex:cwestiwn}
+
+- id: sp-im-reading-the-question
+  welsh: "Dw i'n darllen y cwestiwn"
+  english: "I'm reading the question"
+  tags: [clitic, article]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "cwestiwn", lemma: "cwestiwn", item: lex:cwestiwn}
+
+- id: sp-im-working-tonight
+  welsh: "Dw i'n gweithio heno"
+  english: "I'm working tonight"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "heno", lemma: "heno", item: lex:heno}
+
+- id: sp-im-coming-tonight
+  welsh: "Dw i'n dod heno"
+  english: "I'm coming tonight"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "heno", lemma: "heno", item: lex:heno}
+
+- id: sp-im-going-tonight
+  welsh: "Dw i'n mynd heno"
+  english: "I'm going tonight"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+    - {text: "heno", lemma: "heno", item: lex:heno}
+
+- id: sp-im-eating-tonight
+  welsh: "Dw i'n bwyta heno"
+  english: "I'm eating tonight"
+  tags: [clitic]
+  patterns: [pat:dw-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "heno", lemma: "heno", item: lex:heno}
+
+- id: sp-i-went-to-work
+  welsh: "Es i i'r gwaith"
+  english: "I went to work"
+  tags: [clitic, article]
+  patterns: [pat:es-i]
+  tokens:
+    - {text: "Es", lemma: "mynd"}
+    - {text: "i", lemma: "i"}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "gwaith", lemma: "gwaith", item: lex:gwaith}
+
+- id: sp-i-went-to-the-house
+  welsh: "Es i i'r tŷ"
+  english: "I went to the house"
+  tags: [clitic, article]
+  patterns: [pat:es-i]
+  tokens:
+    - {text: "Es", lemma: "mynd"}
+    - {text: "i", lemma: "i"}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "tŷ", lemma: "tŷ", item: lex:ty}
+
+- id: sp-i-went-with-a-friend
+  welsh: "Es i gyda ffrind"
+  english: "I went with a friend"
+  tags: [plain]
+  patterns: [pat:es-i]
+  tokens:
+    - {text: "Es", lemma: "mynd"}
+    - {text: "i", lemma: "i"}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-i-went-with-you
+  welsh: "Es i gyda ti"
+  english: "I went with you"
+  tags: [plain]
+  patterns: [pat:es-i]
+  tokens:
+    - {text: "Es", lemma: "mynd"}
+    - {text: "i", lemma: "i"}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda-ti}
+    - {text: "ti", lemma: "ti", item: lex:gyda-ti}
+
+- id: sp-i-came-here
+  welsh: "Des i fan hyn"
+  english: "I came here"
+  tags: [plain]
+  patterns: [pat:des-i]
+  tokens:
+    - {text: "Des", lemma: "dod"}
+    - {text: "i", lemma: "i"}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-i-came-from-work
+  welsh: "Des i o'r gwaith"
+  english: "I came from work"
+  tags: [clitic, article]
+  patterns: [pat:des-i]
+  tokens:
+    - {text: "Des", lemma: "dod"}
+    - {text: "i", lemma: "i"}
+    - {text: "o", lemma: "o", item: lex:o}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "gwaith", lemma: "gwaith", item: lex:gwaith}
+
+- id: sp-i-came-with-a-friend
+  welsh: "Des i gyda ffrind"
+  english: "I came with a friend"
+  tags: [plain]
+  patterns: [pat:des-i]
+  tokens:
+    - {text: "Des", lemma: "dod"}
+    - {text: "i", lemma: "i"}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-i-came-with-you
+  welsh: "Des i gyda ti"
+  english: "I came with you"
+  tags: [plain]
+  patterns: [pat:des-i]
+  tokens:
+    - {text: "Des", lemma: "dod"}
+    - {text: "i", lemma: "i"}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda-ti}
+    - {text: "ti", lemma: "ti", item: lex:gyda-ti}
+
+- id: sp-i-went
+  welsh: "Nes i fynd"
+  english: "I went"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+
+- id: sp-i-saw-him
+  welsh: "Nes i weld e"
+  english: "I saw him"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weld", lemma: "gweld", item: lex:gweld, mutation: soft}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-i-bought-a-book
+  welsh: "Nes i brynu llyfr"
+  english: "I bought a book"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "brynu", lemma: "prynu", item: lex:prynu, mutation: soft}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-i-learned-welsh
+  welsh: "Nes i ddysgu Cymraeg"
+  english: "I learned Welsh"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddysgu", lemma: "dysgu", item: lex:dysgu, mutation: soft}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-worked
+  welsh: "Nes i weithio"
+  english: "I worked"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+
+- id: sp-i-ate-bread
+  welsh: "Nes i fwyta bara"
+  english: "I ate bread"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fwyta", lemma: "bwyta", item: lex:bwyta, mutation: soft}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-i-read-the-book
+  welsh: "Nes i ddarllen y llyfr"
+  english: "I read the book"
+  tags: [mutation, article]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddarllen", lemma: "darllen", item: lex:darllen, mutation: soft}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-i-drank-coffee
+  welsh: "Nes i yfed coffi"
+  english: "I drank coffee"
+  tags: [plain]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-i-spoke-welsh
+  welsh: "Nes i siarad Cymraeg"
+  english: "I spoke Welsh"
+  tags: [plain]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-phoned-a-friend
+  welsh: "Nes i ffonio ffrind"
+  english: "I phoned a friend"
+  tags: [plain]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-i-finished
+  welsh: "Nes i orffen"
+  english: "I finished"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "orffen", lemma: "gorffen", item: lex:gorffen, mutation: soft}
+
+- id: sp-i-listened
+  welsh: "Nes i wrando"
+  english: "I listened"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "wrando", lemma: "gwrando", item: lex:gwrando, mutation: soft}
+
+- id: sp-i-met-a-friend
+  welsh: "Nes i gwrdd gyda ffrind"
+  english: "I met a friend"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "gwrdd", lemma: "cwrdd", item: lex:cwrdd, mutation: soft}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+
+- id: sp-i-didnt-see-him
+  welsh: "Nes i ddim gweld e"
+  english: "I didn't see him"
+  tags: [plain]
+  patterns: [pat:nes-i-ddim]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-i-didnt-speak-welsh
+  welsh: "Nes i ddim siarad Cymraeg"
+  english: "I didn't speak Welsh"
+  tags: [plain]
+  patterns: [pat:nes-i-ddim]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-didnt-eat-bread
+  welsh: "Nes i ddim bwyta bara"
+  english: "I didn't eat bread"
+  tags: [plain]
+  patterns: [pat:nes-i-ddim]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-i-didnt-go
+  welsh: "Nes i ddim mynd"
+  english: "I didn't go"
+  tags: [plain]
+  patterns: [pat:nes-i-ddim]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-i-didnt-understand
+  welsh: "Nes i ddim deall"
+  english: "I didn't understand"
+  tags: [plain]
+  patterns: [pat:nes-i-ddim]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "deall", lemma: "deall", item: lex:deall}
+
+- id: sp-i-had-coffee
+  welsh: "Ces i goffi"
+  english: "I had coffee"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "goffi", lemma: "coffi", item: lex:coffi, mutation: soft}
+
+- id: sp-i-had-tea
+  welsh: "Ces i de"
+  english: "I had tea"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "de", lemma: "te", item: lex:te, mutation: soft}
+
+- id: sp-i-had-bread
+  welsh: "Ces i fara"
+  english: "I had bread"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "fara", lemma: "bara", item: lex:bara, mutation: soft}
+
+- id: sp-i-got-a-book
+  welsh: "Ces i lyfr"
+  english: "I got a book"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "lyfr", lemma: "llyfr", item: lex:llyfr, mutation: soft}
+
+- id: sp-i-had-time
+  welsh: "Ces i amser"
+  english: "I had time"
+  tags: [plain]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+
+- id: sp-i-got-a-new-car
+  welsh: "Ces i gar newydd"
+  english: "I got a new car"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "gar", lemma: "car", item: lex:car, mutation: soft}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-i-had-food
+  welsh: "Ces i fwyd"
+  english: "I had food"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "fwyd", lemma: "bwyd", item: lex:bwyd, mutation: soft}
+
+- id: sp-i-had-water
+  welsh: "Ces i ddŵr"
+  english: "I had water"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddŵr", lemma: "dŵr", item: lex:dwr, mutation: soft}
+
+- id: sp-did-you-go
+  welsh: "Nest ti fynd?"
+  english: "Did you go?"
+  tags: [mutation]
+  patterns: [pat:nest-ti]
+  tokens:
+    - {text: "Nest", lemma: "gwneud"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+
+- id: sp-did-you-see-him
+  welsh: "Nest ti weld e?"
+  english: "Did you see him?"
+  tags: [mutation]
+  patterns: [pat:nest-ti]
+  tokens:
+    - {text: "Nest", lemma: "gwneud"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "weld", lemma: "gweld", item: lex:gweld, mutation: soft}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-did-you-buy-a-book
+  welsh: "Nest ti brynu llyfr?"
+  english: "Did you buy a book?"
+  tags: [mutation]
+  patterns: [pat:nest-ti]
+  tokens:
+    - {text: "Nest", lemma: "gwneud"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "brynu", lemma: "prynu", item: lex:prynu, mutation: soft}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-did-you-read-the-book
+  welsh: "Nest ti ddarllen y llyfr?"
+  english: "Did you read the book?"
+  tags: [mutation, article]
+  patterns: [pat:nest-ti]
+  tokens:
+    - {text: "Nest", lemma: "gwneud"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "ddarllen", lemma: "darllen", item: lex:darllen, mutation: soft}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-did-you-work
+  welsh: "Nest ti weithio?"
+  english: "Did you work?"
+  tags: [mutation]
+  patterns: [pat:nest-ti]
+  tokens:
+    - {text: "Nest", lemma: "gwneud"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+
+- id: sp-did-you-have-coffee
+  welsh: "Gest ti goffi?"
+  english: "Did you have coffee?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "goffi", lemma: "coffi", item: lex:coffi, mutation: soft}
+
+- id: sp-did-you-have-tea
+  welsh: "Gest ti de?"
+  english: "Did you have tea?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "de", lemma: "te", item: lex:te, mutation: soft}
+
+- id: sp-did-you-have-bread
+  welsh: "Gest ti fara?"
+  english: "Did you have bread?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "fara", lemma: "bara", item: lex:bara, mutation: soft}
+
+- id: sp-did-you-have-food
+  welsh: "Gest ti fwyd?"
+  english: "Did you have food?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "fwyd", lemma: "bwyd", item: lex:bwyd, mutation: soft}
+
+- id: sp-did-you-get-a-new-phone
+  welsh: "Gest ti ffôn newydd?"
+  english: "Did you get a new phone?"
+  tags: [plain]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "ffôn", lemma: "ffôn", item: lex:ffon}
+    - {text: "newydd", lemma: "newydd", item: lex:newydd}
+
+- id: sp-i-worked-yesterday
+  welsh: "Nes i weithio ddoe"
+  english: "I worked yesterday"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-i-had-coffee-yesterday
+  welsh: "Ces i goffi ddoe"
+  english: "I had coffee yesterday"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "goffi", lemma: "coffi", item: lex:coffi, mutation: soft}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-i-went-to-work-yesterday
+  welsh: "Es i i'r gwaith ddoe"
+  english: "I went to work yesterday"
+  tags: [clitic, article]
+  patterns: [pat:es-i]
+  tokens:
+    - {text: "Es", lemma: "mynd"}
+    - {text: "i", lemma: "i"}
+    - {text: "i", lemma: "i", item: lex:i}
+    - {text: "'r", lemma: "y", item: lex:y}
+    - {text: "gwaith", lemma: "gwaith", item: lex:gwaith}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-i-came-here-yesterday
+  welsh: "Des i fan hyn ddoe"
+  english: "I came here yesterday"
+  tags: [plain]
+  patterns: [pat:des-i]
+  tokens:
+    - {text: "Des", lemma: "dod"}
+    - {text: "i", lemma: "i"}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-i-didnt-see-him-yesterday
+  welsh: "Nes i ddim gweld e ddoe"
+  english: "I didn't see him yesterday"
+  tags: [plain]
+  patterns: [pat:nes-i-ddim]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "e", lemma: "e", item: lex:e}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-i-read-last-night
+  welsh: "Nes i ddarllen neithiwr"
+  english: "I read last night"
+  tags: [mutation]
+  patterns: [pat:nes-i]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddarllen", lemma: "darllen", item: lex:darllen, mutation: soft}
+    - {text: "neithiwr", lemma: "neithiwr", item: lex:neithiwr}
+
+- id: sp-i-had-food-last-night
+  welsh: "Ces i fwyd neithiwr"
+  english: "I had food last night"
+  tags: [mutation]
+  patterns: [pat:ces-i]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "fwyd", lemma: "bwyd", item: lex:bwyd, mutation: soft}
+    - {text: "neithiwr", lemma: "neithiwr", item: lex:neithiwr}
+
+- id: sp-did-you-work-last-night
+  welsh: "Nest ti weithio neithiwr?"
+  english: "Did you work last night?"
+  tags: [mutation]
+  patterns: [pat:nest-ti]
+  tokens:
+    - {text: "Nest", lemma: "gwneud"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "neithiwr", lemma: "neithiwr", item: lex:neithiwr}
+
+- id: sp-did-you-have-coffee-last-night
+  welsh: "Gest ti goffi neithiwr?"
+  english: "Did you have coffee last night?"
+  tags: [mutation]
+  patterns: [pat:gest-ti]
+  tokens:
+    - {text: "Gest", lemma: "cael"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "goffi", lemma: "coffi", item: lex:coffi, mutation: soft}
+    - {text: "neithiwr", lemma: "neithiwr", item: lex:neithiwr}
+
+- id: sp-i-didnt-eat-last-night
+  welsh: "Nes i ddim bwyta neithiwr"
+  english: "I didn't eat last night"
+  tags: [plain]
+  patterns: [pat:nes-i-ddim]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+    - {text: "neithiwr", lemma: "neithiwr", item: lex:neithiwr}
+
+- id: sp-ill-go
+  welsh: "Wna i fynd"
+  english: "I'll go"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+
+- id: sp-ill-see-him
+  welsh: "Wna i weld e"
+  english: "I'll see him"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weld", lemma: "gweld", item: lex:gweld, mutation: soft}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-ill-buy-coffee
+  welsh: "Wna i brynu coffi"
+  english: "I'll buy coffee"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "brynu", lemma: "prynu", item: lex:prynu, mutation: soft}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-ill-come-tomorrow
+  welsh: "Wna i ddod fory"
+  english: "I'll come tomorrow"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddod", lemma: "dod", item: lex:dod, mutation: soft}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-ill-work-tomorrow
+  welsh: "Wna i weithio fory"
+  english: "I'll work tomorrow"
+  tags: [mutation]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "weithio", lemma: "gweithio", item: lex:gweithio, mutation: soft}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-ill-read-the-book
+  welsh: "Wna i ddarllen y llyfr"
+  english: "I'll read the book"
+  tags: [mutation, article]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddarllen", lemma: "darllen", item: lex:darllen, mutation: soft}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-ill-phone
+  welsh: "Wna i ffonio"
+  english: "I'll phone"
+  tags: [plain]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
+
+- id: sp-ill-speak-welsh
+  welsh: "Wna i siarad Cymraeg"
+  english: "I'll speak Welsh"
+  tags: [plain]
+  patterns: [pat:wna-i]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-wont-go
+  welsh: "Wna i ddim mynd"
+  english: "I won't go"
+  tags: [plain]
+  patterns: [pat:wna-i-ddim]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "mynd", lemma: "mynd", item: lex:mynd}
+
+- id: sp-i-wont-work-tomorrow
+  welsh: "Wna i ddim gweithio fory"
+  english: "I won't work tomorrow"
+  tags: [plain]
+  patterns: [pat:wna-i-ddim]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-i-wont-eat
+  welsh: "Wna i ddim bwyta"
+  english: "I won't eat"
+  tags: [plain]
+  patterns: [pat:wna-i-ddim]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-i-wont-speak-welsh
+  welsh: "Wna i ddim siarad Cymraeg"
+  english: "I won't speak Welsh"
+  tags: [plain]
+  patterns: [pat:wna-i-ddim]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-ill-be-working-tomorrow
+  welsh: "Bydda i'n gweithio fory"
+  english: "I'll be working tomorrow"
+  tags: [clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-ill-be-learning-welsh
+  welsh: "Bydda i'n dysgu Cymraeg"
+  english: "I'll be learning Welsh"
+  tags: [clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-ill-be-coming-tomorrow
+  welsh: "Bydda i'n dod fory"
+  english: "I'll be coming tomorrow"
+  tags: [clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-ill-be-reading
+  welsh: "Bydda i'n darllen"
+  english: "I'll be reading"
+  tags: [clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+
+- id: sp-ill-be-waiting-here
+  welsh: "Bydda i'n aros fan hyn"
+  english: "I'll be waiting here"
+  tags: [clitic]
+  patterns: [pat:bydda-in]
+  tokens:
+    - {text: "Bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "fan", lemma: "fan", item: lex:fan-hyn}
+    - {text: "hyn", lemma: "hyn", item: lex:fan-hyn}
+
+- id: sp-i-was-working
+  welsh: "Ro'n i'n gweithio"
+  english: "I was working"
+  tags: [clitic]
+  patterns: [pat:ro-ni-in]
+  tokens:
+    - {text: "Ro", lemma: "bod"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-i-was-learning-welsh
+  welsh: "Ro'n i'n dysgu Cymraeg"
+  english: "I was learning Welsh"
+  tags: [clitic]
+  patterns: [pat:ro-ni-in]
+  tokens:
+    - {text: "Ro", lemma: "bod"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-i-was-eating
+  welsh: "Ro'n i'n bwyta"
+  english: "I was eating"
+  tags: [clitic]
+  patterns: [pat:ro-ni-in]
+  tokens:
+    - {text: "Ro", lemma: "bod"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-i-was-reading-the-book
+  welsh: "Ro'n i'n darllen y llyfr"
+  english: "I was reading the book"
+  tags: [clitic, article]
+  patterns: [pat:ro-ni-in]
+  tokens:
+    - {text: "Ro", lemma: "bod"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "darllen", lemma: "darllen", item: lex:darllen}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+
+- id: sp-i-was-working-yesterday
+  welsh: "Ro'n i'n gweithio ddoe"
+  english: "I was working yesterday"
+  tags: [clitic]
+  patterns: [pat:ro-ni-in]
+  tokens:
+    - {text: "Ro", lemma: "bod"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-i-was-waiting-last-night
+  welsh: "Ro'n i'n aros neithiwr"
+  english: "I was waiting last night"
+  tags: [clitic]
+  patterns: [pat:ro-ni-in]
+  tokens:
+    - {text: "Ro", lemma: "bod"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "aros", lemma: "aros", item: lex:aros}
+    - {text: "neithiwr", lemma: "neithiwr", item: lex:neithiwr}
+
+- id: sp-i-have-a-car
+  welsh: "Mae car gyda fi"
+  english: "I have a car"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "car", lemma: "car", item: lex:car}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-i-have-time-2
+  welsh: "Mae amser gyda fi"
+  english: "I have time"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-i-have-a-friend
+  welsh: "Mae ffrind gyda fi"
+  english: "I have a friend"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-i-have-a-book
+  welsh: "Mae llyfr gyda fi"
+  english: "I have a book"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-i-have-coffee
+  welsh: "Mae coffi gyda fi"
+  english: "I have coffee"
+  tags: [plain]
+  patterns: [pat:mae-gyda-fi]
+  tokens:
+    - {text: "Mae", lemma: "bod"}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-is-there-coffee
+  welsh: "Oes coffi?"
+  english: "Is there coffee?"
+  tags: [plain]
+  patterns: [pat:oes]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "coffi", lemma: "coffi", item: lex:coffi}
+
+- id: sp-is-there-tea
+  welsh: "Oes te?"
+  english: "Is there tea?"
+  tags: [plain]
+  patterns: [pat:oes]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "te", lemma: "te", item: lex:te}
+
+- id: sp-is-there-bread
+  welsh: "Oes bara?"
+  english: "Is there bread?"
+  tags: [plain]
+  patterns: [pat:oes]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "bara", lemma: "bara", item: lex:bara}
+
+- id: sp-is-there-milk
+  welsh: "Oes llaeth?"
+  english: "Is there milk?"
+  tags: [plain]
+  patterns: [pat:oes]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "llaeth", lemma: "llaeth", item: lex:llaeth}
+
+- id: sp-is-there-time
+  welsh: "Oes amser?"
+  english: "Is there time?"
+  tags: [plain]
+  patterns: [pat:oes]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+
+- id: sp-do-you-have-a-car
+  welsh: "Oes car gyda ti?"
+  english: "Do you have a car?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "car", lemma: "car", item: lex:car}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-do-you-have-time
+  welsh: "Oes amser gyda ti?"
+  english: "Do you have time?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-do-you-have-a-phone
+  welsh: "Oes ffôn gyda ti?"
+  english: "Do you have a phone?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "ffôn", lemma: "ffôn", item: lex:ffon}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-do-you-have-a-question
+  welsh: "Oes cwestiwn gyda ti?"
+  english: "Do you have a question?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "cwestiwn", lemma: "cwestiwn", item: lex:cwestiwn}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+
+- id: sp-is-he-working
+  welsh: "Ydy e'n gweithio?"
+  english: "Is he working?"
+  tags: [clitic]
+  patterns: [pat:ydy-e-yn]
+  tokens:
+    - {text: "Ydy", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+
+- id: sp-does-he-speak-welsh
+  welsh: "Ydy e'n siarad Cymraeg?"
+  english: "Does he speak Welsh?"
+  tags: [clitic]
+  patterns: [pat:ydy-e-yn]
+  tokens:
+    - {text: "Ydy", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "siarad", lemma: "siarad", item: lex:siarad}
+    - {text: "Cymraeg", lemma: "cymraeg", item: lex:cymraeg}
+
+- id: sp-is-he-learning
+  welsh: "Ydy e'n dysgu?"
+  english: "Is he learning?"
+  tags: [clitic]
+  patterns: [pat:ydy-e-yn]
+  tokens:
+    - {text: "Ydy", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dysgu", lemma: "dysgu", item: lex:dysgu}
+
+- id: sp-is-he-eating
+  welsh: "Ydy e'n bwyta?"
+  english: "Is he eating?"
+  tags: [clitic]
+  patterns: [pat:ydy-e-yn]
+  tokens:
+    - {text: "Ydy", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "bwyta", lemma: "bwyta", item: lex:bwyta}
+
+- id: sp-is-he-coming-tomorrow
+  welsh: "Ydy e'n dod fory?"
+  english: "Is he coming tomorrow?"
+  tags: [clitic]
+  patterns: [pat:ydy-e-yn]
+  tokens:
+    - {text: "Ydy", lemma: "bod"}
+    - {text: "e", lemma: "e"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "dod", lemma: "dod", item: lex:dod}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-im-working-tomorrow-but-i-was-working-yesterday
+  welsh: "Dw i'n gweithio fory ond ro'n i'n gweithio ddoe"
+  english: "I'm working tomorrow but I was working yesterday"
+  tags: [clitic]
+  patterns: [pat:dw-in, pat:ro-ni-in]
+  tokens:
+    - {text: "Dw", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+    - {text: "ond", lemma: "ond", item: lex:ond}
+    - {text: "ro", lemma: "bod"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "gweithio", lemma: "gweithio", item: lex:gweithio}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+
+- id: sp-i-read-the-book-and-i-didnt-see-him
+  welsh: "Nes i ddarllen y llyfr a nes i ddim gweld e"
+  english: "I read the book and I didn't see him"
+  tags: [mutation, article]
+  patterns: [pat:nes-i, pat:nes-i-ddim]
+  tokens:
+    - {text: "Nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddarllen", lemma: "darllen", item: lex:darllen, mutation: soft}
+    - {text: "y", lemma: "y", item: lex:y}
+    - {text: "llyfr", lemma: "llyfr", item: lex:llyfr}
+    - {text: "a", lemma: "a", item: lex:a}
+    - {text: "nes", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "ddim", lemma: "dim"}
+    - {text: "gweld", lemma: "gweld", item: lex:gweld}
+    - {text: "e", lemma: "e", item: lex:e}
+
+- id: sp-i-had-coffee-yesterday-and-ill-drink-tea-tomorrow
+  welsh: "Ces i goffi ddoe a bydda i'n yfed te fory"
+  english: "I had coffee yesterday and I'll drink tea tomorrow"
+  tags: [mutation, clitic]
+  patterns: [pat:ces-i, pat:bydda-in]
+  tokens:
+    - {text: "Ces", lemma: "cael"}
+    - {text: "i", lemma: "i"}
+    - {text: "goffi", lemma: "coffi", item: lex:coffi, mutation: soft}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}
+    - {text: "a", lemma: "a", item: lex:a}
+    - {text: "bydda", lemma: "bod"}
+    - {text: "i", lemma: "i"}
+    - {text: "'n", lemma: "yn"}
+    - {text: "yfed", lemma: "yfed", item: lex:yfed}
+    - {text: "te", lemma: "te", item: lex:te}
+    - {text: "fory", lemma: "yfory", item: lex:fory}
+
+- id: sp-ill-go-because-i-have-time
+  welsh: "Wna i fynd achos mae amser gyda fi"
+  english: "I'll go because I have time"
+  tags: [mutation]
+  patterns: [pat:wna-i, pat:mae-gyda-fi]
+  tokens:
+    - {text: "Wna", lemma: "gwneud"}
+    - {text: "i", lemma: "i"}
+    - {text: "fynd", lemma: "mynd", item: lex:mynd, mutation: soft}
+    - {text: "achos", lemma: "achos", item: lex:achos}
+    - {text: "mae", lemma: "bod"}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "fi", lemma: "i"}
+
+- id: sp-do-you-have-time-tonight
+  welsh: "Oes amser gyda ti heno?"
+  english: "Do you have time tonight?"
+  tags: [plain]
+  patterns: [pat:oes-gyda-ti]
+  tokens:
+    - {text: "Oes", lemma: "bod"}
+    - {text: "amser", lemma: "amser", item: lex:amser}
+    - {text: "gyda", lemma: "gyda"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "heno", lemma: "heno", item: lex:heno}
+
+- id: sp-did-you-meet-a-friend-yesterday
+  welsh: "Nest ti gwrdd gyda ffrind ddoe?"
+  english: "Did you meet a friend yesterday?"
+  tags: [mutation]
+  patterns: [pat:nest-ti]
+  tokens:
+    - {text: "Nest", lemma: "gwneud"}
+    - {text: "ti", lemma: "ti"}
+    - {text: "gwrdd", lemma: "cwrdd", item: lex:cwrdd, mutation: soft}
+    - {text: "gyda", lemma: "gyda", item: lex:gyda}
+    - {text: "ffrind", lemma: "ffrind", item: lex:ffrind}
+    - {text: "ddoe", lemma: "doe", item: lex:ddoe}

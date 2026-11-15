@@ -16,7 +16,7 @@ SESSION = SessionSettings(days=60)
 
 class TestRealPool:
     def test_every_item_can_be_introduced(self) -> None:
-        assert coverage(POOL.exercises, CURRICULUM).without_introduction == ()
+        assert coverage(POOL, CURRICULUM).without_introduction == ()
 
 
 @pytest.mark.parametrize(
@@ -27,7 +27,7 @@ class TestRealRun:
         self, memory: ExponentialMemory | PowerLawMemory
     ) -> None:
         trace = simulate(
-            POOL.exercises,
+            POOL,
             CURRICULUM,
             AVERAGE.with_memory(memory),
             seed=1,
@@ -44,7 +44,7 @@ class TestRealRun:
     ) -> None:
         profile = AVERAGE.with_memory(memory)
 
-        first = simulate(POOL.exercises, CURRICULUM, profile, seed=5, session=SESSION)
-        second = simulate(POOL.exercises, CURRICULUM, profile, seed=5, session=SESSION)
+        first = simulate(POOL, CURRICULUM, profile, seed=5, session=SESSION)
+        second = simulate(POOL, CURRICULUM, profile, seed=5, session=SESSION)
 
         assert first == second

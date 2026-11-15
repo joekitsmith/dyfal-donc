@@ -120,3 +120,98 @@
   slots: {VERB: verb}
   prerequisites: [pat:mae-e-yn, pat:dw-i-ddim-yn]
   notes: "South Wales. Standard Welsh uses 'Dydy o ddim yn'."
+
+- id: pat:es-i
+  template: "Es i"
+  english: "I went"
+  notes: "South Wales past of 'mynd'. Taught as a chunk with no slot, because 'i' here is the pronoun."
+
+- id: pat:des-i
+  template: "Des i"
+  english: "I came"
+  notes: "South Wales past of 'dod'. Taught as a chunk with no slot."
+
+- id: pat:nes-i
+  template: "Nes i [VERB]"
+  english: "I [VERB]ed"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+  notes: "South Wales past of 'gwneud' as an auxiliary (Nes i weld e). The verb-noun soft-mutates (nes i fynd)."
+
+- id: pat:nes-i-ddim
+  template: "Nes i ddim [VERB]"
+  english: "I didn't [VERB]"
+  slots: {VERB: verb}
+  prerequisites: [pat:nes-i, pat:dw-i-ddim-yn]
+  notes: "The verb-noun is not mutated after 'ddim'."
+
+- id: pat:ces-i
+  template: "Ces i [NOUN]"
+  english: "I had [NOUN]"
+  slots: {NOUN: noun}
+  notes: "South Wales past of 'cael'. The noun soft-mutates (Ces i goffi)."
+
+- id: pat:nest-ti
+  template: "Nest ti [VERB]?"
+  english: "Did you [VERB]?"
+  slots: {VERB: verb}
+  prerequisites: [pat:nes-i]
+  notes: "The verb-noun soft-mutates (Nest ti fynd?)."
+
+- id: pat:gest-ti
+  template: "Gest ti [NOUN]?"
+  english: "Did you have [NOUN]?"
+  slots: {NOUN: noun}
+  prerequisites: [pat:ces-i]
+  notes: "The noun soft-mutates (Gest ti goffi?)."
+
+- id: pat:wna-i
+  template: "Wna i [VERB]"
+  english: "I'll [VERB]"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+  notes: "South Wales future. The verb-noun soft-mutates (Wna i fynd)."
+
+- id: pat:wna-i-ddim
+  template: "Wna i ddim [VERB]"
+  english: "I won't [VERB]"
+  slots: {VERB: verb}
+  prerequisites: [pat:wna-i, pat:dw-i-ddim-yn]
+  notes: "The verb-noun is not mutated after 'ddim'."
+
+- id: pat:bydda-in
+  template: "Bydda i'n [VERB]"
+  english: "I'll be [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+
+- id: pat:ro-ni-in
+  template: "Ro'n i'n [VERB]"
+  english: "I was [VERB]ing"
+  slots: {VERB: verb}
+  prerequisites: [pat:dw-in]
+  notes: "South Wales. Standard Welsh uses 'Roeddwn i'n'."
+
+- id: pat:mae-gyda-fi
+  template: "Mae [NOUN] gyda fi"
+  english: "I have [NOUN]"
+  slots: {NOUN: noun}
+  prerequisites: [pat:mae-e-yn, lex:gyda]
+  notes: "South Wales. North Wales uses 'Mae gen i'."
+
+- id: pat:oes
+  template: "Oes [NOUN]?"
+  english: "Is there [NOUN]?"
+  slots: {NOUN: noun}
+
+- id: pat:oes-gyda-ti
+  template: "Oes [NOUN] gyda ti?"
+  english: "Do you have [NOUN]?"
+  slots: {NOUN: noun}
+  prerequisites: [pat:oes, pat:mae-gyda-fi]
+
+- id: pat:ydy-e-yn
+  template: "Ydy e'n [VERB]?"
+  english: "Is he [VERB]ing?"
+  slots: {VERB: verb}
+  prerequisites: [pat:mae-e-yn]

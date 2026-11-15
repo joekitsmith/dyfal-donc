@@ -8,6 +8,11 @@ SLOT_MUTATIONS: Mapping[str, Mutation] = {
     "pat:galla-i": Mutation.SOFT,
     "pat:dw-in-adj": Mutation.SOFT,
     "pat:mae-e-yn-adj": Mutation.SOFT,
+    "pat:nes-i": Mutation.SOFT,
+    "pat:ces-i": Mutation.SOFT,
+    "pat:nest-ti": Mutation.SOFT,
+    "pat:gest-ti": Mutation.SOFT,
+    "pat:wna-i": Mutation.SOFT,
 }
 """The mutation each pattern's slot words must show, if their first letter can mutate."""
 

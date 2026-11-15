@@ -111,3 +111,22 @@ class TestSlotMutationProblems:
 
     def test_an_adjective_that_cannot_mutate_stays_unmutated(self) -> None:
         assert self.problems("Dw i'n hapus", ("pat:dw-in-adj", "lex:hapus")) == ()
+
+    def test_a_past_tense_verb_must_be_soft_mutated(self) -> None:
+        assert self.problems("Nes i mynd", ("pat:nes-i", "lex:mynd")) == (
+            "pat:nes-i: lex:mynd should be soft, not unmutated",
+        )
+
+    def test_a_verb_that_loses_its_first_letter_passes(self) -> None:
+        assert self.problems("Nes i orffen", ("pat:nes-i", "lex:gorffen")) == ()
+
+    def test_a_noun_after_ces_i_must_be_soft_mutated(self) -> None:
+        assert self.problems("Ces i coffi", ("pat:ces-i", "lex:coffi")) == (
+            "pat:ces-i: lex:coffi should be soft, not unmutated",
+        )
+
+    def test_a_future_verb_must_be_soft_mutated(self) -> None:
+        assert self.problems("Wna i brynu", ("pat:wna-i", "lex:prynu")) == ()
+        assert self.problems("Wna i prynu", ("pat:wna-i", "lex:prynu")) == (
+            "pat:wna-i: lex:prynu should be soft, not unmutated",
+        )
