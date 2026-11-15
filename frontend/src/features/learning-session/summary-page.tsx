@@ -6,10 +6,10 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
+import { SentenceList } from "@/components/sentence-list";
 import { ROUTES } from "@/config/paths";
 
 import { ItemList } from "./components/item-list";
-import { MissedExerciseList } from "./components/missed-exercise-list";
 import { useSummaryPage } from "./hooks/use-summary-page";
 import { formatDuration } from "./utils/format-time";
 
@@ -58,7 +58,7 @@ export function SummaryPage({ sessionId }: SummaryPageProps) {
       ) : null}
       <ItemList items={summary.items_introduced} title="New words" />
       <ItemList items={summary.items_lapsed} title="Words that slipped" />
-      <MissedExerciseList exercises={summary.missed_exercises} />
+      <SentenceList headingLevel="h2" sentences={summary.missed_exercises} title="Missed exercises" />
       <Button component={Link} href={ROUTES.learn} sx={{ alignSelf: "flex-start" }} variant="contained">
         {summary.ongoing ? "Keep going" : "Start another"}
       </Button>

@@ -56,3 +56,25 @@ class TestAudio:
 
         assert response.status_code == 503
         assert response.json() == {"detail": "Speech synthesis is unavailable"}
+
+
+class TestItemAudio:
+    def test_returns_a_word_at_a_standard_pace_as_wav(
+        self, audio_client: TestClient, speech_client: FakeSpeechClient
+    ) -> None:
+        response = audio_client.get("/items/lex:mynd/audio")
+
+        assert response.status_code == 200
+        assert response.headers["content-type"] == "audio/wav"
+        assert response.content == b"RIFFwelsh-standard:mynd"
+        assert [text for text, _track in speech_client.calls] == ["mynd"]
+
+    def test_a_phrase_has_no_audio(self, audio_client: TestClient) -> None:
+        response = audio_client.get("/items/pat:galla-i/audio")
+
+        assert response.status_code == 404
+
+    def test_an_unknown_item_is_a_404(self, audio_client: TestClient) -> None:
+        response = audio_client.get("/items/lex:nonsense/audio")
+
+        assert response.status_code == 404

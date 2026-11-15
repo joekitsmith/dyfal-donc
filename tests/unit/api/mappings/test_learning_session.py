@@ -2,7 +2,7 @@ from datetime import UTC, datetime, timedelta
 
 from api.mappings import (
     to_item_responses,
-    to_missed_exercise_responses,
+    to_sentence_responses,
     to_overview_response,
     to_session_summary_response,
 )
@@ -57,15 +57,15 @@ class TestToItemResponses:
         assert to_item_responses(CURRICULUM, ("lex:gone",)) == ()
 
 
-class TestToMissedExerciseResponses:
+class TestToSentenceResponses:
     def test_gives_the_text_and_the_audio_links(self) -> None:
-        (response,) = to_missed_exercise_responses(EXERCISES, ("ex:1",))
+        (response,) = to_sentence_responses(EXERCISES, ("ex:1",))
 
         assert (response.english, response.welsh) == ("I can go", "Galla i fynd")
         assert response.audio.welsh.slow == "/exercises/ex%3A1/audio/welsh/slow"
 
     def test_an_exercise_the_course_no_longer_has_is_left_out(self) -> None:
-        assert to_missed_exercise_responses(EXERCISES, ("ex:gone",)) == ()
+        assert to_sentence_responses(EXERCISES, ("ex:gone",)) == ()
 
 
 class TestToSessionSummaryResponse:

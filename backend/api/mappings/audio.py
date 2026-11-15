@@ -5,6 +5,7 @@ from engine.exercises import Exercise
 
 ENGLISH_AUDIO_PATH = "/exercises/{exercise_id}/audio/english"
 WELSH_AUDIO_PATH = "/exercises/{exercise_id}/audio/welsh/{pace}"
+ITEM_AUDIO_PATH = "/items/{item_id}/audio"
 
 
 def to_audio_links(exercise_id: str) -> AudioLinks:
@@ -19,6 +20,10 @@ def to_audio_links(exercise_id: str) -> AudioLinks:
             slow=WELSH_AUDIO_PATH.format(exercise_id=quoted, pace=WelshPace.SLOW),
         ),
     )
+
+
+def to_item_audio_link(item_id: str) -> str:
+    return ITEM_AUDIO_PATH.format(item_id=quote(item_id, safe=""))
 
 
 def to_welsh_track(pace: WelshPace) -> AudioTrack:

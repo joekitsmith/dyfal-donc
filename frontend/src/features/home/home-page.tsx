@@ -38,6 +38,9 @@ export function HomePage() {
       </Button>
       {user.isGuest && recap !== null ? <SaveProgressPrompt /> : null}
       <Stack direction="row" spacing={1}>
+        <Button component={Link} href={ROUTES.course}>
+          Course
+        </Button>
         <Button component={Link} href={ROUTES.settings}>
           Settings
         </Button>

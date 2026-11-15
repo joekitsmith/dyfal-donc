@@ -22,6 +22,13 @@ def frontier(curriculum: Curriculum, introduced: AbstractSet[str]) -> str | None
     )
 
 
+def frontier_topic(curriculum: Curriculum, introduced: AbstractSet[str]) -> str | None:
+    """The topic of the first item the learner has not met, if any."""
+    item_id = frontier(curriculum, introduced)
+
+    return None if item_id is None else curriculum.get(item_id).topic
+
+
 def candidates(
     pool: Mapping[str, Exercise],
     introduced: AbstractSet[str],

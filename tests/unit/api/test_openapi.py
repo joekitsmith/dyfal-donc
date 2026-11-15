@@ -12,6 +12,9 @@ class TestRenderOpenapiSchema:
 
         assert "/exercises/{exercise_id}/audio/english" in paths
         assert "/exercises/{exercise_id}/audio/welsh/{pace}" in paths
+        assert "/items/{item_id}/audio" in paths
+        assert "/me/course" in paths
+        assert "/me/items/{item_id}" in paths
         assert "/auth/guest" in paths
         assert "/me/next" in paths
         assert not any(path.startswith("/learners") for path in paths)

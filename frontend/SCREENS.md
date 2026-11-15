@@ -6,7 +6,7 @@ Every screen the app has: its route, what it is for, the states it can be in and
 
 Where a signed-in person lands. Signed-out visitors are sent to the welcome screen.
 
-Actions: **Start learning** or **Continue learning** (opens the lesson), **See details** on the recap, open **Settings** or **Account**. Guests also get **Add a passkey** and **Not now** on the save prompt once they have a recap.
+Actions: **Start learning** or **Continue learning** (opens the lesson), **See details** on the recap, open **Course**, **Settings** or **Account**. Guests also get **Add a passkey** and **Not now** on the save prompt once they have a recap.
 
 | State                                           | Shown                                                                                                                             |
 | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -28,19 +28,54 @@ A learning session is a run of answers with no pause longer than 10 minutes. The
 
 What a person did in one learning session. The id is the number of the session's first answer, so it never changes once the session has begun.
 
-Actions: **Back to home**, **Play** and **Play slowly** on each missed exercise, **Keep going** (while the session is still going) or **Start another**.
+Actions: **Back to home**, open any new word or word that slipped, **Play** and **Play slowly** on each missed exercise, **Keep going** (while the session is still going) or **Start another**.
 
-| State                     | Shown                                                                                |
-| ------------------------- | ------------------------------------------------------------------------------------ |
-| Loading                   | Loading                                                                              |
-| Normal                    | The number of exercises, how long, and "still going" if it is                        |
-| Reviewed words            | How many words they already knew were practised                                      |
-| New words                 | Each in Welsh and English, or no section if there are none                           |
-| Words that slipped        | Words that were in long-term review and were missed, or no section if there are none |
-| Missed exercises          | The English, the Welsh and the two Play buttons, or no section if there are none     |
-| Audio could not be played | An error under the missed exercises                                                  |
-| No such session           | A message that it does not exist, and Back to home                                   |
-| Signed out                | Moves to the welcome screen                                                          |
+| State                     | Shown                                                                                                           |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Loading                   | Loading                                                                                                         |
+| Normal                    | The number of exercises, how long, and "still going" if it is                                                   |
+| Reviewed words            | How many words they already knew were practised                                                                 |
+| New words                 | Each in Welsh and English, linking to its page, or no section if there are none                                 |
+| Words that slipped        | Words that were in long-term review and were missed (each linking to its page), or no section if there are none |
+| Missed exercises          | The English, the Welsh and the two Play buttons, or no section if there are none                                |
+| Audio could not be played | An error under the missed exercises                                                                             |
+| No such session           | A message that it does not exist, and Back to home                                                              |
+| Signed out                | Moves to the welcome screen                                                                                     |
+
+## Course `/course`
+
+Where the learner has got to, and a way to look up anything they have met. Nothing here is a score: there are no percentages, strengths or targets, and nothing about words not yet met.
+
+Actions: **Back to home**, **search** the box, open a started topic, **Play** and **Play slowly** on a sentence, open a word or phrase.
+
+| State                     | Shown                                                                                                                                                                   |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Loading                   | Loading                                                                                                                                                                 |
+| Brand-new learner         | "Words and sentences appear here as you meet them", and every topic under "Later in the course"                                                                         |
+| Started topic             | An accordion with the topic name, "Current" on the topic being learned, and "12 words · 4 ways of saying things · 42 exercises answered". The current topic opens first |
+| Inside a started topic    | Things you can say (up to five sentences they got right, each with Play and Play slowly), then Words, then Ways of saying things, each linking to its page              |
+| Topics not started        | Their names only, under "Later in the course", in teaching order. They cannot be opened and show no counts or words                                                     |
+| Searching                 | A flat list of the words and phrases met whose English, Welsh or other forms match, ignoring case and accents, each with its topic. It replaces the topics              |
+| Search finds nothing      | "Nothing you have met matches that"                                                                                                                                     |
+| Audio could not be played | An error under the sentences                                                                                                                                            |
+| Server error              | A general error                                                                                                                                                         |
+| Signed out                | Moves to the welcome screen                                                                                                                                             |
+
+## Word or phrase `/course/items/[id]`
+
+One word or phrase the learner has met.
+
+Actions: **Back to the course**, **Play** (words only), **Play** and **Play slowly** on each sentence.
+
+| State                     | Shown                                                                                                                                                                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Loading                   | Loading                                                                                                                                                                                    |
+| Word                      | The Welsh, the English, "Word", Play, other forms and notes if there are any, and the day it was first met                                                                                 |
+| Phrase                    | The pattern with its slot, the English, "Way of saying things", "The part in [brackets] is where a word goes", notes, and the day it was first met. No Play: its sentences carry the audio |
+| Sentences                 | Up to five sentences containing it that they got right, newest first, each with Play and Play slowly; none shown if they have not got one right yet                                        |
+| Not found                 | "We could not find that word", and Back to the course. Not met and not existing look the same                                                                                              |
+| Audio could not be played | An error under the item                                                                                                                                                                    |
+| Signed out                | Moves to the welcome screen                                                                                                                                                                |
 
 ## Welcome `/welcome`
 

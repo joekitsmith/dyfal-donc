@@ -2,6 +2,10 @@ class ExerciseNotFoundError(Exception):
     pass
 
 
+class ItemNotFoundError(Exception):
+    pass
+
+
 class LearningSessionNotFoundError(Exception):
     pass
 

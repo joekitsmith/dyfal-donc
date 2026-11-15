@@ -1,6 +1,10 @@
+import shutil
 from pathlib import Path
 
+import pytest
+
 from api.course import content_hash, load_course_release
+from engine.exercises import ExerciseError
 
 
 class TestContentHash:
@@ -51,3 +55,37 @@ class TestLoadCourseRelease:
 
         assert release.hash == content_hash(curriculum_directory)
         assert release.curriculum.topics[0].name == "spine"
+
+    def test_registers_each_exercise_under_its_pack(
+        self, curriculum_directory: Path
+    ) -> None:
+        release = load_course_release(curriculum_directory)
+
+        assert release.exercise_topics["siarad"] == "spine"
+        assert release.exercise_topics["i-want-meat"] == "food"
+        assert set(release.exercise_topics) == set(release.exercises)
+
+    def test_a_pack_that_is_not_a_topic_is_refused(
+        self, curriculum_directory: Path, tmp_path: Path
+    ) -> None:
+        course = tmp_path / "course"
+        shutil.copytree(curriculum_directory, course)
+        (course / "exercises" / "food.yaml").rename(
+            course / "exercises" / "snacks.yaml"
+        )
+
+        with pytest.raises(ExerciseError, match="snacks"):
+            load_course_release(course)
+
+    def test_an_exercise_using_an_item_taught_after_its_pack_is_refused(
+        self, curriculum_directory: Path, tmp_path: Path
+    ) -> None:
+        course = tmp_path / "course"
+        shutil.copytree(curriculum_directory, course)
+        with (course / "exercises" / "spine.yaml").open("a", encoding="utf-8") as pack:
+            pack.write(
+                "\n- id: too-early\n  english: Meat\n  welsh: Cig\n  items: [lex:cig]\n"
+            )
+
+        with pytest.raises(ExerciseError, match="too-early"):
+            load_course_release(course)

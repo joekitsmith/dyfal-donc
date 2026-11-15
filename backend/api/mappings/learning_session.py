@@ -4,7 +4,7 @@ from datetime import datetime
 from api.mappings.audio import to_audio_links
 from api.schemas import (
     ItemResponse,
-    MissedExerciseResponse,
+    SentenceResponse,
     OverviewResponse,
     SessionRecapResponse,
     SessionSummaryResponse,
@@ -25,18 +25,19 @@ def to_item_responses(
             id=item.id,
             welsh=item.welsh if isinstance(item, Lexeme) else item.template,
             english=item.english,
+            forms=item.forms if isinstance(item, Lexeme) else (),
         )
         for item_id in item_ids
         if (item := known.get(item_id)) is not None
     )
 
 
-def to_missed_exercise_responses(
+def to_sentence_responses(
     exercises: Mapping[str, Exercise], exercise_ids: Sequence[str]
-) -> tuple[MissedExerciseResponse, ...]:
+) -> tuple[SentenceResponse, ...]:
     """The exercises with their text and audio. One the course no longer has is left out."""
     return tuple(
-        MissedExerciseResponse(
+        SentenceResponse(
             id=exercise_id,
             english=exercise.english,
             welsh=exercise.welsh,
@@ -81,9 +82,7 @@ def to_session_summary_response(
         **recap.model_dump(),
         items_reviewed=len(summary.items_reviewed),
         items_lapsed=to_item_responses(curriculum, summary.items_lapsed),
-        missed_exercises=to_missed_exercise_responses(
-            exercises, summary.missed_exercises
-        ),
+        missed_exercises=to_sentence_responses(exercises, summary.missed_exercises),
     )
 
 

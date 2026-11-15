@@ -11,6 +11,7 @@ from api.routes import (
     account_router,
     audio_router,
     auth_router,
+    course_progress_router,
     course_router,
     health_router,
     learners_router,
@@ -58,6 +59,7 @@ def create_app(
     register_error_handlers(app)
     app.include_router(health_router)
     app.include_router(course_router)
+    app.include_router(course_progress_router)
     app.include_router(auth_router)
     app.include_router(account_router)
     app.include_router(learners_router)

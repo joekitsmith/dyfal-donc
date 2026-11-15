@@ -32,6 +32,23 @@
         "title": "AuthenticationVerifyRequest",
         "type": "object"
       },
+      "CourseProgressResponse": {
+        "description": "Every topic in the order it is taught.",
+        "properties": {
+          "topics": {
+            "items": {
+              "$ref": "#/components/schemas/TopicProgressResponse"
+            },
+            "title": "Topics",
+            "type": "array"
+          }
+        },
+        "required": [
+          "topics"
+        ],
+        "title": "CourseProgressResponse",
+        "type": "object"
+      },
       "CourseResponse": {
         "properties": {
           "item_count": {
@@ -154,6 +171,87 @@
         "title": "HealthResponse",
         "type": "object"
       },
+      "ItemDetailResponse": {
+        "description": "An item the learner has met, with sentences they got right.\n\n``audio`` is where to hear a word, and is null for a phrase, whose sentences\ncarry the audio instead.",
+        "properties": {
+          "audio": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Audio"
+          },
+          "english": {
+            "title": "English",
+            "type": "string"
+          },
+          "examples": {
+            "items": {
+              "$ref": "#/components/schemas/SentenceResponse"
+            },
+            "title": "Examples",
+            "type": "array"
+          },
+          "first_met_at": {
+            "format": "date-time",
+            "title": "First Met At",
+            "type": "string"
+          },
+          "forms": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Forms",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/ItemKind"
+          },
+          "notes": {
+            "title": "Notes",
+            "type": "string"
+          },
+          "topic": {
+            "title": "Topic",
+            "type": "string"
+          },
+          "welsh": {
+            "title": "Welsh",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "welsh",
+          "english",
+          "topic",
+          "forms",
+          "notes",
+          "first_met_at",
+          "audio",
+          "examples"
+        ],
+        "title": "ItemDetailResponse",
+        "type": "object"
+      },
+      "ItemKind": {
+        "description": "A single word, or a way of saying things with a slot to fill.",
+        "enum": [
+          "word",
+          "phrase"
+        ],
+        "title": "ItemKind",
+        "type": "string"
+      },
       "ItemResponse": {
         "description": "A word or pattern the learner met, in both languages.",
         "properties": {
@@ -161,6 +259,13 @@
             "title": "English",
             "type": "string"
           },
+          "forms": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Forms",
+            "type": "array"
+          },
           "id": {
             "title": "Id",
             "type": "string"
@@ -173,36 +278,10 @@
         "required": [
           "id",
           "welsh",
-          "english"
+          "english",
+          "forms"
         ],
         "title": "ItemResponse",
-        "type": "object"
-      },
-      "MissedExerciseResponse": {
-        "properties": {
-          "audio": {
-            "$ref": "#/components/schemas/AudioLinks"
-          },
-          "english": {
-            "title": "English",
-            "type": "string"
-          },
-          "id": {
-            "title": "Id",
-            "type": "string"
-          },
-          "welsh": {
-            "title": "Welsh",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "english",
-          "welsh",
-          "audio"
-        ],
-        "title": "MissedExerciseResponse",
         "type": "object"
       },
       "NextExerciseResponse": {
@@ -528,6 +607,34 @@
         "title": "ReportedOutcome",
         "type": "string"
       },
+      "SentenceResponse": {
+        "description": "An exercise as a sentence in both languages, with its audio.",
+        "properties": {
+          "audio": {
+            "$ref": "#/components/schemas/AudioLinks"
+          },
+          "english": {
+            "title": "English",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "welsh": {
+            "title": "Welsh",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "english",
+          "welsh",
+          "audio"
+        ],
+        "title": "SentenceResponse",
+        "type": "object"
+      },
       "SessionRecapResponse": {
         "description": "A short account of one learning session.\n\n``id`` is the number of the session's first answer in the learner's log, and\n``ongoing`` says the last answer was recent enough that it may carry on.",
         "properties": {
@@ -617,7 +724,7 @@
           },
           "missed_exercises": {
             "items": {
-              "$ref": "#/components/schemas/MissedExerciseResponse"
+              "$ref": "#/components/schemas/SentenceResponse"
             },
             "title": "Missed Exercises",
             "type": "array"
@@ -645,6 +752,59 @@
           "missed_exercises"
         ],
         "title": "SessionSummaryResponse",
+        "type": "object"
+      },
+      "TopicProgressResponse": {
+        "description": "What the learner has met in one topic.\n\nA topic that has not been started has no words, phrases or sentences. The\nsentences are some the learner has got right.",
+        "properties": {
+          "exercises_answered": {
+            "title": "Exercises Answered",
+            "type": "integer"
+          },
+          "is_current": {
+            "title": "Is Current",
+            "type": "boolean"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "phrases": {
+            "items": {
+              "$ref": "#/components/schemas/ItemResponse"
+            },
+            "title": "Phrases",
+            "type": "array"
+          },
+          "sayable": {
+            "items": {
+              "$ref": "#/components/schemas/SentenceResponse"
+            },
+            "title": "Sayable",
+            "type": "array"
+          },
+          "started": {
+            "title": "Started",
+            "type": "boolean"
+          },
+          "words": {
+            "items": {
+              "$ref": "#/components/schemas/ItemResponse"
+            },
+            "title": "Words",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "started",
+          "is_current",
+          "exercises_answered",
+          "words",
+          "phrases",
+          "sayable"
+        ],
+        "title": "TopicProgressResponse",
         "type": "object"
       },
       "TopicResponse": {
@@ -1108,6 +1268,41 @@
         "summary": "Health"
       }
     },
+    "/items/{item_id}/audio": {
+      "get": {
+        "operationId": "get_item_audio_items__item_id__audio_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "audio/wav": {}
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Item Audio"
+      }
+    },
     "/me": {
       "delete": {
         "operationId": "delete_me_me_delete",
@@ -1133,6 +1328,63 @@
           }
         },
         "summary": "Get Me"
+      }
+    },
+    "/me/course": {
+      "get": {
+        "operationId": "get_course_progress_me_course_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseProgressResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Course Progress"
+      }
+    },
+    "/me/items/{item_id}": {
+      "get": {
+        "operationId": "get_item_me_items__item_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemDetailResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Item"
       }
     },
     "/me/learning-sessions/{session_id}/summary": {
