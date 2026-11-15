@@ -16,7 +16,7 @@ The gains and failure penalty are assumptions, set so an average learner looks p
 
 ## The exercise pool
 
-`pool.py` builds exercises from the hand-annotated gold sentences that validate against the curriculum (each introduces the latest item in the course order that it uses), plus the course's own exercises from `curriculum/exercises/`. Only 43 of the 181 gold sentences validate, because they were written to test tokenising and lemmatising and mostly use words outside the curriculum. The 24 exercises in the spine pack fill the gaps so that every item can be introduced. `poe simulate` prints the pool's coverage first.
+`pool.py` loads the course's own exercises from `curriculum/exercises/` and checks that each validates against the curriculum. `poe simulate` prints the pool's coverage first: how many exercises can introduce each item, and the first item (if any) no exercise can introduce, which would stop a learner there.
 
 ## Determinism
 

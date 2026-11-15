@@ -375,3 +375,69 @@
   welsh: pam
   english: why
   part_of_speech: adv
+
+- id: lex:ffonio
+  welsh: ffonio
+  english: to phone
+  part_of_speech: verb
+
+- id: lex:helpu
+  welsh: helpu
+  english: to help
+  part_of_speech: verb
+
+- id: lex:dechrau
+  welsh: dechrau
+  english: to start
+  part_of_speech: verb
+
+- id: lex:gorffen
+  welsh: gorffen
+  english: to finish
+  part_of_speech: verb
+
+- id: lex:cwrdd
+  welsh: cwrdd
+  english: to meet
+  part_of_speech: verb
+  notes: "Colloquially followed by 'gyda' (cwrdd gyda ffrind). Standard Welsh uses 'cwrdd â'."
+
+- id: lex:gwrando
+  welsh: gwrando
+  english: to listen
+  part_of_speech: verb
+
+- id: lex:ffon
+  welsh: ffôn
+  english: phone
+  part_of_speech: noun
+  gender: m
+
+- id: lex:neges
+  welsh: neges
+  english: message
+  part_of_speech: noun
+  gender: f
+  forms: [negeseuon]
+
+- id: lex:cwestiwn
+  welsh: cwestiwn
+  english: question
+  part_of_speech: noun
+  gender: m
+  forms: [cwestiynau]
+
+- id: lex:heno
+  welsh: heno
+  english: tonight
+  part_of_speech: adv
+
+- id: lex:ddoe
+  welsh: ddoe
+  english: yesterday
+  part_of_speech: adv
+
+- id: lex:neithiwr
+  welsh: neithiwr
+  english: last night
+  part_of_speech: adv

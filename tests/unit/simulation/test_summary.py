@@ -43,7 +43,6 @@ class TestRunSummary:
 
 class TestRenderCoverage:
     def test_names_the_blocking_item(self, curriculum: Curriculum) -> None:
-        text = render_coverage(coverage({}, curriculum), rejected=3)
+        text = render_coverage(coverage({}, curriculum))
 
         assert "First item blocking the course: lex:siarad" in text
-        assert "3 gold sentences rejected" in text
