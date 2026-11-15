@@ -9,8 +9,7 @@ import { useNextExercise } from "../api/use-next-exercise";
 import { useSubmitOutcome } from "../api/use-submit-outcome";
 import {
   ALREADY_ANSWERED_STATUS,
-  BETWEEN_WELSH_READING_MILLISECONDS,
-  BETWEEN_WELSH_REVEAL_MILLISECONDS,
+  BETWEEN_WELSH_MILLISECONDS,
   OUTCOME_WINDOW_MILLISECONDS,
   SELECTION_EXPIRED_STATUS,
 } from "../constants";
@@ -39,8 +38,7 @@ const WAIT_FOR_PHASE: Readonly<
   >
 > = {
   awaiting_outcome: { event: "window_elapsed", milliseconds: OUTCOME_WINDOW_MILLISECONDS },
-  between_welsh: { event: "gap_elapsed", milliseconds: BETWEEN_WELSH_REVEAL_MILLISECONDS },
-  reading_welsh: { event: "gap_elapsed", milliseconds: BETWEEN_WELSH_READING_MILLISECONDS },
+  between_welsh: { event: "gap_elapsed", milliseconds: BETWEEN_WELSH_MILLISECONDS },
 };
 
 const MILLISECONDS_PER_SECOND = 1000;

@@ -58,7 +58,6 @@ export type LessonState =
   | (ExerciseFields & { readonly phase: "playing_welsh" })
   | (ExerciseFields & { readonly phase: "playing_welsh_slow" })
   | (ExerciseFields & { readonly phase: "preparing" })
-  | (ExerciseFields & { readonly phase: "reading_welsh" })
   | (ExerciseFields & { readonly phase: "submitting" })
   | (ExerciseFields & { readonly phase: "thinking" })
   | (ExerciseFields & { readonly phase: "waiting_for_clip"; readonly track: WaitingTrack })

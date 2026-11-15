@@ -20,7 +20,6 @@ const PAUSABLE_PHASES: ReadonlySet<LessonState["phase"]> = new Set([
   "playing_english",
   "playing_welsh",
   "playing_welsh_slow",
-  "reading_welsh",
   "thinking",
   "waiting_for_clip",
 ]);
@@ -89,7 +88,6 @@ export function canMarkMissed(state: LessonState): boolean {
     case "between_welsh":
     case "playing_welsh":
     case "playing_welsh_slow":
-    case "reading_welsh":
       return true;
     case "waiting_for_clip":
       return state.track === "welsh_slow";
@@ -123,20 +121,13 @@ function clipEnded(state: LessonState): LessonState {
   }
 }
 
-/** The gap after the first Welsh: its text shows part way through, then the slow Welsh follows. */
+/** The gap after the first Welsh ends by showing its text and playing the slow Welsh. */
 function gapElapsed(state: LessonState): LessonState {
   if (!isExerciseState(state) || state.paused) {
     return state;
   }
 
-  switch (state.phase) {
-    case "between_welsh":
-      return { ...fieldsOf(state), phase: "reading_welsh", revealed: true };
-    case "reading_welsh":
-      return startClip(state, "welsh_slow");
-    default:
-      return state;
-  }
+  return state.phase === "between_welsh" ? startClip({ ...state, revealed: true }, "welsh_slow") : state;
 }
 
 function clipFailed(state: LessonState, track: ClipTrack): LessonState {

@@ -1,40 +1,26 @@
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import type { LessonState } from "../types";
 
 import { isExerciseState } from "../stores/lesson-reducer";
 
-const PHASE_LABELS: Readonly<Record<LessonState["phase"], string>> = {
-  awaiting_outcome: "Did you get it?",
-  between_welsh: "Check it against the Welsh",
-  error: "Something went wrong",
-  idle: "Ready when you are",
-  loading: "Loading",
-  nothing_eligible: "Nothing to do right now",
-  playing_english: "Listen",
-  playing_welsh: "Listen",
-  playing_welsh_slow: "Listen again, more slowly",
-  preparing: "Loading",
-  reading_welsh: "Check it against the Welsh",
-  submitting: "Saving",
-  thinking: "Say it in Welsh",
-  waiting_for_clip: "Loading the Welsh",
-};
+const LINE_HEIGHT = "1.6em";
 
+/** The text takes a fixed space, one line each, so the buttons below it never move. */
 export function ExerciseDisplay({ state }: { readonly state: LessonState }) {
+  const exercise = isExerciseState(state) ? state : null;
+
   return (
     <>
-      <Typography aria-live="polite" color="text.secondary">
-        {PHASE_LABELS[state.phase]}
-        {isExerciseState(state) && state.paused ? " (paused)" : ""}
-      </Typography>
-      {isExerciseState(state) ? (
-        <>
-          <Typography variant="h5">{state.exercise.english}</Typography>
-          {state.revealed ? <Typography variant="h5">{state.exercise.welsh}</Typography> : null}
-          {state.missed ? <Typography color="warning.main">Marked as missed</Typography> : null}
-        </>
-      ) : null}
+      <Stack spacing={3}>
+        <Typography noWrap sx={{ height: LINE_HEIGHT }} variant="h5">
+          {exercise?.exercise.english}
+        </Typography>
+        <Typography noWrap sx={{ height: LINE_HEIGHT }} variant="h5">
+          {exercise?.revealed === true ? exercise.exercise.welsh : null}
+        </Typography>
+      </Stack>
       {state.phase === "nothing_eligible" ? <Typography>{state.reason}</Typography> : null}
       {state.phase === "error" ? <Typography color="error">{state.message}</Typography> : null}
     </>

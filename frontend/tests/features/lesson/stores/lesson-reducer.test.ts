@@ -52,7 +52,6 @@ describe("the happy path", () => {
       { type: "think_elapsed" },
       { type: "clip_ended" },
       { type: "gap_elapsed" },
-      { type: "gap_elapsed" },
       { type: "clip_ended" },
       { type: "window_elapsed" },
       { type: "submitted" },
@@ -72,7 +71,6 @@ describe("the happy path", () => {
       "thinking",
       "playing_welsh",
       "between_welsh",
-      "reading_welsh",
       "playing_welsh_slow",
       "awaiting_outcome",
       "submitting",
@@ -170,7 +168,6 @@ describe("pausing", () => {
     "thinking",
     "playing_welsh",
     "between_welsh",
-    "reading_welsh",
     "playing_welsh_slow",
     "awaiting_outcome",
   ] as const)("pauses and resumes in %s", (phase) => {
@@ -202,7 +199,7 @@ describe("pausing", () => {
 });
 
 describe("marking missed", () => {
-  it.each(["playing_welsh", "between_welsh", "reading_welsh", "playing_welsh_slow", "awaiting_outcome"] as const)(
+  it.each(["playing_welsh", "between_welsh", "playing_welsh_slow", "awaiting_outcome"] as const)(
     "is accepted in %s and kept to the end",
     (phase) => {
       const marked = lessonReducer(exerciseState(phase), { type: "missed" });
@@ -263,22 +260,19 @@ describe("the outcome window", () => {
 });
 
 describe("the gap between the Welsh clips", () => {
-  it("shows the Welsh text part way through the gap, then plays the slow Welsh", () => {
+  it("shows the Welsh text and plays the slow Welsh when the gap ends", () => {
     const gap = lessonReducer(exerciseState("playing_welsh"), { type: "clip_ended" });
 
     expect(gap).toMatchObject({ phase: "between_welsh", revealed: false });
-
-    const reading = lessonReducer(gap, { type: "gap_elapsed" });
-
-    expect(reading).toMatchObject({ phase: "reading_welsh", revealed: true });
-    expect(lessonReducer(reading, { type: "gap_elapsed" }).phase).toBe("playing_welsh_slow");
+    expect(lessonReducer(gap, { type: "gap_elapsed" })).toMatchObject({ phase: "playing_welsh_slow", revealed: true });
   });
 
-  it("waits for the slow Welsh if it is still loading", () => {
-    const reading = exerciseState("reading_welsh", { clips: { ...READY, welsh_slow: "loading" } });
+  it("shows the text even when it has to wait for the slow Welsh", () => {
+    const gap = exerciseState("between_welsh", { clips: { ...READY, welsh_slow: "loading" } });
 
-    expect(lessonReducer(reading, { type: "gap_elapsed" })).toMatchObject({
+    expect(lessonReducer(gap, { type: "gap_elapsed" })).toMatchObject({
       phase: "waiting_for_clip",
+      revealed: true,
       track: "welsh_slow",
     });
   });

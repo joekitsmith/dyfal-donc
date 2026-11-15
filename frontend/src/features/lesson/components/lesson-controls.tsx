@@ -40,14 +40,14 @@ export function LessonControls({
   return (
     <Stack spacing={2}>
       <Button
-        color="warning"
-        disabled={!canMiss}
+        color={state.missed ? "error" : "warning"}
+        disabled={!canMiss && !state.missed}
         onClick={actions.missed}
         size="large"
         sx={{ minHeight: 72 }}
         variant="contained"
       >
-        Missed it (M)
+        {state.missed ? "Marked as missed" : "Missed it (M)"}
       </Button>
       <Stack direction="row" spacing={2}>
         <Button disabled={!canPause} onClick={actions.togglePause} variant="outlined">
