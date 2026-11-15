@@ -1,3 +1,4 @@
+from api.mappings.audio import to_audio_links, to_speech_text
 from api.mappings.course import to_course_response
 from api.mappings.exercise import (
     to_exercise_purpose,
@@ -18,6 +19,7 @@ from api.mappings.outcome import (
 from api.mappings.progress import to_progress_response
 
 __all__ = [
+    "to_audio_links",
     "to_add_learner",
     "to_append_event",
     "to_consume_selection",
@@ -33,4 +35,5 @@ __all__ = [
     "to_progress_response",
     "to_review_event",
     "to_review_events",
+    "to_speech_text",
 ]

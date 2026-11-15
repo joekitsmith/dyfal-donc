@@ -1,6 +1,7 @@
 import uuid
 from datetime import datetime, timedelta
 
+from api.mappings.audio import to_audio_links
 from api.schemas import (
     ExercisePurpose,
     ExerciseResponse,
@@ -34,6 +35,7 @@ def to_exercise_response(
         selection_id=issued.id,
         english=selection.exercise.english,
         welsh=selection.exercise.welsh,
+        audio=to_audio_links(selection.exercise_id),
         item_ids=issued.item_ids,
         introduces=issued.new_item,
         purpose=to_exercise_purpose(selection.purpose),

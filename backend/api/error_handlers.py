@@ -3,6 +3,7 @@ from collections.abc import Awaitable, Callable
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 
+from api.errors import ExerciseNotFoundError, SpeechUnavailableError
 from persistence.database.errors import (
     EventOutOfOrderError,
     LearnerNotFoundError,
@@ -14,6 +15,8 @@ from persistence.database.errors import (
 type ErrorHandler = Callable[[Request, Exception], Awaitable[JSONResponse]]
 
 STATUS_FOR_ERROR: dict[type[Exception], int] = {
+    ExerciseNotFoundError: status.HTTP_404_NOT_FOUND,
+    SpeechUnavailableError: status.HTTP_503_SERVICE_UNAVAILABLE,
     LearnerNotFoundError: status.HTTP_404_NOT_FOUND,
     SelectionNotFoundError: status.HTTP_404_NOT_FOUND,
     SelectionExpiredError: status.HTTP_410_GONE,

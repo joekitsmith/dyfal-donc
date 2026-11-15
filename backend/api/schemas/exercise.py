@@ -4,6 +4,8 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field
 
+from api.schemas.audio import AudioLinks
+
 
 class ExercisePurpose(StrEnum):
     """Why an exercise was chosen."""
@@ -30,6 +32,7 @@ class ExerciseResponse(BaseModel):
     selection_id: uuid.UUID
     english: str
     welsh: str
+    audio: AudioLinks
     item_ids: tuple[str, ...]
     introduces: str | None
     purpose: ExercisePurpose
