@@ -1,6 +1,7 @@
 import pytest
 
 from engine.curriculum import (
+    DEFAULT_TOPIC,
     Curriculum,
     CurriculumError,
     Gender,
@@ -189,3 +190,50 @@ class TestSurfaceFormConflicts:
             CurriculumError, match="lex:a lists unknown homograph lex:zzz"
         ):
             build([noun("a", "cwrw", homographs=("lex:zzz",))], ["lex:a"])
+
+
+class TestTopic:
+    def test_defaults_to_the_spine(self) -> None:
+        assert noun("coffi", "coffi").topic == DEFAULT_TOPIC == "spine"
+
+    def test_patterns_default_to_the_spine_too(self) -> None:
+        pattern = Pattern(
+            id="pat:dw-in",
+            template="Dw i'n [VERB]",
+            english="I'm [VERB]ing",
+            slots={"VERB": PartOfSpeech.VERB},
+        )
+
+        assert pattern.topic == "spine"
+
+    def test_accepts_a_lowercase_slug(self) -> None:
+        lexeme = Lexeme(
+            id="lex:glaw",
+            welsh="glaw",
+            english="rain",
+            part_of_speech=PartOfSpeech.NOUN,
+            topic="weather-words",
+        )
+
+        assert lexeme.topic == "weather-words"
+
+    @pytest.mark.parametrize("topic", ("", " ", "Weather", "1weather", "wea ther"))
+    def test_rejects_anything_else(self, topic: str) -> None:
+        with pytest.raises(CurriculumError, match="Invalid topic"):
+            Lexeme(
+                id="lex:glaw",
+                welsh="glaw",
+                english="rain",
+                part_of_speech=PartOfSpeech.NOUN,
+                topic=topic,
+            )
+
+    def test_a_pattern_rejects_an_invalid_topic(self) -> None:
+        with pytest.raises(CurriculumError, match="Invalid topic"):
+            Pattern(
+                id="pat:dw-in",
+                template="Dw i'n [VERB]",
+                english="I'm [VERB]ing",
+                slots={"VERB": PartOfSpeech.VERB},
+                topic="Bad Topic",
+            )

@@ -1,7 +1,7 @@
-# Exercises written for the simulation, to fill gaps the gold sentences leave:
-# curriculum items no gold sentence can introduce. Generated, not yet reviewed by
-# a fluent speaker. Each uses only items earlier in the course order, plus its
-# new_item. Welsh follows South Wales usage.
+# The spine pack: exercises for the conversational core of the course, in South
+# Wales Welsh. Each uses only items earlier in the course order, plus its
+# new_item.
+# Fields: id, english, welsh, items, new_item (optional).
 
 - id: siarad
   english: To speak

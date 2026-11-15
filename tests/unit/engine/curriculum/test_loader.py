@@ -9,7 +9,7 @@ from engine.curriculum import (
     Pattern,
     load_curriculum,
 )
-from tests.unit.engine.curriculum.conftest import CurriculumWriter
+from tests.unit.engine.curriculum.conftest import YAML_LEXEMES, CurriculumWriter
 
 
 class TestLoader:
@@ -87,3 +87,25 @@ class TestLoaderForms:
         lexeme = load_curriculum(write_curriculum(lexemes=lexemes)).get("lex:siarad")
         assert isinstance(lexeme, Lexeme)
         assert lexeme.forms == ("siaradodd",)
+
+
+class TestLoaderTopics:
+    def test_a_topic_is_read_from_the_file(
+        self, write_curriculum: CurriculumWriter
+    ) -> None:
+        lexemes = YAML_LEXEMES + "  topic: weather\n"
+
+        curriculum = load_curriculum(write_curriculum(lexemes=lexemes))
+
+        assert curriculum.get("lex:siarad").topic == "weather"
+        assert curriculum.get("pat:dw-in").topic == "spine"
+
+    def test_an_invalid_topic_names_the_file_and_item(
+        self, write_curriculum: CurriculumWriter
+    ) -> None:
+        lexemes = YAML_LEXEMES + "  topic: Weather\n"
+
+        with pytest.raises(
+            CurriculumError, match=r"lexemes\.yaml \(lex:siarad\): .*Invalid topic"
+        ):
+            load_curriculum(write_curriculum(lexemes=lexemes))

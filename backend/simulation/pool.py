@@ -2,26 +2,12 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
 
-import yaml
-from pydantic import TypeAdapter, ValidationError
-
 from engine.curriculum import Curriculum
-from engine.exercises import Exercise, validate_exercise
+from engine.exercises import Exercise, load_exercises, validate_exercise
 from evals.gold import load_gold_sentences
 from simulation.errors import SimulationError
 
-EXTRA_EXERCISES_PATH = Path(__file__).parent / "exercises.yaml"
-
-
-@dataclass(frozen=True, slots=True, kw_only=True)
-class ExtraExercise:
-    """An exercise written for the simulation, to fill a gap the gold sentences leave."""
-
-    id: str
-    english: str
-    welsh: str
-    items: tuple[str, ...]
-    new_item: str
+EXERCISES_DIRECTORY = Path(__file__).parents[2] / "curriculum" / "exercises"
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
@@ -51,13 +37,14 @@ class PoolCoverage:
 
 
 def build_pool(
-    curriculum: Curriculum, extras_path: str | Path = EXTRA_EXERCISES_PATH
+    curriculum: Curriculum, exercises_directory: str | Path = EXERCISES_DIRECTORY
 ) -> ExercisePool:
-    """The gold sentences that validate as exercises, plus the extra exercises.
+    """The gold sentences that validate as exercises, plus the course's own exercises.
 
     A gold sentence introduces the latest item in the course order that it
     uses. One that does not validate, or uses an item outside the course order,
-    is rejected and listed. An invalid extra exercise is an error.
+    is rejected and listed. An invalid exercise from the course's own files is
+    an error.
     """
     position = {item_id: index for index, item_id in enumerate(curriculum.order)}
     exercises: dict[str, Exercise] = {}
@@ -80,19 +67,11 @@ def build_pool(
         else:
             rejected.append(sentence.id)
 
-    for extra in _load_extras(Path(extras_path)):
-        exercise = Exercise(
-            english=extra.english,
-            welsh=extra.welsh,
-            items=extra.items,
-            new_item=extra.new_item,
-        )
-        if extra.new_item not in position or not _is_valid(
-            exercise, curriculum, position
-        ):
-            raise SimulationError(f"{extra.id}: Extra exercise does not validate")
+    for entry in load_exercises(exercises_directory):
+        if not _is_valid(entry.exercise, curriculum, position):
+            raise SimulationError(f"{entry.id}: Exercise does not validate")
 
-        exercises[f"extra:{extra.id}"] = exercise
+        exercises[entry.id] = entry.exercise
 
     return ExercisePool(exercises=exercises, rejected=tuple(rejected))
 
@@ -121,15 +100,10 @@ def _is_valid(
     exercise: Exercise, curriculum: Curriculum, position: Mapping[str, int]
 ) -> bool:
     if exercise.new_item is None:
+        known = frozenset(curriculum.order)
+    elif exercise.new_item in position:
+        known = frozenset(curriculum.order[: position[exercise.new_item]])
+    else:
         return False
 
-    known = frozenset(curriculum.order[: position[exercise.new_item]])
     return validate_exercise(exercise, curriculum, known).is_valid
-
-
-def _load_extras(path: Path) -> tuple[ExtraExercise, ...]:
-    try:
-        raw: object = yaml.safe_load(path.read_text(encoding="utf-8"))
-        return tuple(TypeAdapter(list[ExtraExercise]).validate_python(raw))
-    except (OSError, yaml.YAMLError, ValidationError) as exc:
-        raise SimulationError(f"{path}: Cannot read extra exercises: {exc}") from exc

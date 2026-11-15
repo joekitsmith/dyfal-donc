@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from engine.curriculum import Curriculum
-from engine.exercises import Exercise
+from engine.exercises import Exercise, ExerciseError
 from simulation.errors import SimulationError
 from simulation.pool import build_pool, coverage
 from tests.unit.engine.scheduler.helpers import (
@@ -48,21 +48,32 @@ class TestCoverage:
 
 
 class TestBuildPool:
-    def test_an_extra_exercise_that_does_not_validate_is_an_error(
+    def test_an_exercise_that_does_not_validate_is_an_error(
         self, curriculum: Curriculum, tmp_path: Path
     ) -> None:
-        extras = tmp_path / "extras.yaml"
-        extras.write_text(
+        (tmp_path / "pack.yaml").write_text(
             "- id: bad\n  english: Nothing\n  welsh: Nonsense\n"
             f"  items: [{SIARAD_ID}]\n  new_item: {SIARAD_ID}\n",
             encoding="utf-8",
         )
 
         with pytest.raises(SimulationError, match="bad"):
-            build_pool(curriculum, extras)
+            build_pool(curriculum, tmp_path)
 
-    def test_a_missing_extras_file_is_an_error(
+    def test_an_exercise_introducing_an_unknown_item_is_an_error(
         self, curriculum: Curriculum, tmp_path: Path
     ) -> None:
-        with pytest.raises(SimulationError):
-            build_pool(curriculum, tmp_path / "missing.yaml")
+        (tmp_path / "pack.yaml").write_text(
+            "- id: odd\n  english: Odd\n  welsh: Odd\n"
+            "  items: [lex:nowhere]\n  new_item: lex:nowhere\n",
+            encoding="utf-8",
+        )
+
+        with pytest.raises(SimulationError, match="odd"):
+            build_pool(curriculum, tmp_path)
+
+    def test_a_missing_directory_is_an_error(
+        self, curriculum: Curriculum, tmp_path: Path
+    ) -> None:
+        with pytest.raises(ExerciseError):
+            build_pool(curriculum, tmp_path / "missing")

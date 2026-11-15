@@ -1,3 +1,5 @@
+from engine.exercises.errors import ExerciseError
+from engine.exercises.loader import ExerciseEntry, exercise_pool, load_exercises
 from engine.exercises.models import (
     DeclaredItemNotFound,
     Exercise,
@@ -14,6 +16,8 @@ from engine.exercises.validation import validate_exercise
 __all__ = [
     "DeclaredItemNotFound",
     "Exercise",
+    "ExerciseEntry",
+    "ExerciseError",
     "Issue",
     "MissingNewItem",
     "MultipleNewItems",
@@ -21,5 +25,7 @@ __all__ = [
     "UnknownDeclaredItem",
     "ValidationResult",
     "WrongNewItem",
+    "exercise_pool",
+    "load_exercises",
     "validate_exercise",
 ]
