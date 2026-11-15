@@ -5,10 +5,10 @@ import Typography from "@mui/material/Typography";
 
 import { useLearner } from "@/features/learner";
 
-import { Exercise } from "./components/exercise";
+import { LessonPlayer } from "./components/lesson-player";
 
-export function SmokePage() {
-  const { error, isLoading, learnerId } = useLearner();
+export function LessonPage() {
+  const { error, isLoading, learnerId, startOver } = useLearner();
 
   if (error) {
     return <Alert severity="error">{error.message}</Alert>;
@@ -18,5 +18,13 @@ export function SmokePage() {
     return <Typography>Loading</Typography>;
   }
 
-  return <Exercise learnerId={learnerId} />;
+  return (
+    <LessonPlayer
+      key={learnerId}
+      learnerId={learnerId}
+      onStartOver={() => {
+        startOver();
+      }}
+    />
+  );
 }
