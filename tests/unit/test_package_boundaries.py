@@ -7,7 +7,7 @@ import cymraeg
 import engine
 
 CORE_PACKAGES = (cymraeg, engine)
-BACKEND_PACKAGES = ("evals", "tools")
+BACKEND_PACKAGES = ("evals", "tools", "simulation")
 
 
 def imported_top_level_modules(package_directory: Path) -> dict[Path, set[str]]:

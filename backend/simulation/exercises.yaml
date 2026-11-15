@@ -1,0 +1,148 @@
+# Exercises written for the simulation, to fill gaps the gold sentences leave:
+# curriculum items no gold sentence can introduce. Generated, not yet reviewed by
+# a fluent speaker. Each uses only items earlier in the course order, plus its
+# new_item. Welsh follows South Wales usage.
+
+- id: siarad
+  english: To speak
+  welsh: Siarad
+  items: [lex:siarad]
+  new_item: lex:siarad
+
+- id: siarad-saesneg
+  english: To speak English
+  welsh: Siarad Saesneg
+  items: [lex:siarad, lex:saesneg]
+  new_item: lex:saesneg
+
+- id: dw-in-dysgu-nawr
+  english: I'm learning now
+  welsh: Dw i'n dysgu nawr
+  items: [pat:dw-in, lex:dysgu, lex:nawr]
+  new_item: lex:nawr
+
+- id: dw-in-yfed
+  english: I'm drinking
+  welsh: Dw i'n yfed
+  items: [pat:dw-in, lex:yfed]
+  new_item: lex:yfed
+
+- id: dw-i-ddim-yn-darllen
+  english: I'm not reading
+  welsh: Dw i ddim yn darllen
+  items: [pat:dw-i-ddim-yn, lex:darllen]
+  new_item: lex:darllen
+
+- id: dwr
+  english: Water
+  welsh: Dŵr
+  items: [lex:dwr]
+  new_item: lex:dwr
+
+- id: dw-in-moyn-bwyd
+  english: I want food
+  welsh: Dw i'n moyn bwyd
+  items: [pat:dw-in-moyn-noun, lex:bwyd]
+  new_item: lex:bwyd
+
+- id: dw-in-moyn-ysgrifennu
+  english: I want to write
+  welsh: Dw i'n moyn ysgrifennu
+  items: [pat:dw-in-moyn, lex:ysgrifennu]
+  new_item: lex:ysgrifennu
+
+- id: siarad-cymraeg
+  english: To speak Welsh
+  welsh: Siarad Cymraeg
+  items: [lex:siarad, lex:cymraeg]
+  new_item: lex:cymraeg
+
+- id: dw-in-moyn-dysgu
+  english: I want to learn
+  welsh: Dw i'n moyn dysgu
+  items: [pat:dw-in-moyn, lex:dysgu]
+  new_item: lex:dysgu
+
+- id: dw-in-moyn-deall
+  english: I want to understand
+  welsh: Dw i'n moyn deall
+  items: [pat:dw-in-moyn, lex:deall]
+  new_item: lex:deall
+
+- id: dw-in-moyn-mynd
+  english: I want to go
+  welsh: Dw i'n moyn mynd
+  items: [pat:dw-in-moyn, lex:mynd]
+  new_item: lex:mynd
+
+- id: dw-in-moyn-dod
+  english: I want to come
+  welsh: Dw i'n moyn dod
+  items: [pat:dw-in-moyn, lex:dod]
+  new_item: lex:dod
+
+- id: dw-in-dysgu-fan-hyn
+  english: I'm learning here
+  welsh: Dw i'n dysgu fan hyn
+  items: [pat:dw-in, lex:dysgu, lex:fan-hyn]
+  new_item: lex:fan-hyn
+
+- id: dw-in-moyn-gweld
+  english: I want to see
+  welsh: Dw i'n moyn gweld
+  items: [pat:dw-in-moyn, lex:gweld]
+  new_item: lex:gweld
+
+- id: dw-in-gweithio-fan-hyn
+  english: I'm working here
+  welsh: Dw i'n gweithio fan hyn
+  items: [pat:dw-in, lex:gweithio, lex:fan-hyn]
+  new_item: lex:gweithio
+
+- id: coffi
+  english: Coffee
+  welsh: Coffi
+  items: [lex:coffi]
+  new_item: lex:coffi
+
+- id: dw-in-hoffi-coffi
+  english: I like coffee
+  welsh: Dw i'n hoffi coffi
+  items: [pat:dw-in-hoffi, lex:coffi]
+  new_item: pat:dw-in-hoffi
+
+- id: dw-in-cofio
+  english: I'm remembering
+  welsh: Dw i'n cofio
+  items: [pat:dw-in, lex:cofio]
+  new_item: lex:cofio
+
+- id: dw-in-hoffi-ty
+  english: I like a house
+  welsh: Dw i'n hoffi tŷ
+  items: [pat:dw-in-hoffi, lex:ty]
+  new_item: lex:ty
+
+- id: dw-in-dod-i-siarad
+  english: I'm coming to speak
+  welsh: Dw i'n dod i siarad
+  items: [pat:dw-in, lex:dod, lex:i, lex:siarad]
+  new_item: lex:i
+
+- id: dw-in-dod-o-fan-hyn
+  english: I'm coming from here
+  welsh: Dw i'n dod o fan hyn
+  items: [pat:dw-in, lex:dod, lex:o, lex:fan-hyn]
+  new_item: lex:o
+
+- id: dw-in-yfed-te-gyda-llaeth
+  english: I'm drinking tea with milk
+  welsh: Dw i'n yfed te gyda llaeth
+  items: [pat:dw-in, lex:yfed, lex:te, lex:gyda, lex:llaeth]
+  new_item: lex:gyda
+
+- id: gallwn-siarad
+  english: We can speak
+  welsh: Gallwn siarad
+  items: [lex:gallu, lex:siarad]
+  new_item: lex:gallu
