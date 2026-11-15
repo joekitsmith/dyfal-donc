@@ -6,6 +6,7 @@ import pytest
 
 import api
 import api.controllers as api_controllers
+import api.schemas as api_schemas
 import cymraeg
 import engine
 import persistence
@@ -100,6 +101,14 @@ class TestPackageBoundaries:
 
     def test_persistence_never_imports_the_api(self) -> None:
         assert forbidden_imports(persistence, ("api",)) == []
+
+    def test_persistence_never_imports_the_engine(self) -> None:
+        assert forbidden_imports(persistence, ("engine", "cymraeg")) == []
+
+    def test_api_schemas_never_import_the_engine_or_persistence(self) -> None:
+        assert (
+            forbidden_imports(api_schemas, ("engine", "cymraeg", "persistence")) == []
+        )
 
     def test_the_api_never_imports_the_tables_or_their_mappings(self) -> None:
         assert private_database_imports(api) == []

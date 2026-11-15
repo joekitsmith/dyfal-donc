@@ -13,13 +13,14 @@ Postgres, through SQLAlchemy 2 (sync, psycopg 3). There are no migrations yet: n
 Layout:
 
 - `models/`: the tables (`Learner`, `IssuedSelection`, `ReviewEvent`). Private to this package: only the repositories, the mappings and `create_schema` use them.
-- `records/`: frozen dataclasses (`LearnerRecord`, `IssuedSelectionRecord`) that the repositories return, so callers never hold a table object.
-- `mappings/`: table row to record or to the engine's `ReviewEvent`, with times converted to UTC.
+- `commands/`: what the repositories are told to do, each carrying everything needed to do it, as plain frozen dataclasses: `AddLearner`, `IssueSelection`, `ConsumeSelection` and `AppendEvent`. Methods that change data take one command. Reads take ids.
+- `records/`: what comes back, as plain frozen dataclasses (strings, tuples, datetimes): `LearnerRecord`, `IssuedSelectionRecord` and `EventRecord`. Callers never hold a table object.
+- `mappings/`: table row to record, with times converted to UTC.
 - `repositories/`: what the API calls. They never commit, so the caller decides what happens in one transaction. Appending an event locks the learner's row, so sequence numbers have no gaps, and answering a selection locks it, so an outcome is recorded once.
 
-The API never imports `models` or `mappings` (a boundary test checks this).
+This package imports nothing from the engine, and the API never imports `models` or `mappings`. Boundary tests check both. The API's own mappings translate between its types, the engine's and these records, so a change to the engine's models costs a mapper edit here, not a change to the database layer.
 
-There are no endpoints using the repositories yet. `create_schema` never alters a table that already exists, so after changing a model, run `make db-reset`.
+`create_schema` never alters a table that already exists, so after changing a model, run `make db-reset`.
 
 Copy `.env.example` to `.env` first. Docker Compose and the app both read it, so the database user, password and URL are written once.
 

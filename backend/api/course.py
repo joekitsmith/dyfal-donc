@@ -1,8 +1,12 @@
 import hashlib
+from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
 
 from engine.curriculum import Curriculum, load_curriculum
+from engine.exercises import Exercise, exercise_pool, load_exercises
+
+EXERCISES_DIRECTORY = "exercises"
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
@@ -15,11 +19,14 @@ class CourseRelease:
 
     hash: str
     curriculum: Curriculum
+    exercises: Mapping[str, Exercise]
 
 
 def load_course_release(directory: Path) -> CourseRelease:
     return CourseRelease(
-        hash=content_hash(directory), curriculum=load_curriculum(directory)
+        hash=content_hash(directory),
+        curriculum=load_curriculum(directory),
+        exercises=exercise_pool(load_exercises(directory / EXERCISES_DIRECTORY)),
     )
 
 

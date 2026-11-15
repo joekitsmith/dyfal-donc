@@ -1,7 +1,6 @@
 import uuid
 from datetime import datetime, timedelta
 
-from engine.learner import Outcome
 from persistence.database import models
 from persistence.database.mappings import to_issued_selection_record
 from tests.unit.persistence.database.mappings.conftest import MOMENT, TOKYO
@@ -41,13 +40,3 @@ class TestToIssuedSelectionRecord:
         assert record.consumed_at == MOMENT
         assert record.consumed_at is not None
         assert record.consumed_at.utcoffset() == timedelta(0)
-
-    def test_the_event_it_builds_is_the_one_the_selection_would(self) -> None:
-        record = to_issued_selection_record(selection_row())
-
-        event = record.as_event(Outcome.GOT_IT, MOMENT)
-
-        assert event.exercise_id == "ex:1"
-        assert event.item_ids == ("lex:a", "lex:b")
-        assert event.new_item == "lex:b"
-        assert event.outcome is Outcome.GOT_IT
