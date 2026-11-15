@@ -11,7 +11,10 @@ from simulation.session import SessionSettings
 
 CURRICULUM = load_curriculum(Path(__file__).parents[3] / "curriculum")
 POOL = build_pool(CURRICULUM)
-SESSION = SessionSettings(days=60)
+COURSE_SESSION = SessionSettings(days=25)
+"""Long enough for an average learner to meet every item (they do by about day 12)."""
+REPRODUCIBILITY_SESSION = SessionSettings(days=4)
+"""Determinism shows up within a few days, so this run is kept short."""
 
 
 class TestRealPool:
@@ -31,7 +34,7 @@ class TestRealRun:
             CURRICULUM,
             AVERAGE.with_memory(memory),
             seed=1,
-            session=SESSION,
+            session=COURSE_SESSION,
         )
 
         introduced = {
@@ -44,7 +47,12 @@ class TestRealRun:
     ) -> None:
         profile = AVERAGE.with_memory(memory)
 
-        first = simulate(POOL, CURRICULUM, profile, seed=5, session=SESSION)
-        second = simulate(POOL, CURRICULUM, profile, seed=5, session=SESSION)
+        first = simulate(
+            POOL, CURRICULUM, profile, seed=5, session=REPRODUCIBILITY_SESSION
+        )
+        second = simulate(
+            POOL, CURRICULUM, profile, seed=5, session=REPRODUCIBILITY_SESSION
+        )
 
         assert first == second
+        assert first.steps
