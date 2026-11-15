@@ -15,6 +15,7 @@ from cymraeg import (
 from engine.curriculum import Curriculum, load_curriculum
 from engine.detection import CurriculumIndex
 from evals.benchmark.authoring import score_authoring
+from evals.benchmark.combinations import AgreeingLemmatiser, EitherLemmatiser
 from evals.benchmark.item_level import score_items
 from evals.benchmark.lemma_level import score_lemmas
 from evals.benchmark.models import (
@@ -62,6 +63,8 @@ def build_lemmatisers() -> dict[str, Lemmatiser]:
         "Simplemma + demutate": DemutatingLemmatiser(simplemma),
         "Stanza": stanza,
         "Stanza + demutate": DemutatingLemmatiser(stanza),
+        "Stanza and Simplemma agree": AgreeingLemmatiser(stanza, simplemma),
+        "Stanza or Simplemma": EitherLemmatiser(stanza, simplemma),
     }
 
 
