@@ -5,8 +5,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:?Copy .env.example to .env}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Copy .env.example to .env}
       POSTGRES_DB: ${POSTGRES_DB:?Copy .env.example to .env}
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
@@ -19,8 +17,6 @@ services:
     build:
       context: .
       dockerfile: backend/tts/Dockerfile
-    ports:
-      - "127.0.0.1:${TTS_PORT:-8001}:8001"
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8001/health')"]
       interval: 5s
@@ -28,17 +24,63 @@ services:
       retries: 20
       start_period: 20s
 
-  api:
+  # Creates the tables that are missing, then exits (safe to repeat)
+  db-init:
     build: .
+    image: dyfal-donc-api
+    command: ["python", "-m", "persistence.database"]
     environment:
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      TTS_URL: http://tts:8001
-    ports:
-      - "${API_PORT:-8000}:8000"
+    restart: "no"
     depends_on:
       postgres:
         condition: service_healthy
+
+  api:
+    build: .
+    image: dyfal-donc-api
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      TTS_URL: http://tts:8001
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+    depends_on:
+      db-init:
+        condition: service_completed_successfully
       tts:
+        condition: service_healthy
+
+  web:
+    build: frontend
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000').then((response) => process.exit(response.ok ? 0 : 1), () => process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 10s
+    depends_on:
+      api:
+        condition: service_healthy
+
+  # The only service published to the host: the browser sees one origin
+  nginx:
+    image: nginx:1.30-alpine
+    ports:
+      - "${WEB_PORT:-8080}:80"
+    volumes:
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./infra/nginx/proxy-headers.conf:/etc/nginx/proxy-headers.conf:ro
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--output-document", "/dev/null", "http://127.0.0.1/"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    depends_on:
+      web:
         condition: service_healthy
 
 volumes:

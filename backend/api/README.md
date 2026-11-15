@@ -4,7 +4,7 @@ A FastAPI app that runs the learn loop. It loads the course release (the files u
 
 ```
 poe api         # run locally with reload
-make stack-up   # the API and Postgres in Docker Compose
+make stack-up   # the whole stack in Docker Compose, behind nginx (make stack-up-debug also publishes the API on localhost:8000)
 ```
 
 `CURRICULUM_DIRECTORY`, `SELECTION_LIFETIME_SECONDS`, `TTS_URL` and `DATABASE_URL` (required) configure it, from the environment or `.env`: see `settings.py`.

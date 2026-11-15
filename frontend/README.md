@@ -14,13 +14,14 @@ cd frontend && pnpm install
 Then:
 
 ```
-make web-dev     # on localhost:3000, with the API running (make stack-up)
+make web-dev     # on localhost:3000, with the API on localhost:8000 (make stack-up-debug)
 make web-check   # lint, types, formatting, tests, generated-types drift, unused code
-make web-e2e     # the browser tests in e2e/, with the stack running (make stack-up)
+make web-e2e     # the browser tests in e2e/, against the stack on make stack-up
+make web-build   # the Docker image
 make web-types   # regenerate openapi.json and the API types after changing the API
 ```
 
-`API_URL` (see `.env.example`) says where `/api` is proxied to.
+In `make web-dev`, `API_URL` says where `/api` is proxied to (default `http://localhost:8000`). In Docker, nginx does that, so the image has no API address in it.
 
 ## Layout
 
