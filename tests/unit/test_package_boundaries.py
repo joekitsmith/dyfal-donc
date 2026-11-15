@@ -143,7 +143,7 @@ class TestPackageBoundaries:
         assert forbidden_imports(api_controllers, ("fastapi", "starlette")) == []
 
     @pytest.mark.parametrize(
-        "module", ("passkeys.py", "tokens.py", "login_sessions.py")
+        "module", ("passkeys.py", "tokens.py", "login_sessions.py", "recovery_codes.py")
     )
     def test_the_sign_in_helpers_never_import_the_web_framework_or_the_database(
         self, module: str

@@ -22,5 +22,9 @@ class LastPasskeyError(Exception):
     """Removing the passkey would leave an account nobody can sign in to."""
 
 
+class RecoveryCodesUnavailableError(Exception):
+    """Recovery codes need a passkey first: a guest has none to recover."""
+
+
 class InvalidPasskeyError(Exception):
     """The browser's passkey response is malformed or does not verify."""

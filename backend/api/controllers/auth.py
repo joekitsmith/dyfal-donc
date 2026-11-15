@@ -16,14 +16,21 @@ from api.passkeys import (
     finish_authentication,
     finish_registration,
 )
+from api.recovery_codes import (
+    generate_recovery_codes,
+    hash_recovery_code,
+    hash_recovery_codes,
+)
 from api.schemas import (
     AuthenticationVerifyRequest,
     PasskeyResponse,
+    RecoveryCodeSignInRequest,
     RegistrationVerifyRequest,
     UserResponse,
 )
 from api.settings import LoginSessionSettings, PasskeySettings
 from api.tokens import hash_token, new_token
+from persistence.database.errors import RecoveryCodeNotFoundError
 from persistence.database import (
     AddChallenge,
     AddCredential,
@@ -32,7 +39,9 @@ from persistence.database import (
     ExtendLoginSession,
     LoginSessionRecord,
     RecordCredentialUse,
+    ReplaceRecoveryCodes,
     UnitOfWork,
+    UseRecoveryCode,
     UserRecord,
 )
 
@@ -60,9 +69,10 @@ class SignIn:
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class RegisteredPasskey:
-    """A new passkey, and the token for the cookie when the browser needs a new one."""
+    """A new passkey, its user's first recovery codes if they have none yet, and a cookie token if one is needed."""
 
     passkey: PasskeyResponse
+    recovery_codes: tuple[str, ...] | None
     token: str | None
 
 
@@ -188,14 +198,20 @@ def finish_passkey_registration(
         )
     )
     token = None
+    recovery_codes = None
     if user.is_guest:
         unit_of_work.login_sessions.delete(authenticated.login_session.id)
         token = _open_session(
             unit_of_work, user.id, now, login.lifetime_for(is_guest=False)
         )
+        recovery_codes = make_recovery_codes(unit_of_work, user.id, now)
 
     unit_of_work.commit()
-    return RegisteredPasskey(passkey=to_passkey_response(stored), token=token)
+    return RegisteredPasskey(
+        passkey=to_passkey_response(stored),
+        recovery_codes=recovery_codes,
+        token=token,
+    )
 
 
 def begin_passkey_authentication(
@@ -257,6 +273,42 @@ def finish_passkey_authentication(
     if user is None:
         raise InvalidPasskeyError("Passkey belongs to no one")
 
+    unit_of_work.commit()
+    return SignIn(user=to_user_response(user), token=new_session_token)
+
+
+def make_recovery_codes(
+    unit_of_work: UnitOfWork, user_id: uuid.UUID, now: datetime
+) -> tuple[str, ...]:
+    """Replace the user's recovery codes with a new set, which is only ever shown this once."""
+    codes = generate_recovery_codes()
+    unit_of_work.recovery_codes.replace(
+        ReplaceRecoveryCodes(
+            user_id=user_id, code_hashes=hash_recovery_codes(codes), created_at=now
+        )
+    )
+    return codes
+
+
+def sign_in_with_recovery_code(
+    unit_of_work: UnitOfWork,
+    request: RecoveryCodeSignInRequest,
+    token: str | None,
+    now: datetime,
+    login: LoginSessionSettings,
+) -> SignIn:
+    """Sign in with a recovery code, once, replacing whatever the browser was signed in as."""
+    user_id = unit_of_work.recovery_codes.use(
+        UseRecoveryCode(code_hash=hash_recovery_code(request.code), at=now)
+    )
+    user = unit_of_work.users.get(user_id)
+    if user is None:
+        raise RecoveryCodeNotFoundError("Recovery code belongs to no one")
+
+    _end_session(unit_of_work, token)
+    new_session_token = _open_session(
+        unit_of_work, user_id, now, login.lifetime_for(is_guest=False)
+    )
     unit_of_work.commit()
     return SignIn(user=to_user_response(user), token=new_session_token)
 

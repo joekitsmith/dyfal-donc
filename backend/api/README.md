@@ -18,7 +18,7 @@ A browser starts as a guest (`POST /auth/guest`) and can add a passkey later to 
 - `mappings/`: every conversion at this boundary, between the request and response schemas, the engine's types and persistence's commands and records.
 - `schemas/`: the request and response models, which are the OpenAPI contract. They have their own enums and import nothing from the engine or persistence, so the contract does not change when the engine's models do.
 - `dependencies/`: what routes need injected: the course release, a unit of work per request, the clock, the selection lifetime and the speech client.
-- `passkeys.py`, `tokens.py`, `login_sessions.py`: the sign-in logic with no web framework or database in it: the WebAuthn ceremonies, the session token and its hash, and when a session expires. A boundary test keeps them that way. `session_cookie.py` sets the cookie.
+- `passkeys.py`, `tokens.py`, `login_sessions.py`, `recovery_codes.py`: the sign-in logic with no web framework or database in it: the WebAuthn ceremonies, the session token and its hash, when a session expires, and the single-use recovery codes. A boundary test keeps them that way. `session_cookie.py` sets the cookie.
 - `speech.py`: the client for the `tts` service. It speaks only course text, so clients never send any.
 - `error_handlers.py`: which errors become which status codes.
 - `course.py`: loads the course release and hashes its files.

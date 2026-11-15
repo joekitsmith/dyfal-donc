@@ -1,4 +1,10 @@
-from api.controllers.account import delete_account, list_passkeys, remove_passkey
+from api.controllers.account import (
+    delete_account,
+    describe_recovery_codes,
+    list_passkeys,
+    remove_passkey,
+    replace_recovery_codes,
+)
 from api.controllers.audio import speak_exercise
 from api.controllers.auth import (
     Authenticated,
@@ -9,6 +15,7 @@ from api.controllers.auth import (
     begin_passkey_registration,
     finish_passkey_authentication,
     finish_passkey_registration,
+    sign_in_with_recovery_code,
     sign_out,
     start_guest,
 )
@@ -29,12 +36,15 @@ __all__ = [
     "delete_account",
     "describe_course",
     "describe_progress",
+    "describe_recovery_codes",
     "finish_passkey_authentication",
     "finish_passkey_registration",
     "list_passkeys",
     "offer_exercise",
     "record_outcome",
     "remove_passkey",
+    "replace_recovery_codes",
+    "sign_in_with_recovery_code",
     "sign_out",
     "speak_exercise",
     "start_guest",

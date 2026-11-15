@@ -12,6 +12,7 @@ import { ROUTES } from "@/config/paths";
 import { AddPasskeyForm } from "./components/add-passkey-form";
 import { DeleteAccountButton } from "./components/delete-account-button";
 import { PasskeyList } from "./components/passkey-list";
+import { RecoveryCodesSection } from "./components/recovery-codes-section";
 import { SaveProgressPrompt } from "./components/save-progress-prompt";
 import { SignOutButton } from "./components/sign-out-button";
 import { useAccount } from "./hooks/use-account";
@@ -43,8 +44,9 @@ export function AccountPage() {
         </Typography>
         <PasskeyList onRemove={passkeys.remove} passkeys={passkeys.items} />
         {passkeys.removeFailed ? <Alert severity="error">The passkey could not be removed. Try again.</Alert> : null}
-        {user.isGuest ? null : <AddPasskeyForm />}
+        {user.isGuest ? null : <AddPasskeyForm submitLabel="Add another passkey" />}
       </Stack>
+      {user.isGuest ? null : <RecoveryCodesSection />}
       <Divider />
       <Stack spacing={1} sx={{ alignItems: "flex-start" }}>
         <SignOutButton isGuest={user.isGuest} onSignOut={signOut} />

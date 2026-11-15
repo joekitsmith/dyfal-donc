@@ -5,6 +5,7 @@ from api.controllers import (
     begin_passkey_registration,
     finish_passkey_authentication,
     finish_passkey_registration,
+    sign_in_with_recovery_code,
     sign_out,
     start_guest,
 )
@@ -21,7 +22,8 @@ from api.dependencies import (
 from api.schemas import (
     AuthenticationVerifyRequest,
     PasskeyJson,
-    PasskeyResponse,
+    RecoveryCodeSignInRequest,
+    RegisteredPasskeyResponse,
     RegistrationVerifyRequest,
     UserResponse,
 )
@@ -67,7 +69,7 @@ def post_registration_verify(
     clock: ClockDependency,
     passkeys: PasskeySettingsDependency,
     login_session: LoginSessionSettingsDependency,
-) -> PasskeyResponse:
+) -> RegisteredPasskeyResponse:
     registered = finish_passkey_registration(
         unit_of_work,
         passkeys,
@@ -79,7 +81,12 @@ def post_registration_verify(
     if registered.token is not None:
         set_session_cookie(response, registered.token, login_session, is_guest=False)
 
-    return registered.passkey
+    return RegisteredPasskeyResponse(
+        passkey=registered.passkey,
+        recovery_codes=None
+        if registered.recovery_codes is None
+        else list(registered.recovery_codes),
+    )
 
 
 @router.post("/passkeys/authentication/options")
@@ -103,6 +110,24 @@ def post_authentication_verify(
 ) -> UserResponse:
     signed_in = finish_passkey_authentication(
         unit_of_work, passkeys, request, token, clock(), login_session
+    )
+    if signed_in.token is not None:
+        set_session_cookie(response, signed_in.token, login_session, is_guest=False)
+
+    return signed_in.user
+
+
+@router.post("/recovery/verify")
+def post_recovery_verify(
+    request: RecoveryCodeSignInRequest,
+    response: Response,
+    token: SessionTokenDependency,
+    unit_of_work: UnitOfWorkDependency,
+    clock: ClockDependency,
+    login_session: LoginSessionSettingsDependency,
+) -> UserResponse:
+    signed_in = sign_in_with_recovery_code(
+        unit_of_work, request, token, clock(), login_session
     )
     if signed_in.token is not None:
         set_session_cookie(response, signed_in.token, login_session, is_guest=False)

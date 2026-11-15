@@ -5,7 +5,11 @@ import TextField from "@mui/material/TextField";
 import { useAddPasskeyForm } from "../hooks/use-add-passkey-form";
 import { PasskeyFailureAlert } from "./passkey-failure-alert";
 
-export function AddPasskeyForm() {
+type AddPasskeyFormProps = {
+  readonly submitLabel: string;
+};
+
+export function AddPasskeyForm({ submitLabel }: AddPasskeyFormProps) {
   const { failure, field, isSaving, onSubmit } = useAddPasskeyForm();
 
   return (
@@ -19,7 +23,7 @@ export function AddPasskeyForm() {
     >
       <TextField error={field.error} helperText={field.helperText} label="Name" size="small" {...field.register} />
       <Button disabled={isSaving} type="submit" variant="outlined">
-        Add another passkey
+        {submitLabel}
       </Button>
       {failure ? <PasskeyFailureAlert failure={failure} /> : null}
     </Stack>

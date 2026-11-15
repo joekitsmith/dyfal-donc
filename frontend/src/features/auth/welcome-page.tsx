@@ -3,6 +3,9 @@
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
+
+import { ROUTES } from "@/config/paths";
 
 import { PasskeyFailureAlert } from "./components/passkey-failure-alert";
 import { useWelcome } from "./hooks/use-welcome";
@@ -32,6 +35,9 @@ export function WelcomePage() {
             Sign in with a passkey
           </Button>
         ) : null}
+        <Button component={Link} href={ROUTES.recover}>
+          Use a recovery code
+        </Button>
       </Stack>
       {failure ? <PasskeyFailureAlert failure={failure} /> : null}
     </Stack>

@@ -5,6 +5,11 @@ export type Passkey = {
   readonly lastUsedAt: null | string;
 };
 
+export type RegisteredPasskey = {
+  readonly passkey: Passkey;
+  readonly recoveryCodes: null | readonly string[];
+};
+
 export type PasskeyFailure = "already_registered" | "cancelled" | "not_recognised" | "other" | "unsupported";
 
 export type SessionUser = {

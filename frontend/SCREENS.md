@@ -16,7 +16,7 @@ Sends people where they belong, and shows "Loading" until it knows. This becomes
 
 For someone who is signed out. Starting needs no sign-up.
 
-Actions: **Try it now** (starts a guest account and opens the lesson), **Sign in with a passkey**.
+Actions: **Try it now** (starts a guest account and opens the lesson), **Sign in with a passkey**, **Use a recovery code** (opens the recovery screen).
 
 | State                       | Shown                                                                         |
 | --------------------------- | ----------------------------------------------------------------------------- |
@@ -57,11 +57,41 @@ Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Repla
 
 The progress counts (introduced, learning, in review, due) show once they have loaded.
 
+## Recover `/recover`
+
+For someone who lost their passkey and has a recovery code. Each code works once.
+
+Actions: enter a code and **Sign in**, **Back**, then **Add a new passkey** and **Continue to the lesson**.
+
+| State                                          | Shown                                                                                     |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| Checking who is signed in                      | Loading                                                                                   |
+| Already signed in, and did not just use a code | Moves to the lesson                                                                       |
+| Idle                                           | The code field. Dashes, spaces and capitals do not matter                                 |
+| Empty code                                     | A message under the field                                                                 |
+| Signing in                                     | The button is disabled                                                                    |
+| Code wrong, or already used                    | One message for both                                                                      |
+| Server error                                   | A general error                                                                           |
+| Signed in with the code                        | A success message asking for a new passkey, the add-passkey form and a link to the lesson |
+
+## Recovery codes dialog
+
+Shown over any screen, once, after a person's first passkey is saved or new codes are made. The codes live only in memory until the dialog closes.
+
+Actions: **Copy**, **Download**, tick **I have saved these codes**, then **Done**.
+
+| State             | Shown                                                                   |
+| ----------------- | ----------------------------------------------------------------------- |
+| Hidden            | Nothing                                                                 |
+| Showing           | The ten codes, which cannot be dismissed with Escape or a click outside |
+| Copied            | The copy button says so                                                 |
+| Not yet confirmed | Done is disabled                                                        |
+
 ## Account `/account`
 
 Who is signed in and how they get back in.
 
-Actions: **Back to the lesson**, **Add a passkey** (for a guest), **Add another passkey** with an optional name, **Remove** a passkey, **Sign out**, **Delete account**.
+Actions: **Back to the lesson**, **Add a passkey** (for a guest), **Add another passkey** with an optional name, **Remove** a passkey, **Make new codes** (with a confirmation that the old ones stop working), **Sign out**, **Delete account**.
 
 | State                                                                       | Shown                                                             |
 | --------------------------------------------------------------------------- | ----------------------------------------------------------------- |

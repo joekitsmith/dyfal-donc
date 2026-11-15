@@ -7,6 +7,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { type ReactNode, useState } from "react";
 
 import { createQueryClient } from "@/api/query-client";
+import { RecoveryCodesDialog } from "@/features/auth";
 import { theme } from "@/theme/theme";
 
 type ProviderProps = { readonly children: ReactNode };
@@ -19,6 +20,7 @@ export function Provider({ children }: ProviderProps) {
       <CssBaseline />
       <QueryClientProvider client={queryClient}>
         {children}
+        <RecoveryCodesDialog />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ThemeProvider>

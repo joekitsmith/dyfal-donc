@@ -15,8 +15,17 @@ export async function listPasskeys(client: ApiClient): Promise<readonly Passkey[
   return unwrap(await client.GET("/me/passkeys")).map(toPasskey);
 }
 
+export async function getRecoveryCodeStatus(client: ApiClient): Promise<number> {
+  return unwrap(await client.GET("/me/recovery-codes")).remaining;
+}
+
 export async function removePasskey(client: ApiClient, passkeyId: string): Promise<void> {
   assertOk(await client.DELETE("/me/passkeys/{passkey_id}", { params: { path: { passkey_id: passkeyId } } }));
+}
+
+/** A new set of recovery codes, which replaces the old one and is shown only now. */
+export async function replaceRecoveryCodes(client: ApiClient): Promise<readonly string[]> {
+  return unwrap(await client.POST("/me/recovery-codes")).codes;
 }
 
 /** Whoever the session cookie says is signed in, or null when nobody is. */
@@ -32,6 +41,11 @@ export async function resolveSession(client: ApiClient): Promise<null | SessionU
   }
 
   throw new ApiError(response.status);
+}
+
+/** Signs in with a recovery code, which works once. */
+export async function signInWithRecoveryCode(client: ApiClient, code: string): Promise<SessionUser> {
+  return toSessionUser(unwrap(await client.POST("/auth/recovery/verify", { body: { code } })));
 }
 
 export async function signOut(client: ApiClient): Promise<void> {

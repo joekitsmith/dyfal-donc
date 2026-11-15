@@ -30,3 +30,22 @@ class AuthenticationVerifyRequest(BaseModel):
     """The browser's signed answer, as its WebAuthn API produced it."""
 
     credential: PasskeyJson
+
+
+class RegisteredPasskeyResponse(BaseModel):
+    """A new passkey. The first one also brings the recovery codes, which are shown once."""
+
+    passkey: PasskeyResponse
+    recovery_codes: list[str] | None
+
+
+class RecoveryCodesResponse(BaseModel):
+    codes: list[str]
+
+
+class RecoveryCodeStatusResponse(BaseModel):
+    remaining: int
+
+
+class RecoveryCodeSignInRequest(BaseModel):
+    code: str = Field(min_length=1, max_length=64)

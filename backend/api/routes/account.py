@@ -2,15 +2,27 @@ import uuid
 
 from fastapi import APIRouter, Depends, Response, status
 
-from api.controllers import delete_account, list_passkeys, remove_passkey
+from api.controllers import (
+    delete_account,
+    describe_recovery_codes,
+    list_passkeys,
+    remove_passkey,
+    replace_recovery_codes,
+)
 from api.dependencies import (
     AuthenticatedDependency,
+    ClockDependency,
     LoginSessionSettingsDependency,
     UnitOfWorkDependency,
     require_known_origin,
 )
 from api.mappings import to_user_response
-from api.schemas import PasskeyResponse, UserResponse
+from api.schemas import (
+    PasskeyResponse,
+    RecoveryCodesResponse,
+    RecoveryCodeStatusResponse,
+    UserResponse,
+)
 from api.session_cookie import clear_session_cookie
 
 router = APIRouter(prefix="/me", dependencies=[Depends(require_known_origin)])
@@ -46,3 +58,20 @@ def delete_passkey(
     unit_of_work: UnitOfWorkDependency,
 ) -> None:
     remove_passkey(unit_of_work, authenticated.user.id, passkey_id)
+
+
+@router.get("/recovery-codes")
+def get_recovery_codes(
+    authenticated: AuthenticatedDependency, unit_of_work: UnitOfWorkDependency
+) -> RecoveryCodeStatusResponse:
+    return describe_recovery_codes(unit_of_work, authenticated.user.id)
+
+
+@router.post("/recovery-codes")
+def post_recovery_codes(
+    authenticated: AuthenticatedDependency,
+    unit_of_work: UnitOfWorkDependency,
+    clock: ClockDependency,
+) -> RecoveryCodesResponse:
+    """Replaces the user's codes with a new set, shown only in this response."""
+    return replace_recovery_codes(unit_of_work, authenticated.user, clock())

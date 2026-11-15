@@ -11,10 +11,10 @@ def start_guest(client: TestClient) -> dict[str, object]:
     return body
 
 
-def register_passkey(
+def register_passkey_response(
     client: TestClient, authenticator: SoftwareAuthenticator, label: str | None = None
 ) -> dict[str, object]:
-    """Add a passkey to whoever the browser is signed in as, as the browser would."""
+    """Add a passkey to whoever the browser is signed in as, and return everything the server said."""
     options = client.post("/auth/passkeys/registration/options")
     assert options.status_code == 200
     credential = authenticator.register(options.json(), ORIGIN)
@@ -26,6 +26,25 @@ def register_passkey(
     assert response.status_code == 201, response.text
     result: dict[str, object] = response.json()
     return result
+
+
+def register_passkey(
+    client: TestClient, authenticator: SoftwareAuthenticator, label: str | None = None
+) -> dict[str, object]:
+    """Add a passkey, and return it."""
+    passkey = register_passkey_response(client, authenticator, label)["passkey"]
+    assert isinstance(passkey, dict)
+    return passkey
+
+
+def recovery_codes_after_saving(
+    client: TestClient, authenticator: SoftwareAuthenticator
+) -> list[str]:
+    """Start as a guest and add the first passkey, which is when the recovery codes are shown."""
+    start_guest(client)
+    codes = register_passkey_response(client, authenticator)["recovery_codes"]
+    assert isinstance(codes, list)
+    return [str(code) for code in codes]
 
 
 def sign_in(
