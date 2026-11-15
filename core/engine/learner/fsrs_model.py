@@ -9,6 +9,7 @@ from engine.learner.utc import as_utc
 
 _RATINGS = {Outcome.GOT_IT: Rating.Good, Outcome.MISSED_IT: Rating.Again}
 _CARD_ID = 0
+DEFAULT_MAXIMUM_INTERVAL_DAYS = 180
 
 
 class FsrsMemoryModel:
@@ -17,10 +18,16 @@ class FsrsMemoryModel:
     The package's own learning steps and fuzzing are off: this engine owns the
     short-term steps and must be deterministic. This is the only module that
     imports ``fsrs``, so none of its types reach the public API.
+
+    Intervals are capped (180 days by default) so that a well-known item still
+    comes back now and then, and is never retired for good.
     """
 
     def __init__(
-        self, *, desired_retention: float = 0.9, maximum_interval_days: int = 36500
+        self,
+        *,
+        desired_retention: float = 0.9,
+        maximum_interval_days: int = DEFAULT_MAXIMUM_INTERVAL_DAYS,
     ) -> None:
         if not 0 < desired_retention < 1:
             raise LearnerError(

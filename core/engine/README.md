@@ -49,11 +49,27 @@ What the learner knows, derived purely from a log of review events. No clock, ra
 - `LearnerState`: an item id mapped to its memory. No entry means never introduced.
   - `Learning`: short-term steps counted in **exercises**, not time (default `(1, 3, 8)`: one other exercise, then three, then eight). A miss returns to the first step, and passing the last one graduates the item.
   - `Review`: long-term memory, scheduled by a `MemoryModel`.
-- `FsrsMemoryModel`: the `MemoryModel` backed by [py-fsrs](https://github.com/open-spaced-repetition/py-fsrs), with its learning steps and fuzzing off. It is the only module that imports `fsrs`. Intervals are whole days, so even a lapse is due the next day.
+- `FsrsMemoryModel`: the `MemoryModel` backed by [py-fsrs](https://github.com/open-spaced-repetition/py-fsrs), with its learning steps and fuzzing off. It is the only module that imports `fsrs`. Intervals are whole days, so even a lapse is due the next day, and they are capped at 180 days so that a well-known item still comes back now and then.
 - `assign_credit(state, event, memory_model)`: the weakest link.
-  - A success counts only for items that are due, so practising an item early cannot inflate its stability.
+  - A success counts only for items that are due, so practising an item early cannot inflate its stability. `LearnerSettings.review_credit_fraction` (default 1.0) lowers that bar: at 0.5 a `Review` item counts once half its interval has passed. It is off by default, so that it can be measured before it is used.
   - A miss goes to the newest material: every `Learning` item if there is one or the exercise introduces an item, and otherwise the single `Review` item least likely to be recalled (lowest id on a tie).
   - Every exercise counts all `Learning` items down by one.
 - Queries: `introduced_items`, `learning_items_due`, `review_items_due(state, now)` (longest overdue first) and `recent_error_rate(events, window)`, the share of the last `window` events that were misses.
 
 Known limitations: a lapsed `Review` item is not relearned within the session, only two of FSRS's four ratings are used, and a long break does not expire `Learning` items.
+
+## `engine.scheduler`
+
+Chooses the next exercise. Pure like the rest: the same inputs always give the same answer.
+
+`next_exercise(pool, curriculum, state, recent_events, now, settings)` takes `pool`, a mapping of exercise id to published `Exercise`, and returns a `Selection` or a `NothingEligible`.
+
+- The **frontier** is the first curriculum item (in order) the learner has not met.
+- An exercise is **eligible** if the learner has met every item in it, or if the only item they have not met is the frontier item and the exercise introduces it (`new_item`).
+- Priority: an exercise practising a `Learning` item that is due, then a `Review` item that is due, then the exercise introducing the frontier item (only while the recent error rate is under 15%), then any eligible exercise as extra practice. Introducing exercises never count as due practice, so the error-rate limit cannot be bypassed.
+- Within a priority the best score wins: each due item, each item shared with the previous exercise (so phrases build up), and no immediate repeat. The lowest exercise id breaks a tie.
+- Until there are five recent events the error rate is ignored, so one early miss cannot stall the course.
+- `Selection` says why it was chosen (`Purpose`) and what it `introduces`, and `as_event(outcome, reviewed_at)` builds the `ReviewEvent`. Use that, not `exercise.new_item`, since an exercise that once introduced an item is ordinary practice afterwards.
+- `NothingEligible` has a reason. `NO_EXERCISE_INTRODUCES_FRONTIER` means the pool has no exercise for the next item, a gap for authors to fill. `ERROR_RATE_TOO_HIGH` means introductions are held back and there is nothing to practise.
+
+Known limitations: no cap on how many items are in `Learning` at once, and exercise choice does not yet use difficulty or variety beyond the previous exercise.
