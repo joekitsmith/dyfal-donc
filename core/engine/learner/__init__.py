@@ -1,6 +1,6 @@
 from engine.learner.credit import Credit, assign_credit
 from engine.learner.errors import LearnerError
-from engine.learner.fsrs_model import FsrsMemoryModel
+from engine.learner.fsrs_model import DEFAULT_MAXIMUM_INTERVAL_DAYS, FsrsMemoryModel
 from engine.learner.memory import MemoryModel, ReviewMemory
 from engine.learner.models import (
     ItemMemory,
@@ -19,6 +19,7 @@ from engine.learner.queries import (
 from engine.learner.replay import apply_event, replay
 from engine.learner.settings import (
     DEFAULT_LEARNING_STEPS,
+    DEFAULT_REVIEW_CREDIT_FRACTION,
     DEFAULT_SETTINGS,
     LearnerSettings,
 )
@@ -26,6 +27,8 @@ from engine.learner.settings import (
 __all__ = [
     "Credit",
     "DEFAULT_LEARNING_STEPS",
+    "DEFAULT_MAXIMUM_INTERVAL_DAYS",
+    "DEFAULT_REVIEW_CREDIT_FRACTION",
     "DEFAULT_SETTINGS",
     "FsrsMemoryModel",
     "ItemMemory",

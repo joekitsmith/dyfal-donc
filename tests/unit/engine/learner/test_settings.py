@@ -26,3 +26,16 @@ class TestLearnerSettings:
     def test_rejects_steps_below_one(self, steps: tuple[int, ...]) -> None:
         with pytest.raises(LearnerError, match="at least 1"):
             LearnerSettings(learning_steps=steps)
+
+
+class TestReviewCreditFraction:
+    def test_defaults_to_crediting_only_due_items(self) -> None:
+        assert DEFAULT_SETTINGS.review_credit_fraction == 1.0
+
+    def test_accepts_a_fraction(self) -> None:
+        assert LearnerSettings(review_credit_fraction=0.5).review_credit_fraction == 0.5
+
+    @pytest.mark.parametrize("fraction", [0.0, -0.5, 1.01])
+    def test_rejects_a_fraction_outside_zero_to_one(self, fraction: float) -> None:
+        with pytest.raises(LearnerError, match="above 0 and at most 1"):
+            LearnerSettings(review_credit_fraction=fraction)

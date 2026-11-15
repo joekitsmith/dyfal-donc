@@ -259,6 +259,24 @@ class TestReviewItems:
         )
 
 
+class TestEarlyCredit:
+    def test_a_success_part_way_through_the_interval_reviews_the_item(
+        self, memory_model: FsrsMemoryModel
+    ) -> None:
+        settings = LearnerSettings(
+            memory_model=memory_model, review_credit_fraction=0.5
+        )
+        before = memory_model.initial(START)
+        session = Session(settings, {ITEM: Review(memory=before)})
+        session.wait(days=1)
+
+        session.give(ITEM)
+
+        assert session.state.memories[ITEM] == Review(
+            memory=memory_model.review(before, Outcome.GOT_IT, session.now)
+        )
+
+
 class TestApplyEvent:
     def test_records_the_time_of_the_last_event(self, session: Session) -> None:
         session.introduce(ITEM)
@@ -370,6 +388,25 @@ class TestReplay:
 
         with pytest.raises(LearnerError, match="chronological"):
             replay((first, second), learner_settings)
+
+
+class TestEarlyCreditProperties:
+    @settings(deadline=None)
+    @given(events=event_sequences())
+    def test_a_success_still_never_makes_a_review_item_due_sooner(
+        self, events: tuple[ReviewEvent, ...]
+    ) -> None:
+        early = LearnerSettings(review_credit_fraction=0.25)
+        state = LearnerState()
+        for event in events:
+            after = apply_event(state, event, early)
+            if event.outcome is Outcome.GOT_IT:
+                for item_id, before in state.memories.items():
+                    now = after.memories[item_id]
+                    if isinstance(before, Review) and isinstance(now, Review):
+                        assert now.memory.due_at >= before.memory.due_at
+
+            state = after
 
 
 class TestReplayProperties:

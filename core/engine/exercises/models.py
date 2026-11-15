@@ -26,6 +26,13 @@ class Exercise:
     items: tuple[str, ...]
     new_item: str | None = None
 
+    @property
+    def declared_items(self) -> tuple[str, ...]:
+        """Every declared item id once: ``items`` plus ``new_item`` if it is not there."""
+        return tuple(
+            dict.fromkeys((*self.items, *((self.new_item,) if self.new_item else ())))
+        )
+
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class UnknownDeclaredItem:

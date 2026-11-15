@@ -4,7 +4,13 @@ import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
 
-from engine.learner import FsrsMemoryModel, LearnerError, Outcome, ReviewMemory
+from engine.learner import (
+    DEFAULT_MAXIMUM_INTERVAL_DAYS,
+    FsrsMemoryModel,
+    LearnerError,
+    Outcome,
+    ReviewMemory,
+)
 from tests.unit.engine.learner.helpers import START
 
 DAY = timedelta(days=1)
@@ -151,6 +157,18 @@ class TestConfiguration:
             return model.due_at(model.review(first, Outcome.GOT_IT, due)) - due
 
         assert second_interval(strict) < second_interval(relaxed)
+
+    def test_by_default_intervals_stop_growing_at_half_a_year(
+        self, memory_model: FsrsMemoryModel
+    ) -> None:
+        memory = memory_model.initial(START)
+        for _ in range(15):
+            memory = memory_model.review(
+                memory, Outcome.GOT_IT, memory_model.due_at(memory)
+            )
+
+        assert DEFAULT_MAXIMUM_INTERVAL_DAYS == 180
+        assert memory_model.due_at(memory) - memory.last_reviewed_at == 180 * DAY
 
     def test_maximum_interval_caps_the_schedule(self) -> None:
         model = FsrsMemoryModel(maximum_interval_days=3)

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
+from datetime import datetime
 
-from engine.learner.memory import MemoryModel
+from engine.learner.memory import MemoryModel, ReviewMemory
 from engine.learner.models import LearnerState, Learning, Review, ReviewEvent
 from engine.learner.outcome import Outcome
 
@@ -14,13 +15,17 @@ class Credit:
 
 
 def assign_credit(
-    state: LearnerState, event: ReviewEvent, memory_model: MemoryModel
+    state: LearnerState,
+    event: ReviewEvent,
+    memory_model: MemoryModel,
+    review_credit_fraction: float = 1.0,
 ) -> Credit:
     """Decide which items an exercise's outcome counts for (the weakest link).
 
     A success counts only for items that are due: a ``Learning`` item whose
-    countdown is over, or a ``Review`` item past its due date. Practising an
-    item early would otherwise inflate its stability.
+    countdown is over, or a ``Review`` item once ``review_credit_fraction`` of
+    its interval has passed (all of it, by default, which is its due date).
+    Practising an item early would otherwise inflate its stability.
 
     A miss counts for the newest material. If the exercise introduces an item
     or practises a ``Learning`` item, every ``Learning`` item takes the miss and
@@ -28,13 +33,16 @@ def assign_credit(
     be recalled takes it, the lowest id breaking a tie.
     """
     if event.outcome is Outcome.GOT_IT:
-        return _credit_for_success(state, event, memory_model)
+        return _credit_for_success(state, event, memory_model, review_credit_fraction)
 
     return _credit_for_miss(state, event, memory_model)
 
 
 def _credit_for_success(
-    state: LearnerState, event: ReviewEvent, memory_model: MemoryModel
+    state: LearnerState,
+    event: ReviewEvent,
+    memory_model: MemoryModel,
+    review_credit_fraction: float,
 ) -> Credit:
     return Credit(
         learning=tuple(
@@ -47,7 +55,8 @@ def _credit_for_success(
             item_id
             for item_id in event.item_ids
             if isinstance(memory := state.memories.get(item_id), Review)
-            and memory_model.due_at(memory.memory) <= event.reviewed_at
+            and _credit_from(memory.memory, memory_model, review_credit_fraction)
+            <= event.reviewed_at
         ),
     )
 
@@ -75,3 +84,10 @@ def _credit_for_miss(
         return Credit()
 
     return Credit(review=(weakest[1],))
+
+
+def _credit_from(
+    memory: ReviewMemory, memory_model: MemoryModel, review_credit_fraction: float
+) -> datetime:
+    interval = memory_model.due_at(memory) - memory.last_reviewed_at
+    return memory.last_reviewed_at + interval * review_credit_fraction

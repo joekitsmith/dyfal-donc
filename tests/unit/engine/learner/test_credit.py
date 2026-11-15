@@ -23,6 +23,7 @@ def credit_for(
     memory_model: FsrsMemoryModel,
     *,
     new_item: str | None = None,
+    review_credit_fraction: float = 1.0,
 ) -> Credit:
     event = ReviewEvent(
         exercise_id="ex:1",
@@ -31,7 +32,9 @@ def credit_for(
         outcome=outcome,
         reviewed_at=START,
     )
-    return assign_credit(LearnerState(memories=memories), event, memory_model)
+    return assign_credit(
+        LearnerState(memories=memories), event, memory_model, review_credit_fraction
+    )
 
 
 def reviewed_ago(memory_model: FsrsMemoryModel, ago: timedelta) -> Review:
@@ -93,6 +96,66 @@ class TestCreditForSuccess:
         credit = credit_for(memories, ("lex:b", "lex:a"), Outcome.GOT_IT, memory_model)
 
         assert credit.learning == ("lex:b", "lex:a")
+
+
+class TestCreditForSuccessBeforeDue:
+    """``review_credit_fraction`` lets a success count part-way through an interval."""
+
+    def test_an_item_part_way_through_its_interval_is_credited(
+        self, memory_model: FsrsMemoryModel
+    ) -> None:
+        memories: dict[str, ItemMemory] = {"lex:a": reviewed_ago(memory_model, DAY)}
+
+        credit = credit_for(
+            memories,
+            ("lex:a",),
+            Outcome.GOT_IT,
+            memory_model,
+            review_credit_fraction=0.5,
+        )
+
+        assert credit == Credit(review=("lex:a",))
+
+    def test_an_item_earlier_than_that_is_not(
+        self, memory_model: FsrsMemoryModel
+    ) -> None:
+        memories: dict[str, ItemMemory] = {
+            "lex:a": reviewed_ago(memory_model, DAY // 2)
+        }
+
+        credit = credit_for(
+            memories,
+            ("lex:a",),
+            Outcome.GOT_IT,
+            memory_model,
+            review_credit_fraction=0.5,
+        )
+
+        assert credit == Credit()
+
+    def test_a_whole_interval_is_the_default(
+        self, memory_model: FsrsMemoryModel
+    ) -> None:
+        memories: dict[str, ItemMemory] = {"lex:a": reviewed_ago(memory_model, DAY)}
+
+        assert (
+            credit_for(memories, ("lex:a",), Outcome.GOT_IT, memory_model) == Credit()
+        )
+
+    def test_learning_items_are_unaffected(self, memory_model: FsrsMemoryModel) -> None:
+        memories: dict[str, ItemMemory] = {
+            "lex:a": Learning(step_index=0, exercises_until_due=2)
+        }
+
+        credit = credit_for(
+            memories,
+            ("lex:a",),
+            Outcome.GOT_IT,
+            memory_model,
+            review_credit_fraction=0.1,
+        )
+
+        assert credit == Credit()
 
 
 class TestCreditForMiss:

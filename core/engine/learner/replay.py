@@ -36,7 +36,9 @@ def apply_event(
     credited to then move on, and a new item enters at the first learning step.
     """
     _check_applicable(state, event)
-    credit = assign_credit(state, event, settings.memory_model)
+    credit = assign_credit(
+        state, event, settings.memory_model, settings.review_credit_fraction
+    )
     memories: dict[str, ItemMemory] = {
         item_id: _counted_down(memory) if isinstance(memory, Learning) else memory
         for item_id, memory in state.memories.items()
