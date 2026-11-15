@@ -46,6 +46,20 @@ class TestPackageBoundaries:
     def test_core_never_imports_backend(self, package: object) -> None:
         assert forbidden_imports(package, BACKEND_PACKAGES) == []
 
+    def test_only_one_learner_module_imports_fsrs(self) -> None:
+        engine_file = engine.__file__
+        assert engine_file is not None
+
+        importers = [
+            path.name
+            for path, names in imported_top_level_modules(
+                Path(engine_file).parent
+            ).items()
+            if "fsrs" in names
+        ]
+
+        assert importers == ["fsrs_model.py"]
+
     def test_the_check_finds_a_forbidden_import(self, tmp_path: Path) -> None:
         (tmp_path / "module.py").write_text("from engine.curriculum import Lexeme\n")
 
