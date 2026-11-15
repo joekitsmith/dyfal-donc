@@ -4,6 +4,7 @@ from api.routes.auth import router as auth_router
 from api.routes.course import router as course_router
 from api.routes.health import router as health_router
 from api.routes.learners import router as learners_router
+from api.routes.user_settings import router as user_settings_router
 
 __all__ = [
     "account_router",
@@ -12,4 +13,5 @@ __all__ = [
     "course_router",
     "health_router",
     "learners_router",
+    "user_settings_router",
 ]

@@ -1,13 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { instrumentAudio, requireStack, speedUpThinking } from "./helpers";
+import { instrumentAudio, requireStack, startAsGuest } from "./helpers";
 
 const MINIMUM_TOUCH_TARGET = 48;
 
 test.beforeEach(async ({ page, request }) => {
   await requireStack(request);
-  await speedUpThinking(page);
   await instrumentAudio(page);
 });
 
@@ -15,7 +14,7 @@ test("the lesson fits a phone and its buttons are easy to tap", async ({ page })
   await page.goto("/");
   await expect(page.getByRole("button", { name: "Try it now" })).toBeVisible();
   await page.screenshot({ path: "test-results/phone-welcome.png" });
-  await page.getByRole("button", { name: "Try it now" }).click();
+  await startAsGuest(page);
   await expect(page.getByRole("button", { exact: true, name: "Start" })).toBeVisible();
   await page.screenshot({ path: "test-results/phone-idle.png" });
   await page.getByRole("button", { exact: true, name: "Start" }).click();

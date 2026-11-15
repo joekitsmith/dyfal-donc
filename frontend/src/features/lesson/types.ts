@@ -16,6 +16,8 @@ export type ExerciseFields = {
   /** Counts replays, so a replay starts the English again even when it is already playing. */
   readonly replayCount: number;
   readonly revealed: boolean;
+  /** Whether this exercise plays the slow Welsh. Fixed when it is loaded. */
+  readonly slowWelshEnabled: boolean;
 };
 
 export type FailureCause = "learner_missing" | "other" | "speech_unavailable";
@@ -25,7 +27,7 @@ export type ExerciseState = Extract<LessonState, { readonly exercise: LessonExer
 export type LessonEvent =
   | { readonly cause: FailureCause; readonly track: ClipTrack; readonly type: "clip_failed" }
   | { readonly cause: FailureCause; readonly type: "next_failed" | "submit_failed" }
-  | { readonly exercise: LessonExercise; readonly type: "next_loaded" }
+  | { readonly exercise: LessonExercise; readonly slowWelshEnabled: boolean; readonly type: "next_loaded" }
   | { readonly track: ClipTrack; readonly type: "clip_ready" }
   | {
       readonly type:
@@ -52,6 +54,12 @@ export type LessonExercise = {
   readonly welsh: string;
 };
 
+/** The settings the lesson uses. They are read when each exercise is loaded. */
+export type LessonSettings = {
+  readonly slowWelshEnabled: boolean;
+  readonly thinkTimeMultiplier: number;
+};
+
 export type LessonState =
   | (ExerciseFields & { readonly phase: "awaiting_outcome" })
   | (ExerciseFields & { readonly phase: "between_welsh" })
@@ -75,6 +83,7 @@ type Retry =
       readonly exercise: LessonExercise;
       readonly kind: "clips" | "submit";
       readonly missed: boolean;
+      readonly slowWelshEnabled: boolean;
     }
   | { readonly kind: "next" };
 

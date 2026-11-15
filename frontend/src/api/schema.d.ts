@@ -298,6 +298,24 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/settings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Settings */
+        get: operations["get_settings_me_settings_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Patch Settings */
+        patch: operations["patch_settings_me_settings_patch"];
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -378,6 +396,8 @@ export interface components {
             /** Status */
             status: string;
         };
+        /** @enum {integer} */
+        LearningSessionMinutes: 10 | 20 | 30;
         NextExerciseResponse: components["schemas"]["ExerciseResponse"] | components["schemas"]["NothingEligibleResponse"];
         /**
          * NothingEligibleResponse
@@ -509,6 +529,37 @@ export interface components {
             id: string;
             /** Is Guest */
             is_guest: boolean;
+        };
+        /**
+         * UserSettingsPatch
+         * @description Settings to change. A field that is left out stays as it is.
+         *
+         *     ``learning_session_minutes`` of null is a change, to no limit.
+         */
+        UserSettingsPatch: {
+            /** @default 20 */
+            learning_session_minutes?: components["schemas"]["LearningSessionMinutes"] | null;
+            /**
+             * Slow Welsh Enabled
+             * @default true
+             */
+            slow_welsh_enabled?: boolean;
+            /**
+             * Think Time Multiplier
+             * @default 1
+             */
+            think_time_multiplier?: number;
+        };
+        /**
+         * UserSettingsResponse
+         * @description The settings in force. A user has ``DEFAULT_USER_SETTINGS`` until they save some.
+         */
+        UserSettingsResponse: {
+            learning_session_minutes: components["schemas"]["LearningSessionMinutes"] | null;
+            /** Slow Welsh Enabled */
+            slow_welsh_enabled: boolean;
+            /** Think Time Multiplier */
+            think_time_multiplier: number;
         };
         /** ValidationError */
         ValidationError: {
@@ -977,6 +1028,59 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["RecoveryCodesResponse"];
+                };
+            };
+        };
+    };
+    get_settings_me_settings_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserSettingsResponse"];
+                };
+            };
+        };
+    };
+    patch_settings_me_settings_patch: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UserSettingsPatch"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserSettingsResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

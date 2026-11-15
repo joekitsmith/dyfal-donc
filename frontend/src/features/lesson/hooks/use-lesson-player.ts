@@ -5,7 +5,7 @@ import { ApiError } from "@/api/api-error";
 import { replaceSession } from "@/features/auth";
 import { progressQueryKey } from "@/features/progress";
 
-import type { ClipTrack, LessonState } from "../types";
+import type { ClipTrack, LessonSettings, LessonState } from "../types";
 import type { KeyAction } from "../utils/key-map";
 
 import { useNextExercise } from "../api/use-next-exercise";
@@ -62,10 +62,10 @@ export type LessonActions = {
  */
 export function useLessonPlayer({
   learnerId,
-  thinkMultiplier,
+  settings,
 }: {
   readonly learnerId: string;
-  readonly thinkMultiplier: number;
+  readonly settings: LessonSettings;
 }) {
   const [state, dispatch] = useReducer(lessonReducer, INITIAL_LESSON_STATE);
   const [player] = useState(() => new ClipPlayer());
@@ -79,10 +79,11 @@ export function useLessonPlayer({
   const attempt = isExerciseState(state) ? state.attempt : 0;
   const replayCount = isExerciseState(state) ? state.replayCount : 0;
   const paused = isExerciseState(state) && state.paused;
+  const slowWelshEnabled = !isExerciseState(state) || state.slowWelshEnabled;
   const loadingRequest = state.phase === "loading" ? state : null;
   const submission = state.phase === "submitting" ? state : null;
 
-  const urlFor = useExerciseClips(state.phase === "submitting" ? null : exercise, attempt, dispatch);
+  const urlFor = useExerciseClips(state.phase === "submitting" ? null : exercise, attempt, slowWelshEnabled, dispatch);
 
   const refreshProgress = useEffectEvent(() => {
     void queryClient.invalidateQueries({ queryKey: progressQueryKey(learnerId) });
@@ -93,8 +94,10 @@ export function useLessonPlayer({
     replaceSession(queryClient, null);
   });
 
+  const slowWelshSetting = useEffectEvent(() => settings.slowWelshEnabled);
+
   const thinkMilliseconds = useEffectEvent(() =>
-    exercise === null ? 0 : thinkSeconds(exercise.welsh, thinkMultiplier) * MILLISECONDS_PER_SECOND,
+    exercise === null ? 0 : thinkSeconds(exercise.welsh, settings.thinkTimeMultiplier) * MILLISECONDS_PER_SECOND,
   );
 
   // Each request is made once, when its state is entered
@@ -114,7 +117,9 @@ export function useLessonPlayer({
       },
       onSuccess: (next) => {
         dispatch(
-          next.kind === "exercise" ? { exercise: next.exercise, type: "next_loaded" } : { type: "nothing_eligible" },
+          next.kind === "exercise"
+            ? { exercise: next.exercise, slowWelshEnabled: slowWelshSetting(), type: "next_loaded" }
+            : { type: "nothing_eligible" },
         );
       },
     });

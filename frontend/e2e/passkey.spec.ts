@@ -6,7 +6,6 @@ import {
   instrumentAudio,
   requireStack,
   saveProgressAndKeepFirstCode,
-  speedUpThinking,
   startAsGuest,
 } from "./helpers";
 
@@ -14,7 +13,6 @@ let device: Awaited<ReturnType<typeof installPasskeyDevice>>;
 
 test.beforeEach(async ({ page, request }) => {
   await requireStack(request);
-  await speedUpThinking(page);
   await instrumentAudio(page);
   device = await installPasskeyDevice(page);
 });

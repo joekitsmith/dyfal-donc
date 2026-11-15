@@ -8,10 +8,15 @@ import { CLIP_TRACKS } from "../constants";
 import { failureCause } from "../utils/failure-cause";
 
 /**
- * Fetches the exercise's clips in parallel as soon as it is known and keeps them as object URLs,
+ * Fetches the exercise's clips (the slow Welsh only if it will play) in parallel as soon as it is known and keeps them as object URLs,
  * so replays never ask the server again. Passing null (the exercise is over) revokes them.
  */
-export function useExerciseClips(exercise: LessonExercise | null, attempt: number, dispatch: Dispatch<LessonEvent>) {
+export function useExerciseClips(
+  exercise: LessonExercise | null,
+  attempt: number,
+  includeSlowWelsh: boolean,
+  dispatch: Dispatch<LessonEvent>,
+) {
   const urls = useRef(new Map<ClipTrack, string>());
 
   useEffect(() => {
@@ -25,6 +30,10 @@ export function useExerciseClips(exercise: LessonExercise | null, attempt: numbe
     urls.current = loaded;
 
     for (const track of CLIP_TRACKS) {
+      if (track === "welsh_slow" && !includeSlowWelsh) {
+        continue;
+      }
+
       fetchClip(exercise.audio[track], { signal: controller.signal })
         .then((clip) => {
           if (controller.signal.aborted) {
@@ -51,7 +60,7 @@ export function useExerciseClips(exercise: LessonExercise | null, attempt: numbe
 
       loaded.clear();
     };
-  }, [attempt, dispatch, exercise]);
+  }, [attempt, dispatch, exercise, includeSlowWelsh]);
 
   return useCallback((track: ClipTrack) => urls.current.get(track), []);
 }

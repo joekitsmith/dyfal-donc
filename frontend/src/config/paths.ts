@@ -5,5 +5,6 @@ export const ROUTES = {
   home: "/",
   learn: "/learn",
   recover: "/recover",
+  settings: "/settings",
   welcome: "/welcome",
 } as const;

@@ -10,6 +10,7 @@ from persistence.database.commands import (
     IssueSelection,
     RecordCredentialUse,
     ReplaceRecoveryCodes,
+    SaveUserSettings,
     UseRecoveryCode,
 )
 from persistence.database.records import (
@@ -20,6 +21,7 @@ from persistence.database.records import (
     LearnerRecord,
     LoginSessionRecord,
     UserRecord,
+    UserSettingsRecord,
 )
 from persistence.database.repositories import (
     ChallengeRepository,
@@ -30,6 +32,7 @@ from persistence.database.repositories import (
     RecoveryCodeRepository,
     SelectionRepository,
     UserRepository,
+    UserSettingsRepository,
 )
 from persistence.database.schema import create_schema
 from persistence.database.session import create_database_engine, create_session_factory
@@ -61,11 +64,14 @@ __all__ = [
     "RecordCredentialUse",
     "RecoveryCodeRepository",
     "ReplaceRecoveryCodes",
+    "SaveUserSettings",
     "SelectionRepository",
     "UnitOfWork",
     "UseRecoveryCode",
     "UserRecord",
     "UserRepository",
+    "UserSettingsRecord",
+    "UserSettingsRepository",
     "create_database_engine",
     "create_schema",
     "create_session_factory",

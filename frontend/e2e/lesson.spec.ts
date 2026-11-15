@@ -2,13 +2,12 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { countClipsEnded, instrumentAudio, requireStack, speedUpThinking, startAsGuest } from "./helpers";
+import { countClipsEnded, instrumentAudio, requireStack, startAsGuest } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
 test.beforeEach(async ({ page, request }) => {
   await requireStack(request);
-  await speedUpThinking(page);
   await instrumentAudio(page);
 });
 

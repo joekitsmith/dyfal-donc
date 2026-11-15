@@ -170,6 +170,14 @@
         "title": "HealthResponse",
         "type": "object"
       },
+      "LearningSessionMinutes": {
+        "enum": [
+          10,
+          20,
+          30
+        ],
+        "type": "integer"
+      },
       "NextExerciseResponse": {
         "discriminator": {
           "mapping": {
@@ -474,6 +482,68 @@
           "created_at"
         ],
         "title": "UserResponse",
+        "type": "object"
+      },
+      "UserSettingsPatch": {
+        "description": "Settings to change. A field that is left out stays as it is.\n\n``learning_session_minutes`` of null is a change, to no limit.",
+        "properties": {
+          "learning_session_minutes": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LearningSessionMinutes"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": 20
+          },
+          "slow_welsh_enabled": {
+            "default": true,
+            "title": "Slow Welsh Enabled",
+            "type": "boolean"
+          },
+          "think_time_multiplier": {
+            "default": 1.0,
+            "maximum": 3.0,
+            "minimum": 0.5,
+            "title": "Think Time Multiplier",
+            "type": "number"
+          }
+        },
+        "title": "UserSettingsPatch",
+        "type": "object"
+      },
+      "UserSettingsResponse": {
+        "description": "The settings in force. A user has ``DEFAULT_USER_SETTINGS`` until they save some.",
+        "properties": {
+          "learning_session_minutes": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/LearningSessionMinutes"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "slow_welsh_enabled": {
+            "title": "Slow Welsh Enabled",
+            "type": "boolean"
+          },
+          "think_time_multiplier": {
+            "maximum": 3.0,
+            "minimum": 0.5,
+            "title": "Think Time Multiplier",
+            "type": "number"
+          }
+        },
+        "required": [
+          "think_time_multiplier",
+          "slow_welsh_enabled",
+          "learning_session_minutes"
+        ],
+        "title": "UserSettingsResponse",
         "type": "object"
       },
       "ValidationError": {
@@ -972,6 +1042,60 @@
           }
         },
         "summary": "Post Recovery Codes"
+      }
+    },
+    "/me/settings": {
+      "get": {
+        "operationId": "get_settings_me_settings_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSettingsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Settings"
+      },
+      "patch": {
+        "operationId": "patch_settings_me_settings_patch",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSettingsPatch"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserSettingsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Patch Settings"
       }
     }
   }

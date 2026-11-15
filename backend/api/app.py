@@ -14,6 +14,7 @@ from api.routes import (
     course_router,
     health_router,
     learners_router,
+    user_settings_router,
 )
 from api.settings import Settings
 from api.speech import HttpSpeechClient, SpeechClient
@@ -58,5 +59,6 @@ def create_app(
     app.include_router(auth_router)
     app.include_router(account_router)
     app.include_router(learners_router)
+    app.include_router(user_settings_router)
     app.include_router(audio_router)
     return app

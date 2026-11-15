@@ -17,8 +17,14 @@ from api.mappings.outcome import (
     to_review_events,
 )
 from api.mappings.progress import to_progress_response
+from api.mappings.user_settings import (
+    apply_user_settings_patch,
+    to_save_user_settings,
+    to_user_settings_response,
+)
 
 __all__ = [
+    "apply_user_settings_patch",
     "to_audio_links",
     "to_add_learner",
     "to_append_event",
@@ -34,6 +40,8 @@ __all__ = [
     "to_progress_response",
     "to_review_event",
     "to_review_events",
+    "to_save_user_settings",
     "to_speech_text",
     "to_user_response",
+    "to_user_settings_response",
 ]

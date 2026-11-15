@@ -49,7 +49,7 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
         ? { cause: event.cause, message: errorMessage("next", event.cause), phase: "error", retry: { kind: "next" } }
         : state;
     case "next_loaded":
-      return state.phase === "loading" ? prepare(event.exercise, 0, false) : state;
+      return state.phase === "loading" ? prepare(event.exercise, 0, false, event.slowWelshEnabled) : state;
     case "nothing_eligible":
       return state.phase === "loading" ? { phase: "nothing_eligible" } : state;
     case "playback_failed":
@@ -71,7 +71,13 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
             cause: event.cause,
             message: errorMessage("submit", event.cause),
             phase: "error",
-            retry: { attempt: state.attempt, exercise: state.exercise, kind: "submit", missed: state.missed },
+            retry: {
+              attempt: state.attempt,
+              exercise: state.exercise,
+              kind: "submit",
+              missed: state.missed,
+              slowWelshEnabled: state.slowWelshEnabled,
+            },
           }
         : state;
     case "submitted":
@@ -115,7 +121,10 @@ function clipEnded(state: LessonState): LessonState {
     case "playing_english":
       return { ...fieldsOf(state), phase: "thinking" };
     case "playing_welsh":
-      return { ...fieldsOf(state), phase: "between_welsh" };
+      // Without the slow Welsh the text shows as soon as the Welsh ends
+      return state.slowWelshEnabled
+        ? { ...fieldsOf(state), phase: "between_welsh" }
+        : { ...fieldsOf(state), phase: "awaiting_outcome", revealed: true };
     case "playing_welsh_slow":
       return { ...fieldsOf(state), phase: "awaiting_outcome" };
     default:
@@ -164,12 +173,12 @@ function clipReady(state: LessonState, track: ClipTrack): LessonState {
 }
 
 function fieldsOf(state: ExerciseState): ExerciseFields {
-  const { attempt, clips, exercise, missed, paused, replayCount, revealed } = state;
+  const { attempt, clips, exercise, missed, paused, replayCount, revealed, slowWelshEnabled } = state;
 
-  return { attempt, clips, exercise, missed, paused, replayCount, revealed };
+  return { attempt, clips, exercise, missed, paused, replayCount, revealed, slowWelshEnabled };
 }
 
-function prepare(exercise: LessonExercise, attempt: number, missed: boolean): ExerciseState {
+function prepare(exercise: LessonExercise, attempt: number, missed: boolean, slowWelshEnabled: boolean): ExerciseState {
   return {
     attempt,
     clips: ALL_LOADING,
@@ -179,6 +188,7 @@ function prepare(exercise: LessonExercise, attempt: number, missed: boolean): Ex
     phase: "preparing",
     replayCount: 0,
     revealed: false,
+    slowWelshEnabled,
   };
 }
 
@@ -207,10 +217,13 @@ function retry(state: LessonState): LessonState {
   }
 
   if (target.kind === "clips") {
-    return prepare(target.exercise, target.attempt + 1, target.missed);
+    return prepare(target.exercise, target.attempt + 1, target.missed, target.slowWelshEnabled);
   }
 
-  return { ...fieldsOf(prepare(target.exercise, target.attempt, target.missed)), phase: "submitting" };
+  return {
+    ...fieldsOf(prepare(target.exercise, target.attempt, target.missed, target.slowWelshEnabled)),
+    phase: "submitting",
+  };
 }
 
 /** Plays the clip if it is ready, waits if it is still loading, and stops if it failed. */
@@ -234,7 +247,13 @@ function toClipError(state: ExerciseState, cause: FailureCause): LessonState {
     cause,
     message: errorMessage(loading ? "clips" : "playback", cause),
     phase: "error",
-    retry: { attempt: state.attempt, exercise: state.exercise, kind: "clips", missed: state.missed },
+    retry: {
+      attempt: state.attempt,
+      exercise: state.exercise,
+      kind: "clips",
+      missed: state.missed,
+      slowWelshEnabled: state.slowWelshEnabled,
+    },
   };
 }
 

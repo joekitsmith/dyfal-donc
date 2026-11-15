@@ -11,6 +11,7 @@ class TestModels:
             "login_sessions",
             "recovery_codes",
             "review_events",
+            "user_settings",
             "users",
             "webauthn_challenges",
             "webauthn_credentials",

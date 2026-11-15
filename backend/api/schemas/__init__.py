@@ -20,8 +20,15 @@ from api.schemas.exercise import (
 from api.schemas.health import HealthResponse
 from api.schemas.outcome import OutcomeRequest, OutcomeResponse, ReportedOutcome
 from api.schemas.progress import ProgressResponse
+from api.schemas.user_settings import (
+    DEFAULT_USER_SETTINGS,
+    LearningSessionMinutes,
+    UserSettingsPatch,
+    UserSettingsResponse,
+)
 
 __all__ = [
+    "DEFAULT_USER_SETTINGS",
     "AudioLinks",
     "AuthenticationVerifyRequest",
     "AudioTrack",
@@ -29,6 +36,7 @@ __all__ = [
     "ExercisePurpose",
     "ExerciseResponse",
     "HealthResponse",
+    "LearningSessionMinutes",
     "NextExerciseResponse",
     "NothingEligibleResponse",
     "OutcomeRequest",
@@ -44,4 +52,6 @@ __all__ = [
     "ReportedOutcome",
     "TopicResponse",
     "UserResponse",
+    "UserSettingsPatch",
+    "UserSettingsResponse",
 ]

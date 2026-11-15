@@ -29,6 +29,7 @@ function exerciseState(phase: ExerciseState["phase"], overrides: Partial<Exercis
     phase,
     replayCount: 0,
     revealed: false,
+    slowWelshEnabled: true,
     ...(phase === "waiting_for_clip" ? { track: "welsh" } : {}),
     ...overrides,
   } as ExerciseState;
@@ -44,7 +45,7 @@ describe("the happy path", () => {
     let state: LessonState = INITIAL_LESSON_STATE;
     const events: readonly LessonEvent[] = [
       { type: "start" },
-      { exercise: EXERCISE, type: "next_loaded" },
+      { exercise: EXERCISE, slowWelshEnabled: true, type: "next_loaded" },
       { track: "welsh", type: "clip_ready" },
       { track: "welsh_slow", type: "clip_ready" },
       { track: "english", type: "clip_ready" },
@@ -82,7 +83,7 @@ describe("the happy path", () => {
     const state = run(
       INITIAL_LESSON_STATE,
       { type: "start" },
-      { exercise: EXERCISE, type: "next_loaded" },
+      { exercise: EXERCISE, slowWelshEnabled: true, type: "next_loaded" },
       { track: "welsh", type: "clip_ready" },
     );
 
@@ -93,7 +94,7 @@ describe("the happy path", () => {
     const state = run(
       exerciseState("submitting", { missed: true }),
       { type: "submitted" },
-      { exercise: EXERCISE, type: "next_loaded" },
+      { exercise: EXERCISE, slowWelshEnabled: true, type: "next_loaded" },
     );
 
     expect(state).toMatchObject({ missed: false, phase: "preparing", revealed: false });
@@ -286,7 +287,7 @@ describe("the gap between the Welsh clips", () => {
       run(
         exerciseState("submitting", { revealed: true }),
         { type: "submitted" },
-        { exercise: EXERCISE, type: "next_loaded" },
+        { exercise: EXERCISE, slowWelshEnabled: true, type: "next_loaded" },
       ),
     ).toMatchObject({ revealed: false });
   });
@@ -348,5 +349,46 @@ describe("other states", () => {
     expect(lessonReducer(INITIAL_LESSON_STATE, { type: "clip_ended" })).toBe(INITIAL_LESSON_STATE);
     expect(lessonReducer(INITIAL_LESSON_STATE, { type: "submitted" })).toBe(INITIAL_LESSON_STATE);
     expect(isExerciseState(INITIAL_LESSON_STATE)).toBe(false);
+  });
+});
+
+describe("with the slow Welsh turned off", () => {
+  it("goes from the Welsh straight to the outcome window and shows the text", () => {
+    const playing = exerciseState("playing_welsh", { slowWelshEnabled: false });
+
+    expect(lessonReducer(playing, { type: "clip_ended" })).toMatchObject({
+      phase: "awaiting_outcome",
+      revealed: true,
+    });
+  });
+
+  it("still goes through the pause and the slow Welsh when it is on", () => {
+    const playing = exerciseState("playing_welsh");
+
+    expect(lessonReducer(playing, { type: "clip_ended" })).toMatchObject({ phase: "between_welsh", revealed: false });
+  });
+
+  it("keeps the setting the exercise was loaded with, through a retry", () => {
+    const failed = run(
+      exerciseState("preparing", { slowWelshEnabled: false }),
+      { cause: "other", track: "english", type: "clip_failed" },
+      { type: "retry" },
+    );
+
+    expect(failed).toMatchObject({ phase: "preparing", slowWelshEnabled: false });
+  });
+
+  it("takes the setting from the event that loads the exercise", () => {
+    const state = run(
+      INITIAL_LESSON_STATE,
+      { type: "start" },
+      { exercise: EXERCISE, slowWelshEnabled: false, type: "next_loaded" },
+    );
+
+    expect(state).toMatchObject({ phase: "preparing", slowWelshEnabled: false });
+  });
+
+  it("lets the learner mark it missed during the Welsh and the outcome window", () => {
+    expect(canMarkMissed(exerciseState("awaiting_outcome", { slowWelshEnabled: false }))).toBe(true);
   });
 });
