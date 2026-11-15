@@ -1,6 +1,8 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
+import { TEST_IDS } from "@/config/test-ids";
+
 import { useProgress } from "../api/use-progress";
 
 /** Plain counts of where the learner is. It shows nothing until it has them. */
@@ -12,7 +14,7 @@ export function ProgressPanel({ learnerId }: { readonly learnerId: string }) {
   }
 
   return (
-    <Stack aria-label="Progress" component="section" spacing={0.5}>
+    <Stack aria-label="Progress" component="section" data-testid={TEST_IDS.progress} spacing={0.5}>
       <Typography>
         Introduced: {data.introduced} of {data.course_items} items
       </Typography>

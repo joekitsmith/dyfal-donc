@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
+import { TEST_IDS } from "../src/config/test-ids";
 import { countClipsEnded, instrumentAudio, requireStack, speedUpThinking } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
@@ -23,12 +24,14 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   });
 
   await page.goto("/");
-  await expect(page.getByText(/Introduced: 0 of/)).toBeVisible();
+  const progress = page.getByTestId(TEST_IDS.progress);
+
+  await expect(progress).toContainText("Introduced: 0 of");
   await page.getByRole("button", { exact: true, name: "Start" }).click();
 
-  const english = page.getByRole("heading", { level: 5 }).nth(0);
-  const welsh = page.getByRole("heading", { level: 5 }).nth(1);
-  const missedIt = page.getByRole("button", { name: /Missed it|Marked as missed/ });
+  const english = page.getByTestId(TEST_IDS.english);
+  const welsh = page.getByTestId(TEST_IDS.welsh);
+  const missedIt = page.getByTestId(TEST_IDS.missedIt);
 
   await expect(english).not.toHaveText("");
   await expect(welsh).toHaveText("");
@@ -60,7 +63,7 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   expect(clips.every((clip) => clip.status === 200)).toBe(true);
   expect(await countClipsEnded(page)).toBeGreaterThanOrEqual(3);
 
-  await expect(page.getByText(/Introduced: 1 of/)).toBeVisible();
+  await expect(progress).toContainText("Introduced: 1 of");
   await expect(welsh).toHaveText("");
   await expect(english).not.toHaveText("");
 });

@@ -1,6 +1,8 @@
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
+import { TEST_IDS } from "@/config/test-ids";
+
 import type { LessonActions } from "../hooks/use-lesson-player";
 import type { LessonState } from "../types";
 
@@ -41,6 +43,7 @@ export function LessonControls({
     <Stack spacing={2}>
       <Button
         color={state.missed ? "error" : "warning"}
+        data-testid={TEST_IDS.missedIt}
         disabled={!canMiss && !state.missed}
         onClick={actions.missed}
         size="large"
