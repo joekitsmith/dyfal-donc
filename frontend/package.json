@@ -19,6 +19,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@playwright/test": "^1.65.1",
     "@tanstack/react-query-devtools": "^5.107.1",
     "@testing-library/jest-dom": "^7.0.1",
@@ -57,6 +58,7 @@
     "knip": "knip",
     "types": "node scripts/generate-types.mts",
     "types:check": "node scripts/generate-types.mts --check",
-    "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm test && pnpm types:check && pnpm knip"
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm test && pnpm types:check && pnpm knip",
+    "e2e": "playwright test"
   }
 }

@@ -5,6 +5,7 @@ import { fetchClip } from "@/api/clips";
 import type { ClipTrack, LessonEvent, LessonExercise } from "../types";
 
 import { CLIP_TRACKS } from "../constants";
+import { failureCause } from "../utils/failure-cause";
 
 /**
  * Fetches the exercise's clips in parallel as soon as it is known and keeps them as object URLs,
@@ -34,9 +35,9 @@ export function useExerciseClips(exercise: LessonExercise | null, attempt: numbe
           console.info(`Clip ${track}: ${clip.milliseconds.toFixed(0)} ms`);
           dispatch({ track, type: "clip_ready" });
         })
-        .catch(() => {
+        .catch((error: unknown) => {
           if (!controller.signal.aborted) {
-            dispatch({ track, type: "clip_failed" });
+            dispatch({ cause: failureCause(error), track, type: "clip_failed" });
           }
         });
     }

@@ -2,13 +2,14 @@ import type {
   ClipTrack,
   ExerciseFields,
   ExerciseState,
+  FailureCause,
   LessonEvent,
   LessonExercise,
   LessonState,
   WaitingTrack,
 } from "../types";
 
-import { CLIP_ERROR_MESSAGE, NEXT_ERROR_MESSAGE, PLAYBACK_ERROR_MESSAGE, SUBMIT_ERROR_MESSAGE } from "../constants";
+import { errorMessage } from "../utils/error-message";
 
 export const INITIAL_LESSON_STATE: LessonState = { phase: "idle" };
 
@@ -36,7 +37,7 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
     case "clip_ended":
       return clipEnded(state);
     case "clip_failed":
-      return clipFailed(state, event.track);
+      return clipFailed(state, event.track, event.cause);
     case "clip_ready":
       return clipReady(state, event.track);
     case "gap_elapsed":
@@ -45,14 +46,14 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
       return canMarkMissed(state) && isExerciseState(state) ? { ...state, missed: true } : state;
     case "next_failed":
       return state.phase === "loading"
-        ? { message: NEXT_ERROR_MESSAGE, phase: "error", retry: { kind: "next" } }
+        ? { cause: event.cause, message: errorMessage("next", event.cause), phase: "error", retry: { kind: "next" } }
         : state;
     case "next_loaded":
       return state.phase === "loading" ? prepare(event.exercise, 0, false) : state;
     case "nothing_eligible":
-      return state.phase === "loading" ? { phase: "nothing_eligible", reason: event.reason } : state;
+      return state.phase === "loading" ? { phase: "nothing_eligible" } : state;
     case "playback_failed":
-      return isExerciseState(state) && PLAYING_PHASES.has(state.phase) ? toClipError(state) : state;
+      return isExerciseState(state) && PLAYING_PHASES.has(state.phase) ? toClipError(state, "other") : state;
     case "replay":
       return replay(state);
     case "reset":
@@ -63,11 +64,12 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
     case "window_elapsed":
       return state.phase === "awaiting_outcome" && !state.paused ? { ...fieldsOf(state), phase: "submitting" } : state;
     case "start":
-      return state.phase === "idle" || state.phase === "nothing_eligible" ? { phase: "loading" } : state;
+      return state.phase === "idle" ? { phase: "loading" } : state;
     case "submit_failed":
       return state.phase === "submitting"
         ? {
-            message: SUBMIT_ERROR_MESSAGE,
+            cause: event.cause,
+            message: errorMessage("submit", event.cause),
             phase: "error",
             retry: { attempt: state.attempt, exercise: state.exercise, kind: "submit", missed: state.missed },
           }
@@ -130,7 +132,7 @@ function gapElapsed(state: LessonState): LessonState {
   return state.phase === "between_welsh" ? startClip({ ...state, revealed: true }, "welsh_slow") : state;
 }
 
-function clipFailed(state: LessonState, track: ClipTrack): LessonState {
+function clipFailed(state: LessonState, track: ClipTrack, cause: FailureCause): LessonState {
   if (!isExerciseState(state)) {
     return state;
   }
@@ -140,7 +142,7 @@ function clipFailed(state: LessonState, track: ClipTrack): LessonState {
     (state.phase === "preparing" && track === "english") ||
     (state.phase === "waiting_for_clip" && !state.paused && state.track === track);
 
-  return neededNow ? toClipError(failed) : failed;
+  return neededNow ? toClipError(failed, cause) : failed;
 }
 
 function clipReady(state: LessonState, track: ClipTrack): LessonState {
@@ -217,7 +219,7 @@ function startClip(state: ExerciseState, track: WaitingTrack): LessonState {
 
   switch (state.clips[track]) {
     case "failed":
-      return toClipError(state);
+      return toClipError(state, "other");
     case "loading":
       return { ...fields, phase: "waiting_for_clip", track };
     case "ready":
@@ -225,11 +227,12 @@ function startClip(state: ExerciseState, track: WaitingTrack): LessonState {
   }
 }
 
-function toClipError(state: ExerciseState): LessonState {
+function toClipError(state: ExerciseState, cause: FailureCause): LessonState {
   const loading = state.phase === "preparing" || state.phase === "waiting_for_clip";
 
   return {
-    message: loading ? CLIP_ERROR_MESSAGE : PLAYBACK_ERROR_MESSAGE,
+    cause,
+    message: errorMessage(loading ? "clips" : "playback", cause),
     phase: "error",
     retry: { attempt: state.attempt, exercise: state.exercise, kind: "clips", missed: state.missed },
   };

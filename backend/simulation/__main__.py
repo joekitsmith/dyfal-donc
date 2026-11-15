@@ -3,7 +3,6 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from engine.curriculum import load_curriculum
-from engine.scheduler import SchedulerSettings
 from simulation.memory import ExponentialMemory, PowerLawMemory, TrueMemoryModel
 from simulation.metrics import break_metrics
 from simulation.pool import build_pool, coverage
@@ -31,9 +30,6 @@ def main(arguments: Sequence[str] | None = None) -> None:
         default="average",
     )
     parser.add_argument("--memory", choices=tuple(MEMORY_MODELS), default="exponential")
-    parser.add_argument(
-        "--new-items-per-day", type=int, help="Most items introduced in one day"
-    )
     parser.add_argument("--break-start", type=int, help="First day of a break")
     parser.add_argument("--break-days", type=int, help="Length of the break in days")
     options = parser.parse_args(arguments)
@@ -60,9 +56,6 @@ def main(arguments: Sequence[str] | None = None) -> None:
         profile,
         seed=options.seed,
         session=session,
-        scheduler_settings=SchedulerSettings(
-            new_items_per_day=options.new_items_per_day
-        ),
     )
     print()
     print(

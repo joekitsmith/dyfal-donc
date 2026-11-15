@@ -13,7 +13,7 @@ The course logic: state in, decisions out. It has no database, network or LLM, a
 
 ## How the learn loop fits together
 
-1. `scheduler.next_exercise` takes the exercise pool, the curriculum, the learner's state and recent events, and returns a `Selection` (or `NothingEligible` with a reason).
+1. `scheduler.next_exercise` takes the exercise pool, the curriculum, the learner's state and events, and returns a `Selection` (or `NothingEligible` with a reason).
 2. When the learner reports how it went, `Selection.as_event` builds the `ReviewEvent`. Use it instead of reading `exercise.new_item`, because an exercise that once introduced an item is ordinary practice afterwards.
 3. `learner.replay` folds the events into a `LearnerState`. State is never stored, only derived, and every time-dependent call takes a UTC `now`.
 

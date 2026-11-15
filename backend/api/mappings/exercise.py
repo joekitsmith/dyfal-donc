@@ -5,10 +5,9 @@ from api.mappings.audio import to_audio_links
 from api.schemas import (
     ExercisePurpose,
     ExerciseResponse,
-    NothingEligibleReason,
     NothingEligibleResponse,
 )
-from engine.scheduler import NoExerciseReason, NothingEligible, Purpose, Selection
+from engine.scheduler import Purpose, Selection
 from persistence.database import IssuedSelectionRecord, IssueSelection
 
 
@@ -42,13 +41,9 @@ def to_exercise_response(
     )
 
 
-def to_nothing_eligible_response(nothing: NothingEligible) -> NothingEligibleResponse:
-    return NothingEligibleResponse(reason=to_nothing_eligible_reason(nothing.reason))
+def to_nothing_eligible_response() -> NothingEligibleResponse:
+    return NothingEligibleResponse()
 
 
 def to_exercise_purpose(purpose: Purpose) -> ExercisePurpose:
     return ExercisePurpose(purpose.value)
-
-
-def to_nothing_eligible_reason(reason: NoExerciseReason) -> NothingEligibleReason:
-    return NothingEligibleReason(reason.value)

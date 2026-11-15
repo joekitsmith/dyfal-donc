@@ -1,6 +1,8 @@
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
+import { TEST_IDS } from "@/config/test-ids";
+
 import type { LessonActions } from "../hooks/use-lesson-player";
 import type { LessonState } from "../types";
 
@@ -17,16 +19,16 @@ export function LessonControls({
   readonly canPause: boolean;
   readonly state: LessonState;
 }) {
-  if (state.phase === "idle" || state.phase === "nothing_eligible") {
+  if (state.phase === "idle") {
     return (
       <Button onClick={actions.start} size="large" variant="contained">
-        {state.phase === "idle" ? "Start" : "Check again"}
+        Start
       </Button>
     );
   }
 
   if (state.phase === "error") {
-    return (
+    return state.cause === "learner_missing" ? null : (
       <Button onClick={actions.retry} size="large" variant="contained">
         Retry
       </Button>
@@ -41,6 +43,7 @@ export function LessonControls({
     <Stack spacing={2}>
       <Button
         color={state.missed ? "error" : "warning"}
+        data-testid={TEST_IDS.missedIt}
         disabled={!canMiss && !state.missed}
         onClick={actions.missed}
         size="large"

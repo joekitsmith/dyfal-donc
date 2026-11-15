@@ -204,10 +204,7 @@ class TestNothingToOffer:
         response = client_without_exercises.get(f"/learners/{learner_id}/next")
 
         assert response.status_code == 200
-        assert response.json() == {
-            "kind": "nothing_eligible",
-            "reason": "no_exercise_introduces_frontier",
-        }
+        assert response.json() == {"kind": "nothing_eligible"}
 
     def test_nothing_is_recorded_as_issued(
         self, client_without_exercises: TestClient, engine: Engine

@@ -1,10 +1,12 @@
-import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+
+import { ProgressPanel } from "@/features/progress";
 
 import { useLessonPlayer } from "../hooks/use-lesson-player";
 import { useThinkTimeMultiplier } from "../hooks/use-think-time-multiplier";
 import { ExerciseDisplay } from "./exercise-display";
 import { LessonControls } from "./lesson-controls";
+import { StartOverButton } from "./start-over-button";
 import { ThinkProgress } from "./think-progress";
 import { ThinkTimeSlider } from "./think-time-slider";
 
@@ -24,9 +26,8 @@ export function LessonPlayer({
       <ThinkProgress multiplier={thinkMultiplier} state={state} />
       <LessonControls actions={actions} canMiss={canMiss} canPause={canPause} state={state} />
       <ThinkTimeSlider onChange={setThinkMultiplier} value={thinkMultiplier} />
-      <Button onClick={onStartOver} variant="text">
-        Start over
-      </Button>
+      <ProgressPanel learnerId={learnerId} />
+      <StartOverButton onConfirm={onStartOver} />
     </Stack>
   );
 }

@@ -62,7 +62,7 @@ def offer_exercise(
         release.exercises, release.curriculum, replay(events), events, now
     )
     if isinstance(chosen, NothingEligible):
-        return to_nothing_eligible_response(chosen)
+        return to_nothing_eligible_response()
 
     issued = unit_of_work.selections.issue(
         to_issue_selection(learner_id, chosen, now, lifetime)

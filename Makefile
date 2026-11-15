@@ -1,4 +1,4 @@
-.PHONY: db-up db-down db-reset tts-build tts-up stack-up stack-down web-dev web-check web-types
+.PHONY: db-up db-down db-reset tts-build tts-up stack-up stack-down web-dev web-check web-e2e web-types
 
 db-up:
 	docker compose up --detach --wait postgres
@@ -31,6 +31,10 @@ web-dev:
 
 web-check:
 	cd frontend && pnpm check
+
+# Drives the lesson player in a browser. Needs the stack running (make stack-up) and Chromium installed
+web-e2e:
+	cd frontend && pnpm e2e
 
 # Regenerates the API's OpenAPI schema and the frontend's types from it
 web-types:

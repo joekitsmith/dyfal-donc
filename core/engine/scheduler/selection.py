@@ -31,22 +31,26 @@ def next_exercise(
     pool: Mapping[str, Exercise],
     curriculum: Curriculum,
     state: LearnerState,
-    recent_events: Sequence[ReviewEvent],
+    events: Sequence[ReviewEvent],
     now: datetime,
     settings: SchedulerSettings = DEFAULT_SCHEDULER_SETTINGS,
     learner_settings: LearnerSettings = DEFAULT_SETTINGS,
 ) -> NextExercise:
     """Choose the exercise to give next, or say why there is none.
 
-    ``pool`` maps exercise ids to published exercises, and ``recent_events``
-    are in chronological order and include everything from today (UTC), which
-    the daily limit on new items counts. In priority order, the choice is:
+    ``events`` is everything the learner has done, in chronological order.
+    The learner can always go on: time only decides when a refresher is
+    due, and a high error rate only spaces new items out. In priority order,
+    the choice is:
 
-    1. an exercise practising a ``Learning`` item that is due;
-    2. an exercise practising a ``Review`` item that is due;
-    3. the exercise introducing the frontier item, if recent errors are low
-       and the daily limit on new items has not been reached;
-    4. any exercise at all, as extra practice.
+    1. on every ``refresher_period``th exercise, one practising a ``Review``
+       item that is due;
+    2. an exercise practising a ``Learning`` item that is due;
+    3. the exercise introducing the frontier item, unless recent errors are
+       high and one was introduced too recently;
+    4. any exercise at all, as extra practice;
+    5. the exercise introducing the frontier item after all, if there is
+       nothing to practise.
 
     Within a priority the best-scoring exercise wins, and the lowest exercise
     id breaks a tie, so the same inputs always give the same answer.
@@ -62,12 +66,15 @@ def next_exercise(
     learning_due = frozenset(learning_items_due(state))
     review_due = frozenset(review_items_due(state, now, learner_settings))
     due = learning_due | review_due
-    previous = recent_events[-1] if recent_events else None
+    previous = events[-1] if events else None
 
-    for purpose, due_items in (
+    priorities: tuple[tuple[Purpose, AbstractSet[str]], ...] = (
         (Purpose.LEARNING_DUE, learning_due),
-        (Purpose.REVIEW_DUE, review_due),
-    ):
+    )
+    if _refresher_turn(events, settings):
+        priorities = ((Purpose.REVIEW_DUE, review_due), *priorities)
+
+    for purpose, due_items in priorities:
         covering = tuple(
             candidate
             for candidate in practice
@@ -76,21 +83,16 @@ def next_exercise(
         if covering:
             return _best(covering, purpose, due, previous, settings)
 
-    limit_reached = _daily_limit_reached(recent_events, now, settings)
-    if introducing and not limit_reached and _may_introduce(recent_events, settings):
+    if introducing and _may_introduce(events, settings):
         return _best(introducing, Purpose.INTRODUCTION, due, previous, settings)
 
     if practice:
         return _best(practice, Purpose.PRACTICE, due, previous, settings)
 
-    return NothingEligible(
-        reason=_why_nothing(
-            pool,
-            frontier_item,
-            introducing_exists=bool(introducing),
-            limit_reached=limit_reached,
-        )
-    )
+    if introducing:
+        return _best(introducing, Purpose.INTRODUCTION, due, previous, settings)
+
+    return NothingEligible(reason=_why_nothing(pool, frontier_item))
 
 
 def _best(
@@ -115,45 +117,35 @@ def _best(
     )
 
 
-def _daily_limit_reached(
-    recent_events: Sequence[ReviewEvent], now: datetime, settings: SchedulerSettings
-) -> bool:
-    if settings.new_items_per_day is None:
-        return False
+def _refresher_turn(events: Sequence[ReviewEvent], settings: SchedulerSettings) -> bool:
+    return len(events) % settings.refresher_period == settings.refresher_period - 1
 
-    introduced_today = sum(
-        event.new_item is not None and event.reviewed_at.date() == now.date()
-        for event in recent_events
+
+def _may_introduce(events: Sequence[ReviewEvent], settings: SchedulerSettings) -> bool:
+    recent = events[-settings.error_rate_window :]
+    going_badly = (
+        len(recent) >= settings.pacing_minimum_events
+        and recent_error_rate(recent, settings.error_rate_window)
+        >= settings.error_rate_threshold
     )
-    return introduced_today >= settings.new_items_per_day
-
-
-def _may_introduce(
-    recent_events: Sequence[ReviewEvent], settings: SchedulerSettings
-) -> bool:
-    recent = recent_events[-settings.error_rate_window :]
-    if len(recent) < settings.pacing_minimum_events:
-        return True
 
     return (
-        recent_error_rate(recent, settings.error_rate_window)
-        < settings.error_rate_threshold
+        not going_badly
+        or _exercises_since_introduction(events) >= settings.slowed_introduction_gap
     )
+
+
+def _exercises_since_introduction(events: Sequence[ReviewEvent]) -> int:
+    for count, event in enumerate(reversed(events)):
+        if event.new_item is not None:
+            return count
+
+    return len(events)
 
 
 def _why_nothing(
-    pool: Mapping[str, Exercise],
-    frontier_item: str | None,
-    *,
-    introducing_exists: bool,
-    limit_reached: bool,
+    pool: Mapping[str, Exercise], frontier_item: str | None
 ) -> NoExerciseReason:
-    if introducing_exists and limit_reached:
-        return NoExerciseReason.NEW_ITEM_LIMIT_REACHED
-
-    if introducing_exists:
-        return NoExerciseReason.ERROR_RATE_TOO_HIGH
-
     if frontier_item is not None and not any(
         exercise.new_item == frontier_item for exercise in pool.values()
     ):

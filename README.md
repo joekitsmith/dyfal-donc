@@ -47,6 +47,7 @@ poetry run poe mypy
 poetry run poe tests-unit
 poetry run poe tests-integration   # needs Docker: it starts a throwaway Postgres
 make web-check             # the frontend's checks
+make web-e2e               # the frontend's browser tests, with the stack running
 ```
 
 Run the parts yourself instead of `make stack-up`:

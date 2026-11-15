@@ -4,7 +4,6 @@ from api.schemas.exercise import (
     ExercisePurpose,
     ExerciseResponse,
     NextExerciseResponse,
-    NothingEligibleReason,
     NothingEligibleResponse,
 )
 from api.schemas.health import HealthResponse
@@ -21,7 +20,6 @@ __all__ = [
     "HealthResponse",
     "LearnerResponse",
     "NextExerciseResponse",
-    "NothingEligibleReason",
     "NothingEligibleResponse",
     "OutcomeRequest",
     "OutcomeResponse",

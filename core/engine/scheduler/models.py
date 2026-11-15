@@ -21,8 +21,6 @@ class Purpose(StrEnum):
 class NoExerciseReason(StrEnum):
     """Why there is nothing to give the learner."""
 
-    ERROR_RATE_TOO_HIGH = "error_rate_too_high"
-    NEW_ITEM_LIMIT_REACHED = "new_item_limit_reached"
     NO_EXERCISE_INTRODUCES_FRONTIER = "no_exercise_introduces_frontier"
     NOTHING_ELIGIBLE = "nothing_eligible"
 
@@ -63,14 +61,17 @@ class NothingEligible:
 class SchedulerSettings:
     """How the next exercise is chosen.
 
-    A new item is introduced only when fewer than ``error_rate_threshold`` of
-    the last ``error_rate_window`` exercises were missed. Until there are
-    ``pacing_minimum_events`` of them, one early miss cannot hold back the
-    course. Among exercises that serve the same purpose, each item that is due
-    adds ``due_item_weight`` and each item shared with the previous exercise
-    adds ``overlap_weight``. Repeating the previous exercise costs
-    ``repeat_penalty``. If ``new_items_per_day`` is set, no more than that many
-    items are introduced on one UTC calendar day.
+    Nothing stops the learner going on. If ``error_rate_threshold`` or more of
+    the last ``error_rate_window`` exercises were missed, new items are
+    introduced more slowly, at least ``slowed_introduction_gap`` exercises
+    apart, and the exercises between them practise what they already know.
+    Until there are ``pacing_minimum_events`` of them, one early miss does not
+    slow the course. Time only brings refreshers: every ``refresher_period``th
+    exercise practises an item that is due for review, if there is one.
+    Among exercises that serve the same purpose, each item that is due adds
+    ``due_item_weight`` and each item shared with the previous exercise adds
+    ``overlap_weight``. Repeating the previous exercise costs
+    ``repeat_penalty``.
     """
 
     error_rate_threshold: float = 0.15
@@ -79,7 +80,8 @@ class SchedulerSettings:
     due_item_weight: int = 10
     overlap_weight: int = 2
     repeat_penalty: int = 100
-    new_items_per_day: int | None = None
+    slowed_introduction_gap: int = 4
+    refresher_period: int = 4
 
     def __post_init__(self) -> None:
         if not 0 < self.error_rate_threshold <= 1:
@@ -101,9 +103,14 @@ class SchedulerSettings:
         if min(self.due_item_weight, self.overlap_weight, self.repeat_penalty) < 0:
             raise SchedulerError("Weights and penalties cannot be negative")
 
-        if self.new_items_per_day is not None and self.new_items_per_day < 1:
+        if self.slowed_introduction_gap < 1:
             raise SchedulerError(
-                f"New items per day must be at least 1, not {self.new_items_per_day}"
+                f"Slowed introduction gap must be at least 1, not {self.slowed_introduction_gap}"
+            )
+
+        if self.refresher_period < 2:
+            raise SchedulerError(
+                f"Refresher period must be at least 2, not {self.refresher_period}"
             )
 
 

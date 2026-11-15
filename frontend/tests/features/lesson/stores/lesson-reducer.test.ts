@@ -129,7 +129,7 @@ describe("a clip that is not ready when it is needed", () => {
       track: "welsh",
     });
 
-    expect(lessonReducer(waiting, { track: "welsh", type: "clip_failed" })).toMatchObject({
+    expect(lessonReducer(waiting, { cause: "other", track: "welsh", type: "clip_failed" })).toMatchObject({
       phase: "error",
       retry: { kind: "clips" },
     });
@@ -140,9 +140,9 @@ describe("a clip that is not ready when it is needed", () => {
       clips: { english: "loading", welsh: "loading", welsh_slow: "loading" },
     });
 
-    expect(lessonReducer(preparing, { track: "english", type: "clip_failed" }).phase).toBe("error");
+    expect(lessonReducer(preparing, { cause: "other", track: "english", type: "clip_failed" }).phase).toBe("error");
 
-    const noted = lessonReducer(preparing, { track: "welsh", type: "clip_failed" });
+    const noted = lessonReducer(preparing, { cause: "other", track: "welsh", type: "clip_failed" });
 
     expect(noted.phase).toBe("preparing");
     expect(
@@ -154,6 +154,7 @@ describe("a clip that is not ready when it is needed", () => {
 
   it("retries the clips with a new attempt, keeping the missed mark", () => {
     const failed = lessonReducer(exerciseState("preparing", { missed: true }), {
+      cause: "other",
       track: "english",
       type: "clip_failed",
     });
@@ -293,14 +294,17 @@ describe("the gap between the Welsh clips", () => {
 
 describe("errors", () => {
   it("shows an error and retries the request when the next exercise fails", () => {
-    const failed = run(INITIAL_LESSON_STATE, { type: "start" }, { type: "next_failed" });
+    const failed = run(INITIAL_LESSON_STATE, { type: "start" }, { cause: "other", type: "next_failed" });
 
     expect(failed).toMatchObject({ phase: "error", retry: { kind: "next" } });
     expect(lessonReducer(failed, { type: "retry" })).toEqual({ phase: "loading" });
   });
 
   it("keeps the exercise and the missed mark when submitting fails, and resubmits on retry", () => {
-    const failed = lessonReducer(exerciseState("submitting", { missed: true }), { type: "submit_failed" });
+    const failed = lessonReducer(exerciseState("submitting", { missed: true }), {
+      cause: "other",
+      type: "submit_failed",
+    });
 
     expect(failed).toMatchObject({ phase: "error", retry: { kind: "submit", missed: true } });
     expect(lessonReducer(failed, { type: "retry" })).toMatchObject({ missed: true, phase: "submitting" });
@@ -314,15 +318,26 @@ describe("errors", () => {
 });
 
 describe("other states", () => {
-  it("reports nothing eligible with the reason, and checks again", () => {
-    const state = run(
-      INITIAL_LESSON_STATE,
-      { type: "start" },
-      { reason: "new_item_limit_reached", type: "nothing_eligible" },
-    );
+  it("reports nothing eligible, and stays there", () => {
+    const state = run(INITIAL_LESSON_STATE, { type: "start" }, { type: "nothing_eligible" });
 
-    expect(state).toEqual({ phase: "nothing_eligible", reason: "new_item_limit_reached" });
-    expect(lessonReducer(state, { type: "start" })).toEqual({ phase: "loading" });
+    expect(state).toEqual({ phase: "nothing_eligible" });
+    expect(lessonReducer(state, { type: "start" })).toBe(state);
+  });
+
+  it("says why a failure happened, when it is known", () => {
+    const missing = run(INITIAL_LESSON_STATE, { type: "start" }, { cause: "learner_missing", type: "next_failed" });
+    const speech = lessonReducer(exerciseState("preparing"), {
+      cause: "speech_unavailable",
+      track: "english",
+      type: "clip_failed",
+    });
+
+    expect(missing).toMatchObject({ cause: "learner_missing", phase: "error" });
+    expect(speech).toMatchObject({
+      cause: "speech_unavailable",
+      message: expect.stringContaining("speech service") as string,
+    });
   });
 
   it("resets to idle from anywhere", () => {
