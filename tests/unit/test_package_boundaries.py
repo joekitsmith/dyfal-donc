@@ -1,13 +1,17 @@
 import ast
+import importlib
 from pathlib import Path
 
 import pytest
 
+import api.controllers as api_controllers
 import cymraeg
 import engine
+import persistence
 
 CORE_PACKAGES = (cymraeg, engine)
-BACKEND_PACKAGES = ("evals", "tools", "simulation")
+BACKEND_PACKAGES = ("evals", "tools", "simulation", "api", "persistence")
+SERVER_PACKAGES = ("api", "persistence")
 
 
 def imported_top_level_modules(package_directory: Path) -> dict[Path, set[str]]:
@@ -45,6 +49,18 @@ class TestPackageBoundaries:
     )
     def test_core_never_imports_backend(self, package: object) -> None:
         assert forbidden_imports(package, BACKEND_PACKAGES) == []
+
+    @pytest.mark.parametrize("package", ("evals", "tools", "simulation"))
+    def test_offline_tools_never_import_the_server(self, package: str) -> None:
+        module = importlib.import_module(package)
+
+        assert forbidden_imports(module, SERVER_PACKAGES) == []
+
+    def test_persistence_never_imports_the_api(self) -> None:
+        assert forbidden_imports(persistence, ("api",)) == []
+
+    def test_api_controllers_never_import_fastapi(self) -> None:
+        assert forbidden_imports(api_controllers, ("fastapi", "starlette")) == []
 
     def test_only_one_learner_module_imports_fsrs(self) -> None:
         engine_file = engine.__file__
