@@ -18,6 +18,13 @@ from api.schemas.exercise import (
     NothingEligibleResponse,
 )
 from api.schemas.health import HealthResponse
+from api.schemas.learning_session import (
+    ItemResponse,
+    MissedExerciseResponse,
+    OverviewResponse,
+    SessionRecapResponse,
+    SessionSummaryResponse,
+)
 from api.schemas.outcome import OutcomeRequest, OutcomeResponse, ReportedOutcome
 from api.schemas.progress import ProgressResponse
 from api.schemas.user_settings import (
@@ -36,10 +43,13 @@ __all__ = [
     "ExercisePurpose",
     "ExerciseResponse",
     "HealthResponse",
+    "ItemResponse",
+    "MissedExerciseResponse",
     "NextExerciseResponse",
     "NothingEligibleResponse",
     "OutcomeRequest",
     "OutcomeResponse",
+    "OverviewResponse",
     "PasskeyJson",
     "PasskeyResponse",
     "ProgressResponse",
@@ -49,6 +59,8 @@ __all__ = [
     "RegisteredPasskeyResponse",
     "RegistrationVerifyRequest",
     "ReportedOutcome",
+    "SessionRecapResponse",
+    "SessionSummaryResponse",
     "TopicResponse",
     "UserResponse",
     "UserSettingsPatch",

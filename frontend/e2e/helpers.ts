@@ -52,16 +52,23 @@ async function speedUpThinking(page: Page, settings: Record<string, unknown> = {
   });
 
   expect(response.ok()).toBe(true);
-  // The lesson read the settings when it loaded
+  // Screens read the settings when they loaded
   await page.reload();
 }
 
-/** Starts as a guest from the front door, as a new visitor would, with the quick think time. */
+/** Opens the lesson from the home screen, which is where signing in leaves a person. */
+export async function openLesson(page: Page): Promise<void> {
+  await page.getByRole("link", { name: /^(Start|Continue) learning$/ }).click();
+  await expect(page).toHaveURL(/\/learn$/);
+}
+
+/** Starts as a guest from the front door, as a new visitor would, and opens the lesson with the quick think time. */
 export async function startAsGuest(page: Page, settings: Record<string, unknown> = {}): Promise<void> {
   await page.goto("/");
   await page.getByRole("button", { name: "Try it now" }).click();
-  await expect(page).toHaveURL(/\/learn$/);
+  await expect(page).toHaveURL(/\/$/);
   await speedUpThinking(page, settings);
+  await openLesson(page);
 }
 
 /**

@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { ROUTES } from "@/config/paths";
 import { SaveProgressPrompt } from "@/features/auth";
+import { SessionClock } from "@/features/learning-session";
 import { ProgressPanel } from "@/features/progress";
 
 import type { LessonSettings } from "../types";
@@ -30,11 +31,15 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
       {offer.prompt.visible ? (
         <SaveProgressPrompt onDismiss={offer.prompt.onDismiss} onSaved={offer.prompt.onSaved} />
       ) : null}
+      <SessionClock />
       <ExerciseDisplay state={state} />
       <ThinkProgress multiplier={settings.thinkTimeMultiplier} state={state} />
       <LessonControls actions={actions} canMiss={canMiss} canPause={canPause} state={state} />
       <ProgressPanel learnerId={learnerId} />
       <Stack direction="row" spacing={1}>
+        <Button component={Link} href={ROUTES.home}>
+          Home
+        </Button>
         <Button component={Link} href={ROUTES.account}>
           Account
         </Button>

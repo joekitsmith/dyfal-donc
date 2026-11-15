@@ -8,3 +8,8 @@ export const ROUTES = {
   settings: "/settings",
   welcome: "/welcome",
 } as const;
+
+/** The summary screen for one learning session. */
+export function learningSessionPath(sessionId: number) {
+  return `/learning-sessions/${sessionId}` as const;
+}

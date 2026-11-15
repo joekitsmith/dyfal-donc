@@ -206,6 +206,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/learning-sessions/{session_id}/summary": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Session Summary */
+        get: operations["get_session_summary_me_learning_sessions__session_id__summary_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/next": {
         parameters: {
             query?: never;
@@ -237,6 +254,23 @@ export interface paths {
         put?: never;
         /** Post Outcome */
         post: operations["post_outcome_me_outcomes_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/me/overview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Overview */
+        get: operations["get_overview_me_overview_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -404,6 +438,28 @@ export interface components {
             /** Status */
             status: string;
         };
+        /**
+         * ItemResponse
+         * @description A word or pattern the learner met, in both languages.
+         */
+        ItemResponse: {
+            /** English */
+            english: string;
+            /** Id */
+            id: string;
+            /** Welsh */
+            welsh: string;
+        };
+        /** MissedExerciseResponse */
+        MissedExerciseResponse: {
+            audio: components["schemas"]["AudioLinks"];
+            /** English */
+            english: string;
+            /** Id */
+            id: string;
+            /** Welsh */
+            welsh: string;
+        };
         NextExerciseResponse: components["schemas"]["ExerciseResponse"] | components["schemas"]["NothingEligibleResponse"];
         /**
          * NothingEligibleResponse
@@ -434,6 +490,34 @@ export interface components {
             recorded: boolean;
             /** Sequence */
             sequence: number;
+        };
+        /**
+         * OverviewResponse
+         * @description What the home screen shows, as of ``now`` on the server's clock.
+         *
+         *     ``new_words_ready`` says the course has more words to introduce. The scheduler may
+         *     still slow them down after recent misses. ``topic`` is the topic the next new word
+         *     belongs to, and is null when the course is finished.
+         */
+        OverviewResponse: {
+            /** Course Items */
+            course_items: number;
+            /** Introduced */
+            introduced: number;
+            latest_session: components["schemas"]["SessionRecapResponse"] | null;
+            /** Learning Due */
+            learning_due: number;
+            /** New Words Ready */
+            new_words_ready: boolean;
+            /**
+             * Now
+             * Format: date-time
+             */
+            now: string;
+            /** Review Due */
+            review_due: number;
+            /** Topic */
+            topic: string | null;
         };
         PasskeyJson: {
             [key: string]: unknown;
@@ -514,6 +598,67 @@ export interface components {
          * @enum {string}
          */
         ReportedOutcome: "got_it" | "missed_it";
+        /**
+         * SessionRecapResponse
+         * @description A short account of one learning session.
+         *
+         *     ``id`` is the number of the session's first answer in the learner's log, and
+         *     ``ongoing`` says the last answer was recent enough that it may carry on.
+         */
+        SessionRecapResponse: {
+            /** Duration Seconds */
+            duration_seconds: number;
+            /**
+             * Ended At
+             * Format: date-time
+             */
+            ended_at: string;
+            /** Exercises Completed */
+            exercises_completed: number;
+            /** Id */
+            id: number;
+            /** Items Introduced */
+            items_introduced: components["schemas"]["ItemResponse"][];
+            /** Ongoing */
+            ongoing: boolean;
+            /**
+             * Started At
+             * Format: date-time
+             */
+            started_at: string;
+        };
+        /**
+         * SessionSummaryResponse
+         * @description All of a learning session: the recap, and what was reviewed, forgotten and missed.
+         */
+        SessionSummaryResponse: {
+            /** Duration Seconds */
+            duration_seconds: number;
+            /**
+             * Ended At
+             * Format: date-time
+             */
+            ended_at: string;
+            /** Exercises Completed */
+            exercises_completed: number;
+            /** Id */
+            id: number;
+            /** Items Introduced */
+            items_introduced: components["schemas"]["ItemResponse"][];
+            /** Items Lapsed */
+            items_lapsed: components["schemas"]["ItemResponse"][];
+            /** Items Reviewed */
+            items_reviewed: number;
+            /** Missed Exercises */
+            missed_exercises: components["schemas"]["MissedExerciseResponse"][];
+            /** Ongoing */
+            ongoing: boolean;
+            /**
+             * Started At
+             * Format: date-time
+             */
+            started_at: string;
+        };
         /** TopicResponse */
         TopicResponse: {
             /** Name */
@@ -919,6 +1064,37 @@ export interface operations {
             };
         };
     };
+    get_session_summary_me_learning_sessions__session_id__summary_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                session_id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SessionSummaryResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     post_next_me_next_post: {
         parameters: {
             query?: never;
@@ -968,6 +1144,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_overview_me_overview_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["OverviewResponse"];
                 };
             };
         };

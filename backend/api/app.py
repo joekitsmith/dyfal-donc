@@ -14,6 +14,8 @@ from api.routes import (
     course_router,
     health_router,
     learners_router,
+    learning_sessions_router,
+    overview_router,
     user_settings_router,
 )
 from api.settings import Settings
@@ -59,6 +61,8 @@ def create_app(
     app.include_router(auth_router)
     app.include_router(account_router)
     app.include_router(learners_router)
+    app.include_router(learning_sessions_router)
+    app.include_router(overview_router)
     app.include_router(user_settings_router)
     app.include_router(audio_router)
     return app

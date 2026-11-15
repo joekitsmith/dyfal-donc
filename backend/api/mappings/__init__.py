@@ -7,6 +7,13 @@ from api.mappings.exercise import (
     to_issue_selection,
     to_nothing_eligible_response,
 )
+from api.mappings.learning_session import (
+    to_item_responses,
+    to_missed_exercise_responses,
+    to_overview_response,
+    to_session_recap_response,
+    to_session_summary_response,
+)
 from api.mappings.learner import to_add_learner
 from api.mappings.outcome import (
     to_append_event,
@@ -33,13 +40,18 @@ __all__ = [
     "to_exercise_purpose",
     "to_exercise_response",
     "to_issue_selection",
+    "to_item_responses",
+    "to_missed_exercise_responses",
     "to_nothing_eligible_response",
     "to_outcome",
     "to_outcome_response",
+    "to_overview_response",
     "to_passkey_response",
     "to_progress_response",
     "to_review_event",
     "to_review_events",
+    "to_session_recap_response",
+    "to_session_summary_response",
     "to_save_user_settings",
     "to_speech_text",
     "to_user_response",

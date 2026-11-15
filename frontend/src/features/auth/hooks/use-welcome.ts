@@ -22,7 +22,7 @@ export function useWelcome() {
 
   useEffect(() => {
     if (signedIn) {
-      router.replace(ROUTES.learn);
+      router.replace(ROUTES.home);
     }
   }, [router, signedIn]);
 
