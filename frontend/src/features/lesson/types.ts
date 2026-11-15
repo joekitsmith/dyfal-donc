@@ -28,6 +28,7 @@ export type LessonEvent =
   | {
       readonly type:
         | "clip_ended"
+        | "gap_elapsed"
         | "missed"
         | "next_failed"
         | "playback_failed"
@@ -40,7 +41,6 @@ export type LessonEvent =
         | "submitted"
         | "think_elapsed"
         | "toggle_pause"
-        | "toggle_reveal"
         | "window_elapsed";
     };
 
@@ -53,10 +53,12 @@ export type LessonExercise = {
 
 export type LessonState =
   | (ExerciseFields & { readonly phase: "awaiting_outcome" })
+  | (ExerciseFields & { readonly phase: "between_welsh" })
   | (ExerciseFields & { readonly phase: "playing_english" })
   | (ExerciseFields & { readonly phase: "playing_welsh" })
   | (ExerciseFields & { readonly phase: "playing_welsh_slow" })
   | (ExerciseFields & { readonly phase: "preparing" })
+  | (ExerciseFields & { readonly phase: "reading_welsh" })
   | (ExerciseFields & { readonly phase: "submitting" })
   | (ExerciseFields & { readonly phase: "thinking" })
   | (ExerciseFields & { readonly phase: "waiting_for_clip"; readonly track: WaitingTrack })

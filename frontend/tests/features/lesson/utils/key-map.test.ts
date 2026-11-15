@@ -8,7 +8,6 @@ describe("actionForKey", () => {
     ["m", "missed"],
     ["M", "missed"],
     ["r", "replay"],
-    ["t", "toggle_reveal"],
     ["n", "skip_window"],
   ])("maps %j to %s", (key, action) => {
     expect(actionForKey(key)).toBe(action);

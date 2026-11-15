@@ -16,9 +16,11 @@ const ALL_LOADING: ExerciseFields["clips"] = { english: "loading", welsh: "loadi
 
 const PAUSABLE_PHASES: ReadonlySet<LessonState["phase"]> = new Set([
   "awaiting_outcome",
+  "between_welsh",
   "playing_english",
   "playing_welsh",
   "playing_welsh_slow",
+  "reading_welsh",
   "thinking",
   "waiting_for_clip",
 ]);
@@ -38,6 +40,8 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
       return clipFailed(state, event.track);
     case "clip_ready":
       return clipReady(state, event.track);
+    case "gap_elapsed":
+      return gapElapsed(state);
     case "missed":
       return canMarkMissed(state) && isExerciseState(state) ? { ...state, missed: true } : state;
     case "next_failed":
@@ -75,8 +79,6 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
       return state.phase === "thinking" && !state.paused ? startClip(state, "welsh") : state;
     case "toggle_pause":
       return togglePause(state);
-    case "toggle_reveal":
-      return isExerciseState(state) ? { ...state, revealed: !state.revealed } : state;
   }
 }
 
@@ -84,8 +86,10 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
 export function canMarkMissed(state: LessonState): boolean {
   switch (state.phase) {
     case "awaiting_outcome":
+    case "between_welsh":
     case "playing_welsh":
     case "playing_welsh_slow":
+    case "reading_welsh":
       return true;
     case "waiting_for_clip":
       return state.track === "welsh_slow";
@@ -111,9 +115,25 @@ function clipEnded(state: LessonState): LessonState {
     case "playing_english":
       return { ...fieldsOf(state), phase: "thinking" };
     case "playing_welsh":
-      return startClip(state, "welsh_slow");
+      return { ...fieldsOf(state), phase: "between_welsh" };
     case "playing_welsh_slow":
       return { ...fieldsOf(state), phase: "awaiting_outcome" };
+    default:
+      return state;
+  }
+}
+
+/** The gap after the first Welsh: its text shows part way through, then the slow Welsh follows. */
+function gapElapsed(state: LessonState): LessonState {
+  if (!isExerciseState(state) || state.paused) {
+    return state;
+  }
+
+  switch (state.phase) {
+    case "between_welsh":
+      return { ...fieldsOf(state), phase: "reading_welsh", revealed: true };
+    case "reading_welsh":
+      return startClip(state, "welsh_slow");
     default:
       return state;
   }
@@ -174,7 +194,12 @@ function replay(state: LessonState): LessonState {
     return state;
   }
 
-  return { ...fieldsOf(state), paused: false, phase: "playing_english", replayCount: state.replayCount + 1 };
+  return {
+    ...fieldsOf(state),
+    paused: false,
+    phase: "playing_english",
+    replayCount: state.replayCount + 1,
+  };
 }
 
 function retry(state: LessonState): LessonState {

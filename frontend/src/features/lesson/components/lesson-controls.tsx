@@ -56,9 +56,6 @@ export function LessonControls({
         <Button disabled={!canPause} onClick={actions.replay} variant="outlined">
           Replay (R)
         </Button>
-        <Button onClick={actions.toggleReveal} variant="outlined">
-          {state.revealed ? "Hide" : "Show"} Welsh (T)
-        </Button>
       </Stack>
     </Stack>
   );

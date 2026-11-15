@@ -7,7 +7,13 @@ import type { KeyAction } from "../utils/key-map";
 
 import { useNextExercise } from "../api/use-next-exercise";
 import { useSubmitOutcome } from "../api/use-submit-outcome";
-import { ALREADY_ANSWERED_STATUS, OUTCOME_WINDOW_MILLISECONDS, SELECTION_EXPIRED_STATUS } from "../constants";
+import {
+  ALREADY_ANSWERED_STATUS,
+  BETWEEN_WELSH_READING_MILLISECONDS,
+  BETWEEN_WELSH_REVEAL_MILLISECONDS,
+  OUTCOME_WINDOW_MILLISECONDS,
+  SELECTION_EXPIRED_STATUS,
+} from "../constants";
 import {
   canMarkMissed,
   INITIAL_LESSON_STATE,
@@ -27,6 +33,16 @@ const TRACK_FOR_PHASE: Readonly<Partial<Record<LessonState["phase"], ClipTrack>>
   playing_welsh_slow: "welsh_slow",
 };
 
+const WAIT_FOR_PHASE: Readonly<
+  Partial<
+    Record<LessonState["phase"], { readonly event: "gap_elapsed" | "window_elapsed"; readonly milliseconds: number }>
+  >
+> = {
+  awaiting_outcome: { event: "window_elapsed", milliseconds: OUTCOME_WINDOW_MILLISECONDS },
+  between_welsh: { event: "gap_elapsed", milliseconds: BETWEEN_WELSH_REVEAL_MILLISECONDS },
+  reading_welsh: { event: "gap_elapsed", milliseconds: BETWEEN_WELSH_READING_MILLISECONDS },
+};
+
 const MILLISECONDS_PER_SECOND = 1000;
 
 export type LessonActions = {
@@ -35,7 +51,6 @@ export type LessonActions = {
   readonly retry: () => void;
   readonly start: () => void;
   readonly togglePause: () => void;
-  readonly toggleReveal: () => void;
 };
 
 /**
@@ -139,20 +154,21 @@ export function useLessonPlayer({
   }, [exercise, player, replayCount, state.phase, urlFor]);
 
   useEffect(() => {
-    const milliseconds =
+    const wait =
       state.phase === "thinking"
-        ? thinkMilliseconds()
-        : state.phase === "awaiting_outcome"
-          ? OUTCOME_WINDOW_MILLISECONDS
-          : null;
+        ? { event: "think_elapsed" as const, milliseconds: thinkMilliseconds() }
+        : WAIT_FOR_PHASE[state.phase];
 
-    if (milliseconds === null) {
+    if (wait === undefined) {
       return;
     }
 
-    const running = startPausableTimer(milliseconds, () => {
-      marks.current.thinkEndedAt = performance.now();
-      dispatch({ type: state.phase === "thinking" ? "think_elapsed" : "window_elapsed" });
+    const running = startPausableTimer(wait.milliseconds, () => {
+      if (wait.event === "think_elapsed") {
+        marks.current.thinkEndedAt = performance.now();
+      }
+
+      dispatch({ type: wait.event });
     });
 
     timer.current = running;
@@ -196,9 +212,6 @@ export function useLessonPlayer({
     },
     togglePause: () => {
       dispatch({ type: "toggle_pause" });
-    },
-    toggleReveal: () => {
-      dispatch({ type: "toggle_reveal" });
     },
   };
 

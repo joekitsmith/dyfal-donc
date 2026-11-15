@@ -6,6 +6,7 @@ import { isExerciseState } from "../stores/lesson-reducer";
 
 const PHASE_LABELS: Readonly<Record<LessonState["phase"], string>> = {
   awaiting_outcome: "Did you get it?",
+  between_welsh: "Check it against the Welsh",
   error: "Something went wrong",
   idle: "Ready when you are",
   loading: "Loading",
@@ -14,6 +15,7 @@ const PHASE_LABELS: Readonly<Record<LessonState["phase"], string>> = {
   playing_welsh: "Listen",
   playing_welsh_slow: "Listen again, more slowly",
   preparing: "Loading",
+  reading_welsh: "Check it against the Welsh",
   submitting: "Saving",
   thinking: "Say it in Welsh",
   waiting_for_clip: "Loading the Welsh",
