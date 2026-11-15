@@ -42,6 +42,13 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       TTS_URL: http://tts:8001
+      # Passkeys are bound to the domain, and the origins are where the app is served from
+      WEBAUTHN_RP_ID: ${WEBAUTHN_RP_ID:-localhost}
+      WEBAUTHN_RP_NAME: ${WEBAUTHN_RP_NAME:-dyfal-donc}
+      WEBAUTHN_ORIGINS: ${WEBAUTHN_ORIGINS:-http://localhost:${WEB_PORT:-8080},http://localhost:3000}
+      # Off for plain HTTP on localhost, where some browsers refuse a Secure cookie
+      SESSION_COOKIE_SECURE: ${SESSION_COOKIE_SECURE:-false}
+      SESSION_LIFETIME_SECONDS: ${SESSION_LIFETIME_SECONDS:-2592000}
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 5s

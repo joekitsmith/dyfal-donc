@@ -1,44 +1,40 @@
 import type { ApiClient } from "@/api/client";
-import type { KeyValueStorage } from "@/utils/safe-storage";
 
-import { readStoredLearnerId, storeLearnerId } from "./learner-storage";
+const UNAUTHORIZED = 401;
 
-const NOT_FOUND = 404;
-
-export async function createLearner(client: ApiClient, storage: KeyValueStorage): Promise<string> {
-  const { data, response } = await client.POST("/learners");
+/** Starts straight away as a guest, so there is no sign-up in the way. */
+async function startGuest(client: ApiClient): Promise<string> {
+  const { data, response } = await client.POST("/auth/guest");
 
   if (data === undefined) {
-    throw new Error(`Could not create a learner (status ${response.status})`);
+    throw new Error(`Could not start (status ${response.status})`);
   }
-
-  storeLearnerId(storage, data.id);
 
   return data.id;
 }
 
-/**
- * The stored learner if the server still knows it, otherwise a new one. The database is wiped
- * when the course changes, so a stored id can outlive its learner.
- */
-export async function resolveLearner(client: ApiClient, storage: KeyValueStorage): Promise<string> {
-  const storedId = readStoredLearnerId(storage);
+/** Whoever the session cookie says is signed in, otherwise a new guest. */
+export async function resolveLearner(client: ApiClient): Promise<string> {
+  const { data, response } = await client.GET("/me");
 
-  if (storedId === null) {
-    return createLearner(client, storage);
+  if (data !== undefined) {
+    return data.id;
   }
 
-  const { response } = await client.GET("/learners/{learner_id}/progress", {
-    params: { path: { learner_id: storedId } },
-  });
-
-  if (response.ok) {
-    return storedId;
+  if (response.status === UNAUTHORIZED) {
+    return startGuest(client);
   }
 
-  if (response.status === NOT_FOUND) {
-    return createLearner(client, storage);
+  throw new Error(`Could not check who is signed in (status ${response.status})`);
+}
+
+/** Deletes the account and everything in it, then starts again as a new guest. */
+export async function startOver(client: ApiClient): Promise<string> {
+  const { response } = await client.DELETE("/me");
+
+  if (!response.ok && response.status !== UNAUTHORIZED) {
+    throw new Error(`Could not start over (status ${response.status})`);
   }
 
-  throw new Error(`Could not check the learner (status ${response.status})`);
+  return startGuest(client);
 }

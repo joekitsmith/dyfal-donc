@@ -20,3 +20,11 @@ class SelectionAlreadyAnsweredError(DatabaseError):
 
 class EventOutOfOrderError(DatabaseError):
     """The event is earlier than one already recorded for the learner."""
+
+
+class CredentialAlreadyRegisteredError(DatabaseError):
+    """The authenticator's credential id is already stored."""
+
+
+class ChallengeNotFoundError(DatabaseError):
+    """The challenge was never issued, was already used, or has expired."""

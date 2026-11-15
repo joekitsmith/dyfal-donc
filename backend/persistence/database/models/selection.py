@@ -19,7 +19,9 @@ class IssuedSelection(Base):
     __tablename__ = "issued_selections"
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    learner_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("learners.id"), index=True)
+    learner_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("learners.id", ondelete="CASCADE"), index=True
+    )
     exercise_id: Mapped[str] = mapped_column(String(128))
     item_ids: Mapped[list[str]] = mapped_column(ARRAY(String(128)))
     new_item: Mapped[str | None] = mapped_column(String(128))

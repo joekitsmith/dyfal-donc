@@ -35,6 +35,19 @@
         "title": "AudioTrack",
         "type": "string"
       },
+      "AuthenticationVerifyRequest": {
+        "description": "The browser's signed answer, as its WebAuthn API produced it.",
+        "properties": {
+          "credential": {
+            "$ref": "#/components/schemas/PasskeyJson"
+          }
+        },
+        "required": [
+          "credential"
+        ],
+        "title": "AuthenticationVerifyRequest",
+        "type": "object"
+      },
       "CourseResponse": {
         "properties": {
           "item_count": {
@@ -157,31 +170,6 @@
         "title": "HealthResponse",
         "type": "object"
       },
-      "LearnerResponse": {
-        "properties": {
-          "course_release": {
-            "title": "Course Release",
-            "type": "string"
-          },
-          "created_at": {
-            "format": "date-time",
-            "title": "Created At",
-            "type": "string"
-          },
-          "id": {
-            "format": "uuid",
-            "title": "Id",
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "course_release",
-          "created_at"
-        ],
-        "title": "LearnerResponse",
-        "type": "object"
-      },
       "NextExerciseResponse": {
         "discriminator": {
           "mapping": {
@@ -249,6 +237,48 @@
         "title": "OutcomeResponse",
         "type": "object"
       },
+      "PasskeyJson": {
+        "additionalProperties": true,
+        "type": "object"
+      },
+      "PasskeyResponse": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "last_used_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Used At"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "created_at",
+          "last_used_at"
+        ],
+        "title": "PasskeyResponse",
+        "type": "object"
+      },
       "ProgressResponse": {
         "description": "Where the learner is, as of the server's clock.",
         "properties": {
@@ -293,6 +323,32 @@
         "title": "ProgressResponse",
         "type": "object"
       },
+      "RegistrationVerifyRequest": {
+        "description": "The browser's new passkey, as its WebAuthn API produced it.",
+        "properties": {
+          "credential": {
+            "$ref": "#/components/schemas/PasskeyJson"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "maxLength": 128,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          }
+        },
+        "required": [
+          "credential"
+        ],
+        "title": "RegistrationVerifyRequest",
+        "type": "object"
+      },
       "ReportedOutcome": {
         "description": "How the learner says an exercise went.",
         "enum": [
@@ -321,6 +377,31 @@
           "requires"
         ],
         "title": "TopicResponse",
+        "type": "object"
+      },
+      "UserResponse": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "is_guest": {
+            "title": "Is Guest",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "is_guest",
+          "created_at"
+        ],
+        "title": "UserResponse",
         "type": "object"
       },
       "ValidationError": {
@@ -371,6 +452,147 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/auth/guest": {
+      "post": {
+        "operationId": "post_guest_auth_guest_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Post Guest"
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "operationId": "post_logout_auth_logout_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Post Logout"
+      }
+    },
+    "/auth/passkeys/authentication/options": {
+      "post": {
+        "operationId": "post_authentication_options_auth_passkeys_authentication_options_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyJson"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Post Authentication Options"
+      }
+    },
+    "/auth/passkeys/authentication/verify": {
+      "post": {
+        "operationId": "post_authentication_verify_auth_passkeys_authentication_verify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticationVerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Post Authentication Verify"
+      }
+    },
+    "/auth/passkeys/registration/options": {
+      "post": {
+        "operationId": "post_registration_options_auth_passkeys_registration_options_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyJson"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Post Registration Options"
+      }
+    },
+    "/auth/passkeys/registration/verify": {
+      "post": {
+        "operationId": "post_registration_verify_auth_passkeys_registration_verify_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegistrationVerifyRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PasskeyResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Post Registration Verify"
+      }
+    },
     "/course": {
       "get": {
         "operationId": "course_course_get",
@@ -450,39 +672,37 @@
         "summary": "Health"
       }
     },
-    "/learners": {
-      "post": {
-        "operationId": "post_learner_learners_post",
+    "/me": {
+      "delete": {
+        "operationId": "delete_me_me_delete",
         "responses": {
-          "201": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Delete Me"
+      },
+      "get": {
+        "operationId": "get_me_me_get",
+        "responses": {
+          "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LearnerResponse"
+                  "$ref": "#/components/schemas/UserResponse"
                 }
               }
             },
             "description": "Successful Response"
           }
         },
-        "summary": "Post Learner"
+        "summary": "Get Me"
       }
     },
-    "/learners/{learner_id}/next": {
-      "get": {
-        "operationId": "get_next_learners__learner_id__next_get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
+    "/me/next": {
+      "post": {
+        "description": "Issues an exercise to the signed-in learner, so it is not a safe request.",
+        "operationId": "post_next_me_next_post",
         "responses": {
           "200": {
             "content": {
@@ -493,36 +713,14 @@
               }
             },
             "description": "Successful Response"
-          },
-          "422": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            },
-            "description": "Validation Error"
           }
         },
-        "summary": "Get Next"
+        "summary": "Post Next"
       }
     },
-    "/learners/{learner_id}/outcomes": {
+    "/me/outcomes": {
       "post": {
-        "operationId": "post_outcome_learners__learner_id__outcomes_post",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "post_outcome_me_outcomes_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -558,30 +756,45 @@
         "summary": "Post Outcome"
       }
     },
-    "/learners/{learner_id}/progress": {
+    "/me/passkeys": {
       "get": {
-        "operationId": "get_progress_learners__learner_id__progress_get",
-        "parameters": [
-          {
-            "in": "path",
-            "name": "learner_id",
-            "required": true,
-            "schema": {
-              "format": "uuid",
-              "title": "Learner Id",
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "get_passkeys_me_passkeys_get",
         "responses": {
           "200": {
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProgressResponse"
+                  "items": {
+                    "$ref": "#/components/schemas/PasskeyResponse"
+                  },
+                  "title": "Response Get Passkeys Me Passkeys Get",
+                  "type": "array"
                 }
               }
             },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Passkeys"
+      }
+    },
+    "/me/passkeys/{passkey_id}": {
+      "delete": {
+        "operationId": "delete_passkey_me_passkeys__passkey_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "passkey_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Passkey Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
             "description": "Successful Response"
           },
           "422": {
@@ -593,6 +806,24 @@
               }
             },
             "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Passkey"
+      }
+    },
+    "/me/progress": {
+      "get": {
+        "operationId": "get_progress_me_progress_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgressResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
           }
         },
         "summary": "Get Progress"

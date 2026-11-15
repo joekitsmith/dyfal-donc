@@ -4,7 +4,7 @@ Where the app keeps what is not course content, which stays in the files under `
 
 ## `persistence.database`
 
-Postgres, through SQLAlchemy 2 (sync, psycopg 3). The tables are in `models/`: learners, the exercises issued to them, and the append-only log of review events that a learner's state is replayed from. The docstrings and constraints there say what each guarantees.
+Postgres, through SQLAlchemy 2 (sync, psycopg 3). The tables are in `models/`: users, their passkeys, login sessions and passkey challenges; learners (one per user), the exercises issued to them, and the append-only log of review events that a learner's state is replayed from. Deleting a user deletes everything that belongs to them. The docstrings and constraints there say what each guarantees.
 
 - `models/`: the tables. Private to this package.
 - `commands/`: what the repositories are told to do, each carrying everything needed. Methods that change data take one command, and reads take ids.

@@ -1,28 +1,27 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { apiClient } from "@/api/client";
-import { browserStorage } from "@/utils/safe-storage";
 
 import { LEARNER_QUERY_KEY } from "../constants";
-import { createLearner, resolveLearner } from "./resolve-learner";
+import { resolveLearner, startOver } from "./resolve-learner";
 
 export function useLearner() {
   const queryClient = useQueryClient();
   const learner = useQuery({
-    queryFn: () => resolveLearner(apiClient, browserStorage),
+    queryFn: () => resolveLearner(apiClient),
     queryKey: LEARNER_QUERY_KEY,
   });
-  const startOver = useMutation({
-    mutationFn: () => createLearner(apiClient, browserStorage),
+  const startingOver = useMutation({
+    mutationFn: () => startOver(apiClient),
     onSuccess: (learnerId) => {
       queryClient.setQueryData(LEARNER_QUERY_KEY, learnerId);
     },
   });
 
   return {
-    error: learner.error ?? startOver.error,
+    error: learner.error ?? startingOver.error,
     isLoading: learner.isPending,
     learnerId: learner.data,
-    startOver: startOver.mutate,
+    startOver: startingOver.mutate,
   };
 }

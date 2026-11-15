@@ -3,8 +3,18 @@ from collections.abc import Awaitable, Callable
 from fastapi import FastAPI, Request, status
 from fastapi.responses import JSONResponse
 
-from api.errors import ExerciseNotFoundError, SpeechUnavailableError
+from api.errors import (
+    ExerciseNotFoundError,
+    ForeignOriginError,
+    InvalidPasskeyError,
+    LastPasskeyError,
+    NotAuthenticatedError,
+    PasskeyNotFoundError,
+    SpeechUnavailableError,
+)
 from persistence.database.errors import (
+    ChallengeNotFoundError,
+    CredentialAlreadyRegisteredError,
     EventOutOfOrderError,
     LearnerNotFoundError,
     SelectionAlreadyAnsweredError,
@@ -22,6 +32,13 @@ STATUS_FOR_ERROR: dict[type[Exception], int] = {
     SelectionExpiredError: status.HTTP_410_GONE,
     SelectionAlreadyAnsweredError: status.HTTP_409_CONFLICT,
     EventOutOfOrderError: status.HTTP_409_CONFLICT,
+    NotAuthenticatedError: status.HTTP_401_UNAUTHORIZED,
+    ForeignOriginError: status.HTTP_403_FORBIDDEN,
+    InvalidPasskeyError: status.HTTP_400_BAD_REQUEST,
+    ChallengeNotFoundError: status.HTTP_400_BAD_REQUEST,
+    CredentialAlreadyRegisteredError: status.HTTP_409_CONFLICT,
+    PasskeyNotFoundError: status.HTTP_404_NOT_FOUND,
+    LastPasskeyError: status.HTTP_409_CONFLICT,
 }
 
 

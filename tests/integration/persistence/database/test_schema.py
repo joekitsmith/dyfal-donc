@@ -2,7 +2,15 @@ from sqlalchemy import Engine, inspect
 
 from persistence.database import create_schema
 
-TABLES = {"learners", "issued_selections", "review_events"}
+TABLES = {
+    "issued_selections",
+    "learners",
+    "login_sessions",
+    "review_events",
+    "users",
+    "webauthn_challenges",
+    "webauthn_credentials",
+}
 
 
 class TestCreateSchema:

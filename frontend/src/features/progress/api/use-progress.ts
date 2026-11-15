@@ -7,8 +7,7 @@ import { progressQueryKey } from "../constants";
 
 export function useProgress(learnerId: string) {
   return useQuery({
-    queryFn: async () =>
-      unwrap(await apiClient.GET("/learners/{learner_id}/progress", { params: { path: { learner_id: learnerId } } })),
+    queryFn: async () => unwrap(await apiClient.GET("/me/progress")),
     queryKey: progressQueryKey(learnerId),
   });
 }
