@@ -8,5 +8,6 @@ class LearnerRecord:
     """A learner row, read out of the database."""
 
     id: uuid.UUID
+    user_id: uuid.UUID
     course_release: str
     created_at: datetime

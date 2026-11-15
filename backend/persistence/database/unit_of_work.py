@@ -1,9 +1,13 @@
 from sqlalchemy.orm import Session
 
 from persistence.database.repositories import (
+    ChallengeRepository,
+    CredentialRepository,
     EventRepository,
     LearnerRepository,
+    LoginSessionRepository,
     SelectionRepository,
+    UserRepository,
 )
 
 
@@ -16,6 +20,10 @@ class UnitOfWork:
 
     def __init__(self, session: Session) -> None:
         self._session = session
+        self.users = UserRepository(session)
+        self.credentials = CredentialRepository(session)
+        self.login_sessions = LoginSessionRepository(session)
+        self.challenges = ChallengeRepository(session)
         self.learners = LearnerRepository(session)
         self.selections = SelectionRepository(session)
         self.events = EventRepository(session)

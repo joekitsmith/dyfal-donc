@@ -29,10 +29,12 @@ class ReviewEvent(Base):
     )
 
     id: Mapped[uuid.UUID] = mapped_column(primary_key=True, default=uuid.uuid4)
-    learner_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("learners.id"))
+    learner_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("learners.id", ondelete="CASCADE")
+    )
     sequence: Mapped[int]
     selection_id: Mapped[uuid.UUID] = mapped_column(
-        ForeignKey("issued_selections.id"), unique=True
+        ForeignKey("issued_selections.id", ondelete="CASCADE"), unique=True
     )
     exercise_id: Mapped[str] = mapped_column(String(128))
     item_ids: Mapped[list[str]] = mapped_column(ARRAY(String(128)))

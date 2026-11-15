@@ -7,11 +7,18 @@ REPOSITORY_ROOT = Path(__file__).parents[3]
 
 
 class TestRenderOpenapiSchema:
-    def test_describes_the_audio_and_learner_paths(self) -> None:
-        schema = json.loads(render_openapi_schema())
+    def test_describes_the_audio_account_and_learner_paths(self) -> None:
+        paths = json.loads(render_openapi_schema())["paths"]
 
-        assert "/learners/{learner_id}/next" in schema["paths"]
-        assert "/exercises/{exercise_id}/audio/{track}" in schema["paths"]
+        assert "/exercises/{exercise_id}/audio/{track}" in paths
+        assert "/auth/guest" in paths
+        assert "/me/next" in paths
+        assert not any(path.startswith("/learners") for path in paths)
+
+    def test_issuing_an_exercise_is_not_a_get(self) -> None:
+        paths = json.loads(render_openapi_schema())["paths"]
+
+        assert set(paths["/me/next"]) == {"post"}
 
     def test_is_stable_between_calls(self) -> None:
         assert render_openapi_schema() == render_openapi_schema()

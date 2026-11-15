@@ -10,14 +10,9 @@ export type OutcomeSubmission = {
   readonly selectionId: string;
 };
 
-export function useSubmitOutcome(learnerId: string) {
+export function useSubmitOutcome() {
   return useMutation({
     mutationFn: async ({ outcome, selectionId }: OutcomeSubmission) =>
-      unwrap(
-        await apiClient.POST("/learners/{learner_id}/outcomes", {
-          body: { outcome, selection_id: selectionId },
-          params: { path: { learner_id: learnerId } },
-        }),
-      ),
+      unwrap(await apiClient.POST("/me/outcomes", { body: { outcome, selection_id: selectionId } })),
   });
 }

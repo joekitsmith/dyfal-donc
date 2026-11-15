@@ -67,8 +67,8 @@ export function useLessonPlayer({
 }) {
   const [state, dispatch] = useReducer(lessonReducer, INITIAL_LESSON_STATE);
   const [player] = useState(() => new ClipPlayer());
-  const { mutate: fetchNext } = useNextExercise(learnerId);
-  const { mutate: submitOutcome } = useSubmitOutcome(learnerId);
+  const { mutate: fetchNext } = useNextExercise();
+  const { mutate: submitOutcome } = useSubmitOutcome();
   const queryClient = useQueryClient();
   const timer = useRef<null | PausableTimer>(null);
   const marks = useRef({ loadingStartedAt: 0, thinkEndedAt: 0 });

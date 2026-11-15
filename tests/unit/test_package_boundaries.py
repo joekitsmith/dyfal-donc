@@ -112,7 +112,8 @@ class TestPackageBoundaries:
     def test_the_speech_service_imports_nothing_else_from_the_repository(self) -> None:
         assert (
             forbidden_imports(
-                tts, ("api", "persistence", "engine", "cymraeg", "evals", "tools")
+                tts,
+                ("api", "persistence", "engine", "cymraeg", "evals", "tools"),
             )
             == []
         )
@@ -140,6 +141,20 @@ class TestPackageBoundaries:
 
     def test_api_controllers_never_import_fastapi(self) -> None:
         assert forbidden_imports(api_controllers, ("fastapi", "starlette")) == []
+
+    @pytest.mark.parametrize(
+        "module", ("passkeys.py", "tokens.py", "login_sessions.py")
+    )
+    def test_the_sign_in_helpers_never_import_the_web_framework_or_the_database(
+        self, module: str
+    ) -> None:
+        api_file = api.__file__
+        assert api_file is not None
+        path = Path(api_file).parent / module
+
+        names = imported_top_level_modules(path.parent)[path]
+
+        assert names.isdisjoint({"fastapi", "starlette", "sqlalchemy", "persistence"})
 
     def test_only_one_learner_module_imports_fsrs(self) -> None:
         engine_file = engine.__file__

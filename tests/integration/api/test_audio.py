@@ -6,9 +6,10 @@ from sqlalchemy import Engine
 
 from api.app import create_app
 from api.settings import DEFAULT_CURRICULUM_DIRECTORY, Settings
+from api.settings import LoginSessionSettings, PasskeySettings
 from persistence.database import DatabaseSettings
-from tests.integration.api.conftest import FakeClock
-from tests.integration.api.test_learner_loop import create_learner, offer
+from tests.integration.api.conftest import ORIGIN, FakeClock
+from tests.integration.api.helpers import offer, start_guest
 
 
 @pytest.fixture
@@ -19,8 +20,12 @@ def client_with_speech(
         curriculum_directory=DEFAULT_CURRICULUM_DIRECTORY,
         database=DatabaseSettings(url=engine.url.render_as_string(hide_password=False)),
         tts_url=tts_url,
+        passkeys=PasskeySettings(_env_file=None),
+        login_session=LoginSessionSettings(cookie_secure=False, _env_file=None),
     )
-    with TestClient(create_app(settings, clock)) as test_client:
+    with TestClient(
+        create_app(settings, clock), headers={"Origin": ORIGIN}
+    ) as test_client:
         yield test_client
 
 
@@ -28,7 +33,8 @@ class TestAudioOfTheLearnLoop:
     def test_every_audio_link_of_an_offered_exercise_gives_wav(
         self, client_with_speech: TestClient
     ) -> None:
-        body = offer(client_with_speech, create_learner(client_with_speech))
+        start_guest(client_with_speech)
+        body = offer(client_with_speech)
         links = body["audio"]
         assert isinstance(links, dict)
 

@@ -7,13 +7,16 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from persistence.database import create_session_factory
-from persistence.database.models import IssuedSelection, Learner, ReviewEvent
+from persistence.database.models import IssuedSelection, Learner, ReviewEvent, User
 
 NOW = datetime(2026, 1, 1, 9, tzinfo=UTC)
 
 
 def add_learner(session: Session) -> Learner:
-    learner = Learner(course_release="hash")
+    user = User()
+    session.add(user)
+    session.flush()
+    learner = Learner(user_id=user.id, course_release="hash")
     session.add(learner)
     session.flush()
     return learner

@@ -8,12 +8,10 @@ import type { LessonExercise } from "../types";
 export type NextExercise =
   { readonly exercise: LessonExercise; readonly kind: "exercise" } | { readonly kind: "nothing_eligible" };
 
-export function useNextExercise(learnerId: string) {
+export function useNextExercise() {
   return useMutation({
     mutationFn: async (): Promise<NextExercise> => {
-      const offered = unwrap(
-        await apiClient.GET("/learners/{learner_id}/next", { params: { path: { learner_id: learnerId } } }),
-      );
+      const offered = unwrap(await apiClient.POST("/me/next"));
 
       if (offered.kind === "nothing_eligible") {
         return { kind: "nothing_eligible" };

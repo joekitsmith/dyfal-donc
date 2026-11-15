@@ -24,12 +24,13 @@ export const ERROR_MESSAGES = {
 } as const;
 
 export const LEARNER_MISSING_MESSAGE =
-  "Your progress was not found on the server. The course may have been reset, so start over to carry on.";
+  "Your progress was not found on the server. You may be signed out or the course may have been reset, so start over to carry on.";
 export const SPEECH_UNAVAILABLE_MESSAGE = "The speech service is not available. Check that it is running, then retry.";
 export const NOTHING_ELIGIBLE_MESSAGE =
   "The course is not ready for you yet. There is a gap in the content, so there is nothing to give you right now. Try refreshing later.";
 
 export const NOT_FOUND_STATUS = 404;
+export const UNAUTHORIZED_STATUS = 401;
 export const SERVICE_UNAVAILABLE_STATUS = 503;
 
 export const ALREADY_ANSWERED_STATUS = 409;

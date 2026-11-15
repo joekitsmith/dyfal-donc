@@ -1,61 +1,49 @@
-import uuid
+from fastapi import APIRouter, Depends
 
-from fastapi import APIRouter, status
-
-from api.controllers import (
-    create_learner,
-    describe_progress,
-    offer_exercise,
-    record_outcome,
-)
+from api.controllers import describe_progress, offer_exercise, record_outcome
 from api.dependencies import (
     ClockDependency,
     CourseReleaseDependency,
+    LearnerIdDependency,
     SelectionLifetimeDependency,
     UnitOfWorkDependency,
+    require_known_origin,
 )
 from api.schemas import (
-    LearnerResponse,
     NextExerciseResponse,
     OutcomeRequest,
     OutcomeResponse,
     ProgressResponse,
 )
 
-router = APIRouter(prefix="/learners")
+router = APIRouter(prefix="/me", dependencies=[Depends(require_known_origin)])
 
 
-@router.post("", status_code=status.HTTP_201_CREATED)
-def post_learner(
-    unit_of_work: UnitOfWorkDependency, release: CourseReleaseDependency
-) -> LearnerResponse:
-    return create_learner(unit_of_work, release)
-
-
-@router.get("/{learner_id}/next")
-def get_next(
-    learner_id: uuid.UUID,
+@router.post("/next")
+def post_next(
+    learner_id: LearnerIdDependency,
     unit_of_work: UnitOfWorkDependency,
     release: CourseReleaseDependency,
     clock: ClockDependency,
     lifetime: SelectionLifetimeDependency,
 ) -> NextExerciseResponse:
+    """Issues an exercise to the signed-in learner, so it is not a safe request."""
     return offer_exercise(unit_of_work, release, learner_id, clock(), lifetime)
 
 
-@router.post("/{learner_id}/outcomes")
+@router.post("/outcomes")
 def post_outcome(
-    learner_id: uuid.UUID,
     request: OutcomeRequest,
+    learner_id: LearnerIdDependency,
     unit_of_work: UnitOfWorkDependency,
     clock: ClockDependency,
 ) -> OutcomeResponse:
     return record_outcome(unit_of_work, learner_id, request, clock())
 
 
-@router.get("/{learner_id}/progress")
+@router.get("/progress")
 def get_progress(
-    learner_id: uuid.UUID,
+    learner_id: LearnerIdDependency,
     unit_of_work: UnitOfWorkDependency,
     release: CourseReleaseDependency,
     clock: ClockDependency,

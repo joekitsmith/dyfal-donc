@@ -1,4 +1,11 @@
 from api.schemas.audio import AudioLinks, AudioTrack
+from api.schemas.auth import (
+    AuthenticationVerifyRequest,
+    PasskeyJson,
+    PasskeyResponse,
+    RegistrationVerifyRequest,
+    UserResponse,
+)
 from api.schemas.course import CourseResponse, TopicResponse
 from api.schemas.exercise import (
     ExercisePurpose,
@@ -7,23 +14,26 @@ from api.schemas.exercise import (
     NothingEligibleResponse,
 )
 from api.schemas.health import HealthResponse
-from api.schemas.learner import LearnerResponse
 from api.schemas.outcome import OutcomeRequest, OutcomeResponse, ReportedOutcome
 from api.schemas.progress import ProgressResponse
 
 __all__ = [
     "AudioLinks",
+    "AuthenticationVerifyRequest",
     "AudioTrack",
     "CourseResponse",
     "ExercisePurpose",
     "ExerciseResponse",
     "HealthResponse",
-    "LearnerResponse",
     "NextExerciseResponse",
     "NothingEligibleResponse",
     "OutcomeRequest",
     "OutcomeResponse",
+    "PasskeyJson",
+    "PasskeyResponse",
     "ProgressResponse",
+    "RegistrationVerifyRequest",
     "ReportedOutcome",
     "TopicResponse",
+    "UserResponse",
 ]

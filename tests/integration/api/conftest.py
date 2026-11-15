@@ -1,16 +1,20 @@
-from collections.abc import Iterator
-from pathlib import Path
+from collections.abc import Callable, Iterator
 from datetime import UTC, datetime, timedelta
+from pathlib import Path
 
 import pytest
+from fastapi import FastAPI
 from fastapi.testclient import TestClient
 from sqlalchemy import Engine
 
 from api.app import create_app
 from api.settings import DEFAULT_CURRICULUM_DIRECTORY, Settings
+from api.settings import LoginSessionSettings, PasskeySettings
 from persistence.database import DatabaseSettings
+from tests.support.authenticator import SoftwareAuthenticator
 
 START = datetime(2026, 1, 1, 9, tzinfo=UTC)
+ORIGIN = "http://localhost:8080"
 
 
 class FakeClock:
@@ -31,14 +35,45 @@ def clock() -> FakeClock:
     return FakeClock()
 
 
-@pytest.fixture
-def client(engine: Engine, clock: FakeClock) -> Iterator[TestClient]:
-    settings = Settings(
-        curriculum_directory=DEFAULT_CURRICULUM_DIRECTORY,
-        database=DatabaseSettings(url=engine.url.render_as_string(hide_password=False)),
+def build_app(engine: Engine, clock: FakeClock, curriculum_directory: Path) -> FastAPI:
+    return create_app(
+        Settings(
+            curriculum_directory=curriculum_directory,
+            database=DatabaseSettings(
+                url=engine.url.render_as_string(hide_password=False)
+            ),
+            passkeys=PasskeySettings(_env_file=None),
+            login_session=LoginSessionSettings(cookie_secure=False, _env_file=None),
+        ),
+        clock,
     )
-    with TestClient(create_app(settings, clock)) as test_client:
-        yield test_client
+
+
+@pytest.fixture
+def app(engine: Engine, clock: FakeClock) -> Iterator[FastAPI]:
+    application = build_app(engine, clock, DEFAULT_CURRICULUM_DIRECTORY)
+    with TestClient(application):
+        yield application
+
+
+@pytest.fixture
+def make_client(app: FastAPI) -> Callable[[], TestClient]:
+    """Makes browsers: each has its own cookies and sends the app's own Origin."""
+
+    def make() -> TestClient:
+        return TestClient(app, headers={"Origin": ORIGIN})
+
+    return make
+
+
+@pytest.fixture
+def client(make_client: Callable[[], TestClient]) -> TestClient:
+    return make_client()
+
+
+@pytest.fixture
+def authenticator() -> SoftwareAuthenticator:
+    return SoftwareAuthenticator()
 
 
 @pytest.fixture
@@ -62,9 +97,6 @@ def course_without_exercises(tmp_path: Path) -> Path:
 def client_without_exercises(
     engine: Engine, clock: FakeClock, course_without_exercises: Path
 ) -> Iterator[TestClient]:
-    settings = Settings(
-        curriculum_directory=course_without_exercises,
-        database=DatabaseSettings(url=engine.url.render_as_string(hide_password=False)),
-    )
-    with TestClient(create_app(settings, clock)) as test_client:
+    application = build_app(engine, clock, course_without_exercises)
+    with TestClient(application, headers={"Origin": ORIGIN}) as test_client:
         yield test_client

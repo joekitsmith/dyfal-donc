@@ -9,13 +9,16 @@ from sqlalchemy.orm import Session, sessionmaker
 
 from persistence.database import (
     AddLearner,
+    AddUser,
     AppendEvent,
     ConsumeSelection,
     EventRepository,
     IssueSelection,
     IssuedSelectionRecord,
+    LearnerRecord,
     LearnerRepository,
     SelectionRepository,
+    UserRepository,
 )
 from persistence.database.errors import (
     EventOutOfOrderError,
@@ -27,6 +30,14 @@ from persistence.database.errors import (
 
 NOW = datetime(2026, 1, 1, 9, tzinfo=UTC)
 LIFETIME = timedelta(hours=1)
+
+
+def add_learner(session: Session, release: str = "r") -> LearnerRecord:
+    """A learner with a user of their own, as the API makes them."""
+    user = UserRepository(session).add(AddUser())
+    return LearnerRepository(session).add(
+        AddLearner(user_id=user.id, course_release=release)
+    )
 
 
 def new_selection(
@@ -85,24 +96,32 @@ def answer(
 class TestLearnerRepository:
     def test_a_learner_can_be_added_and_found(self, session: Session) -> None:
         repository = LearnerRepository(session)
+        user = UserRepository(session).add(AddUser())
 
-        added = repository.add(AddLearner(course_release="release-1"))
+        added = repository.add(AddLearner(user_id=user.id, course_release="release-1"))
 
         found = repository.get(added.id)
         assert found == added
         assert found is not None
         assert found.course_release == "release-1"
+        assert found.user_id == user.id
         assert found.created_at.utcoffset() == timedelta(0)
 
     def test_an_unknown_learner_is_not_found(self, session: Session) -> None:
         assert LearnerRepository(session).get(uuid.uuid4()) is None
+
+    def test_a_learner_is_found_by_their_user(self, session: Session) -> None:
+        learner = add_learner(session)
+
+        assert LearnerRepository(session).for_user(learner.user_id) == learner
+        assert LearnerRepository(session).for_user(uuid.uuid4()) is None
 
 
 class TestSelectionRepository:
     def test_an_issued_selection_keeps_what_the_event_needs(
         self, session: Session
     ) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
 
         issued = SelectionRepository(session).issue(new_selection(learner.id, "lex:b"))
 
@@ -113,7 +132,7 @@ class TestSelectionRepository:
         assert issued.consumed_at is None
 
     def test_consuming_marks_the_time_it_was_answered(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         issued = SelectionRepository(session).issue(new_selection(learner.id))
 
         consumed = SelectionRepository(session).consume(
@@ -123,7 +142,7 @@ class TestSelectionRepository:
         assert consumed.consumed_at == NOW + timedelta(minutes=5)
 
     def test_a_selection_cannot_be_answered_twice(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         repository = SelectionRepository(session)
         issued = repository.issue(new_selection(learner.id))
         repository.consume(consuming(learner.id, issued.id, NOW))
@@ -132,7 +151,7 @@ class TestSelectionRepository:
             repository.consume(consuming(learner.id, issued.id, NOW))
 
     def test_an_expired_selection_cannot_be_answered(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         repository = SelectionRepository(session)
         issued = repository.issue(new_selection(learner.id))
 
@@ -142,7 +161,7 @@ class TestSelectionRepository:
     def test_a_selection_can_be_answered_just_before_it_expires(
         self, session: Session
     ) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         repository = SelectionRepository(session)
         issued = repository.issue(new_selection(learner.id))
 
@@ -151,7 +170,7 @@ class TestSelectionRepository:
         )
 
     def test_an_unknown_selection_is_not_found(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
 
         with pytest.raises(SelectionNotFoundError):
             SelectionRepository(session).consume(
@@ -161,9 +180,8 @@ class TestSelectionRepository:
     def test_a_learner_cannot_answer_another_learners_selection(
         self, session: Session
     ) -> None:
-        learners = LearnerRepository(session)
-        owner = learners.add(AddLearner(course_release="r"))
-        other = learners.add(AddLearner(course_release="r"))
+        owner = add_learner(session)
+        other = add_learner(session)
         repository = SelectionRepository(session)
         issued = repository.issue(new_selection(owner.id))
 
@@ -173,7 +191,7 @@ class TestSelectionRepository:
 
 class TestEventRepository:
     def test_sequence_numbers_count_up_from_one(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
 
         sequences = [
             answer(
@@ -189,19 +207,14 @@ class TestEventRepository:
         assert sequences == [1, 2, 3]
 
     def test_each_learner_has_their_own_sequence(self, session: Session) -> None:
-        learners = LearnerRepository(session)
-
-        sequences = [
-            answer(session, learners.add(AddLearner(course_release="r")).id, NOW)[1]
-            for _ in range(2)
-        ]
+        sequences = [answer(session, add_learner(session).id, NOW)[1] for _ in range(2)]
 
         assert sequences == [1, 1]
 
     def test_events_come_back_in_the_order_they_happened(
         self, session: Session
     ) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         for n in range(3):
             answer(
                 session, learner.id, NOW + timedelta(minutes=n), f"lex:{n}", f"ex:{n}"
@@ -213,7 +226,7 @@ class TestEventRepository:
         assert [event.sequence for event in events] == [1, 2, 3]
 
     def test_an_event_keeps_everything_it_was_given(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         issued, _ = answer(session, learner.id, NOW, outcome="missed_it")
 
         (event,) = EventRepository(session).events(learner.id)
@@ -225,7 +238,7 @@ class TestEventRepository:
         assert event.reviewed_at == NOW
 
     def test_an_event_can_be_found_by_its_selection(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         issued, _ = answer(session, learner.id, NOW)
         repository = EventRepository(session)
 
@@ -236,7 +249,7 @@ class TestEventRepository:
         assert repository.for_selection(learner.id, uuid.uuid4()) is None
 
     def test_an_event_earlier_than_the_last_is_rejected(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         answer(session, learner.id, NOW)
         late = SelectionRepository(session).issue(
             new_selection(learner.id, "lex:b", "ex:2")
@@ -246,7 +259,7 @@ class TestEventRepository:
             EventRepository(session).append(new_event(late, NOW - timedelta(1)))
 
     def test_an_unknown_learner_is_rejected(self, session: Session) -> None:
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         issued = SelectionRepository(session).issue(new_selection(learner.id))
 
         with pytest.raises(LearnerNotFoundError):
@@ -258,7 +271,7 @@ class TestEventRepository:
         self, session: Session
     ) -> None:
         session.execute(text("SET TIME ZONE 'Asia/Tokyo'"))
-        learner = LearnerRepository(session).add(AddLearner(course_release="r"))
+        learner = add_learner(session)
         answer(session, learner.id, NOW)
 
         (event,) = EventRepository(session).events(learner.id)
@@ -272,7 +285,7 @@ class TestConcurrentAppends:
         self, session_factory: sessionmaker[Session]
     ) -> None:
         with session_factory() as setup:
-            learner = LearnerRepository(setup).add(AddLearner(course_release="r"))
+            learner = add_learner(setup)
             issued = tuple(
                 SelectionRepository(setup).issue(
                     new_selection(learner.id, f"lex:{n}", f"ex:{n}")

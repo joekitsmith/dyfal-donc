@@ -4,11 +4,9 @@ from datetime import datetime, timedelta
 from api.course import CourseRelease
 from api.mappings import (
     to_exercise_response,
-    to_learner_response,
     to_append_event,
     to_consume_selection,
     to_issue_selection,
-    to_add_learner,
     to_nothing_eligible_response,
     to_outcome,
     to_outcome_response,
@@ -16,7 +14,6 @@ from api.mappings import (
     to_review_events,
 )
 from api.schemas import (
-    LearnerResponse,
     NextExerciseResponse,
     OutcomeRequest,
     OutcomeResponse,
@@ -39,12 +36,6 @@ from persistence.database.errors import (
     LearnerNotFoundError,
     SelectionAlreadyAnsweredError,
 )
-
-
-def create_learner(unit_of_work: UnitOfWork, release: CourseRelease) -> LearnerResponse:
-    learner = unit_of_work.learners.add(to_add_learner(release))
-    unit_of_work.commit()
-    return to_learner_response(learner)
 
 
 def offer_exercise(

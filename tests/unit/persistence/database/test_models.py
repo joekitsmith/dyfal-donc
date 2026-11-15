@@ -4,11 +4,15 @@ from persistence.database.models import Base
 
 
 class TestModels:
-    def test_defines_the_three_tables(self) -> None:
+    def test_defines_the_tables(self) -> None:
         assert set(Base.metadata.tables) == {
-            "learners",
             "issued_selections",
+            "learners",
+            "login_sessions",
             "review_events",
+            "users",
+            "webauthn_challenges",
+            "webauthn_credentials",
         }
 
     def test_review_events_are_unique_per_learner_and_sequence(self) -> None:
