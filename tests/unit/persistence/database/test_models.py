@@ -1,7 +1,6 @@
 from sqlalchemy import UniqueConstraint
 
-from persistence.database import Base
-from persistence.database.models import OUTCOMES
+from persistence.database.models import OUTCOMES, Base
 from engine.learner import Outcome
 
 
