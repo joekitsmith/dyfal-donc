@@ -8,9 +8,11 @@ from engine.curriculum.errors import CurriculumError
 
 type Item = Lexeme | Pattern
 
+DEFAULT_TOPIC = "spine"
 _SLOT_PATTERN = re.compile(r"\[([A-Z]+)\]")
 _LEXEME_ID_PATTERN = re.compile(r"^lex:[a-z0-9-]+$")
 _PATTERN_ID_PATTERN = re.compile(r"^pat:[a-z0-9-]+$")
+_TOPIC_PATTERN = re.compile(r"^[a-z][a-z0-9-]*$")
 
 
 class PartOfSpeech(StrEnum):
@@ -54,6 +56,7 @@ class Lexeme:
     homographs: tuple[str, ...] = ()
     notes: str = ""
     prerequisites: tuple[str, ...] = ()
+    topic: str = DEFAULT_TOPIC
 
     @property
     def surface_forms(self) -> tuple[str, ...]:
@@ -63,6 +66,7 @@ class Lexeme:
     def __post_init__(self) -> None:
         _check_id(self.id, _LEXEME_ID_PATTERN, "lex:")
         _check_not_blank(self.id, welsh=self.welsh, english=self.english)
+        _check_topic(self.id, self.topic)
         _check_forms(self)
         if self.gender is not None and self.part_of_speech != PartOfSpeech.NOUN:
             raise CurriculumError(
@@ -81,10 +85,12 @@ class Pattern:
     slots: Mapping[str, PartOfSpeech] = field(default_factory=dict)
     notes: str = ""
     prerequisites: tuple[str, ...] = ()
+    topic: str = DEFAULT_TOPIC
 
     def __post_init__(self) -> None:
         _check_id(self.id, _PATTERN_ID_PATTERN, "pat:")
         _check_not_blank(self.id, template=self.template, english=self.english)
+        _check_topic(self.id, self.topic)
         in_template = set(_SLOT_PATTERN.findall(self.template))
         declared = set(self.slots)
         if in_template != declared:
@@ -186,6 +192,14 @@ def _check_id(item_id: str, pattern: re.Pattern[str], prefix: str) -> None:
         raise CurriculumError(
             f"Invalid id {item_id!r}: expected {prefix!r} followed by "
             "lowercase letters, digits or hyphens"
+        )
+
+
+def _check_topic(item_id: str, topic: str) -> None:
+    if not _TOPIC_PATTERN.match(topic):
+        raise CurriculumError(
+            f"{item_id}: Invalid topic {topic!r}: expected lowercase letters, "
+            "digits or hyphens, starting with a letter"
         )
 
 

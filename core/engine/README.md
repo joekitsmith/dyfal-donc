@@ -8,6 +8,7 @@ The curriculum is a prerequisite graph of **items**, plus the intended learning 
 
 - `Lexeme`: a word, e.g. `siarad`, with the other `forms` a learner is taught (`llyfr`: `llyfrau`). Forms are declared, not guessed, so validation stays exact. A form shared by two lexemes must be declared in `homographs` on both.
 - `Pattern`: a grammar pattern with typed slots, e.g. `Dw i'n [VERB]`.
+- `topic`: a lowercase tag on every `Lexeme` and `Pattern`, `spine` by default, that groups items for authors. It does not affect order or scheduling.
 - `Curriculum`: the items and the order. Construction validates unique ids, existing prerequisites, no cycles (the error shows the cycle path) and that the order respects prerequisites.
 - `load_curriculum(path)`: reads a [curriculum directory](../../curriculum/README.md).
 - `topological_order()`: a deterministic ordering derived from the graph alone.
@@ -29,6 +30,7 @@ Known limitations: mutated fixed tokens in a pattern aren't matched, a slot fill
 Checks an `Exercise` (English, Welsh, declared item ids, optional `new_item`) against the curriculum.
 
 - `validate_exercise(exercise, curriculum, known_items)`: runs detection, then compares the detected items with the declared ones. `known_items` are the ids taught before this exercise, so any detected item outside it is new, and an exercise may introduce at most one.
+- `load_exercises(directory)`: reads every `*.yaml` pack in the directory into `ExerciseEntry` objects (`id`, `pack`, `exercise`), and checks the shape of the files, not the Welsh. `exercise_pool(entries)` maps ids to exercises, as the scheduler takes them.
 - `ValidationResult`: the detected items and a tuple of typed issues: the detection problems plus `UndeclaredItem`, `DeclaredItemNotFound`, `UnknownDeclaredItem`, `MissingNewItem`, `MultipleNewItems` and `WrongNewItem`. `is_valid` means no issues.
 
 ## `engine.authoring`
