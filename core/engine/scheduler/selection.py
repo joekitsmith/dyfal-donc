@@ -39,11 +39,13 @@ def next_exercise(
     """Choose the exercise to give next, or say why there is none.
 
     ``pool`` maps exercise ids to published exercises, and ``recent_events``
-    are in chronological order. In priority order, the choice is:
+    are in chronological order and include everything from today (UTC), which
+    the daily limit on new items counts. In priority order, the choice is:
 
     1. an exercise practising a ``Learning`` item that is due;
     2. an exercise practising a ``Review`` item that is due;
-    3. the exercise introducing the frontier item, if recent errors are low;
+    3. the exercise introducing the frontier item, if recent errors are low
+       and the daily limit on new items has not been reached;
     4. any exercise at all, as extra practice.
 
     Within a priority the best-scoring exercise wins, and the lowest exercise
@@ -74,14 +76,20 @@ def next_exercise(
         if covering:
             return _best(covering, purpose, due, previous, settings)
 
-    if introducing and _may_introduce(recent_events, settings):
+    limit_reached = _daily_limit_reached(recent_events, now, settings)
+    if introducing and not limit_reached and _may_introduce(recent_events, settings):
         return _best(introducing, Purpose.INTRODUCTION, due, previous, settings)
 
     if practice:
         return _best(practice, Purpose.PRACTICE, due, previous, settings)
 
     return NothingEligible(
-        reason=_why_nothing(pool, frontier_item, introducing_exists=bool(introducing))
+        reason=_why_nothing(
+            pool,
+            frontier_item,
+            introducing_exists=bool(introducing),
+            limit_reached=limit_reached,
+        )
     )
 
 
@@ -107,6 +115,19 @@ def _best(
     )
 
 
+def _daily_limit_reached(
+    recent_events: Sequence[ReviewEvent], now: datetime, settings: SchedulerSettings
+) -> bool:
+    if settings.new_items_per_day is None:
+        return False
+
+    introduced_today = sum(
+        event.new_item is not None and event.reviewed_at.date() == now.date()
+        for event in recent_events
+    )
+    return introduced_today >= settings.new_items_per_day
+
+
 def _may_introduce(
     recent_events: Sequence[ReviewEvent], settings: SchedulerSettings
 ) -> bool:
@@ -125,7 +146,11 @@ def _why_nothing(
     frontier_item: str | None,
     *,
     introducing_exists: bool,
+    limit_reached: bool,
 ) -> NoExerciseReason:
+    if introducing_exists and limit_reached:
+        return NoExerciseReason.NEW_ITEM_LIMIT_REACHED
+
     if introducing_exists:
         return NoExerciseReason.ERROR_RATE_TOO_HIGH
 

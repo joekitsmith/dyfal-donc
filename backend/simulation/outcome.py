@@ -60,17 +60,19 @@ def attempt_exercise(
     updated = dict(memories)
     truly_correct = True
     for item_id in item_ids:
+        ease = item_ease(seed, item_id, profile.difficulty_spread)
         if item_id == introduces:
             updated[item_id] = TrueMemory(
-                stability_days=profile.memory.initial_stability_days, last_seen=now
+                stability_days=profile.memory.initial_stability_days
+                * profile.learning_rate
+                * ease,
+                last_seen=now,
             )
             continue
 
         memory = memories[item_id]
         probability = recall_probability(memory, now, profile)
-        gain_scale = profile.learning_rate * item_ease(
-            seed, item_id, profile.difficulty_spread
-        )
+        gain_scale = profile.learning_rate * ease
         if rng.random() < probability:
             stability = profile.memory.after_success(
                 memory.stability_days, probability, gain_scale

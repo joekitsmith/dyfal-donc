@@ -44,6 +44,8 @@ def simulate(
     Each exercise is chosen by the real scheduler and recorded as the real
     learner model would see it, while the simulated learner forgets by their
     own ground-truth memory. The same seed and settings give the same trace.
+    The random draw for skipping a day is made even inside a break, so a run
+    with a break is identical to one without up to the day the break starts.
     """
     rng = random.Random(seed)
     state = LearnerState()
@@ -54,7 +56,8 @@ def simulate(
     memories: Mapping[str, TrueMemory] = {}
 
     for day in range(session.days):
-        skipped = rng.random() < session.skip_day_probability
+        skipped_at_random = rng.random() < session.skip_day_probability
+        skipped = skipped_at_random or session.on_break(day)
         now = session.day_start(day)
         session_end = now + timedelta(minutes=session.session_minutes)
         while not skipped and now < session_end:

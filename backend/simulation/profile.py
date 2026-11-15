@@ -44,7 +44,7 @@ AVERAGE = LearnerProfile(
     name="average", difficulty_spread=0.4, learning_rate=1.0, under_report_rate=0.2
 )
 WEAK = LearnerProfile(
-    name="weak", difficulty_spread=0.6, learning_rate=0.6, under_report_rate=0.3
+    name="weak", difficulty_spread=0.7, learning_rate=0.45, under_report_rate=0.3
 )
 
 PROFILES = (STRONG, AVERAGE, WEAK)

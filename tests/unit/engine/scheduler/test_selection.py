@@ -278,6 +278,148 @@ class TestPacing:
         assert result.purpose is Purpose.INTRODUCTION
 
 
+class TestDailyLimit:
+    @staticmethod
+    def introduced(minutes: int) -> ReviewEvent:
+        return ReviewEvent(
+            exercise_id="ex:1",
+            item_ids=(SIARAD_ID,),
+            new_item=SIARAD_ID,
+            outcome=Outcome.GOT_IT,
+            reviewed_at=START + timedelta(minutes=minutes),
+        )
+
+    @pytest.fixture
+    def pool(self) -> dict[str, Exercise]:
+        return {
+            "ex:practice": exercise(SIARAD_ID),
+            "ex:introduce": exercise(DYSGU_ID, SIARAD_ID, new_item=DYSGU_ID),
+        }
+
+    def test_the_limit_stops_a_further_introduction_today(
+        self,
+        pool: dict[str, Exercise],
+        curriculum: Curriculum,
+        memory_model: FsrsMemoryModel,
+    ) -> None:
+        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
+
+        result = selected(
+            choose(
+                pool,
+                curriculum,
+                memories,
+                (self.introduced(0),),
+                now=START + timedelta(hours=1),
+                settings=SchedulerSettings(new_items_per_day=1),
+            )
+        )
+
+        assert (result.exercise_id, result.purpose) == (
+            "ex:practice",
+            Purpose.PRACTICE,
+        )
+
+    def test_without_a_limit_the_next_item_is_introduced(
+        self,
+        pool: dict[str, Exercise],
+        curriculum: Curriculum,
+        memory_model: FsrsMemoryModel,
+    ) -> None:
+        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
+
+        result = selected(
+            choose(
+                pool,
+                curriculum,
+                memories,
+                (self.introduced(0),),
+                now=START + timedelta(hours=1),
+            )
+        )
+
+        assert result.purpose is Purpose.INTRODUCTION
+
+    def test_the_limit_counts_each_introduction(
+        self,
+        pool: dict[str, Exercise],
+        curriculum: Curriculum,
+        memory_model: FsrsMemoryModel,
+    ) -> None:
+        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
+
+        result = selected(
+            choose(
+                pool,
+                curriculum,
+                memories,
+                (self.introduced(0),),
+                now=START + timedelta(hours=1),
+                settings=SchedulerSettings(new_items_per_day=2),
+            )
+        )
+
+        assert result.purpose is Purpose.INTRODUCTION
+
+    def test_the_limit_starts_again_the_next_day(
+        self,
+        pool: dict[str, Exercise],
+        curriculum: Curriculum,
+        memory_model: FsrsMemoryModel,
+    ) -> None:
+        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
+
+        result = selected(
+            choose(
+                pool,
+                curriculum,
+                memories,
+                (self.introduced(0),),
+                now=START + DAY,
+                settings=SchedulerSettings(new_items_per_day=1),
+            )
+        )
+
+        assert result.purpose is Purpose.INTRODUCTION
+
+    def test_introductions_from_yesterday_do_not_count(
+        self,
+        pool: dict[str, Exercise],
+        curriculum: Curriculum,
+        memory_model: FsrsMemoryModel,
+    ) -> None:
+        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
+
+        result = selected(
+            choose(
+                pool,
+                curriculum,
+                memories,
+                (self.introduced(-24 * 60),),
+                settings=SchedulerSettings(new_items_per_day=1),
+            )
+        )
+
+        assert result.purpose is Purpose.INTRODUCTION
+
+    def test_nothing_to_practise_says_the_limit_was_reached(
+        self, curriculum: Curriculum, memory_model: FsrsMemoryModel
+    ) -> None:
+        pool = {"ex:introduce": exercise(DYSGU_ID, SIARAD_ID, new_item=DYSGU_ID)}
+        memories: dict[str, ItemMemory] = {SIARAD_ID: review_not_due(memory_model)}
+
+        result = choose(
+            pool,
+            curriculum,
+            memories,
+            (self.introduced(0),),
+            now=START + timedelta(hours=1),
+            settings=SchedulerSettings(new_items_per_day=1),
+        )
+
+        assert result == NothingEligible(reason=NoExerciseReason.NEW_ITEM_LIMIT_REACHED)
+
+
 class TestNothingEligible:
     def test_nothing_is_eligible_with_an_empty_pool_once_everything_is_known(
         self, curriculum: Curriculum, memory_model: FsrsMemoryModel
