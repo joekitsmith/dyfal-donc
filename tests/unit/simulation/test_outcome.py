@@ -66,7 +66,7 @@ class TestAttemptExercise:
 
     def test_every_item_updates_on_its_own_result(self) -> None:
         profile = AVERAGE.with_memory(ExponentialMemory())
-        memories = known(A)
+        memories = {A: TrueMemory(stability_days=10.0, last_seen=START)}
         later = START + timedelta(days=30)
 
         attempt = attempt_exercise(
@@ -80,9 +80,10 @@ class TestAttemptExercise:
         attempt = attempt_exercise({}, (A,), A, START, FORGETFUL, 1, random.Random(1))
 
         assert attempt.truly_correct
-        assert (
-            attempt.memories[A].stability_days
-            == FORGETFUL.memory.initial_stability_days
+        assert attempt.memories[A].stability_days == (
+            FORGETFUL.memory.initial_stability_days
+            * FORGETFUL.learning_rate
+            * item_ease(1, A, FORGETFUL.difficulty_spread)
         )
         assert attempt.memories[A].last_seen == START
 

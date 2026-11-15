@@ -8,7 +8,7 @@ from engine.learner import Outcome, replay
 from engine.scheduler import NoExerciseReason
 from simulation.profile import AVERAGE
 from simulation.runner import simulate
-from simulation.session import SessionSettings
+from simulation.session import Break, SessionSettings
 from tests.unit.simulation.helpers import FORGETFUL, PERFECT, SHORT_RUN
 
 
@@ -125,3 +125,52 @@ class TestExtremeLearners:
         assert sum(s.event.new_item is not None for s in silent.steps) > sum(
             s.event.new_item is not None for s in honest.steps
         )
+
+
+class TestBreaks:
+    SESSION = SessionSettings(
+        days=12,
+        skip_day_probability=0.0,
+        breaks=(Break(start_day=3, length_days=5),),
+    )
+
+    def test_nothing_is_practised_during_a_break(
+        self, pool: Mapping[str, Exercise], curriculum: Curriculum
+    ) -> None:
+        trace = simulate(pool, curriculum, PERFECT, seed=1, session=self.SESSION)
+
+        days = {
+            (step.event.reviewed_at - self.SESSION.start).days for step in trace.steps
+        }
+        assert days.isdisjoint(range(3, 8))
+        assert 8 in days
+
+    def test_every_day_still_has_a_snapshot_and_break_days_are_skipped(
+        self, pool: Mapping[str, Exercise], curriculum: Curriculum
+    ) -> None:
+        trace = simulate(pool, curriculum, PERFECT, seed=1, session=self.SESSION)
+
+        assert [snapshot.skipped for snapshot in trace.snapshots] == [
+            day in range(3, 8) for day in range(12)
+        ]
+
+    def test_a_run_with_a_break_matches_one_without_until_the_break_starts(
+        self, pool: Mapping[str, Exercise], curriculum: Curriculum
+    ) -> None:
+        without = replace(self.SESSION, breaks=())
+        with_break = simulate(pool, curriculum, AVERAGE, seed=4, session=self.SESSION)
+        no_break = simulate(pool, curriculum, AVERAGE, seed=4, session=without)
+
+        before = self.SESSION.day_start(3)
+        assert tuple(
+            step for step in with_break.steps if step.event.reviewed_at < before
+        ) == tuple(step for step in no_break.steps if step.event.reviewed_at < before)
+
+    def test_a_break_changes_the_trace_after_it(
+        self, pool: Mapping[str, Exercise], curriculum: Curriculum
+    ) -> None:
+        without = replace(self.SESSION, breaks=())
+
+        assert simulate(
+            pool, curriculum, AVERAGE, seed=4, session=self.SESSION
+        ) != simulate(pool, curriculum, AVERAGE, seed=4, session=without)

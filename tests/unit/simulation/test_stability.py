@@ -9,8 +9,10 @@ class TestStabilityUpdate:
         "update",
         (
             {"initial_days": 0},
-            {"gain_base": -1},
-            {"gain_hard": -1},
+            {"gain_scale": -1},
+            {"gain_steepness": -1},
+            {"gain_decay": -1},
+            {"max_gain": -1},
             {"failure_keeps": 0},
             {"failure_keeps": 1},
         ),

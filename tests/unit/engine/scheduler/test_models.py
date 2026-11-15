@@ -41,6 +41,16 @@ class TestSchedulerSettings:
         with pytest.raises(SchedulerError, match="cannot be negative"):
             SchedulerSettings(**{field: -1})
 
+    def test_the_daily_limit_is_off_by_default(self) -> None:
+        assert DEFAULT_SCHEDULER_SETTINGS.new_items_per_day is None
+
+    @pytest.mark.parametrize("limit", [0, -1])
+    def test_rejects_a_daily_limit_under_one(self, limit: int) -> None:
+        with pytest.raises(
+            SchedulerError, match="New items per day must be at least 1"
+        ):
+            SchedulerSettings(new_items_per_day=limit)
+
 
 class TestSelection:
     def test_event_records_the_outcome_and_the_items_of_the_exercise(self) -> None:

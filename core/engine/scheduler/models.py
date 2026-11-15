@@ -22,6 +22,7 @@ class NoExerciseReason(StrEnum):
     """Why there is nothing to give the learner."""
 
     ERROR_RATE_TOO_HIGH = "error_rate_too_high"
+    NEW_ITEM_LIMIT_REACHED = "new_item_limit_reached"
     NO_EXERCISE_INTRODUCES_FRONTIER = "no_exercise_introduces_frontier"
     NOTHING_ELIGIBLE = "nothing_eligible"
 
@@ -68,7 +69,8 @@ class SchedulerSettings:
     course. Among exercises that serve the same purpose, each item that is due
     adds ``due_item_weight`` and each item shared with the previous exercise
     adds ``overlap_weight``. Repeating the previous exercise costs
-    ``repeat_penalty``.
+    ``repeat_penalty``. If ``new_items_per_day`` is set, no more than that many
+    items are introduced on one UTC calendar day.
     """
 
     error_rate_threshold: float = 0.15
@@ -77,6 +79,7 @@ class SchedulerSettings:
     due_item_weight: int = 10
     overlap_weight: int = 2
     repeat_penalty: int = 100
+    new_items_per_day: int | None = None
 
     def __post_init__(self) -> None:
         if not 0 < self.error_rate_threshold <= 1:
@@ -97,6 +100,11 @@ class SchedulerSettings:
 
         if min(self.due_item_weight, self.overlap_weight, self.repeat_penalty) < 0:
             raise SchedulerError("Weights and penalties cannot be negative")
+
+        if self.new_items_per_day is not None and self.new_items_per_day < 1:
+            raise SchedulerError(
+                f"New items per day must be at least 1, not {self.new_items_per_day}"
+            )
 
 
 DEFAULT_SCHEDULER_SETTINGS = SchedulerSettings()

@@ -3,11 +3,13 @@ from collections.abc import Sequence
 from pathlib import Path
 
 from engine.curriculum import load_curriculum
+from engine.scheduler import SchedulerSettings
 from simulation.memory import ExponentialMemory, PowerLawMemory, TrueMemoryModel
+from simulation.metrics import break_metrics
 from simulation.pool import build_pool, coverage
 from simulation.profile import PROFILES
 from simulation.runner import simulate
-from simulation.session import SessionSettings
+from simulation.session import Break, SessionSettings
 from simulation.summary import RunSummary, render_coverage
 
 CURRICULUM_DIRECTORY = Path(__file__).parents[2] / "curriculum"
@@ -29,7 +31,21 @@ def main(arguments: Sequence[str] | None = None) -> None:
         default="average",
     )
     parser.add_argument("--memory", choices=tuple(MEMORY_MODELS), default="exponential")
+    parser.add_argument(
+        "--new-items-per-day", type=int, help="Most items introduced in one day"
+    )
+    parser.add_argument("--break-start", type=int, help="First day of a break")
+    parser.add_argument("--break-days", type=int, help="Length of the break in days")
     options = parser.parse_args(arguments)
+    if (options.break_start is None) != (options.break_days is None):
+        parser.error("--break-start and --break-days go together")
+
+    breaks = (
+        ()
+        if options.break_start is None
+        else (Break(start_day=options.break_start, length_days=options.break_days),)
+    )
+    session = SessionSettings(days=options.days, breaks=breaks)
 
     curriculum = load_curriculum(CURRICULUM_DIRECTORY)
     pool = build_pool(curriculum)
@@ -43,7 +59,10 @@ def main(arguments: Sequence[str] | None = None) -> None:
         curriculum,
         profile,
         seed=options.seed,
-        session=SessionSettings(days=options.days),
+        session=session,
+        scheduler_settings=SchedulerSettings(
+            new_items_per_day=options.new_items_per_day
+        ),
     )
     print()
     print(
@@ -51,6 +70,9 @@ def main(arguments: Sequence[str] | None = None) -> None:
         f"seed {options.seed}, {options.days} days"
     )
     print(RunSummary.from_trace(trace).render())
+    for period in breaks:
+        print()
+        print(break_metrics(trace, period, session).render())
 
 
 if __name__ == "__main__":

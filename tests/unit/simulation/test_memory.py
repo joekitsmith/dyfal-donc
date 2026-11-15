@@ -3,6 +3,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 from simulation.memory import (
+    DEFAULT_STABILITY_UPDATE,
     ExponentialMemory,
     PowerLawMemory,
     TrueMemoryModel,
@@ -43,11 +44,33 @@ class TestTrueMemoryModels:
     ) -> None:
         assert 0 <= model.recall_probability(stability, elapsed) <= 1
 
-    @given(stability=STABILITIES, recall=st.floats(min_value=0, max_value=1))
-    def test_a_success_raises_stability(
+    @given(stability=STABILITIES, recall=st.floats(min_value=0, max_value=0.99))
+    def test_a_success_raises_stability_when_something_was_forgotten(
         self, model: TrueMemoryModel, stability: float, recall: float
     ) -> None:
         assert model.after_success(stability, recall, 1.0) > stability
+
+    @given(stability=STABILITIES)
+    def test_a_success_at_full_recall_adds_nothing(
+        self, model: TrueMemoryModel, stability: float
+    ) -> None:
+        assert model.after_success(stability, 1.0, 1.0) == stability
+
+    @given(stability=STABILITIES, recall=st.floats(min_value=0, max_value=1))
+    def test_a_success_never_gains_more_than_the_cap(
+        self, model: TrueMemoryModel, stability: float, recall: float
+    ) -> None:
+        assert model.after_success(stability, recall, 1.0) <= stability * (
+            1 + DEFAULT_STABILITY_UPDATE.max_gain
+        )
+
+    @given(stability=st.floats(min_value=0.1, max_value=1000))
+    def test_repeating_an_item_within_a_minute_gains_almost_nothing(
+        self, model: TrueMemoryModel, stability: float
+    ) -> None:
+        recall = model.recall_probability(stability, 1 / (24 * 60))
+
+        assert model.after_success(stability, recall, 1.0) < stability * 1.05
 
     @given(stability=STABILITIES)
     def test_a_failure_lowers_stability_but_not_below_the_start(

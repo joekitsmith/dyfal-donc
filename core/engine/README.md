@@ -71,7 +71,8 @@ Chooses the next exercise. Pure like the rest: the same inputs always give the s
 - Priority: an exercise practising a `Learning` item that is due, then a `Review` item that is due, then the exercise introducing the frontier item (only while the recent error rate is under 15%), then any eligible exercise as extra practice. Introducing exercises never count as due practice, so the error-rate limit cannot be bypassed.
 - Within a priority the best score wins: each due item, each item shared with the previous exercise (so phrases build up), and no immediate repeat. The lowest exercise id breaks a tie.
 - Until there are five recent events the error rate is ignored, so one early miss cannot stall the course.
+- `SchedulerSettings.new_items_per_day` (off by default) caps how many items are introduced on one UTC calendar day, counted from the events passed in, so they must include everything from today.
 - `Selection` says why it was chosen (`Purpose`) and what it `introduces`, and `as_event(outcome, reviewed_at)` builds the `ReviewEvent`. Use that, not `exercise.new_item`, since an exercise that once introduced an item is ordinary practice afterwards.
-- `NothingEligible` has a reason. `NO_EXERCISE_INTRODUCES_FRONTIER` means the pool has no exercise for the next item, a gap for authors to fill. `ERROR_RATE_TOO_HIGH` means introductions are held back and there is nothing to practise.
+- `NothingEligible` has a reason. `NO_EXERCISE_INTRODUCES_FRONTIER` means the pool has no exercise for the next item, a gap for authors to fill. `ERROR_RATE_TOO_HIGH` means introductions are held back and there is nothing to practise, and `NEW_ITEM_LIMIT_REACHED` means the same for the daily limit.
 
 Known limitations: no cap on how many items are in `Learning` at once, and exercise choice does not yet use difficulty or variety beyond the previous exercise.
