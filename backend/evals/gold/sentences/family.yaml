@@ -92,9 +92,9 @@
     - {text: "gyda", lemma: "gyda"}
     - {text: "fi", lemma: "i"}
 
-- id: sp-im-phoning-nan
-  welsh: "Dw i'n ffonio nain"
-  english: "I'm phoning Nan"
+- id: sp-im-phoning-grandma
+  welsh: "Dw i'n ffonio mamgu"
+  english: "I'm phoning Grandma"
   tags: [clitic]
   patterns: [pat:dw-in]
   tokens:
@@ -102,11 +102,11 @@
     - {text: "i", lemma: "i"}
     - {text: "'n", lemma: "yn"}
     - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
-    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "mamgu", lemma: "mamgu", item: lex:mamgu}
 
-- id: sp-i-see-nan
-  welsh: "Dw i'n gweld nain"
-  english: "I see Nan"
+- id: sp-i-see-grandma
+  welsh: "Dw i'n gweld mamgu"
+  english: "I see Grandma"
   tags: [clitic]
   patterns: [pat:dw-in]
   tokens:
@@ -114,11 +114,11 @@
     - {text: "i", lemma: "i"}
     - {text: "'n", lemma: "yn"}
     - {text: "gweld", lemma: "gweld", item: lex:gweld}
-    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "mamgu", lemma: "mamgu", item: lex:mamgu}
 
-- id: sp-im-helping-nan
-  welsh: "Dw i'n helpu nain"
-  english: "I'm helping Nan"
+- id: sp-im-helping-grandma
+  welsh: "Dw i'n helpu mamgu"
+  english: "I'm helping Grandma"
   tags: [clitic]
   patterns: [pat:dw-in]
   tokens:
@@ -126,21 +126,21 @@
     - {text: "i", lemma: "i"}
     - {text: "'n", lemma: "yn"}
     - {text: "helpu", lemma: "helpu", item: lex:helpu}
-    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "mamgu", lemma: "mamgu", item: lex:mamgu}
 
-- id: sp-nan-is-with-me
-  welsh: "Mae nain gyda fi"
-  english: "Nan is with me"
+- id: sp-grandma-is-with-me
+  welsh: "Mae mamgu gyda fi"
+  english: "Grandma is with me"
   tags: [plain]
   patterns: [pat:mae-gyda-fi]
   tokens:
     - {text: "Mae", lemma: "bod"}
-    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "mamgu", lemma: "mamgu", item: lex:mamgu}
     - {text: "gyda", lemma: "gyda"}
     - {text: "fi", lemma: "i"}
 
 - id: sp-im-phoning-grandad
-  welsh: "Dw i'n ffonio taid"
+  welsh: "Dw i'n ffonio tadcu"
   english: "I'm phoning Grandad"
   tags: [clitic]
   patterns: [pat:dw-in]
@@ -149,10 +149,10 @@
     - {text: "i", lemma: "i"}
     - {text: "'n", lemma: "yn"}
     - {text: "ffonio", lemma: "ffonio", item: lex:ffonio}
-    - {text: "taid", lemma: "taid", item: lex:taid}
+    - {text: "tadcu", lemma: "tadcu", item: lex:tadcu}
 
 - id: sp-i-see-grandad
-  welsh: "Dw i'n gweld taid"
+  welsh: "Dw i'n gweld tadcu"
   english: "I see Grandad"
   tags: [clitic]
   patterns: [pat:dw-in]
@@ -161,10 +161,10 @@
     - {text: "i", lemma: "i"}
     - {text: "'n", lemma: "yn"}
     - {text: "gweld", lemma: "gweld", item: lex:gweld}
-    - {text: "taid", lemma: "taid", item: lex:taid}
+    - {text: "tadcu", lemma: "tadcu", item: lex:tadcu}
 
 - id: sp-im-helping-grandad
-  welsh: "Dw i'n helpu taid"
+  welsh: "Dw i'n helpu tadcu"
   english: "I'm helping Grandad"
   tags: [clitic]
   patterns: [pat:dw-in]
@@ -173,16 +173,16 @@
     - {text: "i", lemma: "i"}
     - {text: "'n", lemma: "yn"}
     - {text: "helpu", lemma: "helpu", item: lex:helpu}
-    - {text: "taid", lemma: "taid", item: lex:taid}
+    - {text: "tadcu", lemma: "tadcu", item: lex:tadcu}
 
 - id: sp-grandad-is-with-me
-  welsh: "Mae taid gyda fi"
+  welsh: "Mae tadcu gyda fi"
   english: "Grandad is with me"
   tags: [plain]
   patterns: [pat:mae-gyda-fi]
   tokens:
     - {text: "Mae", lemma: "bod"}
-    - {text: "taid", lemma: "taid", item: lex:taid}
+    - {text: "tadcu", lemma: "tadcu", item: lex:tadcu}
     - {text: "gyda", lemma: "gyda"}
     - {text: "fi", lemma: "i"}
 
@@ -609,14 +609,14 @@
     - {text: "yn", lemma: "yn"}
     - {text: "darllen", lemma: "darllen", item: lex:darllen}
 
-- id: sp-nan-lives-here
-  welsh: "Mae nain yn byw fan hyn"
-  english: "Nan lives here"
+- id: sp-grandma-lives-here
+  welsh: "Mae mamgu yn byw fan hyn"
+  english: "Grandma lives here"
   tags: [plain]
   patterns: [pat:mae-noun-yn]
   tokens:
     - {text: "Mae", lemma: "bod"}
-    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "mamgu", lemma: "mamgu", item: lex:mamgu}
     - {text: "yn", lemma: "yn"}
     - {text: "byw", lemma: "byw", item: lex:byw}
     - {text: "fan", lemma: "fan", item: lex:fan-hyn}
@@ -677,13 +677,13 @@
     - {text: "yn", lemma: "yn"}
     - {text: "dda", lemma: "da", item: lex:da, mutation: soft}
 
-- id: sp-nan-is-happy
-  welsh: "Mae nain yn hapus"
-  english: "Nan is happy"
+- id: sp-grandma-is-happy
+  welsh: "Mae mamgu yn hapus"
+  english: "Grandma is happy"
   tags: [plain]
   patterns: [pat:mae-noun-yn-adj]
   tokens:
     - {text: "Mae", lemma: "bod"}
-    - {text: "nain", lemma: "nain", item: lex:nain}
+    - {text: "mamgu", lemma: "mamgu", item: lex:mamgu}
     - {text: "yn", lemma: "yn"}
     - {text: "hapus", lemma: "hapus", item: lex:hapus}

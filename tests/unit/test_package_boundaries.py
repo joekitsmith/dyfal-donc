@@ -10,10 +10,11 @@ import api.schemas as api_schemas
 import cymraeg
 import engine
 import persistence
+import tts
 
 CORE_PACKAGES = (cymraeg, engine)
-BACKEND_PACKAGES = ("evals", "tools", "simulation", "api", "persistence")
-SERVER_PACKAGES = ("api", "persistence")
+BACKEND_PACKAGES = ("evals", "tools", "simulation", "api", "persistence", "tts")
+SERVER_PACKAGES = ("api", "persistence", "tts")
 
 
 def imported_top_level_modules(package_directory: Path) -> dict[Path, set[str]]:
@@ -104,6 +105,17 @@ class TestPackageBoundaries:
 
     def test_persistence_never_imports_the_engine(self) -> None:
         assert forbidden_imports(persistence, ("engine", "cymraeg")) == []
+
+    def test_the_api_reaches_the_speech_service_only_over_http(self) -> None:
+        assert forbidden_imports(api, ("tts",)) == []
+
+    def test_the_speech_service_imports_nothing_else_from_the_repository(self) -> None:
+        assert (
+            forbidden_imports(
+                tts, ("api", "persistence", "engine", "cymraeg", "evals", "tools")
+            )
+            == []
+        )
 
     def test_api_schemas_never_import_the_engine_or_persistence(self) -> None:
         assert (

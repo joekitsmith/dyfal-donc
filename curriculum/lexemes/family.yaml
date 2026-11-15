@@ -47,18 +47,19 @@
   gender: m
   forms: ["plant"]
 
-- id: lex:nain
-  welsh: "nain"
+- id: lex:mamgu
+  welsh: "mamgu"
   english: "grandmother"
   part_of_speech: noun
   gender: f
-  notes: "South Wales. North Wales uses 'nain' too; 'mamgu' is also common in the South."
+  notes: "South Wales. The North says 'nain'."
 
-- id: lex:taid
-  welsh: "taid"
+- id: lex:tadcu
+  welsh: "tadcu"
   english: "grandfather"
   part_of_speech: noun
   gender: m
+  notes: "South Wales. The North says 'taid'."
 
 - id: lex:gwr
   welsh: "gŵr"

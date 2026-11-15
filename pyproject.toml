@@ -11,6 +11,7 @@ packages = [
     { include = "simulation", from = "backend" },
     { include = "api", from = "backend" },
     { include = "persistence", from = "backend" },
+    { include = "tts", from = "backend" },
 ]
 authors = [
     "Joseph Smith <joesmith29@hotmail.co.uk>"
@@ -30,6 +31,7 @@ sqlalchemy = "^2.1.8"
 psycopg = {extras = ["binary"], version = "^3.3.9"}
 uvicorn = "^0.54.0"
 pydantic-settings = "^2.16.3"
+httpx2 = "^2.16.0"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.18.2"
@@ -40,7 +42,6 @@ ruff = "^0.13.2"
 hypothesis = "^6.170.15"
 types-pyyaml = "^6.0.12.20261113"
 poethepoet = "^0.49.0"
-httpx2 = "^2.16.0"
 testcontainers = "^4.15.0"
 types-docker = "^7.2.0.20261102"
 
@@ -50,6 +51,12 @@ optional = true
 [tool.poetry.group.lemmatisers.dependencies]
 simplemma = "^2.0.0"
 stanza = "^1.15.1"
+
+[tool.poetry.group.tts.dependencies]
+piper-tts = "^1.8.0"
+fastapi = "^0.163.1"
+uvicorn = "^0.54.0"
+pydantic-settings = "^2.16.3"
 
 [tool.poe.tasks]
 format = "ruff format core backend tests"

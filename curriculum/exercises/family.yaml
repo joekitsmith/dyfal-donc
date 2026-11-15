@@ -50,53 +50,53 @@
   items: [pat:mae-gyda-fi, lex:tad]
   new_item: lex:tad
 
-- id: im-phoning-nan
-  english: "I'm phoning Nan"
-  welsh: "Dw i'n ffonio nain"
-  items: [pat:dw-in, lex:ffonio, lex:nain]
-  new_item: lex:nain
+- id: im-phoning-grandma
+  english: "I'm phoning Grandma"
+  welsh: "Dw i'n ffonio mamgu"
+  items: [pat:dw-in, lex:ffonio, lex:mamgu]
+  new_item: lex:mamgu
 
-- id: i-see-nan
-  english: "I see Nan"
-  welsh: "Dw i'n gweld nain"
-  items: [pat:dw-in, lex:gweld, lex:nain]
-  new_item: lex:nain
+- id: i-see-grandma
+  english: "I see Grandma"
+  welsh: "Dw i'n gweld mamgu"
+  items: [pat:dw-in, lex:gweld, lex:mamgu]
+  new_item: lex:mamgu
 
-- id: im-helping-nan
-  english: "I'm helping Nan"
-  welsh: "Dw i'n helpu nain"
-  items: [pat:dw-in, lex:helpu, lex:nain]
-  new_item: lex:nain
+- id: im-helping-grandma
+  english: "I'm helping Grandma"
+  welsh: "Dw i'n helpu mamgu"
+  items: [pat:dw-in, lex:helpu, lex:mamgu]
+  new_item: lex:mamgu
 
-- id: nan-is-with-me
-  english: "Nan is with me"
-  welsh: "Mae nain gyda fi"
-  items: [pat:mae-gyda-fi, lex:nain]
-  new_item: lex:nain
+- id: grandma-is-with-me
+  english: "Grandma is with me"
+  welsh: "Mae mamgu gyda fi"
+  items: [pat:mae-gyda-fi, lex:mamgu]
+  new_item: lex:mamgu
 
 - id: im-phoning-grandad
   english: "I'm phoning Grandad"
-  welsh: "Dw i'n ffonio taid"
-  items: [pat:dw-in, lex:ffonio, lex:taid]
-  new_item: lex:taid
+  welsh: "Dw i'n ffonio tadcu"
+  items: [pat:dw-in, lex:ffonio, lex:tadcu]
+  new_item: lex:tadcu
 
 - id: i-see-grandad
   english: "I see Grandad"
-  welsh: "Dw i'n gweld taid"
-  items: [pat:dw-in, lex:gweld, lex:taid]
-  new_item: lex:taid
+  welsh: "Dw i'n gweld tadcu"
+  items: [pat:dw-in, lex:gweld, lex:tadcu]
+  new_item: lex:tadcu
 
 - id: im-helping-grandad
   english: "I'm helping Grandad"
-  welsh: "Dw i'n helpu taid"
-  items: [pat:dw-in, lex:helpu, lex:taid]
-  new_item: lex:taid
+  welsh: "Dw i'n helpu tadcu"
+  items: [pat:dw-in, lex:helpu, lex:tadcu]
+  new_item: lex:tadcu
 
 - id: grandad-is-with-me
   english: "Grandad is with me"
-  welsh: "Mae taid gyda fi"
-  items: [pat:mae-gyda-fi, lex:taid]
-  new_item: lex:taid
+  welsh: "Mae tadcu gyda fi"
+  items: [pat:mae-gyda-fi, lex:tadcu]
+  new_item: lex:tadcu
 
 - id: i-have-a-family
   english: "I have a family"
@@ -320,10 +320,10 @@
   items: [lex:darllen, lex:chwaer, pat:mae-noun-yn]
   new_item: pat:mae-noun-yn
 
-- id: nan-lives-here
-  english: "Nan lives here"
-  welsh: "Mae nain yn byw fan hyn"
-  items: [lex:fan-hyn, lex:byw, lex:nain, pat:mae-noun-yn]
+- id: grandma-lives-here
+  english: "Grandma lives here"
+  welsh: "Mae mamgu yn byw fan hyn"
+  items: [lex:fan-hyn, lex:byw, lex:mamgu, pat:mae-noun-yn]
   new_item: pat:mae-noun-yn
 
 - id: the-child-is-eating
@@ -356,8 +356,8 @@
   items: [lex:da, lex:chwaer, pat:mae-noun-yn-adj]
   new_item: pat:mae-noun-yn-adj
 
-- id: nan-is-happy
-  english: "Nan is happy"
-  welsh: "Mae nain yn hapus"
-  items: [lex:hapus, lex:nain, pat:mae-noun-yn-adj]
+- id: grandma-is-happy
+  english: "Grandma is happy"
+  welsh: "Mae mamgu yn hapus"
+  items: [lex:hapus, lex:mamgu, pat:mae-noun-yn-adj]
   new_item: pat:mae-noun-yn-adj

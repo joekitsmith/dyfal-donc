@@ -17,6 +17,7 @@ A spaced-repetition Welsh speaking course (South Wales Welsh) with LLM-assisted,
 - `backend/`: everything that uses `core`
   - [`api/`](backend/api/README.md): a FastAPI app that runs the learn loop
   - [`persistence/`](backend/persistence/README.md): the Postgres layer
+  - [`tts/`](backend/tts/README.md): the speech service
   - [`evals/`](backend/evals/README.md): gold sentences and the lemmatiser benchmark
   - [`simulation/`](backend/simulation/README.md): a seeded fake learner
   - [`tools/`](backend/tools/suggest_forms.py): command-line helpers for authors
@@ -42,7 +43,8 @@ To run the API with a database, copy `.env.example` to `.env`, then:
 make db-up                 # Postgres in Docker; its data lives in a volume
 poetry run poe db-create   # create the tables
 poetry run poe api         # the API on http://localhost:8000 (docs at /docs)
-make stack-up              # or run the API and Postgres together in Docker
+make tts-up                # the speech service on localhost:8001, for audio
+make stack-up              # or run the API, Postgres and speech together in Docker
 make db-reset              # delete the volume and start with an empty database
 ```
 

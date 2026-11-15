@@ -1,3 +1,4 @@
+from api.controllers.audio import speak_exercise
 from api.controllers.course import describe_course
 from api.controllers.learners import (
     create_learner,
@@ -12,4 +13,5 @@ __all__ = [
     "describe_progress",
     "offer_exercise",
     "record_outcome",
+    "speak_exercise",
 ]

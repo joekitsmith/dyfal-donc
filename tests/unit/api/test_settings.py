@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from api.settings import DEFAULT_CURRICULUM_DIRECTORY, Settings
+from api.settings import DEFAULT_CURRICULUM_DIRECTORY, DEFAULT_TTS_URL, Settings
 
 
 @pytest.mark.usefixtures("database_url")
@@ -34,13 +34,30 @@ class TestSettings:
         with pytest.raises(ValidationError, match="selection_lifetime_seconds"):
             Settings()
 
+    def test_the_speech_service_is_local_by_default(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        monkeypatch.delenv("TTS_URL", raising=False)
+
+        assert Settings().tts_url == DEFAULT_TTS_URL
+
+    def test_the_speech_timeout_must_be_positive(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        monkeypatch.setenv("TTS_TIMEOUT_SECONDS", "0")
+
+        with pytest.raises(ValidationError, match="tts_timeout_seconds"):
+            Settings()
+
     def test_reads_the_environment(
         self, monkeypatch: pytest.MonkeyPatch, tmp_path: Path
     ) -> None:
         monkeypatch.setenv("CURRICULUM_DIRECTORY", str(tmp_path))
         monkeypatch.setenv("DATABASE_URL", "postgresql+psycopg://other/db")
+        monkeypatch.setenv("TTS_URL", "http://tts:8001")
 
         settings = Settings()
 
         assert settings.curriculum_directory == tmp_path
         assert settings.database.url == "postgresql+psycopg://other/db"
+        assert settings.tts_url == "http://tts:8001"
