@@ -2,28 +2,58 @@
 
 Every screen the app has: its route, what it is for, the states it can be in and what a person can do on it. The design pass starts from this file, so a change to a screen's states or actions is a change here too.
 
-## Front door `/`
+## Home `/`
 
-Sends people where they belong, and shows "Loading" until it knows. This becomes the home screen.
+Where a signed-in person lands. Signed-out visitors are sent to the welcome screen.
 
-| State                     | Shown                       |
-| ------------------------- | --------------------------- |
-| Checking who is signed in | Loading                     |
-| Signed in                 | Moves to the lesson         |
-| Signed out                | Moves to the welcome screen |
+Actions: **Start learning** or **Continue learning** (opens the lesson), **See details** on the recap, open **Settings** or **Account**. Guests also get **Add a passkey** and **Not now** on the save prompt once they have a recap.
+
+| State                                           | Shown                                                                                                                             |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Checking who is signed in                       | Loading                                                                                                                           |
+| Brand-new learner                               | No recap, the counts at zero, and Start learning                                                                                  |
+| Session ended (last answer over 10 minutes ago) | "Last time": the number of exercises, how long it lasted, and the new words, in Welsh and English. The button says Start learning |
+| Session still going                             | "This session so far", the same details, and the button says Continue learning                                                    |
+| Words due                                       | How many items are due for review now                                                                                             |
+| Nothing due                                     | "Nothing to review right now"                                                                                                     |
+| New words ready                                 | The topic the next new words belong to                                                                                            |
+| Course finished                                 | "You have met every word in the course"                                                                                           |
+| Guest with a recap                              | The save prompt                                                                                                                   |
+| Server error                                    | A general error                                                                                                                   |
+| Signed out                                      | Moves to the welcome screen                                                                                                       |
+
+A learning session is a run of answers with no pause longer than 10 minutes. There is nothing to start or end: it begins with the first answer after a pause and is over once 10 minutes pass without one.
+
+## Learning session summary `/learning-sessions/[id]`
+
+What a person did in one learning session. The id is the number of the session's first answer, so it never changes once the session has begun.
+
+Actions: **Back to home**, **Play** and **Play slowly** on each missed exercise, **Keep going** (while the session is still going) or **Start another**.
+
+| State                     | Shown                                                                                |
+| ------------------------- | ------------------------------------------------------------------------------------ |
+| Loading                   | Loading                                                                              |
+| Normal                    | The number of exercises, how long, and "still going" if it is                        |
+| Reviewed words            | How many words they already knew were practised                                      |
+| New words                 | Each in Welsh and English, or no section if there are none                           |
+| Words that slipped        | Words that were in long-term review and were missed, or no section if there are none |
+| Missed exercises          | The English, the Welsh and the two Play buttons, or no section if there are none     |
+| Audio could not be played | An error under the missed exercises                                                  |
+| No such session           | A message that it does not exist, and Back to home                                   |
+| Signed out                | Moves to the welcome screen                                                          |
 
 ## Welcome `/welcome`
 
 For someone who is signed out. Starting needs no sign-up.
 
-Actions: **Try it now** (starts a guest account and opens the lesson), **Sign in with a passkey**, **Use a recovery code** (opens the recovery screen).
+Actions: **Try it now** (starts a guest account and opens the home screen), **Sign in with a passkey**, **Use a recovery code** (opens the recovery screen).
 
 | State                       | Shown                                                                         |
 | --------------------------- | ----------------------------------------------------------------------------- |
 | Checking who is signed in   | Loading                                                                       |
 | Idle                        | The two actions                                                               |
 | Working                     | Both actions disabled while a request or the browser's passkey prompt is open |
-| Signed in already           | Moves to the lesson                                                           |
+| Signed in already           | Moves to the home screen                                                      |
 | Prompt dismissed            | A neutral message that nothing changed                                        |
 | Passkey not recognised      | An error that suggests another passkey or a guest start                       |
 | Browser cannot use passkeys | "Sign in with a passkey" is hidden, with a message                            |
@@ -33,7 +63,7 @@ Actions: **Try it now** (starts a guest account and opens the lesson), **Sign in
 
 The learning loop for the signed-in learner. Signed-out visitors are sent to the welcome screen.
 
-Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Replay** (R), skip the outcome window (N), open **Account** or **Settings**. Guests also get **Add a passkey** and **Not now** on the save prompt.
+Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Replay** (R), skip the outcome window (N), open **Home**, **Account** or **Settings**. Guests also get **Add a passkey** and **Not now** on the save prompt.
 
 | State                                              | Shown                                                                                                                                            |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -55,7 +85,7 @@ Actions: **Start**, **Missed it** (also M), **Pause or Resume** (Space), **Repla
 | Guest with 5 or more items introduced              | The save prompt above the exercise, until dismissed or saved                                                                                     |
 | Just saved                                         | A short confirmation that the passkey works from any device                                                                                      |
 
-The progress counts (introduced, learning, in review, due) show once they have loaded.
+The progress counts (introduced, learning, in review, due) show once they have loaded. A clock shows how long the learning session has been going, from the first answer after a pause, and stays out of the way (it is not a limit and nothing happens when it passes any time).
 
 ## Recover `/recover`
 

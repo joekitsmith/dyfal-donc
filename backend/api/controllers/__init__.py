@@ -20,6 +20,10 @@ from api.controllers.auth import (
     start_guest,
 )
 from api.controllers.course import describe_course
+from api.controllers.learning_sessions import (
+    describe_overview,
+    describe_session_summary,
+)
 from api.controllers.learners import (
     describe_progress,
     offer_exercise,
@@ -38,7 +42,9 @@ __all__ = [
     "delete_account",
     "describe_course",
     "describe_progress",
+    "describe_overview",
     "describe_recovery_codes",
+    "describe_session_summary",
     "describe_user_settings",
     "finish_passkey_authentication",
     "finish_passkey_registration",

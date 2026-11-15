@@ -7,6 +7,7 @@ from api.errors import (
     ExerciseNotFoundError,
     ForeignOriginError,
     InvalidPasskeyError,
+    LearningSessionNotFoundError,
     LastPasskeyError,
     NotAuthenticatedError,
     PasskeyNotFoundError,
@@ -29,6 +30,7 @@ type ErrorHandler = Callable[[Request, Exception], Awaitable[JSONResponse]]
 
 STATUS_FOR_ERROR: dict[type[Exception], int] = {
     ExerciseNotFoundError: status.HTTP_404_NOT_FOUND,
+    LearningSessionNotFoundError: status.HTTP_404_NOT_FOUND,
     SpeechUnavailableError: status.HTTP_503_SERVICE_UNAVAILABLE,
     LearnerNotFoundError: status.HTTP_404_NOT_FOUND,
     SelectionNotFoundError: status.HTTP_404_NOT_FOUND,

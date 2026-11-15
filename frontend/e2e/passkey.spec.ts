@@ -4,6 +4,7 @@ import { TEST_IDS } from "../src/config/test-ids";
 import {
   installPasskeyDevice,
   instrumentAudio,
+  openLesson,
   requireStack,
   saveProgressAndKeepFirstCode,
   startAsGuest,
@@ -32,7 +33,8 @@ test("a guest saves their progress with a passkey, signs out and signs back in",
   await expect(page).toHaveURL(/\/welcome$/);
 
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
-  await expect(page).toHaveURL(/\/learn$/);
+  await expect(page).toHaveURL(/\/$/);
+  await openLesson(page);
   await expect(page.getByTestId(TEST_IDS.progress)).toContainText("Introduced: 1 of");
 });
 

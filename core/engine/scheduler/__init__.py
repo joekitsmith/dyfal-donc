@@ -8,6 +8,7 @@ from engine.scheduler.models import (
     SchedulerSettings,
     Selection,
 )
+from engine.scheduler.eligibility import frontier
 from engine.scheduler.selection import next_exercise
 
 __all__ = [
@@ -19,5 +20,6 @@ __all__ = [
     "SchedulerError",
     "SchedulerSettings",
     "Selection",
+    "frontier",
     "next_exercise",
 ]

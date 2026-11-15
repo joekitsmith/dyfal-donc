@@ -3,6 +3,7 @@ import { useEffect, useEffectEvent, useReducer, useRef, useState } from "react";
 
 import { ApiError } from "@/api/api-error";
 import { replaceSession } from "@/features/auth";
+import { OVERVIEW_QUERY_KEY } from "@/features/learning-session";
 import { progressQueryKey } from "@/features/progress";
 
 import type { ClipTrack, LessonSettings, LessonState } from "../types";
@@ -88,6 +89,8 @@ export function useLessonPlayer({
 
   const refreshProgress = useEffectEvent(() => {
     void queryClient.invalidateQueries({ queryKey: progressQueryKey(learnerId) });
+    // The session clock and the recap on the home screen come from the overview
+    void queryClient.invalidateQueries({ queryKey: OVERVIEW_QUERY_KEY });
   });
 
   // The screen watching the session then sends the person to the welcome screen

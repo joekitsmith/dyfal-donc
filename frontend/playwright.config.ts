@@ -9,7 +9,11 @@ const WEB_URL = process.env.WEB_URL ?? DEV_SERVER_URL;
  */
 export default defineConfig({
   projects: [
-    { name: "desktop", testMatch: /(lesson|passkey|settings)\.spec\.ts/, use: { ...devices["Desktop Chrome"] } },
+    {
+      name: "desktop",
+      testMatch: /(lesson|passkey|settings|summary)\.spec\.ts/,
+      use: { ...devices["Desktop Chrome"] },
+    },
     { name: "phone", testMatch: /phone\.spec\.ts/, use: { ...devices["Pixel 7"] } },
   ],
   reporter: "list",
