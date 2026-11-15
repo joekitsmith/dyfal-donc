@@ -4,19 +4,15 @@ import ListItemText from "@mui/material/ListItemText";
 
 import type { Passkey } from "../types";
 
-export function PasskeyListItem({
-  onRemove,
-  passkey,
-  removable,
-}: {
+import { describePasskey } from "../utils/describe-passkey";
+
+type PasskeyListItemProps = {
   readonly onRemove: (passkeyId: string) => void;
   readonly passkey: Passkey;
   readonly removable: boolean;
-}) {
-  const added = new Date(passkey.createdAt).toLocaleDateString();
-  const used =
-    passkey.lastUsedAt === null ? "never used" : `last used ${new Date(passkey.lastUsedAt).toLocaleDateString()}`;
+};
 
+export function PasskeyListItem({ onRemove, passkey, removable }: PasskeyListItemProps) {
   return (
     <ListItem
       disableGutters
@@ -34,7 +30,7 @@ export function PasskeyListItem({
         ) : null
       }
     >
-      <ListItemText primary={passkey.label} secondary={`Added ${added}, ${used}`} />
+      <ListItemText primary={passkey.label} secondary={describePasskey(passkey)} />
     </ListItem>
   );
 }

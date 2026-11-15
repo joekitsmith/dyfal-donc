@@ -9,13 +9,12 @@ import { PasskeyFailureAlert } from "./passkey-failure-alert";
  * Progress is already saved on the server as you go. A passkey is what lets you get back to it from
  * anywhere, and without one a guest only has this browser.
  */
-export function SaveProgressPrompt({
-  onDismiss,
-  onSaved,
-}: {
+type SaveProgressPromptProps = {
   readonly onDismiss?: () => void;
   readonly onSaved?: () => void;
-}) {
+};
+
+export function SaveProgressPrompt({ onDismiss, onSaved }: SaveProgressPromptProps) {
   const { failure, isSaving, save } = useSaveProgress(onSaved);
 
   return (

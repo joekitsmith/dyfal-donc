@@ -17,7 +17,7 @@ import { SignOutButton } from "./components/sign-out-button";
 import { useAccount } from "./hooks/use-account";
 
 export function AccountPage() {
-  const { deleteAccount, error, isLoading, passkeys, removeFailed, removePasskey, signOut, user } = useAccount();
+  const { deleteAccount, error, isLoading, passkeys, signOut, user } = useAccount();
 
   if (error) {
     return <Alert severity="error">{error.message}</Alert>;
@@ -41,8 +41,8 @@ export function AccountPage() {
         <Typography component="h2" variant="h6">
           Passkeys
         </Typography>
-        <PasskeyList onRemove={removePasskey} passkeys={passkeys} />
-        {removeFailed ? <Alert severity="error">The passkey could not be removed. Try again.</Alert> : null}
+        <PasskeyList onRemove={passkeys.remove} passkeys={passkeys.items} />
+        {passkeys.removeFailed ? <Alert severity="error">The passkey could not be removed. Try again.</Alert> : null}
         {user.isGuest ? null : <AddPasskeyForm />}
       </Stack>
       <Divider />

@@ -8,7 +8,7 @@ import { PasskeyFailureAlert } from "./components/passkey-failure-alert";
 import { useWelcome } from "./hooks/use-welcome";
 
 export function WelcomePage() {
-  const { busy, failure, isLoading, signIn, startGuest, supported } = useWelcome();
+  const { failure, isLoading, signIn, tryIt } = useWelcome();
 
   if (isLoading) {
     return <Typography>Loading</Typography>;
@@ -24,25 +24,11 @@ export function WelcomePage() {
         passkey later to keep your progress.
       </Typography>
       <Stack spacing={2}>
-        <Button
-          disabled={busy}
-          onClick={() => {
-            startGuest();
-          }}
-          size="large"
-          variant="contained"
-        >
+        <Button disabled={tryIt.disabled} onClick={tryIt.onClick} size="large" variant="contained">
           Try it now
         </Button>
-        {supported ? (
-          <Button
-            disabled={busy}
-            onClick={() => {
-              signIn();
-            }}
-            size="large"
-            variant="outlined"
-          >
+        {signIn.supported ? (
+          <Button disabled={signIn.disabled} onClick={signIn.onClick} size="large" variant="outlined">
             Sign in with a passkey
           </Button>
         ) : null}

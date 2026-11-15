@@ -6,13 +6,12 @@ import type { Passkey } from "../types";
 import { PasskeyListItem } from "./passkey-list-item";
 
 /** The last passkey cannot be removed: it is the only way back in. */
-export function PasskeyList({
-  onRemove,
-  passkeys,
-}: {
+type PasskeyListProps = {
   readonly onRemove: (passkeyId: string) => void;
   readonly passkeys: readonly Passkey[];
-}) {
+};
+
+export function PasskeyList({ onRemove, passkeys }: PasskeyListProps) {
   if (passkeys.length === 0) {
     return <Typography color="text.secondary">No passkeys yet.</Typography>;
   }

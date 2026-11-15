@@ -14,16 +14,20 @@ export function useSaveOffer({ isGuest, learnerId }: { readonly isGuest: boolean
   const [saved, setSaved] = useState(false);
 
   return {
-    closeSaved: () => {
-      setSaved(false);
+    confirmation: {
+      onClose: () => {
+        setSaved(false);
+      },
+      open: saved,
     },
-    dismiss: () => {
-      setDismissed(true);
+    prompt: {
+      onDismiss: () => {
+        setDismissed(true);
+      },
+      onSaved: () => {
+        setSaved(true);
+      },
+      visible: isGuest && !dismissed && (data?.introduced ?? 0) >= SAVE_OFFER_MINIMUM_ITEMS,
     },
-    markSaved: () => {
-      setSaved(true);
-    },
-    offered: isGuest && !dismissed && (data?.introduced ?? 0) >= SAVE_OFFER_MINIMUM_ITEMS,
-    saved,
   };
 }

@@ -15,14 +15,18 @@ import { LessonControls } from "./lesson-controls";
 import { ThinkProgress } from "./think-progress";
 import { ThinkTimeSlider } from "./think-time-slider";
 
-export function LessonPlayer({ isGuest, learnerId }: { readonly isGuest: boolean; readonly learnerId: string }) {
+type LessonPlayerProps = { readonly isGuest: boolean; readonly learnerId: string };
+
+export function LessonPlayer({ isGuest, learnerId }: LessonPlayerProps) {
   const [thinkMultiplier, setThinkMultiplier] = useThinkTimeMultiplier();
   const { actions, canMiss, canPause, state } = useLessonPlayer({ learnerId, thinkMultiplier });
   const offer = useSaveOffer({ isGuest, learnerId });
 
   return (
     <Stack component="main" spacing={3} sx={{ maxWidth: 560, mt: { sm: 8, xs: 3 }, mx: "auto", p: 2 }}>
-      {offer.offered ? <SaveProgressPrompt onDismiss={offer.dismiss} onSaved={offer.markSaved} /> : null}
+      {offer.prompt.visible ? (
+        <SaveProgressPrompt onDismiss={offer.prompt.onDismiss} onSaved={offer.prompt.onSaved} />
+      ) : null}
       <ExerciseDisplay state={state} />
       <ThinkProgress multiplier={thinkMultiplier} state={state} />
       <LessonControls actions={actions} canMiss={canMiss} canPause={canPause} state={state} />
@@ -34,8 +38,8 @@ export function LessonPlayer({ isGuest, learnerId }: { readonly isGuest: boolean
       <Snackbar
         autoHideDuration={6000}
         message="Saved. You can now sign in from any device with your passkey."
-        onClose={offer.closeSaved}
-        open={offer.saved}
+        onClose={offer.confirmation.onClose}
+        open={offer.confirmation.open}
       />
     </Stack>
   );

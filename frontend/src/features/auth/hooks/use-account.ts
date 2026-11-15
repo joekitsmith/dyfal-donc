@@ -13,13 +13,21 @@ export function useAccount() {
   const deleteAccount = useDeleteAccount();
 
   return {
-    deleteAccount: deleteAccount.mutate,
+    deleteAccount: () => {
+      deleteAccount.mutate();
+    },
     error: sessionError ?? passkeys.error ?? signOut.error ?? deleteAccount.error,
     isLoading: user === undefined || passkeys.isPending,
-    passkeys: passkeys.data ?? [],
-    removeFailed: removePasskey.isError,
-    removePasskey: removePasskey.mutate,
-    signOut: signOut.mutate,
+    passkeys: {
+      items: passkeys.data ?? [],
+      remove: (passkeyId: string) => {
+        removePasskey.mutate(passkeyId);
+      },
+      removeFailed: removePasskey.isError,
+    },
+    signOut: () => {
+      signOut.mutate();
+    },
     user,
   };
 }

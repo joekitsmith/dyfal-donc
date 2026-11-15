@@ -8,7 +8,9 @@ const grow = keyframes`
 `;
 
 /** Fills over the think time. It is mounted when thinking starts, so it always starts empty. */
-export function ThinkProgressFill({ paused, seconds }: { readonly paused: boolean; readonly seconds: number }) {
+type ThinkProgressFillProps = { readonly paused: boolean; readonly seconds: number };
+
+export function ThinkProgressFill({ paused, seconds }: ThinkProgressFillProps) {
   // The duration is fixed when thinking starts, because the timer's is
   const [duration] = useState(seconds);
 

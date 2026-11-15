@@ -5,31 +5,25 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-export function ConfirmDialog({
-  confirmLabel,
-  description,
-  onCancel,
-  onConfirm,
-  open,
-  title,
-}: {
-  readonly confirmLabel: string;
+type ConfirmDialogProps = {
+  readonly confirm: { readonly label: string; readonly onClick: () => void };
   readonly description: string;
-  readonly onCancel: () => void;
-  readonly onConfirm: () => void;
+  readonly onClose: () => void;
   readonly open: boolean;
   readonly title: string;
-}) {
+};
+
+export function ConfirmDialog({ confirm, description, onClose, open, title }: ConfirmDialogProps) {
   return (
-    <Dialog onClose={onCancel} open={open}>
+    <Dialog onClose={onClose} open={open}>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         <DialogContentText>{description}</DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onCancel}>Cancel</Button>
-        <Button color="error" onClick={onConfirm}>
-          {confirmLabel}
+        <Button onClick={onClose}>Cancel</Button>
+        <Button color="error" onClick={confirm.onClick}>
+          {confirm.label}
         </Button>
       </DialogActions>
     </Dialog>

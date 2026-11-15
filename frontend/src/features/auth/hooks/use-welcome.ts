@@ -34,12 +34,23 @@ export function useWelcome() {
         ? null
         : "unsupported";
 
+  const disabled = guest.isPending || signIn.isPending || signedIn;
+
   return {
-    busy: guest.isPending || signIn.isPending || signedIn,
     failure,
     isLoading: session.isPending,
-    signIn: signIn.mutate,
-    startGuest: guest.mutate,
-    supported,
+    signIn: {
+      disabled,
+      onClick: () => {
+        signIn.mutate();
+      },
+      supported,
+    },
+    tryIt: {
+      disabled,
+      onClick: () => {
+        guest.mutate();
+      },
+    },
   };
 }
