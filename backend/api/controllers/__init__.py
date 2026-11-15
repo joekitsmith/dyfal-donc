@@ -30,6 +30,7 @@ from api.controllers.learners import (
     offer_exercise,
     record_outcome,
 )
+from api.controllers.problem_reports import report_problem
 from api.controllers.user_settings import change_user_settings, describe_user_settings
 
 __all__ = [
@@ -40,6 +41,7 @@ __all__ = [
     "begin_passkey_authentication",
     "begin_passkey_registration",
     "change_user_settings",
+    "report_problem",
     "delete_account",
     "describe_course",
     "describe_course_progress",

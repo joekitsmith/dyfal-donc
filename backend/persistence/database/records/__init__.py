@@ -3,6 +3,7 @@ from persistence.database.records.credential import CredentialRecord
 from persistence.database.records.event import EventRecord
 from persistence.database.records.learner import LearnerRecord
 from persistence.database.records.login_session import LoginSessionRecord
+from persistence.database.records.problem_report import ProblemReportRecord
 from persistence.database.records.selection import IssuedSelectionRecord
 from persistence.database.records.user import UserRecord
 from persistence.database.records.user_settings import UserSettingsRecord
@@ -14,6 +15,7 @@ __all__ = [
     "IssuedSelectionRecord",
     "LearnerRecord",
     "LoginSessionRecord",
+    "ProblemReportRecord",
     "UserRecord",
     "UserSettingsRecord",
 ]

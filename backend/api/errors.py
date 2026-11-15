@@ -6,6 +6,10 @@ class ItemNotFoundError(Exception):
     pass
 
 
+class UnknownReportSubjectError(Exception):
+    """A problem report names a sentence or word that is not in the course."""
+
+
 class LearningSessionNotFoundError(Exception):
     pass
 

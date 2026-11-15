@@ -362,6 +362,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/problem-reports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Post Problem Report */
+        post: operations["post_problem_report_me_problem_reports_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/me/progress": {
         parameters: {
             query?: never;
@@ -627,6 +644,32 @@ export interface components {
             /** Last Used At */
             last_used_at: string | null;
         };
+        /**
+         * ProblemCategory
+         * @description What kind of problem it is, in the learner's words rather than a linguist's.
+         * @enum {string}
+         */
+        ProblemCategory: "wrong_translation" | "unnatural" | "grammar" | "mutation" | "spelling_or_punctuation" | "not_south_wales" | "sounds_wrong" | "audio_broken" | "english_wording" | "other";
+        /**
+         * ProblemReportRequest
+         * @description A learner's report. ``exercise_id`` and ``item_id`` are both left out for a problem that is not about one sentence or word.
+         */
+        ProblemReportRequest: {
+            category: components["schemas"]["ProblemCategory"];
+            /** Description */
+            description: string;
+            /** Exercise Id */
+            exercise_id?: string | null;
+            /** Item Id */
+            item_id?: string | null;
+            source: components["schemas"]["ProblemSource"];
+        };
+        /**
+         * ProblemSource
+         * @description Where in the app the learner was when they reported.
+         * @enum {string}
+         */
+        ProblemSource: "lesson" | "summary" | "course" | "item" | "general";
         /**
          * ProgressResponse
          * @description Where the learner is, as of the server's clock.
@@ -1404,6 +1447,37 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    post_problem_report_me_problem_reports_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ProblemReportRequest"];
+            };
+        };
         responses: {
             /** @description Successful Response */
             204: {

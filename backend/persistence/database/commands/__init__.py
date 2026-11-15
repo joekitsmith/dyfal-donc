@@ -6,6 +6,7 @@ from persistence.database.commands.login_session import (
     AddLoginSession,
     ExtendLoginSession,
 )
+from persistence.database.commands.problem_report import AddProblemReport
 from persistence.database.commands.recovery_code import (
     ReplaceRecoveryCodes,
     UseRecoveryCode,
@@ -19,6 +20,7 @@ __all__ = [
     "AddCredential",
     "AddLearner",
     "AddLoginSession",
+    "AddProblemReport",
     "AddUser",
     "AppendEvent",
     "ConsumeSelection",

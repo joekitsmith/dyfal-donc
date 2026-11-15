@@ -23,6 +23,7 @@ from api.mappings.learning_session import (
     to_session_recap_response,
     to_session_summary_response,
 )
+from api.mappings.problem_report import to_add_problem_report
 from api.mappings.learner import to_add_learner
 from api.mappings.outcome import (
     to_append_event,
@@ -43,6 +44,7 @@ __all__ = [
     "apply_user_settings_patch",
     "to_audio_links",
     "to_add_learner",
+    "to_add_problem_report",
     "to_append_event",
     "to_consume_selection",
     "to_course_progress_response",
