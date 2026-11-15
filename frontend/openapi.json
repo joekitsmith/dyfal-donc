@@ -1,0 +1,619 @@
+{
+  "components": {
+    "schemas": {
+      "AudioLinks": {
+        "description": "Where to fetch each track of an exercise, as paths on this API.",
+        "properties": {
+          "english": {
+            "title": "English",
+            "type": "string"
+          },
+          "welsh": {
+            "title": "Welsh",
+            "type": "string"
+          },
+          "welsh_slow": {
+            "title": "Welsh Slow",
+            "type": "string"
+          }
+        },
+        "required": [
+          "english",
+          "welsh",
+          "welsh_slow"
+        ],
+        "title": "AudioLinks",
+        "type": "object"
+      },
+      "AudioTrack": {
+        "description": "What can be heard for an exercise: the English prompt, then the Welsh twice.",
+        "enum": [
+          "english",
+          "welsh",
+          "welsh-slow"
+        ],
+        "title": "AudioTrack",
+        "type": "string"
+      },
+      "CourseResponse": {
+        "properties": {
+          "item_count": {
+            "title": "Item Count",
+            "type": "integer"
+          },
+          "release": {
+            "title": "Release",
+            "type": "string"
+          },
+          "topics": {
+            "items": {
+              "$ref": "#/components/schemas/TopicResponse"
+            },
+            "title": "Topics",
+            "type": "array"
+          }
+        },
+        "required": [
+          "release",
+          "item_count",
+          "topics"
+        ],
+        "title": "CourseResponse",
+        "type": "object"
+      },
+      "ExercisePurpose": {
+        "description": "Why an exercise was chosen.",
+        "enum": [
+          "learning_due",
+          "review_due",
+          "introduction",
+          "practice"
+        ],
+        "title": "ExercisePurpose",
+        "type": "string"
+      },
+      "ExerciseResponse": {
+        "description": "An exercise to do. Quote ``selection_id`` back when reporting the outcome.",
+        "properties": {
+          "audio": {
+            "$ref": "#/components/schemas/AudioLinks"
+          },
+          "english": {
+            "title": "English",
+            "type": "string"
+          },
+          "introduces": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Introduces"
+          },
+          "item_ids": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Item Ids",
+            "type": "array"
+          },
+          "kind": {
+            "const": "exercise",
+            "default": "exercise",
+            "title": "Kind",
+            "type": "string"
+          },
+          "purpose": {
+            "$ref": "#/components/schemas/ExercisePurpose"
+          },
+          "selection_id": {
+            "format": "uuid",
+            "title": "Selection Id",
+            "type": "string"
+          },
+          "welsh": {
+            "title": "Welsh",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selection_id",
+          "english",
+          "welsh",
+          "audio",
+          "item_ids",
+          "introduces",
+          "purpose"
+        ],
+        "title": "ExerciseResponse",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "title": "HealthResponse",
+        "type": "object"
+      },
+      "LearnerResponse": {
+        "properties": {
+          "course_release": {
+            "title": "Course Release",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "course_release",
+          "created_at"
+        ],
+        "title": "LearnerResponse",
+        "type": "object"
+      },
+      "NextExerciseResponse": {
+        "discriminator": {
+          "mapping": {
+            "exercise": "#/components/schemas/ExerciseResponse",
+            "nothing_eligible": "#/components/schemas/NothingEligibleResponse"
+          },
+          "propertyName": "kind"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ExerciseResponse"
+          },
+          {
+            "$ref": "#/components/schemas/NothingEligibleResponse"
+          }
+        ]
+      },
+      "NothingEligibleReason": {
+        "description": "Why there is nothing to give the learner.",
+        "enum": [
+          "error_rate_too_high",
+          "new_item_limit_reached",
+          "no_exercise_introduces_frontier",
+          "nothing_eligible"
+        ],
+        "title": "NothingEligibleReason",
+        "type": "string"
+      },
+      "NothingEligibleResponse": {
+        "description": "There is no exercise to give right now, and why.",
+        "properties": {
+          "kind": {
+            "const": "nothing_eligible",
+            "default": "nothing_eligible",
+            "title": "Kind",
+            "type": "string"
+          },
+          "reason": {
+            "$ref": "#/components/schemas/NothingEligibleReason"
+          }
+        },
+        "required": [
+          "reason"
+        ],
+        "title": "NothingEligibleResponse",
+        "type": "object"
+      },
+      "OutcomeRequest": {
+        "properties": {
+          "outcome": {
+            "$ref": "#/components/schemas/ReportedOutcome"
+          },
+          "selection_id": {
+            "format": "uuid",
+            "title": "Selection Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selection_id",
+          "outcome"
+        ],
+        "title": "OutcomeRequest",
+        "type": "object"
+      },
+      "OutcomeResponse": {
+        "description": "``recorded`` is false when this outcome had already been recorded.",
+        "properties": {
+          "recorded": {
+            "title": "Recorded",
+            "type": "boolean"
+          },
+          "sequence": {
+            "title": "Sequence",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sequence",
+          "recorded"
+        ],
+        "title": "OutcomeResponse",
+        "type": "object"
+      },
+      "ProgressResponse": {
+        "description": "Where the learner is, as of the server's clock.",
+        "properties": {
+          "course_items": {
+            "title": "Course Items",
+            "type": "integer"
+          },
+          "in_review": {
+            "title": "In Review",
+            "type": "integer"
+          },
+          "introduced": {
+            "title": "Introduced",
+            "type": "integer"
+          },
+          "learning": {
+            "title": "Learning",
+            "type": "integer"
+          },
+          "learning_due": {
+            "title": "Learning Due",
+            "type": "integer"
+          },
+          "recent_error_rate": {
+            "title": "Recent Error Rate",
+            "type": "number"
+          },
+          "review_due": {
+            "title": "Review Due",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "introduced",
+          "learning",
+          "in_review",
+          "learning_due",
+          "review_due",
+          "recent_error_rate",
+          "course_items"
+        ],
+        "title": "ProgressResponse",
+        "type": "object"
+      },
+      "ReportedOutcome": {
+        "description": "How the learner says an exercise went.",
+        "enum": [
+          "got_it",
+          "missed_it"
+        ],
+        "title": "ReportedOutcome",
+        "type": "string"
+      },
+      "TopicResponse": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "requires": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Requires",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "requires"
+        ],
+        "title": "TopicResponse",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "Dyfal donc",
+    "version": "0.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/course": {
+      "get": {
+        "operationId": "course_course_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CourseResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Course"
+      }
+    },
+    "/exercises/{exercise_id}/audio/{track}": {
+      "get": {
+        "operationId": "get_audio_exercises__exercise_id__audio__track__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "exercise_id",
+            "required": true,
+            "schema": {
+              "title": "Exercise Id",
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "track",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/AudioTrack"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "audio/wav": {}
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Audio"
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health"
+      }
+    },
+    "/learners": {
+      "post": {
+        "operationId": "post_learner_learners_post",
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearnerResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Post Learner"
+      }
+    },
+    "/learners/{learner_id}/next": {
+      "get": {
+        "operationId": "get_next_learners__learner_id__next_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NextExerciseResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Next"
+      }
+    },
+    "/learners/{learner_id}/outcomes": {
+      "post": {
+        "operationId": "post_outcome_learners__learner_id__outcomes_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OutcomeRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OutcomeResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Post Outcome"
+      }
+    },
+    "/learners/{learner_id}/progress": {
+      "get": {
+        "operationId": "get_progress_learners__learner_id__progress_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "learner_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Learner Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProgressResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Progress"
+      }
+    }
+  }
+}

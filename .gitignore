@@ -224,3 +224,11 @@ __marimo__/
 
 # IDE
 .vscode
+
+# Frontend
+node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
+test-results/
+playwright-report/

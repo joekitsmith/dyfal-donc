@@ -21,12 +21,13 @@ A spaced-repetition Welsh speaking course (South Wales Welsh) with LLM-assisted,
   - [`evals/`](backend/evals/README.md): gold sentences and the lemmatiser benchmark
   - [`simulation/`](backend/simulation/README.md): a seeded fake learner
   - [`tools/`](backend/tools/suggest_forms.py): command-line helpers for authors
+- [`frontend/`](frontend/README.md): the lesson player, a Next.js app
 - [`curriculum/`](curriculum/README.md): the course content as YAML
 - `tests/`: unit and integration tests, mirroring the package names
 
 ## Development
 
-Requires Python 3.14 and Poetry.
+Requires Python 3.14 and Poetry. The frontend also needs Node 26 and pnpm (see `frontend/.nvmrc`).
 
 ```sh
 poetry install
@@ -46,6 +47,7 @@ poetry run poe api         # the API on http://localhost:8000 (docs at /docs)
 make tts-up                # the speech service on localhost:8001, for audio
 make stack-up              # or run the API, Postgres and speech together in Docker
 make db-reset              # delete the volume and start with an empty database
+make web-dev               # the lesson player on http://localhost:3000
 ```
 
 The Simplemma and Stanza lemmatisers are optional: `poetry install --with lemmatisers`.
