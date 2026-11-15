@@ -8,17 +8,14 @@ import type { LessonState } from "../types";
 
 import { isExerciseState } from "../stores/lesson-reducer";
 
-export function LessonControls({
-  actions,
-  canMiss,
-  canPause,
-  state,
-}: {
+type LessonControlsProps = {
   readonly actions: LessonActions;
   readonly canMiss: boolean;
   readonly canPause: boolean;
   readonly state: LessonState;
-}) {
+};
+
+export function LessonControls({ actions, canMiss, canPause, state }: LessonControlsProps) {
   if (state.phase === "idle") {
     return (
       <Button onClick={actions.start} size="large" variant="contained">

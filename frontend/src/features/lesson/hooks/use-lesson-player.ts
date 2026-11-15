@@ -2,6 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useEffectEvent, useReducer, useRef, useState } from "react";
 
 import { ApiError } from "@/api/api-error";
+import { replaceSession } from "@/features/auth";
 import { progressQueryKey } from "@/features/progress";
 
 import type { ClipTrack, LessonState } from "../types";
@@ -24,6 +25,7 @@ import {
 } from "../stores/lesson-reducer";
 import { ClipPlayer } from "../utils/clip-player";
 import { failureCause } from "../utils/failure-cause";
+import { isSignedOut } from "../utils/is-signed-out";
 import { type PausableTimer, startPausableTimer } from "../utils/pausable-timer";
 import { thinkSeconds } from "../utils/think-time";
 import { useExerciseClips } from "./use-exercise-clips";
@@ -86,6 +88,11 @@ export function useLessonPlayer({
     void queryClient.invalidateQueries({ queryKey: progressQueryKey(learnerId) });
   });
 
+  // The screen watching the session then sends the person to the welcome screen
+  const endSession = useEffectEvent(() => {
+    replaceSession(queryClient, null);
+  });
+
   const thinkMilliseconds = useEffectEvent(() =>
     exercise === null ? 0 : thinkSeconds(exercise.welsh, thinkMultiplier) * MILLISECONDS_PER_SECOND,
   );
@@ -99,7 +106,11 @@ export function useLessonPlayer({
     marks.current.loadingStartedAt = performance.now();
     fetchNext(undefined, {
       onError: (error) => {
-        dispatch({ cause: failureCause(error), type: "next_failed" });
+        if (isSignedOut(error)) {
+          endSession();
+        } else {
+          dispatch({ cause: failureCause(error), type: "next_failed" });
+        }
       },
       onSuccess: (next) => {
         dispatch(
@@ -118,6 +129,12 @@ export function useLessonPlayer({
       { outcome: submission.missed ? "missed_it" : "got_it", selectionId: submission.exercise.selectionId },
       {
         onError: (error) => {
+          if (isSignedOut(error)) {
+            endSession();
+
+            return;
+          }
+
           // Answered already, or too late: either way this exercise is finished
           const finished =
             error instanceof ApiError &&

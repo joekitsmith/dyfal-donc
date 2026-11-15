@@ -19,12 +19,16 @@ from persistence.database import (
     LearnerRepository,
     LoginSessionRepository,
     RecordCredentialUse,
+    RecoveryCodeRepository,
+    ReplaceRecoveryCodes,
     UserRecord,
     UserRepository,
+    UseRecoveryCode,
 )
 from persistence.database.errors import (
     ChallengeNotFoundError,
     CredentialAlreadyRegisteredError,
+    RecoveryCodeNotFoundError,
 )
 from persistence.database.models import Base
 
@@ -55,6 +59,7 @@ def new_login_session(
         user_id=user_id,
         token_hash=token_hash,
         created_at=NOW,
+        authenticated_at=NOW,
         expires_at=NOW + timedelta(days=30),
     )
 
@@ -246,6 +251,7 @@ class TestLoginSessionRepository:
                 user_id=user.id,
                 token_hash=b"new",
                 created_at=NOW,
+                authenticated_at=NOW,
                 expires_at=NOW + timedelta(days=90),
             )
         )
@@ -294,3 +300,56 @@ class TestChallengeRepository:
 
         assert repository.delete_expired(NOW + LIFETIME) == 1
         assert repository.delete_expired(NOW + LIFETIME) == 0
+
+
+class TestRecoveryCodeRepository:
+    def codes(self, user_id: uuid.UUID, *hashes: bytes) -> ReplaceRecoveryCodes:
+        return ReplaceRecoveryCodes(user_id=user_id, code_hashes=hashes, created_at=NOW)
+
+    def test_counts_the_unused_codes(self, session: Session) -> None:
+        user = add_user(session)
+        repository = RecoveryCodeRepository(session)
+
+        repository.replace(self.codes(user.id, b"a", b"b", b"c"))
+
+        assert repository.remaining(user.id) == 3
+        assert repository.remaining(uuid.uuid4()) == 0
+
+    def test_a_code_works_once_and_says_whose_it_was(self, session: Session) -> None:
+        user = add_user(session)
+        repository = RecoveryCodeRepository(session)
+        repository.replace(self.codes(user.id, b"a", b"b"))
+
+        owner = repository.use(UseRecoveryCode(code_hash=b"a", at=NOW))
+
+        assert owner == user.id
+        assert repository.remaining(user.id) == 1
+        with pytest.raises(RecoveryCodeNotFoundError):
+            repository.use(UseRecoveryCode(code_hash=b"a", at=NOW))
+
+    def test_an_unknown_code_is_not_found(self, session: Session) -> None:
+        with pytest.raises(RecoveryCodeNotFoundError):
+            RecoveryCodeRepository(session).use(UseRecoveryCode(code_hash=b"?", at=NOW))
+
+    def test_a_new_set_replaces_the_old_one_including_used_codes(
+        self, session: Session
+    ) -> None:
+        user = add_user(session)
+        repository = RecoveryCodeRepository(session)
+        repository.replace(self.codes(user.id, b"old-1", b"old-2"))
+        repository.use(UseRecoveryCode(code_hash=b"old-1", at=NOW))
+
+        repository.replace(self.codes(user.id, b"new-1"))
+
+        assert repository.remaining(user.id) == 1
+        with pytest.raises(RecoveryCodeNotFoundError):
+            repository.use(UseRecoveryCode(code_hash=b"old-2", at=NOW))
+
+    def test_one_users_codes_do_not_touch_anothers(self, session: Session) -> None:
+        first, second = add_user(session), add_user(session)
+        repository = RecoveryCodeRepository(session)
+        repository.replace(self.codes(first.id, b"a"))
+
+        repository.replace(self.codes(second.id, b"b"))
+
+        assert repository.remaining(first.id) == 1

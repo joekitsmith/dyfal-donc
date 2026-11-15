@@ -7,7 +7,9 @@ import { thinkSeconds } from "../utils/think-time";
 import { ThinkProgressFill } from "./think-progress-fill";
 
 /** Shows how long is left to say the Welsh. It is empty at every other time. */
-export function ThinkProgress({ multiplier, state }: { readonly multiplier: number; readonly state: LessonState }) {
+type ThinkProgressProps = { readonly multiplier: number; readonly state: LessonState };
+
+export function ThinkProgress({ multiplier, state }: ThinkProgressProps) {
   if (!isExerciseState(state)) {
     return null;
   }

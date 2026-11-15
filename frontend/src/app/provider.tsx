@@ -7,9 +7,12 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { type ReactNode, useState } from "react";
 
 import { createQueryClient } from "@/api/query-client";
+import { RecoveryCodesDialog, StepUpDialog } from "@/features/auth";
 import { theme } from "@/theme/theme";
 
-export function Provider({ children }: { readonly children: ReactNode }) {
+type ProviderProps = { readonly children: ReactNode };
+
+export function Provider({ children }: ProviderProps) {
   const [queryClient] = useState(createQueryClient);
 
   return (
@@ -17,6 +20,8 @@ export function Provider({ children }: { readonly children: ReactNode }) {
       <CssBaseline />
       <QueryClientProvider client={queryClient}>
         {children}
+        <RecoveryCodesDialog />
+        <StepUpDialog />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </ThemeProvider>

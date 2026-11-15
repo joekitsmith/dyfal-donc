@@ -6,7 +6,9 @@ import { TEST_IDS } from "@/config/test-ids";
 import { useProgress } from "../api/use-progress";
 
 /** Plain counts of where the learner is. It shows nothing until it has them. */
-export function ProgressPanel({ learnerId }: { readonly learnerId: string }) {
+type ProgressPanelProps = { readonly learnerId: string };
+
+export function ProgressPanel({ learnerId }: ProgressPanelProps) {
   const { data } = useProgress(learnerId);
 
   if (data === undefined) {

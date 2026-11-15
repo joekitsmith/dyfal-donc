@@ -5,7 +5,12 @@ from datetime import datetime, timedelta
 
 from api.course import CourseRelease
 from api.errors import InvalidPasskeyError, NotAuthenticatedError
-from api.login_sessions import expiry, is_expired, needs_extending
+from api.login_sessions import (
+    expiry,
+    is_expired,
+    is_past_maximum_age,
+    needs_extending,
+)
 from api.mappings import to_add_learner, to_passkey_response, to_user_response
 from api.passkeys import (
     CHALLENGE_LIFETIME,
@@ -16,14 +21,21 @@ from api.passkeys import (
     finish_authentication,
     finish_registration,
 )
+from api.recovery_codes import (
+    generate_recovery_codes,
+    hash_recovery_code,
+    hash_recovery_codes,
+)
 from api.schemas import (
     AuthenticationVerifyRequest,
     PasskeyResponse,
+    RecoveryCodeSignInRequest,
     RegistrationVerifyRequest,
     UserResponse,
 )
-from api.settings import PasskeySettings
+from api.settings import LoginSessionSettings, PasskeySettings
 from api.tokens import hash_token, new_token
+from persistence.database.errors import RecoveryCodeNotFoundError
 from persistence.database import (
     AddChallenge,
     AddCredential,
@@ -32,7 +44,9 @@ from persistence.database import (
     ExtendLoginSession,
     LoginSessionRecord,
     RecordCredentialUse,
+    ReplaceRecoveryCodes,
     UnitOfWork,
+    UseRecoveryCode,
     UserRecord,
 )
 
@@ -60,14 +74,18 @@ class SignIn:
 
 @dataclass(frozen=True, slots=True, kw_only=True)
 class RegisteredPasskey:
-    """A new passkey, and the token for the cookie when the browser needs a new one."""
+    """A new passkey, its user's first recovery codes if they have none yet, and a cookie token if one is needed."""
 
     passkey: PasskeyResponse
+    recovery_codes: tuple[str, ...] | None
     token: str | None
 
 
 def authenticate(
-    unit_of_work: UnitOfWork, token: str | None, now: datetime, lifetime: timedelta
+    unit_of_work: UnitOfWork,
+    token: str | None,
+    now: datetime,
+    login: LoginSessionSettings,
 ) -> Authenticated:
     """Find who the token belongs to, moving the session's expiry if it is due."""
     if token is None:
@@ -81,13 +99,19 @@ def authenticate(
     if user is None:
         raise NotAuthenticatedError("Not signed in")
 
+    # A guest has no passkey to sign in again with, so only an account's session has a limit
+    if not user.is_guest and is_past_maximum_age(
+        login_session.created_at, now, login.max_age
+    ):
+        raise NotAuthenticatedError("Not signed in")
+
     extended = needs_extending(login_session.last_seen_at, now)
     if extended:
         unit_of_work.login_sessions.extend(
             ExtendLoginSession(
                 login_session_id=login_session.id,
                 seen_at=now,
-                expires_at=expiry(now, lifetime),
+                expires_at=expiry(now, login.lifetime_for(is_guest=user.is_guest)),
             )
         )
         unit_of_work.commit()
@@ -100,14 +124,14 @@ def start_guest(
     release: CourseRelease,
     token: str | None,
     now: datetime,
-    lifetime: timedelta,
+    login: LoginSessionSettings,
 ) -> SignIn:
     """Let someone start straight away, as a user with no passkeys.
 
     A browser that is already signed in gets its own user back.
     """
     try:
-        current = authenticate(unit_of_work, token, now, lifetime)
+        current = authenticate(unit_of_work, token, now, login)
     except NotAuthenticatedError:
         pass
     else:
@@ -115,7 +139,9 @@ def start_guest(
 
     user = unit_of_work.users.add(AddUser())
     unit_of_work.learners.add(to_add_learner(user.id, release))
-    new_session_token = _open_session(unit_of_work, user.id, now, lifetime)
+    new_session_token = _open_session(
+        unit_of_work, user.id, now, login.lifetime_for(is_guest=True)
+    )
     unit_of_work.commit()
     return SignIn(user=to_user_response(user), token=new_session_token)
 
@@ -155,7 +181,7 @@ def finish_passkey_registration(
     authenticated: Authenticated,
     request: RegistrationVerifyRequest,
     now: datetime,
-    lifetime: timedelta,
+    login: LoginSessionSettings,
 ) -> RegisteredPasskey:
     """Store the passkey the browser made for the signed-in user.
 
@@ -183,12 +209,20 @@ def finish_passkey_registration(
         )
     )
     token = None
+    recovery_codes = None
     if user.is_guest:
         unit_of_work.login_sessions.delete(authenticated.login_session.id)
-        token = _open_session(unit_of_work, user.id, now, lifetime)
+        token = _open_session(
+            unit_of_work, user.id, now, login.lifetime_for(is_guest=False)
+        )
+        recovery_codes = make_recovery_codes(unit_of_work, user.id, now)
 
     unit_of_work.commit()
-    return RegisteredPasskey(passkey=to_passkey_response(stored), token=token)
+    return RegisteredPasskey(
+        passkey=to_passkey_response(stored),
+        recovery_codes=recovery_codes,
+        token=token,
+    )
 
 
 def begin_passkey_authentication(
@@ -215,7 +249,7 @@ def finish_passkey_authentication(
     request: AuthenticationVerifyRequest,
     token: str | None,
     now: datetime,
-    lifetime: timedelta,
+    login: LoginSessionSettings,
 ) -> SignIn:
     """Sign in with a passkey, replacing whatever the browser was signed in as."""
     challenge = challenge_of(request.credential)
@@ -226,7 +260,7 @@ def finish_passkey_authentication(
         credential_id_of(request.credential)
     )
     if stored is None:
-        raise InvalidPasskeyError("Passkey is not registered")
+        raise InvalidPasskeyError("Passkey did not verify")
 
     signed_in = finish_authentication(
         settings,
@@ -243,11 +277,49 @@ def finish_passkey_authentication(
         )
     )
     _end_session(unit_of_work, token)
-    new_session_token = _open_session(unit_of_work, stored.user_id, now, lifetime)
+    new_session_token = _open_session(
+        unit_of_work, stored.user_id, now, login.lifetime_for(is_guest=False)
+    )
     user = unit_of_work.users.get(stored.user_id)
     if user is None:
-        raise InvalidPasskeyError("Passkey belongs to no one")
+        raise InvalidPasskeyError("Passkey did not verify")
 
+    unit_of_work.commit()
+    return SignIn(user=to_user_response(user), token=new_session_token)
+
+
+def make_recovery_codes(
+    unit_of_work: UnitOfWork, user_id: uuid.UUID, now: datetime
+) -> tuple[str, ...]:
+    """Replace the user's recovery codes with a new set, which is only ever shown this once."""
+    codes = generate_recovery_codes()
+    unit_of_work.recovery_codes.replace(
+        ReplaceRecoveryCodes(
+            user_id=user_id, code_hashes=hash_recovery_codes(codes), created_at=now
+        )
+    )
+    return codes
+
+
+def sign_in_with_recovery_code(
+    unit_of_work: UnitOfWork,
+    request: RecoveryCodeSignInRequest,
+    token: str | None,
+    now: datetime,
+    login: LoginSessionSettings,
+) -> SignIn:
+    """Sign in with a recovery code, once, replacing whatever the browser was signed in as."""
+    user_id = unit_of_work.recovery_codes.use(
+        UseRecoveryCode(code_hash=hash_recovery_code(request.code), at=now)
+    )
+    user = unit_of_work.users.get(user_id)
+    if user is None:
+        raise RecoveryCodeNotFoundError("Recovery code belongs to no one")
+
+    _end_session(unit_of_work, token)
+    new_session_token = _open_session(
+        unit_of_work, user_id, now, login.lifetime_for(is_guest=False)
+    )
     unit_of_work.commit()
     return SignIn(user=to_user_response(user), token=new_session_token)
 
@@ -268,6 +340,7 @@ def _open_session(
             user_id=user_id,
             token_hash=hash_token(token),
             created_at=now,
+            authenticated_at=now,
             expires_at=expiry(now, lifetime),
         )
     )

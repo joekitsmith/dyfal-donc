@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { countClipsEnded, instrumentAudio, requireStack, speedUpThinking } from "./helpers";
+import { countClipsEnded, instrumentAudio, requireStack, speedUpThinking, startAsGuest } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
@@ -23,7 +23,7 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
     }
   });
 
-  await page.goto("/");
+  await startAsGuest(page);
   const progress = page.getByTestId(TEST_IDS.progress);
 
   await expect(progress).toContainText("Introduced: 0 of");

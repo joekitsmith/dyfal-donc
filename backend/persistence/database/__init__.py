@@ -9,6 +9,8 @@ from persistence.database.commands import (
     ExtendLoginSession,
     IssueSelection,
     RecordCredentialUse,
+    ReplaceRecoveryCodes,
+    UseRecoveryCode,
 )
 from persistence.database.records import (
     ChallengeRecord,
@@ -25,6 +27,7 @@ from persistence.database.repositories import (
     EventRepository,
     LearnerRepository,
     LoginSessionRepository,
+    RecoveryCodeRepository,
     SelectionRepository,
     UserRepository,
 )
@@ -56,8 +59,11 @@ __all__ = [
     "LoginSessionRecord",
     "LoginSessionRepository",
     "RecordCredentialUse",
+    "RecoveryCodeRepository",
+    "ReplaceRecoveryCodes",
     "SelectionRepository",
     "UnitOfWork",
+    "UseRecoveryCode",
     "UserRecord",
     "UserRepository",
     "create_database_engine",

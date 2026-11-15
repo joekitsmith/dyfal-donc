@@ -103,6 +103,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/auth/recovery/verify": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Post Recovery Verify */
+        post: operations["post_recovery_verify_auth_recovery_verify_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/course": {
         parameters: {
             query?: never;
@@ -260,6 +277,27 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/me/recovery-codes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Recovery Codes */
+        get: operations["get_recovery_codes_me_recovery_codes_get"];
+        put?: never;
+        /**
+         * Post Recovery Codes
+         * @description Replaces the user's codes with a new set, shown only in this response.
+         */
+        post: operations["post_recovery_codes_me_recovery_codes_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -410,6 +448,30 @@ export interface components {
             recent_error_rate: number;
             /** Review Due */
             review_due: number;
+        };
+        /** RecoveryCodeSignInRequest */
+        RecoveryCodeSignInRequest: {
+            /** Code */
+            code: string;
+        };
+        /** RecoveryCodeStatusResponse */
+        RecoveryCodeStatusResponse: {
+            /** Remaining */
+            remaining: number;
+        };
+        /** RecoveryCodesResponse */
+        RecoveryCodesResponse: {
+            /** Codes */
+            codes: string[];
+        };
+        /**
+         * RegisteredPasskeyResponse
+         * @description A new passkey. The first one also brings the recovery codes, which are shown once.
+         */
+        RegisteredPasskeyResponse: {
+            passkey: components["schemas"]["PasskeyResponse"];
+            /** Recovery Codes */
+            recovery_codes: string[] | null;
         };
         /**
          * RegistrationVerifyRequest
@@ -600,7 +662,40 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["PasskeyResponse"];
+                    "application/json": components["schemas"]["RegisteredPasskeyResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    post_recovery_verify_auth_recovery_verify_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RecoveryCodeSignInRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserResponse"];
                 };
             };
             /** @description Validation Error */
@@ -842,6 +937,46 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ProgressResponse"];
+                };
+            };
+        };
+    };
+    get_recovery_codes_me_recovery_codes_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecoveryCodeStatusResponse"];
+                };
+            };
+        };
+    };
+    post_recovery_codes_me_recovery_codes_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RecoveryCodesResponse"];
                 };
             };
         };

@@ -3,10 +3,10 @@ import { ClipUnavailableError } from "@/api/clips";
 
 import type { FailureCause } from "../types";
 
-import { NOT_FOUND_STATUS, SERVICE_UNAVAILABLE_STATUS, UNAUTHORIZED_STATUS } from "../constants";
+import { NOT_FOUND_STATUS, SERVICE_UNAVAILABLE_STATUS } from "../constants";
 
 export function failureCause(error: unknown): FailureCause {
-  if (error instanceof ApiError && (error.status === NOT_FOUND_STATUS || error.status === UNAUTHORIZED_STATUS)) {
+  if (error instanceof ApiError && error.status === NOT_FOUND_STATUS) {
     return "learner_missing";
   }
 

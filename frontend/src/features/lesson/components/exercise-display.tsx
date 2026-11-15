@@ -11,7 +11,9 @@ import { isExerciseState } from "../stores/lesson-reducer";
 const LINE_HEIGHT = "1.6em";
 
 /** The text takes a fixed space, one line each, so the buttons below it never move. */
-export function ExerciseDisplay({ state }: { readonly state: LessonState }) {
+type ExerciseDisplayProps = { readonly state: LessonState };
+
+export function ExerciseDisplay({ state }: ExerciseDisplayProps) {
   const exercise = isExerciseState(state) ? state : null;
 
   return (

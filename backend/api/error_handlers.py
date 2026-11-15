@@ -10,11 +10,14 @@ from api.errors import (
     LastPasskeyError,
     NotAuthenticatedError,
     PasskeyNotFoundError,
+    RecentSignInRequiredError,
+    RecoveryCodesUnavailableError,
     SpeechUnavailableError,
 )
 from persistence.database.errors import (
     ChallengeNotFoundError,
     CredentialAlreadyRegisteredError,
+    RecoveryCodeNotFoundError,
     EventOutOfOrderError,
     LearnerNotFoundError,
     SelectionAlreadyAnsweredError,
@@ -39,6 +42,9 @@ STATUS_FOR_ERROR: dict[type[Exception], int] = {
     CredentialAlreadyRegisteredError: status.HTTP_409_CONFLICT,
     PasskeyNotFoundError: status.HTTP_404_NOT_FOUND,
     LastPasskeyError: status.HTTP_409_CONFLICT,
+    RecoveryCodeNotFoundError: status.HTTP_400_BAD_REQUEST,
+    RecoveryCodesUnavailableError: status.HTTP_409_CONFLICT,
+    RecentSignInRequiredError: status.HTTP_403_FORBIDDEN,
 }
 
 

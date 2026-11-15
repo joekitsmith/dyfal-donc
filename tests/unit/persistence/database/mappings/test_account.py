@@ -60,6 +60,7 @@ class TestToLoginSessionRecord:
             user_id=USER_ID,
             token_hash=b"hash",
             created_at=MOMENT,
+            authenticated_at=MOMENT.astimezone(TOKYO),
             last_seen_at=MOMENT,
             expires_at=MOMENT.astimezone(TOKYO),
         )
@@ -67,6 +68,8 @@ class TestToLoginSessionRecord:
         record = to_login_session_record(row)
 
         assert record.user_id == USER_ID
+        assert record.authenticated_at == MOMENT
+        assert record.authenticated_at.utcoffset() == MOMENT.utcoffset()
         assert record.expires_at == MOMENT
         assert record.expires_at.utcoffset() == MOMENT.utcoffset()
 

@@ -3,13 +3,12 @@ import Typography from "@mui/material/Typography";
 
 import { THINK_MULTIPLIER_MAXIMUM, THINK_MULTIPLIER_MINIMUM, THINK_MULTIPLIER_STEP } from "../constants";
 
-export function ThinkTimeSlider({
-  onChange,
-  value,
-}: {
+type ThinkTimeSliderProps = {
   readonly onChange: (value: number) => void;
   readonly value: number;
-}) {
+};
+
+export function ThinkTimeSlider({ onChange, value }: ThinkTimeSliderProps) {
   return (
     <>
       <Typography id="think-time-label">Think time: {value}×</Typography>

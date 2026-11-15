@@ -28,3 +28,7 @@ class CredentialAlreadyRegisteredError(DatabaseError):
 
 class ChallengeNotFoundError(DatabaseError):
     """The challenge was never issued, was already used, or has expired."""
+
+
+class RecoveryCodeNotFoundError(DatabaseError):
+    """The recovery code was never issued or has been used."""

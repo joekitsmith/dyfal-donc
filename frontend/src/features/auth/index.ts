@@ -1,0 +1,12 @@
+"use client";
+
+// A client module, so the pages that import this feature on the server get components and not hooks
+export { AccountPage } from "./account-page";
+export { RecoveryCodesDialog } from "./components/recovery-codes-dialog";
+export { SaveProgressPrompt } from "./components/save-progress-prompt";
+export { StepUpDialog } from "./components/step-up-dialog";
+export { useHomeRedirect } from "./hooks/use-home-redirect";
+export { useRequireSession } from "./hooks/use-require-session";
+export { RecoverPage } from "./recover-page";
+export { replaceSession } from "./utils/replace-session";
+export { WelcomePage } from "./welcome-page";

@@ -10,7 +10,8 @@ from api.dependencies.settings import (
     LoginSessionSettingsDependency,
     PasskeySettingsDependency,
 )
-from api.errors import ForeignOriginError
+from api.errors import ForeignOriginError, RecentSignInRequiredError
+from api.login_sessions import signed_in_recently
 from api.session_cookie import SESSION_COOKIE_NAME, set_session_cookie
 from persistence.database.errors import LearnerNotFoundError
 
@@ -44,14 +45,38 @@ def get_authenticated(
     settings: LoginSessionSettingsDependency,
 ) -> Authenticated:
     """Who is signed in. The cookie is sent again when the session's expiry moves."""
-    authenticated = authenticate(unit_of_work, token, clock(), settings.lifetime)
+    authenticated = authenticate(unit_of_work, token, clock(), settings)
     if authenticated.extended and token is not None:
-        set_session_cookie(response, token, settings)
+        set_session_cookie(
+            response, token, settings, is_guest=authenticated.user.is_guest
+        )
 
     return authenticated
 
 
 AuthenticatedDependency = Annotated[Authenticated, Depends(get_authenticated)]
+
+
+def get_confirmed(
+    authenticated: AuthenticatedDependency,
+    clock: ClockDependency,
+    settings: LoginSessionSettingsDependency,
+) -> Authenticated:
+    """Who is signed in, for something that changes the account.
+
+    An account must have proved who they are recently, so a stolen session
+    cannot add its own passkey or delete the account. A guest has nothing to
+    prove it with but the session.
+    """
+    if not authenticated.user.is_guest and not signed_in_recently(
+        authenticated.login_session.authenticated_at, clock(), settings.recent_sign_in
+    ):
+        raise RecentSignInRequiredError("Confirm it is you with your passkey")
+
+    return authenticated
+
+
+ConfirmedDependency = Annotated[Authenticated, Depends(get_confirmed)]
 
 
 def get_learner_id(

@@ -109,25 +109,47 @@ class TestPasskeySettings:
 
 
 class TestLoginSessionSettings:
-    def test_the_cookie_is_secure_and_lasts_thirty_days_by_default(self) -> None:
+    def test_the_cookie_is_secure_by_default(self) -> None:
+        assert LoginSessionSettings(_env_file=None).cookie_secure
+
+    def test_an_account_stays_signed_in_a_day_and_a_guest_thirty(self) -> None:
         settings = LoginSessionSettings(_env_file=None)
 
-        assert settings.cookie_secure
-        assert settings.lifetime == timedelta(days=30)
+        assert settings.lifetime_for(is_guest=False) == timedelta(days=1)
+        assert settings.lifetime_for(is_guest=True) == timedelta(days=30)
+
+    def test_an_account_session_ends_after_thirty_days_and_changes_need_a_recent_sign_in(
+        self,
+    ) -> None:
+        settings = LoginSessionSettings(_env_file=None)
+
+        assert settings.max_age == timedelta(days=30)
+        assert settings.recent_sign_in == timedelta(minutes=10)
 
     def test_reads_the_environment(self, monkeypatch: pytest.MonkeyPatch) -> None:
         monkeypatch.setenv("SESSION_COOKIE_SECURE", "false")
         monkeypatch.setenv("SESSION_LIFETIME_SECONDS", "60")
+        monkeypatch.setenv("SESSION_GUEST_LIFETIME_SECONDS", "120")
 
         settings = LoginSessionSettings(_env_file=None)
 
         assert not settings.cookie_secure
-        assert settings.lifetime == timedelta(minutes=1)
+        assert settings.lifetime_for(is_guest=False) == timedelta(minutes=1)
+        assert settings.lifetime_for(is_guest=True) == timedelta(minutes=2)
 
-    def test_the_lifetime_must_be_positive(
-        self, monkeypatch: pytest.MonkeyPatch
+    @pytest.mark.parametrize(
+        "name",
+        (
+            "SESSION_LIFETIME_SECONDS",
+            "SESSION_GUEST_LIFETIME_SECONDS",
+            "SESSION_MAX_AGE_SECONDS",
+            "SESSION_RECENT_SIGN_IN_SECONDS",
+        ),
+    )
+    def test_the_lifetimes_must_be_positive(
+        self, monkeypatch: pytest.MonkeyPatch, name: str
     ) -> None:
-        monkeypatch.setenv("SESSION_LIFETIME_SECONDS", "0")
+        monkeypatch.setenv(name, "0")
 
         with pytest.raises(ValidationError):
             LoginSessionSettings(_env_file=None)

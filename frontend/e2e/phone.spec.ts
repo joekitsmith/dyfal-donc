@@ -13,6 +13,9 @@ test.beforeEach(async ({ page, request }) => {
 
 test("the lesson fits a phone and its buttons are easy to tap", async ({ page }) => {
   await page.goto("/");
+  await expect(page.getByRole("button", { name: "Try it now" })).toBeVisible();
+  await page.screenshot({ path: "test-results/phone-welcome.png" });
+  await page.getByRole("button", { name: "Try it now" }).click();
   await expect(page.getByRole("button", { exact: true, name: "Start" })).toBeVisible();
   await page.screenshot({ path: "test-results/phone-idle.png" });
   await page.getByRole("button", { exact: true, name: "Start" }).click();

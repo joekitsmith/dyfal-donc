@@ -11,7 +11,8 @@ class LoginSession(Base):
     """A browser that is signed in as a user.
 
     The cookie holds a random token and only its hash is stored, so a copy of
-    this table cannot be used to sign in.
+    this table cannot be used to sign in. ``authenticated_at`` is when the
+    person last proved who they were, which using the session does not change.
     """
 
     __tablename__ = "login_sessions"
@@ -22,5 +23,6 @@ class LoginSession(Base):
     )
     token_hash: Mapped[bytes] = mapped_column(LargeBinary, unique=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    authenticated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     last_seen_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), index=True)

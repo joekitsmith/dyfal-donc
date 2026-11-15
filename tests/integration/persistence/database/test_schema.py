@@ -6,6 +6,7 @@ TABLES = {
     "issued_selections",
     "learners",
     "login_sessions",
+    "recovery_codes",
     "review_events",
     "users",
     "webauthn_challenges",
