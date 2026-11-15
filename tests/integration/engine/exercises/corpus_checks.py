@@ -4,10 +4,23 @@ from cymraeg import Mutation, mutate
 from engine.curriculum import Curriculum, Lexeme
 from engine.exercises import ExerciseEntry, ValidationResult
 
-SLOT_MUTATIONS: Mapping[str, Mutation] = {"pat:galla-i": Mutation.SOFT}
+SLOT_MUTATIONS: Mapping[str, Mutation] = {
+    "pat:galla-i": Mutation.SOFT,
+    "pat:dw-in-adj": Mutation.SOFT,
+    "pat:mae-e-yn-adj": Mutation.SOFT,
+}
 """The mutation each pattern's slot words must show, if their first letter can mutate."""
 
 MINIMUM_INTRODUCING_EXERCISES = 3
+
+FEWER_INTRODUCING_EXERCISES: Mapping[str, int] = {
+    "lex:siarad": 1,
+    "lex:cymraeg": 2,
+    "pat:dw-in-moyn": 2,
+    "lex:mynd": 2,
+    "lex:dod": 2,
+}
+"""Early items, for which almost no distinct exercise can be built from what is known so far."""
 
 
 def known_before(entry: ExerciseEntry, curriculum: Curriculum) -> frozenset[str]:

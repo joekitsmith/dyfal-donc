@@ -205,3 +205,173 @@
   forms: [galla, gallwn]
   notes: "Southern speakers conjugate it directly: galla i, gallwn ni."
   prerequisites: [pat:dw-in-gallu]
+
+- id: lex:e
+  welsh: e
+  english: him, it
+  part_of_speech: pron
+  notes: "South Wales. North Wales uses 'o'. Also part of the patterns 'Mae e'n' and 'Dyw e ddim yn', where it is not a separate item."
+
+- id: lex:hi
+  welsh: hi
+  english: her, it
+  part_of_speech: pron
+
+- id: lex:nhw
+  welsh: nhw
+  english: them
+  part_of_speech: pron
+
+- id: lex:gwneud
+  welsh: gwneud
+  english: to do, to make
+  part_of_speech: verb
+  forms: [neud]
+  notes: "Colloquial South Wales 'neud' is the usual spoken form."
+
+- id: lex:cael
+  welsh: cael
+  english: to have, to get
+  part_of_speech: verb
+
+- id: lex:gwybod
+  welsh: gwybod
+  english: to know
+  part_of_speech: verb
+  forms: [gwbod]
+  notes: "Colloquial South Wales 'gwbod' is the usual spoken form."
+
+- id: lex:meddwl
+  welsh: meddwl
+  english: to think
+  part_of_speech: verb
+
+- id: lex:prynu
+  welsh: prynu
+  english: to buy
+  part_of_speech: verb
+
+- id: lex:aros
+  welsh: aros
+  english: to wait, to stay
+  part_of_speech: verb
+
+- id: lex:dweud
+  welsh: dweud
+  english: to say
+  part_of_speech: verb
+  forms: [gweud]
+  notes: "South Wales 'gweud' is the usual spoken form."
+
+- id: lex:byw
+  welsh: byw
+  english: to live
+  part_of_speech: verb
+
+- id: lex:shwmae
+  welsh: shwmae
+  english: hello
+  part_of_speech: phrase
+  notes: "South Wales greeting. North Wales uses 'Sut mae'."
+
+- id: lex:hwyl
+  welsh: hwyl
+  english: bye
+  part_of_speech: phrase
+
+- id: lex:a
+  welsh: a
+  english: and
+  part_of_speech: conj
+  forms: [ac]
+  notes: "Aspirate-mutates what follows (coffi a the). 'ac' before a vowel."
+
+- id: lex:ond
+  welsh: ond
+  english: but
+  part_of_speech: conj
+
+- id: lex:achos
+  welsh: achos
+  english: because
+  part_of_speech: conj
+
+- id: lex:weithiau
+  welsh: weithiau
+  english: sometimes
+  part_of_speech: adv
+
+- id: lex:ffrind
+  welsh: ffrind
+  english: friend
+  part_of_speech: noun
+  gender: m
+  forms: [ffrindiau]
+
+- id: lex:gwaith
+  welsh: gwaith
+  english: work
+  part_of_speech: noun
+  gender: m
+
+- id: lex:amser
+  welsh: amser
+  english: time
+  part_of_speech: noun
+  gender: m
+
+- id: lex:car
+  welsh: car
+  english: car
+  part_of_speech: noun
+  gender: m
+  forms: [ceir]
+
+- id: lex:da
+  welsh: da
+  english: good
+  part_of_speech: adj
+  notes: "Follows its noun (coffi da). Soft-mutates after 'yn' (Dw i'n dda)."
+
+- id: lex:newydd
+  welsh: newydd
+  english: new
+  part_of_speech: adj
+  notes: "Follows its noun (car newydd)."
+
+- id: lex:hapus
+  welsh: hapus
+  english: happy
+  part_of_speech: adj
+
+- id: lex:blinedig
+  welsh: blinedig
+  english: tired
+  part_of_speech: adj
+  notes: "Soft-mutates after 'yn' (Dw i'n flinedig)."
+
+- id: lex:prysur
+  welsh: prysur
+  english: busy
+  part_of_speech: adj
+  notes: "Soft-mutates after 'yn' (Dw i'n brysur)."
+
+- id: lex:beth
+  welsh: beth
+  english: what
+  part_of_speech: pron
+
+- id: lex:ble
+  welsh: ble
+  english: where
+  part_of_speech: adv
+
+- id: lex:pryd
+  welsh: pryd
+  english: when
+  part_of_speech: adv
+
+- id: lex:pam
+  welsh: pam
+  english: why
+  part_of_speech: adv
