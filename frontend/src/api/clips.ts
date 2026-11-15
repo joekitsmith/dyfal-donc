@@ -19,9 +19,17 @@ export function audioUrl(path: string, baseUrl: string = API_BASE_PATH): string 
   return `${baseUrl}${path}`;
 }
 
-export async function fetchClip(path: string, baseUrl: string = API_BASE_PATH): Promise<Clip> {
+export type FetchClipOptions = {
+  readonly baseUrl?: string;
+  readonly signal?: AbortSignal;
+};
+
+export async function fetchClip(
+  path: string,
+  { baseUrl = API_BASE_PATH, signal }: FetchClipOptions = {},
+): Promise<Clip> {
   const started = performance.now();
-  const response = await fetch(audioUrl(path, baseUrl));
+  const response = await fetch(audioUrl(path, baseUrl), signal === undefined ? {} : { signal });
 
   if (!response.ok) {
     throw new ClipUnavailableError(response.status);

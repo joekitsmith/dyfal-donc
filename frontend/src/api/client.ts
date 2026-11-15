@@ -1,5 +1,4 @@
 import createFetchClient from "openapi-fetch";
-import createQueryApi from "openapi-react-query";
 
 import { API_BASE_PATH } from "@/config/paths";
 
@@ -12,5 +11,3 @@ export function createApiClient(baseUrl: string = API_BASE_PATH) {
 }
 
 export const apiClient = createApiClient();
-
-export const queryApi = createQueryApi(apiClient);

@@ -27,7 +27,7 @@ describe("fetchClip", () => {
       ),
     );
 
-    const clip = await fetchClip(AUDIO_PATH, API_URL);
+    const clip = await fetchClip(AUDIO_PATH, { baseUrl: API_URL });
 
     expect(clip.blob.size).toBe(3);
     expect(clip.blob.type).toBe("audio/wav");
@@ -37,10 +37,10 @@ describe("fetchClip", () => {
   it("fails with the status when the speech service is down", async () => {
     server.use(http.get(`${API_URL}${AUDIO_PATH}`, () => new HttpResponse(null, { status: 503 })));
 
-    await expect(fetchClip(AUDIO_PATH, API_URL)).rejects.toMatchObject({
+    await expect(fetchClip(AUDIO_PATH, { baseUrl: API_URL })).rejects.toMatchObject({
       message: "The audio is unavailable (status 503)",
       status: 503,
     });
-    await expect(fetchClip(AUDIO_PATH, API_URL)).rejects.toBeInstanceOf(ClipUnavailableError);
+    await expect(fetchClip(AUDIO_PATH, { baseUrl: API_URL })).rejects.toBeInstanceOf(ClipUnavailableError);
   });
 });
