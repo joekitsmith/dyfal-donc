@@ -39,6 +39,22 @@ export const FAILURE_MESSAGES = {
   unsupported: "This browser cannot use passkeys.",
 } as const;
 
+/** What "Confirm it's you" says the change is. */
+export const STEP_UP_TEXT = {
+  add_passkey: "To add a passkey, confirm with one you already have.",
+  delete_account: "To delete your account, confirm with one you already have.",
+  new_codes: "To make new recovery codes, confirm with one you already have.",
+  remove_passkey: "To remove this passkey, confirm with one you already have.",
+} as const;
+
+export const STEP_UP_FAILURES = {
+  cancelled: "Nothing changed.",
+  not_recognised: "That passkey isn't for this account.",
+  other: "That didn't work. Try again.",
+} as const;
+
+export const ACCOUNT_SWITCHED_NOTICE = "You're now signed in to a different account. Nothing was changed.";
+
 export const WELCOME_NOTICES = {
   cancelled: "Nothing changed. You can try again whenever you like.",
   not_recognised: "We don't recognise that passkey. Try another, or start as a guest.",

@@ -9,7 +9,7 @@ import { UNAUTHORIZED_STATUS } from "../constants";
 import { withStepUp } from "./with-step-up";
 
 export async function deleteAccount(client: ApiClient): Promise<void> {
-  await withStepUp(async () => {
+  await withStepUp("delete_account", async () => {
     assertOk(await client.DELETE("/me"));
   });
 }
@@ -23,14 +23,14 @@ export async function getRecoveryCodeStatus(client: ApiClient): Promise<number> 
 }
 
 export async function removePasskey(client: ApiClient, passkeyId: string): Promise<void> {
-  await withStepUp(async () => {
+  await withStepUp("remove_passkey", async () => {
     assertOk(await client.DELETE("/me/passkeys/{passkey_id}", { params: { path: { passkey_id: passkeyId } } }));
   });
 }
 
 /** A new set of recovery codes, which replaces the old one and is shown only now. */
 export async function replaceRecoveryCodes(client: ApiClient): Promise<readonly string[]> {
-  return withStepUp(async () => unwrap(await client.POST("/me/recovery-codes")).codes);
+  return withStepUp("new_codes", async () => unwrap(await client.POST("/me/recovery-codes")).codes);
 }
 
 /** Whoever the session cookie says is signed in, or null when nobody is. */

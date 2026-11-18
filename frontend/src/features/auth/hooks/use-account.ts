@@ -3,6 +3,7 @@ import { usePasskeys } from "../api/use-passkeys";
 import { useRemovePasskey } from "../api/use-remove-passkey";
 import { useSignOut } from "../api/use-sign-out";
 import { ACCOUNT_FAILURES } from "../constants";
+import { useAccountSwitchedNotice } from "./use-account-switched-notice";
 import { useRecoveryCodesSection } from "./use-recovery-codes-section";
 import { useRequireSession } from "./use-require-session";
 
@@ -14,6 +15,7 @@ export function useAccount() {
   const signOut = useSignOut();
   const deleteAccount = useDeleteAccount();
   const recovery = useRecoveryCodesSection(user !== undefined && !user.isGuest);
+  const switchedAccount = useAccountSwitchedNotice();
 
   return {
     deleteAccount: () => {
@@ -42,6 +44,7 @@ export function useAccount() {
     signOut: () => {
       signOut.mutate();
     },
+    switchedAccount,
     user,
   };
 }

@@ -1,14 +1,10 @@
-import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+
+import { Button } from "@/components/button";
+import { ChoiceRow } from "@/components/choice-row";
+import { Dialog } from "@/components/dialog";
+import { DialogText } from "@/components/dialog-text";
+import { textStyle } from "@/theme/text-style";
 
 import { useRecoveryCodesDialog } from "../hooks/use-recovery-codes-dialog";
 
@@ -17,45 +13,50 @@ export function RecoveryCodesDialog() {
   const { codes, copy, done, download, open, saved } = useRecoveryCodesDialog();
 
   return (
-    <Dialog open={open}>
-      <DialogTitle>Save your recovery codes</DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          If you lose your passkey, each of these gets you back into your account once. They are shown only now, so keep
-          them somewhere safe.
-        </DialogContentText>
-        <List aria-label="Recovery codes" sx={{ fontFamily: "monospace" }}>
-          {codes.map((code) => (
-            <ListItem disablePadding key={code}>
-              {code}
-            </ListItem>
-          ))}
-        </List>
-        <Stack direction="row" spacing={1}>
-          <Button onClick={copy.onClick} variant="outlined">
+    <Dialog open={open} title="Save your recovery codes">
+      <DialogText>
+        If you ever lose every passkey, one of these gets you back in. Each works once. This is the only time they are
+        shown.
+      </DialogText>
+      <Box
+        aria-label="Recovery codes"
+        component="ul"
+        sx={{
+          ...textStyle("label"),
+          backgroundColor: "var(--dd-ground)",
+          borderRadius: "10px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          letterSpacing: "0.03em",
+          listStyle: "none",
+          m: "16px 0 0",
+          p: "14px 16px",
+          rowGap: "6px",
+          userSelect: "text",
+        }}
+      >
+        {codes.map((code) => (
+          <li key={code}>{code}</li>
+        ))}
+      </Box>
+      <Box sx={{ display: "flex", gap: "12px", mt: "16px" }}>
+        <Box sx={{ flex: 1 }}>
+          <Button edge full onClick={copy.onClick} variant="ghost">
             {copy.copied ? "Copied" : "Copy"}
           </Button>
-          <Button onClick={download} variant="outlined">
+        </Box>
+        <Box sx={{ flex: 1 }}>
+          <Button edge full onClick={download} variant="ghost">
             Download
           </Button>
-        </Stack>
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={saved.checked}
-              onChange={(event) => {
-                saved.onChange(event.target.checked);
-              }}
-            />
-          }
-          label="I have saved these codes"
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button disabled={done.disabled} onClick={done.onClick} variant="contained">
-          Done
-        </Button>
-      </DialogActions>
+        </Box>
+      </Box>
+      <Box sx={{ mt: "4px" }}>
+        <ChoiceRow checked={saved.checked} label="I have saved these codes" onChange={saved.onChange} />
+      </Box>
+      <Button full onClick={done.onClick} unavailable={done.disabled} variant="primary">
+        Done
+      </Button>
     </Dialog>
   );
 }

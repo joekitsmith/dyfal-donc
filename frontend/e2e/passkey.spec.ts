@@ -145,3 +145,88 @@ test("a guest is asked before signing out, and a passkey is removed only after a
   await removeDialog.getByRole("button", { name: "Remove" }).click();
   await expect(passkeys.getByRole("listitem")).toHaveCount(1);
 });
+
+test("the recovery codes dialog cannot be dismissed, and Done waits for the box", async ({ page }) => {
+  await startAsGuest(page);
+  await chooseFromMenu(page, "link", "Account");
+  await page.getByRole("button", { name: "Add a passkey" }).click();
+
+  const dialog = page.getByRole("dialog", { name: "Save your recovery codes" });
+
+  await expect(dialog.getByRole("listitem")).toHaveCount(10);
+  await expect(dialog.getByRole("button", { name: "Copy" })).toBeVisible();
+  await expect(dialog.getByRole("button", { name: "Download" })).toBeVisible();
+
+  const done = dialog.getByRole("button", { name: "Done" });
+
+  await expect(done).toHaveAttribute("aria-disabled", "true");
+  // Playwright waits for an aria-disabled button to be enabled, so the press is forced
+  await done.click({ force: true });
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeVisible();
+
+  await dialog.getByLabel("I have saved these codes").check();
+  await expect(done).not.toHaveAttribute("aria-disabled", "true");
+  await done.click();
+  await expect(dialog).toBeHidden();
+});
+
+test("a change that needs a recent sign-in asks, naming the change, and goes ahead once confirmed", async ({
+  page,
+}) => {
+  await startAsGuest(page);
+
+  await saveProgressAndKeepFirstCode(page);
+
+  let refused = false;
+
+  await page.route("**/api/me/recovery-codes", async (route) => {
+    if (route.request().method() === "POST" && !refused) {
+      refused = true;
+      await route.fulfill({ json: { detail: "Sign in again first" }, status: 403 });
+    } else {
+      await route.continue();
+    }
+  });
+  await page.getByRole("button", { name: "Make new codes" }).click();
+  await page
+    .getByRole("dialog", { name: "Make new recovery codes?" })
+    .getByRole("button", { name: "Make new codes" })
+    .click();
+
+  const confirm = page.getByRole("dialog", { name: "Confirm it's you" });
+
+  await expect(confirm).toContainText("To make new recovery codes, confirm with one you already have.");
+  await expect(confirm).toContainText("Your device will ask you to confirm.");
+  await confirm.getByRole("button", { name: "Continue" }).click();
+
+  await expect(page.getByRole("dialog", { name: "Save your recovery codes" })).toBeVisible();
+});
+
+test("confirming with another account's passkey says so and changes nothing", async ({ page }) => {
+  await startAsGuest(page);
+
+  await saveProgressAndKeepFirstCode(page);
+
+  await page.route("**/api/me/recovery-codes", async (route) => {
+    if (route.request().method() === "POST") {
+      await route.fulfill({ json: { detail: "Sign in again first" }, status: 403 });
+    } else {
+      await route.continue();
+    }
+  });
+  await page.route("**/api/auth/passkeys/authentication/verify", async (route) => {
+    await route.fulfill({
+      json: { created_at: "2026-01-01T00:00:00Z", id: "6a3f0f62-2a0e-4b0e-9e0b-6f6d7c4f9d11", is_guest: false },
+    });
+  });
+  await page.getByRole("button", { name: "Make new codes" }).click();
+  await page
+    .getByRole("dialog", { name: "Make new recovery codes?" })
+    .getByRole("button", { name: "Make new codes" })
+    .click();
+  await page.getByRole("dialog", { name: "Confirm it's you" }).getByRole("button", { name: "Continue" }).click();
+
+  await expect(page.getByText("You're now signed in to a different account. Nothing was changed.")).toBeVisible();
+  await expect(page.getByRole("dialog", { name: "Save your recovery codes" })).toHaveCount(0);
+});
