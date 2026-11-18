@@ -12,11 +12,10 @@ type LessonControlsProps = {
   readonly actions: LessonActions;
   readonly canMiss: boolean;
   readonly canPause: boolean;
-  readonly report: { readonly disabled: boolean; readonly onClick: () => void };
   readonly state: LessonState;
 };
 
-export function LessonControls({ actions, canMiss, canPause, report, state }: LessonControlsProps) {
+export function LessonControls({ actions, canMiss, canPause, state }: LessonControlsProps) {
   if (state.phase === "error") {
     return state.cause === "learner_missing" ? null : (
       <Button onClick={actions.retry} size="large" variant="contained">
@@ -50,9 +49,6 @@ export function LessonControls({ actions, canMiss, canPause, report, state }: Le
           Replay (R)
         </Button>
       </Stack>
-      <Button disabled={report.disabled} onClick={report.onClick} size="small" sx={{ alignSelf: "flex-start" }}>
-        Report a problem
-      </Button>
     </Stack>
   );
 }

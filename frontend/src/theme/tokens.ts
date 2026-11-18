@@ -26,11 +26,13 @@ export const COLOURS = {
   },
 } as const;
 
+export const SLOW_MILLISECONDS = 320;
+
 export const MOTION = {
   base: "200ms",
   ease: "cubic-bezier(0.2, 0.7, 0.2, 1)",
   fast: "120ms",
-  slow: "320ms",
+  slow: `${SLOW_MILLISECONDS}ms`,
 } as const;
 
 /** The package registers the variable font under this name. The rest is the fallback stack. */

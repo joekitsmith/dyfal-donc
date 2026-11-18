@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest, startButton, startLesson } from "./helpers";
+import { chooseFromMenu, requireStack, startAsGuest, startButton, startLesson } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
@@ -68,7 +68,7 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   await expect(english).not.toHaveText("");
 
   // The first exercise has moved on, so it is the sentence to report
-  await page.getByRole("button", { name: "Report a problem" }).click();
+  await chooseFromMenu(page, "button", "Report a problem");
   // A dialog hides the page behind it from the accessibility tree, but the lesson is paused behind it
   await expect(page.getByRole("button", { includeHidden: true, name: /^Resume/ })).toBeVisible();
 
@@ -111,7 +111,7 @@ test("Stop for now returns to rest, and Space starts the lesson again from there
   await startLesson(page);
   await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
 
-  await page.getByRole("button", { name: "Stop for now" }).click();
+  await chooseFromMenu(page, "button", "Stop for now");
   await expect(startButton(page)).toBeVisible();
   await expect(page.getByTestId(TEST_IDS.english)).toHaveCount(0);
 
@@ -129,7 +129,7 @@ test("stopping while the next exercise is still loading leaves the lesson at res
   });
 
   await startLesson(page);
-  await page.getByRole("button", { name: "Stop for now" }).click();
+  await chooseFromMenu(page, "button", "Stop for now");
   await page.waitForResponse((response) => response.url().endsWith("/me/next"));
   await page.waitForTimeout(SLOW_RESPONSE_MILLISECONDS);
 
@@ -143,4 +143,43 @@ test("the old lesson address leads to the home screen, where the lesson starts",
 
   await expect(page).toHaveURL(/\/$/);
   await expect(startButton(page)).toBeVisible();
+});
+
+test("the menu holds the lesson, ignores its shortcuts, and leaves it paused when closed", async ({ page }) => {
+  await startAsGuest(page);
+  await startLesson(page);
+  await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
+
+  const menuButton = page.getByRole("button", { name: "Menu" });
+
+  await menuButton.click();
+
+  const menu = page.getByRole("dialog", { name: "Menu" });
+
+  await expect(menu.getByRole("link", { name: "Look something up" })).toBeVisible();
+  await expect(menu.getByRole("button", { name: "Report a problem" })).toBeVisible();
+  await expect(menu.getByRole("link", { name: "Settings" })).toBeVisible();
+  await expect(menu.getByRole("link", { name: "Account" })).toBeVisible();
+  await expect(menu.getByRole("button", { name: "Stop for now" })).toBeVisible();
+
+  // The lesson pauses as soon as it can, which is after its audio has started
+  await expect(page.getByRole("button", { includeHidden: true, name: /^Resume/ })).toBeVisible();
+
+  // Space would resume it, if the shortcuts were not stood down
+  await page.keyboard.press("Space");
+  await page.keyboard.press("Escape");
+  await expect(menu).toBeHidden();
+  await expect(menuButton).toBeFocused();
+  await expect(page.getByRole("button", { name: /^Resume/ })).toBeVisible();
+});
+
+test("at rest the menu has no way to stop", async ({ page }) => {
+  await startAsGuest(page);
+  await page.getByRole("button", { name: "Menu" }).click();
+
+  const menu = page.getByRole("dialog", { name: "Menu" });
+
+  await expect(menu.getByRole("link", { name: "Look something up" })).toBeVisible();
+  await expect(menu.getByRole("button", { name: "Stop for now" })).toHaveCount(0);
+  await expect(menu).toContainText("On headphones and the lock screen");
 });

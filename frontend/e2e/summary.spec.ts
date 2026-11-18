@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest, startButton, startLesson } from "./helpers";
+import { chooseFromMenu, requireStack, startAsGuest, startButton, startLesson } from "./helpers";
 
 test.beforeEach(async ({ request }) => {
   await requireStack(request);
@@ -15,9 +15,9 @@ test("after a session the home screen recaps it and the summary lets a missed ex
   await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
   await page.keyboard.press("m");
   await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });
-  await expect(page.getByRole("timer")).toBeVisible();
+  await expect(page.getByTestId(TEST_IDS.sessionClock)).toBeVisible();
 
-  await page.getByRole("button", { name: "Stop for now" }).click();
+  await chooseFromMenu(page, "button", "Stop for now");
 
   const recap = page.getByRole("region", { name: "Latest session" });
 

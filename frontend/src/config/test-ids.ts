@@ -3,5 +3,6 @@ export const TEST_IDS = {
   english: "english",
   missedIt: "missed-it",
   progress: "progress",
+  sessionClock: "session-clock",
   welsh: "welsh",
 } as const;

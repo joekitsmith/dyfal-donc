@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest, startLesson } from "./helpers";
+import { chooseFromMenu, requireStack, startAsGuest, startLesson } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
@@ -17,7 +17,7 @@ test("with slow Welsh only the lesson never fetches the standard Welsh", async (
   });
 
   await startAsGuest(page);
-  await page.getByRole("link", { name: "Settings" }).click();
+  await chooseFromMenu(page, "link", "Settings");
   await page.getByLabel("Welsh audio").click();
   await page.getByRole("option", { name: "Slow only" }).click();
   await page.getByRole("button", { name: "Save" }).click();
