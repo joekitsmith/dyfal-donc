@@ -6,7 +6,7 @@ import { textStyle } from "@/theme/text-style";
 
 type SubHeadingProps = {
   readonly children: ReactNode;
-  /** Pages that have a title use h2 here, and sections within a section h3. */
+  /** Pages that have a title use h2 here, and sections within a section h3, which sit a little closer. */
   readonly level: "h2" | "h3";
   /** A line under the heading that says what the section is. */
   readonly note?: string;
@@ -22,7 +22,7 @@ export function SubHeading({ children, level, note }: SubHeadingProps) {
           ...textStyle("body"),
           color: "var(--dd-muted)",
           fontWeight: 500,
-          m: note === undefined ? "28px 0 8px" : "28px 0 2px",
+          m: `${level === "h2" ? 28 : 24}px 0 ${note === undefined ? 8 : 2}px`,
         }}
       >
         {children}

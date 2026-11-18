@@ -1,6 +1,11 @@
-import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
+import { SubHeading } from "@/components/sub-heading";
+import { textStyle } from "@/theme/text-style";
 
 import type { TopicProgress } from "../types";
+
+import { topicTitle } from "../utils/topic-title";
 
 type LaterTopicsProps = { readonly topics: readonly TopicProgress[] };
 
@@ -12,14 +17,10 @@ export function LaterTopics({ topics }: LaterTopicsProps) {
 
   return (
     <section aria-label="Later in the course">
-      <Typography component="h2" variant="h6">
-        Later in the course
-      </Typography>
-      <ul>
-        {topics.map((topic) => (
-          <li key={topic.name}>{topic.name}</li>
-        ))}
-      </ul>
+      <SubHeading level="h2">Later in the course</SubHeading>
+      <Box sx={{ ...textStyle("label"), color: "var(--dd-muted)", fontWeight: 400, lineHeight: 1.7, m: 0 }}>
+        {topics.map((topic) => topicTitle(topic.name)).join(" · ")}
+      </Box>
     </section>
   );
 }

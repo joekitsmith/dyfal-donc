@@ -18,17 +18,20 @@ test("the course lists what was met, can be searched, and opens a word with the 
   await chooseFromMenu(page, "button", "Stop for now");
   await chooseFromMenu(page, "link", "Look something up");
 
-  await expect(page.getByRole("heading", { exact: true, name: "Course" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Everything you've met" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Later in the course" })).toBeVisible();
   await expect(
     page.getByRole("region", { name: "Things you can say" }).getByRole("button", { name: / slowly$/ }),
   ).toBeVisible();
 
-  const word = page.getByRole("region", { name: "Words" }).getByRole("link").first();
-  const [welsh = ""] = ((await word.textContent()) ?? "").split(" – ");
+  await expect(page.getByRole("heading", { level: 2 }).first()).toHaveText("Everyday talk");
+  await expect(page.getByText("You're here")).toBeVisible();
 
-  await page.getByLabel("Search words and phrases").fill(welsh);
-  await page.getByRole("list", { name: "Search results" }).getByRole("link").first().click();
+  const word = page.getByRole("region", { name: "Words" }).getByRole("link").first();
+  const welsh = (await word.locator("[lang=cy]").textContent()) ?? "";
+
+  await page.getByRole("searchbox", { name: "Search in English or Welsh" }).fill(welsh);
+  await page.getByRole("region", { name: "Search results" }).getByRole("link").first().click();
 
   await expect(page).toHaveURL(/\/course\/items\/.+/);
   await expect(page.getByRole("heading", { level: 1, name: welsh })).toBeVisible();

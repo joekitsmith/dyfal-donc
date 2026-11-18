@@ -12,6 +12,7 @@ export function useCoursePage() {
   const course = useCourse();
   const report = useReportDialog("course");
   const [query, setQuery] = useState("");
+  const [unfolded, setUnfolded] = useState<readonly string[]>([]);
   const topics = useMemo(() => course.data?.topics ?? [], [course.data]);
   const results = useMemo(() => searchItems(topics, query), [topics, query]);
 
@@ -19,6 +20,9 @@ export function useCoursePage() {
     error: sessionError ?? course.error,
     isLoading: user === undefined || course.isPending,
     report,
+    retry: () => {
+      void course.refetch();
+    },
     search: {
       active: query.trim() !== "",
       onChange: setQuery,
@@ -27,7 +31,13 @@ export function useCoursePage() {
     },
     topics: {
       later: topics.filter((topic) => !topic.started),
-      started: topics.filter((topic) => topic.started),
+      /** The current topic is open, and any other opens when asked. */
+      onUnfold: (name: string) => {
+        setUnfolded((previous) => [...previous, name]);
+      },
+      started: topics
+        .filter((topic) => topic.started)
+        .map((topic) => ({ open: topic.is_current || unfolded.includes(topic.name), topic })),
     },
   };
 }
