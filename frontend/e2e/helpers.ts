@@ -25,6 +25,12 @@ async function speedUpThinking(page: Page, settings: Record<string, unknown> = {
   await page.reload();
 }
 
+/** Opens the menu and picks a row from it. */
+export async function chooseFromMenu(page: Page, role: "button" | "link", name: string): Promise<void> {
+  await page.getByRole("button", { name: "Menu" }).click();
+  await page.getByRole("dialog", { name: "Menu" }).getByRole(role, { name }).click();
+}
+
 /** The big button on the home screen. Its name has the Welsh and then the English. */
 export function startButton(page: Page): Locator {
   return page.getByRole("button", { name: /^(Dechrau|Dal ati)/ });
@@ -77,7 +83,7 @@ export async function installPasskeyDevice(page: Page): Promise<{ readonly repla
 
 /** Adds a passkey to a guest from the account screen, and returns the first recovery code it was given. */
 export async function saveProgressAndKeepFirstCode(page: Page): Promise<string> {
-  await page.getByRole("link", { name: "Account" }).click();
+  await chooseFromMenu(page, "link", "Account");
   await page.getByRole("button", { name: "Add a passkey" }).click();
 
   const dialog = page.getByRole("dialog", { name: "Save your recovery codes" });

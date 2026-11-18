@@ -1,7 +1,14 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { installPasskeyDevice, requireStack, saveProgressAndKeepFirstCode, startAsGuest, startLesson } from "./helpers";
+import {
+  chooseFromMenu,
+  installPasskeyDevice,
+  requireStack,
+  saveProgressAndKeepFirstCode,
+  startAsGuest,
+  startLesson,
+} from "./helpers";
 
 let device: Awaited<ReturnType<typeof installPasskeyDevice>>;
 
@@ -47,7 +54,7 @@ test("a recovery code gets someone back in once, after they lose their passkey",
   await page.getByRole("button", { name: "Add a passkey" }).click();
   await page.getByRole("link", { name: "Carry on without one" }).click();
   await expect(page).toHaveURL(/\/$/);
-  await page.getByRole("link", { name: "Account" }).click();
+  await chooseFromMenu(page, "link", "Account");
   await expect(page.getByRole("list", { name: "Passkeys" }).getByRole("listitem")).toHaveCount(2);
   await expect(page.getByText("9 unused.")).toBeVisible();
 

@@ -2,40 +2,41 @@ import { useEffect, useState } from "react";
 
 import { useOverview } from "../api/use-overview";
 
-const TICK_MILLISECONDS = 1000;
 const MILLISECONDS_PER_SECOND = 1000;
+const MILLISECONDS_PER_MINUTE = 60_000;
 
 /**
  * Seconds since the current learning session began, or null when there is not one yet.
  * The server says when it began and what time it thinks it is, so a wrong clock on this device
- * does not matter.
+ * does not matter. It is read again as each whole minute of the session passes, which is all the
+ * clock shows.
  */
 export function useSessionClock(): null | number {
   const { data, dataUpdatedAt } = useOverview();
   const [now, setNow] = useState(() => Date.now());
   const session = data?.latest_session ?? null;
   const running = session?.ongoing === true;
+  const elapsed =
+    data === undefined || !session?.ongoing
+      ? null
+      : now - (dataUpdatedAt - Date.parse(data.now)) - Date.parse(session.started_at);
 
   useEffect(() => {
-    if (!running) {
+    if (!running || elapsed === null) {
       return;
     }
 
-    const timer = setInterval(() => {
-      setNow(Date.now());
-    }, TICK_MILLISECONDS);
+    const timer = setTimeout(
+      () => {
+        setNow(Date.now());
+      },
+      MILLISECONDS_PER_MINUTE - (Math.max(0, elapsed) % MILLISECONDS_PER_MINUTE),
+    );
 
     return () => {
-      clearInterval(timer);
+      clearTimeout(timer);
     };
-  }, [running]);
+  }, [elapsed, running]);
 
-  if (data === undefined || !session?.ongoing) {
-    return null;
-  }
-
-  const behindServer = dataUpdatedAt - Date.parse(data.now);
-  const elapsed = now - behindServer - Date.parse(session.started_at);
-
-  return Math.max(0, Math.floor(elapsed / MILLISECONDS_PER_SECOND));
+  return elapsed === null ? null : Math.max(0, Math.floor(elapsed / MILLISECONDS_PER_SECOND));
 }
