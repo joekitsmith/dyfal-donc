@@ -38,18 +38,25 @@ export const MEDIA_SESSION_ARTWORK = [
   { sizes: "192x192", src: "/icons/icon-192.png", type: "image/png" },
 ] as const;
 
-export const ERROR_MESSAGES = {
-  clips: "The audio could not be loaded",
-  next: "The next exercise could not be loaded",
-  playback: "The audio could not be played",
-  submit: "Your answer could not be saved",
+/** What the error card says: a title, and one line on what to do. */
+export const LESSON_ERRORS = {
+  clips: { text: "Check your connection, then try again.", title: "The audio couldn't be loaded" },
+  learner_missing: {
+    text: "It isn't on the server any more. To carry on, delete this account and start again.",
+    title: "We couldn't find your progress",
+  },
+  next: { text: "Check your connection, then try again.", title: "The next sentence couldn't be loaded" },
+  nothing_eligible: { text: "Please come back a little later.", title: "The course isn't ready yet" },
+  playback: { text: "Try again to restart this sentence.", title: "The audio couldn't be played" },
+  speech_unavailable: {
+    text: "It usually comes back within a few minutes.",
+    title: "The speech service isn't available",
+  },
+  submit: {
+    text: "Check your connection, then try again. Nothing is lost.",
+    title: "Your answer couldn't be saved",
+  },
 } as const;
-
-export const LEARNER_MISSING_MESSAGE =
-  "Your progress was not found on the server. The course may have been reset, so delete your account and start again.";
-export const SPEECH_UNAVAILABLE_MESSAGE = "The speech service is not available. Check that it is running, then retry.";
-export const NOTHING_ELIGIBLE_MESSAGE =
-  "The course is not ready for you yet. There is a gap in the content, so there is nothing to give you right now. Try refreshing later.";
 
 export const NOT_FOUND_STATUS = 404;
 export const UNAUTHORIZED_STATUS = 401;

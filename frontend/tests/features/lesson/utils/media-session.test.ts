@@ -70,6 +70,14 @@ describe("lessonMetadata", () => {
   it("has the English as the title and nothing of the Welsh", () => {
     expect(lessonMetadata("I can go")).toMatchObject({ artist: "dyfal-donc", title: "I can go" });
   });
+
+  it("is the name of the app until there is an exercise", () => {
+    expect(lessonMetadata(null)).toMatchObject({ artist: "dyfal-donc", title: "dyfal-donc" });
+  });
+
+  it("lists the larger artwork first", () => {
+    expect(lessonMetadata(null).artwork?.[0]).toMatchObject({ sizes: "512x512" });
+  });
 });
 
 describe("reportPosition", () => {

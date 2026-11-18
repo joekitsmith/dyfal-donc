@@ -9,7 +9,7 @@ import type {
   WelshPlayback,
 } from "../types";
 
-import { errorMessage } from "../utils/error-message";
+import { lessonError } from "../utils/lesson-error";
 
 export const INITIAL_LESSON_STATE: LessonState = { phase: "idle" };
 
@@ -40,10 +40,17 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
       return canMarkMissed(state) && isExerciseState(state) ? { ...state, missed: true } : state;
     case "next_failed":
       return state.phase === "loading"
-        ? { cause: event.cause, message: errorMessage("next", event.cause), phase: "error", retry: { kind: "next" } }
+        ? {
+            cause: event.cause,
+            phase: "error",
+            retry: { kind: "next", previous: state.previous },
+            ...lessonError("next", event.cause),
+          }
         : state;
     case "next_loaded":
-      return state.phase === "loading" ? prepare(event.exercise, 0, false, event.welshPlayback) : state;
+      return state.phase === "loading"
+        ? prepare(event.exercise, 0, false, event.welshPlayback, state.previous === undefined)
+        : state;
     case "nothing_eligible":
       return state.phase === "loading" ? { phase: "nothing_eligible" } : state;
     case "pause":
@@ -68,19 +75,20 @@ export function lessonReducer(state: LessonState, event: LessonEvent): LessonSta
       return state.phase === "submitting"
         ? {
             cause: event.cause,
-            message: errorMessage("submit", event.cause),
             phase: "error",
             retry: {
               attempt: state.attempt,
               exercise: state.exercise,
+              isFirst: state.isFirst,
               kind: "submit",
               missed: state.missed,
               welshPlayback: state.welshPlayback,
             },
+            ...lessonError("submit", event.cause),
           }
         : state;
     case "submitted":
-      return state.phase === "submitting" ? { phase: "loading" } : state;
+      return state.phase === "submitting" ? { phase: "loading", previous: fieldsOf(state) } : state;
     case "toggle_pause":
       return isExerciseState(state) ? setPaused(state, !state.paused) : state;
     case "track_failed":
@@ -112,9 +120,9 @@ export function isPausable(state: LessonState): boolean {
 }
 
 function fieldsOf(state: ExerciseState): ExerciseFields {
-  const { attempt, exercise, missed, paused, replayCount, revealed, welshPlayback } = state;
+  const { attempt, exercise, isFirst, missed, paused, replayCount, revealed, welshPlayback } = state;
 
-  return { attempt, exercise, missed, paused, replayCount, revealed, welshPlayback };
+  return { attempt, exercise, isFirst, missed, paused, replayCount, revealed, welshPlayback };
 }
 
 function prepare(
@@ -122,10 +130,12 @@ function prepare(
   attempt: number,
   missed: boolean,
   welshPlayback: WelshPlayback,
+  isFirst: boolean,
 ): ExerciseState {
   return {
     attempt,
     exercise,
+    isFirst,
     missed,
     paused: false,
     phase: "preparing",
@@ -188,15 +198,15 @@ function retry(state: LessonState): LessonState {
   const { retry: target } = state;
 
   if (target.kind === "next") {
-    return { phase: "loading" };
+    return { phase: "loading", previous: target.previous };
   }
 
   if (target.kind === "clips") {
-    return prepare(target.exercise, target.attempt + 1, target.missed, target.welshPlayback);
+    return prepare(target.exercise, target.attempt + 1, target.missed, target.welshPlayback, target.isFirst);
   }
 
   return {
-    ...fieldsOf(prepare(target.exercise, target.attempt, target.missed, target.welshPlayback)),
+    ...fieldsOf(prepare(target.exercise, target.attempt, target.missed, target.welshPlayback, target.isFirst)),
     phase: "submitting",
   };
 }
@@ -212,14 +222,15 @@ function setPaused(state: LessonState, paused: boolean): LessonState {
 function toClipError(state: ExerciseState, cause: FailureCause): LessonState {
   return {
     cause,
-    message: errorMessage(state.phase === "preparing" ? "clips" : "playback", cause),
     phase: "error",
     retry: {
       attempt: state.attempt,
       exercise: state.exercise,
+      isFirst: state.isFirst,
       kind: "clips",
       missed: state.missed,
       welshPlayback: state.welshPlayback,
     },
+    ...lessonError(state.phase === "preparing" ? "clips" : "playback", cause),
   };
 }

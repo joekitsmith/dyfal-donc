@@ -5,7 +5,7 @@ import { TEST_IDS } from "@/config/test-ids";
 
 import type { LessonState } from "../types";
 
-import { NOTHING_ELIGIBLE_MESSAGE } from "../constants";
+import { LESSON_ERRORS } from "../constants";
 import { isExerciseState } from "../stores/lesson-reducer";
 
 const LINE_HEIGHT = "1.6em";
@@ -26,10 +26,10 @@ export function ExerciseDisplay({ state }: ExerciseDisplayProps) {
           {exercise?.revealed === true ? exercise.exercise.welsh : null}
         </Typography>
       </Stack>
-      {state.phase === "nothing_eligible" ? <Typography>{NOTHING_ELIGIBLE_MESSAGE}</Typography> : null}
+      {state.phase === "nothing_eligible" ? <Typography>{LESSON_ERRORS.nothing_eligible.text}</Typography> : null}
       {state.phase === "error" ? (
         <Typography color="error" role="alert">
-          {state.message}
+          {state.title}. {state.text}
         </Typography>
       ) : null}
     </>

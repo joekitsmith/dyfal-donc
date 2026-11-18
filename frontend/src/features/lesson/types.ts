@@ -8,6 +8,8 @@ export type ExerciseFields = {
   /** Counts retries of the clips, so a retry fetches them again. */
   readonly attempt: number;
   readonly exercise: LessonExercise;
+  /** Whether it is the first exercise since the lesson started. */
+  readonly isFirst: boolean;
   readonly missed: boolean;
   readonly paused: boolean;
   /** Counts replays, so a replay starts the English again even when it is already playing. */
@@ -47,6 +49,8 @@ export type LessonExercise = {
   readonly english: string;
   /** The exercise itself, which a problem report names. ``selectionId`` is this one time it was given. */
   readonly exerciseId: string;
+  /** Whether it teaches an item the learner has not met. */
+  readonly introducesItem: boolean;
   readonly selectionId: string;
   readonly welsh: string;
 };
@@ -66,9 +70,16 @@ export type LessonState =
   | (ExerciseFields & { readonly phase: "preparing" })
   | (ExerciseFields & { readonly phase: "submitting" })
   | (ExerciseFields & { readonly phase: "thinking" })
-  | { readonly cause: FailureCause; readonly message: string; readonly phase: "error"; readonly retry: Retry }
+  | {
+      readonly cause: FailureCause;
+      readonly phase: "error";
+      readonly retry: Retry;
+      readonly text: string;
+      readonly title: string;
+    }
   | { readonly phase: "idle" }
-  | { readonly phase: "loading" }
+  /** ``previous`` is the exercise just finished, so the screen can keep showing it until the next is known. */
+  | { readonly phase: "loading"; readonly previous?: ExerciseFields | undefined }
   | { readonly phase: "nothing_eligible" };
 
 export type ReportedOutcome = "got_it" | "missed_it";
@@ -77,11 +88,12 @@ type Retry =
   | {
       readonly attempt: number;
       readonly exercise: LessonExercise;
+      readonly isFirst: boolean;
       readonly kind: "clips" | "submit";
       readonly missed: boolean;
       readonly welshPlayback: WelshPlayback;
     }
-  | { readonly kind: "next" };
+  | { readonly kind: "next"; readonly previous?: ExerciseFields | undefined };
 
 /** The woman's Welsh at a standard pace, the man's slowly, or hers and then his. */
 export type WelshPlayback = "both" | "slow" | "standard";

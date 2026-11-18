@@ -35,6 +35,8 @@ export type LessonActions = {
   readonly replay: () => void;
   readonly resume: () => void;
   readonly retry: () => void;
+  /** Ends the outcome window early. */
+  readonly skipWindow: () => void;
   readonly start: () => void;
   /** Ends the lesson and returns to rest, dropping the exercise that was playing. */
   readonly stop: () => void;
@@ -205,6 +207,9 @@ export function useLessonPlayer({
     retry: () => {
       dispatch({ type: "retry" });
     },
+    skipWindow: () => {
+      dispatch({ type: "skip_window" });
+    },
     start: () => {
       player.unlock();
       dispatch({ type: "start" });
@@ -240,7 +245,7 @@ export function useLessonPlayer({
         actions.replay();
         break;
       case "skip_window":
-        dispatch({ type: "skip_window" });
+        actions.skipWindow();
         break;
       case "toggle_pause":
         if (state.phase === "idle") {

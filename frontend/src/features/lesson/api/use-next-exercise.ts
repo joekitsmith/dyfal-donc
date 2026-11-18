@@ -26,6 +26,7 @@ export function useNextExercise() {
           },
           english: offered.english,
           exerciseId: offered.exercise_id,
+          introducesItem: offered.introduces !== null,
           selectionId: offered.selection_id,
           welsh: offered.welsh,
         },

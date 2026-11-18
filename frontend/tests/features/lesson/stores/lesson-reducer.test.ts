@@ -14,6 +14,7 @@ const EXERCISE: LessonExercise = {
   audio: { english: "/e", welsh_slow: "/s", welsh_standard: "/w" },
   english: "I can go",
   exerciseId: "galla-fynd",
+  introducesItem: false,
   selectionId: "selection-1",
   welsh: "Galla i fynd",
 };
@@ -22,6 +23,7 @@ function exerciseState(phase: ExerciseState["phase"], overrides: Partial<Exercis
   return {
     attempt: 0,
     exercise: EXERCISE,
+    isFirst: true,
     missed: false,
     paused: false,
     phase,
@@ -191,9 +193,9 @@ describe("which Welsh shows, and when", () => {
 describe("a track that cannot be made", () => {
   it("stops with an error that says the audio could not be loaded", () => {
     expect(lessonReducer(exerciseState("preparing"), { cause: "other", type: "track_failed" })).toMatchObject({
-      message: "The audio could not be loaded",
       phase: "error",
       retry: { kind: "clips" },
+      title: "The audio couldn't be loaded",
     });
   });
 
@@ -221,7 +223,7 @@ describe("a track that cannot be made", () => {
   it("says why when the speech service is down", () => {
     expect(
       lessonReducer(exerciseState("preparing"), { cause: "speech_unavailable", type: "track_failed" }),
-    ).toMatchObject({ cause: "speech_unavailable", message: expect.stringContaining("speech service") as string });
+    ).toMatchObject({ cause: "speech_unavailable", title: "The speech service isn't available" });
   });
 });
 
@@ -334,8 +336,8 @@ describe("errors", () => {
 
   it("fails when playback is refused during a track", () => {
     expect(lessonReducer(exerciseState("playing_welsh_standard"), { type: "playback_failed" })).toMatchObject({
-      message: "The audio could not be played",
       phase: "error",
+      title: "The audio couldn't be played",
     });
   });
 });
@@ -362,5 +364,62 @@ describe("other states", () => {
     expect(lessonReducer(INITIAL_LESSON_STATE, { type: "track_ready" })).toBe(INITIAL_LESSON_STATE);
     expect(lessonReducer(INITIAL_LESSON_STATE, { type: "submitted" })).toBe(INITIAL_LESSON_STATE);
     expect(isExerciseState(INITIAL_LESSON_STATE)).toBe(false);
+  });
+});
+
+describe("the exercise before the next is known", () => {
+  it("is kept through loading, and not after the lesson starts", () => {
+    const started = run(INITIAL_LESSON_STATE, { type: "start" });
+    const handedOver = lessonReducer(exerciseState("submitting", { missed: true }), { type: "submitted" });
+
+    expect(started).toEqual({ phase: "loading" });
+    expect(handedOver).toMatchObject({ phase: "loading", previous: { exercise: EXERCISE, missed: true } });
+  });
+
+  it("is kept when fetching the next exercise fails, and when that is retried", () => {
+    const handedOver = lessonReducer(exerciseState("submitting"), { type: "submitted" });
+    const failed = lessonReducer(handedOver, { cause: "other", type: "next_failed" });
+
+    expect(failed).toMatchObject({ phase: "error", retry: { kind: "next", previous: { exercise: EXERCISE } } });
+    expect(lessonReducer(failed, { type: "retry" })).toMatchObject({
+      phase: "loading",
+      previous: { exercise: EXERCISE },
+    });
+  });
+});
+
+describe("the first exercise", () => {
+  it("is the one loaded straight after the lesson starts, and no other", () => {
+    const first = run(
+      INITIAL_LESSON_STATE,
+      { type: "start" },
+      { exercise: EXERCISE, type: "next_loaded", welshPlayback: "both" },
+    );
+    const later = run(
+      exerciseState("submitting"),
+      { type: "submitted" },
+      { exercise: EXERCISE, type: "next_loaded", welshPlayback: "both" },
+    );
+
+    expect(first).toMatchObject({ isFirst: true, phase: "preparing" });
+    expect(later).toMatchObject({ isFirst: false, phase: "preparing" });
+  });
+
+  it("is still the first after its audio is retried", () => {
+    const failed = lessonReducer(exerciseState("preparing", { isFirst: false }), {
+      cause: "other",
+      type: "track_failed",
+    });
+
+    expect(lessonReducer(failed, { type: "retry" })).toMatchObject({ isFirst: false, phase: "preparing" });
+  });
+});
+
+describe("an error", () => {
+  it.each([
+    ["learner_missing", "We couldn't find your progress"],
+    ["other", "Your answer couldn't be saved"],
+  ] as const)("for a failed save with cause %s says %s", (cause, title) => {
+    expect(lessonReducer(exerciseState("submitting"), { cause, type: "submit_failed" })).toMatchObject({ title });
   });
 });
