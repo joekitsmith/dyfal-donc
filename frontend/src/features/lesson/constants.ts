@@ -34,8 +34,8 @@ export const SILENT_SAMPLES = 400;
 
 export const MEDIA_SESSION_ARTIST = "dyfal-donc";
 export const MEDIA_SESSION_ARTWORK = [
-  { sizes: "192x192", src: "/icons/icon-192.png", type: "image/png" },
   { sizes: "512x512", src: "/icons/icon-512.png", type: "image/png" },
+  { sizes: "192x192", src: "/icons/icon-192.png", type: "image/png" },
 ] as const;
 
 export const ERROR_MESSAGES = {
