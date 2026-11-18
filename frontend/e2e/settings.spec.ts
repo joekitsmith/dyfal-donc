@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest, startLesson } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
@@ -24,7 +24,7 @@ test("with slow Welsh only the lesson never fetches the standard Welsh", async (
   await expect(page.getByText("Saved", { exact: true })).toBeVisible();
 
   await page.getByRole("link", { name: "Back to the lesson" }).click();
-  await page.getByRole("button", { exact: true, name: "Start" }).click();
+  await startLesson(page);
   await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
   await page.keyboard.press("m");
   await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });

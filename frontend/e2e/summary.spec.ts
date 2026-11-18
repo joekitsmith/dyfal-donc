@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest, startLesson } from "./helpers";
 
 test.beforeEach(async ({ request }) => {
   await requireStack(request);
@@ -11,20 +11,20 @@ test("after a session the home screen recaps it and the summary lets a missed ex
   page,
 }) => {
   await startAsGuest(page);
-  await page.getByRole("button", { exact: true, name: "Start" }).click();
+  await startLesson(page);
   await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
   await page.keyboard.press("m");
   await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });
   await expect(page.getByRole("timer")).toBeVisible();
 
-  await page.getByRole("link", { name: "Home" }).click();
+  await page.getByRole("button", { name: "Stop for now" }).click();
 
   const recap = page.getByRole("region", { name: "Latest session" });
 
   await expect(recap.getByRole("heading", { name: "This session so far" })).toBeVisible();
   await expect(recap).toContainText("1 exercise");
   await expect(recap.getByRole("region", { name: "New words" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Continue learning" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Continue learning" })).toBeVisible();
 
   await recap.getByRole("link", { name: "See details" }).click();
   await expect(page.getByRole("heading", { name: "Learning session" })).toBeVisible();
@@ -59,7 +59,7 @@ test("after a session the home screen recaps it and the summary lets a missed ex
   await expect(dialog).toBeHidden();
 
   await page.getByRole("link", { name: "Keep going" }).click();
-  await expect(page).toHaveURL(/\/learn$/);
+  await expect(page).toHaveURL(/\/$/);
 });
 
 test("a session that does not exist says so", async ({ page }) => {

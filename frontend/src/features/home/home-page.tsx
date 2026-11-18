@@ -14,11 +14,21 @@ import { ReportDialog } from "@/features/problem-report";
 import { HomeStatus } from "./components/home-status";
 import { useHome } from "./hooks/use-home";
 
-export function HomePage() {
+type HomePageProps = { readonly onStart: () => void };
+
+export function HomePage({ onStart }: HomePageProps) {
   const { error, isLoading, overview, report, user } = useHome();
 
+  // The lesson can still be started when the overview could not be loaded
   if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
+    return (
+      <Stack component="main" spacing={3} sx={{ maxWidth: 560, mt: { sm: 8, xs: 3 }, mx: "auto", p: 2 }}>
+        <Alert severity="error">{error.message}</Alert>
+        <Button onClick={onStart} size="large" sx={{ alignSelf: "flex-start" }} variant="contained">
+          Start learning
+        </Button>
+      </Stack>
+    );
   }
 
   if (isLoading || overview === undefined || user === undefined) {
@@ -34,7 +44,7 @@ export function HomePage() {
       </Typography>
       {recap === null ? null : <SessionRecap recap={recap} />}
       <HomeStatus overview={overview} />
-      <Button component={Link} href={ROUTES.learn} size="large" sx={{ alignSelf: "flex-start" }} variant="contained">
+      <Button onClick={onStart} size="large" sx={{ alignSelf: "flex-start" }} variant="contained">
         {recap?.ongoing === true ? "Continue learning" : "Start learning"}
       </Button>
       {user.isGuest && recap !== null ? <SaveProgressPrompt /> : null}

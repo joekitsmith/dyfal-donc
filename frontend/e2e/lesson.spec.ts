@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest, startLesson } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
@@ -24,8 +24,8 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   await startAsGuest(page);
   const progress = page.getByTestId(TEST_IDS.progress);
 
+  await startLesson(page);
   await expect(progress).toContainText("Introduced: 0 of");
-  await page.getByRole("button", { exact: true, name: "Start" }).click();
 
   const english = page.getByTestId(TEST_IDS.english);
   const welsh = page.getByTestId(TEST_IDS.welsh);
@@ -104,4 +104,43 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
 
   await page.getByRole("button", { name: /^Resume/ }).click();
   await expect(page.getByRole("button", { name: /^Pause/ })).toBeVisible();
+});
+
+test("Stop for now returns to rest, and Space starts the lesson again from there", async ({ page }) => {
+  await startAsGuest(page);
+  await startLesson(page);
+  await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
+
+  await page.getByRole("button", { name: "Stop for now" }).click();
+  await expect(page.getByRole("button", { name: /^(Start|Continue) learning$/ })).toBeVisible();
+  await expect(page.getByTestId(TEST_IDS.english)).toHaveCount(0);
+
+  await page.keyboard.press("Space");
+  await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
+});
+
+test("stopping while the next exercise is still loading leaves the lesson at rest", async ({ page }) => {
+  const SLOW_RESPONSE_MILLISECONDS = 1500;
+
+  await startAsGuest(page);
+  await page.route("**/api/me/next", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, SLOW_RESPONSE_MILLISECONDS));
+    await route.continue();
+  });
+
+  await startLesson(page);
+  await page.getByRole("button", { name: "Stop for now" }).click();
+  await page.waitForResponse((response) => response.url().endsWith("/me/next"));
+  await page.waitForTimeout(SLOW_RESPONSE_MILLISECONDS);
+
+  await expect(page.getByRole("button", { name: /^(Start|Continue) learning$/ })).toBeVisible();
+  await expect(page.getByTestId(TEST_IDS.english)).toHaveCount(0);
+});
+
+test("the old lesson address leads to the home screen, where the lesson starts", async ({ page }) => {
+  await startAsGuest(page);
+  await page.goto("/learn");
+
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByRole("button", { name: /^(Start|Continue) learning$/ })).toBeVisible();
 });

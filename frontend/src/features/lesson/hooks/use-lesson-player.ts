@@ -36,6 +36,8 @@ export type LessonActions = {
   readonly resume: () => void;
   readonly retry: () => void;
   readonly start: () => void;
+  /** Ends the lesson and returns to rest, dropping the exercise that was playing. */
+  readonly stop: () => void;
   readonly togglePause: () => void;
 };
 
@@ -54,7 +56,7 @@ export function useLessonPlayer({
   const [state, dispatch] = useReducer(lessonReducer, INITIAL_LESSON_STATE);
   const [player] = useState(() => new TrackPlayer());
   const [recent, setRecent] = useState<readonly LessonExercise[]>([]);
-  const { mutate: fetchNext } = useNextExercise();
+  const { mutate: fetchNext, reset: forgetNext } = useNextExercise();
   const { mutate: submitOutcome } = useSubmitOutcome();
   const queryClient = useQueryClient();
   const timeline = useRef<null | Timeline>(null);
@@ -206,6 +208,12 @@ export function useLessonPlayer({
     start: () => {
       player.unlock();
       dispatch({ type: "start" });
+    },
+    stop: () => {
+      player.stop();
+      // So an exercise still being fetched cannot be remembered for a report
+      forgetNext();
+      dispatch({ type: "reset" });
     },
     togglePause: () => {
       if (paused) {

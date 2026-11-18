@@ -30,7 +30,7 @@ export function AccountPage() {
 
   return (
     <Stack component="main" spacing={3} sx={{ maxWidth: 560, mt: { sm: 8, xs: 3 }, mx: "auto", p: 2 }}>
-      <Button component={Link} href={ROUTES.learn} sx={{ alignSelf: "flex-start" }}>
+      <Button component={Link} href={ROUTES.home} sx={{ alignSelf: "flex-start" }}>
         Back to the lesson
       </Button>
       <Button component={Link} href={ROUTES.settings} sx={{ alignSelf: "flex-start" }}>

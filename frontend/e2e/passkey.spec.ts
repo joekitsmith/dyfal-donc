@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { installPasskeyDevice, openLesson, requireStack, saveProgressAndKeepFirstCode, startAsGuest } from "./helpers";
+import { installPasskeyDevice, requireStack, saveProgressAndKeepFirstCode, startAsGuest, startLesson } from "./helpers";
 
 let device: Awaited<ReturnType<typeof installPasskeyDevice>>;
 
@@ -12,7 +12,7 @@ test.beforeEach(async ({ page, request }) => {
 
 test("a guest saves their progress with a passkey, signs out and signs back in", async ({ page }) => {
   await startAsGuest(page);
-  await page.getByRole("button", { exact: true, name: "Start" }).click();
+  await startLesson(page);
   await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
   await page.keyboard.press("m");
   await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });
@@ -26,7 +26,7 @@ test("a guest saves their progress with a passkey, signs out and signs back in",
 
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
   await expect(page).toHaveURL(/\/$/);
-  await openLesson(page);
+  await startLesson(page);
   await expect(page.getByTestId(TEST_IDS.progress)).toContainText("Introduced: 1 of");
 });
 

@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { ROUTES } from "@/config/paths";
 import { SaveProgressPrompt } from "@/features/auth";
+import { HomePage } from "@/features/home";
 import { SessionClock } from "@/features/learning-session";
 import { ReportDialog } from "@/features/problem-report";
 import { ProgressPanel } from "@/features/progress";
@@ -29,6 +30,10 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
   const report = useLessonReport({ canPause, pause: actions.pause, recent, state });
   const offer = useSaveOffer({ isGuest, learnerId });
 
+  if (state.phase === "idle") {
+    return <HomePage onStart={actions.start} />;
+  }
+
   return (
     <Stack component="main" spacing={3} sx={{ maxWidth: 560, mt: { sm: 8, xs: 3 }, mx: "auto", p: 2 }}>
       {offer.prompt.visible ? (
@@ -40,9 +45,7 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
       <LessonControls actions={actions} canMiss={canMiss} canPause={canPause} report={report.button} state={state} />
       <ProgressPanel learnerId={learnerId} />
       <Stack direction="row" spacing={1}>
-        <Button component={Link} href={ROUTES.home}>
-          Home
-        </Button>
+        <Button onClick={actions.stop}>Stop for now</Button>
         <Button component={Link} href={ROUTES.account}>
           Account
         </Button>

@@ -17,14 +17,6 @@ type LessonControlsProps = {
 };
 
 export function LessonControls({ actions, canMiss, canPause, report, state }: LessonControlsProps) {
-  if (state.phase === "idle") {
-    return (
-      <Button onClick={actions.start} size="large" variant="contained">
-        Start
-      </Button>
-    );
-  }
-
   if (state.phase === "error") {
     return state.cause === "learner_missing" ? null : (
       <Button onClick={actions.retry} size="large" variant="contained">
