@@ -42,11 +42,11 @@ test("a recovery code gets someone back in once, after they lose their passkey",
   await page.getByRole("link", { name: "Use a recovery code" }).click();
   await page.getByLabel("Recovery code").fill(code.toLowerCase());
   await page.getByRole("button", { name: "Sign in" }).click();
-  await expect(page.getByText("You are signed in. Add a new passkey now")).toBeVisible();
+  await expect(page.getByText("You're signed in")).toBeVisible();
 
-  await page.getByRole("button", { name: "Add a new passkey" }).click();
-  await page.getByRole("link", { name: "Continue to the lesson" }).click();
-  await expect(page).toHaveURL(/\/learn$/);
+  await page.getByRole("button", { name: "Add a passkey" }).click();
+  await page.getByRole("link", { name: "Carry on without one" }).click();
+  await expect(page).toHaveURL(/\/$/);
   await page.getByRole("link", { name: "Account" }).click();
   await expect(page.getByRole("list", { name: "Passkeys" }).getByRole("listitem")).toHaveCount(2);
   await expect(page.getByText("9 unused.")).toBeVisible();
@@ -55,5 +55,5 @@ test("a recovery code gets someone back in once, after they lose their passkey",
   await page.getByRole("link", { name: "Use a recovery code" }).click();
   await page.getByLabel("Recovery code").fill(code);
   await page.getByRole("button", { name: "Sign in" }).click();
-  await expect(page.getByText("That code was not recognised, or it has already been used.")).toBeVisible();
+  await expect(page.getByText("That code didn't work. It may be mistyped or already used.")).toBeVisible();
 });

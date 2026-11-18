@@ -12,17 +12,18 @@ import { useSignInWithRecoveryCode } from "../api/use-sign-in-with-recovery-code
 import {
   BAD_REQUEST_STATUS,
   MAXIMUM_CODE_LENGTH,
+  RECOVERY_CODE_EMPTY_MESSAGE,
   RECOVERY_CODE_FAILED_MESSAGE,
   RECOVERY_CODE_NOT_RECOGNISED_MESSAGE,
 } from "../constants";
 
-const schema = z.object({ code: z.string().trim().min(1, "Enter a code").max(MAXIMUM_CODE_LENGTH) });
+const schema = z.object({ code: z.string().trim().min(1, RECOVERY_CODE_EMPTY_MESSAGE).max(MAXIMUM_CODE_LENGTH) });
 
 type Values = z.infer<typeof schema>;
 
 /**
  * What the recovery screen does: sign in with a code, then stay to add a new passkey. Someone who
- * is already signed in, and did not just use a code, is sent on to the lesson.
+ * is already signed in, and did not just use a code, is sent on to Home.
  */
 export function useRecover() {
   const router = useRouter();
@@ -36,7 +37,7 @@ export function useRecover() {
 
   useEffect(() => {
     if (alreadySignedIn) {
-      router.replace(ROUTES.learn);
+      router.replace(ROUTES.home);
     }
   }, [alreadySignedIn, router]);
 
@@ -44,13 +45,11 @@ export function useRecover() {
     ? signIn.error instanceof ApiError && signIn.error.status === BAD_REQUEST_STATUS
       ? RECOVERY_CODE_NOT_RECOGNISED_MESSAGE
       : RECOVERY_CODE_FAILED_MESSAGE
-    : null;
+    : undefined;
 
   return {
-    failure,
     field: {
-      error: formState.errors.code !== undefined,
-      helperText: formState.errors.code?.message ?? "Dashes, spaces and capitals do not matter",
+      message: formState.errors.code?.message ?? failure,
       register: register("code"),
     },
     isLoading: session.isPending || alreadySignedIn,

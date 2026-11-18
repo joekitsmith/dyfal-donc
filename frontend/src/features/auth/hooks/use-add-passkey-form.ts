@@ -22,8 +22,7 @@ export function useAddPasskeyForm() {
   return {
     failure,
     field: {
-      error: formState.errors.label !== undefined,
-      helperText: formState.errors.label?.message ?? "Optional: a name to tell your passkeys apart",
+      message: formState.errors.label?.message,
       register: register("label"),
     },
     isSaving,

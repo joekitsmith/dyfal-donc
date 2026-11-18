@@ -47,7 +47,12 @@ export function AccountPage() {
         </Typography>
         <PasskeyList onRemove={passkeys.remove} passkeys={passkeys.items} />
         {passkeys.removeFailed ? <Alert severity="error">The passkey could not be removed. Try again.</Alert> : null}
-        {user.isGuest ? null : <AddPasskeyForm submitLabel="Add another passkey" />}
+        {user.isGuest ? null : (
+          <AddPasskeyForm
+            label="Name for a new passkey (optional)"
+            submit={{ label: "Add another passkey", variant: "quiet" }}
+          />
+        )}
       </Stack>
       {user.isGuest ? null : <RecoveryCodesSection />}
       <Divider />
