@@ -27,7 +27,7 @@ type ReportFormProps = {
 /** The report, then a thank-you once it is sent. It starts afresh each time it is mounted. */
 export function ReportForm({ allowNone, onClose, source, subjects }: ReportFormProps) {
   const { control, failure, isSending, onSubmit, sent, subject } = useReportForm({ allowNone, source, subjects });
-  const { failed: audioFailed, play } = useReplayClip();
+  const { failed, play } = useReplayClip();
 
   if (sent) {
     return (
@@ -55,7 +55,7 @@ export function ReportForm({ allowNone, onClose, source, subjects }: ReportFormP
           {subject.choices.length === 0 ? null : (
             <SubjectChoice choices={subject.choices} control={control} onPlay={play} showNone={subject.showNone} />
           )}
-          {audioFailed ? <Alert severity="error">The audio could not be played</Alert> : null}
+          {failed === null ? null : <Alert severity="error">The audio could not be played</Alert>}
           <Controller
             control={control}
             name="category"
