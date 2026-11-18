@@ -56,6 +56,8 @@ export const theme = createTheme({
           colorScheme: "light dark",
         },
         body: { fontVariantNumeric: "tabular-nums" },
+        // Form controls ignore the page font unless told to inherit it
+        "button, input, select, textarea": { fontFamily: "inherit" },
       },
     },
     MuiIconButton: {
