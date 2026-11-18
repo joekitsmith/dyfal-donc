@@ -1,10 +1,9 @@
 import Box from "@mui/material/Box";
-import Snackbar from "@mui/material/Snackbar";
 
 import { AppHeader } from "@/components/app-header";
 import { BeatRow } from "@/components/beat-row";
 import { ScreenFrame } from "@/components/screen-frame";
-import { SaveProgressPrompt } from "@/features/auth";
+import { PasskeyAddedNotice, SaveProgressPrompt } from "@/features/auth";
 import { SessionClock } from "@/features/learning-session";
 import { ReportDialog } from "@/features/problem-report";
 
@@ -53,9 +52,13 @@ export function RunningLesson({ actions, menu, offer, readThink, report, state }
         body={
           <>
             <WelshArea actions={{ onNext: actions.skipWindow, onRetry: actions.retry }} fit={fit.welsh} view={view} />
-            {offer.prompt.visible ? (
-              <Box sx={{ mt: "auto", pt: "12px" }}>
-                <SaveProgressPrompt onDismiss={offer.prompt.onDismiss} onSaved={offer.prompt.onSaved} />
+            {offer.prompt.visible || offer.confirmation.visible ? (
+              <Box sx={{ mt: "auto", py: "12px" }}>
+                {offer.prompt.visible ? (
+                  <SaveProgressPrompt onDismiss={offer.prompt.onDismiss} onSaved={offer.prompt.onSaved} />
+                ) : (
+                  <PasskeyAddedNotice />
+                )}
               </Box>
             ) : null}
           </>
@@ -84,12 +87,6 @@ export function RunningLesson({ actions, menu, offer, readThink, report, state }
         }
       />
       <ReportDialog {...report.dialog} />
-      <Snackbar
-        autoHideDuration={6000}
-        message="Saved. You can now sign in from any device with your passkey."
-        onClose={offer.confirmation.onClose}
-        open={offer.confirmation.open}
-      />
     </>
   );
 }

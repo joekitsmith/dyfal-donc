@@ -2,6 +2,7 @@
 
 // A client module, so the pages that import this feature on the server get components and not hooks
 export { AccountPage } from "./account-page";
+export { PasskeyAddedNotice } from "./components/passkey-added-notice";
 export { RecoveryCodesDialog } from "./components/recovery-codes-dialog";
 export { SaveProgressPrompt } from "./components/save-progress-prompt";
 export { StepUpDialog } from "./components/step-up-dialog";

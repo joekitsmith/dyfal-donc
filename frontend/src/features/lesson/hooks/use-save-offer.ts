@@ -4,30 +4,50 @@ import { useProgress } from "@/features/progress";
 
 import { SAVE_OFFER_MINIMUM_ITEMS } from "../constants";
 
+type OfferState = {
+  /** Not now lasts until the page is opened again. */
+  readonly dismissed: boolean;
+  /** The exercise the offer was last decided for. */
+  readonly exercise: null | string;
+  readonly offered: boolean;
+  readonly saved: boolean;
+};
+
 /**
  * When to suggest adding a passkey: to a guest, once they have learned enough to mind losing it.
- * Not now hides it until the next visit.
+ * The suggestion is decided when an exercise begins and not while one is under way, so nothing
+ * appears in the middle of a sentence. Once shown it stays until it is dismissed, and the
+ * confirmation that follows a passkey stays until the next exercise begins.
+ *
+ * `exercise` names the exercise being shown, or is null when there is none, as at rest.
  */
-export function useSaveOffer({ isGuest, learnerId }: { readonly isGuest: boolean; readonly learnerId: string }) {
+export function useSaveOffer({
+  exercise,
+  isGuest,
+  learnerId,
+}: {
+  readonly exercise: null | string;
+  readonly isGuest: boolean;
+  readonly learnerId: string;
+}) {
   const { data } = useProgress(learnerId);
-  const [dismissed, setDismissed] = useState(false);
-  const [saved, setSaved] = useState(false);
+  const [state, setState] = useState<OfferState>({ dismissed: false, exercise: null, offered: false, saved: false });
+  const eligible = isGuest && !state.dismissed && (data?.introduced ?? 0) >= SAVE_OFFER_MINIMUM_ITEMS;
+
+  if (exercise !== null && exercise !== state.exercise) {
+    setState({ ...state, exercise, offered: eligible, saved: false });
+  }
 
   return {
-    confirmation: {
-      onClose: () => {
-        setSaved(false);
-      },
-      open: saved,
-    },
+    confirmation: { visible: state.saved },
     prompt: {
       onDismiss: () => {
-        setDismissed(true);
+        setState((previous) => ({ ...previous, dismissed: true, offered: false }));
       },
       onSaved: () => {
-        setSaved(true);
+        setState((previous) => ({ ...previous, offered: false, saved: true }));
       },
-      visible: isGuest && !dismissed && (data?.introduced ?? 0) >= SAVE_OFFER_MINIMUM_ITEMS,
+      visible: state.offered,
     },
   };
 }
