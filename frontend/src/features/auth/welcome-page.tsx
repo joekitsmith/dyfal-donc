@@ -1,45 +1,65 @@
 "use client";
 
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Link from "next/link";
+import Box from "@mui/material/Box";
 
+import { AppHeader } from "@/components/app-header";
+import { BeatRow } from "@/components/beat-row";
+import { Button } from "@/components/button";
+import { LeadText } from "@/components/lead-text";
+import { NoticeCard } from "@/components/notice-card";
+import { Proverb } from "@/components/proverb";
+import { ScreenFrame } from "@/components/screen-frame";
+import { StartSlab } from "@/components/start-slab";
+import { TextLink } from "@/components/text-link";
 import { ROUTES } from "@/config/paths";
 
-import { PasskeyFailureAlert } from "./components/passkey-failure-alert";
 import { useWelcome } from "./hooks/use-welcome";
 
-export function WelcomePage() {
-  const { failure, isLoading, signIn, tryIt } = useWelcome();
+const BEAT_COUNT = 8;
 
-  if (isLoading) {
-    return <Typography>Loading</Typography>;
-  }
+export function WelcomePage() {
+  const { isLoading, notice, signIn, tryIt } = useWelcome();
 
   return (
-    <Stack component="main" spacing={3} sx={{ maxWidth: 560, mt: { sm: 8, xs: 3 }, mx: "auto", p: 2 }}>
-      <Typography component="h1" variant="h4">
-        Dyfal donc
-      </Typography>
-      <Typography>
-        A little speaking each day, with each word coming back just before it fades. Start straight away, and add a
-        passkey later to keep your progress.
-      </Typography>
-      <Stack spacing={2}>
-        <Button disabled={tryIt.disabled} onClick={tryIt.onClick} size="large" variant="contained">
-          Try it now
-        </Button>
-        {signIn.supported ? (
-          <Button disabled={signIn.disabled} onClick={signIn.onClick} size="large" variant="outlined">
-            Sign in with a passkey
-          </Button>
-        ) : null}
-        <Button component={Link} href={ROUTES.recover}>
-          Use a recovery code
-        </Button>
-      </Stack>
-      {failure ? <PasskeyFailureAlert failure={failure} /> : null}
-    </Stack>
+    <ScreenFrame
+      beats={<BeatRow count={BEAT_COUNT} nowIndex={0} />}
+      body={
+        <>
+          <Proverb language="cy" />
+          <Box sx={{ mt: "12px" }}>
+            <LeadText>
+              Learn to speak Welsh one sentence at a time. Each word comes back just before it would fade.
+            </LeadText>
+          </Box>
+          {notice === null ? null : (
+            <Box sx={{ mt: "auto", py: "12px" }}>
+              <NoticeCard role="status">{notice}</NoticeCard>
+            </Box>
+          )}
+        </>
+      }
+      controls={
+        isLoading ? null : (
+          <>
+            {signIn.supported ? (
+              <Button onClick={signIn.onClick} unavailable={signIn.disabled} variant="quiet">
+                Sign in with a passkey
+              </Button>
+            ) : null}
+            <TextLink href={ROUTES.recover} unavailable={tryIt.disabled}>
+              Use a recovery code
+            </TextLink>
+            <StartSlab
+              onClick={tryIt.onClick}
+              subtitle={tryIt.disabled ? "One moment…" : "No sign-up needed"}
+              title="Try it now"
+              unavailable={tryIt.disabled}
+            />
+          </>
+        )
+      }
+      english={<Proverb language="en" />}
+      header={<AppHeader />}
+    />
   );
 }

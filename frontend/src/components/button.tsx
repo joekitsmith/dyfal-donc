@@ -11,6 +11,8 @@ type ButtonProps = {
   readonly children: ReactNode;
   readonly href?: string;
   readonly onClick?: () => void;
+  /** Stays focusable but does nothing, so a button can wait for a request without disappearing. */
+  readonly unavailable?: boolean;
   readonly variant: ButtonVariant;
 };
 
@@ -30,10 +32,20 @@ const VARIANT_STYLES = {
   },
 } as const;
 
-export function Button({ children, href, onClick, variant }: ButtonProps) {
+const UNAVAILABLE_STYLES = {
+  primary: {
+    backgroundColor: "transparent",
+    border: "2px dashed var(--dd-line)",
+    color: "var(--dd-muted)",
+  },
+  quiet: { color: "var(--dd-muted)" },
+} as const;
+
+export function Button({ children, href, onClick, unavailable = false, variant }: ButtonProps) {
   const sx = {
     ...textStyle("label"),
     ...VARIANT_STYLES[variant],
+    ...(unavailable ? UNAVAILABLE_STYLES[variant] : {}),
     "&:active": { transform: "scale(0.98)" },
     borderRadius: "10px",
     height: BUTTON_HEIGHT,
@@ -44,7 +56,7 @@ export function Button({ children, href, onClick, variant }: ButtonProps) {
 
   if (href === undefined) {
     return (
-      <ButtonBase onClick={onClick} sx={sx}>
+      <ButtonBase aria-disabled={unavailable ? true : undefined} onClick={unavailable ? undefined : onClick} sx={sx}>
         {children}
       </ButtonBase>
     );

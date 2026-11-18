@@ -8,6 +8,7 @@ import type { PasskeyFailure } from "../types";
 import { useSession } from "../api/use-session";
 import { useSignInWithPasskey } from "../api/use-sign-in-with-passkey";
 import { useStartGuest } from "../api/use-start-guest";
+import { WELCOME_NOTICES } from "../constants";
 import { passkeyFailure } from "../utils/passkey-failure";
 import { usePasskeySupport } from "./use-passkey-support";
 
@@ -26,19 +27,15 @@ export function useWelcome() {
     }
   }, [router, signedIn]);
 
-  const failure: null | PasskeyFailure = signIn.isError
-    ? passkeyFailure(signIn.error)
-    : guest.isError
-      ? "other"
-      : supported
-        ? null
-        : "unsupported";
+  const notice = welcomeNotice(
+    signIn.isError ? passkeyFailure(signIn.error) : guest.isError ? "other" : supported ? null : "unsupported",
+  );
 
   const disabled = guest.isPending || signIn.isPending || signedIn;
 
   return {
-    failure,
     isLoading: session.isPending,
+    notice,
     signIn: {
       disabled,
       onClick: () => {
@@ -53,4 +50,13 @@ export function useWelcome() {
       },
     },
   };
+}
+
+function welcomeNotice(failure: null | PasskeyFailure): null | string {
+  if (failure === null) {
+    return null;
+  }
+
+  // Signing in never meets a passkey that is already registered, so that reads as any other failure
+  return WELCOME_NOTICES[failure === "already_registered" ? "other" : failure];
 }
