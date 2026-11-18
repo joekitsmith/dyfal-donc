@@ -65,7 +65,7 @@ export function SummaryPage({ sessionId }: SummaryPageProps) {
         sentences={summary.missed_exercises}
         title="Missed exercises"
       />
-      <Button component={Link} href={ROUTES.learn} sx={{ alignSelf: "flex-start" }} variant="contained">
+      <Button component={Link} href={ROUTES.home} sx={{ alignSelf: "flex-start" }} variant="contained">
         {summary.ongoing ? "Keep going" : "Start another"}
       </Button>
       <ReportDialog {...report.dialog} />

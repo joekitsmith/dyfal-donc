@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest } from "./helpers";
+import { requireStack, startAsGuest, startLesson } from "./helpers";
 
 test.beforeEach(async ({ request }) => {
   await requireStack(request);
@@ -11,11 +11,11 @@ test("the course lists what was met, can be searched, and opens a word with the 
   page,
 }) => {
   await startAsGuest(page);
-  await page.getByRole("button", { exact: true, name: "Start" }).click();
+  await startLesson(page);
   await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
   await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });
 
-  await page.getByRole("link", { name: "Home" }).click();
+  await page.getByRole("button", { name: "Stop for now" }).click();
   await page.getByRole("link", { name: "Course" }).click();
 
   await expect(page.getByRole("heading", { exact: true, name: "Course" })).toBeVisible();
