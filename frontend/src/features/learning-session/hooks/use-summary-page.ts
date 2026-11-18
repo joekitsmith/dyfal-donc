@@ -17,6 +17,9 @@ export function useSummaryPage(sessionId: number) {
     isLoading: user === undefined || summary.isPending,
     notFound,
     report,
+    retry: () => {
+      void summary.refetch();
+    },
     summary: summary.data,
   };
 }

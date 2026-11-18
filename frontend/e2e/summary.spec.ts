@@ -25,9 +25,11 @@ test("after a session the home screen recaps it and the summary lets a missed ex
   await expect(startButton(page)).toContainText("Dal ati");
 
   await recap.getByRole("link", { name: "Look back" }).click();
-  await expect(page.getByRole("heading", { name: "Learning session" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "This session so far" })).toBeVisible();
+  await expect(page.getByText("1 sentence in under a minute, and still going.")).toBeVisible();
+  await expect(page.getByRole("region", { name: "New" }).getByRole("link")).toHaveCount(1);
 
-  const missed = page.getByRole("region", { name: "Missed exercises" });
+  const missed = page.getByRole("region", { name: "Sentences you marked" });
   const clip = page.waitForResponse((response) => response.url().endsWith("/audio/welsh/standard"));
 
   await missed.getByRole("button", { name: /^Play (?!.*slowly)/ }).click();
@@ -56,7 +58,7 @@ test("after a session the home screen recaps it and the summary lets a missed ex
   await dialog.getByRole("button", { name: "Close" }).click();
   await expect(dialog).toBeHidden();
 
-  await page.getByRole("link", { name: "Keep going" }).click();
+  await page.getByRole("link", { name: "Back to the lesson" }).click();
   await expect(page).toHaveURL(/\/$/);
 });
 
@@ -65,5 +67,5 @@ test("a session that does not exist says so", async ({ page }) => {
 
   await page.goto("/learning-sessions/99");
 
-  await expect(page.getByText("That learning session does not exist.")).toBeVisible();
+  await expect(page.getByText("We couldn't find that session.")).toBeVisible();
 });
