@@ -1,40 +1,53 @@
-import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
+import { Button } from "@/components/button";
+import { SubHeading } from "@/components/sub-heading";
 import { useDisclosure } from "@/hooks/use-disclosure";
+import { textStyle } from "@/theme/text-style";
 
-import { useRecoveryCodesSection } from "../hooks/use-recovery-codes-section";
+import type { useRecoveryCodesSection } from "../hooks/use-recovery-codes-section";
+
+import { RECOVERY_CODE_TOTAL } from "../constants";
 import { ConfirmDialog } from "./confirm-dialog";
 
-export function RecoveryCodesSection() {
-  const { failed, generate, isGenerating, isLoading, low, remaining } = useRecoveryCodesSection();
+type RecoveryCodesSectionProps = { readonly codes: ReturnType<typeof useRecoveryCodesSection> };
+
+export function RecoveryCodesSection({ codes }: RecoveryCodesSectionProps) {
+  const { generate, isGenerating, isLoading, low, remaining } = codes;
   const dialog = useDisclosure();
 
-  if (isLoading) {
+  if (isLoading || remaining === undefined) {
     return null;
   }
 
   return (
-    <Stack component="section" spacing={1}>
-      <Typography component="h2" variant="h6">
-        Recovery codes
-      </Typography>
-      <Typography>
-        Each code gets you back in once if you lose your passkey.{" "}
-        {remaining === undefined ? "" : `${remaining} unused.`}
-      </Typography>
+    <section aria-label="Recovery codes">
+      <SubHeading level="h2">Recovery codes</SubHeading>
+      <Box sx={textStyle("body")}>
+        {remaining} of {RECOVERY_CODE_TOTAL} left. Each one gets you back in once if you lose every passkey.
+      </Box>
       {low ? (
-        <Alert severity="warning">
-          {remaining === 0 ? "You have no recovery codes left." : "You are running low on recovery codes."} Make a new
-          set to be safe.
-        </Alert>
+        <Box
+          role="status"
+          sx={{
+            ...textStyle("body"),
+            border: "2px solid var(--dd-ink)",
+            borderRadius: "10px",
+            fontWeight: 500,
+            mt: "12px",
+            p: "12px 14px",
+          }}
+        >
+          {remaining === 0
+            ? "No codes left. Make new ones now."
+            : `Only ${remaining} ${remaining === 1 ? "code" : "codes"} left. Make new ones soon.`}
+        </Box>
       ) : null}
-      {failed ? <Alert severity="error">Something went wrong. Try again.</Alert> : null}
-      <Button disabled={isGenerating} onClick={dialog.open} sx={{ alignSelf: "flex-start" }} variant="outlined">
-        Make new codes
-      </Button>
+      <Box sx={{ mt: "12px" }}>
+        <Button onClick={dialog.open} unavailable={isGenerating} variant="quiet">
+          Make new codes
+        </Button>
+      </Box>
       <ConfirmDialog
         buttons={[
           {
@@ -52,6 +65,6 @@ export function RecoveryCodesSection() {
         open={dialog.isOpen}
         title="Make new recovery codes?"
       />
-    </Stack>
+    </section>
   );
 }

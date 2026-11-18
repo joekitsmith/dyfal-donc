@@ -12,7 +12,9 @@ export function DeleteAccountButton({ onDelete }: DeleteAccountButtonProps) {
 
   return (
     <>
-      <TextButton onClick={dialog.open}>Delete account</TextButton>
+      <TextButton centred onClick={dialog.open}>
+        Delete account
+      </TextButton>
       <ConfirmDialog
         buttons={[
           { emphasis: "primary", label: "Delete account", onClick: onDelete },

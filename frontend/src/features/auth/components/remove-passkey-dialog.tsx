@@ -1,5 +1,6 @@
 import type { Passkey } from "../types";
 
+import { passkeyName } from "../utils/describe-passkey";
 import { ConfirmDialog } from "./confirm-dialog";
 
 type RemovePasskeyDialogProps = {
@@ -19,7 +20,7 @@ export function RemovePasskeyDialog({ asking, onCancel, onConfirm }: RemovePassk
       description="You won't be able to sign in with it any more."
       onClose={onCancel}
       open={asking !== null}
-      title={`Remove "${asking?.label ?? ""}"?`}
+      title={`Remove "${asking === null ? "" : passkeyName(asking)}"?`}
     />
   );
 }

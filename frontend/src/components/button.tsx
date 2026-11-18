@@ -19,6 +19,8 @@ type ButtonProps = {
   readonly full?: boolean;
   readonly href?: string;
   readonly onClick?: () => void;
+  /** The full height, which a ghost button does not otherwise have. */
+  readonly tall?: boolean;
   readonly type?: "button" | "submit";
   /** Stays focusable but does nothing, so a button can wait for a request without disappearing. */
   readonly unavailable?: boolean;
@@ -64,6 +66,7 @@ export function Button({
   full = false,
   href,
   onClick,
+  tall = false,
   type,
   unavailable = false,
   variant,
@@ -79,7 +82,7 @@ export function Button({
     borderRadius: small ? "8px" : "10px",
     display: "flex",
     gap: "10px",
-    height: small ? COMPACT_HEIGHT : STANDALONE_HEIGHT,
+    height: small && !tall ? COMPACT_HEIGHT : STANDALONE_HEIGHT,
     justifyContent: "center",
     px: small ? "16px" : fit ? "22px" : "20px",
     transition: "transform var(--dd-fast) var(--dd-ease)",

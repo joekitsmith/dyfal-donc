@@ -1,5 +1,4 @@
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
+import { ListCard } from "@/components/list-card";
 
 import type { Passkey } from "../types";
 
@@ -16,13 +15,9 @@ type PasskeyListProps = {
 export function PasskeyList({ onRemove, passkeys }: PasskeyListProps) {
   const removal = usePasskeyRemoval(onRemove);
 
-  if (passkeys.length === 0) {
-    return <Typography color="text.secondary">No passkeys yet.</Typography>;
-  }
-
   return (
     <>
-      <List aria-label="Passkeys" disablePadding>
+      <ListCard label="Passkeys">
         {passkeys.map((passkey) => (
           <PasskeyListItem
             key={passkey.id}
@@ -33,7 +28,7 @@ export function PasskeyList({ onRemove, passkeys }: PasskeyListProps) {
             removable={passkeys.length > 1}
           />
         ))}
-      </List>
+      </ListCard>
       <RemovePasskeyDialog asking={removal.asking} onCancel={removal.cancel} onConfirm={removal.confirm} />
     </>
   );

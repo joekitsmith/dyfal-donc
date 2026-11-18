@@ -8,12 +8,14 @@ import { useAddPasskeyForm } from "../hooks/use-add-passkey-form";
 import { PasskeyFailureNotice } from "./passkey-failure-notice";
 
 type AddPasskeyFormProps = {
+  /** The space above the button. */
+  readonly buttonGap?: string;
   readonly label: string;
   readonly placeholder?: string | undefined;
   readonly submit: { readonly label: string; readonly variant: "primary" | "quiet" };
 };
 
-export function AddPasskeyForm({ label, placeholder, submit }: AddPasskeyFormProps) {
+export function AddPasskeyForm({ buttonGap = "24px", label, placeholder, submit }: AddPasskeyFormProps) {
   const { failure, field, isSaving, onSubmit } = useAddPasskeyForm();
 
   return (
@@ -25,7 +27,7 @@ export function AddPasskeyForm({ label, placeholder, submit }: AddPasskeyFormPro
       }}
     >
       <TextField input={field.register} label={label} message={field.message} placeholder={placeholder} />
-      <Box sx={{ mt: "24px" }}>
+      <Box sx={{ mt: buttonGap }}>
         <Button type="submit" unavailable={isSaving} variant={submit.variant}>
           {submit.label}
         </Button>

@@ -5,6 +5,20 @@ export const RECOVERY_STATUS_QUERY_KEY = ["recovery-codes"] as const;
 /** At or below this many unused codes the account screen warns. */
 export const LOW_RECOVERY_CODES = 3;
 
+/** How many codes a set has. The server reports only how many are unused. */
+export const RECOVERY_CODE_TOTAL = 10;
+
+/** The name the server gives a passkey that was not named. */
+export const DEFAULT_PASSKEY_LABEL = "Passkey";
+
+/** What the account screen says when a change did not happen. */
+export const ACCOUNT_FAILURES = {
+  codes: "Something went wrong. Try again.",
+  deleteAccount: "Your account wasn't deleted. Try again.",
+  removePasskey: "The passkey could not be removed. Try again.",
+  signOut: "You weren't signed out. Try again.",
+} as const;
+
 export const BAD_REQUEST_STATUS = 400;
 export const UNAUTHORIZED_STATUS = 401;
 export const CONFLICT_STATUS = 409;

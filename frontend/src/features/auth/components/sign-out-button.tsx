@@ -17,7 +17,7 @@ export function SignOutButton({ isGuest, onSignOut }: SignOutButtonProps) {
 
   return (
     <>
-      <Button edge full onClick={isGuest ? dialog.open : onSignOut} variant="ghost">
+      <Button edge full onClick={isGuest ? dialog.open : onSignOut} tall variant="ghost">
         Sign out
       </Button>
       <ConfirmDialog
