@@ -13,8 +13,9 @@ export const MAXIMUM_LABEL_LENGTH = 128;
 export const MAXIMUM_CODE_LENGTH = 64;
 
 export const RECOVERY_CODES_FILE_NAME = "dyfal-donc-recovery-codes.txt";
-export const RECOVERY_CODE_NOT_RECOGNISED_MESSAGE = "That code was not recognised, or it has already been used.";
-export const RECOVERY_CODE_FAILED_MESSAGE = "Something went wrong. Try again.";
+export const RECOVERY_CODE_EMPTY_MESSAGE = "Enter a recovery code.";
+export const RECOVERY_CODE_NOT_RECOGNISED_MESSAGE = "That code didn't work. It may be mistyped or already used.";
+export const RECOVERY_CODE_FAILED_MESSAGE = "Something went wrong on our side. Try again in a moment.";
 
 export const FAILURE_MESSAGES = {
   already_registered: "This passkey is already saved to your account.",

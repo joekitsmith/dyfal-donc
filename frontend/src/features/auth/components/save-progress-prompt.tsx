@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 import { useSaveProgress } from "../hooks/use-save-progress";
-import { PasskeyFailureAlert } from "./passkey-failure-alert";
+import { PasskeyFailureNotice } from "./passkey-failure-notice";
 
 /**
  * Progress is already saved on the server as you go. A passkey is what lets you get back to it from
@@ -43,7 +43,7 @@ export function SaveProgressPrompt({ onDismiss, onSaved }: SaveProgressPromptPro
       >
         Your progress is saved on this browser. Add a passkey to sign in from anywhere and keep it for good.
       </Alert>
-      {failure ? <PasskeyFailureAlert failure={failure} /> : null}
+      {failure ? <PasskeyFailureNotice failure={failure} /> : null}
     </Stack>
   );
 }

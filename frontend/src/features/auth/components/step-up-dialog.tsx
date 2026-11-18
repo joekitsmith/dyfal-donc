@@ -6,7 +6,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import { useStepUpDialog } from "../hooks/use-step-up-dialog";
-import { PasskeyFailureAlert } from "./passkey-failure-alert";
+import { PasskeyFailureNotice } from "./passkey-failure-notice";
 
 /** Asks for a passkey before something that changes the account, so a stolen session cannot do it. */
 export function StepUpDialog() {
@@ -19,7 +19,7 @@ export function StepUpDialog() {
         <DialogContentText>
           For your security, confirm with your passkey before changing your account.
         </DialogContentText>
-        {failure ? <PasskeyFailureAlert failure={failure} /> : null}
+        {failure ? <PasskeyFailureNotice failure={failure} /> : null}
       </DialogContent>
       <DialogActions>
         <Button onClick={cancel}>Cancel</Button>

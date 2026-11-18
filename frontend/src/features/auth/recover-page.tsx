@@ -1,65 +1,32 @@
 "use client";
 
-import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import Link from "next/link";
+import Box from "@mui/material/Box";
 
+import { LeadText } from "@/components/lead-text";
+import { PageColumn } from "@/components/page-column";
+import { PageHeader } from "@/components/page-header";
 import { ROUTES } from "@/config/paths";
 
-import { AddPasskeyForm } from "./components/add-passkey-form";
+import { RecoveredPanel } from "./components/recovered-panel";
+import { RecoveryCodeForm } from "./components/recovery-code-form";
 import { useRecover } from "./hooks/use-recover";
 
 export function RecoverPage() {
-  const { failure, field, isLoading, isSigningIn, onSubmit, recovered } = useRecover();
-
-  if (isLoading) {
-    return <Typography>Loading</Typography>;
-  }
+  const { field, isLoading, isSigningIn, onSubmit, recovered } = useRecover();
 
   return (
-    <Stack component="main" spacing={3} sx={{ maxWidth: 560, mt: { sm: 8, xs: 3 }, mx: "auto", p: 2 }}>
-      <Typography component="h1" variant="h4">
-        Recover your account
-      </Typography>
-      {recovered ? (
-        <Stack spacing={2}>
-          <Alert severity="success">
-            You are signed in. Add a new passkey now, so you do not need another code next time.
-          </Alert>
-          <AddPasskeyForm submitLabel="Add a new passkey" />
-          <Button component={Link} href={ROUTES.learn}>
-            Continue to the lesson
-          </Button>
-        </Stack>
+    <PageColumn>
+      <PageHeader back={{ href: ROUTES.welcome }} title="Use a recovery code" />
+      {isLoading ? null : recovered ? (
+        <RecoveredPanel />
       ) : (
-        <Stack
-          component="form"
-          noValidate
-          onSubmit={(event) => {
-            void onSubmit(event);
-          }}
-          spacing={2}
-        >
-          <Typography>Lost your passkey? Enter one of the recovery codes you saved. Each works once.</Typography>
-          <TextField
-            autoComplete="off"
-            error={field.error}
-            helperText={field.helperText}
-            label="Recovery code"
-            {...field.register}
-          />
-          <Button disabled={isSigningIn} size="large" type="submit" variant="contained">
-            Sign in
-          </Button>
-          {failure ? <Alert severity="error">{failure}</Alert> : null}
-          <Button component={Link} href={ROUTES.welcome}>
-            Back
-          </Button>
-        </Stack>
+        <>
+          <Box sx={{ mt: "24px" }}>
+            <LeadText>Enter one of the codes you saved when you added your passkey. Each code works once.</LeadText>
+          </Box>
+          <RecoveryCodeForm field={field} isSigningIn={isSigningIn} onSubmit={onSubmit} />
+        </>
       )}
-    </Stack>
+    </PageColumn>
   );
 }
