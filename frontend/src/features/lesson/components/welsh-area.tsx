@@ -1,3 +1,5 @@
+import type { RefCallback } from "react";
+
 import Box from "@mui/material/Box";
 
 import { TEST_IDS } from "@/config/test-ids";
@@ -5,11 +7,14 @@ import { textStyle } from "@/theme/text-style";
 
 import type { LessonView } from "../utils/lesson-view";
 
+import { HANDOVER_FADE } from "../constants";
+import { FadingText } from "./fading-text";
 import { LessonError } from "./lesson-error";
 import { NextButton } from "./next-button";
 
 type WelshAreaProps = {
   readonly actions: { readonly onNext: () => void; readonly onRetry: () => void };
+  readonly fit: RefCallback<HTMLElement>;
   readonly view: LessonView;
 };
 
@@ -17,30 +22,30 @@ const AREA_HEIGHT = 170;
 
 /**
  * Where the Welsh will be. It has a fixed height, so nothing below it moves when the sentence
- * appears. The caption is above the sentence until it is shown, and below it after.
+ * appears. The caption is where the Welsh will be until it is shown, and below it after.
  */
-export function WelshArea({ actions, view }: WelshAreaProps) {
+export function WelshArea({ actions, fit, view }: WelshAreaProps) {
   const shown = view.welsh !== "";
-  const caption =
-    view.caption === null ? null : (
-      <Box
-        aria-hidden="true"
-        data-testid={TEST_IDS.caption}
-        sx={{ ...textStyle(shown ? "caption-small" : "caption"), color: "var(--dd-muted)", mt: shown ? "14px" : 0 }}
-      >
-        {view.caption}
-      </Box>
-    );
 
   return (
     <Box sx={{ flexShrink: 0, height: AREA_HEIGHT, position: "relative" }}>
-      {shown ? null : caption}
-      <Box aria-live="polite">
-        <Box component="p" data-testid={TEST_IDS.welsh} lang="cy" sx={{ ...textStyle("sentence-cy"), m: 0 }}>
-          {view.welsh}
-        </Box>
+      <FadingText
+        fadeOut={HANDOVER_FADE}
+        fit={fit}
+        lang="cy"
+        live
+        sx={{ ...textStyle("sentence-cy"), m: 0 }}
+        testId={TEST_IDS.welsh}
+        text={view.welsh}
+      />
+      <Box aria-hidden="true" sx={{ mt: shown ? "14px" : 0 }}>
+        <FadingText
+          fadeOut="var(--dd-base)"
+          sx={{ ...textStyle(shown ? "caption-small" : "caption"), color: "var(--dd-muted)", m: 0 }}
+          testId={TEST_IDS.caption}
+          text={view.caption ?? ""}
+        />
       </Box>
-      {shown ? caption : null}
       {/* Said aloud by a screen reader, where the caption itself is left out because the audio says it */}
       <Box role="status" sx={VISUALLY_HIDDEN}>
         {view.paused ? "Paused" : ""}

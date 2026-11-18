@@ -4,11 +4,16 @@ import { LESSON_ERRORS } from "../constants";
 import { canMarkMissed } from "../stores/lesson-reducer";
 import { beatCount } from "./beats";
 
-type BeatMode = "all-done" | "all-to-come" | "first-now" | "opened";
+type BeatMode = "all-done" | "all-to-come" | "counting" | "first-now" | "opened";
 
 /** What each part of the lesson screen shows for a state. The screen itself only draws this. */
 export type LessonView = {
-  readonly beats: { readonly count: number; readonly mode: BeatMode };
+  readonly beats: {
+    readonly count: number;
+    readonly mode: BeatMode;
+    /** Names one pass through the think time, so the row starts again from the first block on a replay. */
+    readonly run: string;
+  };
   /** Shown where the Welsh will be, or under it once it has appeared. */
   readonly caption: null | string;
   readonly controls: { readonly look: "normal" | "unavailable"; readonly pause: "pause" | "resume" };
@@ -31,7 +36,7 @@ const RESTING_BEAT_COUNT = 8;
 const NEW_ITEM_CAPTION = "Something new. Have a guess.";
 
 const WAITING: LessonView = {
-  beats: { count: RESTING_BEAT_COUNT, mode: "first-now" },
+  beats: { count: RESTING_BEAT_COUNT, mode: "first-now", run: "" },
   caption: null,
   controls: { look: "unavailable", pause: "pause" },
   english: "",
@@ -55,7 +60,7 @@ export function lessonView(state: RunningLessonState, waitedLong: boolean): Less
     case "nothing_eligible":
       return {
         ...WAITING,
-        beats: { count: RESTING_BEAT_COUNT, mode: "all-to-come" },
+        beats: { count: RESTING_BEAT_COUNT, mode: "all-to-come", run: "" },
         error: { action: null, ...LESSON_ERRORS.nothing_eligible },
       };
     default:
@@ -92,7 +97,11 @@ function errorView(state: Extract<LessonState, { readonly phase: "error" }>): Le
 
   return {
     ...WAITING,
-    beats: { count: exercise === null ? RESTING_BEAT_COUNT : beatCount(exercise.welsh), mode: "all-to-come" },
+    beats: {
+      count: exercise === null ? RESTING_BEAT_COUNT : beatCount(exercise.welsh),
+      mode: "all-to-come",
+      run: "",
+    },
     english: exercise === null || noProgress ? "" : exercise.english,
     error: { action: noProgress ? "account" : "retry", text: state.text, title: state.title },
   };
@@ -105,14 +114,14 @@ function exerciseView(state: ExerciseState): LessonView {
   if (state.phase === "preparing" && state.isFirst) {
     return {
       ...WAITING,
-      beats: { count, mode: "first-now" },
+      beats: { count, mode: "first-now", run: "" },
       caption: "Getting the first one…",
       english: exercise.english,
     };
   }
 
   return {
-    beats: { count, mode: beatMode(state) },
+    beats: { count, mode: beatMode(state), run: `${exercise.selectionId}:${state.attempt}:${state.replayCount}` },
     caption: paused ? "Paused" : captionFor(state),
     controls: { look: "normal", pause: paused ? "resume" : "pause" },
     english: exercise.english,
@@ -132,8 +141,9 @@ function beatMode(state: ExerciseState): BeatMode {
   switch (state.phase) {
     case "playing_english":
     case "preparing":
-    case "thinking":
       return "all-to-come";
+    case "thinking":
+      return "counting";
     default:
       return "all-done";
   }
@@ -159,20 +169,26 @@ function slabFor(state: ExerciseState): LessonView["slab"] {
   return canMarkMissed(state) || state.phase === "submitting" ? "available" : "waiting";
 }
 
-/** The beat row's own settings for a mode. */
-export function beatRowProps({ count, mode }: LessonView["beats"]): {
+/** The beat row's own settings for a mode. `index` is the block the learner is on, while they are thinking. */
+export function beatRowProps(
+  { count, mode }: LessonView["beats"],
+  index: number,
+): {
   readonly count: number;
   readonly nowIndex?: number;
   readonly opened: boolean;
+  readonly waiting: boolean;
 } {
   switch (mode) {
     case "all-done":
-      return { count, nowIndex: count, opened: false };
+      return { count, nowIndex: count, opened: false, waiting: false };
     case "all-to-come":
-      return { count, opened: false };
+      return { count, opened: false, waiting: false };
+    case "counting":
+      return { count, nowIndex: index, opened: false, waiting: false };
     case "first-now":
-      return { count, nowIndex: 0, opened: false };
+      return { count, nowIndex: 0, opened: false, waiting: true };
     case "opened":
-      return { count, opened: true };
+      return { count, opened: true, waiting: false };
   }
 }

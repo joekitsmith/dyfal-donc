@@ -17,7 +17,7 @@ type LessonPlayerProps = {
 };
 
 export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps) {
-  const { actions, canPause, recent, state } = useLessonPlayer({ learnerId, settings });
+  const { actions, canPause, readThink, recent, state } = useLessonPlayer({ learnerId, settings });
   const report = useLessonReport({ recent, state });
   const offer = useSaveOffer({ isGuest, learnerId });
   const menu = useDisclosure();
@@ -30,5 +30,14 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
     return <LessonRest menu={menuProps} onStart={actions.start} />;
   }
 
-  return <RunningLesson actions={actions} menu={menuProps} offer={offer} report={report} state={state} />;
+  return (
+    <RunningLesson
+      actions={actions}
+      menu={menuProps}
+      offer={offer}
+      readThink={readThink}
+      report={report}
+      state={state}
+    />
+  );
 }

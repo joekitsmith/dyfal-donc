@@ -6,12 +6,17 @@ export const MAX_RECENT_EXERCISES = 3;
 
 export const CLIP_TRACKS = ["english", "welsh_standard", "welsh_slow"] as const;
 
-export const THINK_BASE_SECONDS = 2.16;
-export const THINK_SECONDS_PER_WORD = 0.72;
-export const THINK_MAXIMUM_SECONDS = 21.6;
-
 /** The gap after the first Welsh. Its text shows, and the slow Welsh starts, when it ends. */
 export const BETWEEN_WELSH_SECONDS = 1.5;
+
+/** How long the sentences of an exercise take to fade once the next one is known. */
+export const HANDOVER_FADE = "160ms";
+
+/**
+ * The tallest the Welsh sentence can be. Under it are the caption and, in the outcome window, the
+ * Next button, which sits at the area's corner and so must not be covered by a long sentence.
+ */
+export const WELSH_TEXT_MAXIMUM_HEIGHT = 122;
 
 /** How long the handover to the next exercise can take before the screen stops pretending nothing is happening. */
 export const HANDOVER_VISIBLE_MILLISECONDS = 1500;

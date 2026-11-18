@@ -205,3 +205,24 @@ test("the captions follow the exercise, the Welsh appears with the second voice,
   await page.getByRole("button", { name: "Next" }).click();
   expect((await outcome).request().postDataJSON()).toMatchObject({ outcome: "got_it" });
 });
+
+test("the beat row has a block for each Welsh word and three more, and opens when the Welsh shows", async ({
+  page,
+}) => {
+  await startAsGuest(page);
+  await startLesson(page);
+
+  const row = page.getByTestId(TEST_IDS.beatRow);
+  const welsh = page.getByTestId(TEST_IDS.welsh);
+
+  await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
+  await expect(row).toHaveAttribute("data-opened", "false");
+  await expect(welsh).toHaveText("");
+
+  await expect(welsh).not.toHaveText("", { timeout: 30_000 });
+  await expect(row).toHaveAttribute("data-opened", "true");
+
+  const words = (await welsh.innerText()).trim().split(/\s+/).length;
+
+  await expect(row.locator("> *")).toHaveCount(words + 3);
+});

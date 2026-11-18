@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { thinkSeconds } from "@/features/lesson/utils/think-time";
+import { thinkSeconds } from "@/utils/think-time";
 
 describe("thinkSeconds", () => {
   it("is a base plus a second per word", () => {

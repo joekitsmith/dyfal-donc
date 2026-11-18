@@ -64,7 +64,7 @@ describe("before the first exercise", () => {
 describe("the phases of an exercise with both voices", () => {
   it.each([
     ["playing_english", "all-to-come", "Listen", "waiting"],
-    ["thinking", "all-to-come", "Say it in Welsh", "waiting"],
+    ["thinking", "counting", "Say it in Welsh", "waiting"],
     ["playing_welsh_standard", "all-done", "Now listen", "available"],
     ["between_welsh", "all-done", "Now listen", "available"],
   ] as const)(
@@ -111,7 +111,7 @@ describe("the Welsh appears when its last recording begins", () => {
       const before = view(exerciseState("thinking", { welshPlayback }));
       const during = view(exerciseState(phase, { revealed: true, welshPlayback }));
 
-      expect(before).toMatchObject({ beats: { mode: "all-to-come" }, welsh: "" });
+      expect(before).toMatchObject({ beats: { mode: "counting" }, welsh: "" });
       expect(during).toMatchObject({
         beats: { mode: "opened" },
         caption: "Listen",
@@ -273,11 +273,21 @@ describe("errors", () => {
 
 describe("beatRowProps", () => {
   it.each([
-    ["all-to-come", { count: 6, opened: false }],
-    ["first-now", { count: 6, nowIndex: 0, opened: false }],
-    ["all-done", { count: 6, nowIndex: 6, opened: false }],
-    ["opened", { count: 6, opened: true }],
+    ["all-to-come", { count: 6, opened: false, waiting: false }],
+    ["counting", { count: 6, nowIndex: 2, opened: false, waiting: false }],
+    ["first-now", { count: 6, nowIndex: 0, opened: false, waiting: true }],
+    ["all-done", { count: 6, nowIndex: 6, opened: false, waiting: false }],
+    ["opened", { count: 6, opened: true, waiting: false }],
   ] as const)("turns the mode %s into the row's settings", (mode, expected) => {
-    expect(beatRowProps({ count: 6, mode })).toEqual(expected);
+    expect(beatRowProps({ count: 6, mode, run: "" }, 2)).toEqual(expected);
+  });
+});
+
+describe("the row's run", () => {
+  it("is new after a replay, so the row starts again from the first block", () => {
+    const first = view(exerciseState("thinking")).beats.run;
+    const replayed = view(exerciseState("thinking", { replayCount: 1 })).beats.run;
+
+    expect(replayed).not.toBe(first);
   });
 });
