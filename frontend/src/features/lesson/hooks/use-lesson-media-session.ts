@@ -55,7 +55,12 @@ export function useLessonMediaSession({
   }, [active]);
 
   useEffect(() => {
-    if (active && english !== null && "mediaSession" in navigator) {
+    if (!active || !("mediaSession" in navigator)) {
+      return;
+    }
+
+    // Between exercises the title that is there stays, and before the first it is the name of the app
+    if (english !== null || navigator.mediaSession.metadata === null) {
       navigator.mediaSession.metadata = new MediaMetadata(lessonMetadata(english));
     }
   }, [active, english]);

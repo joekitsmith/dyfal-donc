@@ -42,9 +42,9 @@ export function registerMediaSession(session: MediaSessionLike, handlers: MediaS
   };
 }
 
-/** What the lock screen shows. It is only ever the English, so it can never give the Welsh away. */
-export function lessonMetadata(english: string): MediaMetadataInit {
-  return { artist: MEDIA_SESSION_ARTIST, artwork: [...MEDIA_SESSION_ARTWORK], title: english };
+/** What the lock screen shows. It is only ever the English, so it can never give the Welsh away. Until there is any, it is the name of the app. */
+export function lessonMetadata(english: null | string): MediaMetadataInit {
+  return { artist: MEDIA_SESSION_ARTIST, artwork: [...MEDIA_SESSION_ARTWORK], title: english ?? MEDIA_SESSION_ARTIST };
 }
 
 // A browser throws for an action it does not know, and the rest should still be set

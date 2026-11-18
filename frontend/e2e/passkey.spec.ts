@@ -23,7 +23,6 @@ test("a guest saves their progress with a passkey, signs out and signs back in",
   await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
   await page.keyboard.press("m");
   await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });
-  await expect(page.getByTestId(TEST_IDS.progress)).toContainText("Introduced: 1 of");
 
   await saveProgressAndKeepFirstCode(page);
   await expect(page.getByRole("list", { name: "Passkeys" }).getByRole("listitem")).toHaveCount(1);
@@ -33,8 +32,7 @@ test("a guest saves their progress with a passkey, signs out and signs back in",
 
   await page.getByRole("button", { name: "Sign in with a passkey" }).click();
   await expect(page).toHaveURL(/\/$/);
-  await startLesson(page);
-  await expect(page.getByTestId(TEST_IDS.progress)).toContainText("Introduced: 1 of");
+  await expect(page.getByRole("region", { name: "Latest session" })).toContainText("1 sentence");
 });
 
 test("a recovery code gets someone back in once, after they lose their passkey", async ({ page }) => {

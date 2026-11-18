@@ -9,6 +9,7 @@ function exercise(exerciseId: string, selectionId = `selection-${exerciseId}`): 
     audio: { english: "/e", welsh_slow: "/s", welsh_standard: "/w" },
     english: exerciseId,
     exerciseId,
+    introducesItem: false,
     selectionId,
     welsh: exerciseId,
   };

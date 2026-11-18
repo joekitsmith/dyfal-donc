@@ -11,6 +11,8 @@ type ButtonProps = {
   readonly children: ReactNode;
   /** Shorter, for inside a card. A ghost button is always this size. */
   readonly compact?: boolean;
+  /** A ghost button with an outline, for where it would otherwise not read as a button. */
+  readonly edge?: boolean;
   readonly href?: string;
   readonly onClick?: () => void;
   readonly type?: "button" | "submit";
@@ -50,20 +52,33 @@ const UNAVAILABLE_STYLES = {
   quiet: { color: "var(--dd-muted)" },
 } as const;
 
-export function Button({ children, compact = false, href, onClick, type, unavailable = false, variant }: ButtonProps) {
+export function Button({
+  children,
+  compact = false,
+  edge = false,
+  href,
+  onClick,
+  type,
+  unavailable = false,
+  variant,
+}: ButtonProps) {
   const small = compact || variant === "ghost";
   const sx = {
     ...textStyle("label"),
     ...(small ? { fontSize: "1rem" } : {}),
     ...VARIANT_STYLES[variant],
     ...(unavailable ? UNAVAILABLE_STYLES[variant] : {}),
+    ...(edge ? { border: "2px solid var(--dd-line)" } : {}),
     "&:active": { transform: "scale(0.98)" },
     borderRadius: small ? "8px" : "10px",
     display: "flex",
+    gap: "10px",
     height: small ? COMPACT_HEIGHT : STANDALONE_HEIGHT,
     justifyContent: "center",
     px: small ? "16px" : "20px",
     transition: "transform var(--dd-fast) var(--dd-ease)",
+    // A button does not fill its parent by itself, unlike a link
+    width: small ? "auto" : "100%",
   };
 
   // Cancelling the click also stops an unavailable submit button from sending its form
