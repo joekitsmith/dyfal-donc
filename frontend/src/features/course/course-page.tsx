@@ -1,56 +1,74 @@
 "use client";
 
-import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Link from "next/link";
+import Box from "@mui/material/Box";
 
+import { ErrorCard } from "@/components/error-card";
+import { LoadingBlocks } from "@/components/loading-blocks";
+import { PageColumn } from "@/components/page-column";
+import { PageHeader } from "@/components/page-header";
+import { SearchField } from "@/components/search-field";
 import { ROUTES } from "@/config/paths";
 import { ReportDialog } from "@/features/problem-report";
+import { textStyle } from "@/theme/text-style";
 
-import { CourseSearchBox } from "./components/course-search-box";
 import { LaterTopics } from "./components/later-topics";
 import { SearchResults } from "./components/search-results";
-import { TopicAccordion } from "./components/topic-accordion";
+import { TopicRow } from "./components/topic-row";
+import { TopicSection } from "./components/topic-section";
 import { useCoursePage } from "./hooks/use-course-page";
 
+const LOADING_BLOCK_HEIGHTS = [72, 72, 72] as const;
+
 export function CoursePage() {
-  const { error, isLoading, report, search, topics } = useCoursePage();
-
-  if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
-  }
-
-  if (isLoading) {
-    return <Typography>Loading</Typography>;
-  }
+  const { error, isLoading, report, retry, search, topics } = useCoursePage();
 
   return (
-    <Stack component="main" spacing={3} sx={{ maxWidth: 560, mt: { sm: 8, xs: 3 }, mx: "auto", p: 2 }}>
-      <Button component={Link} href={ROUTES.home} sx={{ alignSelf: "flex-start" }}>
-        Back to home
-      </Button>
-      <Typography component="h1" variant="h4">
-        Course
-      </Typography>
-      <CourseSearchBox onChange={search.onChange} value={search.value} />
-      {search.active ? (
-        <SearchResults results={search.results} />
-      ) : (
+    <PageColumn>
+      <PageHeader back={{ href: ROUTES.home }} title="Everything you've met" />
+      {error === null ? (
         <>
-          {topics.started.length === 0 ? (
-            <Typography>Words and sentences appear here as you meet them.</Typography>
-          ) : null}
-          <Stack>
-            {topics.started.map((topic) => (
-              <TopicAccordion key={topic.name} onReport={report.reportSentence} topic={topic} />
-            ))}
-          </Stack>
-          <LaterTopics topics={topics.later} />
+          <Box sx={{ mt: "16px" }}>
+            <SearchField label="Search in English or Welsh" onChange={search.onChange} value={search.value} />
+          </Box>
+          {isLoading ? (
+            <LoadingBlocks heights={LOADING_BLOCK_HEIGHTS} />
+          ) : search.active ? (
+            <SearchResults results={search.results} />
+          ) : (
+            <>
+              {topics.started.length === 0 ? (
+                <Box sx={{ ...textStyle("label"), fontWeight: 400, mt: "28px" }}>
+                  Words and sentences appear here as you meet them.
+                </Box>
+              ) : null}
+              {topics.started.map(({ open, topic }) =>
+                open ? (
+                  <TopicSection key={topic.name} onReport={report.reportSentence} topic={topic} />
+                ) : (
+                  <Box key={topic.name} sx={{ mt: "12px" }}>
+                    <TopicRow
+                      onOpen={() => {
+                        topics.onUnfold(topic.name);
+                      }}
+                      topic={topic}
+                    />
+                  </Box>
+                ),
+              )}
+              <LaterTopics topics={topics.later} />
+            </>
+          )}
         </>
+      ) : (
+        <Box sx={{ mt: "24px" }}>
+          <ErrorCard
+            action={{ label: "Try again", onClick: retry }}
+            text="Check your connection, then try again."
+            title="We couldn't load this"
+          />
+        </Box>
       )}
       <ReportDialog {...report.dialog} />
-    </Stack>
+    </PageColumn>
   );
 }

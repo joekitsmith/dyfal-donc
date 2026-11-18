@@ -28,11 +28,15 @@ function topic(words: number, phrases: number, answered: number): TopicProgress 
 
 describe("describeTopic", () => {
   it("counts what was met", () => {
-    expect(describeTopic(topic(12, 4, 42))).toBe("12 words · 4 ways of saying things · 42 exercises answered");
+    expect(describeTopic(topic(12, 4, 42))).toBe("12 words · 4 ways of saying things");
   });
 
   it("uses the singular for one", () => {
-    expect(describeTopic(topic(1, 1, 1))).toBe("1 word · 1 way of saying things · 1 exercise answered");
+    expect(describeTopic(topic(1, 1, 1))).toBe("1 word · 1 way of saying things");
+  });
+
+  it("leaves out ways of saying things when there are none", () => {
+    expect(describeTopic(topic(3, 0, 5))).toBe("3 words");
   });
 });
 
