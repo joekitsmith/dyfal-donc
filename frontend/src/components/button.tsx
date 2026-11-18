@@ -9,6 +9,8 @@ import { textStyle } from "@/theme/text-style";
 
 type ButtonProps = {
   readonly children: ReactNode;
+  /** Shorter, for inside a card. A ghost button is always this size. */
+  readonly compact?: boolean;
   readonly href?: string;
   readonly onClick?: () => void;
   readonly type?: "button" | "submit";
@@ -17,11 +19,16 @@ type ButtonProps = {
   readonly variant: ButtonVariant;
 };
 
-type ButtonVariant = "primary" | "quiet";
+type ButtonVariant = "ghost" | "primary" | "quiet";
 
-const BUTTON_HEIGHT = 56;
+const STANDALONE_HEIGHT = 56;
+const COMPACT_HEIGHT = 48;
 
 const VARIANT_STYLES = {
+  ghost: {
+    backgroundColor: "transparent",
+    color: "var(--dd-ink)",
+  },
   primary: {
     backgroundColor: "var(--dd-inverse-bg)",
     color: "var(--dd-inverse-fg)",
@@ -34,6 +41,7 @@ const VARIANT_STYLES = {
 } as const;
 
 const UNAVAILABLE_STYLES = {
+  ghost: { color: "var(--dd-muted)" },
   primary: {
     backgroundColor: "transparent",
     border: "2px dashed var(--dd-line)",
@@ -42,19 +50,20 @@ const UNAVAILABLE_STYLES = {
   quiet: { color: "var(--dd-muted)" },
 } as const;
 
-export function Button({ children, href, onClick, type, unavailable = false, variant }: ButtonProps) {
+export function Button({ children, compact = false, href, onClick, type, unavailable = false, variant }: ButtonProps) {
+  const small = compact || variant === "ghost";
   const sx = {
     ...textStyle("label"),
+    ...(small ? { fontSize: "1rem" } : {}),
     ...VARIANT_STYLES[variant],
     ...(unavailable ? UNAVAILABLE_STYLES[variant] : {}),
     "&:active": { transform: "scale(0.98)" },
-    borderRadius: "10px",
+    borderRadius: small ? "8px" : "10px",
     display: "flex",
-    height: BUTTON_HEIGHT,
+    height: small ? COMPACT_HEIGHT : STANDALONE_HEIGHT,
     justifyContent: "center",
-    px: "20px",
+    px: small ? "16px" : "20px",
     transition: "transform var(--dd-fast) var(--dd-ease)",
-    width: "100%",
   };
 
   // Cancelling the click also stops an unavailable submit button from sending its form

@@ -4,11 +4,15 @@ import { formatClock, formatDuration } from "@/features/learning-session/utils/f
 
 describe("formatClock", () => {
   it.each([
-    [0, "0:00"],
-    [7, "0:07"],
-    [247, "4:07"],
-    [3600, "1:00:00"],
-    [3729, "1:02:09"],
+    [0, "under a minute"],
+    [59, "under a minute"],
+    [60, "1 min"],
+    [119, "1 min"],
+    [840, "14 min"],
+    [3599, "59 min"],
+    [3600, "1 h 00"],
+    [3900, "1 h 05"],
+    [7500, "2 h 05"],
   ])("shows %d seconds as %s", (seconds, shown) => {
     expect(formatClock(seconds)).toBe(shown);
   });

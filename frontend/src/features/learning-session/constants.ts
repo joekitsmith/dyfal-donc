@@ -5,6 +5,5 @@ export function summaryQueryKey(sessionId: number) {
 }
 
 export const SECONDS_PER_MINUTE = 60;
-export const SECONDS_PER_HOUR = 3600;
 
 export const NOT_FOUND_STATUS = 404;

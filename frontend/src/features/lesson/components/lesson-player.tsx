@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { ROUTES } from "@/config/paths";
 import { SaveProgressPrompt } from "@/features/auth";
-import { HomePage } from "@/features/home";
+import { useHeadphoneVisit } from "@/features/home";
 import { SessionClock } from "@/features/learning-session";
 import { ReportDialog } from "@/features/problem-report";
 import { ProgressPanel } from "@/features/progress";
@@ -17,6 +17,7 @@ import { useLessonReport } from "../hooks/use-lesson-report";
 import { useSaveOffer } from "../hooks/use-save-offer";
 import { ExerciseDisplay } from "./exercise-display";
 import { LessonControls } from "./lesson-controls";
+import { LessonRest } from "./lesson-rest";
 import { ThinkProgress } from "./think-progress";
 
 type LessonPlayerProps = {
@@ -30,8 +31,10 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
   const report = useLessonReport({ canPause, pause: actions.pause, recent, state });
   const offer = useSaveOffer({ isGuest, learnerId });
 
+  useHeadphoneVisit();
+
   if (state.phase === "idle") {
-    return <HomePage onStart={actions.start} />;
+    return <LessonRest onStart={actions.start} />;
   }
 
   return (

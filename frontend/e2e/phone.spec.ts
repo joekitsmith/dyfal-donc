@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest, startLesson } from "./helpers";
+import { requireStack, startAsGuest, startButton, startLesson } from "./helpers";
 
 const MINIMUM_TOUCH_TARGET = 48;
 
@@ -14,7 +14,7 @@ test("the lesson fits a phone and its buttons are easy to tap", async ({ page })
   await expect(page.getByRole("button", { name: "Try it now" })).toBeVisible();
   await page.screenshot({ path: "test-results/phone-welcome.png" });
   await startAsGuest(page);
-  await expect(page.getByRole("button", { name: "Start learning" })).toBeVisible();
+  await expect(startButton(page)).toBeVisible();
   await page.screenshot({ path: "test-results/phone-idle.png" });
   await startLesson(page);
   await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");

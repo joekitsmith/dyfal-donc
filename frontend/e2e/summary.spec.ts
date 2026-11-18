@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest, startLesson } from "./helpers";
+import { requireStack, startAsGuest, startButton, startLesson } from "./helpers";
 
 test.beforeEach(async ({ request }) => {
   await requireStack(request);
@@ -21,12 +21,10 @@ test("after a session the home screen recaps it and the summary lets a missed ex
 
   const recap = page.getByRole("region", { name: "Latest session" });
 
-  await expect(recap.getByRole("heading", { name: "This session so far" })).toBeVisible();
-  await expect(recap).toContainText("1 exercise");
-  await expect(recap.getByRole("region", { name: "New words" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Continue learning" })).toBeVisible();
+  await expect(recap).toContainText("This session so far · 1 sentence");
+  await expect(startButton(page)).toContainText("Dal ati");
 
-  await recap.getByRole("link", { name: "See details" }).click();
+  await recap.getByRole("link", { name: "Look back" }).click();
   await expect(page.getByRole("heading", { name: "Learning session" })).toBeVisible();
 
   const missed = page.getByRole("region", { name: "Missed exercises" });
