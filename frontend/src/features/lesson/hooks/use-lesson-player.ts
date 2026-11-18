@@ -19,6 +19,7 @@ import {
   isPausable,
   lessonReducer,
 } from "../stores/lesson-reducer";
+import { type ThinkWindow, thinkWindow } from "../utils/beats";
 import { failureCause } from "../utils/failure-cause";
 import { isSignedOut } from "../utils/is-signed-out";
 import { rememberExercise } from "../utils/remember-exercise";
@@ -258,5 +259,9 @@ export function useLessonPlayer({
     }
   });
 
-  return { actions, canMiss: canMarkMissed(state), canPause, recent, state };
+  // For the beat row, which reads it on each frame rather than rendering on each change of position
+  const readThink = (): null | ThinkWindow =>
+    timeline.current === null ? null : thinkWindow(timeline.current, player.position);
+
+  return { actions, canMiss: canMarkMissed(state), canPause, readThink, recent, state };
 }

@@ -15,7 +15,8 @@ type ScreenFrameProps = {
 };
 
 const COLUMN_WIDTH = 440;
-const ENGLISH_BOX_HEIGHT = 76;
+/** Sentences are fitted to it, which is why it is shared. */
+export const ENGLISH_BOX_HEIGHT = 76;
 
 /** Keep the controls on screen on a short phone, and with the content in a tall window. */
 const SHORT_VIEWPORT = "@media (max-height: 699px)";

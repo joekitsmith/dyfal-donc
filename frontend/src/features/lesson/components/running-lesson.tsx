@@ -13,7 +13,10 @@ import type { useLessonReport } from "../hooks/use-lesson-report";
 import type { useSaveOffer } from "../hooks/use-save-offer";
 import type { RunningLessonState } from "../types";
 
+import { useBeatIndex } from "../hooks/use-beat-index";
+import { useFittedSize } from "../hooks/use-fitted-size";
 import { useLessonView } from "../hooks/use-lesson-view";
+import { type ThinkWindow } from "../utils/beats";
 import { hapticTap } from "../utils/haptic-tap";
 import { beatRowProps } from "../utils/lesson-view";
 import { LessonControls } from "./lesson-controls";
@@ -26,21 +29,30 @@ type RunningLessonProps = {
   readonly actions: LessonActions;
   readonly menu: { readonly isOpen: boolean; readonly onClose: () => void; readonly onOpen: () => void };
   readonly offer: ReturnType<typeof useSaveOffer>;
+  /** Where the audio is in the think time, read on each frame. */
+  readonly readThink: () => null | ThinkWindow;
   readonly report: ReturnType<typeof useLessonReport>;
   readonly state: RunningLessonState;
 };
 
 /** The lesson once it has started, in the same frame as when it is at rest. */
-export function RunningLesson({ actions, menu, offer, report, state }: RunningLessonProps) {
+export function RunningLesson({ actions, menu, offer, readThink, report, state }: RunningLessonProps) {
   const view = useLessonView(state);
+  const fit = useFittedSize();
+  const beatIndex = useBeatIndex({
+    count: view.beats.count,
+    counting: view.beats.mode === "counting" && !view.paused,
+    read: readThink,
+    run: view.beats.run,
+  });
 
   return (
     <>
       <ScreenFrame
-        beats={<BeatRow {...beatRowProps(view.beats)} />}
+        beats={<BeatRow {...beatRowProps(view.beats, beatIndex)} />}
         body={
           <>
-            <WelshArea actions={{ onNext: actions.skipWindow, onRetry: actions.retry }} view={view} />
+            <WelshArea actions={{ onNext: actions.skipWindow, onRetry: actions.retry }} fit={fit.welsh} view={view} />
             {offer.prompt.visible ? (
               <Box sx={{ mt: "auto", pt: "12px" }}>
                 <SaveProgressPrompt onDismiss={offer.prompt.onDismiss} onSaved={offer.prompt.onSaved} />
@@ -63,7 +75,7 @@ export function RunningLesson({ actions, menu, offer, report, state }: RunningLe
             />
           </>
         }
-        english={<SentenceBox english={view.english} />}
+        english={<SentenceBox english={view.english} fit={fit.english} />}
         header={
           <AppHeader
             clock={<SessionClock />}

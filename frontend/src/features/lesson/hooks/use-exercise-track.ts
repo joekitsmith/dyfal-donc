@@ -1,13 +1,13 @@
 import { type Dispatch, type RefObject, useEffect, useEffectEvent } from "react";
 
 import { fetchClip } from "@/api/clips";
+import { thinkSeconds } from "@/utils/think-time";
 
 import type { ClipTrack, LessonEvent, LessonExercise, LessonSettings, Timeline, WelshPlayback } from "../types";
 
 import { CLIP_TRACKS } from "../constants";
 import { buildTrack } from "../utils/build-track";
 import { failureCause } from "../utils/failure-cause";
-import { thinkSeconds } from "../utils/think-time";
 import { type TrackPlayer } from "../utils/track-player";
 import { parseWav, type WavClip } from "../utils/wav";
 import { withRetry } from "../utils/with-retry";
