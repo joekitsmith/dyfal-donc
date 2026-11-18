@@ -2,7 +2,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
-import { requireStack, startAsGuest, startLesson } from "./helpers";
+import { requireStack, startAsGuest, startButton, startLesson } from "./helpers";
 
 const AUDIO_PATH = /\/api\/exercises\/.+\/audio\/(?<track>.+)$/;
 
@@ -112,7 +112,7 @@ test("Stop for now returns to rest, and Space starts the lesson again from there
   await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
 
   await page.getByRole("button", { name: "Stop for now" }).click();
-  await expect(page.getByRole("button", { name: /^(Start|Continue) learning$/ })).toBeVisible();
+  await expect(startButton(page)).toBeVisible();
   await expect(page.getByTestId(TEST_IDS.english)).toHaveCount(0);
 
   await page.keyboard.press("Space");
@@ -133,7 +133,7 @@ test("stopping while the next exercise is still loading leaves the lesson at res
   await page.waitForResponse((response) => response.url().endsWith("/me/next"));
   await page.waitForTimeout(SLOW_RESPONSE_MILLISECONDS);
 
-  await expect(page.getByRole("button", { name: /^(Start|Continue) learning$/ })).toBeVisible();
+  await expect(startButton(page)).toBeVisible();
   await expect(page.getByTestId(TEST_IDS.english)).toHaveCount(0);
 });
 
@@ -142,5 +142,5 @@ test("the old lesson address leads to the home screen, where the lesson starts",
   await page.goto("/learn");
 
   await expect(page).toHaveURL(/\/$/);
-  await expect(page.getByRole("button", { name: /^(Start|Continue) learning$/ })).toBeVisible();
+  await expect(startButton(page)).toBeVisible();
 });

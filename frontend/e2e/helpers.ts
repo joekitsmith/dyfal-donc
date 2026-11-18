@@ -1,4 +1,4 @@
-import { type APIRequestContext, expect, type Page } from "@playwright/test";
+import { type APIRequestContext, expect, type Locator, type Page } from "@playwright/test";
 
 const FAST_THINK_MULTIPLIER = 0.5;
 
@@ -25,9 +25,14 @@ async function speedUpThinking(page: Page, settings: Record<string, unknown> = {
   await page.reload();
 }
 
+/** The big button on the home screen. Its name has the Welsh and then the English. */
+export function startButton(page: Page): Locator {
+  return page.getByRole("button", { name: /^(Dechrau|Dal ati)/ });
+}
+
 /** Starts the lesson from the home screen, which is where signing in leaves a person. */
 export async function startLesson(page: Page): Promise<void> {
-  await page.getByRole("button", { name: /^(Start|Continue) learning$/ }).click();
+  await startButton(page).click();
 }
 
 /** Starts as a guest from the front door, as a new visitor would, with the quick think time. Ends on the home screen. */

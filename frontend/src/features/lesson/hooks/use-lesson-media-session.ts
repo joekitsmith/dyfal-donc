@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 
+import { recordHeadphoneUse } from "@/features/home";
+
 import type { LessonActions } from "./use-lesson-player";
 
 import { lessonMetadata, registerMediaSession } from "../utils/media-session";
@@ -34,15 +36,19 @@ export function useLessonMediaSession({
 
     return registerMediaSession(navigator.mediaSession, {
       missed: () => {
+        recordHeadphoneUse();
         latest.current.missed();
       },
       pause: () => {
+        recordHeadphoneUse();
         latest.current.pause();
       },
       play: () => {
+        recordHeadphoneUse();
         latest.current.resume();
       },
       replay: () => {
+        recordHeadphoneUse();
         latest.current.replay();
       },
     });

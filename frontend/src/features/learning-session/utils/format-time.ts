@@ -1,13 +1,20 @@
-import { SECONDS_PER_HOUR, SECONDS_PER_MINUTE } from "../constants";
+import { SECONDS_PER_MINUTE } from "../constants";
 
-/** A running clock: 4:07, or 1:02:09 once it passes an hour. */
+const MINUTES_PER_HOUR = 60;
+
+/** Whole minutes, rounded down as a clock does: "under a minute", "14 min", "1 h 05". */
 export function formatClock(totalSeconds: number): string {
-  const hours = Math.floor(totalSeconds / SECONDS_PER_HOUR);
-  const minutes = Math.floor((totalSeconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE);
-  const seconds = totalSeconds % SECONDS_PER_MINUTE;
-  const paddedSeconds = String(seconds).padStart(2, "0");
+  const minutes = Math.floor(totalSeconds / SECONDS_PER_MINUTE);
 
-  return hours > 0 ? `${hours}:${String(minutes).padStart(2, "0")}:${paddedSeconds}` : `${minutes}:${paddedSeconds}`;
+  if (minutes < 1) {
+    return "under a minute";
+  }
+
+  if (minutes < MINUTES_PER_HOUR) {
+    return `${minutes} min`;
+  }
+
+  return `${Math.floor(minutes / MINUTES_PER_HOUR)} h ${String(minutes % MINUTES_PER_HOUR).padStart(2, "0")}`;
 }
 
 /** How long something took, in words: "under a minute", "12 min", "1 h 5 min". */

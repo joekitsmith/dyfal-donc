@@ -1,6 +1,7 @@
-import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
+
+import { Button } from "@/components/button";
+import { NoticeCard } from "@/components/notice-card";
 
 import { useSaveProgress } from "../hooks/use-save-progress";
 import { PasskeyFailureNotice } from "./passkey-failure-notice";
@@ -18,32 +19,32 @@ export function SaveProgressPrompt({ onDismiss, onSaved }: SaveProgressPromptPro
   const { failure, isSaving, save } = useSaveProgress(onSaved);
 
   return (
-    <Stack spacing={1}>
-      <Alert
-        action={
-          <Stack direction="row" spacing={1}>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+      <NoticeCard
+        actions={
+          <>
             <Button
-              color="inherit"
-              disabled={isSaving}
+              compact
               onClick={() => {
                 save();
               }}
-              variant="outlined"
+              unavailable={isSaving}
+              variant="primary"
             >
               Add a passkey
             </Button>
             {onDismiss ? (
-              <Button color="inherit" onClick={onDismiss}>
+              <Button onClick={onDismiss} variant="ghost">
                 Not now
               </Button>
             ) : null}
-          </Stack>
+          </>
         }
-        severity="info"
+        hint="Your device will ask you to confirm."
       >
-        Your progress is saved on this browser. Add a passkey to sign in from anywhere and keep it for good.
-      </Alert>
+        Your progress is saved on this browser. Add a passkey to get back in from any device.
+      </NoticeCard>
       {failure ? <PasskeyFailureNotice failure={failure} /> : null}
-    </Stack>
+    </Box>
   );
 }
