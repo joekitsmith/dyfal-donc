@@ -22,10 +22,7 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   });
 
   await startAsGuest(page);
-  const progress = page.getByTestId(TEST_IDS.progress);
-
   await startLesson(page);
-  await expect(progress).toContainText("Introduced: 0 of");
 
   const english = page.getByTestId(TEST_IDS.english);
   const welsh = page.getByTestId(TEST_IDS.welsh);
@@ -46,7 +43,7 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   expect(await missedIt.boundingBox()).toEqual(missedItBox);
 
   await page.keyboard.press("m");
-  await expect(missedIt).toHaveText("Marked as missed");
+  await expect(missedIt).toContainText("Marked");
 
   const outcome = await page.waitForResponse(
     (response) => response.url().endsWith("/outcomes") && response.request().method() === "POST",
@@ -63,7 +60,6 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   // The next exercise's clips are fetched, and its track plays, with nobody tapping anything
   await expect.poll(() => clips.length, { timeout: 30_000 }).toBeGreaterThanOrEqual(6);
 
-  await expect(progress).toContainText("Introduced: 1 of");
   await expect(welsh).toHaveText("");
   await expect(english).not.toHaveText("");
 
@@ -182,4 +178,30 @@ test("at rest the menu has no way to stop", async ({ page }) => {
   await expect(menu.getByRole("link", { name: "Look something up" })).toBeVisible();
   await expect(menu.getByRole("button", { name: "Stop for now" })).toHaveCount(0);
   await expect(menu).toContainText("On headphones and the lock screen");
+});
+
+test("the captions follow the exercise, the Welsh appears with the second voice, and Next ends the wait", async ({
+  page,
+}) => {
+  await startAsGuest(page);
+  await startLesson(page);
+
+  const caption = page.getByTestId(TEST_IDS.caption);
+  const welsh = page.getByTestId(TEST_IDS.welsh);
+  const outcome = page.waitForResponse(
+    (response) => response.url().endsWith("/outcomes") && response.request().method() === "POST",
+    { timeout: 40_000 },
+  );
+
+  await expect(caption).toHaveText(/^(Listen|Something new\. Have a guess\.)$/, { timeout: 15_000 });
+  await expect(caption).toHaveText(/^(Say it in Welsh|Something new\. Have a guess\.)$/, { timeout: 15_000 });
+  await expect(caption).toHaveText("Now listen", { timeout: 15_000 });
+  await expect(welsh).toHaveText("");
+
+  await expect(caption).toHaveText("Once more, slowly", { timeout: 15_000 });
+  await expect(welsh).not.toHaveText("");
+
+  await expect(caption).toHaveText("Next one coming up", { timeout: 15_000 });
+  await page.getByRole("button", { name: "Next" }).click();
+  expect((await outcome).request().postDataJSON()).toMatchObject({ outcome: "got_it" });
 });

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import type { ExerciseState, LessonExercise, LessonState, WelshPlayback } from "@/features/lesson/types";
 
-import { lessonView } from "@/features/lesson/utils/lesson-view";
+import { beatRowProps, lessonView } from "@/features/lesson/utils/lesson-view";
 
 const EXERCISE: LessonExercise = {
   audio: { english: "/e", welsh_slow: "/s", welsh_standard: "/w" },
@@ -268,5 +268,16 @@ describe("errors", () => {
       english: "",
       error: { action: null, title: "The course isn't ready yet" },
     });
+  });
+});
+
+describe("beatRowProps", () => {
+  it.each([
+    ["all-to-come", { count: 6, opened: false }],
+    ["first-now", { count: 6, nowIndex: 0, opened: false }],
+    ["all-done", { count: 6, nowIndex: 6, opened: false }],
+    ["opened", { count: 6, opened: true }],
+  ] as const)("turns the mode %s into the row's settings", (mode, expected) => {
+    expect(beatRowProps({ count: 6, mode })).toEqual(expected);
   });
 });

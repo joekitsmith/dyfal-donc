@@ -82,6 +82,9 @@ export type LessonState =
   | { readonly phase: "loading"; readonly previous?: ExerciseFields | undefined }
   | { readonly phase: "nothing_eligible" };
 
+/** A lesson that is under way, as opposed to at rest. */
+export type RunningLessonState = Exclude<LessonState, { readonly phase: "idle" }>;
+
 export type ReportedOutcome = "got_it" | "missed_it";
 
 type Retry =

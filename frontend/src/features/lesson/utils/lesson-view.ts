@@ -1,4 +1,4 @@
-import type { ExerciseState, LessonExercise, LessonState } from "../types";
+import type { ExerciseState, LessonExercise, LessonState, RunningLessonState } from "../types";
 
 import { LESSON_ERRORS } from "../constants";
 import { canMarkMissed } from "../stores/lesson-reducer";
@@ -21,13 +21,11 @@ export type LessonView = {
   readonly welsh: string;
 };
 
-type LessonViewError = {
+export type LessonViewError = {
   readonly action: "account" | "retry" | null;
   readonly text: string;
   readonly title: string;
 };
-
-type RunningState = Exclude<LessonState, { readonly phase: "idle" }>;
 
 const RESTING_BEAT_COUNT = 8;
 const NEW_ITEM_CAPTION = "Something new. Have a guess.";
@@ -48,7 +46,7 @@ const WAITING: LessonView = {
  * `waitedLong` says the handover to the next exercise has taken longer than it is hidden for. The
  * lesson cannot know that from its state alone, because it is about time.
  */
-export function lessonView(state: RunningState, waitedLong: boolean): LessonView {
+export function lessonView(state: RunningLessonState, waitedLong: boolean): LessonView {
   switch (state.phase) {
     case "error":
       return errorView(state);
@@ -159,4 +157,22 @@ function slabFor(state: ExerciseState): LessonView["slab"] {
   }
 
   return canMarkMissed(state) || state.phase === "submitting" ? "available" : "waiting";
+}
+
+/** The beat row's own settings for a mode. */
+export function beatRowProps({ count, mode }: LessonView["beats"]): {
+  readonly count: number;
+  readonly nowIndex?: number;
+  readonly opened: boolean;
+} {
+  switch (mode) {
+    case "all-done":
+      return { count, nowIndex: count, opened: false };
+    case "all-to-come":
+      return { count, opened: false };
+    case "first-now":
+      return { count, nowIndex: 0, opened: false };
+    case "opened":
+      return { count, opened: true };
+  }
 }

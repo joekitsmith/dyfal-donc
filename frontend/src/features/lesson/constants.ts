@@ -13,6 +13,9 @@ export const THINK_MAXIMUM_SECONDS = 21.6;
 /** The gap after the first Welsh. Its text shows, and the slow Welsh starts, when it ends. */
 export const BETWEEN_WELSH_SECONDS = 1.5;
 
+/** How long the handover to the next exercise can take before the screen stops pretending nothing is happening. */
+export const HANDOVER_VISIBLE_MILLISECONDS = 1500;
+
 /** How long the learner has to mark an exercise as missed after the slow Welsh ends. */
 export const OUTCOME_WINDOW_SECONDS = 2;
 
