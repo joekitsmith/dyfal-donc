@@ -36,14 +36,18 @@ export function RecoveryCodesSection() {
         Make new codes
       </Button>
       <ConfirmDialog
-        confirm={{
-          label: "Make new codes",
-          onClick: () => {
-            dialog.close();
-            generate();
+        buttons={[
+          {
+            emphasis: "primary",
+            label: "Make new codes",
+            onClick: () => {
+              dialog.close();
+              generate();
+            },
           },
-        }}
-        description="This replaces your current codes. The old ones stop working."
+          { emphasis: "ghost", label: "Cancel", onClick: dialog.close },
+        ]}
+        description="Your current codes will stop working."
         onClose={dialog.close}
         open={dialog.isOpen}
         title="Make new recovery codes?"

@@ -15,6 +15,8 @@ type ButtonProps = {
   readonly edge?: boolean;
   /** As wide as its content, at the full height. */
   readonly fit?: boolean;
+  /** Fills the width of its parent, as a compact or ghost button does not by itself. */
+  readonly full?: boolean;
   readonly href?: string;
   readonly onClick?: () => void;
   readonly type?: "button" | "submit";
@@ -59,6 +61,7 @@ export function Button({
   compact = false,
   edge = false,
   fit = false,
+  full = false,
   href,
   onClick,
   type,
@@ -81,7 +84,7 @@ export function Button({
     px: small ? "16px" : fit ? "22px" : "20px",
     transition: "transform var(--dd-fast) var(--dd-ease)",
     // A button does not fill its parent by itself, unlike a link
-    width: small || fit ? "auto" : "100%",
+    width: (small || fit) && !full ? "auto" : "100%",
   };
 
   // Cancelling the click also stops an unavailable submit button from sending its form

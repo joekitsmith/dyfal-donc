@@ -7,7 +7,7 @@ import type { Passkey } from "../types";
 import { describePasskey } from "../utils/describe-passkey";
 
 type PasskeyListItemProps = {
-  readonly onRemove: (passkeyId: string) => void;
+  readonly onRemove: () => void;
   readonly passkey: Passkey;
   readonly removable: boolean;
 };
@@ -18,13 +18,7 @@ export function PasskeyListItem({ onRemove, passkey, removable }: PasskeyListIte
       disableGutters
       secondaryAction={
         removable ? (
-          <Button
-            aria-label={`Remove ${passkey.label}`}
-            color="error"
-            onClick={() => {
-              onRemove(passkey.id);
-            }}
-          >
+          <Button aria-label={`Remove ${passkey.label}`} onClick={onRemove}>
             Remove
           </Button>
         ) : null

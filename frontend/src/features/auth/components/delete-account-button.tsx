@@ -1,5 +1,4 @@
-import Button from "@mui/material/Button";
-
+import { TextButton } from "@/components/text-button";
 import { useDisclosure } from "@/hooks/use-disclosure";
 
 import { ConfirmDialog } from "./confirm-dialog";
@@ -13,12 +12,13 @@ export function DeleteAccountButton({ onDelete }: DeleteAccountButtonProps) {
 
   return (
     <>
-      <Button color="error" onClick={dialog.open} variant="text">
-        Delete account
-      </Button>
+      <TextButton onClick={dialog.open}>Delete account</TextButton>
       <ConfirmDialog
-        confirm={{ label: "Delete everything", onClick: onDelete }}
-        description="This deletes your account, your passkeys and all your progress. It cannot be undone."
+        buttons={[
+          { emphasis: "primary", label: "Delete account", onClick: onDelete },
+          { emphasis: "ghost", label: "Cancel", onClick: dialog.close },
+        ]}
+        description="This deletes your account, your passkeys, all your progress and any problem reports you sent. It cannot be undone."
         onClose={dialog.close}
         open={dialog.isOpen}
         title="Delete your account?"
