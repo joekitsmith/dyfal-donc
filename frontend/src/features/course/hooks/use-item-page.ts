@@ -21,7 +21,7 @@ export function useItemPage(itemId: string) {
     item: item.data,
     notFound,
     playback: {
-      failed,
+      failed: failed !== null,
       play:
         audio === null || audio === undefined
           ? undefined

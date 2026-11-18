@@ -1,11 +1,13 @@
-import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 import type { components } from "@/api/schema";
 
 import { useReplayClip } from "@/hooks/use-replay-clip";
+
+import type { ClipSpeed } from "./sentence-card";
+
+import { SentenceCard } from "./sentence-card";
+import { SubHeading } from "./sub-heading";
 
 type Sentence = components["schemas"]["SentenceResponse"];
 
@@ -17,57 +19,47 @@ type SentenceListProps = {
   readonly title: string;
 };
 
-/** Sentences in both languages, each with the Welsh to play at either pace. It shows nothing for an empty list. */
+/** Sentence cards under a sub-heading. Only one clip plays at a time, across all the cards. It shows nothing for an empty list. */
 export function SentenceList({ headingLevel, onReport, sentences, title }: SentenceListProps) {
-  const { failed, play } = useReplayClip();
+  const { failed, play, playing } = useReplayClip();
 
   if (sentences.length === 0) {
     return null;
   }
 
   return (
-    <Stack aria-label={title} component="section" spacing={1}>
-      <Typography component={headingLevel} variant="h6">
-        {title}
-      </Typography>
-      {sentences.map((sentence) => (
-        <Stack key={sentence.id} spacing={0.5}>
-          <Typography>{sentence.english}</Typography>
-          <Typography>{sentence.welsh}</Typography>
-          <Stack direction="row" spacing={1}>
-            <Button
-              aria-label={`Play ${sentence.welsh}`}
-              onClick={() => {
-                play(sentence.audio.welsh.standard);
+    <section aria-label={title}>
+      <SubHeading level={headingLevel}>{title}</SubHeading>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+        {sentences.map((sentence) => {
+          const speedOf = (path: null | string): ClipSpeed | null => {
+            if (path === sentence.audio.welsh.standard) {
+              return "standard";
+            }
+
+            return path === sentence.audio.welsh.slow ? "slow" : null;
+          };
+
+          return (
+            <SentenceCard
+              failedClip={speedOf(failed)}
+              key={sentence.id}
+              onPlay={(speed) => {
+                play(sentence.audio.welsh[speed]);
               }}
-              variant="outlined"
-            >
-              Play
-            </Button>
-            <Button
-              aria-label={`Play ${sentence.welsh} slowly`}
-              onClick={() => {
-                play(sentence.audio.welsh.slow);
-              }}
-              variant="outlined"
-            >
-              Play slowly
-            </Button>
-            {onReport === undefined ? null : (
-              <Button
-                aria-label={`Report ${sentence.welsh}`}
-                onClick={() => {
-                  onReport(sentence);
-                }}
-                size="small"
-              >
-                Report
-              </Button>
-            )}
-          </Stack>
-        </Stack>
-      ))}
-      {failed ? <Alert severity="error">The audio could not be played</Alert> : null}
-    </Stack>
+              onReport={
+                onReport === undefined
+                  ? undefined
+                  : () => {
+                      onReport(sentence);
+                    }
+              }
+              playing={speedOf(playing)}
+              sentence={sentence}
+            />
+          );
+        })}
+      </Box>
+    </section>
   );
 }
