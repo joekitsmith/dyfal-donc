@@ -1,4 +1,4 @@
-/** The design tokens of DESIGN.md section 2. Colour names are the custom property names without the --dd- prefix. */
+/** Colour names are the custom property names without the --dd- prefix. */
 export const COLOURS = {
   dark: {
     accent: "#3fb5a3",
