@@ -54,7 +54,17 @@ export function ScreenFrame({ beats, body, controls, english, header }: ScreenFr
           {english}
         </Box>
         <Box sx={{ flexShrink: 0, mt: "28px", [SHORT_VIEWPORT]: { mt: "20px" } }}>{beats}</Box>
-        <Box sx={{ flex: 1, minHeight: 0, mt: "28px", overflowY: "auto", [SHORT_VIEWPORT]: { mt: "20px" } }}>
+        <Box
+          sx={{
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            minHeight: 0,
+            mt: "28px",
+            overflowY: "auto",
+            [SHORT_VIEWPORT]: { mt: "20px" },
+          }}
+        >
           {body}
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", flexShrink: 0, gap: "12px" }}>{controls}</Box>

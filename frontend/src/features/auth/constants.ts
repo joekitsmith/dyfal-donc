@@ -23,3 +23,10 @@ export const FAILURE_MESSAGES = {
   other: "Something went wrong. Try again.",
   unsupported: "This browser cannot use passkeys.",
 } as const;
+
+export const WELCOME_NOTICES = {
+  cancelled: "Nothing changed. You can try again whenever you like.",
+  not_recognised: "We don't recognise that passkey. Try another, or start as a guest.",
+  other: "Something went wrong on our side. Try again in a moment.",
+  unsupported: "This browser can't use passkeys, so signing in isn't available here. You can still start as a guest.",
+} as const;
