@@ -7,6 +7,7 @@ import { useLessonPlayer } from "../hooks/use-lesson-player";
 import { useLessonReport } from "../hooks/use-lesson-report";
 import { usePauseWhileOpen } from "../hooks/use-pause-while-open";
 import { useSaveOffer } from "../hooks/use-save-offer";
+import { isExerciseState } from "../stores/lesson-reducer";
 import { LessonRest } from "./lesson-rest";
 import { RunningLesson } from "./running-lesson";
 
@@ -19,7 +20,11 @@ type LessonPlayerProps = {
 export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps) {
   const { actions, canPause, readThink, recent, state } = useLessonPlayer({ learnerId, settings });
   const report = useLessonReport({ recent, state });
-  const offer = useSaveOffer({ isGuest, learnerId });
+  const offer = useSaveOffer({
+    exercise: isExerciseState(state) ? state.exercise.selectionId : null,
+    isGuest,
+    learnerId,
+  });
   const menu = useDisclosure();
   const menuProps = { isOpen: menu.isOpen, onClose: menu.close, onOpen: menu.open };
 

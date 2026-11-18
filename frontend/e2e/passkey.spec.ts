@@ -62,3 +62,39 @@ test("a recovery code gets someone back in once, after they lose their passkey",
   await page.getByRole("button", { name: "Sign in" }).click();
   await expect(page.getByText("That code didn't work. It may be mistyped or already used.")).toBeVisible();
 });
+
+test("a passkey added from the lesson shows a confirmation that stays until the next exercise", async ({ page }) => {
+  await startAsGuest(page);
+  // Reaching five introduced items takes about ten exercises, so the lesson is told they are met
+  await page.route("**/api/me/progress", async (route) => {
+    const response = await route.fetch();
+
+    const progress = (await response.json()) as Record<string, unknown>;
+
+    await route.fulfill({ json: { ...progress, introduced: 5 }, response });
+  });
+  await startLesson(page);
+  await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
+
+  const prompt = page.getByText("Your progress is saved on this browser.");
+
+  await expect(prompt).toBeVisible();
+  await page.getByRole("button", { name: "Add a passkey" }).click();
+
+  const dialog = page.getByRole("dialog", { name: "Save your recovery codes" });
+
+  await dialog.getByLabel("I have saved these codes").check();
+  await dialog.getByRole("button", { name: "Done" }).click();
+
+  const confirmation = page.getByText("Passkey added. You can sign in from any device now.");
+
+  await expect(confirmation).toBeVisible();
+  await expect(prompt).toBeHidden();
+  await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
+
+  // It goes when the next exercise begins
+  const first = await page.getByTestId(TEST_IDS.english).textContent();
+
+  await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText(first ?? "", { timeout: 45_000 });
+  await expect(confirmation).toBeHidden();
+});
