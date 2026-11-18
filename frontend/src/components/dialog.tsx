@@ -10,9 +10,8 @@ import { textStyle } from "@/theme/text-style";
 
 type DialogProps = {
   readonly children: ReactNode;
-  /** Escape and a tap outside close it. Turn this off for a dialog that has to be answered. */
-  readonly dismissible?: boolean;
-  readonly onClose: () => void;
+  /** Called when Escape or a tap outside closes it. Without it the dialog can only be answered. */
+  readonly onClose?: () => void;
   readonly open: boolean;
   readonly title: string;
 };
@@ -20,13 +19,13 @@ type DialogProps = {
 const WIDE_WIDTH = 480;
 
 /** Rises from the bottom of a phone, and is centred on a wide screen. */
-export function Dialog({ children, dismissible = true, onClose, open, title }: DialogProps) {
+export function Dialog({ children, onClose, open, title }: DialogProps) {
   const titleId = useId();
 
   return (
     <MuiDialog
       aria-labelledby={titleId}
-      onClose={dismissible ? onClose : undefined}
+      onClose={onClose}
       open={open}
       slotProps={{
         backdrop: { sx: { backgroundColor: "var(--dd-scrim)" } },

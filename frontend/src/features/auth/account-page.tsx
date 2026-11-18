@@ -18,12 +18,14 @@ import { PasskeyList } from "./components/passkey-list";
 import { RecoveryCodesSection } from "./components/recovery-codes-section";
 import { SaveProgressPrompt } from "./components/save-progress-prompt";
 import { SignOutButton } from "./components/sign-out-button";
+import { ACCOUNT_SWITCHED_NOTICE } from "./constants";
 import { useAccount } from "./hooks/use-account";
 
 const LOADING_BLOCK_HEIGHTS = [72, 72] as const;
 
 export function AccountPage() {
-  const { deleteAccount, error, failure, isLoading, passkeys, recovery, retry, signOut, user } = useAccount();
+  const { deleteAccount, error, failure, isLoading, passkeys, recovery, retry, signOut, switchedAccount, user } =
+    useAccount();
 
   return (
     <PageColumn>
@@ -40,6 +42,11 @@ export function AccountPage() {
         <LoadingBlocks heights={LOADING_BLOCK_HEIGHTS} />
       ) : (
         <>
+          {switchedAccount ? (
+            <Box sx={{ mt: "16px" }}>
+              <NoticeCard role="status">{ACCOUNT_SWITCHED_NOTICE}</NoticeCard>
+            </Box>
+          ) : null}
           {failure === null ? null : (
             <Box sx={{ mt: "16px" }}>
               <NoticeCard role="status">{failure}</NoticeCard>

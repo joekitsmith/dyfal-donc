@@ -16,7 +16,7 @@ import { withStepUp } from "./with-step-up";
 
 /** Adds a passkey for whoever is signed in. The browser asks the person to approve it. */
 export async function registerPasskey(client: ApiClient, label: string | undefined): Promise<RegisteredPasskey> {
-  return withStepUp(async () => {
+  return withStepUp("add_passkey", async () => {
     const options = unwrap(await client.POST("/auth/passkeys/registration/options"));
     const credential = await startRegistration({ optionsJSON: asCreationOptions(options) });
     const registered = unwrap(
