@@ -30,5 +30,8 @@ export function useItemPage(itemId: string) {
             },
     },
     report,
+    retry: () => {
+      void item.refetch();
+    },
   };
 }

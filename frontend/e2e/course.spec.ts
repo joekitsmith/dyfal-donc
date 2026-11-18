@@ -35,8 +35,12 @@ test("the course lists what was met, can be searched, and opens a word with the 
 
   await expect(page).toHaveURL(/\/course\/items\/.+/);
   await expect(page.getByRole("heading", { level: 1, name: welsh })).toBeVisible();
-  await expect(page.getByRole("button", { exact: true, name: `Play ${welsh}` })).toBeVisible();
-  await expect(page.getByRole("region", { name: "Sentences you have got right" })).toBeVisible();
+
+  const clip = page.waitForResponse((response) => /\/items\/.+\/audio$/.test(response.url()));
+
+  await page.getByRole("button", { name: "Hear it" }).click();
+  expect((await clip).status()).toBe(200);
+  await expect(page.getByRole("region", { name: "Sentences you've said with it" })).toBeVisible();
 });
 
 test("an item that has not been met is not found", async ({ page }) => {
@@ -44,5 +48,5 @@ test("an item that has not been met is not found", async ({ page }) => {
 
   await page.goto("/course/items/lex%3Acig");
 
-  await expect(page.getByText("We could not find that word.")).toBeVisible();
+  await expect(page.getByText("We couldn't find that.")).toBeVisible();
 });

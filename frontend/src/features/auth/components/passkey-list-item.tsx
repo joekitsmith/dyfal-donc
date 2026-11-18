@@ -1,36 +1,48 @@
-import Button from "@mui/material/Button";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+import Box from "@mui/material/Box";
+import ButtonBase from "@mui/material/ButtonBase";
+
+import { textStyle } from "@/theme/text-style";
 
 import type { Passkey } from "../types";
 
-import { describePasskey } from "../utils/describe-passkey";
+import { describePasskey, passkeyName } from "../utils/describe-passkey";
 
 type PasskeyListItemProps = {
-  readonly onRemove: (passkeyId: string) => void;
+  readonly onRemove: () => void;
   readonly passkey: Passkey;
   readonly removable: boolean;
 };
 
 export function PasskeyListItem({ onRemove, passkey, removable }: PasskeyListItemProps) {
+  const name = passkeyName(passkey);
+
   return (
-    <ListItem
-      disableGutters
-      secondaryAction={
-        removable ? (
-          <Button
-            aria-label={`Remove ${passkey.label}`}
-            color="error"
-            onClick={() => {
-              onRemove(passkey.id);
-            }}
-          >
-            Remove
-          </Button>
-        ) : null
-      }
+    <Box
+      component="li"
+      sx={{
+        alignItems: "center",
+        display: "flex",
+        gap: "12px",
+        justifyContent: "space-between",
+        minHeight: 64,
+        py: "10px",
+      }}
     >
-      <ListItemText primary={passkey.label} secondary={describePasskey(passkey)} />
-    </ListItem>
+      <Box>
+        <Box sx={{ ...textStyle("label"), fontWeight: 600 }}>{name}</Box>
+        <Box sx={{ color: "var(--dd-muted)", fontSize: "0.8125rem", lineHeight: 1.35, mt: "2px" }}>
+          {describePasskey(passkey)}
+        </Box>
+      </Box>
+      {removable ? (
+        <ButtonBase
+          aria-label={`Remove ${name}`}
+          onClick={onRemove}
+          sx={{ ...textStyle("body"), minHeight: 48, textDecoration: "underline" }}
+        >
+          Remove
+        </ButtonBase>
+      ) : null}
+    </Box>
   );
 }

@@ -91,7 +91,7 @@ export async function saveProgressAndKeepFirstCode(page: Page): Promise<string> 
 
   await dialog.getByLabel("I have saved these codes").check();
   await dialog.getByRole("button", { name: "Done" }).click();
-  await expect(page.getByText("You are signed in with a passkey.")).toBeVisible();
+  await expect(page.getByText("You're signed in with a passkey.")).toBeVisible();
 
   return code;
 }

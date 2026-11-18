@@ -54,7 +54,7 @@ test("a recovery code gets someone back in once, after they lose their passkey",
   await expect(page).toHaveURL(/\/$/);
   await chooseFromMenu(page, "link", "Account");
   await expect(page.getByRole("list", { name: "Passkeys" }).getByRole("listitem")).toHaveCount(2);
-  await expect(page.getByText("9 unused.")).toBeVisible();
+  await expect(page.getByText("9 of 10 left.")).toBeVisible();
 
   await page.getByRole("button", { name: "Sign out" }).click();
   await page.getByRole("link", { name: "Use a recovery code" }).click();
@@ -97,4 +97,51 @@ test("a passkey added from the lesson shows a confirmation that stays until the 
 
   await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText(first ?? "", { timeout: 45_000 });
   await expect(confirmation).toBeHidden();
+});
+
+test("a guest is asked before signing out, and a passkey is removed only after asking", async ({ page }) => {
+  await startAsGuest(page);
+  await chooseFromMenu(page, "link", "Account");
+  await expect(page.getByRole("heading", { level: 1, name: "Account" })).toBeVisible();
+  await expect(page.getByText("You're using a guest account.")).toBeVisible();
+  await expect(page.getByText("None yet.")).toBeVisible();
+
+  await page.getByRole("button", { name: "Sign out" }).click();
+
+  const guestDialog = page.getByRole("dialog", { name: "Sign out of this guest account?" });
+
+  await expect(guestDialog.getByRole("button")).toHaveText(["Add a passkey", "Sign out anyway", "Cancel"]);
+  await guestDialog.getByRole("button", { name: "Cancel" }).click();
+  await expect(guestDialog).toBeHidden();
+
+  await page.getByRole("button", { name: "Add a passkey" }).click();
+
+  const codes = page.getByRole("dialog", { name: "Save your recovery codes" });
+
+  await codes.getByLabel("I have saved these codes").check();
+  await codes.getByRole("button", { name: "Done" }).click();
+
+  const passkeys = page.getByRole("list", { name: "Passkeys" });
+
+  await expect(passkeys.getByRole("listitem")).toHaveCount(1);
+  await expect(passkeys).toContainText("Unnamed passkey");
+  await expect(passkeys).toContainText("never used");
+  await expect(page.getByRole("button", { name: /^Remove/ })).toHaveCount(0);
+  await expect(page.getByText("10 of 10 left.")).toBeVisible();
+
+  await device.replace();
+  await page.getByLabel("Name for a new passkey (optional)").fill("My phone");
+  await page.getByRole("button", { name: "Add another passkey" }).click();
+  await expect(passkeys.getByRole("listitem")).toHaveCount(2);
+
+  await page.getByRole("button", { name: "Remove My phone" }).click();
+
+  const removeDialog = page.getByRole("dialog", { name: 'Remove "My phone"?' });
+
+  await removeDialog.getByRole("button", { name: "Cancel" }).click();
+  await expect(passkeys.getByRole("listitem")).toHaveCount(2);
+
+  await page.getByRole("button", { name: "Remove My phone" }).click();
+  await removeDialog.getByRole("button", { name: "Remove" }).click();
+  await expect(passkeys.getByRole("listitem")).toHaveCount(1);
 });

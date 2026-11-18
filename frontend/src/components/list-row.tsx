@@ -26,7 +26,7 @@ const TWO_LINE_ROW_HEIGHT = 64;
 /** One row of a list card. The whole row is the link. */
 export function ListRow({ english, href, secondLine, welsh }: ListRowProps) {
   return (
-    <Box component="li" sx={{ "&:last-child": { borderBottom: 0 }, borderBottom: "1px solid var(--dd-divider)" }}>
+    <li>
       <ButtonBase
         href={href}
         LinkComponent={NextLink}
@@ -57,6 +57,6 @@ export function ListRow({ english, href, secondLine, welsh }: ListRowProps) {
           </Box>
         )}
       </ButtonBase>
-    </Box>
+    </li>
   );
 }
