@@ -49,7 +49,7 @@ export default defineConfig([
   },
   { files: ["**/*.mjs"], ...tseslint.configs.disableTypeChecked },
   {
-    files: ["src/app/**/{page,layout}.tsx", "*.config.ts"],
+    files: ["src/app/**/{error,layout,not-found,page}.tsx", "*.config.ts"],
     rules: { "import/no-default-export": "off" },
   },
   {

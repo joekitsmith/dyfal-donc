@@ -2,9 +2,9 @@ import type { Shadows } from "@mui/material/styles";
 
 import { createTheme } from "@mui/material/styles";
 
-import { CARD_RADIUS, COLOURS, FOCUS_RING, FONT_FAMILY, MINIMUM_TOUCH_TARGET, MOTION, TYPE_SCALE } from "./tokens";
+import { textStyle } from "./text-style";
+import { CARD_RADIUS, COLOURS, FOCUS_RING, FONT_FAMILY, MINIMUM_TOUCH_TARGET, MOTION } from "./tokens";
 
-const BASE_FONT_SIZE = 16;
 const SHADOW_LEVELS = 25;
 
 const NO_SHADOWS = Array.from({ length: SHADOW_LEVELS }, () => "none") as unknown as Shadows;
@@ -16,10 +16,6 @@ const FOCUS_RING_STYLE = {
 
 function customProperties(values: Readonly<Record<string, string>>) {
   return Object.fromEntries(Object.entries(values).map(([name, value]) => [`--dd-${name}`, value]));
-}
-
-function textStyle(style: { readonly fontSize: number; readonly fontWeight: number; readonly lineHeight: number }) {
-  return { ...style, fontSize: `${style.fontSize / BASE_FONT_SIZE}rem` };
 }
 
 function scheme(colours: typeof COLOURS.dark | typeof COLOURS.light) {
@@ -74,21 +70,21 @@ export const theme = createTheme({
   shadows: NO_SHADOWS,
   shape: { borderRadius: CARD_RADIUS },
   typography: {
-    body1: textStyle(TYPE_SCALE.body),
-    body2: textStyle(TYPE_SCALE.body),
-    button: { ...textStyle(TYPE_SCALE.label), textTransform: "none" },
-    caption: textStyle(TYPE_SCALE.hint),
+    body1: textStyle("body"),
+    body2: textStyle("body"),
+    button: { ...textStyle("label"), textTransform: "none" },
+    caption: textStyle("hint"),
     fontFamily: FONT_FAMILY,
     fontWeightBold: 600,
     fontWeightMedium: 500,
     fontWeightRegular: 400,
-    h1: textStyle(TYPE_SCALE.title),
-    h2: textStyle(TYPE_SCALE.title),
-    h3: textStyle(TYPE_SCALE.title),
-    h4: textStyle(TYPE_SCALE.title),
-    h5: textStyle(TYPE_SCALE.title),
-    h6: textStyle(TYPE_SCALE.title),
-    subtitle1: textStyle(TYPE_SCALE.label),
-    subtitle2: textStyle(TYPE_SCALE.body),
+    h1: textStyle("title"),
+    h2: textStyle("title"),
+    h3: textStyle("title"),
+    h4: textStyle("title"),
+    h5: textStyle("title"),
+    h6: textStyle("title"),
+    subtitle1: textStyle("label"),
+    subtitle2: textStyle("body"),
   },
 });

@@ -7,7 +7,7 @@ type ColourName = keyof typeof COLOURS.light;
 const TEXT_RATIO = 4.5;
 const OUTLINE_RATIO = 3;
 
-/** The foreground, the background it sits on, and the ratio DESIGN.md section 2.1 needs between them. */
+/** The foreground, the background it sits on, and the contrast ratio needed between them. */
 const PAIRS: readonly (readonly [ColourName, ColourName, number])[] = [
   ["ink", "ground", TEXT_RATIO],
   ["ink", "surface", TEXT_RATIO],
