@@ -11,6 +11,8 @@ import { MenuRow } from "./menu-row";
 
 type LessonMenuProps = {
   readonly menu: { readonly isOpen: boolean; readonly onClose: () => void; readonly onOpen: () => void };
+  /** Opens the course over the lesson, which keeps its place. Without it the row goes to the course's own page. */
+  readonly onLookUp?: () => void;
   readonly onReport: () => void;
   /** Only while a lesson is running, since only then is there something to stop. */
   readonly onStop?: () => void;
@@ -19,7 +21,7 @@ type LessonMenuProps = {
 const BUTTON_SIZE = 48;
 
 /** The menu button for the header, and the sheet it opens. */
-export function LessonMenu({ menu, onReport, onStop }: LessonMenuProps) {
+export function LessonMenu({ menu, onLookUp, onReport, onStop }: LessonMenuProps) {
   const [button, setButton] = useState<HTMLElement | null>(null);
 
   return (
@@ -35,7 +37,18 @@ export function LessonMenu({ menu, onReport, onStop }: LessonMenuProps) {
         <MenuIcon size={24} />
       </ButtonBase>
       <Sheet anchor={button} label="Menu" onClose={menu.onClose} open={menu.isOpen}>
-        <MenuRow href={ROUTES.course}>Look something up</MenuRow>
+        {onLookUp === undefined ? (
+          <MenuRow href={ROUTES.course}>Look something up</MenuRow>
+        ) : (
+          <MenuRow
+            onClick={() => {
+              menu.onClose();
+              onLookUp();
+            }}
+          >
+            Look something up
+          </MenuRow>
+        )}
         <MenuRow
           onClick={() => {
             menu.onClose();

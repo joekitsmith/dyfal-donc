@@ -12,15 +12,18 @@ import { textStyle } from "@/theme/text-style";
 import type { TopicProgress } from "../types";
 
 import { describeTopic } from "../utils/describe-topic";
+import { opener } from "../utils/opener";
 import { topicTitle } from "../utils/topic-title";
 
 type TopicSectionProps = {
+  /** Opens a word or phrase in place of going to its page. */
+  readonly onOpenItem?: (itemId: string) => void;
   readonly onReport: (sentence: components["schemas"]["SentenceResponse"]) => void;
   readonly topic: TopicProgress;
 };
 
 /** A topic the learner has started, open: what they can say in it, and the words and phrases they have met. */
-export function TopicSection({ onReport, topic }: TopicSectionProps) {
+export function TopicSection({ onOpenItem, onReport, topic }: TopicSectionProps) {
   const { phrases, sayable, words } = topic;
 
   return (
@@ -53,7 +56,13 @@ export function TopicSection({ onReport, topic }: TopicSectionProps) {
           <SubHeading level="h3">Words</SubHeading>
           <ListCard>
             {words.map((word) => (
-              <ListRow english={word.english} href={courseItemPath(word.id)} key={word.id} welsh={word.welsh} />
+              <ListRow
+                english={word.english}
+                href={courseItemPath(word.id)}
+                key={word.id}
+                onOpen={opener(onOpenItem, word.id)}
+                welsh={word.welsh}
+              />
             ))}
           </ListCard>
         </section>
@@ -66,6 +75,7 @@ export function TopicSection({ onReport, topic }: TopicSectionProps) {
               <ListRow
                 href={courseItemPath(phrase.id)}
                 key={phrase.id}
+                onOpen={opener(onOpenItem, phrase.id)}
                 secondLine={{ size: "body", text: phrase.english }}
                 welsh={phrase.welsh}
               />

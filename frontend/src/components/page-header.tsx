@@ -6,7 +6,10 @@ import { textStyle } from "@/theme/text-style";
 
 import { ChevronIcon } from "./icons/chevron-icon";
 
-type PageHeaderProps = { readonly back: { readonly href: string } } & (
+/** Back is a link, or an action for where going back is not a change of address, as in a sheet. */
+type Back = { readonly href: string } | { readonly onClick: () => void };
+
+type PageHeaderProps = { readonly back: Back } & (
   { readonly backLabel: string; readonly title?: never } | { readonly backLabel?: never; readonly title: string }
 );
 
@@ -17,11 +20,12 @@ const HEADER_HEIGHT = 48;
  * itself the title, as a word's page is, has the name of where the arrow goes instead, as one link.
  */
 export function PageHeader({ back, backLabel, title }: PageHeaderProps) {
+  const backProps = "href" in back ? { href: back.href, LinkComponent: NextLink } : { onClick: back.onClick };
+
   if (backLabel !== undefined) {
     return (
       <ButtonBase
-        href={back.href}
-        LinkComponent={NextLink}
+        {...backProps}
         sx={{
           ...textStyle("body"),
           gap: "4px",
@@ -44,8 +48,7 @@ export function PageHeader({ back, backLabel, title }: PageHeaderProps) {
     <Box sx={{ alignItems: "center", display: "flex", gap: "4px", height: HEADER_HEIGHT, ml: "-12px" }}>
       <ButtonBase
         aria-label="Back"
-        href={back.href}
-        LinkComponent={NextLink}
+        {...backProps}
         sx={{ height: HEADER_HEIGHT, justifyContent: "center", width: HEADER_HEIGHT }}
       >
         <ChevronIcon direction="left" size={24} />
