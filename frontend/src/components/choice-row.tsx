@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+
 import Box from "@mui/material/Box";
 
 import { textStyle } from "@/theme/text-style";
 
 type ChoiceRowProps = {
   readonly checked: boolean;
-  readonly label: string;
+  readonly label: ReactNode;
   readonly onChange: (checked: boolean) => void;
 } & (
   | { readonly name: string; readonly type: "radio"; readonly value: string }

@@ -24,6 +24,28 @@ describe("reportSchema", () => {
   });
 });
 
+describe("reportSchema messages", () => {
+  function messageFor(changes: object): string | undefined {
+    const result = reportSchema.safeParse({ ...FORM, ...changes });
+
+    return result.success ? undefined : result.error.issues[0]?.message;
+  }
+
+  it("asks for a kind of problem", () => {
+    expect(messageFor({ category: "" })).toBe("Choose a kind of problem.");
+  });
+
+  it("asks what is wrong", () => {
+    expect(messageFor({ description: "  " })).toBe("Say what is wrong.");
+  });
+
+  it("says when it is too long", () => {
+    expect(messageFor({ description: "x".repeat(DESCRIPTION_MAXIMUM_LENGTH + 1) })).toBe(
+      "That's too long. Keep it under 1,000 characters.",
+    );
+  });
+});
+
 describe("toRequestBody", () => {
   const sentence = { audio: null, english: "E", id: "ex-1", kind: "sentence", welsh: "W" } as const;
   const item = { ...sentence, id: "lex:siarad", kind: "item" } as const;
@@ -49,10 +71,10 @@ describe("toRequestBody", () => {
 
 describe("sendFailureMessage", () => {
   it("says when there have been too many reports", () => {
-    expect(sendFailureMessage(new ApiError(429))).toBe("Too many reports, try again in a minute");
+    expect(sendFailureMessage(new ApiError(429))).toBe("Too many reports. Try again in a minute.");
   });
 
   it("is plain about any other failure", () => {
-    expect(sendFailureMessage(new ApiError(500))).toBe("The report could not be sent");
+    expect(sendFailureMessage(new ApiError(500))).toBe("The report couldn't be sent.");
   });
 });

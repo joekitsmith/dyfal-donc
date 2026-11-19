@@ -5,11 +5,12 @@ export const DESCRIPTION_MAXIMUM_LENGTH = 1000;
 /** The subject id of a report that is not about any of the sentences offered. */
 export const NO_SUBJECT = "";
 export const NO_SUBJECT_LABEL = "Not about one of these sentences";
+export const SUBJECT_LEGEND = "Which sentence?";
 
 export const TOO_MANY_REPORTS_STATUS = 429;
 
-export const SEND_FAILED_MESSAGE = "The report could not be sent";
-export const TOO_MANY_REPORTS_MESSAGE = "Too many reports, try again in a minute";
+export const SEND_FAILED_MESSAGE = "The report couldn't be sent.";
+export const TOO_MANY_REPORTS_MESSAGE = "Too many reports. Try again in a minute.";
 
 /** In the order the dropdown shows them. */
 export const CATEGORY_OPTIONS: readonly { readonly label: string; readonly value: ReportCategory }[] = [

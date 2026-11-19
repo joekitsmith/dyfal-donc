@@ -1,5 +1,4 @@
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
+import { Dialog } from "@/components/dialog";
 
 import type { ReportSource, ReportSubject } from "../types";
 
@@ -17,8 +16,7 @@ type ReportDialogProps = {
 /** Tells the developer that something is wrong, from wherever the learner noticed it. */
 export function ReportDialog({ allowNone, onClose, open, source, subjects }: ReportDialogProps) {
   return (
-    <Dialog fullWidth maxWidth="sm" onClose={onClose} open={open}>
-      <DialogTitle>Report a problem</DialogTitle>
+    <Dialog closeButton fillsPhone onClose={onClose} open={open} title="Report a problem">
       <ReportForm allowNone={allowNone} onClose={onClose} source={source} subjects={subjects} />
     </Dialog>
   );
