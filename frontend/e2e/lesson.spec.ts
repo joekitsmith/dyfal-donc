@@ -71,8 +71,7 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   const dialog = page.getByRole("dialog", { name: "Report a problem" });
 
   await expect(dialog.getByRole("radio")).toHaveCount(2);
-  await dialog.getByLabel("What kind of problem is it?").click();
-  await page.getByRole("option", { name: "Sounds wrong when spoken" }).click();
+  await dialog.getByLabel("What kind of problem is it?").selectOption({ label: "Sounds wrong when spoken" });
   await dialog.getByLabel("What is wrong?").fill("The voice says it oddly");
 
   const reportRequest = page.waitForRequest(
@@ -94,7 +93,8 @@ test("a learner hears an exercise, marks it missed and moves on", async ({ page 
   expect((await reportResponse).status()).toBe(204);
   await expect(dialog.getByText("Thanks, it's been sent")).toBeVisible();
 
-  await dialog.getByRole("button", { name: "Close" }).click();
+  // The dialog has a close button at the top as well as the one that answers the thanks
+  await dialog.getByRole("button", { name: "Close" }).last().click();
   await expect(dialog).toBeHidden();
   await expect(page.getByRole("button", { name: /^Resume/ })).toBeVisible();
 

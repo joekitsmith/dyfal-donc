@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 
 import type { ReportFormValues, ReportSource, ReportSubject, ReportValues } from "../types";
 
@@ -22,15 +22,21 @@ export function useReportForm({
   readonly source: ReportSource;
   readonly subjects: readonly ReportSubject[];
 }) {
-  const { control, handleSubmit } = useForm<ReportFormValues, unknown, ReportValues>({
+  const { control, formState, handleSubmit, register } = useForm<ReportFormValues, unknown, ReportValues>({
     defaultValues: { category: "", description: "", subjectId: subjects[0]?.id ?? NO_SUBJECT },
     resolver: zodResolver(reportSchema),
   });
   const { error, isPending, isSuccess, mutate } = useSendProblemReport();
+  const description = useWatch({ control, name: "description" });
   const choose = subjects.length > 1 || (subjects.length === 1 && allowNone);
 
   return {
     control,
+    description: { length: description.length },
+    errors: {
+      category: formState.errors.category?.message,
+      description: formState.errors.description?.message,
+    },
     failure: error === null ? null : sendFailureMessage(error),
     isSending: isPending,
     onSubmit: handleSubmit((values) => {
@@ -42,6 +48,7 @@ export function useReportForm({
         ),
       );
     }),
+    register,
     sent: isSuccess,
     subject: {
       choices: choose ? subjects : [],

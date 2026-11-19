@@ -44,8 +44,7 @@ test("after a session the home screen recaps it and the summary lets a missed ex
 
   // One sentence is offered, so there is nothing to choose between
   await expect(dialog.getByRole("radio")).toHaveCount(0);
-  await dialog.getByLabel("What kind of problem is it?").click();
-  await page.getByRole("option", { name: "Other" }).click();
+  await dialog.getByLabel("What kind of problem is it?").selectOption({ label: "Other" });
   await dialog.getByLabel("What is wrong?").fill("Something is off");
   await dialog.getByRole("button", { name: "Send" }).click();
 
@@ -55,7 +54,8 @@ test("after a session the home screen recaps it and the summary lets a missed ex
     source: "summary",
   });
   await expect(dialog.getByText("Thanks, it's been sent")).toBeVisible();
-  await dialog.getByRole("button", { name: "Close" }).click();
+  // The dialog has a close button at the top as well as the one that answers the thanks
+  await dialog.getByRole("button", { name: "Close" }).last().click();
   await expect(dialog).toBeHidden();
 
   await page.getByRole("link", { name: "Back to the lesson" }).click();
