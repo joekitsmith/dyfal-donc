@@ -2,8 +2,10 @@ import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 
 import { TickIcon } from "@/components/icons/tick-icon";
+import { KeyHint } from "@/components/key-hint";
 import { TEST_IDS } from "@/config/test-ids";
 import { textStyle } from "@/theme/text-style";
+import { HOVER_OUTLINE, MEDIA } from "@/theme/tokens";
 
 import type { LessonView } from "../utils/lesson-view";
 
@@ -48,13 +50,14 @@ export function MissedItSlab({ onPress, state }: MissedItSlabProps) {
       onClick={onPress}
       sx={{
         ...STATE_STYLES[state],
-        "&:active": { transform: "scale(0.98)" },
+        "&:active": { [MEDIA.reducedMotion]: { transform: "none" }, transform: "scale(0.98)" },
         borderRadius: "10px",
         flexDirection: "column",
         flexShrink: 0,
         gap: "2px",
         height: SLAB_HEIGHT,
         justifyContent: "center",
+        [MEDIA.hover]: { "&:hover": HOVER_OUTLINE },
         transition:
           "background-color var(--dd-fast) var(--dd-ease), color var(--dd-fast) var(--dd-ease), border-color var(--dd-fast) var(--dd-ease), transform var(--dd-fast) var(--dd-ease)",
         width: "100%",
@@ -71,6 +74,7 @@ export function MissedItSlab({ onPress, state }: MissedItSlabProps) {
       <Box component="span" sx={textStyle("hint")}>
         {SECOND_LINES[state]}
       </Box>
+      <KeyHint onInverse={state === "available"}>M</KeyHint>
     </ButtonBase>
   );
 }

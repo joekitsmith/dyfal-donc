@@ -3,7 +3,7 @@ import type { Shadows } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 
 import { textStyle } from "./text-style";
-import { CARD_RADIUS, COLOURS, FOCUS_RING, FONT_FAMILY, MINIMUM_TOUCH_TARGET, MOTION } from "./tokens";
+import { CARD_RADIUS, COLOURS, FOCUS_RING, FONT_FAMILY, MEDIA, MINIMUM_TOUCH_TARGET, MOTION } from "./tokens";
 
 const SHADOW_LEVELS = 25;
 
@@ -54,6 +54,8 @@ export const theme = createTheme({
           ...customProperties(MOTION),
           "@media (prefers-color-scheme: dark)": customProperties(COLOURS.dark),
           colorScheme: "light dark",
+          // Fades stay, quicker. Whatever moves is instant, so nothing slides or opens along a seam
+          [MEDIA.reducedMotion]: { "--dd-base": MOTION.fast, "--dd-slow": "0ms" },
         },
         body: { fontVariantNumeric: "tabular-nums" },
         // Form controls ignore the page font unless told to inherit it

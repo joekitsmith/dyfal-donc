@@ -226,3 +226,54 @@ test("the beat row has a block for each Welsh word and three more, and opens whe
 
   await expect(row.locator("> *")).toHaveCount(words + 3);
 });
+
+test("a wide screen with a mouse shows the key that presses each control, and a narrow one does not", async ({
+  page,
+}) => {
+  await startAsGuest(page);
+  await expect(startButton(page).getByText("Space", { exact: true })).toBeVisible();
+
+  await startLesson(page);
+  await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
+  await expect(page.getByRole("button", { name: /^Replay/ }).getByText("R", { exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /^Pause/ }).getByText("Space", { exact: true })).toBeVisible();
+  await expect(page.getByTestId(TEST_IDS.missedIt).getByText("M", { exact: true })).toBeVisible();
+
+  // The keys are not part of what a screen reader says each control is
+  await expect(page.getByRole("button", { name: "Replay" })).toBeVisible();
+
+  await page.setViewportSize({ height: 800, width: 800 });
+  await expect(page.getByRole("button", { name: /^Replay/ }).getByText("R", { exact: true })).toBeHidden();
+  await expect(page.getByTestId(TEST_IDS.missedIt).getByText("M", { exact: true })).toBeHidden();
+});
+
+test("with reduced motion the block that is waited on is still and nothing opens along a seam", async ({ page }) => {
+  const SLOW_RESPONSE_MILLISECONDS = 2500;
+
+  await startAsGuest(page);
+  await page.route("**/api/me/next", async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, SLOW_RESPONSE_MILLISECONDS));
+    await route.continue();
+  });
+
+  const waitedOn = () =>
+    page
+      .getByTestId(TEST_IDS.beatRow)
+      .locator("> *")
+      .first()
+      .locator("> *")
+      .first()
+      .evaluate((block) => getComputedStyle(block).animationName);
+
+  await startLesson(page);
+  await expect(page.getByTestId(TEST_IDS.caption)).toHaveText("Getting the first one…");
+  expect(await waitedOn()).not.toBe("none");
+
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  expect(await waitedOn()).toBe("none");
+
+  // Sheets and the seam are instant: the durations they use are none
+  expect(await page.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--dd-slow"))).toBe(
+    "0ms",
+  );
+});

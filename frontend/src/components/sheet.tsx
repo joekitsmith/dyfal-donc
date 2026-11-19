@@ -8,6 +8,7 @@ import Popover from "@mui/material/Popover";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { MOTION, SLOW_MILLISECONDS } from "@/theme/tokens";
 
 type SheetProps = {
@@ -27,6 +28,7 @@ const DIALOG_ATTRIBUTES = { "aria-modal": true, role: "dialog" } as const;
 
 export function Sheet({ anchor, children, label, onClose, open }: SheetProps) {
   const theme = useTheme();
+  const reducedMotion = usePrefersReducedMotion();
   const wide = useMediaQuery(theme.breakpoints.up("md"), { noSsr: true });
 
   if (wide && anchor !== null) {
@@ -73,7 +75,7 @@ export function Sheet({ anchor, children, label, onClose, open }: SheetProps) {
         },
         transition: { easing: MOTION.ease },
       }}
-      transitionDuration={SLOW_MILLISECONDS}
+      transitionDuration={reducedMotion ? 0 : SLOW_MILLISECONDS}
     >
       <Box
         sx={{ backgroundColor: "var(--dd-line)", borderRadius: "2px", height: 4, mb: "8px", mx: "auto", width: 40 }}

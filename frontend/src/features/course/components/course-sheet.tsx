@@ -3,6 +3,7 @@
 import Drawer from "@mui/material/Drawer";
 
 import { PageColumn } from "@/components/page-column";
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { MOTION, SLOW_MILLISECONDS } from "@/theme/tokens";
 
 import type { useCourseSheet } from "../hooks/use-course-sheet";
@@ -17,6 +18,8 @@ const DIALOG_ATTRIBUTES = { "aria-modal": true, role: "dialog" } as const;
 
 /** Everything the learner has met, over the screen they were on, which keeps its place beneath. */
 export function CourseSheet({ sheet }: CourseSheetProps) {
+  const reducedMotion = usePrefersReducedMotion();
+
   return (
     <Drawer
       anchor="bottom"
@@ -31,7 +34,7 @@ export function CourseSheet({ sheet }: CourseSheetProps) {
         },
         transition: { easing: MOTION.ease },
       }}
-      transitionDuration={SLOW_MILLISECONDS}
+      transitionDuration={reducedMotion ? 0 : SLOW_MILLISECONDS}
     >
       <PageColumn>
         {sheet.item.id === null ? (

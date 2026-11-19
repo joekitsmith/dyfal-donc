@@ -28,6 +28,18 @@ export const COLOURS = {
 
 export const SLOW_MILLISECONDS = 320;
 
+/** Media queries for what a screen can do, which the components condition their styles on. */
+export const MEDIA = {
+  /** A pointer that can hover, so a hover style is not left behind by a touch. */
+  hover: "@media (hover: hover)",
+  /** A wide screen with a mouse or trackpad, where there is a keyboard to press the keys. */
+  keyboard: "@media (min-width: 900px) and (pointer: fine)",
+  reducedMotion: "@media (prefers-reduced-motion: reduce)",
+} as const;
+
+/** What a hovered button shows: an outline, and no change of colour. */
+export const HOVER_OUTLINE = { outline: "2px solid var(--dd-line)" } as const;
+
 export const MOTION = {
   base: "200ms",
   ease: "cubic-bezier(0.2, 0.7, 0.2, 1)",
