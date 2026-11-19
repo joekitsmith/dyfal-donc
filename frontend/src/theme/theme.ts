@@ -3,7 +3,7 @@ import type { Shadows } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 
 import { textStyle } from "./text-style";
-import { CARD_RADIUS, COLOURS, FOCUS_RING, FONT_FAMILY, MEDIA, MINIMUM_TOUCH_TARGET, MOTION } from "./tokens";
+import { CARD_RADIUS, COLOURS, FOCUS_RING, FONT_FAMILY, MEDIA, MOTION } from "./tokens";
 
 const SHADOW_LEVELS = 25;
 
@@ -38,10 +38,6 @@ function scheme(colours: typeof COLOURS.dark | typeof COLOURS.light) {
 export const theme = createTheme({
   colorSchemes: { dark: scheme(COLOURS.dark), light: scheme(COLOURS.light) },
   components: {
-    MuiButton: {
-      defaultProps: { disableElevation: true },
-      styleOverrides: { root: { minHeight: MINIMUM_TOUCH_TARGET, textTransform: "none" } },
-    },
     MuiButtonBase: {
       defaultProps: { disableRipple: true },
       styleOverrides: { root: { "&:focus-visible": FOCUS_RING_STYLE } },
@@ -61,9 +57,6 @@ export const theme = createTheme({
         // Form controls ignore the page font unless told to inherit it
         "button, input, select, textarea": { fontFamily: "inherit" },
       },
-    },
-    MuiIconButton: {
-      styleOverrides: { root: { minHeight: MINIMUM_TOUCH_TARGET, minWidth: MINIMUM_TOUCH_TARGET } },
     },
     MuiPaper: {
       // Dark mode paints a lighter gradient over raised surfaces, and the design has no gradients

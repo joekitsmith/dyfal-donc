@@ -11,7 +11,7 @@ export default defineConfig({
   projects: [
     {
       name: "desktop",
-      testMatch: /(course|lesson|not-found|passkey|settings|summary)\.spec\.ts/,
+      testMatch: /(accessibility|course|lesson|not-found|passkey|settings|summary)\.spec\.ts/,
       use: { ...devices["Desktop Chrome"] },
     },
     { name: "phone", testMatch: /phone\.spec\.ts/, use: { ...devices["Pixel 7"] } },

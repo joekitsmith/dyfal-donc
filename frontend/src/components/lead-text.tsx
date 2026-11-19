@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 type LeadTextProps = {
   readonly children: ReactNode;
@@ -9,8 +9,11 @@ type LeadTextProps = {
 
 export function LeadText({ children, muted = false }: LeadTextProps) {
   return (
-    <Typography sx={{ color: muted ? "var(--dd-muted)" : "var(--dd-ink)", fontSize: "1.0625rem", lineHeight: 1.45 }}>
+    <Box
+      component="p"
+      sx={{ color: muted ? "var(--dd-muted)" : "var(--dd-ink)", fontSize: "1.0625rem", lineHeight: 1.45, m: 0 }}
+    >
       {children}
-    </Typography>
+    </Box>
   );
 }

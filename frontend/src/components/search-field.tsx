@@ -49,7 +49,7 @@ export function SearchField({ label, onChange, value }: SearchFieldProps) {
           color: "var(--dd-ink)",
           flex: 1,
           fontSize: "1.0625rem",
-          height: 44,
+          height: "100%",
           minWidth: 0,
           p: 0,
         }}

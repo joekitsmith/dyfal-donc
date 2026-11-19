@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 
 import { TEST_IDS } from "../src/config/test-ids";
 import { requireStack, startAsGuest, startButton, startLesson } from "./helpers";
+import { smallTargets } from "./inspect";
 
 const MINIMUM_TOUCH_TARGET = 48;
 
@@ -37,5 +38,18 @@ test("the lesson fits a phone and its buttons are easy to tap", async ({ page })
     }
 
     expect((await button.boundingBox())?.height, label).toBeGreaterThanOrEqual(MINIMUM_TOUCH_TARGET);
+  }
+
+  // The screens that came with the redesign, on a phone: nothing that is pressed is under 48 px, and each is kept as a picture
+  for (const [path, name] of [
+    ["/", "home"],
+    ["/account", "account"],
+    ["/settings", "settings"],
+    ["/course", "course"],
+  ] as const) {
+    await page.goto(path);
+    await expect(page.getByRole("button", { name: "Menu" }).or(page.getByRole("link", { name: "Back" }))).toBeVisible();
+    await page.screenshot({ fullPage: true, path: `test-results/phone-${name}.png` });
+    expect(await smallTargets(page), `${name}: targets under 48 px`).toEqual([]);
   }
 });

@@ -16,7 +16,8 @@ type RecapWordsProps = {
 
 const MAXIMUM_SHOWN = 6;
 
-const LINK_STYLE = { color: "inherit", textDecoration: "underline" } as const;
+/** The padding makes the link as tall to press as any other. On a line of text it takes no room. */
+const LINK_STYLE = { color: "inherit", paddingBlock: "11px", textDecoration: "underline" } as const;
 
 /** The new words met in a session, each a link to its page, or a plain line when everything was practice. */
 export function RecapWords({ items, sessionId }: RecapWordsProps) {

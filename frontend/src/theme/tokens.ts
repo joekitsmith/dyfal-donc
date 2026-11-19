@@ -64,6 +64,5 @@ export const TYPE_SCALE = {
 } as const;
 
 export const CARD_RADIUS = 10;
-export const MINIMUM_TOUCH_TARGET = 48;
 
 export const FOCUS_RING = { offset: 2, width: 3 } as const;
