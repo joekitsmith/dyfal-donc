@@ -6,6 +6,6 @@ export const THINK_MULTIPLIER_STEP = 0.25;
 
 export const WELSH_PLAYBACK_OPTIONS = [
   { label: "Standard, then slow", value: "both" },
-  { label: "Slow only", value: "slow" },
   { label: "Standard only", value: "standard" },
+  { label: "Slow only", value: "slow" },
 ] as const;

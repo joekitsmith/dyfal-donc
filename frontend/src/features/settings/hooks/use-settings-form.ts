@@ -22,7 +22,6 @@ export function useSettingsForm(settings: UserSettings) {
 
   return {
     control,
-    isSaving: isPending,
     onSubmit: handleSubmit((values) => {
       mutate(values, {
         onSuccess: (saved) => {
@@ -30,7 +29,30 @@ export function useSettingsForm(settings: UserSettings) {
         },
       });
     }),
-    saved: isSuccess && !formState.isDirty,
-    saveFailed: isError,
+    save: {
+      failed: isError,
+      status: saveStatus({ changed: formState.isDirty, saved: isSuccess, saving: isPending }),
+    },
   };
+}
+
+/** What the Save button says. Saved stays until the next change. */
+function saveStatus({
+  changed,
+  saved,
+  saving,
+}: {
+  readonly changed: boolean;
+  readonly saved: boolean;
+  readonly saving: boolean;
+}): "changed" | "idle" | "saved" | "saving" {
+  if (saving) {
+    return "saving";
+  }
+
+  if (changed) {
+    return "changed";
+  }
+
+  return saved ? "saved" : "idle";
 }
