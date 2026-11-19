@@ -3,6 +3,7 @@ import ButtonBase from "@mui/material/ButtonBase";
 import NextLink from "next/link";
 
 import { textStyle } from "@/theme/text-style";
+import { MEDIA } from "@/theme/tokens";
 
 import { ChevronIcon } from "./icons/chevron-icon";
 
@@ -31,6 +32,7 @@ export function PageHeader({ back, backLabel, title }: PageHeaderProps) {
           gap: "4px",
           height: HEADER_HEIGHT,
           justifyContent: "flex-start",
+          [MEDIA.hover]: { "&:hover": { textDecoration: "underline" } },
           // Shifted left so that the icon, not the whole tap target, lines up with the column
           ml: "-12px",
           pl: "12px",

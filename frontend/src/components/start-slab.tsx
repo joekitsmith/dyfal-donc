@@ -6,10 +6,14 @@ import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 
 import { textStyle } from "@/theme/text-style";
+import { HOVER_OUTLINE, MEDIA } from "@/theme/tokens";
 
 import { PlayIcon } from "./icons/play-icon";
+import { KeyHint } from "./key-hint";
 
 type StartSlabProps = {
+  /** The key that presses it, shown where there is a keyboard. */
+  readonly keyHint?: string;
   readonly onClick: () => void;
   readonly subtitle: ReactNode;
   readonly title: ReactNode;
@@ -27,19 +31,20 @@ const UNAVAILABLE_STYLE = {
   color: "var(--dd-muted)",
 } as const;
 
-export function StartSlab({ onClick, subtitle, title, unavailable = false }: StartSlabProps) {
+export function StartSlab({ keyHint, onClick, subtitle, title, unavailable = false }: StartSlabProps) {
   return (
     <ButtonBase
       aria-disabled={unavailable ? true : undefined}
       onClick={unavailable ? undefined : onClick}
       sx={{
         ...(unavailable ? UNAVAILABLE_STYLE : AVAILABLE_STYLE),
-        "&:active": { transform: "scale(0.98)" },
+        "&:active": { [MEDIA.reducedMotion]: { transform: "none" }, transform: "scale(0.98)" },
         borderRadius: "10px",
         flexShrink: 0,
         gap: "16px",
         height: SLAB_HEIGHT,
         justifyContent: "center",
+        [MEDIA.hover]: { "&:hover": HOVER_OUTLINE },
         transition: "transform var(--dd-fast) var(--dd-ease)",
         width: "100%",
       }}
@@ -53,6 +58,7 @@ export function StartSlab({ onClick, subtitle, title, unavailable = false }: Sta
           {subtitle}
         </Box>
       </Box>
+      {keyHint === undefined ? null : <KeyHint onInverse={!unavailable}>{keyHint}</KeyHint>}
     </ButtonBase>
   );
 }

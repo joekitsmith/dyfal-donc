@@ -40,6 +40,7 @@ export function LessonRest({ menu, onStart }: LessonRestProps) {
             <>
               {hint.visible ? <HeadphoneHint /> : null}
               <StartSlab
+                keyHint="Space"
                 onClick={onStart}
                 subtitle={slab.brandNew ? "Start" : "Keep going"}
                 title={<span lang="cy">{slab.brandNew ? "Dechrau" : "Dal ati"}</span>}

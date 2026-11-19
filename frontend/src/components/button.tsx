@@ -6,6 +6,9 @@ import ButtonBase from "@mui/material/ButtonBase";
 import Link from "next/link";
 
 import { textStyle } from "@/theme/text-style";
+import { HOVER_OUTLINE, MEDIA } from "@/theme/tokens";
+
+import { KeyHint } from "./key-hint";
 
 type ButtonProps = {
   readonly children: ReactNode;
@@ -18,6 +21,8 @@ type ButtonProps = {
   /** Fills the width of its parent, as a compact or ghost button does not by itself. */
   readonly full?: boolean;
   readonly href?: string;
+  /** The key that presses it, shown where there is a keyboard. */
+  readonly keyHint?: string;
   readonly onClick?: () => void;
   /** The full height, which a ghost button does not otherwise have. */
   readonly tall?: boolean;
@@ -65,6 +70,7 @@ export function Button({
   fit = false,
   full = false,
   href,
+  keyHint,
   onClick,
   tall = false,
   type,
@@ -78,17 +84,27 @@ export function Button({
     ...VARIANT_STYLES[variant],
     ...(unavailable ? UNAVAILABLE_STYLES[variant] : {}),
     ...(edge ? { border: "2px solid var(--dd-line)" } : {}),
-    "&:active": { transform: "scale(0.98)" },
+    "&:active": { [MEDIA.reducedMotion]: { transform: "none" }, transform: "scale(0.98)" },
+    ...(edge ? {} : { [MEDIA.hover]: { "&:hover": HOVER_OUTLINE } }),
     borderRadius: small ? "8px" : "10px",
     display: "flex",
     gap: "10px",
     height: small && !tall ? COMPACT_HEIGHT : STANDALONE_HEIGHT,
     justifyContent: "center",
     px: small ? "16px" : fit ? "22px" : "20px",
+    // Room at the right for the key, so the label does not run into it
+    ...(keyHint === undefined || small ? {} : { [MEDIA.keyboard]: { pr: "64px" } }),
     transition: "transform var(--dd-fast) var(--dd-ease)",
     // A button does not fill its parent by itself, unlike a link
     width: (small || fit) && !full ? "auto" : "100%",
   };
+
+  const hint =
+    keyHint === undefined ? null : (
+      <KeyHint inline={small && !full} onInverse={variant === "primary" && !unavailable}>
+        {keyHint}
+      </KeyHint>
+    );
 
   // Cancelling the click also stops an unavailable submit button from sending its form
   const handleClick = (event: MouseEvent<HTMLElement>) => {
@@ -105,6 +121,7 @@ export function Button({
     return (
       <ButtonBase aria-disabled={unavailable ? true : undefined} onClick={handleClick} sx={sx} type={type}>
         {children}
+        {hint}
       </ButtonBase>
     );
   }
@@ -112,6 +129,7 @@ export function Button({
   return (
     <ButtonBase href={href} LinkComponent={Link} onClick={handleClick} sx={sx}>
       {children}
+      {hint}
     </ButtonBase>
   );
 }

@@ -20,19 +20,19 @@ export function LessonControls({ actions, controls }: LessonControlsProps) {
   return (
     <Box sx={{ display: "flex", gap: "12px" }}>
       <Box sx={{ flex: 1 }}>
-        <Button onClick={actions.replay} unavailable={unavailable} variant="quiet">
+        <Button keyHint="R" onClick={actions.replay} unavailable={unavailable} variant="quiet">
           <ReplayIcon size={20} />
           Replay
         </Button>
       </Box>
       <Box sx={{ flex: 1 }}>
         {controls.pause === "resume" ? (
-          <Button onClick={actions.togglePause} unavailable={unavailable} variant="primary">
+          <Button keyHint="Space" onClick={actions.togglePause} unavailable={unavailable} variant="primary">
             <PlayIcon size={20} />
             Resume
           </Button>
         ) : (
-          <Button onClick={actions.togglePause} unavailable={unavailable} variant="quiet">
+          <Button keyHint="Space" onClick={actions.togglePause} unavailable={unavailable} variant="quiet">
             <PauseIcon size={20} />
             Pause
           </Button>

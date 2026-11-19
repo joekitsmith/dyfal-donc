@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import { keyframes } from "@mui/material/styles";
 
 import { TEST_IDS } from "@/config/test-ids";
+import { MEDIA } from "@/theme/tokens";
 import { beatGap } from "@/utils/beat-gap";
 
 type BeatRowProps = {
@@ -91,6 +92,8 @@ function Block({
           borderRadius: "5px",
           boxSizing: "border-box",
           inset: 0,
+          // Still, as the block that is now
+          [MEDIA.reducedMotion]: { animation: "none" },
           opacity: opened ? 0 : 1,
           position: "absolute",
           transition: opened

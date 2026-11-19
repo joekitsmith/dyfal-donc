@@ -16,10 +16,13 @@ test("the lesson fits a phone and its buttons are easy to tap", async ({ page })
   await startAsGuest(page);
   await expect(startButton(page)).toBeVisible();
   await page.screenshot({ path: "test-results/phone-idle.png" });
+  // A touch screen has no keys to press, whatever its width
+  await expect(page.getByText("Space", { exact: true })).toBeHidden();
   await startLesson(page);
   await expect(page.getByTestId(TEST_IDS.english)).not.toHaveText("");
   await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
   await page.screenshot({ path: "test-results/phone-exercise.png" });
+  await expect(page.getByText("M", { exact: true })).toBeHidden();
 
   const fits = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
 

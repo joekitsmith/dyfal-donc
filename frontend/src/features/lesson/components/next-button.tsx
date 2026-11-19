@@ -5,7 +5,7 @@ type NextButtonProps = { readonly onClick: () => void };
 
 export function NextButton({ onClick }: NextButtonProps) {
   return (
-    <Button edge onClick={onClick} variant="ghost">
+    <Button edge keyHint="N" onClick={onClick} variant="ghost">
       Next
       <ChevronIcon direction="right" size={18} />
     </Button>

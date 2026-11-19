@@ -7,6 +7,7 @@ import ButtonBase from "@mui/material/ButtonBase";
 import MuiDialog from "@mui/material/Dialog";
 import { useId } from "react";
 
+import { usePrefersReducedMotion } from "@/hooks/use-prefers-reduced-motion";
 import { textStyle } from "@/theme/text-style";
 
 import { CloseIcon } from "./icons/close-icon";
@@ -29,6 +30,7 @@ const CLOSE_SIZE = 48;
 /** Rises from the bottom of a phone, and is centred on a wide screen. */
 export function Dialog({ children, closeButton = false, fillsPhone = false, onClose, open, title }: DialogProps) {
   const titleId = useId();
+  const reducedMotion = usePrefersReducedMotion();
 
   return (
     <MuiDialog
@@ -59,6 +61,8 @@ export function Dialog({ children, closeButton = false, fillsPhone = false, onCl
         },
       }}
       sx={{ "& .MuiDialog-container": { alignItems: { md: "center", xs: "flex-end" } } }}
+      // A dialog fades in. For someone who wants less movement it does so quickly
+      transitionDuration={reducedMotion ? 120 : undefined}
     >
       <Box sx={{ alignItems: "center", display: "flex", justifyContent: "space-between" }}>
         <Box component="h2" id={titleId} sx={{ ...textStyle("title"), m: 0 }}>

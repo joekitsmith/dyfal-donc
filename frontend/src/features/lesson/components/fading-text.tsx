@@ -2,6 +2,8 @@ import Box from "@mui/material/Box";
 import { type CSSObject, keyframes } from "@mui/material/styles";
 import { type RefCallback, useState } from "react";
 
+import { MEDIA, MOTION } from "@/theme/tokens";
+
 type FadingTextProps = {
   /** How long the text that is replaced takes to fade, as a CSS time. The new text always fades in over the base time. */
   readonly fadeOut: string;
@@ -72,6 +74,7 @@ export function FadingText({ fadeOut: fadeOutTime, fit, lang, live = false, sx, 
                 : {
                     animation: `${fadeOut} ${fadeOutTime} var(--dd-ease) forwards`,
                     left: 0,
+                    [MEDIA.reducedMotion]: { animationDuration: MOTION.fast },
                     pointerEvents: "none",
                     position: "absolute",
                     right: 0,
