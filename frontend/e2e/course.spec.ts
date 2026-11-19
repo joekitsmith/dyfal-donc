@@ -50,3 +50,46 @@ test("an item that has not been met is not found", async ({ page }) => {
 
   await expect(page.getByText("We couldn't find that.")).toBeVisible();
 });
+
+test("from a running lesson the course opens over it, a word opens inside it, and the lesson is still paused on its sentence", async ({
+  page,
+}) => {
+  await startAsGuest(page);
+  await startLesson(page);
+
+  const english = page.getByTestId(TEST_IDS.english);
+
+  await expect(english).not.toHaveText("");
+
+  const first = (await english.textContent()) ?? "";
+
+  await expect(page.getByTestId(TEST_IDS.welsh)).not.toHaveText("", { timeout: 30_000 });
+  await page.keyboard.press("m");
+  await page.waitForResponse((response) => response.url().endsWith("/outcomes"), { timeout: 30_000 });
+  await expect(english).not.toHaveText(first, { timeout: 30_000 });
+
+  const current = (await english.textContent()) ?? "";
+
+  await chooseFromMenu(page, "button", "Look something up");
+
+  const sheet = page.getByRole("dialog", { name: "Everything you've met" });
+
+  await expect(sheet.getByRole("heading", { level: 1, name: "Everything you've met" })).toBeVisible();
+  await expect(page).toHaveURL(/\/$/);
+  // The lesson pauses as soon as it can, which is once the next sentence's audio has started
+  await expect(page.getByRole("button", { includeHidden: true, name: /^Resume/ })).toBeVisible();
+
+  await sheet.getByRole("region", { name: "Words" }).getByRole("link").first().click();
+  await expect(sheet.getByRole("heading", { level: 1 })).not.toHaveText("Everything you've met");
+  await expect(page).toHaveURL(/\/$/);
+  await expect(sheet.getByRole("button", { name: "Hear it" })).toBeVisible();
+
+  await sheet.getByRole("button", { name: "Everything you've met" }).click();
+  await expect(sheet.getByRole("heading", { level: 1, name: "Everything you've met" })).toBeVisible();
+
+  await sheet.getByRole("button", { name: "Back" }).click();
+  await expect(sheet).toBeHidden();
+
+  await expect(english).toHaveText(current);
+  await expect(page.getByRole("button", { name: /^Resume/ })).toBeVisible();
+});

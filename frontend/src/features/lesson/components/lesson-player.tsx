@@ -1,3 +1,4 @@
+import { useCourseSheet } from "@/features/course";
 import { useHeadphoneVisit } from "@/features/home";
 import { useDisclosure } from "@/hooks/use-disclosure";
 
@@ -26,9 +27,10 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
     learnerId,
   });
   const menu = useDisclosure();
+  const courseSheet = useCourseSheet();
   const menuProps = { isOpen: menu.isOpen, onClose: menu.close, onOpen: menu.open };
 
-  usePauseWhileOpen({ canPause, open: menu.isOpen || report.dialog.open, pause: actions.pause });
+  usePauseWhileOpen({ canPause, open: menu.isOpen || report.dialog.open || courseSheet.isOpen, pause: actions.pause });
   useHeadphoneVisit();
 
   if (state.phase === "idle") {
@@ -38,6 +40,7 @@ export function LessonPlayer({ isGuest, learnerId, settings }: LessonPlayerProps
   return (
     <RunningLesson
       actions={actions}
+      courseSheet={courseSheet}
       menu={menuProps}
       offer={offer}
       readThink={readThink}

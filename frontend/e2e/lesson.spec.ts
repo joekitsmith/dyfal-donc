@@ -152,7 +152,7 @@ test("the menu holds the lesson, ignores its shortcuts, and leaves it paused whe
 
   const menu = page.getByRole("dialog", { name: "Menu" });
 
-  await expect(menu.getByRole("link", { name: "Look something up" })).toBeVisible();
+  await expect(menu.getByRole("button", { name: "Look something up" })).toBeVisible();
   await expect(menu.getByRole("button", { name: "Report a problem" })).toBeVisible();
   await expect(menu.getByRole("link", { name: "Settings" })).toBeVisible();
   await expect(menu.getByRole("link", { name: "Account" })).toBeVisible();

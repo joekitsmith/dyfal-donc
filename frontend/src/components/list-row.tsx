@@ -10,6 +10,8 @@ type ListRowProps = {
   /** Shown at the right. */
   readonly english?: string;
   readonly href: string;
+  /** Opens the row in place, where going to its address would leave something behind. */
+  readonly onOpen?: (() => void) | undefined;
   /** A second line under the Welsh, which makes the row taller. */
   readonly secondLine?: { readonly size: "body" | "small"; readonly text: string };
   readonly welsh: string;
@@ -24,12 +26,18 @@ const ROW_HEIGHT = 52;
 const TWO_LINE_ROW_HEIGHT = 64;
 
 /** One row of a list card. The whole row is the link. */
-export function ListRow({ english, href, secondLine, welsh }: ListRowProps) {
+export function ListRow({ english, href, onOpen, secondLine, welsh }: ListRowProps) {
   return (
     <li>
       <ButtonBase
         href={href}
         LinkComponent={NextLink}
+        onClick={(event) => {
+          if (onOpen !== undefined) {
+            event.preventDefault();
+            onOpen();
+          }
+        }}
         sx={{
           alignItems: "center",
           display: "flex",

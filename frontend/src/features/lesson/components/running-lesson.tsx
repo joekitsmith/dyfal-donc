@@ -4,6 +4,7 @@ import { AppHeader } from "@/components/app-header";
 import { BeatRow } from "@/components/beat-row";
 import { ScreenFrame } from "@/components/screen-frame";
 import { PasskeyAddedNotice, SaveProgressPrompt } from "@/features/auth";
+import { CourseSheet, type useCourseSheet } from "@/features/course";
 import { SessionClock } from "@/features/learning-session";
 import { ReportDialog } from "@/features/problem-report";
 
@@ -26,6 +27,7 @@ import { WelshArea } from "./welsh-area";
 
 type RunningLessonProps = {
   readonly actions: LessonActions;
+  readonly courseSheet: ReturnType<typeof useCourseSheet>;
   readonly menu: { readonly isOpen: boolean; readonly onClose: () => void; readonly onOpen: () => void };
   readonly offer: ReturnType<typeof useSaveOffer>;
   /** Where the audio is in the think time, read on each frame. */
@@ -35,7 +37,7 @@ type RunningLessonProps = {
 };
 
 /** The lesson once it has started, in the same frame as when it is at rest. */
-export function RunningLesson({ actions, menu, offer, readThink, report, state }: RunningLessonProps) {
+export function RunningLesson({ actions, courseSheet, menu, offer, readThink, report, state }: RunningLessonProps) {
   const view = useLessonView(state);
   const fit = useFittedSize();
   const beatIndex = useBeatIndex({
@@ -82,11 +84,12 @@ export function RunningLesson({ actions, menu, offer, readThink, report, state }
         header={
           <AppHeader
             clock={<SessionClock />}
-            menu={<LessonMenu menu={menu} onReport={report.open} onStop={actions.stop} />}
+            menu={<LessonMenu menu={menu} onLookUp={courseSheet.open} onReport={report.open} onStop={actions.stop} />}
           />
         }
       />
       <ReportDialog {...report.dialog} />
+      <CourseSheet sheet={courseSheet} />
     </>
   );
 }
