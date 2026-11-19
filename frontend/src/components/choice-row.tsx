@@ -6,13 +6,18 @@ type ChoiceRowProps = {
   readonly checked: boolean;
   readonly label: string;
   readonly onChange: (checked: boolean) => void;
-};
+} & (
+  | { readonly name: string; readonly type: "radio"; readonly value: string }
+  | { readonly name?: never; readonly type?: "checkbox"; readonly value?: never }
+);
 
 const ROW_HEIGHT = 56;
-const CHECKBOX_SIZE = 24;
+const CONTROL_SIZES = { checkbox: 24, radio: 22 } as const;
 
-/** A checkbox in a row that can be tapped anywhere along its length. */
-export function ChoiceRow({ checked, label, onChange }: ChoiceRowProps) {
+/** A checkbox or a radio button in a row that can be tapped anywhere along its length. */
+export function ChoiceRow({ checked, label, name, onChange, type = "checkbox", value }: ChoiceRowProps) {
+  const size = CONTROL_SIZES[type];
+
   return (
     <Box
       component="label"
@@ -21,11 +26,13 @@ export function ChoiceRow({ checked, label, onChange }: ChoiceRowProps) {
       <Box
         checked={checked}
         component="input"
+        name={name}
         onChange={(event: { target: { checked: boolean } }) => {
           onChange(event.target.checked);
         }}
-        sx={{ accentColor: "var(--dd-ink)", flexShrink: 0, height: CHECKBOX_SIZE, m: 0, width: CHECKBOX_SIZE }}
-        type="checkbox"
+        sx={{ accentColor: "var(--dd-ink)", flexShrink: 0, height: size, m: 0, width: size }}
+        type={type}
+        value={value}
       />
       {label}
     </Box>

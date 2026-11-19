@@ -8,6 +8,8 @@ import { beatGap } from "@/utils/beat-gap";
 
 type BeatRowProps = {
   readonly count: number;
+  /** Shorter than the lesson's row, for where it is only an illustration. */
+  readonly height?: number;
   /** Blocks before it are done and blocks after it are to come. Without it, all are to come. */
   readonly nowIndex?: number;
   /** Each block splits along a seam, which is how the row shows that the Welsh has been said. */
@@ -33,13 +35,13 @@ const pulse = keyframes({ "50%": { opacity: 0.4 } });
 const OPENING = "var(--dd-slow) var(--dd-ease)";
 
 /** The time the learner has to speak, drawn as blocks. */
-export function BeatRow({ count, nowIndex, opened = false, waiting = false }: BeatRowProps) {
+export function BeatRow({ count, height = ROW_HEIGHT, nowIndex, opened = false, waiting = false }: BeatRowProps) {
   return (
     <Box
       aria-hidden="true"
       data-opened={opened}
       data-testid={TEST_IDS.beatRow}
-      sx={{ display: "flex", gap: `${beatGap(count)}px`, height: ROW_HEIGHT }}
+      sx={{ display: "flex", gap: `${beatGap(count)}px`, height }}
     >
       {Array.from({ length: count }, (_, index) => (
         <Block key={index} opened={opened} pulsing={waiting && index === nowIndex} state={stateOf(index, nowIndex)} />

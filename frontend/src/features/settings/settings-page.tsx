@@ -1,39 +1,45 @@
 "use client";
 
-import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import Link from "next/link";
+import Box from "@mui/material/Box";
 
+import { ErrorCard } from "@/components/error-card";
+import { LoadingBlocks } from "@/components/loading-blocks";
+import { PageColumn } from "@/components/page-column";
+import { PageHeader } from "@/components/page-header";
 import { ROUTES } from "@/config/paths";
 import { useRequireSession } from "@/features/auth";
 
 import { useSettings } from "./api/use-settings";
 import { SettingsForm } from "./components/settings-form";
 
+const LOADING_BLOCK_HEIGHTS = [72, 72, 72] as const;
+
 export function SettingsPage() {
   const { error: sessionError, user } = useRequireSession();
   const settings = useSettings();
   const error = sessionError ?? settings.error;
 
-  if (error) {
-    return <Alert severity="error">{error.message}</Alert>;
-  }
-
-  if (user === undefined || settings.data === undefined) {
-    return <Typography>Loading</Typography>;
-  }
-
   return (
-    <Stack component="main" spacing={3} sx={{ maxWidth: 560, mt: { sm: 8, xs: 3 }, mx: "auto", p: 2 }}>
-      <Button component={Link} href={ROUTES.home} sx={{ alignSelf: "flex-start" }}>
-        Back to the lesson
-      </Button>
-      <Typography component="h1" variant="h4">
-        Settings
-      </Typography>
-      <SettingsForm settings={settings.data} />
-    </Stack>
+    <PageColumn fill>
+      <PageHeader back={{ href: ROUTES.home }} title="Settings" />
+      {error !== null ? (
+        <Box sx={{ mt: "24px" }}>
+          <ErrorCard
+            action={{
+              label: "Try again",
+              onClick: () => {
+                void settings.refetch();
+              },
+            }}
+            text="Check your connection, then try again."
+            title="We couldn't load this"
+          />
+        </Box>
+      ) : user === undefined || settings.data === undefined ? (
+        <LoadingBlocks heights={LOADING_BLOCK_HEIGHTS} />
+      ) : (
+        <SettingsForm settings={settings.data} />
+      )}
+    </PageColumn>
   );
 }

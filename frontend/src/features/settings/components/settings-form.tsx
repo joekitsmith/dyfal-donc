@@ -1,73 +1,69 @@
-import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import Slider from "@mui/material/Slider";
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 import { Controller } from "react-hook-form";
+
+import { Button } from "@/components/button";
+import { TickIcon } from "@/components/icons/tick-icon";
+import { NoticeCard } from "@/components/notice-card";
+import { textStyle } from "@/theme/text-style";
 
 import type { UserSettings } from "../types";
 
-import {
-  THINK_MULTIPLIER_MAXIMUM,
-  THINK_MULTIPLIER_MINIMUM,
-  THINK_MULTIPLIER_STEP,
-  WELSH_PLAYBACK_OPTIONS,
-} from "../constants";
 import { useSettingsForm } from "../hooks/use-settings-form";
+import { ThinkTimeField } from "./think-time-field";
+import { WelshAudioField } from "./welsh-audio-field";
 
 type SettingsFormProps = { readonly settings: UserSettings };
 
 export function SettingsForm({ settings }: SettingsFormProps) {
-  const { control, isSaving, onSubmit, saved, saveFailed } = useSettingsForm(settings);
+  const { control, onSubmit, save } = useSettingsForm(settings);
 
   return (
-    <Stack
+    <Box
       component="form"
       noValidate
       onSubmit={(event) => {
         void onSubmit(event);
       }}
-      spacing={3}
+      sx={{ display: "flex", flex: 1, flexDirection: "column" }}
     >
-      <Controller
-        control={control}
-        name="thinkTimeMultiplier"
-        render={({ field }) => (
-          <Stack>
-            <Typography id="think-time-label">Think time: {field.value}×</Typography>
-            <Slider
-              aria-labelledby="think-time-label"
-              max={THINK_MULTIPLIER_MAXIMUM}
-              min={THINK_MULTIPLIER_MINIMUM}
-              onChange={(_event, next) => {
-                field.onChange(next);
-              }}
-              step={THINK_MULTIPLIER_STEP}
-              value={field.value}
-            />
-          </Stack>
-        )}
-      />
-      <Controller
-        control={control}
-        name="welshPlayback"
-        render={({ field }) => (
-          <TextField label="Welsh audio" select {...field}>
-            {WELSH_PLAYBACK_OPTIONS.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        )}
-      />
-      <Button disabled={isSaving} type="submit" variant="contained">
-        Save
-      </Button>
-      {saved ? <Alert severity="success">Saved</Alert> : null}
-      {saveFailed ? <Alert severity="error">The settings could not be saved. Try again.</Alert> : null}
-    </Stack>
+      <Box sx={{ mt: "24px" }}>
+        <Controller
+          control={control}
+          name="thinkTimeMultiplier"
+          render={({ field }) => <ThinkTimeField onChange={field.onChange} value={field.value} />}
+        />
+      </Box>
+      <Box sx={{ mt: "32px" }}>
+        <Controller
+          control={control}
+          name="welshPlayback"
+          render={({ field }) => <WelshAudioField onChange={field.onChange} value={field.value} />}
+        />
+      </Box>
+      <Box sx={{ mt: "auto", pt: "32px" }}>
+        {save.failed ? (
+          <Box sx={{ mb: "12px" }}>
+            <NoticeCard role="status">
+              Your changes couldn&apos;t be saved. They&apos;re still here, so try again.
+            </NoticeCard>
+          </Box>
+        ) : null}
+        <Box sx={{ ...textStyle("hint"), color: "var(--dd-muted)", textAlign: "center" }}>
+          Changes apply from the next sentence.
+        </Box>
+        <Box sx={{ mt: "12px" }}>
+          <Button type="submit" unavailable={save.status !== "changed"} variant="primary">
+            {save.status === "saving" ? "Saving…" : null}
+            {save.status === "saved" ? (
+              <>
+                <TickIcon size={20} />
+                Saved
+              </>
+            ) : null}
+            {save.status === "idle" || save.status === "changed" ? "Save" : null}
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 }
